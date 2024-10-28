@@ -3,7 +3,7 @@
         {
             "path": "force-app",
             "default": true,
-            "package": "crm-hot-nsv",
+            "package": "crm-hot-servicetjenesten",
             "versionNumber": "0.1.0.NEXT",
             "versionDescription": "",
             "dependencies": [
@@ -22,7 +22,7 @@
     "sfdcLoginUrl": "https://login.salesforce.com",
     "sourceApiVersion": "60.0",
     "packageAliases": {
-        "crm-hot-nsv": "0Ho7U0000004CBESA2",
+        "crm-hot-servicetjenesten": "0Ho7U0000004CBESA2",
         "crm-platform-base": "0Ho2o0000008ORmCAM",
         "crm-platform-access-control": "0Ho2o0000008OR3CAM"
     }
