@@ -42,6 +42,26 @@
                 <identifier>RecordNameField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NKS_PersonAge__c</fieldItem>
+                <identifier>RecordNKS_PersonAge_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.INT_fnr__c</fieldItem>
+                <identifier>RecordINT_fnr_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-27e305c2-107e-46b1-8dcd-773ec6f7cb73</name>
         <type>Facet</type>
     </flexiPageRegions>
