@@ -19,7 +19,7 @@ call sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-
 echo "Installerer crm-platform-integration ver. 0.134"
 call sf package install --package 04tKB000000Y31CYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-platform-oppgave ver. 0.66"
+echo "Installerer crm-platform-oppgave ver. 0.60"
 call sf package install --package 04tKB000000Y0aJYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-platform-access-control ver. 0.135"
