@@ -9,11 +9,47 @@
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.217.0.LATEST"
+                    "versionNumber": "0.232.0.LATEST"
+                },
+                {
+                    "package": "crm-shared-flowComponents",
+                    "versionNumber": "0.4.0.LATEST"
+                },
+                {
+                    "package": "crm-henvendelse-base",
+                    "versionNumber": "0.21.0.LATEST"
+                },
+                {
+                    "package": "crm-journal-utilities",
+                    "versionNumber": "0.37.0.LATEST"
+                },
+                {
+                    "package": "crm-shared-user-notification",
+                    "versionNumber": "0.24.0.LATEST"
+                },
+                {
+                    "package": "crm-platform-integration",
+                    "versionNumber": "0.134.0.LATEST"
+                },
+                {
+                    "package": "crm-platform-oppgave",
+                    "versionNumber": "0.66.0.LATEST"
                 },
                 {
                     "package": "crm-platform-access-control",
-                    "versionNumber": "0.125.0.LATEST"
+                    "versionNumber": "0.135.0.LATEST"
+                },
+                {
+                    "package": "crm-community-base",
+                    "versionNumber": "0.119.0.LATEST"
+                },
+                {
+                    "package": "crm-platform-reporting",
+                    "versionNumber": "0.38.0.LATEST"
+                },
+                {
+                    "package": "crm-henvendelse",
+                    "versionNumber": "0.147.0.LATEST"
                 }
             ]
         }
@@ -23,7 +59,21 @@
     "sourceApiVersion": "60.0",
     "packageAliases": {
         "crm-hot-servicetjenesten": "0Ho7U0000004CBESA2",
-        "crm-platform-base": "0Ho2o0000008ORmCAM",
-        "crm-platform-access-control": "0Ho2o0000008OR3CAM"
+        "crm-platform-base": "04tKB000000Y3K8YAK",
+        "crm-shared-flowComponents": "04t7U0000008qz4QAA",
+        "crm-henvendelse-base": "04t7U000000Y4hdQAC",
+        "crm-journal-utilities": "04tKB000000Y1o9YAC",
+        "crm-shared-user-notification": "04t7U000000Y4jZQAS",
+        "crm-platform-integration": "04tKB000000Y31CYAS",
+        "crm-platform-oppgave" :"04tKB000000Y0aJYAS",
+        "crm-platform-access-control": "04tKB000000Y1nuYAC",
+        "crm-community-base": "04tKB000000Y0CZYA0",
+        "crm-platform-reporting": "04t7U000000Y3yYQAS",
+        "crm-henvendelse": "04tKB000000Y1oEYAS"
+
+
+
+
+
     }
 }
