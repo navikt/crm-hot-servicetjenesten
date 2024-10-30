@@ -60,14 +60,14 @@
     "packageAliases": {
         "crm-hot-servicetjenesten": "0Ho7U0000004CBESA2",
         "crm-platform-base": "0Ho2o0000008ORmCAM",
-       "crm-shared-flowComponents": "0Ho2o000000fxYJCAY",
-       "crm-henvendelse-base": "0Ho7U000000000kSAA",
-         "crm-journal-utilities": "0Ho2o000000fxXkCAI",
+        "crm-shared-flowComponents": "0Ho2o000000fxYJCAY",
+        "crm-henvendelse-base": "0Ho7U000000000kSAA",
+        "crm-journal-utilities": "0Ho2o000000fxXkCAI",
         "crm-shared-user-notification": "0Ho2o000000fxY4CAI",
-         "crm-platform-integration": "0Ho2o0000008ORrCAM",
-         "crm-platform-oppgave": "0Ho2o000000fxXzCAI",
+        "crm-platform-integration": "0Ho2o0000008ORrCAM",
+        "crm-platform-oppgave": "0Ho2o000000fxXzCAI",
         "crm-platform-access-control": "0Ho2o0000008OR3CAM",
-         "crm-community-base": "0Ho2o0000008OSzCAM",
+        "crm-community-base": "0Ho2o0000008OSzCAM",
         "crm-platform-reporting": "0Ho2o0000008OSfCAM",
         "crm-henvendelse": "0Ho2o000000fxXfCAI"
     }
