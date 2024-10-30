@@ -37,8 +37,8 @@ call sf package install --package 04tKB000000Y1oEYAS --no-prompt --installation-
 echo "Dytter kildekoden til scratch org'en"
 call sf project deploy start
 
-::echo "Tildeler tilatelsessett til brukeren"
-::call sf org assign permset --name HOT_Lesehjelp_Admin
+echo "Tildeler tilatelsessett til brukeren"
+call sf org assign permset --name HOT_Servicetjenesten_Admin
 
 echo "Creating testdata"
 call sf apex run --file scripts/apex/createTestData.apex
