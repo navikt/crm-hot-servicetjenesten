@@ -9,13 +9,46 @@ sf package install --package 04t7U000000Y3VbQAK --no-prompt --installation-key $
 # Installer crm-platform-access-control ver. 0.125
 sf package install --package 04t7U000000Y3V7QAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
+# Installerer crm-platform-base ver. 0.232
+sf package install --package 04tKB000000Y3K8YAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-shared-flowComponents ver. 0.4
+sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-henvendelse-base ver. 0.21
+ sf package install --package 04t7U000000Y4hdQAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-journal-utilities ver. 0.37
+sf package install --package 04tKB000000Y1o9YAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-shared-user-notification ver. 0.24
+sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-platform-integration ver. 0.134
+sf package install --package 04tKB000000Y31CYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-platform-oppgave ver. 0.60
+sf package install --package 04tKB000000Y0aJYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-platform-access-control ver. 0.135
+sf package install --package 04tKB000000Y1nuYAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-community-base ver. 0.119
+sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-platform-reporting ver. 0.38
+sf package install --package 04t7U000000Y3yYQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
+# Installerer crm-henvendelse ver. 0.147
+sf package install --package 04tKB000000Y1oEYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+
 # Dytt kildekoden til scratch org'en
 sf project deploy start
 
-# Tildel tilatelsessett til brukeren
-# sf org assign permset --name HOT_Lesehjelp_Admin
+# Tildeler permissionset
+sf org assign permset --name HOT_Servicetjenesten_Admin
 
-# Oppretter testdata
+# Opprett testdata
 sf apex run --file scripts/apex/createTestData.apex
 
 # done
