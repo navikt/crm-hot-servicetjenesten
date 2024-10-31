@@ -1,7 +1,7 @@
  #!/bin/bash
 
 # Oppretter scratch org
-sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30
+(set -x; sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30 2>/dev/null)
 
 PACKAGES=( 
     "crm-platform-base:0.224.0"
@@ -14,7 +14,7 @@ PACKAGES=(
     "crm-platform-reporting:0.38.0"
     "crm-journal-utilities:0.37.0"
     "crm-shared-user-notification:0.24"
-    "rm-henvendelse:0.147"
+    "crm-henvendelse:0.147"
 )
 
 for package in "${PACKAGES[@]}" ; do
@@ -23,26 +23,27 @@ for package in "${PACKAGES[@]}" ; do
     beta=$(echo $ver | grep '[0-9]{1,4}\.[0-9]{1,4}\.[0-9]{1,4}\.[0-9]{1,4}' --extended-regexp --only-matching)
     if [[ -z "$beta" ]]
     then 
-        packageId=$(sf package version list --packages "$packageName" --released --concise  | grep $ver | grep '04t[a-zA-Z0-9]{15}' --only-matching --extended-regexp)
+        packageId=$(sf package version list --packages "$packageName" --released --concise 2>/dev/null | grep $ver | grep '04t[a-zA-Z0-9]{15}' --only-matching --extended-regexp)
     else
-        packageId=$(sf package version list --packages "$packageName" | grep $ver | grep '04t[a-zA-Z0-9]{15}' --only-matching --extended-regexp)
+        packageId=$(sf package version list --packages "$packageName" 2>/dev/null | grep $ver | grep '04t[a-zA-Z0-9]{15}' --only-matching --extended-regexp)
     fi
     if [[ -z "$packageId" ]]
     then
-        echo "can't find packageId"
+        echo "can't find packageId for $packageName $ver"
     else
         echo "Installng $packageName $ver $packageId:"
-        sf package install --package $packageId --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+        (set -x; sf package install --package $packageId --no-prompt --installation-key $3 --wait 30 --publish-wait 30 2>/dev/null)
     fi
 done
 
+set -x
 # Dytt kildekoden til scratch org'en
-sf project deploy start
+sf project deploy start 2>/dev/null
 
 # Tildeler permissionset
-sf org assign permset --name HOT_Servicetjenesten_Admin
+sf org assign permset --name HOT_Servicetjenesten_Admin 2>/dev/null
 
 # Opprett testdata
-sf apex run --file scripts/apex/createTestData.apex
+sf apex run --file scripts/apex/createTestData.apex 2>/dev/null
 
 # done
