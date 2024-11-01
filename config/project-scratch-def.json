@@ -74,6 +74,18 @@
         },
         "liveMessageSettings": {
             "enableLiveMessage": true
+        },
+        "searchSettings": {
+            "enableEinsteinSearchEs4kPilot": false,
+            "documentContentSearchEnabled": true,
+            "optimizeSearchForCJKEnabled": false,
+            "recentlyViewedUsersForBlankLookupEnabled": true,
+            "searchSettingsByObject": {},
+            "sidebarAutoCompleteEnabled": true,
+            "sidebarDropDownListEnabled": true,
+            "sidebarLimitToItemsIOwnCheckboxEnabled": true,
+            "singleSearchResultShortcutEnabled": true,
+            "spellCorrectKnowledgeSearchEnabled": false
         }
     }
 }
