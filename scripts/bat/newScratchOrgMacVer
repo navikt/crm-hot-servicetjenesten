@@ -15,6 +15,8 @@ PACKAGES=(
     "crm-journal-utilities:0.37.0"
     "crm-shared-user-notification:0.24"
     "crm-henvendelse:0.147"
+    "crm-thread-view:0.2.0"
+    "crm-shared-timeline:1.26.0"
 )
 
 for package in "${PACKAGES[@]}" ; do
