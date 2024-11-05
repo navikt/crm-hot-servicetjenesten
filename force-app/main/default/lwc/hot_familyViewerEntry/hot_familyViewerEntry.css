@@ -1,0 +1,52 @@
+.blue {
+    --sds-c-icon-color-foreground-default: lightblue;
+}
+.pink {
+    --sds-c-icon-color-foreground-default: pink;
+}
+.gender {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    float: left;
+    padding-top: 2px;
+}
+.MaleFilled {
+    --sds-c-icon-color-foreground-default: white;
+    border-radius: 0.25rem;
+    background-color: #3386e0;
+    width: 2rem;
+    height: 2rem;
+    padding: 4px 0 0 4px;
+}
+
+.FemaleFilled {
+    --sds-c-icon-color-foreground-default: white;
+    border-radius: 0.25rem;
+    background-color: #d05c4a;
+    width: 2rem;
+    height: 2rem;
+    padding: 4px 0 0 4px;
+}
+
+.NeutralFilled {
+    --sds-c-icon-color-foreground-default: white;
+    border-radius: 0.25rem;
+    background-color: #a18dbb;
+    width: 2rem;
+    height: 2rem;
+    padding: 4px 0 0 4px;
+}
+.familyRelationTile {
+    padding: 4px 0 0 0;
+}
+.BadgeLayout {
+    margin-left: -3px;
+    margin-top: 4px;
+}
+.tileListItem {
+    height: 18px;
+}
+.tileListItemBadge {
+    height: 25px;
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HOT_Hjelpemiddelsentral__c</fullName>
+    <description>Viser hvilken hjelpemiddelsentral brukeren tilhører</description>
+    <externalId>false</externalId>
+    <formula>CASE(
+    CRM_Person__r.INT_MunicipalityNumber__c,
+    
+    /* Oslo Municipalities */
+    &quot;3216&quot;, &quot;Oslo &quot;,
+    &quot;3207&quot;, &quot;Oslo&quot;,
+    &quot;3218&quot;, &quot;Oslo&quot;,
+    &quot;3214&quot;, &quot;Oslo&quot;,
+    &quot;3212&quot;, &quot;Oslo&quot;,
+    &quot;3201&quot;, &quot;Oslo&quot;,
+    &quot;3226&quot;, &quot;Oslo&quot;,
+    &quot;3224&quot;, &quot;Oslo&quot;,
+    &quot;3220&quot;, &quot;Oslo&quot;,
+    &quot;3222&quot;, &quot;Oslo&quot;,
+    &quot;3205&quot;, &quot;Oslo&quot;,
+    &quot;3232&quot;, &quot;Oslo&quot;,
+    &quot;3230&quot;, &quot;Oslo&quot;,
+    &quot;3209&quot;, &quot;Oslo&quot;,
+    &quot;3228&quot;, &quot;Oslo&quot;,
+    &quot;3240&quot;, &quot;Oslo&quot;,
+    &quot;3238&quot;, &quot;Oslo&quot;,
+    &quot;3242&quot;, &quot;Oslo&quot;,
+
+    /* Vest-Viken Municipalities */
+    &quot;3301&quot;, &quot;Vest-Viken&quot;,
+    &quot;3303&quot;, &quot;Vest-Viken&quot;,
+    &quot;3305&quot;, &quot;Vest-Viken&quot;,
+    &quot;3203&quot;, &quot;Vest-Viken&quot;,
+    &quot;3310&quot;, &quot;Vest-Viken&quot;,
+    &quot;3320&quot;, &quot;Vest-Viken&quot;,
+    &quot;3322&quot;, &quot;Vest-Viken&quot;,
+    &quot;3324&quot;, &quot;Vest-Viken&quot;,
+    &quot;3326&quot;, &quot;Vest-Viken&quot;,
+    &quot;3328&quot;, &quot;Vest-Viken&quot;,
+    &quot;3330&quot;, &quot;Vest-Viken&quot;,
+    &quot;3332&quot;, &quot;Vest-Viken&quot;,
+    &quot;3318&quot;, &quot;Vest-Viken&quot;,
+    &quot;3316&quot;, &quot;Vest-Viken&quot;,
+    &quot;3314&quot;, &quot;Vest-Viken&quot;,
+    &quot;3312&quot;, &quot;Vest-Viken&quot;,
+    &quot;3334&quot;, &quot;Vest-Viken&quot;,
+    &quot;3336&quot;, &quot;Vest-Viken&quot;,
+    &quot;3338&quot;, &quot;Vest-Viken&quot;,
+    &quot;3236&quot;, &quot;Vest-Viken&quot;,
+
+    /* Øst-Viken Municipalities */
+    &quot;3101&quot;, &quot;Øst-Viken&quot;,
+    &quot;3103&quot;, &quot;Øst-Viken&quot;,
+    &quot;3105&quot;, &quot;Øst-Viken&quot;,
+    &quot;3107&quot;, &quot;Øst-Viken&quot;,
+    &quot;3110&quot;, &quot;Øst-Viken&quot;,
+    &quot;3124&quot;, &quot;Øst-Viken&quot;,
+    &quot;3122&quot;, &quot;Øst-Viken&quot;,
+    &quot;3118&quot;, &quot;Øst-Viken&quot;,
+    &quot;3116&quot;, &quot;Øst-Viken&quot;,
+    &quot;3120&quot;, &quot;Øst-Viken&quot;,
+    &quot;3112&quot;, &quot;Øst-Viken&quot;,
+    &quot;3114&quot;, &quot;Øst-Viken&quot;,
+
+    /* If no municipality match, check region numbers */
+    CASE(
+        CRM_Person__r.INT_RegionNumber__c,
+        
+        /* Region-based Cases */
+        &quot;42&quot;, &quot;Agder&quot;,
+        &quot;3&quot;, &quot;Oslo&quot;,
+        &quot;54&quot;, &quot;Troms og Finnmark&quot;,
+        &quot;55&quot;, &quot;Troms og Finnmark&quot;,
+        &quot;56&quot;, &quot;Troms og Finnmark&quot;,
+        &quot;34&quot;, &quot;Innlandet&quot;,
+        &quot;31&quot;, &quot;Øst-Viken&quot;,
+        &quot;15&quot;, &quot;Møre og Romsdal&quot;,
+        &quot;18&quot;, &quot;Nordland&quot;,
+        &quot;11&quot;, &quot;Rogaland&quot;,
+        &quot;40&quot;, &quot;Vestfold og Telemark&quot;,
+        &quot;39&quot;, &quot;Vestfold og Telemark&quot;,
+        &quot;38&quot;, &quot;Vestfold og Telemark&quot;,
+        &quot;50&quot;, &quot;Trøndelag&quot;,
+        &quot;46&quot;, &quot;Vestland&quot;,
+
+        /* Default if no match */
+        &quot;Ukjent&quot;
+    )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Hjelpemiddelsentral</label>
+    <required>false</required>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
