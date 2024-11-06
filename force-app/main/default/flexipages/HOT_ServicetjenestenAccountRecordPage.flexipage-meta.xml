@@ -142,7 +142,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>buttonIsHidden</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>configId</name>
