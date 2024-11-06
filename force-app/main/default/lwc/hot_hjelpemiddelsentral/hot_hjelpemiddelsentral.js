@@ -24,7 +24,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     // }
 
     get temporaryAddresses() {
-        return 'Oslo hjelpemiddelsentral';
+        return 'PLACEHOLDER X HJELPEMIDDELSENTRAL';
     }
 
     /* Function to handle open/close section */

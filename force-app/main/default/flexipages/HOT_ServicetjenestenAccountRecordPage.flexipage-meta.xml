@@ -36,93 +36,53 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>required</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Name</fieldItem>
-                <identifier>RecordNameField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_Sex__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_Sex_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_Citizenships__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_Citizenships_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-7a9faa75-3913-4add-891d-1ee4fb6ec9ec</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_fnr__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_fnr_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.CRM_AgeNumber__c</fieldItem>
-                <identifier>RecordCRM_Person_rCRM_AgeNumber_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_LegalStatus__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_LegalStatus_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-cfaa913c-e0fa-4906-adc6-ccd00b412de5</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-7a9faa75-3913-4add-891d-1ee4fb6ec9ec</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-cfaa913c-e0fa-4906-adc6-ccd00b412de5</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-3f7cb3b1-2d16-4d34-8c19-9d63cb790a09</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-3f7cb3b1-2d16-4d34-8c19-9d63cb790a09</value>
+                    <name>cardLabel</name>
+                    <value>Person informasjon</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
+                    <name>copyFields</name>
+                    <value>CRM_FullName__c, CRM_AgeNumber__c, Name,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayedFields</name>
+                    <value>CRM_FullName__c, CRM_AgeNumber__c, Name,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideLabels</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Person informasjon</value>
+                    <name>iconName</name>
+                    <value>standard:avatar</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <componentInstanceProperties>
+                    <name>numCols</name>
+                    <value>2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relationshipField</name>
+                    <value>CRM_Person__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showKrrInfo</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showLink</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>viewedObjectApiName</name>
+                    <value>Person__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_recordInfo</componentName>
+                <identifier>c_hot_recordInfo</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -154,6 +114,87 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>amountOfMonths</name>
+                    <value>3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>amountOfMonthsToLoad</name>
+                    <value>3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>amountOfMonthsToOpen</name>
+                    <value>2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>amountOfRecords</name>
+                    <value>999999999</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>amountOfRecordsToLoad</name>
+                    <value>3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>amountOfRecordsToOpen</name>
+                    <value>1</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>buttonIsHidden</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>configId</name>
+                    <value>HOT_PERSON</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>customEmptySubtitle</name>
+                    <value>Denne brukeren har ingen registrerte henvendelser.‎</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterIsActive</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerIcon</name>
+                    <value>custom:custom18</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerTitleEnglish</name>
+                    <value>Cases</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>headerTitleNorwegian</name>
+                    <value>Henvendelser</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideMyActivitiesFilter</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>includeAmountInTitle</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logEvent</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>picklistFilter1Label</name>
+                    <value>Temagruppe</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>picklistFilter2Label</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>timelineParentField</name>
+                    <value>Id</value>
+                </componentInstanceProperties>
+                <componentName>timeline</componentName>
+                <identifier>c_timeline</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -447,6 +488,10 @@
                 <componentInstanceProperties>
                     <name>maxEARContainerHeight</name>
                     <value>500</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>shouldDisplayFiltersOnRight</name>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
