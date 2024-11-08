@@ -1,4 +1,4 @@
-@isTest
+@IsTest
 public class HOT_UTIL_TestDataFactory {
 // Class for creating test data
     /* This method is used for creating a record. The record is inserted before it's returned,

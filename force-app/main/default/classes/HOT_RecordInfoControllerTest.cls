@@ -1,11 +1,11 @@
-@isTest
+@IsTest
 public class HOT_RecordInfoControllerTest {
     @TestSetup
     static void makeData() {
         HOT_UTIL_TestDataFactory.createRecord(new LiveChatTranscript());
     }
 
-    // @isTest
+    // @IsTest
     // static void getRelatedRecordTest() {
     //     LiveChatTranscript trans = [SELECT Id FROM LiveChatTranscript LIMIT 1];
 
@@ -20,7 +20,7 @@ public class HOT_RecordInfoControllerTest {
     //     System.assertNotEquals(null, trans.LiveChatVisitorId);
     // }
 
-    // @isTest
+    // @IsTest
     // static void getReverseRelatedRecordTest() {
     //     LiveChatVisitor vis = [SELECT Id FROM LiveChatVisitor LIMIT 1];
     //     List<LiveChatTranscript> trans;

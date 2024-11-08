@@ -1,6 +1,6 @@
-@isTest
+@IsTest
 private class HOT_FamilyViewControllerTest {
-    @isTest
+    @IsTest
     private static void getRelationsTest() {
         Person__c testPerson = new Person__c(
             Name = '12106519356',
@@ -43,7 +43,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, testRelation3.isEmpty());
     }
 
-    @isTest
+    @IsTest
     private static void getMaritalStatusTest() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_QueryHelper query = new PDL_API_QueryHelper('12106519356');
@@ -90,7 +90,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('02.09.2021', l[0].eventDate);
     }
 
-    @isTest
+    @IsTest
     private static void isOver21Test() {
         String personWithAge =
             '{' +
@@ -125,7 +125,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, HOT_FamilyViewController.isOver21(response));
     }
 
-    @isTest
+    @IsTest
     private static void getChildrenTest() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_QueryHelper query = new PDL_API_QueryHelper('12106519356');
@@ -136,21 +136,21 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(0, l.size());
     }
 
-    @isTest
+    @IsTest
     private static void queryRelationsFromPDL() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_Response r = HOT_FamilyViewController.queryRelationsFromPDL('12106519356');
         System.assertEquals(1965, r.data?.hentPerson?.foedsel[0]?.foedselsaar);
     }
 
-    @isTest
+    @IsTest
     private static void queryMaritalStatusFromPDL() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_Response r = HOT_FamilyViewController.queryMaritalStatusFromPDL('12106519356');
         System.assertEquals(1965, r.data?.hentPerson?.foedsel[0]?.foedselsaar);
     }
 
-    @isTest
+    @IsTest
     private static void hasSameAddressTest() {
         String PersonWithAddress =
             '{' +
@@ -253,7 +253,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, HOT_FamilyViewController.hasSameAddress(p, n));
     }
 
-    @isTest
+    @IsTest
     private static void compareDatesTest() {
         Date d1 = Date.valueOf('2022-01-01');
         Date d2 = Date.valueOf('2000-01-01');
@@ -269,14 +269,14 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(true, HOT_FamilyViewController.compareDates(null, d2) < 0);
     }
 
-    @isTest
+    @IsTest
     private static void formatDateTest() {
         Date d = Date.valueOf('2022-01-01');
         System.assertEquals('01.01.2022', HOT_FamilyViewController.formatDate(d));
         System.assertEquals(null, HOT_FamilyViewController.formatDate(null));
     }
 
-    @isTest
+    @IsTest
     private static void getResponsibilityTest() {
         String parentString =
             '{' +
@@ -328,7 +328,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(null, HOT_FamilyViewController.getResponsibility('23450987612', child2));
     }
 
-    @isTest
+    @IsTest
     private static void getDateOfDeathTest() {
         String deadPerson =
             '{' +
@@ -367,7 +367,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('31.12.2022', r);
     }
 
-    @isTest
+    @IsTest
     private static void getAgeDateTest() {
         String person =
             '{' +
@@ -396,7 +396,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(Date.valueOf('0002-01-01'), result);
     }
 
-    @isTest
+    @IsTest
     private static void getAgeStringTest() {
         Date d = Date.valueOf('0001-01-02');
         String result = HOT_FamilyViewController.getAgeString(d);
@@ -423,7 +423,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('3 år', result);
     }
 
-    @isTest
+    @IsTest
     private static void getConfidentialStatusTest() {
         String person =
             '{' +
@@ -436,7 +436,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('UGRADERT', result);
     }
 
-    @isTest
+    @IsTest
     private static void isConfidentialRelationTest() {
         String person =
             '{' +
@@ -461,7 +461,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(true, result);
     }
 
-    @isTest
+    @IsTest
     private static void isUnauthrizedTest() {
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(
             unauthorizedPerson,
@@ -472,7 +472,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, HOT_FamilyViewController.isUnauthorized(response));
     }
 
-    @isTest
+    @IsTest
     private static void fillRelationFromResponseTest() {
         HOT_FamilyViewController.Relation r = new HOT_FamilyViewController.Relation();
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(
@@ -488,7 +488,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(null, r);
     }
 
-    @isTest
+    @IsTest
     private static void fillRelationFromPersonTest() {
         HOT_FamilyViewController.Relation r = new HOT_FamilyViewController.Relation();
         Person__c p = new Person__c();
@@ -510,7 +510,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('Kvinne', r.sex);
     }
 
-    @isTest
+    @IsTest
     private static void getPersonTest() {
         Person__c p = new Person__c(
             INT_ActorId__c = '100003000120',
@@ -529,7 +529,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(null, result);
     }
 
-    @isTest
+    @IsTest
     private static void getFullNameTest() {
         String person = '{' + '"data" : {' + '"hentPerson" : {}' + '}' + '}';
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
@@ -545,7 +545,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(null, result);
     }
 
-    @isTest
+    @IsTest
     private static void getBirthdateTest() {
         String person = '{' + '"data" : {' + '"hentPerson" : {"foedsel" : []}' + '}' + '}';
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
@@ -568,7 +568,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals('31.12.2022', result);
     }
 
-    @isTest
+    @IsTest
     private static void isNavEmployeeTest() {
         Person__c p = new Person__c(
             INT_ActorId__c = '2762473496911',
@@ -605,7 +605,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, result);
     }
 
-    @isTest
+    @IsTest
     private static void isVisibleTest() {
         Person__c p = new Person__c(
             INT_ActorId__c = '2762473496911',
@@ -627,7 +627,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(false, result);
     }
 
-    @isTest
+    @IsTest
     private static void getParentsTest() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(
@@ -641,7 +641,7 @@ private class HOT_FamilyViewControllerTest {
         System.assertEquals(1, parents.size());
     }
 
-    @isTest
+    @IsTest
     private static void getStillBornsTest() {
         String hasStillBorn =
             '{' +
@@ -670,7 +670,7 @@ private class HOT_FamilyViewControllerTest {
     }
 
     /*
-    @isTest
+    @IsTest
     private static void testjson(){
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_QueryHelper query = new PDL_API_QueryHelper('12106519356');
