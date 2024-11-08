@@ -30,11 +30,6 @@
     </classAccesses>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.HOT_Hjelpemiddelsentral__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Account.PersonGenderIdentity</field>
         <readable>true</readable>
     </fieldPermissions>
