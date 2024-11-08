@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Øst-Viken Hjelpemiddelsentral</label>
+    <protected>false</protected>
+    <values>
+        <field>Hjelpemiddelsentral_name__c</field>
+        <value xsi:type="xsd:string">Øst-Viken Hjelpemiddelsentral</value>
+    </values>
+    <values>
+        <field>MunicipalityNumbers__c</field>
+        <value xsi:type="xsd:string">3101,3103,3105,3107,3110,3124,3122,3118,3116,3120,3112,3114</value>
+    </values>
+    <values>
+        <field>RegionNumbers__c</field>
+        <value xsi:type="xsd:string">31</value>
+    </values>
+</CustomMetadata>
