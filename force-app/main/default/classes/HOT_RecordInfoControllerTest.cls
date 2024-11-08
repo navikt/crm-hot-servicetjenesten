@@ -1,9 +1,9 @@
 @IsTest
 public class HOT_RecordInfoControllerTest {
-    @TestSetup
-    static void makeData() {
-        HOT_UTIL_TestDataFactory.createRecord(new LiveChatTranscript());
-    }
+    // @TestSetup
+    // static void makeData() {
+    //     HOT_UTIL_TestDataFactory.createRecord(new LiveChatTranscript());
+    // }
 
     // @IsTest
     // static void getRelatedRecordTest() {
