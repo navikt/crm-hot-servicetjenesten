@@ -48,8 +48,8 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>displayedFields</name>
-                    <value>CRM_FullName__c, CRM_AgeNumber__c, Name,INT_Sex__c, INT_LegalStatus__c,
-                        INT_Citizenships__c</value>
+                    <value>CRM_FullName__c, CRM_AgeNumber__c, INT_KrrMobilePhone__c,
+                        Name,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableRefresh</name>
