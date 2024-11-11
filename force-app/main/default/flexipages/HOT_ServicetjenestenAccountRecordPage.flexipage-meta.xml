@@ -36,57 +36,101 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.CRM_FullName__c</fieldItem>
+                <identifier>RecordCRM_Person_rCRM_FullName_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_KrrMobilePhone__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_KrrMobilePhone_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.CRM_AgeNumber__c</fieldItem>
+                <identifier>RecordCRM_Person_rCRM_AgeNumber_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_LegalStatus__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_LegalStatus_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-bc17ff79-8e29-4485-a16b-39f0cd82d0cc</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.Name</fieldItem>
+                <identifier>RecordCRM_Person_rNameField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_KrrEmail__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_KrrEmail_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_Sex__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_Sex_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_Citizenships__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_Citizenships_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-f955f5e4-686f-4aa6-bdcd-4dcbb699a38d</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>cardLabel</name>
+                    <name>body</name>
+                    <value>Facet-bc17ff79-8e29-4485-a16b-39f0cd82d0cc</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-f955f5e4-686f-4aa6-bdcd-4dcbb699a38d</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-d4eb155a-607a-4136-97f8-5b56c413966e</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-d4eb155a-607a-4136-97f8-5b56c413966e</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
                     <value>Person informasjon</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>copyFields</name>
-                    <value>CRM_FullName__c, Name, INT_KrrMobilePhone__c,
-                        INT_KrrEmail__c,CRM_AgeNumber__c,INT_Sex__c, INT_LegalStatus__c,
-                        INT_Citizenships__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>displayedFields</name>
-                    <value>CRM_FullName__c, Name, INT_KrrMobilePhone__c,
-                        INT_KrrEmail__c,CRM_AgeNumber__c,INT_Sex__c, INT_LegalStatus__c,
-                        INT_Citizenships__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>enableRefresh</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideLabels</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconName</name>
-                    <value>standard:avatar</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>numCols</name>
-                    <value>2</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>relationshipField</name>
-                    <value>CRM_Person__c</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showKrrInfo</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showLink</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>viewedObjectApiName</name>
-                    <value>Person__c</value>
-                </componentInstanceProperties>
-                <componentName>hot_recordInfo</componentName>
-                <identifier>c_hot_recordInfo</identifier>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -494,8 +538,7 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>
-                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
