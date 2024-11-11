@@ -116,6 +116,50 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_ResidentialAddress__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_ResidentialAddress_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-646d07e0-264d-419b-a88b-bd383eddd657</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_TemporaryAddress__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_TemporaryAddress_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-09f9544d-f5f0-47c2-aceb-7299a497d674</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-646d07e0-264d-419b-a88b-bd383eddd657</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-09f9544d-f5f0-47c2-aceb-7299a497d674</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-51b18162-39b3-43f9-a326-fb6d2969a0c9</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
@@ -135,6 +179,24 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-51b18162-39b3-43f9-a326-fb6d2969a0c9</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Bostedadresse</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>hot_bostedAddress</componentName>
                 <identifier>c_hot_bostedAddress</identifier>
             </componentInstance>
@@ -147,8 +209,83 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_postAddress</componentName>
+                <identifier>c_hot_postAddress</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>hot_hjelpemiddelsentral</componentName>
                 <identifier>c_hot_hjelpemiddelsentral</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardLabel</name>
+                    <value>Flytting</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>copyFields</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>displayedFields</name>
+                    <value>INT_MovedFromCountry__c,
+                        INT_MovedFromPlace__c,INT_MovedToCountry__c,INT_MovedToPlace__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideLabels</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>iconName</name>
+                    <value>custom:custom98</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numCols</name>
+                    <value>2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>relationshipField</name>
+                    <value>CRM_Person__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showKrrInfo</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showLink</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>viewedObjectApiName</name>
+                    <value>Person__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_recordInfo</componentName>
+                <identifier>c_hot_recordInfo2</identifier>
+                <visibilityRule>
+                    <booleanFilter>1 AND 2 AND 3 AND 4</booleanFilter>
+                    <criteria>
+                        <leftValue>{!Record.CRM_Person__r.INT_MovedFromCountry__r.Name}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CRM_Person__r.INT_MovedToCountry__r.Name}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CRM_Person__r.INT_MovedFromPlace__c}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.CRM_Person__r.INT_MovedToPlace__c}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
