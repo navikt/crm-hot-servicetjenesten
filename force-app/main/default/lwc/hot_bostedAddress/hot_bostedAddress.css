@@ -1,0 +1,19 @@
+.icon {
+    --sds-c-icon-color-foreground-default: black;
+}
+
+.section {
+    padding-right: 1.75rem;
+    padding-left: 0.75rem;
+}
+
+.text {
+    line-height: 1.25rem;
+}
+
+.clipboardInput {
+    position: fixed;
+    top: -5rem;
+    height: 1px;
+    width: 10px;
+}

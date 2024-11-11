@@ -1,0 +1,127 @@
+<template>
+    <template if:true={recordIdSet}>
+        <div class="slds-var-p-top_xx-small slds-var-p-bottom_xx-small">
+            <lightning-record-view-form record-id={viewedRecordId} object-api-name={viewedObjectApiName}>
+                <lightning-card title={cardLabel} icon-name={iconName}>
+                    <lightning-button-icon
+                        alternative-text="Oppdater"
+                        icon-name="utility:refresh"
+                        if:true={enableRefresh}
+                        onclick={refreshRecord}
+                        slot="actions"
+                    ></lightning-button-icon>
+                    <lightning-spinner if:true={showSpinner} title="Loading" size="medium"> </lightning-spinner>
+                    <div class="slds-var-p-horizontal_small">
+                        <lightning-layout multiple-rows="true">
+                            <template iterator:it={fieldList}>
+                                <template if:true={it.first}>
+                                    <lightning-layout-item
+                                        key={it.value.fieldName}
+                                        size={columnWidth}
+                                        class="slds-var-p-right_medium"
+                                        style="position: relative"
+                                    >
+                                        <template if:true={showLink}>
+                                            <template if:false={hideLabels}>
+                                                <lightning-output-field
+                                                    class="slds-border_bottom"
+                                                    style="cursor: pointer"
+                                                    field-class="slds-text-link"
+                                                    field-name={it.value.fieldName}
+                                                    onclick={navigateToRecord}
+                                                    tabindex="0"
+                                                    role="link"
+                                                >
+                                                </lightning-output-field>
+                                            </template>
+                                            <template if:true={hideLabels}>
+                                                <lightning-output-field
+                                                    class="slds-border_bottom"
+                                                    style="cursor: pointer"
+                                                    field-class="slds-text-link"
+                                                    field-name={it.value.fieldName}
+                                                    onclick={navigateToRecord}
+                                                    tabindex="0"
+                                                    role="link"
+                                                    variant="label-hidden"
+                                                >
+                                                </lightning-output-field>
+                                            </template>
+                                        </template>
+                                        <template if:false={showLink}>
+                                            <template if:false={hideLabels}>
+                                                <lightning-output-field
+                                                    class="slds-border_bottom"
+                                                    field-name={it.value.fieldName}
+                                                >
+                                                </lightning-output-field>
+                                            </template>
+                                            <template if:true={hideLabels}>
+                                                <lightning-output-field
+                                                    variant="label-hidden"
+                                                    class="slds-border_bottom"
+                                                    field-name={it.value.fieldName}
+                                                >
+                                                </lightning-output-field>
+                                            </template>
+                                        </template>
+                                        <div
+                                            if:true={it.value.copyButton}
+                                            style="position: absolute; right: 20px; bottom: 15px"
+                                            class={it.value.buttonName}
+                                        >
+                                            <lightning-button-icon
+                                                class="copy-icon"
+                                                icon-name="utility:copy"
+                                                variant="bare"
+                                                alternative-text={it.value.buttonTip}
+                                                title={it.value.buttonTip}
+                                            ></lightning-button-icon>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                                <template if:false={it.first}>
+                                    <lightning-layout-item
+                                        key={it.value.fieldName}
+                                        size={columnWidth}
+                                        class="slds-var-p-right_medium"
+                                        style="position: relative"
+                                    >
+                                        <template if:false={hideLabels}>
+                                            <lightning-output-field
+                                                class="slds-border_bottom"
+                                                field-name={it.value.fieldName}
+                                            >
+                                            </lightning-output-field>
+                                        </template>
+                                        <template if:true={hideLabels}>
+                                            <lightning-output-field
+                                                variant="label-hidden"
+                                                class="slds-border_bottom"
+                                                field-name={it.value.fieldName}
+                                            >
+                                            </lightning-output-field>
+                                        </template>
+                                        <div
+                                            if:true={it.value.copyButton}
+                                            style="position: absolute; right: 20px; bottom: 15px"
+                                            class={it.value.buttonName}
+                                        >
+                                            <lightning-button-icon
+                                                class="copy-icon"
+                                                icon-name="utility:copy"
+                                                variant="bare"
+                                                alternative-text={it.value.buttonTip}
+                                                title={it.value.buttonTip}
+                                            ></lightning-button-icon>
+                                        </div>
+                                    </lightning-layout-item>
+                                </template>
+                            </template>
+                        </lightning-layout>
+                    </div>
+                </lightning-card>
+            </lightning-record-view-form>
+        </div>
+    </template>
+</template>
