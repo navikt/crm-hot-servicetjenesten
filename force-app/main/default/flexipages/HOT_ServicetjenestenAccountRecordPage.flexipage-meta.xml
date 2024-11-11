@@ -197,20 +197,6 @@
                 <identifier>c_timeline</identifier>
             </componentInstance>
         </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;PLACEHOLDER TIMELINE&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText</identifier>
-            </componentInstance>
-        </itemInstances>
         <name>Facet-17ffa4f0-78b0-4cc1-986b-d0ab8e434eb1</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -491,6 +477,10 @@
                     <name>maxEARContainerHeight</name>
                     <value>500</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>shouldDisplayFiltersOnRight</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
             </componentInstance>
@@ -506,8 +496,7 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>
-                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
