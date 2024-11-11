@@ -35,10 +35,10 @@ echo "Installerer crm-henvendelse ver. 0.147"
 call sf package install --package 04tKB000000Y1oEYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-thread-view ver. 0.2"
-sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+call sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-timeline ver. 1.26"
-sf package install --package 04tKB000000Y3MdYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+call sf package install --package 04tKB000000Y3MdYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Dytter kildekoden til scratch org'en"
 call sf project deploy start
