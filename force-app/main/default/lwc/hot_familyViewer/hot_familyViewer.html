@@ -1,0 +1,20 @@
+<template>
+    <lightning-card title="Familie" icon-name="custom:custom1">
+        <div class="slds-p-horizontal_small">
+            <lightning-spinner
+                if:false={isLoaded}
+                alternative-text="Laster familierelasjoner"
+                size="medium"
+            ></lightning-spinner>
+            <template if:true={relations.data}>
+                <ul class="slds-has-dividers_top-space">
+                    <template for:each={relations.data} for:item="relation">
+                        <li class="slds-item" key={relation.personId}>
+                            <c-hot_family-viewer-entry relation={relation}></c-hot_family-viewer-entry>
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+    </lightning-card>
+</template>

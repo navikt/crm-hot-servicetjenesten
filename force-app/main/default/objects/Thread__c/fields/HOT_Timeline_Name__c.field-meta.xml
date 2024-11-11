@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HOT_Timeline_Name__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+  ISPICKVAL(CRM_Thread_Type__c, &apos;STO&apos;) || ISPICKVAL(CRM_Thread_Type__c, &apos;STB&apos;) || ISPICKVAL(CRM_Thread_Type__c, &apos;BTO&apos;),
+  
+  IF(
+    ISPICKVAL(CRM_Thread_Type__c, &apos;STO&apos;),
+    &apos;Skriv til oss&apos;,
+    IF(
+      ISPICKVAL(CRM_Thread_Type__c, &apos;BTO&apos;),
+      &apos;Beskjed til oss&apos;,
+      &apos;Skriv til bruker&apos;
+    )
+  ) +
+  
+  IF(
+    ISBLANK(CRM_Theme__c),
+    IF(
+      ISPICKVAL(STO_Category__c, &apos;&apos;),
+      &apos;&apos;,
+      &apos; - &apos; + TEXT(STO_Category__c)
+    ),
+    &apos; - &apos; + CRM_Theme__r.Name
+  ) +
+  
+  IF(
+    CRM_Number_of_unread_Messages__c != 0,
+    &apos; (&apos; +
+    TEXT(CRM_Number_of_unread_Messages__c) +
+    IF(
+      CRM_Number_of_unread_Messages__c &gt; 1,
+      &apos; uleste meldinger&apos;,
+      &apos; ulest melding&apos;
+    ),
+    &apos; (Lest&apos;
+  ) +
+  &apos;) &apos; +
+  
+  IF(
+    CRM_isActive__c == false,
+    IMAGE(&apos;/resource/caseStatusClosed&apos;, &apos;Lukket&apos;, 22, 53),
+    IF(
+      ISBLANK(CRM_Assignee_NAV_Unit__c),
+      &apos;&apos;,
+      IMAGE(&apos;/resource/caseStatusinProgress&apos;, &apos;Under Arbeid&apos;, 22, 86)
+    )
+  ),
+  
+  CASE(
+    CRM_Thread_Type__c,
+    &quot;CHAT&quot;,
+    &apos;Chat&apos; +
+    IF(
+      AND(
+        NOT(ISBLANK(CRM_Theme_Name__c)),
+        NOT(ISBLANK(CRM_Theme_Group_Name__c))
+      ),
+      &apos; - &apos; + CRM_Theme_Group_Name__c + &apos;, &apos; + CRM_Theme_Name__c,
+      &apos; - &apos; + CRM_Theme_Group_Name__c
+    ),
+    &quot;Tråd&quot;
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>HOT _Timeline_Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

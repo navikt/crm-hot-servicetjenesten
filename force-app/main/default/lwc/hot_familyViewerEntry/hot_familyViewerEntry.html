@@ -1,0 +1,104 @@
+<template>
+    <div>
+        <template if:true={isError}> FEIL: {getErrorMsg} </template>
+        <template if:false={isError}>
+            <template if:true={isMarital}>
+                <p>
+                    <strong> Sivilstand: {getRole} </strong>
+                    <template if:true={hasEventDate}> &nbsp;- Fra: {relation.eventDate} </template>
+                </p>
+            </template>
+            <template if:true={isChild}>
+                <p>
+                    <strong> {getRole} </strong>
+                </p>
+            </template>
+            <template if:true={isParent}>
+                <p>
+                    <strong> {getRole} </strong>
+                </p>
+            </template>
+            <template if:true={isStillBorn}>
+                <p>
+                    <strong> {getRole} </strong>
+                    <template if:true={hasEventDate}> &nbsp;- Dato: {relation.eventDate} </template>
+                </p>
+            </template>
+            <template if:true={showCardTile}>
+                <lightning-tile type="media" class="familyRelationTile">
+                    <lightning-layout-item class="gender" slot="media">
+                        <c-hot_custom-svg
+                            class={genderIcon}
+                            src={genderIconSrc}
+                            alt-text={getSex}
+                            classes={genderIconClass}
+                        ></c-hot_custom-svg>
+                    </lightning-layout-item>
+                    <ul class="slds-list_vertical">
+                        <li class="tileListItem">{getTileName}</li>
+                        <template if:true={showInfoCard}>
+                            <li class="tileListItem">
+                                {getBirthDate}&nbsp;
+                                <template if:true={relation.deceased}>
+                                    - <strong>{getDateOfDeath}</strong> &nbsp;
+                                </template>
+                            </li>
+                            <template if:true={relation.personIdent}>
+                                <li class="tileListItem">
+                                    {relation.personIdent}
+                                    <lightning-button-icon
+                                        class="slds-m-left_xx-small copyButton"
+                                        icon-name="utility:copy"
+                                        variant="bare"
+                                        onclick={handleCopyIdent}
+                                        alternative-text="Kopier fødselsnummer"
+                                        title="Kopier fødselsnummer"
+                                    ></lightning-button-icon>
+                                </li>
+                            </template>
+                            <template if:true={isChild}>
+                                <template if:true={getChildText}>
+                                    <li>
+                                        <lightning-formatted-text
+                                            class="tileListItem"
+                                            value={getChildText}
+                                        ></lightning-formatted-text>
+                                    </li>
+                                </template>
+                            </template>
+                            <template if:true={isParent}>
+                                <template if:true={getParentText}>
+                                    <li>
+                                        <lightning-formatted-text
+                                            class="tileListItem"
+                                            value={getParentText}
+                                        ></lightning-formatted-text>
+                                    </li>
+                                </template>
+                            </template>
+                            <template if:true={hasBadges}>
+                                <li class="tileListItemBadge">
+                                    <span if:true={uuAlertText} class="slds-assistive-text" role="alert"
+                                        >{uuAlertText}</span
+                                    >
+                                    <lightning-layout class="BadgeLayout">
+                                        <lightning-layout-item>
+                                            <template for:each={badges} for:item="badge">
+                                                <lightning-badge
+                                                    key={badge.name}
+                                                    class="slds-theme_error"
+                                                    label={badge.label}
+                                                >
+                                                </lightning-badge>
+                                            </template>
+                                        </lightning-layout-item>
+                                    </lightning-layout>
+                                </li>
+                            </template>
+                        </template>
+                    </ul>
+                </lightning-tile>
+            </template>
+        </template>
+    </div>
+</template>

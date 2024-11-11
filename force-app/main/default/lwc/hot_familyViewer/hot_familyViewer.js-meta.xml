@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <description>Queries and visualizes relationships between persons in runtime from PDL
+        SERVICETJENESTEN</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Family Viewer(PDL) SERVICETJENESTEN</masterLabel>
+    <targets>
+        <target>
+            lightning__RecordPage
+        </target>
+    </targets>
+</LightningComponentBundle>
