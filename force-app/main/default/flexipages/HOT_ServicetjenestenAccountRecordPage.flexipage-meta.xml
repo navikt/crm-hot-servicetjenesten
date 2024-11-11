@@ -43,13 +43,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>copyFields</name>
-                    <value>CRM_FullName__c, CRM_AgeNumber__c, Name,INT_Sex__c, INT_LegalStatus__c,
-                        INT_Citizenships__c</value>
+                    <value>CRM_FullName__c, Name, INT_KrrMobilePhone__c, INT_KrrEmail__c,CRM_AgeNumber__c,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>displayedFields</name>
-                    <value>CRM_FullName__c, CRM_AgeNumber__c, INT_KrrMobilePhone__c,
-                        Name,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
+                    <value>CRM_FullName__c, Name, INT_KrrMobilePhone__c, INT_KrrEmail__c,CRM_AgeNumber__c,INT_Sex__c, INT_LegalStatus__c, INT_Citizenships__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableRefresh</name>
@@ -477,6 +475,10 @@
                     <name>maxEARContainerHeight</name>
                     <value>500</value>
                 </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>shouldDisplayFiltersOnRight</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
             </componentInstance>
@@ -492,8 +494,7 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>
-                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
