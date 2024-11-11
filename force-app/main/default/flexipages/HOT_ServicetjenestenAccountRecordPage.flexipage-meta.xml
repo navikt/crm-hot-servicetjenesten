@@ -124,7 +124,8 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>displayedFields</name>
-                    <value>INT_MovedFromCountry__c, INT_MovedFromPlace__c,INT_MovedToCountry__c,INT_MovedToPlace__c</value>
+                    <value>INT_MovedFromCountry__c,
+                        INT_MovedFromPlace__c,INT_MovedToCountry__c,INT_MovedToPlace__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableRefresh</name>
@@ -553,10 +554,6 @@
                     <name>maxEARContainerHeight</name>
                     <value>500</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>shouldDisplayFiltersOnRight</name>
-                    <value>false</value>
-                </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
             </componentInstance>
@@ -572,7 +569,8 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>
+                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
