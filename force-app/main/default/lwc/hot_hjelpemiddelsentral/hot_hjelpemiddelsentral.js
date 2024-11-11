@@ -32,7 +32,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     @track bostedHjelpemiddelsentral;
     @track midlertidigBostedHjelpemiddelsentral;
 
-    get temporaryAddresses() {
+    get hjelpemiddelsentraler() {
         if (this.personMunicipalityAndRegions.length === 0) {
             return 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
         } else {
