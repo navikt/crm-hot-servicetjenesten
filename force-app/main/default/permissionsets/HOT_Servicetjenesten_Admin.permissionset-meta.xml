@@ -28,6 +28,10 @@
         <apexClass>HOT_RecordInfoController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
+    <customMetadataTypeAccesses>
+        <enabled>true</enabled>
+        <name>HOT_HjelpemiddelsentralMapping__mdt</name>
+    </customMetadataTypeAccesses>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.PersonGenderIdentity</field>
