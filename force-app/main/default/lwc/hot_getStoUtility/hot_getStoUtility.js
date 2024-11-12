@@ -8,7 +8,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import hasStoBeta from '@salesforce/customPermission/STO_Beta';
 import { publishToAmplitude } from 'c/amplitude';
 
-export default class NksGetStoUtility extends NavigationMixin(LightningElement) {
+export default class HOT_GetStoUtility extends NavigationMixin(LightningElement) {
     listCount = 5;
     @track records = [];
 
@@ -62,7 +62,7 @@ export default class NksGetStoUtility extends NavigationMixin(LightningElement) 
                 actionName: 'list'
             },
             state: {
-                filterName: 'NKS_Case_STO_Not_Completed'
+                filterName: 'HOT_Case_STO_Not_Completed'
             }
         }).then((url) => {
             this.pageUrl = url;
@@ -190,7 +190,7 @@ export default class NksGetStoUtility extends NavigationMixin(LightningElement) 
                 actionName: 'list'
             },
             state: {
-                filterName: 'NKS_Case_STO_Not_Completed'
+                filterName: 'HOT_Case_STO_Not_Completed'
             }
         });
     }

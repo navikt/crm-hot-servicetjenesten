@@ -217,8 +217,6 @@ public without sharing class HOT_GetStoUtilityController {
     /**
      * Queries the PSR with highest priority within your skill pool and ensures you have access to the person,
      * that the case relates to
-     * @author Stian Ruud Schikora | 07-19-2022
-     * @return List<PendingServiceRouting>
      **/
     private static List<PendingServiceRouting> getPendingServiceRouting() {
         String userId = '%' + UserInfo.getUserID() + '%';
