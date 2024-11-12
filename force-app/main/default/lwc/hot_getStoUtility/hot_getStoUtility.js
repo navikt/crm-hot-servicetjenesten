@@ -1,8 +1,8 @@
 import { LightningElement, track, wire } from 'lwc';
-import getList from '@salesforce/apex/nksGetStoUtilityController.getList';
-import getSto from '@salesforce/apex/nksGetStoUtilityController.getSto';
-import getStoWithSkill from '@salesforce/apex/nksGetStoUtilityController.getStoWithSkill';
-import getServiceResourceSkillIds from '@salesforce/apex/nksGetStoUtilityController.getServiceResourceSkillIds';
+import getList from '@salesforce/apex/HOT_GetStoUtilityController.getList';
+import getSto from '@salesforce/apex/HOT_GetStoUtilityController.getSto';
+import getStoWithSkill from '@salesforce/apex/HOT_GetStoUtilityController.getStoWithSkill';
+import getServiceResourceSkillIds from '@salesforce/apex/HOT_GetStoUtilityController.getServiceResourceSkillIds';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import hasStoBeta from '@salesforce/customPermission/STO_Beta';
