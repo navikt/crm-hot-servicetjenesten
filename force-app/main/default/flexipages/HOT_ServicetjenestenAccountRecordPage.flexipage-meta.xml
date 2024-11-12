@@ -197,18 +197,6 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>hot_bostedAddress</componentName>
-                <identifier>c_hot_bostedAddress</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentName>hot_temporaryAddress</componentName>
-                <identifier>c_hot_temporaryAddress</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>hot_postAddress</componentName>
                 <identifier>c_hot_postAddress</identifier>
             </componentInstance>
