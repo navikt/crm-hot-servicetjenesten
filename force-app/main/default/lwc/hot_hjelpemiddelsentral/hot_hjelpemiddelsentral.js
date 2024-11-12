@@ -36,6 +36,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         if (this.personMunicipalityAndRegions.length === 0) {
             return 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
         } else {
+            console.log('test');
             const personData = this.personMunicipalityAndRegions[0];
             const regionNumber = personData?.INT_RegionNumber__c || null;
             const municipalityNumber = personData?.INT_MunicipalityNumber__c || null;
