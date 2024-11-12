@@ -54,11 +54,11 @@
                 <ul class="stripedList">
                     <template for:each={records} for:item="record" for:index="index">
                         <li class="slds-item" key={record.recordId}>
-                            <c-nks-get-sto-utility-list-entry
+                            <c-hot-get-sto-utility-list-entry
                                 record={record}
                                 index={index}
                                 last-index={lastIndex}
-                            ></c-nks-get-sto-utility-list-entry>
+                            ></c-hot-get-sto-utility-list-entry>
                         </li>
                     </template>
                 </ul>
