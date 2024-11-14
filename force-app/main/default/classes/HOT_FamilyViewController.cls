@@ -789,7 +789,7 @@ public with sharing class HOT_FamilyViewController {
         if (d == null) {
             return null;
         }
-        
+
         if (d.year() - 1 < 2) {
             if (d.month() - 1 > 0 || (d.year() - 1) > 0) {
                 return String.valueOf((d.year() - 1) * 12 + d.month() - 1) + ' mnd';

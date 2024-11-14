@@ -417,7 +417,7 @@ private class HOT_FamilyViewControllerTest {
         d = Date.valueOf('0003-01-01');
         result = HOT_FamilyViewController.getAgeString(d);
         System.assertEquals('2 år', result);
-        
+
         d = Date.valueOf('0004-01-01');
         result = HOT_FamilyViewController.getAgeString(d);
         System.assertEquals('3 år', result);

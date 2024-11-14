@@ -1,6 +1,6 @@
 @IsTest
 public class HOT_UTIL_TestDataFactory {
-// Class for creating test data
+    // Class for creating test data
     /* This method is used for creating a record. The record is inserted before it's returned,
      * and default fields are populated.
      * @param record [sObject: the record]
