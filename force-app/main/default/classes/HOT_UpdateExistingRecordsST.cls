@@ -27,6 +27,7 @@ public with sharing class HOT_UpdateExistingRecordsST implements Database.Batcha
                 p.INT_Municipality__c = null;
             }
         }
+        update records;
     }
     public void finish(Database.BatchableContext bc) {
         // execute any post-processing operations
