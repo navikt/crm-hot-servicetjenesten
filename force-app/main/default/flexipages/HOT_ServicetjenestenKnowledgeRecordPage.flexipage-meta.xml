@@ -113,7 +113,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Redaktør info</value>
+                    <value>Versjonshistorikk</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
@@ -131,7 +131,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Artikkel metadata</value>
+                    <value>Tittel og URL</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
@@ -235,7 +235,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Summary__c</fieldItem>
                 <identifier>RecordNKS_Summary_cField</identifier>
@@ -245,7 +245,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_UserInformation__c</fieldItem>
                 <identifier>RecordNKS_UserInformation_cField</identifier>
@@ -273,7 +273,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Article__c</fieldItem>
                 <identifier>RecordArticle_cField</identifier>
@@ -341,7 +341,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.AdvisorInformation__c</fieldItem>
                 <identifier>RecordAdvisorInformation_cField</identifier>
@@ -369,7 +369,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.AdvisorInformationInternal__c</fieldItem>
                 <identifier>RecordAdvisorInformationInternal_cField</identifier>
@@ -497,7 +497,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.How_you_send_a_task__c</fieldItem>
                 <identifier>RecordHow_you_send_a_task_cField</identifier>
@@ -525,7 +525,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Nav_no__c</fieldItem>
                 <identifier>RecordNKS_Nav_no_cField</identifier>
@@ -545,7 +545,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Legislation__c</fieldItem>
                 <identifier>RecordNKS_Legislation_cField</identifier>
