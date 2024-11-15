@@ -1,0 +1,21 @@
+.quicktext-item div:hover {
+    background: #eeeeee;
+    cursor: pointer;
+}
+
+.modalHide {
+    display: none;
+}
+.conversationNoteTextArea {
+    border: 0;
+}
+
+/* attributes suggested at https://webaim.org/techniques/css/invisiblecontent */
+.sr-only {
+    position: absolute;
+    left: -100000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
