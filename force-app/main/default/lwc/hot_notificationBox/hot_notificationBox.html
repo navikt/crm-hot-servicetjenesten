@@ -1,0 +1,32 @@
+<template>
+    <div style="display: flex; flex-direction: column; gap: 6px">
+        <template for:each={notificationList} for:item="notification">
+            <div role="alert" class="navds-alert navds-alert--success slds-var-m-bottom_x-small" key={notification.id}>
+                <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    focusable="false"
+                    role="img"
+                    aria-labelledby="title-R2l6"
+                    class="navds-alert__icon"
+                >
+                    <title id="title-R2l6">Suksess</title>
+                    <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M12 21.75c5.385 0 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25 2.25 6.615 2.25 12s4.365 9.75 9.75 9.75Zm4.954-12.475a.813.813 0 0 0-1.24-1.05l-5.389 6.368L7.7 11.967a.812.812 0 0 0-1.15 1.15l3.25 3.25a.812.812 0 0 0 1.195-.05l5.959-7.042Z"
+                        fill="currentColor"
+                    ></path>
+                </svg>
+                <p style="font-size: 13px">
+                    <span class="navds-alert__wrapper boldFont">{notification.text}</span>
+                    &emsp; {notification.time} &emsp;
+                    <span if:true={notification.optionalText}> {notification.optionalText}</span>
+                </p>
+            </div>
+        </template>
+    </div>
+</template>
