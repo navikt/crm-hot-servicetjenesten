@@ -3,5 +3,4 @@ public with sharing class HOT_ButtonContainerController {
     public static string getCommonCodeName(String id) {
         return [SELECT Id, Name FROM Common_Code__c WHERE Id = :id]?.Name;
     }
-    
 }
