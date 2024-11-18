@@ -3,7 +3,7 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import getRelatedRecord from '@salesforce/apex/HOT_STORecordInfoController.getRelatedRecord';
 import { refreshApex } from '@salesforce/apex';
 import STATUS_FIELD from '@salesforce/schema/Case.Status';
-import IN_QUEUE_FIELD from '@salesforce/schema/Case.CRM_In_Queue__c';
+//import IN_QUEUE_FIELD from '@salesforce/schema/Case.CRM_In_Queue__c';
 // import PUT_BACK_LABEL from '@salesforce/label/c.STO_Put_Back';
 // import RESERVE_LABEL from '@salesforce/label/c.STO_Reserve_For_Me';
 // import TRANSFER_LABEL from '@salesforce/label/c.STO_Transfer';
@@ -63,17 +63,17 @@ export default class StoMessagingContainer extends LightningElement {
         this.initializeCaseId();
     }
 
-    @wire(getRecord, { recordId: '$caseId', fields: [STATUS_FIELD, IN_QUEUE_FIELD] })
-    wiredRecord(result) {
-        this.wiredCase = result;
-        const { data, error } = result;
-        if (data) {
-            this.status = getFieldValue(data, STATUS_FIELD);
-            this.inQueue = getFieldValue(data, IN_QUEUE_FIELD);
-        } else if (error) {
-            console.error(error.body.message);
-        }
-    }
+    // @wire(getRecord, { recordId: '$caseId', fields: [STATUS_FIELD, IN_QUEUE_FIELD] })
+    // wiredRecord(result) {
+    //     this.wiredCase = result;
+    //     const { data, error } = result;
+    //     if (data) {
+    //         this.status = getFieldValue(data, STATUS_FIELD);
+    //         this.inQueue = getFieldValue(data, IN_QUEUE_FIELD);
+    //     } else if (error) {
+    //         console.error(error.body.message);
+    //     }
+    // }
 
     get inputVariables() {
         return [{ name: 'recordId', type: 'String', value: this.recordId }];

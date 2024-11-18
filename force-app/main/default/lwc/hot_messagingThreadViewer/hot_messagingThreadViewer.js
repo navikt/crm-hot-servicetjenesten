@@ -1,5 +1,5 @@
 import { LightningElement, api, wire, track } from 'lwc';
-import getmessages from '@salesforce/apex/CRM_MessageHelper.getMessagesFromThread';
+import getmessages from '@salesforce/apex/CRM_MessageHelperExperience.getMessagesFromThread';
 import getJournalInfo from '@salesforce/apex/CRM_MessageHelper.getJournalEntries';
 import markAsReadByNav from '@salesforce/apex/CRM_MessageHelper.markAsReadByNav';
 import { subscribe, unsubscribe } from 'lightning/empApi';
