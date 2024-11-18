@@ -45,6 +45,16 @@
                 <identifier>RecordUrlNameField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.ValidationStatus</fieldItem>
+                <identifier>RecordValidationStatusField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-edd72bf5-27ab-43f5-a695-cb9da2ae7010</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -207,6 +217,27 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 141, 0);&quot;&gt;﻿&lt;/span&gt;&lt;u style=&quot;color: rgb(255, 115, 0);&quot;&gt;Du ser på en gammel versjon av artikkelen&lt;/u&gt;&lt;/h2&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.IsLatestVersion}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-fc4c57e1-d894-4f5d-b3f4-7e527d8a0e68</value>
                 </componentInstanceProperties>
@@ -219,6 +250,27 @@
                         <operator>EQUAL</operator>
                         <rightValue>true</rightValue>
                     </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h3 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 132, 0);&quot;&gt;Forhåndsvisning&lt;/span&gt;&lt;/h3&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText3</identifier>
+                <visibilityRule>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
@@ -658,10 +710,16 @@
                 <componentName>forceKnowledge:articleVersionHistory</componentName>
                 <identifier>forceKnowledge_articleVersionHistory2</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Online</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.IsLatestVersion}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
