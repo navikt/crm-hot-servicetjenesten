@@ -13,94 +13,98 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     isExpanded = true;
     ariaHidden = false;
 
-    @wire(getPersonMunicipalityAndRegions, {
-        recordId: '$recordId',
-        objectApiName: '$objectApiName'
-    })
-    wiredPersonData({ error, data }) {
-        if (data) {
-            this.personMunicipalityAndRegions = data;
-            getAllHjelpemiddelSentraler({}).then((result) => {
-                this.allHjelpemiddelSentraler = result;
-            });
-        }
-        if (error) {
-            this.personMunicipalityAndRegions.push('Feil under henting av persondata.');
-            console.error('Problem getting data: ' + error);
-        }
-    }
     @track bostedHjelpemiddelsentral;
     @track midlertidigBostedHjelpemiddelsentral;
 
-    get hjelpemiddelsentraler() {
-        if (this.personMunicipalityAndRegions.length === 0) {
-            return 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
-        } else {
-            const personData = this.personMunicipalityAndRegions[0];
-            const regionNumber = personData?.INT_RegionNumber__c || null;
-            const municipalityNumber = personData?.INT_MunicipalityNumber__c || null;
-            const temporaryMunicipalityNumber = personData?.INT_TemporaryMunicipalityNumber__c || null;
+    @track hjelpemiddelsentralString = '';
 
-            const temporaryRegionNumber = temporaryMunicipalityNumber
-                ? temporaryMunicipalityNumber.substring(0, 2)
-                : null;
+    getHjelpemiddelsentraler() {
+        getPersonMunicipalityAndRegions({
+            recordId: this.recordId,
+            objectApiName: this.objectApiName
+        }).then((result) => {
+            this.personMunicipalityAndRegions = result;
+            if (this.personMunicipalityAndRegions.length === 0) {
+                this.hjelpemiddelsentralString = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
+            } else {
+                getAllHjelpemiddelSentraler({}).then((result) => {
+                    this.allHjelpemiddelSentraler = result;
+                    const regionNumber = this.personMunicipalityAndRegions?.INT_RegionNumber__c || null;
+                    const municipalityNumber = this.personMunicipalityAndRegions?.INT_MunicipalityNumber__c || null;
+                    console.log(municipalityNumber);
+                    const temporaryMunicipalityNumber =
+                        this.personMunicipalityAndRegions?.INT_TemporaryMunicipalityNumber__c || null;
 
-            if (this.allHjelpemiddelSentraler && this.allHjelpemiddelSentraler.length > 0) {
-                for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
-                    //Sjekker først kommunenr
-                    if (
-                        hjelpemiddelsentral.MunicipalityNumbers__c &&
-                        hjelpemiddelsentral.MunicipalityNumbers__c.includes(municipalityNumber)
-                    ) {
-                        this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                        break;
+                    const temporaryRegionNumber = temporaryMunicipalityNumber
+                        ? temporaryMunicipalityNumber.substring(0, 2)
+                        : null;
+                    if (this.allHjelpemiddelSentraler && this.allHjelpemiddelSentraler.length > 0) {
+                        for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
+                            //Sjekker først kommunenr
+                            if (
+                                hjelpemiddelsentral.MunicipalityNumbers__c &&
+                                hjelpemiddelsentral.MunicipalityNumbers__c.includes(municipalityNumber)
+                            ) {
+                                this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+                                this.hjelpemiddelsentralString =
+                                    'Tilhører ' + this.bostedHjelpemiddelsentral + ' med ordinær bostedadresse.';
+                                break;
+                            }
+                            //Sjekker deretter på region
+                            if (
+                                hjelpemiddelsentral.RegionNumbers__c &&
+                                hjelpemiddelsentral.RegionNumbers__c.includes(regionNumber)
+                            ) {
+                                this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+                                this.hjelpemiddelsentralString =
+                                    'Tilhører ' + this.bostedHjelpemiddelsentral + ' med ordinær bostedadresse.';
+                                break;
+                            }
+                        }
                     }
-                    //Sjekker deretter på region
-                    if (
-                        hjelpemiddelsentral.RegionNumbers__c &&
-                        hjelpemiddelsentral.RegionNumbers__c.includes(regionNumber)
-                    ) {
-                        this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                        break;
+                    if (temporaryRegionNumber) {
+                        console.log('er midlertidig');
+                        for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
+                            //Sjekker først kommunenr
+                            if (
+                                hjelpemiddelsentral.MunicipalityNumbers__c &&
+                                hjelpemiddelsentral.MunicipalityNumbers__c.includes(temporaryMunicipalityNumber)
+                            ) {
+                                this.midlertidigBostedHjelpemiddelsentral =
+                                    hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+                                this.hjelpemiddelsentralString +=
+                                    '\nTilhører ' +
+                                    this.midlertidigBostedHjelpemiddelsentral +
+                                    ' med midlertidig bostedadresse.';
+                                break;
+                            }
+                            //Sjekker deretter på region
+                            if (
+                                hjelpemiddelsentral.RegionNumbers__c &&
+                                hjelpemiddelsentral.RegionNumbers__c.includes(temporaryRegionNumber)
+                            ) {
+                                this.midlertidigBostedHjelpemiddelsentral =
+                                    hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+                                this.hjelpemiddelsentralString +=
+                                    '\nTilhører ' +
+                                    this.midlertidigBostedHjelpemiddelsentral +
+                                    ' med midlertidig bostedadresse.';
+                                break;
+                            }
+                        }
                     }
-                }
+                });
             }
-            if (temporaryRegionNumber) {
-                for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
-                    //Sjekker først kommunenr
-                    if (
-                        hjelpemiddelsentral.MunicipalityNumbers__c &&
-                        hjelpemiddelsentral.MunicipalityNumbers__c.includes(temporaryMunicipalityNumber)
-                    ) {
-                        this.midlertidigBostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                        break;
-                    }
-                    //Sjekker deretter på region
-                    if (
-                        hjelpemiddelsentral.RegionNumbers__c &&
-                        hjelpemiddelsentral.RegionNumbers__c.includes(temporaryRegionNumber)
-                    ) {
-                        this.midlertidigBostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                        break;
-                    }
-                }
-            }
+        });
+        if (this.hjelpemiddelsentralString == '') {
+            this.hjelpemiddelsentralString = 'Kunne ikke finne hjelpemiddelsentral(er).';
         }
-        if (this.bostedHjelpemiddelsentral && !this.midlertidigBostedHjelpemiddelsentral) {
-            return 'Tilhører ' + this.bostedHjelpemiddelsentral + ' med ordinær bostedadresse.';
-        } else if (this.bostedHjelpemiddelsentral && !this.midlertidigBostedHjelpemiddelsentral) {
-            return (
-                'Tilhører ' +
-                this.bostedHjelpemiddelsentral +
-                'med ordinær bostedadresse. \nTilhører ' +
-                this.midlertidigBostedHjelpemiddelsentral +
-                ' med midlertidig bostedadresse.'
-            );
-        } else {
-            return 'Noe gikk galt';
-        }
+        return this.hjelpemiddelsentralString;
     }
 
+    connectedCallback() {
+        this.getHjelpemiddelsentraler();
+    }
     /* Function to handle open/close section */
     // handleOpen() {
     //     if (this.sectionClass === 'slds-section section slds-is-open') {
