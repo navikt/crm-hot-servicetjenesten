@@ -694,19 +694,6 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>forceKnowledge:articleDataCategoryViewer</componentName>
-                <identifier>forceKnowledge_articleDataCategoryViewer</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.StandardPermission.ManageKnowledge}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>forceKnowledge:articleVersionHistory</componentName>
                 <identifier>forceKnowledge_articleVersionHistory2</identifier>
                 <visibilityRule>
