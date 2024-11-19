@@ -3,7 +3,7 @@ import getThreads from '@salesforce/apex/CRM_MessageHelper.getThreadsCollection'
 import createThread from '@salesforce/apex/CRM_MessageHelper.createThread';
 import { refreshApex } from '@salesforce/apex';
 
-export default class hotMessagingMessageComponent extends LightningElement {
+export default class hotMessagingMessageComponent2 extends LightningElement {
     showmodal = false;
     showtaskmodal = false;
     activeSectionMessage = '';
@@ -15,7 +15,7 @@ export default class hotMessagingMessageComponent extends LightningElement {
     @api showClose;
     setCardTitle;
     hasError = false;
-    // @api englishTextTemplate;
+    //@api englishTextTemplate;
     @api textTemplate; //Support for conditional text template
     @track slotsNeedCheckedOrRendered = { messages: true }; // To check the slot content the slot has to be rendered initially
 
@@ -41,6 +41,13 @@ export default class hotMessagingMessageComponent extends LightningElement {
                 return refreshApex(this._threadsforRefresh);
             })
             .catch((error) => {});
+    }
+
+    handleEnglishEvent(event) {
+        const englishEvent = new CustomEvent('englisheventtwo', {
+            detail: event.detail
+        });
+        this.dispatchEvent(englishEvent);
     }
 
     get showSpinner() {

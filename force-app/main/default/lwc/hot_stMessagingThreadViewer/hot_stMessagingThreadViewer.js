@@ -15,7 +15,7 @@ import LASTNAME_FIELD from '@salesforce/schema/Thread__c.CreatedBy.LastName';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { refreshApex } from '@salesforce/apex';
 
-export default class messagingThreadViewer extends LightningElement {
+export default class hot_stmessagingThreadViewer extends LightningElement {
     createdbyid;
     usertype;
     otheruser;
@@ -300,7 +300,7 @@ export default class messagingThreadViewer extends LightningElement {
     }
 
     get quickTextCmp() {
-        return this.template.querySelector('c-hot_messaging-quick-text');
+        return this.template.querySelector('c-hot_st-messaging-quick-text');
     }
 
     get text() {

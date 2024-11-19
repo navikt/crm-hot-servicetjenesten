@@ -169,9 +169,14 @@ export default class hotStoMessaging extends LightningElement {
 
     handleMedskrivClick() {
         this.acceptedMedskriv = true;
-        const child = this.template.querySelector('c-crm-messaging-message-component');
+        const child = this.template.querySelector('c-crm-messaging-message-component2');
         child.checkSlotChange('messages');
         child.focus();
+    }
+
+    // Event Handlers
+    handleEnglishEventTwo(event) {
+        this.englishTextTemplate = event.detail;
     }
 
     handleSubmit() {
@@ -192,9 +197,10 @@ export default class hotStoMessaging extends LightningElement {
             regards = 'Kind regards';
         }
 
-        return `${salutation}\n\n\n\n${regards}\n${this.supervisorName}\n${
-            this.englishTextTemplate === true ? this.englishCompanyName : this.norwegianCompanyName
-        }`;
+        return `${salutation}\n\n\n\n${regards}\n${this.supervisorName}\nNAV Servicetjenesten`;
+        // ${
+        //     this.englishTextTemplate === true ? this.englishCompanyName : this.norwegianCompanyName
+        // }`;
     }
 
     get computeClasses() {

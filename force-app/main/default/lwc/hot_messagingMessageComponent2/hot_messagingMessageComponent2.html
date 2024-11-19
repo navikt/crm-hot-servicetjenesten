@@ -45,7 +45,7 @@
                     ></lightning-button>
                 </template>
                 <template for:each={threads} for:item="thread">
-                    <c-hot_messaging-thread-Viewer
+                    <c-hot_st-messaging-thread-Viewer
                         onenglishevent={handleEnglishEvent}
                         english-text-template={englishTextTemplate}
                         key={thread.Id}
@@ -60,7 +60,7 @@
                         <div if:true={slotsNeedCheckedOrRendered.messages} slot="messages2">
                             <slot name="messages"></slot>
                         </div>
-                    </c-hot_messaging-thread-Viewer>
+                    </c-hot_st-messaging-thread-Viewer>
                 </template>
             </div>
         </div>
