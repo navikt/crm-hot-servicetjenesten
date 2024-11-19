@@ -5,7 +5,7 @@ REM Oppretter scratch org
 sf org create scratch --definition-file config\project-scratch-def.json --alias %1 --duration-days %2 --set-default --json --wait 30 >nul 2>&1
 
 set PACKAGES=(
-    "crm-platform-base:0.235.0"
+    "crm-platform-base:0.236.0"
     "crm-platform-access-control:0.136.0"
     "crm-shared-flowComponents:0.4.0"
     "crm-henvendelse-base:0.21.0"
