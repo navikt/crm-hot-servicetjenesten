@@ -15,7 +15,7 @@ export default class hotMessagingMessageComponent extends LightningElement {
     @api showClose;
     setCardTitle;
     hasError = false;
-    @api englishTextTemplate;
+    // @api englishTextTemplate;
     @api textTemplate; //Support for conditional text template
     @track slotsNeedCheckedOrRendered = { messages: true }; // To check the slot content the slot has to be rendered initially
 
@@ -60,12 +60,12 @@ export default class hotMessagingMessageComponent extends LightningElement {
         this.setCardTitle = cardTitle;
     }
 
-    handleEnglishEvent(event) {
-        const englishEvent = new CustomEvent('englisheventtwo', {
-            detail: event.detail
-        });
-        this.dispatchEvent(englishEvent);
-    }
+    // handleEnglishEvent(event) {
+    //     const englishEvent = new CustomEvent('englisheventtwo', {
+    //         detail: event.detail
+    //     });
+    //     this.dispatchEvent(englishEvent);
+    // }
 
     // Make the component check slot content dynamically.
     // If the slot is not rendered in the DOM we have no way of checking it's content

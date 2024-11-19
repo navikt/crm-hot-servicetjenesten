@@ -167,11 +167,6 @@ export default class hotStoMessaging extends LightningElement {
         }
     }
 
-    // Event Handlers
-    handleEnglishEventTwo(event) {
-        this.englishTextTemplate = event.detail;
-    }
-
     handleMedskrivClick() {
         this.acceptedMedskriv = true;
         const child = this.template.querySelector('c-crm-messaging-message-component');
