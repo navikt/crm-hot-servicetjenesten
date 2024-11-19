@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Grants permission to view published knowledge articles</description>
+    <description>Gir tilgang til å se publiserte artikler</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Description</field>
@@ -93,6 +93,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Knowledge__kav.NKS_Publish_On_Home_Page__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Knowledge__kav.NKS_Resources__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -113,11 +118,16 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Knowledge__kav.Ready_Response_Title__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Knowledge__kav.WhoDoesWhat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>HOT- Knowledge Viewer</label>
+    <label>HOT Servicetjenesten Kunnskapsbruker</label>
     <objectPermissions>
         <allowCreate>true</allowCreate>
         <allowDelete>false</allowDelete>
@@ -137,19 +147,7 @@
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Common</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Internal_Routine</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Response_Readiness</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Servicerutine</recordType>
+        <recordType>Knowledge__kav.HOT_Kunnskapsartikkel</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>

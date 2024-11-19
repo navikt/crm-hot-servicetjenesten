@@ -45,6 +45,16 @@
                 <identifier>RecordUrlNameField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.ValidationStatus</fieldItem>
+                <identifier>RecordValidationStatusField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-edd72bf5-27ab-43f5-a695-cb9da2ae7010</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -113,7 +123,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Redaktør info</value>
+                    <value>Versjonshistorikk</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
@@ -131,7 +141,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Artikkel metadata</value>
+                    <value>Tittel og URL</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
@@ -207,6 +217,27 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 141, 0);&quot;&gt;﻿&lt;/span&gt;&lt;u style=&quot;color: rgb(255, 115, 0);&quot;&gt;Du ser på en gammel versjon av artikkelen&lt;/u&gt;&lt;/h2&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.IsLatestVersion}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>tabs</name>
                     <value>Facet-fc4c57e1-d894-4f5d-b3f4-7e527d8a0e68</value>
                 </componentInstanceProperties>
@@ -227,6 +258,27 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>decorate</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;h3 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 132, 0);&quot;&gt;Forhåndsvisning&lt;/span&gt;&lt;/h3&gt;</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:richText</componentName>
+                <identifier>flexipage_richText3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
         <name>header</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -235,7 +287,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Summary__c</fieldItem>
                 <identifier>RecordNKS_Summary_cField</identifier>
@@ -245,7 +297,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_UserInformation__c</fieldItem>
                 <identifier>RecordNKS_UserInformation_cField</identifier>
@@ -273,7 +325,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.Article__c</fieldItem>
                 <identifier>RecordArticle_cField</identifier>
@@ -341,7 +393,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.AdvisorInformation__c</fieldItem>
                 <identifier>RecordAdvisorInformation_cField</identifier>
@@ -369,7 +421,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.AdvisorInformationInternal__c</fieldItem>
                 <identifier>RecordAdvisorInformationInternal_cField</identifier>
@@ -497,7 +549,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.How_you_send_a_task__c</fieldItem>
                 <identifier>RecordHow_you_send_a_task_cField</identifier>
@@ -525,7 +577,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Nav_no__c</fieldItem>
                 <identifier>RecordNKS_Nav_no_cField</identifier>
@@ -545,7 +597,7 @@
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
-                    <value>readonly</value>
+                    <value>none</value>
                 </fieldInstanceProperties>
                 <fieldItem>Record.NKS_Legislation__c</fieldItem>
                 <identifier>RecordNKS_Legislation_cField</identifier>
@@ -642,26 +694,19 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>forceKnowledge:articleDataCategoryViewer</componentName>
-                <identifier>forceKnowledge_articleDataCategoryViewer</identifier>
-                <visibilityRule>
-                    <criteria>
-                        <leftValue>{!$Permission.StandardPermission.ManageKnowledge}</leftValue>
-                        <operator>EQUAL</operator>
-                        <rightValue>true</rightValue>
-                    </criteria>
-                </visibilityRule>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentName>forceKnowledge:articleVersionHistory</componentName>
                 <identifier>forceKnowledge_articleVersionHistory2</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Online</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.IsLatestVersion}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>

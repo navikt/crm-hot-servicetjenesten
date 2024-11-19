@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Kan opprette, redigere, slette og arkivere aritkler. Kan opprette og sette topics på artikler.</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Assignee_Name__c</field>
@@ -126,12 +127,12 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Knowledge__kav.WhoDoesWhat__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <hasActivationRequired>false</hasActivationRequired>
-    <label>HOT- Knowledge Editor</label>
+    <label>HOT Servicetjenesten Kunnskapsredaktør</label>
     <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
@@ -151,19 +152,7 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Common</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Internal_Routine</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Response_Readiness</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>Knowledge__kav.Servicerutine</recordType>
+        <recordType>Knowledge__kav.HOT_Kunnskapsartikkel</recordType>
         <visible>true</visible>
     </recordTypeVisibilities>
     <tabSettings>
@@ -181,6 +170,14 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ArchiveArticles</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>AssignTopics</name>
+    </userPermissions>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>CreateTopics</name>
     </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
