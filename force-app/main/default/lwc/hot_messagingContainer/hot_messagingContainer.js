@@ -133,7 +133,7 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'reserve',
                 condition: this.showReserveButton,
-                flowApiName: 'Case_STO_Reserve_v_2'
+                flowApiName: 'HOT_STO_Case_Reserve'
             },
             {
                 id: 'putBack',
