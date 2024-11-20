@@ -300,7 +300,7 @@ export default class hot_stmessagingThreadViewer extends LightningElement {
     }
 
     get quickTextCmp() {
-        return this.template.querySelector('c-hot_st-messaging-quick-text');
+        return this.template.querySelector('c-crm-messaging-quick-text');
     }
 
     get text() {
