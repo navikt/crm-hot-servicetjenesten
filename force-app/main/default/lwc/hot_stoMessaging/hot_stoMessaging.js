@@ -146,7 +146,7 @@ export default class hotStoMessaging extends LightningElement {
 
     handleMedskrivClick() {
         this.acceptedMedskriv = true;
-        const child = this.template.querySelector('c-hot-st-messaging-message-component');
+        const child = this.template.querySelector('c-crm-messaging-message-component');
         child.checkSlotChange('messages');
         child.focus();
     }

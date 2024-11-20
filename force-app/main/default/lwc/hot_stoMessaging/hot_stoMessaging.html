@@ -2,7 +2,7 @@
     <lightning-layout lwc:if={isThreadIdNull} class="threadNotFound">
         <lightning-layout-item> Du har ikke tilgang til dialogen </lightning-layout-item>
     </lightning-layout>
-    <c-hot_st-messaging-message-component
+    <c-crm-messaging-message-component
         lwc:else
         tabindex="0"
         record-id={threadId}
@@ -38,5 +38,5 @@
         <div slot="flowSection">
             <slot name="flowSection"></slot>
         </div>
-    </c-hot_st-messaging-message-component>
+    </c-crm-messaging-message-component>
 </template>
