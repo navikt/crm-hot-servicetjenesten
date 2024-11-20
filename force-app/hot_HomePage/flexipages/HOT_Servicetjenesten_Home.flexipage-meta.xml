@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Hjemeside for Servicetjenesten App</description>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fagsystemTitle</name>
+                    <value>Status fagsystemer</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>navTitle</name>
+                    <value>Status Nav.no</value>
+                </componentInstanceProperties>
+                <componentName>hot_homePageHighlightPanel</componentName>
+                <identifier>c_hot_homePageHighlightPanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>top</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardLabel</name>
+                    <value>Siste nytt om fag</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>content</name>
+                    <value>NKS_Information__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>datefield</name>
+                    <value>NKS_News_Publish_Date__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filter</name>
+                    <value>(NKS_News_Publish_Date__c = LAST_N_DAYS:30 OR NKS_News_Update_Date__c =
+                        LAST_N_DAYS:30 OR NKS_News_Pin__c = TRUE) AND RecordType.DeveloperName =
+                        &apos;News&apos; AND NKS_News_Status__c = &apos;Published&apos;</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterbyskills</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>iconName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>limit</name>
+                    <value>8</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>linklabel</name>
+                    <value>Vis alle nyheter</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listviewname</name>
+                    <value>NKS_News_All_Published</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>objectName</name>
+                    <value>NKS_Announcement__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>orderby</name>
+                    <value>NKS_News_Pin__c DESC, NKS_News_Sorting_Date__c DESC NULLS LAST</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refreshPageAutomatically</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showimage</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Name</value>
+                </componentInstanceProperties>
+                <componentName>hot_homePageList</componentName>
+                <identifier>c_hot_homePageList</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>left</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Dagens drift</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>iconName</name>
+                    <value>standard:announcement</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listViewName</name>
+                    <value>NKS_Traffic</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>type</name>
+                    <value>Trafikk</value>
+                </componentInstanceProperties>
+                <componentName>hot_homePageText</componentName>
+                <identifier>c_hot_homePageText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>colHeaders</name>
+                    <value>Frist, Tema, Type</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>fieldsToDisplay</name>
+                    <value>CRM_DueDate__c, NKS_Theme__r.Name, Name</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterString</name>
+                    <value>NKS_Status__c NOT IN (&apos;Ferdigstilt&apos;, &apos;Feilregistrert&apos;) AND INT_External_Reference__c != null</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listTitle</name>
+                    <value>Mine oppgaver på personbruker</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listViewApiName</name>
+                    <value>Mine_Oppgaver_Gosys</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numRecords</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>ownedByRunningUser</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>crmNavTaskListView</componentName>
+                <identifier>c_crmNavTaskListView</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>middle</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardLabel</name>
+                    <value>Aktuelt fra Navet</value>
+                </componentInstanceProperties>
+                <componentName>hot_homePageCurrent</componentName>
+                <identifier>c_hot_homePageCurrent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>right</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>HOT Servicetjenesten Home</masterLabel>
+    <template>
+        <name>home:desktopTemplateHeaderThreeColumns</name>
+    </template>
+    <type>HomePage</type>
+</FlexiPage>

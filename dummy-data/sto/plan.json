@@ -1,0 +1,20 @@
+[
+    {
+        "sobject": "Account",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [ "accounts.json"]
+    },
+    {
+        "sobject": "Thread__c",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": [ "threads.json"]
+    },
+    {
+        "sobject": "Message__c",
+        "saveRefs": false,
+        "resolveRefs": true,
+        "files": [ "messages.json"]
+    }
+]

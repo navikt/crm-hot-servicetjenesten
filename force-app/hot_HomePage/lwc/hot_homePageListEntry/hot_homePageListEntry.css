@@ -1,0 +1,21 @@
+img {
+    width: 100%;
+    height: 8.438rem;
+    border: solid var(--lwc-borderWidthThin, 1px) #f3f3f3;
+    object-fit: cover;
+}
+
+.pinned {
+    --sds-c-icon-color-foreground-default: rgb(1, 118, 211);
+}
+
+.title {
+    font-size: 1.17rem;
+    font-weight: 600;
+    color: black;
+}
+
+.summary {
+    font-size: 0.83rem;
+    font-weight: 500;
+}

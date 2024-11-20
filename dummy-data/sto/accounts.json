@@ -1,0 +1,34 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef1"
+            },
+            "FirstName": "Ola",
+            "LastName": "Hansen",
+            "INT_PersonIdent__c": "12345678911",
+            "Source__pc": "Opprettet i Salesforce"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef2"
+            },
+            "FirstName": "Kari",
+            "LastName": "Larsen",
+            "INT_PersonIdent__c": "12345678902",
+            "Source__pc": "Opprettet i Salesforce"
+        },
+        {
+            "attributes": {
+                "type": "Account",
+                "referenceId": "AccountRef3"
+            },
+            "FirstName": "Frode",
+            "LastName": "Johnsen",
+            "INT_PersonIdent__c": "12345678903",
+            "Source__pc": "Opprettet i Salesforce"
+        }
+    ]
+}

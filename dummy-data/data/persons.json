@@ -1,0 +1,20 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef1"
+            },
+            "Name": "12345678901",
+            "INT_FirstName__c": "Doktor",
+            "INT_LastName__c": "Proktor",
+            "INT_IsDeceased__c": false,
+            "INT_ResidentialAddress__c": "Galtvortveien 101",
+            "INT_ResidentialZipCode__c": "1001",
+            "INT_Sex__c": "Mann",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_ActorId__c": "12345678910",
+            "INT_DateOfBirth__c": "2002-11-08"
+        }
+    ]
+}

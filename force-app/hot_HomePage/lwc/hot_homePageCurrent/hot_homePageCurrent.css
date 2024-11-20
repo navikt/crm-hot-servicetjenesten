@@ -1,0 +1,7 @@
+.slds-card__footer-action {
+    text-align: left;
+}
+
+.slds-card__footer {
+    border-top: none !important;
+}

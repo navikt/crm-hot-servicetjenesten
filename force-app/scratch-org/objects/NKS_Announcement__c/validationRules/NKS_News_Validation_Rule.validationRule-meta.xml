@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_News_Validation_Rule</fullName>
+    <active>true</active>
+    <description>Validation rule to prevent users from inserting emojis.</description>
+    <errorConditionFormula>AND(RecordType.Name = &apos;News&apos;, LEN (Name) &gt; 0, REGEX(Name, &quot;[\\s\\S]*(\\u00a9|\\u00ae|[\\u2000-\\u3300]|[\\ud83c\\ud000-\\ud83c\\udfff]|[\\ud83d\\ud000-\\ud83d\\udfff]|[\\ud83e\\ud000-\\ud83e\\udfff])[\\s\\S]*&quot;))</errorConditionFormula>
+    <errorDisplayField>Name</errorDisplayField>
+    <errorMessage>Emojier støttes ikke.</errorMessage>
+</ValidationRule>

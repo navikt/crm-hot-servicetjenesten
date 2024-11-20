@@ -1,0 +1,33 @@
+.container {
+    min-height: 2.5rem;
+    height: auto;
+    padding-right: 0.625rem;
+    display: flex;
+    align-items: center;
+    background-color: #335f67;
+}
+
+.font-style {
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.876rem;
+}
+
+a {
+    padding-right: 2.5rem;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.margin-area {
+    min-width: 5rem;
+    max-width: 5rem;
+}
+
+.content-area {
+    align-items: center;
+}
