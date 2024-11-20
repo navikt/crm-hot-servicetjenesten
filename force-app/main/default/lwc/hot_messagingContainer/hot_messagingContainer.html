@@ -48,9 +48,10 @@
             submit-button-label={labels.SHARE_WITH_USER_LABEL}
             onsubmitfromparent={handleSubmit}
             onclosedevent={handleClosed}
+            new-design
             is-thread={isThread}
         >
-            <div slot="buttonContainer">
+            <!-- <div slot="buttonContainer">
                 <lightning-layout class="slds-float_right button-container">
                     <template for:each={bottomButtonConfigs} for:item="config">
                         <lightning-layout-item key={config.id} data-expanded={config.expanded}>
@@ -65,8 +66,8 @@
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
-            </div>
-            <div slot="flowSection">
+            </div> -->
+            <!-- <div slot="flowSection">
                 <template for:each={bottomFlowConfigs} for:item="flowConfig">
                     <template lwc:if={flowConfig.condition}>
                         <div key={flowConfig.id}>
@@ -80,8 +81,37 @@
                         </div>
                     </template>
                 </template>
-            </div>
+            </div> -->
         </c-hot_sto-messaging>
+        <lightning-layout>
+            <template for:each={bottomButtonConfigs} for:item="config">
+                <lightning-layout-item key={config.id} class="slds-size_4-of-12 slds-var-p-right_medium flow-button">
+                    <c-hot_button
+                        onclick={config.onclick}
+                        disabled={config.disabled}
+                        aria-expanded={config.expanded}
+                        button-label={config.label}
+                        button-styling="secondary"
+                        full-height
+                    ></c-hot_button>
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+        <lightning-layout-item class="slds-size_12-of-12">
+            <template for:each={bottomFlowConfigs} for:item="flowConfig">
+                <template lwc:if={flowConfig.condition}>
+                    <div key={flowConfig.id} class="slds-var-m-top_xx-small">
+                        <lightning-card>
+                            <lightning-flow
+                                flow-api-name={flowConfig.flowApiName}
+                                flow-input-variables={inputVariables}
+                                onstatuschange={handleFlowStatusChange}
+                            ></lightning-flow>
+                        </lightning-card>
+                    </div>
+                </template>
+            </template>
+        </lightning-layout-item>
         <c-hot_notification-box></c-hot_notification-box>
     </div>
 </template>
