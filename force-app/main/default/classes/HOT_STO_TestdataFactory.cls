@@ -46,7 +46,7 @@ public class HOT_STO_TestdataFactory {
     }
 
     public static List<LiveChatTranscript> createLiveChatTranscripts(Integer amount) {
-        LiveChatVisitor v = STO_TestDataFactory.createLiveChatVisitor();
+        LiveChatVisitor v = HOT_STO_TestDataFactory.createLiveChatVisitor();
         List<LiveChatTranscript> liveChatTranscripts = new List<LiveChatTranscript>();
         for (Integer i = 0; i < amount; i++) {
             LiveChatTranscript lct = new LiveChatTranscript(LiveChatVisitorId = v.Id);
@@ -204,7 +204,7 @@ public class HOT_STO_TestdataFactory {
         String objectName = String.valueOf(record.getSObjectType());
         String namespacePrefix = '';
         String className =
-            'STO_TestDataFactory.' +
+            'HOT_STO_TestDataFactory.' +
             objectName.replaceAll('__c|__|_|' + namespacePrefix, '') +
             'Defaults';
         return Type.forName(className);

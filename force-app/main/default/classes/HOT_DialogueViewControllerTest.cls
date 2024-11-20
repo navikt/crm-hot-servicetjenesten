@@ -34,7 +34,7 @@ public class HOT_DialogueViewControllerTest {
     @isTest
     static void testGetDialogueByApiReferenceException() {
         //Create testdata
-        Conversation_Note__c convNote = (Conversation_Note__c) STO_TestDataFactory.createRecord(
+        Conversation_Note__c convNote = (Conversation_Note__c) HOT_STO_TestDataFactory.createRecord(
             new Conversation_Note__c()
         );
 
