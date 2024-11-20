@@ -1,0 +1,29 @@
+<template>
+    <div class={className}>
+        <a href={recordUrl} onclick={navigateToPage}>
+            <lightning-layout>
+                <lightning-layout-item class="slds-col">
+                    <lightning-formatted-date-time
+                        class="slds-text-link"
+                        value={record.modifiedDate}
+                        year="numeric"
+                        month="2-digit"
+                        day="2-digit"
+                        hour="2-digit"
+                        minute="2-digit"
+                    ></lightning-formatted-date-time>
+                </lightning-layout-item>
+                <h3>
+                    <lightning-layout-item class="slds-col slds-var-p-left_large">
+                        {record.name}
+                    </lightning-layout-item>
+                </h3>
+                <h3>
+                    <lightning-layout-item class="slds-col slds-var-p-left_large">
+                        {record.status}
+                    </lightning-layout-item>
+                </h3>
+            </lightning-layout>
+        </a>
+    </div>
+</template>

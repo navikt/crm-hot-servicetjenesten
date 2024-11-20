@@ -1,0 +1,123 @@
+<template>
+    <article class="slds-card">
+        <div class="slds-card__header slds-grid">
+            <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                <div class="slds-media__body">
+                    <h2 class="slds-text-heading_medium slds-truncate">{cardLabel}</h2>
+                </div>
+                <div class="slds-no-flex">
+                    <div lwc:if={hasPermission} class={buttonClass}>
+                        <button
+                            class="slds-button slds-button_icon slds-button_icon-border-filled slds-button_icon-x-small"
+                            aria-haspopup="true"
+                            onclick={toggleDropdown}
+                        >
+                            <lightning-icon
+                                icon-name="utility:down"
+                                alternative-text="Vis handlinger"
+                                size="x-small"
+                            ></lightning-icon>
+                        </button>
+                        <div class="slds-dropdown slds-dropdown_actions slds-dropdown_right">
+                            <ul class="slds-dropdown__list">
+                                <li class="slds-dropdown__item">
+                                    <a role="button" onclick={handleAddLink} onkeypress={handleAddLink}>
+                                        <span class="slds-truncate">Legg til lenke</span>
+                                    </a>
+                                </li>
+                                <li class="slds-dropdown__item">
+                                    <a role="button" onclick={navigateToListView} onkeypress={navigateToListView}>
+                                        <span class="slds-truncate">Vis alle lenker</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="slds-card__body slds-card__body_inner">
+            <template lwc:if={hasRecords}>
+                <ul class="slds-border_top">
+                    <template for:each={records} for:item="record">
+                        <li class="slds-item slds-var-p-top_small" key={record.Id}>
+                            <a
+                                class="slds-button slds-button_brand slds-button_stretch"
+                                href={record.NKS_Link_URL__c}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                >{record.Name}</a
+                            >
+                        </li>
+                    </template>
+                </ul>
+            </template>
+        </div>
+        <footer class="slds-card__footer slds-var-p-bottom_medium">
+            <a
+                class="slds-card__footer-action"
+                href="https://navno.sharepoint.com/sites/enhet-kontaktsenter/SitePages/Nyhetsarkiv---Toppsaker.aspx"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Nyhetsarkiv&ensp;
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g clip-path="url(#clip0_13095_302)">
+                        <path
+                            d="M1.11111 10C0.805556 10 0.544444 9.88889 0.327778 9.67222C0.111111 9.45556 0 9.19444 0 8.88889V1.11111C0 0.805556 0.111111 0.544444 0.327778 0.327778C0.544444 0.111111 0.805556 0 1.11111 0H5V1.11111H1.11111V8.88889H8.88889V5H10V8.88889C10 9.19444 9.88889 9.45556 9.67222 9.67222C9.45556 9.88889 9.19444 10 8.88889 10H1.11111ZM3.72222 7.05556L2.94444 6.27778L8.11111 1.11111H6.11111V0H10V3.88889H8.88889V1.88889L3.72222 7.05556Z"
+                            fill="#3A59A6"
+                        />
+                    </g>
+                    <defs>
+                        <clipPath id="clip0_13095_302">
+                            <rect width="10" height="10" fill="white" />
+                        </clipPath>
+                    </defs>
+                </svg>
+            </a>
+        </footer>
+    </article>
+    <section role="dialog" class={modalClass}>
+        <div class="slds-modal__container">
+            <div class="slds-modal__header">
+                <h1 class="slds-text-heading_medium" id="prompt-heading-id">Legg til ny lenke</h1>
+            </div>
+            <div class="slds-modal__content slds-p-around_medium">
+                <form onsubmit={handleSubmit}>
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input
+                                type="text"
+                                label="Tittel"
+                                name="title"
+                                placeholder="Tittel for lenken..."
+                                required
+                                onchange={handleInputChange}
+                            ></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control">
+                            <lightning-input
+                                type="url"
+                                label="URL"
+                                name="url"
+                                placeholder="URL for lenken..."
+                                required
+                                onchange={handleInputChange}
+                            ></lightning-input>
+                        </div>
+                    </div>
+                    <div class="slds-var-p-top_small slds-float_right">
+                        <lightning-button
+                            label="Avbryt"
+                            class="slds-var-p-right_small"
+                            onclick={handleCancel}
+                        ></lightning-button>
+                        <lightning-button type="submit" variant="brand" label="Legg til"></lightning-button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="slds-backdrop"></div>
+    </section>
+</template>
