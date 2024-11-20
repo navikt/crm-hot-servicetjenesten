@@ -10,14 +10,14 @@
                             key={config.id}
                             class="slds-size_4-of-12 slds-var-p-right_medium flow-button"
                         >
-                            <c-hot_button
+                            <c-custom-button
                                 class="top-button"
                                 onclick={config.onclick}
                                 disabled={config.disabled}
                                 aria-expanded={config.expanded}
                                 button-label={config.label}
                                 full-height
-                            ></c-hot_button>
+                            ></c-custom-button>
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
@@ -55,14 +55,14 @@
         <lightning-layout>
             <template for:each={bottomButtonConfigs} for:item="config">
                 <lightning-layout-item key={config.id} class="slds-size_4-of-12 slds-var-p-right_medium flow-button">
-                    <c-hot_button
+                    <c-custom-button
                         onclick={config.onclick}
                         disabled={config.disabled}
                         aria-expanded={config.expanded}
                         button-label={config.label}
                         button-styling="secondary"
                         full-height
-                    ></c-hot_button>
+                    ></c-custom-button>
                 </lightning-layout-item>
             </template>
         </lightning-layout>
@@ -81,6 +81,7 @@
                 </template>
             </template>
         </lightning-layout-item>
+        <p>yoo2</p>
         <c-hot_notification-box></c-hot_notification-box>
     </div>
 </template>
