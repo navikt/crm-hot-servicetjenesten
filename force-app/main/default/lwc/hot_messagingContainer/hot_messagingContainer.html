@@ -51,37 +51,6 @@
             new-design
             is-thread={isThread}
         >
-            <!-- <div slot="buttonContainer">
-                <lightning-layout class="slds-float_right button-container">
-                    <template for:each={bottomButtonConfigs} for:item="config">
-                        <lightning-layout-item key={config.id} data-expanded={config.expanded}>
-                            <c-hot_button
-                                button-label={config.label}
-                                button-styling="secondary"
-                                onclick={config.onclick}
-                                aria-expanded={config.expanded}
-                                element-data-id={config.id}
-                                full-height
-                            ></c-hot_button>
-                        </lightning-layout-item>
-                    </template>
-                </lightning-layout>
-            </div> -->
-            <!-- <div slot="flowSection">
-                <template for:each={bottomFlowConfigs} for:item="flowConfig">
-                    <template lwc:if={flowConfig.condition}>
-                        <div key={flowConfig.id}>
-                            <lightning-card>
-                                <lightning-flow
-                                    flow-api-name={flowConfig.flowApiName}
-                                    flow-input-variables={inputVariables}
-                                    onstatuschange={flowConfig.handleStatusChange}
-                                ></lightning-flow>
-                            </lightning-card>
-                        </div>
-                    </template>
-                </template>
-            </div> -->
         </c-hot_sto-messaging>
         <lightning-layout>
             <template for:each={bottomButtonConfigs} for:item="config">

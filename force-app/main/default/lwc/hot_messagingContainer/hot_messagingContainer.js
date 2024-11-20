@@ -4,14 +4,6 @@ import getRelatedRecord from '@salesforce/apex/HOT_STORecordInfoController.getRe
 import { refreshApex } from '@salesforce/apex';
 import STATUS_FIELD from '@salesforce/schema/Case.Status';
 import IN_QUEUE_FIELD from '@salesforce/schema/Case.HOT_In_Queue__c';
-// import PUT_BACK_LABEL from '@salesforce/label/c.STO_Put_Back';
-// import RESERVE_LABEL from '@salesforce/label/c.STO_Reserve_For_Me';
-// import TRANSFER_LABEL from '@salesforce/label/c.STO_Transfer';
-// import SHARE_WITH_USER_LABEL from '@salesforce/label/c.STO_Share_With_User';
-// import JOURNAL_LABEL from '@salesforce/label/c.NKS_Journal';
-// import CREATE_NAV_TASK_LABEL from '@salesforce/label/c.NKS_Create_NAV_Task';
-// import SET_TO_REDACTION_LABEL from '@salesforce/label/c.NKS_Set_To_Redaction';
-// import { publishToAmplitude } from 'c/amplitude';
 import { resolve, handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 
 const CONSTANTS = {

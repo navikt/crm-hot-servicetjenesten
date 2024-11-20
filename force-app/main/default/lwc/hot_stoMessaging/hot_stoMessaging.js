@@ -8,30 +8,8 @@ import PERSON_FULL_NAME from '@salesforce/schema/Person__c.NKS_Full_Name__c';
 import CASE_THREAD_API_REFERENCE from '@salesforce/schema/Case.NKS_Henvendelse_BehandlingsId__c';
 import THREAD_MEDSKRIV_REFERENCE from '@salesforce/schema/Thread__c.STO_Medskriv__C';
 import THREAD_TYPE from '@salesforce/schema/Thread__c.CRM_Thread_Type__c';
-// import MEDSKRIV_TEXT from '@salesforce/label/c.STO_Medskriv_Text';
-// import MEDSKRIV_LABEL from '@salesforce/label/c.STO_Medskriv_Label';
 import userId from '@salesforce/user/Id';
 import { resolve } from 'c/hot_componentsUtils';
-
-const englishCompanyTranslations = {
-    'DIR ytelsesavdelingen': 'Benefits department, Directorate of Labour and Welfare',
-    'Nav arbeid og ytelser styringsenhet': 'Nav Work and Benefits Management Unit',
-    'Nav familie- og pensjonsytelser': 'Nav Family Benefits and Pensions Management Unit',
-    'Nav kontroll Øst': 'Nav Control Eastern Norway',
-    'Nav kontroll Vest': 'Nav Control Western Norway',
-    'Nav kontroll Nord': 'Nav Control Northern Norway',
-    'Nav kontroll styringsenhet': 'Nav Control Management Unit',
-    'Nav medlemskap og avgift': 'Nav Social insurance and Contributions',
-    'Nav oppfølging utland': 'Norwegian Labour and rehabilitation unit',
-    'Nav registerforvaltning': 'Nav Registry Management',
-    'Nav styringsenhet kontaktsenter': 'Nav Call and Service Centre Management Unit',
-    'Seksjon fag- og ytelsesutvikling': 'Pensions and benefits - Legislation and development',
-    'Seksjon informasjonsforvaltning': 'Information Management',
-    'Seksjon juridisk': 'Legal affairs',
-    'Seksjon kompetanseutvikling': 'Professional Development',
-    'Seksjon styring': 'Governance',
-    Ytelseslinjen: 'Nav Benefits Administration'
-};
 
 export default class hotStoMessaging extends LightningElement {
     @api recordId;
@@ -149,7 +127,6 @@ export default class hotStoMessaging extends LightningElement {
             this.companyName = getFieldValue(data, COMPANY_NAME);
             try {
                 this.norwegianCompanyName = this.getNorwegianCompanyName();
-                this.englishCompanyName = this.getEnglishCompanyName();
             } catch (err) {
                 console.error('Problem getting company name: ', err);
             }
@@ -333,73 +310,6 @@ export default class hotStoMessaging extends LightningElement {
             return formatRemainingWords(this.companyName);
         } catch (error) {
             console.error('Problem getting Norwegian company name:', error);
-            return '';
-        }
-    }
-
-    getEnglishCompanyName() {
-        try {
-            const normalizedCompanyName = this.norwegianCompanyName.trim();
-
-            if (normalizedCompanyName in englishCompanyTranslations) {
-                return englishCompanyTranslations[normalizedCompanyName];
-            }
-
-            let ecn = '';
-            let hasEnglishTranslation = true;
-            const mapObj = {
-                og: 'and',
-                i: 'in'
-            };
-            const unitsWithPrepositions = [
-                'Nav Eiganes og Tasta',
-                'Nav Evje og Hornnes',
-                'Nav Herøy og Vanylven',
-                'Nav Hillevåg og Hinna',
-                'Nav Hundvåg og Storhaug',
-                'Nav Møre og Romsdal',
-                'Nav Nes i Akershus',
-                'Nav Oppdal og Rennebu',
-                'Nav Rennesøy og Finnøy',
-                'Nav Røros, Os og Holtålen',
-                'Nav Troms og Finnmark',
-                'Nav Vestfold og Telemark',
-                'Nav Våler i Hedmark'
-            ];
-
-            if (this.norwegianCompanyName.includes('arbeid og ytelser')) {
-                ecn = this.norwegianCompanyName.replace('arbeid og ytelser', 'Work and Benefits');
-            } else if (this.norwegianCompanyName.includes('familie- og pensjonsytelser')) {
-                ecn = this.norwegianCompanyName.replace('familie- og pensjonsytelser', 'Family Benefits and Pensions');
-            } else if (this.norwegianCompanyName.includes('hjelpemiddelsentral')) {
-                ecn = this.norwegianCompanyName.replace('hjelpemiddelsentral', 'Department of assistive technology');
-            } else if (this.norwegianCompanyName.includes('klageinstans')) {
-                ecn = this.norwegianCompanyName.replace('klageinstans', 'Appeals');
-            } else if (this.norwegianCompanyName.includes('kontaktsenter')) {
-                ecn = this.norwegianCompanyName.replace('kontaktsenter', 'Call and Service Center');
-            } else if (this.norwegianCompanyName.includes('kontroll analyse')) {
-                ecn = this.norwegianCompanyName.replace('kontroll analyse', 'Control Analysis');
-            } else if (this.norwegianCompanyName.includes('kontroll')) {
-                ecn = this.norwegianCompanyName.replace('kontroll', 'Control');
-            } else if (this.norwegianCompanyName.includes('tiltak')) {
-                ecn = this.norwegianCompanyName.replace('tiltak', 'Department for employment measures');
-            } else if (this.norwegianCompanyName.includes('Ytelseslinjen')) {
-                ecn = this.norwegianCompanyName.replace('Ytelseslinjen', 'Benefits Administration');
-            } else {
-                if (unitsWithPrepositions.includes(this.norwegianCompanyName)) {
-                    ecn = this.norwegianCompanyName.replace(/\b(?:og|i)\b/gi, (matched) => mapObj[matched]);
-                    return ecn;
-                }
-                hasEnglishTranslation = false;
-                console.error('There is no translation for this CompanyName.');
-                return this.norwegianCompanyName;
-            }
-            if (hasEnglishTranslation) {
-                ecn = ecn.replace(/\b(?:og|i)\b/gi, (matched) => mapObj[matched]);
-            }
-            return ecn;
-        } catch (error) {
-            console.error('Problem getting English company name: ' + error);
             return '';
         }
     }
