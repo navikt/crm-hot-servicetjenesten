@@ -1,0 +1,40 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Message__c",
+                "referenceId": "Message__cRef1"
+            },
+            "CRM_External_Message__c": true,
+            "CRM_Message_Text__c": "Dette er en testmelding :)",
+            "CRM_Type__c": "Message",
+            "CRM_Sent_date__c": "2021-08-25T19:36:03.000+0000",
+            "CRM_Read__c": false, 
+            "CRM_Thread__c": "@Thread__cRef1"
+        },
+        {
+            "attributes": {
+                "type": "Message__c",
+                "referenceId": "Message__cRef2"
+            },
+            "CRM_External_Message__c": true,
+            "CRM_Message_Text__c": "Dette er en testmelding :)",
+            "CRM_Type__c": "Message",
+            "CRM_Sent_date__c": "2021-08-25T19:36:03.000+0000",
+            "CRM_Read__c": true, 
+            "CRM_Thread__c": "@Thread__cRef2"
+        },
+        {
+            "attributes": {
+                "type": "Message__c",
+                "referenceId": "Message__cRef3"
+            },
+            "CRM_External_Message__c": true,
+            "CRM_Message_Text__c": "Dette er en testmelding :)",
+            "CRM_Type__c": "Message",
+            "CRM_Sent_date__c": "2021-08-25T19:36:03.000+0000",
+            "CRM_Read__c": false, 
+            "CRM_Thread__c": "@Thread__cRef3"
+        }
+    ]
+}
