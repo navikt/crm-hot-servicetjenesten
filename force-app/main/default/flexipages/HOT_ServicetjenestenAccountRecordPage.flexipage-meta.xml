@@ -47,12 +47,6 @@
                 <identifier>RecordCRM_Person_rINT_Citizenships_cField2</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_GuardianshipOrFuturePowerOfAttorney__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_GuardianshipOrFuturePowerOfAttorney_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-4d871b21-856c-4623-94ac-49b03439058d</name>
         <type>Facet</type>
     </flexiPageRegions>
