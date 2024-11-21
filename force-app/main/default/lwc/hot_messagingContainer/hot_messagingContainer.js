@@ -48,7 +48,7 @@ export default class StoMessagingContainer extends LightningElement {
         CREATE_NAV_TASK_LABEL: 'Lag ny oppgave',
         JOURNAL_LABEL: 'Journalfør',
         SET_TO_REDACTION_LABEL: 'Send til sladding',
-        SHARE_WITH_USER_LABEL: 'Del med bruker?'
+        SHARE_WITH_USER_LABEL: 'Send'
     };
 
     connectedCallback() {
@@ -125,7 +125,7 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'reserve',
                 condition: this.showReserveButton,
-                flowApiName: 'HOT_STO_Case_Reserve'
+                flowApiName: 'Case_STO_Reserve_v_2'
             },
             {
                 id: 'putBack',
