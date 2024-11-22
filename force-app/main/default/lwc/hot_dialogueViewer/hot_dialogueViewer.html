@@ -1,0 +1,14 @@
+<template>
+    <div if:true={isLoading} class="slds-is-relative slds-card slds-p-around_xx-large">
+        <lightning-spinner size="medium" variant="brand"></lightning-spinner>
+    </div>
+    <c-hot_sto-messaging
+        if:true={threadId}
+        record-id={threadId}
+        object-api-name="Thread__c"
+        single-thread="true"
+        card-title="Samtale"
+        show-close="true"
+    ></c-hot_sto-messaging>
+    <!-- <c-nks-conv-note-viewer if:true={convNoteId} record-id={convNoteId}></c-nks-conv-note-viewer> -->
+</template>
