@@ -3,7 +3,7 @@
     <apiVersion>54.0</apiVersion>
     <isExposed>true</isExposed>
     <masterLabel>HOT Dialog Viewer</masterLabel>
-    <description>Dialogue component that supports displaying threads and conversation notes</description>
+    <description>Dialogue component that supports displaying threads</description>
     <targets>
         <target>lightning__RecordPage</target>
     </targets>
