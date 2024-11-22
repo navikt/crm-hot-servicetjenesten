@@ -29,8 +29,6 @@ export default class hotStoMessaging extends LightningElement {
     userName;
     supervisorName;
     companyName;
-    norwegianCompanyName;
-    englishCompanyName;
     accountApiName;
     threadId;
     englishTextTemplate = false;
@@ -126,11 +124,6 @@ export default class hotStoMessaging extends LightningElement {
         } else if (data) {
             this.supervisorName = getFieldValue(data, NKS_FULL_NAME);
             this.companyName = getFieldValue(data, COMPANY_NAME);
-            try {
-                this.norwegianCompanyName = this.getNorwegianCompanyName();
-            } catch (err) {
-                console.error('Problem getting company name: ', err);
-            }
         }
     }
 
@@ -170,15 +163,7 @@ export default class hotStoMessaging extends LightningElement {
         let salutation = this.userName == null ? 'Hei,' : 'Hei, ' + this.userName;
         let regards = 'Med vennlig hilsen';
 
-        if (this.englishTextTemplate === true) {
-            salutation = this.userName == null ? 'Hi,' : 'Hi ' + this.userName + ',';
-            regards = 'Kind regards';
-        }
-
         return `${salutation}\n\n\n\n${regards}\n${this.supervisorName}\nNAV Servicetjenesten`;
-        // ${
-        //     this.englishTextTemplate === true ? this.englishCompanyName : this.norwegianCompanyName
-        // }`;
     }
 
     get computeClasses() {
@@ -231,87 +216,5 @@ export default class hotStoMessaging extends LightningElement {
             .catch((error) => {
                 console.error('Problem getting person id: ', error);
             });
-    }
-
-    getNorwegianCompanyName() {
-        try {
-            const phraseMap = {
-                'NAV ARBEID OG YTELSER': 'Nav arbeid og ytelser',
-                'NAV FAMILIE- OG PENSJONSYTELSER': 'Nav familie- og pensjonsytelser',
-                'NAV HJELPEMIDDELSENTRAL': 'Nav hjelpemiddelsentral',
-                'NAV KONTROLL': 'Nav kontroll',
-                'NAV OPPFØLGING UTLAND': 'Nav oppfølging utland',
-                'NAV STYRINGSENHET KONTAKTSENTER': 'Nav styringsenhet kontaktsenter',
-                'NAV ØKONOMI STØNAD': 'Nav økonomi stønad',
-                'NAV UTLAND OG FELLESTJENESTER': 'Nav utland og fellestjenester',
-                'NAV KONTROLL ANALYSE': 'Nav kontroll analyse',
-                'NAV KONTROLL STYRINGSENHET': 'Nav kontroll styringsenhet',
-                'NAV REGISTERFORVALTNING': 'Nav registerforvaltning',
-                'NAV TILTAK': 'Nav tiltak',
-                'NAV KLAGEINSTANS': 'Nav klageinstans',
-                'SEKSJON FAG- OG YTELSESUTVIKLING': 'Seksjon fag- og ytelsesutvikling',
-                'SEKSJON INFORMASJONSFORVALTNING': 'Seksjon informasjonsforvaltning',
-                'SEKSJON JURIDISK': 'Seksjon juridisk',
-                'SEKSJON KOMPETANSEUTVIKLING': 'Seksjon kompetanseutvikling',
-                'SEKSJON STYRING': 'Seksjon styring'
-            };
-
-            const formatWord = (word) =>
-                word
-                    .split('-')
-                    .map((part) => part.charAt(0).toUpperCase() + part.slice(1).toLowerCase())
-                    .join('-');
-
-            const formatRemainingWords = (name) => name.split(/\s+/).map(formatWord).join(' ');
-
-            const formatCompanyName = (key, formattedName) => {
-                const mappedPhrase = phraseMap[key];
-                const remainingName = formattedName.replace(key, '').trim();
-                return `${mappedPhrase} ${formatRemainingWords(remainingName)}`;
-            };
-
-            if (this.companyName === 'IT-AVDELINGEN') {
-                return 'IT-avdelingen';
-            }
-
-            if (this.companyName.startsWith('DIR')) {
-                const remainingName = this.companyName.slice(4).trim();
-                const formattedName = remainingName
-                    .toLowerCase()
-                    .split(/\s+/)
-                    .map((part) => {
-                        if (part.includes('-')) {
-                            return part
-                                .split('-')
-                                .map((subPart) => {
-                                    return subPart.charAt(0).toLowerCase() + subPart.slice(1);
-                                })
-                                .join('-');
-                        }
-                        return part.toLowerCase();
-                    })
-                    .join(' ');
-                return `DIR ${formattedName}`;
-            }
-
-            if (
-                this.companyName.toLowerCase().includes('kontaktsenter') &&
-                !this.companyName.toLowerCase().includes('styringsenhet')
-            ) {
-                return 'Nav kontaktsenter';
-            }
-
-            const formattedName = this.companyName.toUpperCase();
-            for (const key in phraseMap) {
-                if (formattedName.includes(key)) {
-                    return formatCompanyName(key, formattedName);
-                }
-            }
-
-            return formatRemainingWords(this.companyName);
-        } catch (error) {
-            console.error('Problem getting Norwegian company name:', error);
-            return '';
-        }
     }
 }
