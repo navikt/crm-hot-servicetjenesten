@@ -20,6 +20,7 @@ export default class hotStoMessaging extends LightningElement {
     @api checkMedskriv = false;
     @api submitButtonLabel;
     @api isThread;
+    @api hideChangeLngBtn = false;
 
     wireField;
     accountId;

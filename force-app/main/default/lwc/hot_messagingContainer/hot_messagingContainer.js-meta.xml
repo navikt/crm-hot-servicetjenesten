@@ -12,6 +12,8 @@
             <property name="showClose" type="Boolean" label="Show thread close button"
                 default="false"></property>
             <property name="checkMedskriv" type="Boolean" label="Check for medskriv" default="false"></property>
+            <property name="hideChangeLngBtn" type="Boolean" label="Hide change language button"
+                default="false"></property>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

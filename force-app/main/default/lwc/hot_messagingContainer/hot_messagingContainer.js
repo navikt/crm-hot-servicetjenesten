@@ -25,6 +25,7 @@ export default class StoMessagingContainer extends LightningElement {
     @api cardTitle;
     @api showClose = false;
     @api checkMedskriv = false;
+    @api hideChangeLngBtn = false;
 
     @track singleThread = true;
 
