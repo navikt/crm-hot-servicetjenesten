@@ -9,7 +9,7 @@
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.235.0.LATEST"
+                    "versionNumber": "0.237.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -80,6 +80,5 @@
         "crm-henvendelse": "0Ho2o000000fxXfCAI",
         "crm-shared-timeline": "0Ho2o000000fxXBCAY",
         "crm-thread-view": "0Ho7U000000000zSAA"
-        
     }
 }
