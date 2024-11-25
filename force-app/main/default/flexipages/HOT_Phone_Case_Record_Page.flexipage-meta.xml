@@ -229,18 +229,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <name>Facet-fdd8a4a5-1f48-4835-955a-271d83f173f3</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-kpu9pv4lpj</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <name>Facet-510f3a40-b369-4236-997f-9cb5f31d0e87</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
@@ -253,48 +241,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-fdd8a4a5-1f48-4835-955a-271d83f173f3</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Kommunikasjon</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-kpu9pv4lpj</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Oppgaver</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-510f3a40-b369-4236-997f-9cb5f31d0e87</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Saker</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab4</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-79331d7b-c124-47aa-ae2f-5dcfd0270368</name>
@@ -455,6 +401,28 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Skriv til oss</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>checkMedskriv</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChangeLngBtn</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showClose</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>hot_messagingContainer</componentName>
+                <identifier>c_hot_messagingContainer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-80f2eb3e-350c-41ce-ae28-aa74c36cee2b</value>
                 </componentInstanceProperties>
@@ -483,8 +451,7 @@
         </properties>
         <properties>
             <name>saveOptions</name>
-            <value>
-                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
+            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
