@@ -173,11 +173,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideChangeLngBtn</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showClose</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentName>hot_messagingContainer</componentName>
                 <identifier>c_hot_messagingContainer</identifier>
