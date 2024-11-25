@@ -163,8 +163,24 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>hot_dialogueViewer</componentName>
-                <identifier>c_hot_dialogueViewer</identifier>
+                <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Skriv til oss</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>checkMedskriv</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChangeLngBtn</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showClose</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>hot_messagingContainer</componentName>
+                <identifier>c_hot_messagingContainer</identifier>
             </componentInstance>
         </itemInstances>
         <name>rightcol</name>
