@@ -13,7 +13,7 @@ set PACKAGES=(
     "crm-platform-oppgave:0.60.0"
     "crm-community-base:0.119.0"
     "crm-platform-reporting:0.38.0"
-    "crm-journal-utilities:0.37.0"
+    "crm-journal-utilities:0.39.0"
     "crm-shared-user-notification:0.24.0"
     "crm-henvendelse:0.147.0"
     "crm-thread-view:0.2.0"
