@@ -3,7 +3,6 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import getRelatedRecord from '@salesforce/apex/HOT_STORecordInfoController.getRelatedRecord';
 import getThreadId from '@salesforce/apex/HOT_STORecordInfoController.getThreadIdByApiReference';
 import NKS_FULL_NAME from '@salesforce/schema/User.NKS_FullName__c';
-import COMPANY_NAME from '@salesforce/schema/User.CompanyName';
 import PERSON_FULL_NAME from '@salesforce/schema/Person__c.NKS_Full_Name__c';
 import CASE_THREAD_API_REFERENCE from '@salesforce/schema/Case.NKS_Henvendelse_BehandlingsId__c';
 import THREAD_MEDSKRIV_REFERENCE from '@salesforce/schema/Thread__c.STO_Medskriv__C';
@@ -28,7 +27,6 @@ export default class hotStoMessaging extends LightningElement {
     personId;
     userName;
     supervisorName;
-    companyName;
     accountApiName;
     threadId;
     englishTextTemplate = false;
@@ -116,14 +114,13 @@ export default class hotStoMessaging extends LightningElement {
 
     @wire(getRecord, {
         recordId: '$userId',
-        fields: [NKS_FULL_NAME, COMPANY_NAME]
+        fields: [NKS_FULL_NAME]
     })
     wiredUser({ error, data }) {
         if (error) {
             console.error('wiredUser failed: ', error);
         } else if (data) {
             this.supervisorName = getFieldValue(data, NKS_FULL_NAME);
-            this.companyName = getFieldValue(data, COMPANY_NAME);
         }
     }
 
