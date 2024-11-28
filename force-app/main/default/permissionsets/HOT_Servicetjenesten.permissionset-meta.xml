@@ -539,7 +539,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>Thread__c.CRM_isActive__c</field>
         <readable>true</readable>
     </fieldPermissions>
