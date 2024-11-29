@@ -309,18 +309,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Message__c.CRM_From_Integration_Name__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
         <editable>true</editable>
         <field>Message__c.CRM_From_Label__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Message__c.CRM_From_Last_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
