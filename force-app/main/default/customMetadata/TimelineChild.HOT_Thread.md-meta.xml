@@ -116,7 +116,7 @@
     </values>
     <values>
         <field>SObjectSubtitle__c</field>
-        <value xsi:type="xsd:string">Id</value>
+        <value xsi:type="xsd:string">CRM_Conversation_Summary__c</value>
     </values>
     <values>
         <field>SObjectTitle__c</field>
