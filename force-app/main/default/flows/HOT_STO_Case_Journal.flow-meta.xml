@@ -29,7 +29,7 @@
     </decisions>
     <environments>Default</environments>
     <interviewLabel>HOT_STO_Ca {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT_STO_Case_Journal</label>
+    <label>HOT STO Case Journal</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
