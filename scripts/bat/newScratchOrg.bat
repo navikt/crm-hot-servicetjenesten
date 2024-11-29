@@ -2,7 +2,7 @@ echo "Hei på deg. Oppretter scratch org for deg"
 call sf org create scratch --definition-file config\project-scratch-def.json --alias %1 --duration-days %2 --set-default --json --wait 30
 
 echo "Installerer crm-platform-base ver. 0.237"
-call sf package install --package 04tKB000000Y5QaYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+call sf package install --package 04tKB000000Y5ZJYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-flowComponents ver. 0.4"
 call sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key %3 --wait 30 --publish-wait 30
@@ -10,8 +10,8 @@ call sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-
 echo "Installerer crm-henvendelse-base ver. 0.21"
 call sf package install --package 04t7U000000Y4hdQAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-journal-utilities ver. 0.37"
-call sf package install --package 04tKB000000Y1o9YAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-journal-utilities ver. 0.39"
+call sf package install --package 04tKB000000Y5TUYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-user-notification ver. 0.24"
 call sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30

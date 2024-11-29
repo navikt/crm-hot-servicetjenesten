@@ -1,0 +1,89 @@
+<template>
+    <div
+        class="slds-card slds-theme_default slds-var-p-horizontal_medium slds-var-p-bottom_medium slds-var-p-top_large"
+    >
+        <lightning-layout class="slds-var-p-bottom_large" multiple-rows="true" size="12">
+            <lightning-layout-item class="slds-size_12-of-12">
+                <lightning-layout>
+                    <template for:each={topButtonConfigs} for:item="config">
+                        <lightning-layout-item
+                            key={config.id}
+                            class="slds-size_4-of-12 slds-var-p-right_medium flow-button"
+                        >
+                            <c-custom-button
+                                class="top-button"
+                                onclick={config.onclick}
+                                disabled={config.disabled}
+                                aria-expanded={config.expanded}
+                                button-label={config.label}
+                                full-height
+                            ></c-custom-button>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item class="slds-size_12-of-12">
+                <template for:each={topFlowConfigs} for:item="flowConfig">
+                    <template lwc:if={flowConfig.condition}>
+                        <div key={flowConfig.id} class="slds-var-m-top_xx-small">
+                            <lightning-card>
+                                <lightning-flow
+                                    flow-api-name={flowConfig.flowApiName}
+                                    flow-input-variables={inputVariables}
+                                    onstatuschange={handleFlowStatusChange}
+                                ></lightning-flow>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </template>
+            </lightning-layout-item>
+        </lightning-layout>
+        <c-hot_sto-messaging
+            record-id={recordId}
+            object-api-name={objectApiName}
+            single-thread={singleThread}
+            card-title={cardTitle}
+            show-close={showClose}
+            check-medskriv={checkMedskriv}
+            submit-button-label={labels.SHARE_WITH_USER_LABEL}
+            onsubmitfromparent={handleSubmit}
+            onclosedevent={handleClosed}
+            hide-change-lng-btn={hideChangeLngBtn}
+            new-design
+            is-thread={isThread}
+        >
+            <div slot="buttonContainer">
+                <lightning-layout class="slds-float_right button-container">
+                    <template for:each={bottomButtonConfigs} for:item="config">
+                        <lightning-layout-item key={config.id} data-expanded={config.expanded}>
+                            <c-custom-button
+                                button-label={config.label}
+                                button-styling="secondary"
+                                onclick={config.onclick}
+                                aria-expanded={config.expanded}
+                                element-data-id={config.id}
+                                full-height
+                            ></c-custom-button>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </div>
+            <div slot="flowSection">
+                <template for:each={bottomFlowConfigs} for:item="flowConfig">
+                    <template lwc:if={flowConfig.condition}>
+                        <div key={flowConfig.id}>
+                            <lightning-card>
+                                <lightning-flow
+                                    flow-api-name={flowConfig.flowApiName}
+                                    flow-input-variables={inputVariables}
+                                    onstatuschange={flowConfig.handleStatusChange}
+                                ></lightning-flow>
+                            </lightning-card>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </c-hot_sto-messaging>
+        <c-hot_notification-box></c-hot_notification-box>
+    </div>
+</template>
