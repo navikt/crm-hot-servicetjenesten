@@ -185,7 +185,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>Case_Not_Found_Screen</name>
-            <fieldText>&lt;p&gt;{!$Label.STO_Transfer_Display_Text}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 12px; background-color: rgb(255, 255, 255);&quot;&gt;Noe gikk galt ved å overføre henvendelsen.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Ok</nextOrFinishButtonLabel>
@@ -202,7 +202,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>display_text</name>
-            <fieldText>&lt;p&gt;{!$Label.STO_Transfer_Display_Text}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Noe gikk galt ved å overføre henvendelsen.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Ok</nextOrFinishButtonLabel>
@@ -247,6 +247,7 @@
                     </defaultValue>
                     <fieldText>Velg kø:</fieldText>
                     <fieldType>RadioButtons</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
