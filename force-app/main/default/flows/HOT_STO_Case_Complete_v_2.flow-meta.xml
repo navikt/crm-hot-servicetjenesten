@@ -317,7 +317,9 @@
         <allowPause>true</allowPause>
         <fields>
             <name>Complete_Screen</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Henvendelsen er allerede ferdigstilt.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);
+                font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Henvendelsen er allerede
+                ferdigstilt.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>false</showFooter>
@@ -333,7 +335,12 @@
         <allowPause>true</allowPause>
         <fields>
             <name>Reserve_Screen</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Du kan ikke ferdigstille denne henvendelsen for den er verken reservert til deg eller&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;under arbeid.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);
+                font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;Du kan ikke ferdigstille denne
+                henvendelsen for den er verken reservert til deg
+                eller&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255,
+                255, 255); font-size: 12px; color: rgb(0, 0, 0);&quot;&gt;under
+                arbeid.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>false</showFooter>
