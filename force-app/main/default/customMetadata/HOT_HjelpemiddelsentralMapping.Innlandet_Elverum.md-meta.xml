@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Innlandet Elverum</label>
+    <protected>false</protected>
+    <values>
+        <field>Hjelpemiddelsentral_name__c</field>
+        <value xsi:type="xsd:string">Innlandet-Elverum Hjelpemiddelsentral</value>
+    </values>
+    <values>
+        <field>MunicipalityNumbers__c</field>
+        <value xsi:type="xsd:string">3428,3416,3420,3425,3429,3417,3403,3401,3412,3414,3430,3424,3411,3413,3423,3415,3426,3421,3427,3419,3422,3418</value>
+    </values>
+    <values>
+        <field>RegionNumbers__c</field>
+        <value xsi:nil="true"/>
+    </values>
+</CustomMetadata>
