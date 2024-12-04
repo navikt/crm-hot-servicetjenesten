@@ -47,6 +47,12 @@
                 <identifier>RecordCRM_Person_rINT_Citizenships_cField2</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_GuardianshipOrFuturePowerOfAttorney__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_GuardianshipOrFuturePowerOfAttorney_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-4d871b21-856c-4623-94ac-49b03439058d</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -506,24 +512,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>decorate</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>richTextValue</name>
-                    <value>&lt;p&gt;PLACEHOLDER&lt;/p&gt;</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:richText</componentName>
-                <identifier>flexipage_richText4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-gdrzeio1io7</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
@@ -637,20 +625,6 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-gdrzeio1io7</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Dokumenter</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab3</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

@@ -80,7 +80,17 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Case.HOT_In_Queue__c</field>
+        <field>Case.AccountId</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CRM_In_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.NKS_Henvendelse_BehandlingsId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -181,6 +191,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Person__c.INT_GTMunicipalityNumber__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Person__c.INT_GuardianshipOrFuturePowerOfAttorney__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

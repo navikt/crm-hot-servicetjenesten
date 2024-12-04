@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Vestland Hjelpemiddelsentral</label>
+    <label>Vestland-Bergen</label>
     <protected>false</protected>
     <values>
         <field>Hjelpemiddelsentral_name__c</field>
-        <value xsi:type="xsd:string">Vestland Hjelpemiddelsentral</value>
+        <value xsi:type="xsd:string">Vestland-Bergen Hjelpemiddelsentral</value>
     </values>
     <values>
         <field>MunicipalityNumbers__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">4631,4627,4625,4632,4601,4624,4613,4619,4611,4633,4615,4622,4617,4634,4629,4630,4623,4614,4612,4616,4618,4620,4628,4621,4626</value>
     </values>
     <values>
         <field>RegionNumbers__c</field>
-        <value xsi:type="xsd:string">46</value>
+        <value xsi:nil="true"/>
     </values>
 </CustomMetadata>

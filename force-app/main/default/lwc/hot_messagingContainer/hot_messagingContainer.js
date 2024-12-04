@@ -3,7 +3,7 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import getRelatedRecord from '@salesforce/apex/HOT_STORecordInfoController.getRelatedRecord';
 import { refreshApex } from '@salesforce/apex';
 import STATUS_FIELD from '@salesforce/schema/Case.Status';
-import IN_QUEUE_FIELD from '@salesforce/schema/Case.HOT_In_Queue__c';
+import IN_QUEUE_FIELD from '@salesforce/schema/Case.CRM_In_Queue__c';
 import { resolve, handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 
 const CONSTANTS = {
