@@ -5,6 +5,6 @@ public with sharing class HOT_HjelpemiddelsentralControllerTest {
         List<HOT_HjelpemiddelsentralMapping__mdt> result = HOT_HjelpemiddelsentralController.getAllHjelpemiddelSentraler();
 
         System.assertNotEquals(null, result, 'Result should not be null');
-        System.assertEquals(12, result.size(), 'There should be 12 records returned');
+        System.assertEquals(14, result.size(), 'There should be 14 records returned');
     }
 }
