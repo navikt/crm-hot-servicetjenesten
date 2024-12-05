@@ -16,6 +16,13 @@ public without sharing class HOT_GetStoUtilityController {
         get {
             Schema.DescribeFieldResult fieldResult = Case.STO_Category__c.getDescribe();
             List<Schema.PicklistEntry> ple = fieldResult.getPicklistValues();
+            List<String> retList = new List<String>();
+            for (Schema.PicklistEntry pl : ple) {
+                    retList.add(pl.getLabel());
+            }
+            retList.addAll(confidentialitySkills);
+            retList.addAll((originSkills));
+            return retList;
         }
     }
 
