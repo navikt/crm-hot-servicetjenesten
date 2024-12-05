@@ -20,7 +20,7 @@ public with sharing class HOT_UpdateExistingRecordsST implements Database.Batcha
         List<Common_Code__c> validRegionCodes = [
             SELECT Id, CRM_Code__c, CRM_Code_Set__c, Name
             FROM Common_Code__c
-            WHERE CRM_Code_Set__c = 'Fylke' AND CRM_Active__c = TRUE AND CRM_Code__c IN :regionCodesCodes
+            WHERE CRM_Code_Set__c = 'Fylke' AND CRM_Active__c = TRUE AND CRM_Code__c IN :regionCodes
         ];
         Map<String, Id> municipalityAssociations = new Map<String, Id>();
         Map<String, Id> regionAssociations = new Map<String, Id>();
