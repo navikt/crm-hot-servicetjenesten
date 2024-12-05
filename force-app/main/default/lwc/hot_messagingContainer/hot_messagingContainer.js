@@ -3,7 +3,7 @@ import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import getRelatedRecord from '@salesforce/apex/HOT_STORecordInfoController.getRelatedRecord';
 import { refreshApex } from '@salesforce/apex';
 import STATUS_FIELD from '@salesforce/schema/Case.Status';
-import IN_QUEUE_FIELD from '@salesforce/schema/Case.HOT_In_Queue__c';
+import IN_QUEUE_FIELD from '@salesforce/schema/Case.CRM_In_Queue__c';
 import { resolve, handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 
 const CONSTANTS = {
@@ -44,7 +44,7 @@ export default class StoMessagingContainer extends LightningElement {
 
     labels = {
         RESERVE_LABEL: 'Reserver',
-        PUT_BACK_LABEL: 'Legg tilbake til kl',
+        PUT_BACK_LABEL: 'Legg tilbake til kø',
         TRANSFER_LABEL: 'Overfør',
         CREATE_NAV_TASK_LABEL: 'Lag ny oppgave',
         JOURNAL_LABEL: 'Journalfør',
@@ -126,22 +126,22 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'reserve',
                 condition: this.showReserveButton,
-                flowApiName: 'Case_STO_Reserve_v_2'
+                flowApiName: 'HOT_STO_Case_Reserve'
             },
             {
                 id: 'putBack',
                 condition: this.showPutBackButton,
-                flowApiName: 'Case_STO_Put_Back'
+                flowApiName: 'HOT_STO_Case_Put_Back'
             },
             {
                 id: 'transfer',
                 condition: this.showTransferButton,
-                flowApiName: 'STO_Transfer_v_2'
+                flowApiName: 'HOT_STO_Case_Transfer'
             },
             {
                 id: 'redact',
                 condition: this.showRedactButton,
-                flowApiName: 'Case_STO_Redact_v_2'
+                flowApiName: 'HOT_STO_Case_Redact'
             }
         ];
     }
@@ -151,19 +151,19 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'journal',
                 condition: this.showJournalButton,
-                flowApiName: 'Case_STO_Journal_v_2',
+                flowApiName: 'HOT_STO_Case_Journal',
                 handleStatusChange: this.handleFlowStatusChange
             },
             {
                 id: 'createNavTask',
                 condition: this.showCreateNavTaskButton,
-                flowApiName: 'Case_STO_Send_NAV_Task_v_2',
+                flowApiName: 'HOT_STO_Case_Send_NAV_Task',
                 handleStatusChange: this.handleFlowStatusChange
             },
             {
                 id: 'complete',
                 condition: this.showComplete,
-                flowApiName: 'Case_STO_Complete_v_2',
+                flowApiName: 'HOT_Case_STO_Complete_v_2',
                 handleStatusChange: this.handleSubmitStatusChange
             }
         ];
