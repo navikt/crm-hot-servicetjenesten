@@ -594,6 +594,11 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
+            <name>Error_Header</name>
+            <fieldText>&lt;p&gt;Feil ved opprettelse av oppgave&lt;span style=&quot;font-size: 22px;&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>no_account_error</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255);&quot;&gt;Henvendelsen er ikke relatert til en bruker.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
@@ -726,7 +731,7 @@
             <targetReference>Check_record_Id</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <subflows>
         <name>Create_App_Log</name>
         <label>Create App Log</label>

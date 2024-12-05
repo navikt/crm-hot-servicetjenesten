@@ -131,12 +131,12 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'putBack',
                 condition: this.showPutBackButton,
-                flowApiName: 'Case_STO_Put_Back'
+                flowApiName: 'HOT_STO_Case_Put_Back'
             },
             {
                 id: 'transfer',
                 condition: this.showTransferButton,
-                flowApiName: 'STO_Transfer_v_2'
+                flowApiName: 'HOT_STO_Case_Transfer'
             },
             {
                 id: 'redact',
