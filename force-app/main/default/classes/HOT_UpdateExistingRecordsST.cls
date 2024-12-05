@@ -1,7 +1,7 @@
 public with sharing class HOT_UpdateExistingRecordsST implements Database.Batchable<sObject> {
     public Database.QueryLocator start(Database.BatchableContext bc) {
         return Database.getQueryLocator(
-            'Select Id,INT_Municipality__c,INT_MunicipalityNumber__c FROM Person__c WHERE INT_MunicipalityNumber__c != null INT_RegionNumber__c != null'
+            'Select Id,INT_Municipality__c,INT_MunicipalityNumber__c FROM Person__c WHERE (INT_MunicipalityNumber__c != null OR INT_RegionNumber__c != null) AND (INT_Municipality__c = null OR INT_Region__c = null) AND INT_IsHasTombstone__c = false'
         );
     }
 
