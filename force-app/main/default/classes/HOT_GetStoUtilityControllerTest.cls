@@ -2,7 +2,7 @@
 public with sharing class HOT_GetStoUtilityControllerTest {
     @TestSetup
     static void makeData() {
-        List<Person__c> persons = STO_TestDataFactory.createPersons(2);
+        List<Person__c> persons = HOT_UTIL_TestDataFactory.createPersons(2);
         List<Id> personIds = new List<Id>();
         for (Person__c p : persons) {
             personIds.add(p.Id);
@@ -31,12 +31,12 @@ public with sharing class HOT_GetStoUtilityControllerTest {
         c.OwnerId = testGroup.Id;
         c.RecordTypeId = STO_RECORD_TYPE;
 
-        STO_TestDataFactory.createRecordList(c, 2);
+        HOT_UTIL_TestDataFactory.createRecordList(c, 2);
     }
 
     @isTest
     static void testGetSto() {
-        User usr = (User) STO_TestDataFactory.createRecord(new User());
+        User usr = (User) HOT_UTIL_TestDataFactory.createRecord(new User());
         List<HOT_GetStoUtilityController.Record> records;
         List<HOT_GetStoUtilityController.Record> noRecord;
         List<HOT_GetStoUtilityController.Record> ownedList;
