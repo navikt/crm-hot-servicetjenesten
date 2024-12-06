@@ -44,7 +44,7 @@ export default class StoMessagingContainer extends LightningElement {
 
     labels = {
         RESERVE_LABEL: 'Reserver',
-        PUT_BACK_LABEL: 'Legg tilbake til kl',
+        PUT_BACK_LABEL: 'Legg tilbake til kø',
         TRANSFER_LABEL: 'Overfør',
         CREATE_NAV_TASK_LABEL: 'Lag ny oppgave',
         JOURNAL_LABEL: 'Journalfør',
