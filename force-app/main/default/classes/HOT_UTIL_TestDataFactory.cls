@@ -53,6 +53,25 @@ public class HOT_UTIL_TestDataFactory {
         return persons;
     }
 
+    public static void createPersonAccount(Integer i, Person__c p) {
+        String personAccountRecordType = Schema.getGlobalDescribe()
+            .get('Account')
+            .getDescribe()
+            .getRecordTypeInfosByDeveloperName()
+            .get('PersonAccount')
+            .getRecordTypeId();
+        Account acc = new Account(
+            FirstName = 'Harry',
+            LastName = 'Potter',
+            INT_PersonIdent__c = '1234567890' + i,
+            RecordTypeId = personAccountRecordType,
+            CRM_Person__c = p.Id
+        );
+        insert acc;
+        p.CRM_Account__c = acc.Id;
+        update p;
+    }
+
     /* This method is used for creating a record. Default fields are populated before it's returned
      * @param record    [sObject: the record]
      * @param doInsert  [Boolean: true if the record is to be inserted, false otherwise]
