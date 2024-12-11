@@ -67,6 +67,7 @@
             "enableLightningKnowledge": true
         },
         "omniChannelSettings": {
+            "enableOmniSecondaryRoutingPriority": true,
             "enableOmniChannel": true
         },
         "userManagementSettings": {
