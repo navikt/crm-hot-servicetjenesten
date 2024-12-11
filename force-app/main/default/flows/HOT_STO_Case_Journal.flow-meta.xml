@@ -403,7 +403,7 @@
         <inputAssignments>
             <name>Thread_ID</name>
             <value>
-                <elementReference>recordId</elementReference>
+                <elementReference>Get_Thread_Records_1.Id</elementReference>
             </value>
         </inputAssignments>
     </subflows>
