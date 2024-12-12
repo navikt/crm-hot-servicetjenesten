@@ -34,7 +34,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
     @AuraEnabled(cacheable=true)
     public static List<HOT_HjelpemiddelsentralMapping__mdt> getAllHjelpemiddelSentraler() {
         List<HOT_HjelpemiddelsentralMapping__mdt> allHjelpemiddelSentraler = [
-            SELECT Hjelpemiddelsentral_name__c, MunicipalityNumbers__c, RegionNumbers__c
+            SELECT Hjelpemiddelsentral_name__c, MunicipalityNumbers__c, RegionNumbers__c, NAVurl__c
             FROM HOT_HjelpemiddelsentralMapping__mdt
         ];
         return allHjelpemiddelSentraler;
