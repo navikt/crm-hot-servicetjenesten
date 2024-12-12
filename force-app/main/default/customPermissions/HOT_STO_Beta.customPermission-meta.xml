@@ -2,5 +2,5 @@
 <CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
     <description>Custom permission to allow beta access</description>
     <isLicensed>false</isLicensed>
-    <label>STO Beta</label>
+    <label>HOT STO Beta</label>
 </CustomPermission>
