@@ -107,7 +107,7 @@ public without sharing class HOT_GetStoUtilityController {
             }
             flowParams.put('UserOriginSkills', allUserSkills.userOriginMap.values());
 
-            Flow.Interview.HOT_STO_Case_Set_Owner setOwnerFlow = new Flow.Interview.HOT_STO_Case_Set_Owner(flowParams);
+            Flow.Interview.STO_Case_Set_Owner setOwnerFlow = new Flow.Interview.STO_Case_Set_Owner(flowParams);
             setOwnerFlow.start();
             List<Case> relatedCases = (List<Case>) setOwnerFlow.getVariableValue('ReturnVar');
             if (relatedCases == null)

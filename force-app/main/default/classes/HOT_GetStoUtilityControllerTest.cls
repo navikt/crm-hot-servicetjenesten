@@ -2,7 +2,7 @@
 public with sharing class HOT_GetStoUtilityControllerTest {
     @TestSetup
     static void makeData() {
-        List<Person__c> persons = HOT_UTIL_TestDataFactory.createPersons(2);
+        List<Person__c> persons = HOT_STO_TestDataFactory.createPersons(2);
         List<Id> personIds = new List<Id>();
         for (Person__c p : persons) {
             personIds.add(p.Id);
