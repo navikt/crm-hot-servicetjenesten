@@ -47,7 +47,7 @@ public class HOT_UTIL_TestDataFactory {
         insert persons;
         Integer i = 1;
         for (Person__c p : persons) {
-            createPersonAccount(i, p);
+            HOT_STO_TestdataFactory.createPersonAccount(i, p);
             i++;
         }
         return persons;
