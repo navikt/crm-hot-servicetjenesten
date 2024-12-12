@@ -37,7 +37,7 @@ public with sharing class HOT_GetStoUtilityControllerTest {
     @isTest
     static void testGetSto() {
         Profile profile = [SELECT Id FROM Profile WHERE Name = 'Standard User' OR Name = 'Standardbruker' LIMIT 1];
-        User usr = HOT_TestDataFactory.createUser('user', profile);
+        User usr = HOT_UTIL_TestDataFactory.createUser('user', profile);
         insert usr;
         // User usr = (User) HOT_UTIL_TestDataFactory.createRecord(new User());
         List<HOT_GetStoUtilityController.Record> records;
