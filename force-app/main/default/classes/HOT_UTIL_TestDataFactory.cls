@@ -32,27 +32,6 @@ public class HOT_UTIL_TestDataFactory {
         return (Id) createRecord(record, true).get('Id');
     }
 
-    public static List<Person__c> createPersons(Integer amount) {
-        List<Person__c> persons = new List<Person__c>();
-        for (Integer i = 0; i < amount; i++) {
-            Person__c p = new Person__c(
-                Name = '1234567890' + i,
-                INT_MunicipalityNumber__c = '0301',
-                INT_LastName__c = 'Test' + i,
-                INT_Confidential__c = 'UGRADERT',
-                INT_MaritalStatus__c = 'UOPPGITT'
-            );
-            persons.add(p);
-        }
-        insert persons;
-        Integer i = 1;
-        for (Person__c p : persons) {
-            HOT_STO_TestdataFactory.createPersonAccount(i, p);
-            i++;
-        }
-        return persons;
-    }
-
     /* This method is used for creating a record. Default fields are populated before it's returned
      * @param record    [sObject: the record]
      * @param doInsert  [Boolean: true if the record is to be inserted, false otherwise]
