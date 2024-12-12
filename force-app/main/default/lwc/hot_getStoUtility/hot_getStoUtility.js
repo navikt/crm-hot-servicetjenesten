@@ -5,7 +5,7 @@ import getStoWithSkill from '@salesforce/apex/HOT_GetStoUtilityController.getSto
 import getServiceResourceSkillIds from '@salesforce/apex/HOT_GetStoUtilityController.getServiceResourceSkillIds';
 import { NavigationMixin } from 'lightning/navigation';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import hasStoBeta from '@salesforce/customPermission/STO_Beta';
+import hasStoBeta from '@salesforce/customPermission/HOT_STO_Beta';
 import { publishToAmplitude } from 'c/amplitude';
 
 export default class HOT_GetStoUtility extends NavigationMixin(LightningElement) {
