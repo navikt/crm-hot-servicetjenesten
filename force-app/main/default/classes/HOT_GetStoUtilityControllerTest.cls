@@ -1,5 +1,5 @@
 @isTest
-public with sharing class HOT_GetStoUtilityControllerTest {
+private class HOT_GetStoUtilityControllerTest {
     @TestSetup
     static void makeData() {
         List<Person__c> persons = HOT_STO_TestDataFactory.createPersons(2);
