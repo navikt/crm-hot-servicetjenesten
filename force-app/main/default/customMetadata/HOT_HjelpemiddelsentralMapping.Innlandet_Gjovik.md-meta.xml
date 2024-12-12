@@ -11,6 +11,10 @@
         <value xsi:type="xsd:string">3431,3450,3441,3407,3446,3432,3405,3434,3234,3451,3436,3448,3439,3437,3433,3447,3449,3438,3454,3452,3443,3435,3442,3440,3453</value>
     </values>
     <values>
+        <field>NAVurl__c</field>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-innlandet-gjovik</value>
+    </values>
+    <values>
         <field>RegionNumbers__c</field>
         <value xsi:nil="true"/>
     </values>

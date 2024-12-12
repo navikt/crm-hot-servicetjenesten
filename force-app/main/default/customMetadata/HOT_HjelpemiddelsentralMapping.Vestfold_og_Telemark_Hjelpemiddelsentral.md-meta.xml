@@ -11,6 +11,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>NAVurl__c</field>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-vestfold-og-telemark</value>
+    </values>
+    <values>
         <field>RegionNumbers__c</field>
         <value xsi:type="xsd:string">39,38</value>
     </values>

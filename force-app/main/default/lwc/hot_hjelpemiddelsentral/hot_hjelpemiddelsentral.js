@@ -13,10 +13,11 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     isExpanded = true;
     ariaHidden = false;
 
-    @track bostedHjelpemiddelsentral;
-    @track midlertidigBostedHjelpemiddelsentral;
-
-    @track hjelpemiddelsentralString = '';
+    @track hjelpemiddelsentralError;
+    @track bostedHjelpemiddelsentralString = '';
+    @track midlertidigHjelpemiddelsentralString = '';
+    @track bostedHjelpemiddelsentralUrl;
+    @track midlertidigBostedHjelpemiddelsentralUrl;
 
     getHjelpemiddelsentraler() {
         getPersonMunicipalityAndRegions({
@@ -25,7 +26,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         }).then((result) => {
             this.personMunicipalityAndRegions = result;
             if (this.personMunicipalityAndRegions.length === 0) {
-                this.hjelpemiddelsentralString = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
+                this.hjelpemiddelsentralError = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
             } else {
                 getAllHjelpemiddelSentraler({}).then((result) => {
                     this.allHjelpemiddelSentraler = result;
@@ -45,9 +46,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                                 hjelpemiddelsentral.MunicipalityNumbers__c &&
                                 hjelpemiddelsentral.MunicipalityNumbers__c.includes(municipalityNumber)
                             ) {
-                                this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                                this.hjelpemiddelsentralString =
-                                    'Tilhører ' + this.bostedHjelpemiddelsentral + ' med ordinær bostedadresse.';
+                                this.setBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                             //Sjekker deretter på region
@@ -55,27 +54,19 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                                 hjelpemiddelsentral.RegionNumbers__c &&
                                 hjelpemiddelsentral.RegionNumbers__c.includes(regionNumber)
                             ) {
-                                this.bostedHjelpemiddelsentral = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                                this.hjelpemiddelsentralString =
-                                    'Tilhører ' + this.bostedHjelpemiddelsentral + ' med ordinær bostedadresse.';
+                                this.setBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                         }
                     }
                     if (temporaryRegionNumber) {
-                        console.log('er midlertidig');
                         for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
                             //Sjekker først kommunenr
                             if (
                                 hjelpemiddelsentral.MunicipalityNumbers__c &&
                                 hjelpemiddelsentral.MunicipalityNumbers__c.includes(temporaryMunicipalityNumber)
                             ) {
-                                this.midlertidigBostedHjelpemiddelsentral =
-                                    hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                                this.hjelpemiddelsentralString +=
-                                    '\nTilhører ' +
-                                    this.midlertidigBostedHjelpemiddelsentral +
-                                    ' med midlertidig bostedadresse.';
+                                this.setMidlertidigBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                             //Sjekker deretter på region
@@ -83,12 +74,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                                 hjelpemiddelsentral.RegionNumbers__c &&
                                 hjelpemiddelsentral.RegionNumbers__c.includes(temporaryRegionNumber)
                             ) {
-                                this.midlertidigBostedHjelpemiddelsentral =
-                                    hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
-                                this.hjelpemiddelsentralString +=
-                                    '\nTilhører ' +
-                                    this.midlertidigBostedHjelpemiddelsentral +
-                                    ' med midlertidig bostedadresse.';
+                                this.setMidlertidigBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                         }
@@ -96,10 +82,14 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                 });
             }
         });
-        if (this.hjelpemiddelsentralString == '') {
-            this.hjelpemiddelsentralString = 'Kunne ikke finne hjelpemiddelsentral(er).';
-        }
-        return this.hjelpemiddelsentralString;
+    }
+    setBostedHjelpemiddelsentral(hjelpemiddelsentral) {
+        this.bostedHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+        this.bostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
+    }
+    setMidlertidigBostedHjelpemiddelsentral(hjelpemiddelsentral) {
+        this.midlertidigHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
+        this.midlertidigBostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
 
     connectedCallback() {
