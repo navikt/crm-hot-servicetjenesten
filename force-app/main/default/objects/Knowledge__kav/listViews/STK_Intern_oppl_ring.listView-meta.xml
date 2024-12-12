@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>STK_Intern_oppl_ring</fullName>
+    <columns>TITLE</columns>
+    <columns>PUBLISH_STATUS</columns>
+    <columns>LAST_PUBLISHED_DATE</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Knowledge__kav.HOT_Kunnskapsartikkel</value>
+    </filters>
+    <filters>
+        <field>Topics</field>
+        <operation>includes</operation>
+        <value>Intern opplæring</value>
+    </filters>
+    <label>STK Intern opplæring</label>
+    <sharedTo>
+        <group>HOT_Servicetjenesten_Kunnskapslesere</group>
+    </sharedTo>
+</ListView>
