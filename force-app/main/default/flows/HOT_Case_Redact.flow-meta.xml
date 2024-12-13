@@ -236,9 +236,10 @@
             <label>Is Case</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT STO Case Redact {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Redact</label>
+    <interviewLabel>HOT Case Redact {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Redact</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -369,6 +370,7 @@
             <defaultSelectedChoiceReference>Sendt_feil_bruker</defaultSelectedChoiceReference>
             <fieldText>Årsak</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
         </fields>
         <nextOrFinishButtonLabel>Ferdig</nextOrFinishButtonLabel>
@@ -463,6 +465,7 @@
             <defaultSelectedChoiceReference>Sendt_feil_bruker</defaultSelectedChoiceReference>
             <fieldText>Årsak</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
         </fields>
         <nextOrFinishButtonLabel>Ferdig</nextOrFinishButtonLabel>
@@ -476,7 +479,7 @@
             <targetReference>Check_Record_Id</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>Publish_Notification</name>
         <dataType>Boolean</dataType>
