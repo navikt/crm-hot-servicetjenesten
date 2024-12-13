@@ -27,9 +27,10 @@
             <label>Yes- Case</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT_STO_Ca {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Journal</label>
+    <interviewLabel>HOT Case Journal V2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Journal V2</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -248,7 +249,7 @@
             <targetReference>Get_Hjelpemidler_default_tema</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <subflows>
         <name>Create_Journal_Entry</name>
         <label>Create Journal Entry</label>
