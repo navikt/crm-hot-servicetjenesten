@@ -9,7 +9,7 @@
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.237.0.LATEST"
+                    "versionNumber": "0.240.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -17,11 +17,11 @@
                 },
                 {
                     "package": "crm-henvendelse-base",
-                    "versionNumber": "0.21.0.LATEST"
+                    "versionNumber": "0.24.0.LATEST"
                 },
                 {
                     "package": "crm-journal-utilities",
-                    "versionNumber": "0.37.0.LATEST"
+                    "versionNumber": "0.39.0.LATEST"
                 },
                 {
                     "package": "crm-shared-user-notification",

@@ -10,6 +10,29 @@ public class HOT_UTIL_TestDataFactory {
         return createRecord(record, true);
     }
 
+    public static User createUser(Profile profile, Account account) {
+        User user = createUser('User', profile);
+        user.ContactId = account.PersonContactId;
+        return user;
+    }
+
+    public static User createUser(String lastName, Profile profile) {
+        User user = new User(
+            Username = 'HOT.' + lastName + '@nav.hot.no',
+            LastName = lastName,
+            Email = 'HOT_testuser@nav.hot.no',
+            Alias = lastName,
+            CommunityNickname = lastName,
+            TimeZoneSidKey = 'Europe/Paris',
+            LocaleSidKey = 'no_NO',
+            EmailEncodingKey = 'UTF-8',
+            LanguageLocaleKey = 'no',
+            ProfileId = profile.id
+        );
+
+        return user;
+    }
+
     /* This method is used for creating a record using a dynamic reference. The record id is returned.
      * Use this when implementing field defaults for child objects that have required parent relationships
      * so that the framework stays independent of the database model

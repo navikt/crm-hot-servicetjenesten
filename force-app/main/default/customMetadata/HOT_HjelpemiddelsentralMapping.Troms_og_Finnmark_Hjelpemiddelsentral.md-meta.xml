@@ -4,11 +4,15 @@
     <protected>false</protected>
     <values>
         <field>Hjelpemiddelsentral_name__c</field>
-        <value xsi:type="xsd:string">Agder Hjelpemiddelsentral</value>
+        <value xsi:type="xsd:string">Troms og Finnmark Hjelpemiddelsentral</value>
     </values>
     <values>
         <field>MunicipalityNumbers__c</field>
         <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>NAVurl__c</field>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-troms-og-finnmark</value>
     </values>
     <values>
         <field>RegionNumbers__c</field>
