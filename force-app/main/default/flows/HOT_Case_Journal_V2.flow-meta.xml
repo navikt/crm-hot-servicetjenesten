@@ -249,7 +249,7 @@
             <targetReference>Get_Hjelpemidler_default_tema</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Create_Journal_Entry</name>
         <label>Create Journal Entry</label>
