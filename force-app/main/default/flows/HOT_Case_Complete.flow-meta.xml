@@ -201,9 +201,10 @@
             <label>Already Completed</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT Case STO Complete v. 2 {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT Case STO Complete v. 2</label>
+    <interviewLabel>HOT Case Complete {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Complete</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -353,7 +354,7 @@
             <targetReference>Check_Record_Id</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>

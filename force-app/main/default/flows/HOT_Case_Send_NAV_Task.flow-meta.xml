@@ -337,6 +337,7 @@
             <label>Post Success</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <dynamicChoiceSets>
         <name>Priority_Picklist</name>
         <dataType>Picklist</dataType>
@@ -351,8 +352,8 @@
         <dataType>String</dataType>
         <expression>{!NAVTask.NKS_Theme__r.CRM_Code__c}</expression>
     </formulas>
-    <interviewLabel>HOT STO Case Send NAV Task {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Send NAV Task</label>
+    <interviewLabel>HOT Case Send NAV Task {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Send NAV Task</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -731,7 +732,7 @@
             <targetReference>Check_record_Id</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Create_App_Log</name>
         <label>Create App Log</label>
