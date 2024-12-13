@@ -479,7 +479,7 @@
             <targetReference>Check_Record_Id</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>Publish_Notification</name>
         <dataType>Boolean</dataType>
