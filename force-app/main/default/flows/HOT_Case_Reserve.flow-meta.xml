@@ -192,10 +192,10 @@
             <label>Yes- Progress</label>
         </rules>
     </decisions>
-    <description>Screen flow which reserves a case to the veileder.</description>
+    <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT STO Case Reserve {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Reserve</label>
+    <interviewLabel>HOT Case Reserve {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Reserve</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
