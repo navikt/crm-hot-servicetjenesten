@@ -4,7 +4,7 @@ export default class hotHomePageHighlightPanelBottom extends LightningElement {
         return [
             {
                 title: 'Kontaktsenterportalen',
-                url: 'https://navno.sharepoint.com/sites/enhet-kontaktsenter/'
+                url: 'https://navno.sharepoint.com/sites/enhet-hjelpemidler-og-tilrettelegging/'
             },
             {
                 title: 'Norsk-engelsk ordliste',
