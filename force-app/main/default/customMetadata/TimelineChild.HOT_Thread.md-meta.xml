@@ -67,6 +67,10 @@
         <value xsi:nil="true"/>
     </values>
     <values>
+        <field>CustomComponent__c</field>
+        <value xsi:type="xsd:string">TimelineThreadViewer</value>
+    </values>
+    <values>
         <field>CustomView__c</field>
         <value xsi:type="xsd:boolean">true</value>
     </values>
