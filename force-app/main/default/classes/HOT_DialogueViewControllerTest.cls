@@ -3,7 +3,7 @@ public class HOT_DialogueViewControllerTest {
     @isTest
     static void testGetConvNotes() {
         //Create testdata
-        Conversation_Note__c convNote = (Conversation_Note__c) HOT_STO_TestDataFactory.createRecord(
+        Conversation_Note__c convNote = (Conversation_Note__c) HOT_ST_TestDataFactory.createRecord(
             new Conversation_Note__c()
         );
         Test.startTest();
@@ -16,7 +16,7 @@ public class HOT_DialogueViewControllerTest {
     @isTest
     static void testGetDialogueByApiReference() {
         //Create testdata
-        Conversation_Note__c convNote = (Conversation_Note__c) HOT_STO_TestDataFactory.createRecord(
+        Conversation_Note__c convNote = (Conversation_Note__c) HOT_ST_TestDataFactory.createRecord(
             new Conversation_Note__c()
         );
 
@@ -34,7 +34,7 @@ public class HOT_DialogueViewControllerTest {
     @isTest
     static void testGetDialogueByApiReferenceException() {
         //Create testdata
-        Conversation_Note__c convNote = (Conversation_Note__c) HOT_STO_TestDataFactory.createRecord(
+        Conversation_Note__c convNote = (Conversation_Note__c) HOT_ST_TestDataFactory.createRecord(
             new Conversation_Note__c()
         );
 
