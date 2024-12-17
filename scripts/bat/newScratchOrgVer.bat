@@ -5,19 +5,19 @@ REM Oppretter scratch org
 sf org create scratch --definition-file config\project-scratch-def.json --alias %1 --duration-days %2 --set-default --json --wait 30 >nul 2>&1
 
 set PACKAGES=(
-    "crm-platform-base:0.237.0"
-    "crm-platform-access-control:0.136.0"
+    "crm-platform-base:0.246.0"
+    "crm-platform-access-control:0.143.0"
     "crm-shared-flowComponents:0.4.0"
-    "crm-henvendelse-base:0.23.0"
-    "crm-platform-integration:0.134.0"
-    "crm-platform-oppgave:0.60.0"
+    "crm-henvendelse-base:0.24.0"
+    "crm-platform-integration:0.142.0"
+    "crm-platform-oppgave:0.63.0"
     "crm-community-base:0.119.0"
-    "crm-platform-reporting:0.38.0"
-    "crm-journal-utilities:0.39.0"
+    "crm-platform-reporting:0.39.0"
+    "crm-journal-utilities:0.40.0"
     "crm-shared-user-notification:0.24.0"
-    "crm-henvendelse:0.147.0"
+    "crm-henvendelse:0.154.0"
     "crm-thread-view:0.2.0"
-    "crm-shared-timeline:1.26.0"
+    "crm-shared-timeline:1.27.0"
 )
 
 for %%P in (!PACKAGES!) do (
