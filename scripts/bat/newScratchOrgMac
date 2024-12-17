@@ -4,7 +4,7 @@
 sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30
 
 # Installer crm-platform-base ver. 0.246
-sf package install --package 04tKB000000Y6LaYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30 DydrNCvH
+sf package install --package 04tKB000000Y6LaYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installer crm-platform-access-control ver. 0.143
 sf package install --package 04tKB000000Y6KwYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
