@@ -53,6 +53,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_GetStoUtilityController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_HjelpemiddelsentralController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -143,13 +147,6 @@
         <field>Journal_Entry__c.NAV_Case_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!-- 
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Journal_Entry__c.NKS_Chat_Transcript__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Journal_Entry__c.Theme__c</field>
@@ -315,13 +312,6 @@
         <field>NavTask__c.NKS_Assignee__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_Comment_History__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Comments__c</field>
@@ -332,13 +322,6 @@
         <field>NavTask__c.NKS_Date_Registered__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_Gosys_Link__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Henvendelse_BehandlingsId__c</field>
@@ -349,13 +332,6 @@
         <field>NavTask__c.NKS_NAV_Case_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_StatusFormula__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Status__c</field>
@@ -376,13 +352,6 @@
         <field>NavTask__c.NKS_TaskType__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>NavTask__c.NKS_Task_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Task_Version__c</field>
@@ -1084,6 +1053,10 @@
         <tab>standard-home</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>FieldServiceAccess</name>
+    </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>RunFlow</name>
