@@ -1,5 +1,5 @@
 @isTest
-private class HOT_ST_TestDataFactory {
+public class HOT_ST_TestDataFactory {
     public static Case createCase(String lastname) {
         Account a = [SELECT Id FROM Account WHERE LastName = :lastname];
         Case c = new Case(AccountId = a.Id, Status = 'New', Origin = 'Web');
