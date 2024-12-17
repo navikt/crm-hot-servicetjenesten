@@ -2,7 +2,7 @@
 public class HOT_KrrInformationControllerTest {
     @TestSetup
     static void makeData() {
-        HOT_UTIL_TestDataFactory.createRecord(new Person__c(Name = '01048800153'));
+        HOT_ST_TestDataFactory.createRecord(new Person__c(Name = '01048800153'));
     }
 
     @IsTest

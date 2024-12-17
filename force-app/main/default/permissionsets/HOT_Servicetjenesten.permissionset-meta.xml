@@ -17,6 +17,26 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CRM_NAVTaskTypeController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CRM_NavSakService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CRM_NavTaskManager</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CRM_NavTaskWorkAllocationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>CRM_ThemeUtils</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_ButtonContainerController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -30,6 +50,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>HOT_FamilyViewControllerHelper</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOT_GetStoUtilityController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -123,13 +147,6 @@
         <field>Journal_Entry__c.NAV_Case_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!-- 
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Journal_Entry__c.NKS_Chat_Transcript__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>Journal_Entry__c.Theme__c</field>
@@ -295,13 +312,6 @@
         <field>NavTask__c.NKS_Assignee__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_Comment_History__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Comments__c</field>
@@ -312,13 +322,6 @@
         <field>NavTask__c.NKS_Date_Registered__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_Gosys_Link__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Henvendelse_BehandlingsId__c</field>
@@ -329,13 +332,6 @@
         <field>NavTask__c.NKS_NAV_Case_Reference__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.NKS_StatusFormula__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Status__c</field>
@@ -356,13 +352,6 @@
         <field>NavTask__c.NKS_TaskType__c</field>
         <readable>true</readable>
     </fieldPermissions>
-    <!--
-    <fieldPermissions>
-        <editable>true</editable>
-        <field>NavTask__c.NKS_Task_Type__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    -->
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.NKS_Task_Version__c</field>
@@ -385,6 +374,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>NavUnit__c.INT_UnitNumber__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Person__c.CRM_Account__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -401,6 +395,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Person__c.CRM_FullName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Person__c.INT_ActorId__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -930,6 +929,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>User.CRM_NAV_Ident__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>User.NKS_FullName__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1004,6 +1008,15 @@
         <allowEdit>false</allowEdit>
         <allowRead>true</allowRead>
         <modifyAllRecords>false</modifyAllRecords>
+        <object>NavUnit__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
         <object>Person__c</object>
         <viewAllRecords>false</viewAllRecords>
     </objectPermissions>
@@ -1040,6 +1053,10 @@
         <tab>standard-home</tab>
         <visibility>Visible</visibility>
     </tabSettings>
+    <userPermissions>
+        <enabled>true</enabled>
+        <name>FieldServiceAccess</name>
+    </userPermissions>
     <userPermissions>
         <enabled>true</enabled>
         <name>RunFlow</name>

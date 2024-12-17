@@ -6,7 +6,7 @@
         <name>Check_if_record_is_Case</name>
         <label>Check if record is Case</label>
         <locationX>182</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Get_Thread</targetReference>
         </defaultConnector>
@@ -27,9 +27,10 @@
             <label>Yes- Case</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT_STO_Ca {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Journal</label>
+    <interviewLabel>HOT Case Journal V2 {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Journal V2</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -53,7 +54,7 @@
         <name>Get_Case_records</name>
         <label>Get Case records</label>
         <locationX>50</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Thread_Records_1</targetReference>
@@ -71,10 +72,38 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
+        <name>Get_Hjelpemidler_default_tema</name>
+        <label>Get Hjelpemidler default tema</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_if_record_is_Case</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Code_Set__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Temagrupper</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Hjelpemidler</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Common_Code__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>Get_Thread</name>
         <label>Get Thread</label>
         <locationX>314</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Thread_Jornal_Screen</targetReference>
@@ -95,7 +124,7 @@
         <name>Get_Thread_Records_1</name>
         <label>Get Thread Records</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Thread_Journal_Screen_1</targetReference>
@@ -123,7 +152,7 @@
         <name>Thread_Jornal_Screen</name>
         <label>Thread_Jornal_Screen</label>
         <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -152,9 +181,30 @@
                     <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>prefilledThemeGroup</name>
+                <value>
+                    <elementReference>Get_Hjelpemidler_default_tema.Id</elementReference>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Id</assignToReference>
+                <name>selectedCaseId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Legacy_System</assignToReference>
+                <name>selectedCaseLegacySystem</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Theme</assignToReference>
+                <name>selectedCaseTheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>selectedCaseThemeSfId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Journalfør</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -164,7 +214,7 @@
         <name>Thread_Journal_Screen_1</name>
         <label>Thread Journal Screen 1</label>
         <locationX>50</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -193,9 +243,30 @@
                     <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>prefilledThemeGroup</name>
+                <value>
+                    <elementReference>Get_Hjelpemidler_default_tema.Id</elementReference>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Id</assignToReference>
+                <name>selectedCaseId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Legacy_System</assignToReference>
+                <name>selectedCaseLegacySystem</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_NAV_Case_Theme</assignToReference>
+                <name>selectedCaseTheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>selectedCaseThemeSfId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Journalfør</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -205,15 +276,15 @@
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_if_record_is_Case</targetReference>
+            <targetReference>Get_Hjelpemidler_default_tema</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Create_Journal_Entry</name>
         <label>Create Journal Entry</label>
         <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>Create_Thread_Journal_Event</targetReference>
         </connector>
@@ -267,7 +338,7 @@
         <name>Create_Journal_Entry_1</name>
         <label>Create Journal Entry 1</label>
         <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Create_Thread_Journal_Event_1</targetReference>
         </connector>
@@ -305,7 +376,7 @@
         <inputAssignments>
             <name>recordId</name>
             <value>
-                <elementReference>Get_Thread.Id</elementReference>
+                <elementReference>Get_Thread_Records_1.Id</elementReference>
             </value>
         </inputAssignments>
         <outputAssignments>
@@ -321,7 +392,7 @@
         <name>Create_Thread_Journal_Event</name>
         <label>Create Thread Journal Event</label>
         <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <flowName>CRM_Create_Thread_Event</flowName>
         <inputAssignments>
             <name>Event_Message</name>
@@ -346,7 +417,7 @@
         <name>Create_Thread_Journal_Event_1</name>
         <label>Create Thread Journal Event 1</label>
         <locationX>50</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <flowName>CRM_Create_Thread_Event</flowName>
         <inputAssignments>
             <name>Event_Message</name>
@@ -363,7 +434,7 @@
         <inputAssignments>
             <name>Thread_ID</name>
             <value>
-                <elementReference>recordId</elementReference>
+                <elementReference>Get_Thread_Records_1.Id</elementReference>
             </value>
         </inputAssignments>
     </subflows>
@@ -414,5 +485,12 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Theme_SF_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>

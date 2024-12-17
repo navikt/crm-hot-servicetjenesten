@@ -66,14 +66,16 @@
             "enableKnowledge": true,
             "enableLightningKnowledge": true
         },
-        "omniChannelSettings": {
-            "enableOmniChannel": true
-        },
         "userManagementSettings": {
             "permsetsInFieldCreation": true
         },
         "liveMessageSettings": {
             "enableLiveMessage": true
+        },
+        "omniChannelSettings": {
+            "enableOmniChannel": true,
+            "enableOmniSkillsRouting": true,
+            "enableOmniSecondaryRoutingPriority": true
         },
         "searchSettings": {
             "enableEinsteinSearchEs4kPilot": false,

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionCalls>
         <name>Close_workspace_tab</name>
         <label>Close workspace tab</label>
@@ -10,6 +9,7 @@
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <nameSegment>c:fcTabCloser</nameSegment>
+        <offset>0</offset>
         <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>52.0</apiVersion>
@@ -247,11 +247,12 @@
             <label>BTO</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <dynamicChoiceSets>
         <name>STO_Category_Picklist</name>
         <dataType>Picklist</dataType>
-        <displayField xsi:nil="true" />
-        <object xsi:nil="true" />
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
         <picklistField>STO_Category__c</picklistField>
         <picklistObject>Case</picklistObject>
     </dynamicChoiceSets>
@@ -268,8 +269,8 @@
         <dataType>String</dataType>
         <expression>{!Chosen_Queue}</expression>
     </formulas>
-    <interviewLabel>Case STO Put Back {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Case STO Put Back</label>
+    <interviewLabel>HOT Case Put Back {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Put Back</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -391,6 +392,7 @@
                     <dataType>String</dataType>
                     <defaultSelectedChoiceReference>Wrong_Queue</defaultSelectedChoiceReference>
                     <fieldType>RadioButtons</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                 </fields>
                 <inputParameters>
@@ -408,6 +410,7 @@
                     <name>Put_Back_Reason_Input</name>
                     <fieldText>Årsak</fieldText>
                     <fieldType>LargeTextArea</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>
@@ -426,6 +429,7 @@
                     <dataType>String</dataType>
                     <fieldText>Velg temagruppe</fieldText>
                     <fieldType>DropdownBox</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>

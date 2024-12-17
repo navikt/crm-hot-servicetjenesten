@@ -74,6 +74,7 @@
             <label>In Queue</label>
         </rules>
     </decisions>
+    <description>STO Servicetjenesten</description>
     <dynamicChoiceSets>
         <name>STO_Categories</name>
         <dataType>Picklist</dataType>
@@ -88,8 +89,8 @@
         <dataType>String</dataType>
         <expression>{!STO_Category_Picklist}</expression>
     </formulas>
-    <interviewLabel>HOT STO Case Transfer {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT STO Case Transfer</label>
+    <interviewLabel>HOT Case Transfer {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Transfer</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

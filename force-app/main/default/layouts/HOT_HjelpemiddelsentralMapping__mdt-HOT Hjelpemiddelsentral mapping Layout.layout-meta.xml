@@ -26,6 +26,10 @@
                 <behavior>Required</behavior>
                 <field>Hjelpemiddelsentral_name__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Edit</behavior>
+                <field>NAVurl__c</field>
+            </layoutItems>
         </layoutColumns>
         <layoutColumns>
             <layoutItems>
