@@ -1,6 +1,66 @@
-@IsTest
-public class HOT_UTIL_TestDataFactory {
-    // Class for creating test data
+@isTest
+public class HOT_ST_TestDataFactory {
+    public static Case createCase(String lastname) {
+        Account a = [SELECT Id FROM Account WHERE LastName = :lastname];
+        Case c = new Case(AccountId = a.Id, Status = 'New', Origin = 'Web');
+        insert c;
+        return c;
+    }
+
+    public static List<Person__c> createPersons(Integer amount) {
+        List<Person__c> persons = new List<Person__c>();
+        for (Integer i = 0; i < amount; i++) {
+            Person__c p = new Person__c(
+                Name = '1234567890' + i,
+                INT_MunicipalityNumber__c = '0301',
+                INT_LastName__c = 'Test' + i,
+                INT_Confidential__c = 'UGRADERT',
+                INT_MaritalStatus__c = 'UOPPGITT'
+            );
+            persons.add(p);
+        }
+        insert persons;
+        Integer i = 1;
+        for (Person__c p : persons) {
+            createPersonAccount(i, p);
+            i++;
+        }
+        return persons;
+    }
+
+    public static void createPersonAccount(Integer i, Person__c p) {
+        String personAccountRecordType = Schema.getGlobalDescribe()
+            .get('Account')
+            .getDescribe()
+            .getRecordTypeInfosByDeveloperName()
+            .get('PersonAccount')
+            .getRecordTypeId();
+        Account acc = new Account(
+            FirstName = 'Harry',
+            LastName = 'Potter',
+            INT_PersonIdent__c = '1234567890' + i,
+            RecordTypeId = personAccountRecordType,
+            CRM_Person__c = p.Id
+        );
+        insert acc;
+    }
+
+    public static List<LiveChatTranscript> createLiveChatTranscripts(Integer amount) {
+        LiveChatVisitor v = HOT_ST_TestDataFactory.createLiveChatVisitor();
+        List<LiveChatTranscript> liveChatTranscripts = new List<LiveChatTranscript>();
+        for (Integer i = 0; i < amount; i++) {
+            LiveChatTranscript lct = new LiveChatTranscript(LiveChatVisitorId = v.Id);
+            liveChatTranscripts.add(lct);
+        }
+        insert liveChatTranscripts;
+        return liveChatTranscripts;
+    }
+    public static LiveChatVisitor createLiveChatVisitor() {
+        LiveChatVisitor visitor = new LiveChatVisitor();
+        insert visitor;
+        return visitor;
+    }
+
     /* This method is used for creating a record. The record is inserted before it's returned,
      * and default fields are populated.
      * @param record [sObject: the record]
@@ -167,7 +227,7 @@ public class HOT_UTIL_TestDataFactory {
         String objectName = String.valueOf(record.getSObjectType());
         String namespacePrefix = '';
         String className =
-            'UTIL_TestDataFactory.' +
+            'HOT_ST_TestDataFactory.' +
             objectName.replaceAll('__c|__|_|' + namespacePrefix, '') +
             'Defaults';
         return Type.forName(className);
@@ -273,6 +333,7 @@ public class HOT_UTIL_TestDataFactory {
             return new Map<String, Object>{
                 'FirstName' => 'Test',
                 'LastName' => 'Testesen' + generateRandomString(6),
+                'Username' => generateRandomString(8) + '@test.com',
                 'LanguageLocaleKey' => 'no',
                 'TimeZoneSidKey' => 'Europe/Paris',
                 'LocaleSidKey' => 'no_NO',
@@ -298,6 +359,19 @@ public class HOT_UTIL_TestDataFactory {
         }
         public Map<String, Object> getFieldDefaults(Boolean bulkify) {
             return new Map<String, Object>{ 'FirstName' => 'Test', 'LastName' => 'Testesen' };
+        }
+        public Map<String, String> getDmlFields() {
+            return new Map<String, String>{};
+            //No dml fields
+        }
+    }
+
+    public class EntitlementDefaults implements FieldDefaults {
+        public Map<String, Object> getFieldDefaults() {
+            return getFieldDefaults(false);
+        }
+        public Map<String, Object> getFieldDefaults(Boolean bulkify) {
+            return new Map<String, Object>{ 'Name' => 'STO Entitlement' };
         }
         public Map<String, String> getDmlFields() {
             return new Map<String, String>{};
