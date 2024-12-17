@@ -518,7 +518,22 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_Id</assignToReference>
+                <name>subtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtype_SF_Id</assignToReference>
+                <name>subtype</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Groupe_SF_Id</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>theme</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Task_Type_Selector_1</name>
@@ -580,7 +595,14 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Assigned_Resource</assignToReference>
+                <name>assignedResource</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Id</assignToReference>
+                <name>selectedUnitId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -680,7 +702,22 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_Id</assignToReference>
+                <name>subtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtype_SF_Id</assignToReference>
+                <name>subtype</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Groupe_SF_Id</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>theme</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Task_Type_Selector</name>
@@ -720,6 +757,33 @@
             <fieldType>LargeTextArea</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Work_Allocation</name>
+            <extensionName>c:crmNavTaskWorkAllocation</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>personId</name>
+                <value>
+                    <elementReference>Get_Thread.CRM_Account__r.CRM_Person__r.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>disableConditionalRendering</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>Selected_Assigned_Resource</assignToReference>
+                <name>assignedResource</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Id</assignToReference>
+                <name>selectedUnitId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
