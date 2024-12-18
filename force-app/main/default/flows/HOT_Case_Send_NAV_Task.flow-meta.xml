@@ -155,10 +155,10 @@
         <locationX>864</locationX>
         <locationY>458</locationY>
         <assignmentItems>
-            <assignToReference>NAVTask.CRM_Comments__c</assignToReference>
+            <assignToReference>NAVTask.NKS_Comments__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Oppgave_til_NAV_enhet</elementReference>
+                <elementReference>Oppgave_til_NAV_enhet_1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -186,7 +186,7 @@
             <assignToReference>NAVTask.CRM_Priority__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Priority</elementReference>
+                <elementReference>Prioritet_1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -740,7 +740,7 @@
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
-            <name>Task_Priority</name>
+            <name>Prioritet_1</name>
             <choiceReferences>Priority_Picklist</choiceReferences>
             <dataType>String</dataType>
             <defaultValue>
@@ -752,7 +752,7 @@
             <isRequired>true</isRequired>
         </fields>
         <fields>
-            <name>Task_Description</name>
+            <name>Oppgave_til_NAV_enhet_1</name>
             <fieldText>Oppgave til NAV-enhet</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
