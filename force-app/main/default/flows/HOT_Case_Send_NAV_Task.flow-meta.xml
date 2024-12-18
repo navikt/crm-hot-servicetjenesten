@@ -83,7 +83,7 @@
             <assignToReference>NAVTask.NKS_TaskType__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Type_Selector_1.selectedTaskTypeId</elementReference>
+                <elementReference>Selected_Task_Type_Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -97,14 +97,14 @@
             <assignToReference>NAVTask.CRM_Account__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Case.Account.Id</elementReference>
+                <elementReference>Get_Case.AccountId</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NAVTask.Name</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Theme_Code</elementReference>
+                <elementReference>Task_Name</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -228,7 +228,14 @@
             <assignToReference>NAVTask.NKS_TaskType__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Type_Selector_1.selectedTaskTypeId</elementReference>
+                <elementReference>Selected_Task_Type_Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NAVTask.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Task_Name</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -347,6 +354,13 @@
         <picklistObject>NavTask__c</picklistObject>
     </dynamicChoiceSets>
     <environments>Default</environments>
+    <formulas>
+        <name>Task_Name</name>
+        <dataType>String</dataType>
+        <expression>Case({!Selected_Task_Type}, &apos;KONT_BRUK&apos;,
+            &apos;Kontakt bruker&apos;, &apos;VURD_HENV&apos;, &apos;Vurder henvendelse&apos;,
+            &apos;Vurder konsekvens for ytelse&apos;)</expression>
+    </formulas>
     <formulas>
         <name>Task_Theme_Code</name>
         <dataType>String</dataType>
@@ -553,7 +567,14 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type</assignToReference>
+                <name>selectedTaskType</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type_Id</assignToReference>
+                <name>selectedTaskTypeId</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Prioritet</name>
@@ -737,7 +758,14 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type</assignToReference>
+                <name>selectedTaskType</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type_Id</assignToReference>
+                <name>selectedTaskTypeId</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Prioritet_1</name>
@@ -902,6 +930,20 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Task_Type</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Task_Type_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>
