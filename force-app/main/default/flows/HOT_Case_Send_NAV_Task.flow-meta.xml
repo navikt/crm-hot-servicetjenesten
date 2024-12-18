@@ -155,7 +155,7 @@
         <locationX>864</locationX>
         <locationY>458</locationY>
         <assignmentItems>
-            <assignToReference>NAVTask.CRM_Comments__c</assignToReference>
+            <assignToReference>NAVTask.NKS_Comments__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Oppgave_til_NAV_enhet_1</elementReference>
