@@ -1,4 +1,4 @@
-public without sharing class HOT_ST_UserHandler {
+public without sharing class HOT_ST_UserHandler extends MyTriggers {
     //Skal opprettes en tjenesteressurs når bruker opprettes.
     public override void onAfterInsert() {
         List<Profile> profiles = [SELECT Id FROM Profile WHERE Name = 'HOT Servicetjenesten'];
