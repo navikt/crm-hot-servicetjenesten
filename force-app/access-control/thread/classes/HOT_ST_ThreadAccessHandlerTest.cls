@@ -37,6 +37,30 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
+    private static void revokeAccessWhenOnCategoryChange() {
+        Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+
+        Thread__c thread = new Thread__c(
+            CRM_Account__c = accountId,
+            CRM_Thread_Type__c = 'STO',
+            STO_Category__c = 'Hjelpemidler'
+        );
+        insert thread;
+
+        Test.startTest();
+        thread.STO_Category__c = 'Arbeid';
+        update thread;
+        Test.stopTest();
+
+        System.assertEquals(
+            0,
+            [SELECT COUNT() FROM Thread__Share WHERE RowCause = 'Manual' AND UserOrGroupId = :groupId],
+            'Expected thread to be not shared with group 410011'
+        );
+    }
+
+    @IsTest
     private static void grantAccess_whenFortrolig() {
         Person__c person = TestDataFactory.getPersons(1, false)[0];
         person.INT_Confidential__c = 'FORTROLIG';

@@ -55,6 +55,7 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
         insert person;
         Id accountId = [SELECT Id FROM Account WHERE CRM_Person__c = :person.Id LIMIT 1].Id;
         Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+        Id groupSkjermetId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET LIMIT 1].Id;
 
         Thread__c thread = new Thread__c(
             CRM_Account__c = accountId,

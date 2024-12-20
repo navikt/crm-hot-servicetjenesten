@@ -1,24 +1,35 @@
 global class HOT_ST_ThreadAccessHandler extends MyTriggers {
     private static final List<String> threadTypesOfInterest = new List<String>{ 'STO', 'STB', 'BTO' };
-
+    private static final List<String> categoryOfInterest = new List<String>{ 'Hjelpemidler' };
     /**
      * @description On update of Thread record, share it with Servicetjenesten.
      * This trigger fires after trigger from NKS, so we do not need to delete other shares
      * @param triggerOldMap `Map<Id, sObject>`
      */
     global override void onAfterUpdate(Map<Id, sObject> triggerOldMap) {
-        List<String> fieldNamesToCheck = new List<String>{ 'STO_Category__c' };
+        List<String> fieldNamesToCheck = new List<String>{ 'STO_Category__c', 'CRM_Theme__c' };
         List<Thread__c> threadsWithNewSharing = new List<Thread__c>();
+        List<Id> threadIdsToRevokeSharing = new List<Id>();
 
         for (Thread__c thread : (List<Thread__c>) records) {
+            if (!threadTypesOfInterest.contains(thread.CRM_Thread_Type__c)) {
+                continue;
+            }
             if (
-                threadTypesOfInterest.contains(thread.CRM_Thread_Type__c) &&
-                MyTriggers.hasChangedFields(fieldNamesToCheck, thread, triggerOldMap.get(thread.Id))
+                categoryOfInterest.contains(thread.STO_Category__c) &&
+                MyTriggers.hasChangedFields(new List<String>{ 'CRM_Theme__c' }, thread, triggerOldMap.get(thread.Id))
             ) {
                 threadsWithNewSharing.add(thread);
+            } else if (
+                categoryOfInterest.contains(((Thread__c) triggerOldMap.get(thread.Id)).STO_Category__c) &&
+                !categoryOfInterest.contains(thread.STO_Category__c)
+            ) {
+                threadIdsToRevokeSharing.add(thread.Id);
             }
         }
-
+        if (threadIdsToRevokeSharing.size() > 0) {
+            new HOT_ST_ThreadAccessService().revokeAccess(threadIdsToRevokeSharing);
+        }
         if (threadsWithNewSharing.size() > 0) {
             new HOT_ST_ThreadAccessService().grantAccess(threadsWithNewSharing, getPersons(threadsWithNewSharing));
         }
