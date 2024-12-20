@@ -1,14 +1,14 @@
 echo "Hei på deg. Oppretter scratch org for deg"
 call sf org create scratch --definition-file config\project-scratch-def.json --alias %1 --duration-days %2 --set-default --json --wait 30
 
-echo "Installerer crm-platform-base ver. 0.246"
-call sf package install --package 04tKB000000Y6LaYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-platform-base ver. 0.247"
+call sf package install --package 04tKB000000Y6N2YAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-flowComponents ver. 0.4"
 call sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-henvendelse-base ver. 0.24"
-call sf package install --package 04tKB000000Y6BxYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-henvendelse-base ver. 0.26"
+call sf package install --package 04tKB000000Y6NqYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-journal-utilities ver. 0.40"
 call sf package install --package 04tKB000000Y65FYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
@@ -22,8 +22,8 @@ call sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-
 echo "Installerer crm-platform-oppgave ver. 0.63"
 call sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-platform-access-control ver. 0.143"
-call sf package install --package 04tKB000000Y6KwYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-platform-access-control ver. 0.144"
+call sf package install --package 04tKB000000Y6MEYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-community-base ver. 0.119"
 call sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30

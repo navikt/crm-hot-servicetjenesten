@@ -4,10 +4,10 @@
 (set -x; sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30 2>/dev/null)
 
 PACKAGES=( 
-    "crm-platform-base:0.246.0"
-    "crm-platform-access-control:0.143.0"
+    "crm-platform-base:0.247.0"
+    "crm-platform-access-control:0.144.0"
     "crm-shared-flowComponents:0.4.0"
-    "crm-henvendelse-base:0.24.0"
+    "crm-henvendelse-base:0.26.0"
     "crm-platform-integration:0.142.0"
     "crm-platform-oppgave:0.63.0"
     "crm-community-base:0.119.0"
