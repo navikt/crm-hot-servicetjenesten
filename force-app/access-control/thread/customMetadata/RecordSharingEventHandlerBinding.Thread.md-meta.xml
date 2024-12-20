@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>HOT ST Thread</label>
+    <protected>false</protected>
+    <values>
+        <field>ApexClass__c</field>
+        <value xsi:type="xsd:string">HOT_ST_ThreadSharingEventHandler</value>
+    </values>
+    <values>
+        <field>ObjectType__c</field>
+        <value xsi:type="xsd:string">HOT_ST_Thread__c</value>
+    </values>
+</CustomMetadata>

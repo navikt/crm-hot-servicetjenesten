@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>HOT_ST_Thread_Veiledere</label>
+    <protected>false</protected>
+    <values>
+        <field>Field1__c</field>
+        <value xsi:type="xsd:string">Confidential</value>
+    </values>
+    <values>
+        <field>Field2__c</field>
+        <value xsi:type="xsd:string">Is Nav Employee</value>
+    </values>
+    <values>
+        <field>Field3__c</field>
+        <value xsi:type="xsd:string">Office Restriction</value>
+    </values>
+    <values>
+        <field>Field4__c</field>
+        <value xsi:type="xsd:string">Category</value>
+    </values>
+    <values>
+        <field>Field5__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Field6__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>FilterLogic__c</field>
+        <value xsi:type="xsd:string">1 AND 2 AND 3</value>
+    </values>
+    <values>
+        <field>Operator1__c</field>
+        <value xsi:type="xsd:string">equals</value>
+    </values>
+    <values>
+        <field>Operator2__c</field>
+        <value xsi:type="xsd:string">equals</value>
+    </values>
+    <values>
+        <field>Operator3__c</field>
+        <value xsi:type="xsd:string">equals</value>
+    </values>
+    <values>
+        <field>Operator4__c</field>
+        <value xsi:type="xsd:string">equals</value>
+    </values>
+    <values>
+        <field>Operator5__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Operator6__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Order__c</field>
+        <value xsi:type="xsd:double">2.0</value>
+    </values>
+    <values>
+        <field>ThemeGroupPrefix__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>UnitNumber__c</field>
+        <value xsi:type="xsd:string">470011</value>
+    </values>
+    <values>
+        <field>Values1__c</field>
+        <value xsi:type="xsd:string">UGRADERT</value>
+    </values>
+    <values>
+        <field>Values2__c</field>
+        <value xsi:type="xsd:string">FALSE</value>
+    </values>
+    <values>
+        <field>Values3__c</field>
+        <value xsi:type="xsd:string">FALSE</value>
+    </values>
+    <values>
+        <field>Values4__c</field>
+        <value xsi:type="xsd:string">Hjelpemidler</value>
+    </values>
+    <values>
+        <field>Values5__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>Values6__c</field>
+        <value xsi:nil="true"/>
+    </values>
+    <values>
+        <field>sObjectType__c</field>
+        <value xsi:type="xsd:string">Thread__c</value>
+    </values>
+</CustomMetadata>
