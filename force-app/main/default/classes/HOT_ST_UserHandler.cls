@@ -17,14 +17,17 @@ public without sharing class HOT_ST_UserHandler extends MyTriggers {
     }
 
     public override void onAfterUpdate(Map<Id, sObject> triggerOldMap) {
-        List<Profile> ansattProfile = [SELECT Id, Name FROM Profile WHERE Name = 'HOT Servicetjenesten'];
+        List<Profile> servicetjenestenProfile = [SELECT Id, Name FROM Profile WHERE Name = 'HOT Servicetjenesten'];
         Set<Id> usersWithChangedProfile = new Set<Id>();
 
-        if (!ansattProfile.isEmpty()) {
+        if (!servicetjenestenProfile.isEmpty()) {
             for (User user : (List<User>) records) {
                 User oldUser = (User) triggerOldMap.get(user.Id);
 
-                if (oldUser.ProfileId != ansattProfile[0].Id && user.ProfileId == ansattProfile[0].Id) {
+                if (
+                    oldUser.ProfileId != servicetjenestenProfile[0].Id &&
+                    user.ProfileId == servicetjenestenProfile[0].Id
+                ) {
                     usersWithChangedProfile.add(user.Id);
                 }
             }
