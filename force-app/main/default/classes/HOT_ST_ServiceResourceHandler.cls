@@ -14,7 +14,7 @@ public without sharing class HOT_ST_ServiceResourceHandler {
         List<Skill> skills = [
             SELECT Id, MasterLabel
             FROM Skill
-            WHERE MasterLabel = 'STO' OR MasterLabel = 'Hjelpemidler'
+            WHERE MasterLabel = 'STO' OR MasterLabel = 'Hjelpemidler' OR MasterLabel = 'BTO'
         ];
         return skills;
     }
