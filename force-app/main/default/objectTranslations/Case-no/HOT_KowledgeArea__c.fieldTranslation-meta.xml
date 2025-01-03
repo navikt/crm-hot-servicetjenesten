@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Område</label>
+    <name>HOT_KowledgeArea__c</name>
+    <picklistValues>
+        <masterLabel>Annet</masterLabel>
+        <translation><!-- Annet --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Oversettelser</masterLabel>
+        <translation><!-- Oversettelser --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Personbruker</masterLabel>
+        <translation><!-- Personbruker --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>Samarbeidspartnere</masterLabel>
+        <translation><!-- Samarbeidspartnere --></translation>
+    </picklistValues>
+</CustomFieldTranslation>
