@@ -149,6 +149,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CRM_In_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.CRM_Run_Case_Assignment__c</field>
         <readable>true</readable>
@@ -179,8 +184,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CRM_In_Queue__c</field>
+        <editable>true</editable>
+        <field>Case.HOT_KowledgeArea__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
