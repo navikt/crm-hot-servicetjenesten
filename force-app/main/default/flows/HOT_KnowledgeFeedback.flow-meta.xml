@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <apiVersion>51.0</apiVersion>
     <assignments>
         <name>Assign_feedback</name>
@@ -61,8 +62,8 @@
     <dynamicChoiceSets>
         <name>Area</name>
         <dataType>Picklist</dataType>
-        <displayField xsi:nil="true"/>
-        <object xsi:nil="true"/>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
         <picklistField>HOT_KowledgeArea__c</picklistField>
         <picklistObject>Case</picklistObject>
     </dynamicChoiceSets>
