@@ -22,13 +22,15 @@ global class HOT_ST_ThreadPersonAccessHandler extends MyTriggers {
         }
 
         List<Thread__c> threads = getThreadsFromPersonIds(personIdsWithNewSharing);
-        Set<Id> threadIds = new Set<Id>();
+        List<Id> threadIds = new List<Id>();
         for (Thread__c thread : threads) {
             threadIds.add(thread.Id);
         }
 
         if (personIdsWithNewSharing.size() > 0) {
-            new HOT_ST_ThreadAccessService().grantAccess(threads, records);
+            HOT_ST_ThreadAccessService threadAccessService = new HOT_ST_ThreadAccessService();
+            threadAccessService.revokeAccess(threadIds);
+            threadAccessService.grantAccess(threads, records);
         }
     }
 
