@@ -1,16 +1,7 @@
 @IsTest
 private class HOT_ST_ThreadPersonAccessHandlerTest {
-    private static String SERVICETJENESTEN_VEILEDERE = 'group_470011';
-    private static String SERVICETJENESTEN_FORTROLIG = 'group_470012';
-    private static String SERVICETJENESTEN_SKJERMET = 'group_470013';
-    private static String SERVICETJENESTEN_FORTROLIG_SKJERMET = 'group_470014';
     @TestSetup
     private static void makeData() {
-        TestDataFactory.getPublicGroup('Veileder', SERVICETJENESTEN_VEILEDERE);
-        TestDataFactory.getPublicGroup('Fortrolig Adresse', SERVICETJENESTEN_FORTROLIG);
-        TestDataFactory.getPublicGroup('Skjermet', SERVICETJENESTEN_SKJERMET);
-        TestDataFactory.getPublicGroup('Fortrolig Skjermet', SERVICETJENESTEN_FORTROLIG_SKJERMET);
-
         List<Person__c> personsToInsert = TestDataFactory.getPersons(4, false);
 
         personsToInsert[0].INT_Confidential__c = 'UGRADERT';
@@ -63,8 +54,20 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
             LIMIT 1
         ];
 
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
-        Id groupSkjermetId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
+        Id groupSkjermetId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
+            LIMIT 1
+        ]
+        .Id;
         Thread__c thread = [SELECT Id FROM Thread__c WHERE CRM_Account__c = :person.CRM_Account__c LIMIT 1][0];
 
         System.assertEquals(
@@ -123,8 +126,20 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
             LIMIT 1
         ];
 
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
-        Id groupSkjermetId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
+        Id groupSkjermetId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
+            LIMIT 1
+        ]
+        .Id;
 
         Thread__c thread = [SELECT Id FROM Thread__c WHERE CRM_Account__c = :person.CRM_Account__c LIMIT 1];
 
@@ -191,19 +206,31 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
             LIMIT 1
         ];
 
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
-        Id groupSkjermetId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
+        Id groupSkjermetId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
+            LIMIT 1
+        ]
+        .Id;
         Id fortroligGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG
             LIMIT 1
         ]
         .Id;
         Id fortroligSkjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG_SKJERMET
             LIMIT 1
         ]
         .Id;
@@ -314,28 +341,28 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
         Id veilederGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
             LIMIT 1
         ]
         .Id;
         Id skjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
             LIMIT 1
         ]
         .Id;
         Id fortroligGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG
             LIMIT 1
         ]
         .Id;
         Id fortroligSkjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG_SKJERMET
             LIMIT 1
         ]
         .Id;
@@ -402,28 +429,28 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
         Id veilederGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
             LIMIT 1
         ]
         .Id;
         Id skjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
             LIMIT 1
         ]
         .Id;
         Id fortroligGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG
             LIMIT 1
         ]
         .Id;
         Id fortroligSkjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG_SKJERMET
             LIMIT 1
         ]
         .Id;

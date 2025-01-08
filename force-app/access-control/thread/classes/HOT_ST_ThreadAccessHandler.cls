@@ -1,6 +1,6 @@
 global class HOT_ST_ThreadAccessHandler extends MyTriggers {
-    private static final List<String> threadTypesOfInterest = new List<String>{ 'STO', 'STB', 'BTO' };
-    private static final List<String> categoryOfInterest = new List<String>{ 'Hjelpemidler' };
+    private static final List<String> THREAD_TYPES_OF_INTEREST = new List<String>{ 'STO', 'STB', 'BTO' };
+    private static final List<String> CATEGORY_OF_INTEREST = new List<String>{ 'Hjelpemidler' };
     /**
      * @description On update of Thread record, share it with Servicetjenesten.
      * This trigger fires after trigger from NKS, so we do not need to delete other shares
@@ -12,17 +12,17 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
         List<Id> threadIdsToRevokeSharing = new List<Id>();
 
         for (Thread__c thread : (List<Thread__c>) records) {
-            if (!threadTypesOfInterest.contains(thread.CRM_Thread_Type__c)) {
+            if (!THREAD_TYPES_OF_INTEREST.contains(thread.CRM_Thread_Type__c)) {
                 continue;
             }
             if (
-                categoryOfInterest.contains(thread.STO_Category__c) &&
+                CATEGORY_OF_INTEREST.contains(thread.STO_Category__c) &&
                 MyTriggers.hasChangedFields(fieldNamesToCheck, thread, triggerOldMap.get(thread.Id))
             ) {
                 threadsWithNewSharing.add(thread);
             } else if (
-                categoryOfInterest.contains(((Thread__c) triggerOldMap.get(thread.Id)).STO_Category__c) &&
-                !categoryOfInterest.contains(thread.STO_Category__c)
+                CATEGORY_OF_INTEREST.contains(((Thread__c) triggerOldMap.get(thread.Id)).STO_Category__c) &&
+                !CATEGORY_OF_INTEREST.contains(thread.STO_Category__c)
             ) {
                 threadIdsToRevokeSharing.add(thread.Id);
             }
@@ -41,8 +41,8 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
 
         for (Thread__c thread : (List<Thread__c>) records) {
             if (
-                threadTypesOfInterest.contains(thread.CRM_Thread_Type__c) &&
-                categoryOfInterest.contains(thread.STO_Category__c)
+                THREAD_TYPES_OF_INTEREST.contains(thread.CRM_Thread_Type__c) &&
+                CATEGORY_OF_INTEREST.contains(thread.STO_Category__c)
             ) {
                 RecordSharingEvent__e event = new RecordSharingEvent__e();
                 event.RecordId__c = thread.Id;

@@ -1,9 +1,5 @@
 @IsTest
 private class HOT_ST_ThreadAccessHandlerTest {
-    private static String SERVICETJENESTEN_VEILEDERE = 'group_470011';
-    private static String SERVICETJENESTEN_FORTROLIG = 'group_470012';
-    private static String SERVICETJENESTEN_SKJERMET = 'group_470013';
-    private static String SERVICETJENESTEN_FORTROLIG_SKJERMET = 'group_470014';
     @TestSetup
     static void makeData() {
         //we don't want person trigger access handlers to be run on test data insert
@@ -18,7 +14,13 @@ private class HOT_ST_ThreadAccessHandlerTest {
     @IsTest
     private static void grantAccessWhenUgradertAndNotNavEmployee() {
         Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
 
         Test.startTest();
         Thread__c thread = new Thread__c(
@@ -39,7 +41,13 @@ private class HOT_ST_ThreadAccessHandlerTest {
     @IsTest
     private static void grantAccessOnCategoryChange() {
         Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
 
         Thread__c thread = new Thread__c(
             CRM_Account__c = accountId,
@@ -70,7 +78,13 @@ private class HOT_ST_ThreadAccessHandlerTest {
     @IsTest
     private static void revokeAccessWhenOnCategoryChange() {
         Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
-        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+        Id groupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
+            LIMIT 1
+        ]
+        .Id;
 
         Thread__c thread = new Thread__c(
             CRM_Account__c = accountId,
@@ -106,11 +120,17 @@ private class HOT_ST_ThreadAccessHandlerTest {
         Id veiledereGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
             LIMIT 1
         ]
         .Id;
-        Id code7GroupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG LIMIT 1].Id;
+        Id code7GroupId = [
+            SELECT Id
+            FROM Group
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG
+            LIMIT 1
+        ]
+        .Id;
 
         Test.startTest();
         Thread__c thread = new Thread__c(
@@ -144,14 +164,14 @@ private class HOT_ST_ThreadAccessHandlerTest {
         Id veiledereGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
             LIMIT 1
         ]
         .Id;
         Id skjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
             LIMIT 1
         ]
         .Id;
@@ -187,28 +207,28 @@ private class HOT_ST_ThreadAccessHandlerTest {
         Id veiledereGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_VEILEDERE
             LIMIT 1
         ]
         .Id;
         Id skjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_SKJERMET
             LIMIT 1
         ]
         .Id;
         Id fortroligGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG
             LIMIT 1
         ]
         .Id;
         Id fortroligSkjermetGroupId = [
             SELECT Id
             FROM Group
-            WHERE DeveloperName = :SERVICETJENESTEN_FORTROLIG_SKJERMET
+            WHERE DeveloperName = :HOT_ST_ThreadAccessService.SERVICETJENESTEN_FORTROLIG_SKJERMET
             LIMIT 1
         ]
         .Id;

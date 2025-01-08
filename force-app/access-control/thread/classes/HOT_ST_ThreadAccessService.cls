@@ -1,13 +1,20 @@
 public without sharing class HOT_ST_ThreadAccessService {
-    private final Integer numberOfRetries = 1;
-    public static final Set<String> HOT_ST_GroupDeveloperName = new Set<String>{
-        'group_470011',
-        'group_470012',
-        'group_470013',
-        'group_470014'
+    public static final String SERVICETJENESTEN_VEILEDERE = 'group_470011';
+    public static final String SERVICETJENESTEN_FORTROLIG = 'group_470012';
+    public static final String SERVICETJENESTEN_SKJERMET = 'group_470013';
+    public static final String SERVICETJENESTEN_FORTROLIG_SKJERMET = 'group_470014';
+    public static final Integer NUMBER_OF_RETRIES = 1;
+    public static final Set<String> HOT_ST_GROUP_DEVELOPER_NAME = new Set<String>{
+        SERVICETJENESTEN_VEILEDERE,
+        SERVICETJENESTEN_FORTROLIG,
+        SERVICETJENESTEN_SKJERMET,
+        SERVICETJENESTEN_FORTROLIG_SKJERMET
     };
 
-    // Updates access rights for threads
+    /**
+     * @description Updates access rights for threads based on person access rights
+     * @param  {List<Thread__c>} threads List of threads to update access rights for
+     */
     public void grantAccess(List<Thread__c> threads, List<Person__c> persons) {
         List<SobjectWrapper> sobjects = new List<SobjectWrapper>();
         Map<Id, Person__c> personByThreadId = getPersonByThreadId(threads, persons);
@@ -32,7 +39,7 @@ public without sharing class HOT_ST_ThreadAccessService {
             List<ShareWrapper> shareWrappers = RecordShareService.grantAccess(sobjects, 'Thread__c');
             for (ShareWrapper share : shareWrappers) {
                 //filter out non-servicetjeneste shares
-                if (!HOT_ST_GroupDeveloperName.contains(share.publicGroupDeveloperName)) {
+                if (!HOT_ST_GROUP_DEVELOPER_NAME.contains(share.publicGroupDeveloperName)) {
                     continue;
                 }
                 Thread__Share threadShare = new Thread__Share();
@@ -44,7 +51,7 @@ public without sharing class HOT_ST_ThreadAccessService {
                 shareRecords.add(threadShare);
             }
             new CRM_DatabaseOperations()
-                .setNumberOfRetries(1)
+                .setNumberOfRetries(NUMBER_OF_RETRIES)
                 .setDomain(CRM_ApplicationDomain.Domain.HOT)
                 .insertRecords(shareRecords);
         }
@@ -52,6 +59,7 @@ public without sharing class HOT_ST_ThreadAccessService {
 
     /**
      * @description Revoke servicetjeneste access rights for threads
+     * @param  {List<Id>} threadsIds List of thread ids to revoke access rights for
      */
     public void revokeAccess(List<Id> threadsIds) {
         List<Thread__Share> toDelete = [
@@ -60,10 +68,10 @@ public without sharing class HOT_ST_ThreadAccessService {
             WHERE
                 RowCause = 'Manual'
                 AND ParentId IN :threadsIds
-                AND UserOrGroupId IN (SELECT Id FROM Group WHERE DeveloperName IN :HOT_ST_GroupDeveloperName)
+                AND UserOrGroupId IN (SELECT Id FROM Group WHERE DeveloperName IN :HOT_ST_GROUP_DEVELOPER_NAME)
         ];
         new CRM_DatabaseOperations()
-            .setNumberOfRetries(numberOfRetries)
+            .setNumberOfRetries(NUMBER_OF_RETRIES)
             .setDomain(CRM_ApplicationDomain.Domain.HOT)
             .deleteRecords(toDelete);
     }

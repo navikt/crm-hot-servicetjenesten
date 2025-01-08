@@ -1,5 +1,5 @@
 global class HOT_ST_ThreadPersonAccessHandler extends MyTriggers {
-    private static final List<String> threadTypesOfInterest = new List<String>{ 'STO', 'STB', 'BTO' };
+    private static final List<String> THREAD_TYPES_OF_INTEREST = new List<String>{ 'STO', 'STB', 'BTO' };
 
     /**
      * @description trigger to add thread shares on change of restrictions field
@@ -44,7 +44,7 @@ global class HOT_ST_ThreadPersonAccessHandler extends MyTriggers {
                 CRM_Theme_Code__c,
                 STO_Category__c
             FROM Thread__c
-            WHERE CRM_Account__r.CRM_Person__c IN :personIds AND CRM_Thread_Type__c IN :threadTypesOfInterest
+            WHERE CRM_Account__r.CRM_Person__c IN :personIds AND CRM_Thread_Type__c IN :THREAD_TYPES_OF_INTEREST
         ];
     }
 }
