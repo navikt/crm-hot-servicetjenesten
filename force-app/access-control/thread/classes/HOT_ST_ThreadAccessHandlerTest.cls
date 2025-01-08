@@ -16,7 +16,7 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
-    private static void grantAccess_whenUgradertAndNotNavEmployee() {
+    private static void grantAccessWhenUgradertAndNotNavEmployee() {
         Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
         Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
 
@@ -37,6 +37,37 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
+    private static void grantAccessOnCategoryChange() {
+        Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
+        Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
+
+        Thread__c thread = new Thread__c(
+            CRM_Account__c = accountId,
+            CRM_Thread_Type__c = 'STO',
+            STO_Category__c = 'Arbeid'
+        );
+        insert thread;
+        Test.getEventBus().deliver();
+
+        System.assertEquals(
+            0,
+            [SELECT COUNT() FROM Thread__Share WHERE RowCause = 'Manual' AND UserOrGroupId = :groupId],
+            'Expected thread not to be shared with group 410011'
+        );
+
+        Test.startTest();
+        thread.STO_Category__c = 'Hjelpemidler';
+        update thread;
+        Test.stopTest();
+
+        System.assertEquals(
+            1,
+            [SELECT COUNT() FROM Thread__Share WHERE RowCause = 'Manual' AND UserOrGroupId = :groupId],
+            'Expected thread to be shared with group 410011'
+        );
+    }
+
+    @IsTest
     private static void revokeAccessWhenOnCategoryChange() {
         Id accountId = [SELECT Id FROM Account LIMIT 1].Id;
         Id groupId = [SELECT Id FROM Group WHERE DeveloperName = :SERVICETJENESTEN_VEILEDERE LIMIT 1].Id;
@@ -47,7 +78,12 @@ private class HOT_ST_ThreadAccessHandlerTest {
             STO_Category__c = 'Hjelpemidler'
         );
         insert thread;
-
+        Test.getEventBus().deliver();
+        System.assertEquals(
+            1,
+            [SELECT COUNT() FROM Thread__Share WHERE RowCause = 'Manual' AND UserOrGroupId = :groupId],
+            'Expected thread to be shared with group 410011'
+        );
         Test.startTest();
         thread.STO_Category__c = 'Arbeid';
         update thread;
@@ -61,7 +97,7 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
-    private static void grantAccess_whenFortrolig() {
+    private static void grantAccessWhenFortrolig() {
         Person__c person = TestDataFactory.getPersons(1, false)[0];
         person.INT_Confidential__c = 'FORTROLIG';
         person.INT_IsNavEmployee__c = false;
@@ -99,7 +135,7 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
-    private static void grantAccess_whenNavEmployee() {
+    private static void grantAccessWhenNavEmployee() {
         Person__c person = TestDataFactory.getPersons(1, false)[0];
         person.INT_Confidential__c = 'UGRADERT';
         person.INT_IsNavEmployee__c = true;
@@ -142,7 +178,7 @@ private class HOT_ST_ThreadAccessHandlerTest {
     }
 
     @IsTest
-    private static void grantAccess_whenConfEmployee() {
+    private static void grantAccessWhenConfEmployee() {
         Person__c person = TestDataFactory.getPersons(1, false)[0];
         person.INT_Confidential__c = 'FORTROLIG';
         person.INT_IsNavEmployee__c = true;

@@ -17,7 +17,7 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
             }
             if (
                 categoryOfInterest.contains(thread.STO_Category__c) &&
-                MyTriggers.hasChangedFields(new List<String>{ 'CRM_Theme__c' }, thread, triggerOldMap.get(thread.Id))
+                MyTriggers.hasChangedFields(fieldNamesToCheck, thread, triggerOldMap.get(thread.Id))
             ) {
                 threadsWithNewSharing.add(thread);
             } else if (
@@ -40,7 +40,10 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
         //run sharing in a platform event
 
         for (Thread__c thread : (List<Thread__c>) records) {
-            if (threadTypesOfInterest.contains(thread.CRM_Thread_Type__c)) {
+            if (
+                threadTypesOfInterest.contains(thread.CRM_Thread_Type__c) &&
+                categoryOfInterest.contains(thread.STO_Category__c)
+            ) {
                 RecordSharingEvent__e event = new RecordSharingEvent__e();
                 event.RecordId__c = thread.Id;
                 event.ObjectType__c = 'HOT_ST_Thread__c';
