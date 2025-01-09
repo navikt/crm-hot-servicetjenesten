@@ -3,9 +3,7 @@
     <fullName>HOT_AllFeedbackList</fullName>
     <columns>CASES.CASE_NUMBER</columns>
     <columns>KnowledgeArticle__c</columns>
-    <columns>Data_Categories__c</columns>
     <columns>CASES.STATUS</columns>
-    <columns>OWNER_NAME</columns>
     <columns>Assignee__c</columns>
     <filterScope>Everything</filterScope>
     <filters>
