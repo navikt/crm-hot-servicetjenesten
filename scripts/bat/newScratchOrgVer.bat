@@ -6,7 +6,7 @@ sf org create scratch --definition-file config\project-scratch-def.json --alias 
 
 set PACKAGES=(
     "crm-platform-base:0.247.0"
-    "crm-platform-access-control:0.144.0"
+    "crm-platform-access-control:0.146.0"
     "crm-shared-flowComponents:0.4.0"
     "crm-henvendelse-base:0.27.0"
     "crm-platform-integration:0.142.0"
