@@ -22,8 +22,8 @@ call sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-
 echo "Installerer crm-platform-oppgave ver. 0.63"
 call sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-platform-access-control ver. 0.144"
-call sf package install --package 04tKB000000Y6MEYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-platform-access-control ver. 0.146"
+call sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-community-base ver. 0.119"
 call sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
