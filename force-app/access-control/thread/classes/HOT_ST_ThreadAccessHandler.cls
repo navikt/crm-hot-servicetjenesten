@@ -67,7 +67,7 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
         }
 
         return [
-            SELECT INT_Confidential__c, INT_IsNavEmployee__c, CRM_Account__c
+            SELECT Id, INT_Confidential__c, INT_IsNavEmployee__c, CRM_Account__c
             FROM Person__C
             WHERE CRM_Account__c IN :accountIds
         ];
