@@ -4,7 +4,7 @@
             "path": "force-app",
             "default": true,
             "package": "crm-hot-servicetjenesten",
-            "versionNumber": "1.1.0.NEXT",
+            "versionNumber": "1.2.0.NEXT",
             "versionDescription": "",
             "dependencies": [
                 {
@@ -37,7 +37,7 @@
                 },
                 {
                     "package": "crm-platform-access-control",
-                    "versionNumber": "0.144.0.LATEST"
+                    "versionNumber": "0.146.0.LATEST"
                 },
                 {
                     "package": "crm-community-base",
