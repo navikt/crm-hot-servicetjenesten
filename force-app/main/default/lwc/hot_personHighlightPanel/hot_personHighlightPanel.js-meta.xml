@@ -6,7 +6,8 @@
     <targets>
         <target>lightning__RecordPage</target>
     </targets>
-
+    <description>Panel for showing guardianship and power of attorney</description>
+    <masterLabel>HOT Guardianship and power of attorney</masterLabel>
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
             <property name="relationshipField" label="RelationshipField (API)" description=""

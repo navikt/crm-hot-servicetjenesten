@@ -14,7 +14,7 @@
 }
 
 .highlightPanelTop {
-    min-height: 5.5rem;
+    min-height: 3.5rem;
     height: auto;
     display: flex;
     justify-content: flex-start;
@@ -76,7 +76,8 @@
 }
 
 .panelBackground {
-    background-color: var(--primaryBackgroundColor, #0056b4);
+    /* background-color: var(--primaryBackgroundColor, #0056b4); */
+    background-color: var(--primaryBackgroundColor, #ffeccc);
 }
 
 .errorPanel {
