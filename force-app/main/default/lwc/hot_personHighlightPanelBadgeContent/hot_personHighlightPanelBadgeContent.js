@@ -1,26 +1,16 @@
 // @ts-nocheck
 import { LightningElement, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-//import securityMeasures from './securityMeasures.html';
-import spokenLanguagesIntepreter from './spokenLanguagesIntepreter.html';
 import guardianships from './guardianships.html';
 import powerOfAttorneys from './powerOfAttorneys.html';
 import nksPersonHighlightPanelBadgeContent from './hot_personHighlightPanelBadgeContent.html';
-//import dateOfDeath from './dateOfDeath.html';
 import historicalPowerOfAttorney from './historicalPowerOfAttorney.html';
-//import openSTO from './openSTO.html';
-import NOE from './NOE.html';
 import sharedStyling from './sharedStyling.css';
 
 const templates = {
-    SecurityMeasure: securityMeasures,
-    SpokenLanguagesIntepreter: spokenLanguagesIntepreter,
     GuardianshipOrFuturePowerOfAttorney: guardianships,
     PowerOfAttorney: powerOfAttorneys,
-    IsDeceased: dateOfDeath,
-    historicalPowerOfAttorney: historicalPowerOfAttorney,
-    OpenSTO: openSTO,
-    NOE: NOE
+    historicalPowerOfAttorney: historicalPowerOfAttorney
 };
 
 export default class hot_personHighlightPanelBadgeContent extends NavigationMixin(LightningElement) {
@@ -62,23 +52,23 @@ export default class hot_personHighlightPanelBadgeContent extends NavigationMixi
         }
     }
 
-    openRecordAndCloseList(event) {
-        event.stopPropagation(); //Prevent this click from propagating into
-        this.openRecord(event.target.dataset.id, 'Thread__c');
-        const closeEvent = new CustomEvent('badgeclosed');
-        this.dispatchEvent(closeEvent);
-    }
+    // openRecordAndCloseList(event) {
+    //     event.stopPropagation(); //Prevent this click from propagating into
+    //     this.openRecord(event.target.dataset.id, 'Thread__c');
+    //     const closeEvent = new CustomEvent('badgeclosed');
+    //     this.dispatchEvent(closeEvent);
+    // }
 
-    openRecord(recordId, objectApiName) {
-        this[NavigationMixin.Navigate]({
-            type: 'standard__recordPage',
-            attributes: {
-                recordId: recordId,
-                objectApiName: objectApiName,
-                actionName: 'view'
-            }
-        });
-    }
+    // openRecord(recordId, objectApiName) {
+    //     this[NavigationMixin.Navigate]({
+    //         type: 'standard__recordPage',
+    //         attributes: {
+    //             recordId: recordId,
+    //             objectApiName: objectApiName,
+    //             actionName: 'view'
+    //         }
+    //     });
+    // }
 
     get showBadge() {
         if (this.type === this.shownBadge) console.log(JSON.stringify(this.badgeData));
