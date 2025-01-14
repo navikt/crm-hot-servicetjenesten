@@ -228,7 +228,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
     onClickHandler(event) {
         const selectedBadge = event.target.dataset.id;
         const cmp = this.template.querySelector(
-            `lightning-layout-item[data-id="${selectedBadge}"] c-nks-person-highlight-panel-badge-content`
+            `lightning-layout-item[data-id="${selectedBadge}"] c-hot_person-highlight-panel-badge-content`
         );
         if (cmp == null) return;
         this.handleSelectedBadge(cmp.dataset.id, selectedBadge);

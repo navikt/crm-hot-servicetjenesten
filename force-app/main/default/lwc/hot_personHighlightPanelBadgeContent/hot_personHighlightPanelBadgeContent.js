@@ -1,11 +1,11 @@
 // @ts-nocheck
 import { LightningElement, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-import guardianships from './guardianships.html';
-import powerOfAttorneys from './powerOfAttorneys.html';
+import guardianships from './hot_guardianships.html';
+import powerOfAttorneys from './hot_powerOfAttorneys.html';
 import nksPersonHighlightPanelBadgeContent from './hot_personHighlightPanelBadgeContent.html';
-import historicalPowerOfAttorney from './historicalPowerOfAttorney.html';
-import sharedStyling from './sharedStyling.css';
+import historicalPowerOfAttorney from './hot_historicalPowerOfAttorney.html';
+import sharedStyling from './hot_sharedStyling.css';
 
 const templates = {
     GuardianshipOrFuturePowerOfAttorney: guardianships,
@@ -51,24 +51,6 @@ export default class hot_personHighlightPanelBadgeContent extends NavigationMixi
             renderedBadgeContent.style.removeProperty('left');
         }
     }
-
-    // openRecordAndCloseList(event) {
-    //     event.stopPropagation(); //Prevent this click from propagating into
-    //     this.openRecord(event.target.dataset.id, 'Thread__c');
-    //     const closeEvent = new CustomEvent('badgeclosed');
-    //     this.dispatchEvent(closeEvent);
-    // }
-
-    // openRecord(recordId, objectApiName) {
-    //     this[NavigationMixin.Navigate]({
-    //         type: 'standard__recordPage',
-    //         attributes: {
-    //             recordId: recordId,
-    //             objectApiName: objectApiName,
-    //             actionName: 'view'
-    //         }
-    //     });
-    // }
 
     get showBadge() {
         if (this.type === this.shownBadge) console.log(JSON.stringify(this.badgeData));

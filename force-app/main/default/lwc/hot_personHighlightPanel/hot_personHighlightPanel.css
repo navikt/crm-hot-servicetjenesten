@@ -58,16 +58,16 @@
     flex-wrap: wrap;
 }
 
-.greenBadge + lightning-layout-item c-nks-person-highlight-panel-badge-content {
+.greenBadge + lightning-layout-item c-hot_person-highlight-panel-badge-content {
     --badge-line: #66c786;
 }
-.yellowBadge + lightning-layout-item c-nks-person-highlight-panel-badge-content {
+.yellowBadge + lightning-layout-item c-hot_person-highlight-panel-badge-content {
     --badge-line: #ffaa33;
 }
-.redBadge + lightning-layout-item c-nks-person-highlight-panel-badge-content {
+.redBadge + lightning-layout-item c-hot_person-highlight-panel-badge-content {
     --badge-line: #ad0000;
 }
-.greyBadge + lightning-layout-item c-nks-person-highlight-panel-badge-content {
+.greyBadge + lightning-layout-item c-hot_person-highlight-panel-badge-content {
     --badge-line: #c6c6c6;
 }
 
