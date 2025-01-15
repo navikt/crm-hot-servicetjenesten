@@ -8,7 +8,7 @@ import FULL_NAME_FIELD from '@salesforce/schema/Person__c.NKS_Full_Name__c';
 import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenStandard__c';
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
-import getPersonBadgesAndInfo from '@salesforce/apex/NKS_PersonBadgesController.getPersonBadgesAndInfo';
+import getPersonBadgesAndInfo from '@salesforce/apex/HOT_PersonBadgesController.getPersonBadgesAndInfo';
 import getHistorikk from '@salesforce/apex/NKS_FullmaktController.getHistorikk';
 import getRelatedRecord from '@salesforce/apex/NksRecordInfoController.getRelatedRecord';
 
