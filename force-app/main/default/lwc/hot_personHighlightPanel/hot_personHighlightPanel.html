@@ -25,18 +25,6 @@
                         <template lwc:if={fullName}>
                             <span lwc:if={errorMessages} class="slds-assistive-text" role="alert">{errorMessages}</span>
                             <lightning-layout-item class="custom-padding-left">
-                                <!-- <template for:each={personAccessBadges} for:item="badge">
-                                    <lightning-layout-item key={badge.name}>
-                                        <lightning-badge
-                                            class="slds-theme_error slds-var-m-left_x-small slds-var-m-vertical_xx-small redBadge"
-                                            data-id={badge.name}
-                                            label={badge.label}
-                                            role="heading"
-                                        >
-                                        </lightning-badge>
-                                    </lightning-layout-item>
-                                </template> -->
-
                                 <template for:each={badges} for:item="badge">
                                     <lightning-layout-item
                                         key={badge.name}

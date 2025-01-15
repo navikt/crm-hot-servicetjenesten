@@ -5,6 +5,7 @@ import { resolve } from 'c/nksComponentsUtils';
 import PERSON_FIRST_NAME from '@salesforce/schema/Person__c.INT_FirstName__c';
 import PERSON_IDENT_FIELD from '@salesforce/schema/Person__c.Name';
 import FULL_NAME_FIELD from '@salesforce/schema/Person__c.NKS_Full_Name__c';
+import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenStandard__c';
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonBadgesAndInfo from '@salesforce/apex/NKS_PersonBadgesController.getPersonBadgesAndInfo';
@@ -35,12 +36,9 @@ export default class NksPersonHighlightPanel extends LightningElement {
     personIdent;
 
     badges;
-    dateOfDeath;
     badgeContent;
-    arbeidssoekerPerioder;
     errorMessageList = {};
     errorMessages;
-    erNasjonalOppfolging = false;
 
     personDetails = {};
 
@@ -84,7 +82,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
             }
             this.badges = badges;
 
-            // this.entitlements = data.entitlements;
             if (data.errors && data.errors.length > 0) {
                 this.addErrorMessage('setWiredBadge', data.errors);
             }
@@ -145,10 +142,8 @@ export default class NksPersonHighlightPanel extends LightningElement {
         const badges = this.template.querySelectorAll('.slds-badge');
         badges.forEach((badge) => {
             if (badge instanceof HTMLElement && badge.dataset.id === selectedBadge && badge.ariaExpanded === 'false') {
-                // eslint-disable-next-line @locker/locker/distorted-element-set-attribute
                 badge.setAttribute('aria-expanded', 'true');
             } else if (badge.role === 'button') {
-                // eslint-disable-next-line @locker/locker/distorted-element-set-attribute
                 badge.setAttribute('aria-expanded', 'false');
             }
         });
@@ -183,14 +178,12 @@ export default class NksPersonHighlightPanel extends LightningElement {
                 personId: this.personId,
                 firstName: this.firstName,
                 personIdent: this.personIdent,
-                fullName: this.fullName
+                fullName: this.fullName,
+                writtenStandard: getFieldValue(data, WRITTEN_STANDARD_FIELD)
             };
-
-            // this.handleBackgroundColor();
         } else if (error) {
             this.addErrorMessage('getRecord', error);
             console.error(error);
-            // this.handleBackgroundColor();
         }
     }
 
