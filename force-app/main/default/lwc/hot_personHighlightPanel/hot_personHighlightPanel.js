@@ -15,12 +15,10 @@ import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenS
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonBadgesAndInfo from '@salesforce/apex/NKS_PersonBadgesController.getPersonBadgesAndInfo';
-import getPersonAccessBadges from '@salesforce/apex/NKS_PersonAccessBadgesController.getPersonAccessBadges';
 import getHistorikk from '@salesforce/apex/NKS_FullmaktController.getHistorikk';
 import getRelatedRecord from '@salesforce/apex/NksRecordInfoController.getRelatedRecord';
 import getVeilederName from '@salesforce/apex/NKS_NOMController.getEmployeeName';
 import getVeilederIdent from '@salesforce/apex/NKS_AktivitetsplanController.getOppfolgingsInfo';
-import getArbeidssoeker from '@salesforce/apex/NKS_ArbeidssoekerController.getArbeidssoeker';
 
 const PERSON_FIELDS = [
     PERSON_FIRST_NAME,
@@ -42,7 +40,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
 
     @track loadingStates = {
         getPersonBadgesAndInfo: true,
-        getPersonAccessBadges: true,
         getHistorikk: true,
         getRecordPerson: true
     };
@@ -77,43 +74,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
         this.wireFields = [`${this.objectApiName}.Id`];
     }
 
-    @wire(getVeilederIdent, { actorId: '$actorId' })
-    wireVeilIdentInfo({ data, error }) {
-        if (data) {
-            this.veilederIdent = data.primaerVeileder;
-            this.underOppfolging = data.underOppfolging;
-            this.oppfolgingAndMeldekortData.underOppfolging = this.underOppfolging;
-            this.oppfolgingAndMeldekortData.veilederIdent = this.veilederIdent;
-
-            // When wiredPersonInfo runs, it instantly sends oppfolgingAndMeldekortData to the mid component
-            // and does not resend it when this dependant wire has finished running, therefore the code below
-            // is needed to send oppfolging and veilederident afterwards.
-            const midPanel = this.template.querySelector('c-nks-person-highlight-panel-mid');
-            if (midPanel) {
-                midPanel.updateOppfolging(this.oppfolgingAndMeldekortData);
-            }
-            if (data.underOppfolging && data.OppfolgingsEnhet.enhetId === '4154') {
-                this.erNasjonalOppfolging = true;
-                this.setWiredBadge();
-            }
-        } else if (error) {
-            this.addErrorMessage('getVeilederIdent', error);
-            console.error(error);
-        }
-    }
-
-    @wire(getVeilederName, { navIdent: '$veilederIdent' })
-    wiredName({ data, error }) {
-        if (data) {
-            console.log('Geir');
-            console.log(data);
-            this.veilederName = data;
-            this.oppfolgingAndMeldekortData.veilederName = this.veilederName;
-        } else if (error) {
-            console.error('Error occurred: ', JSON.stringify(error, null, 2));
-        }
-    }
-
     @wire(getPersonBadgesAndInfo, {
         field: '$relationshipField',
         parentObject: '$objectApiName',
@@ -134,17 +94,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
 
         if (data) {
             let badges = [];
-            if (this.erNasjonalOppfolging) {
-                badges.push({
-                    name: 'NOE',
-                    label: 'NOE',
-                    styling: 'slds-m-left_x-small slds-m-vertical_xx-small pointer yellowBadge',
-                    clickable: true,
-                    tabindex: '0',
-                    badgeContent: 'NOE',
-                    badgeContentType: 'NOE'
-                });
-            }
             badges = [...badges, ...data.badges];
             if (historikkData && historikkData.length > 0) {
                 badges.push({
@@ -163,28 +112,11 @@ export default class NksPersonHighlightPanel extends LightningElement {
             if (data.errors && data.errors.length > 0) {
                 this.addErrorMessage('setWiredBadge', data.errors);
             }
-            this.dateOfDeath = data.dateOfDeath;
             this.setUuAlertText();
         }
         if (error) {
             this.addErrorMessage('setWiredBadge', error);
             console.error(error);
-        }
-    }
-
-    @wire(getPersonAccessBadges, {
-        field: '$relationshipField',
-        parentObject: '$objectApiName',
-        parentRecordId: '$recordId'
-    })
-    wiredPersonBadgeInfo(value) {
-        this.wiredPersonAccessBadge = value;
-        try {
-            this.setWiredPersonAccessBadge();
-        } catch (error) {
-            console.error('There was problem to fetch data from wire-function: ' + error);
-        } finally {
-            this.loadingStates.getPersonAccessBadges = false;
         }
     }
 
@@ -201,20 +133,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
             this.setWiredBadge();
         } else if (error) {
             this.addErrorMessage('getHistorikk', error);
-            console.error(error);
-        }
-    }
-
-    setWiredPersonAccessBadge() {
-        const { data, error } = this.wiredPersonAccessBadge;
-
-        if (data) {
-            this.isNavEmployee = data.some((element) => element.name === 'isNavEmployee');
-            this.isConfidential = data.some((element) => element.name === 'isConfidential');
-            this.personAccessBadges = data;
-            this.setUuAlertText();
-        } else if (error) {
-            this.addErrorMessage('setWiredPersonAccessBadge', error);
             console.error(error);
         }
     }
@@ -324,24 +242,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
         }
     }
 
-    @wire(getArbeidssoeker, { identnr: '$personIdent' })
-    wiredArbeidssoeker({ data, error }) {
-        if (data) {
-            this.arbeidssoekerPerioder = JSON.parse(data);
-        }
-        if (error) {
-            this.addErrorMessage('getArbeidssoeker', error);
-            console.error(error);
-        }
-    }
-
-    formatMaritalStatus(str) {
-        if (typeof str !== 'string') {
-            return str;
-        }
-        return str.replace(/_/g, ' ').replace(' eller enkemann', '/-mann');
-    }
-
     setUuAlertText() {
         const securityMeasures = this.badges?.find((badge) => badge.badgeContentType === 'SecurityMeasure');
         const hasSecurityMeasures = securityMeasures?.badgeContent.length > 0;
@@ -404,10 +304,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
 
     get panelClass() {
         return this.fullName ? 'highlightPanel' : 'highlightPanelConfidential';
-    }
-
-    get isArbeidssoeker() {
-        return this.arbeidssoekerPerioder?.some((period) => period.avsluttet == null);
     }
 
     get warningIconSrc() {
