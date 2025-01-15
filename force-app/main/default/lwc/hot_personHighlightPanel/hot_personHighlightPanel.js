@@ -2,36 +2,17 @@ import { LightningElement, api, track, wire } from 'lwc';
 import { getFieldValue, getRecord } from 'lightning/uiRecordApi';
 import { resolve } from 'c/nksComponentsUtils';
 
-import PERSON_ACTORID_FIELD from '@salesforce/schema/Person__c.INT_ActorId__c';
 import PERSON_FIRST_NAME from '@salesforce/schema/Person__c.INT_FirstName__c';
 import PERSON_IDENT_FIELD from '@salesforce/schema/Person__c.Name';
-import GENDER_FIELD from '@salesforce/schema/Person__c.INT_Sex__c';
-import IS_DECEASED_FIELD from '@salesforce/schema/Person__c.INT_IsDeceased__c';
 import FULL_NAME_FIELD from '@salesforce/schema/Person__c.NKS_Full_Name__c';
-import AGE_FIELD from '@salesforce/schema/Person__c.CRM_Age__c';
-import CITIZENSHIP_FIELD from '@salesforce/schema/Person__c.INT_Citizenships__c';
-import MARITAL_STATUS_FIELD from '@salesforce/schema/Person__c.INT_MaritalStatus__c';
 import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenStandard__c';
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonBadgesAndInfo from '@salesforce/apex/NKS_PersonBadgesController.getPersonBadgesAndInfo';
 import getHistorikk from '@salesforce/apex/NKS_FullmaktController.getHistorikk';
 import getRelatedRecord from '@salesforce/apex/NksRecordInfoController.getRelatedRecord';
-import getVeilederName from '@salesforce/apex/NKS_NOMController.getEmployeeName';
-import getVeilederIdent from '@salesforce/apex/NKS_AktivitetsplanController.getOppfolgingsInfo';
 
-const PERSON_FIELDS = [
-    PERSON_FIRST_NAME,
-    PERSON_IDENT_FIELD,
-    PERSON_ACTORID_FIELD,
-    GENDER_FIELD,
-    IS_DECEASED_FIELD,
-    FULL_NAME_FIELD,
-    AGE_FIELD,
-    CITIZENSHIP_FIELD,
-    MARITAL_STATUS_FIELD,
-    WRITTEN_STANDARD_FIELD
-];
+const PERSON_FIELDS = [PERSON_FIRST_NAME, PERSON_IDENT_FIELD, FULL_NAME_FIELD, WRITTEN_STANDARD_FIELD];
 
 export default class NksPersonHighlightPanel extends LightningElement {
     @api recordId;
@@ -50,9 +31,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
     wiredBadge;
     historikkWiredData;
     isLoaded;
-    actorId;
-    veilederName;
-    veilederIdent;
     fullName;
     firstName;
     personIdent;
@@ -112,7 +90,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
             if (data.errors && data.errors.length > 0) {
                 this.addErrorMessage('setWiredBadge', data.errors);
             }
-            this.setUuAlertText();
         }
         if (error) {
             this.addErrorMessage('setWiredBadge', error);
@@ -202,7 +179,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
     wiredPersonInfo({ error, data }) {
         this.loadingStates.getRecordPerson = !(error || data);
         if (data) {
-            this.actorId = getFieldValue(data, PERSON_ACTORID_FIELD);
             this.fullName = getFieldValue(data, FULL_NAME_FIELD);
             this.firstName = getFieldValue(data, PERSON_FIRST_NAME);
             this.personIdent = getFieldValue(data, PERSON_IDENT_FIELD);
@@ -210,11 +186,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
                 personId: this.personId,
                 firstName: this.firstName,
                 personIdent: this.personIdent,
-                actorId: this.actorId,
                 fullName: this.fullName,
-                gender: getFieldValue(data, GENDER_FIELD),
-                isDeceased: getFieldValue(data, IS_DECEASED_FIELD),
-                age: getFieldValue(data, AGE_FIELD),
                 writtenStandard: getFieldValue(data, WRITTEN_STANDARD_FIELD)
             };
 
@@ -240,32 +212,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
             this.addErrorMessage('wiredRecordInfo', error);
             console.error(error);
         }
-    }
-
-    setUuAlertText() {
-        const securityMeasures = this.badges?.find((badge) => badge.badgeContentType === 'SecurityMeasure');
-        const hasSecurityMeasures = securityMeasures?.badgeContent.length > 0;
-        if (!(hasSecurityMeasures || this.isConfidential || this.isNavEmployee)) {
-            this.uuAlertText = '';
-            return;
-        }
-
-        const navEmployeeText = ' er egen ansatt';
-        const isConfidentialText = ' skjermet';
-        let alertText = `Bruker${this.isNavEmployee ? navEmployeeText : ''}`;
-        const securityMeasureText = hasSecurityMeasures
-            ? ` har ${securityMeasures?.label}: ${securityMeasures?.badgeContent
-                  .map((secMeasure) => secMeasure.SecurityMeasure)
-                  .join(', ')}`
-            : '';
-        const confidentialityText =
-            this.isNavEmployee && this.isConfidential ? ', og' : this.isConfidential ? ' er' : '';
-        alertText += confidentialityText;
-        alertText += this.isConfidential ? isConfidentialText : '';
-        alertText += (this.isNavEmployee || this.isConfidential) && hasSecurityMeasures ? ' og' : '';
-        alertText += securityMeasureText || '';
-        alertText += '.';
-        this.uuAlertText = alertText;
     }
 
     addErrorMessage(errorName, error) {
