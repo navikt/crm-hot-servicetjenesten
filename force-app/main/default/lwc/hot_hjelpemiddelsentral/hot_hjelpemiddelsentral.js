@@ -29,15 +29,12 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                 // Sjekker om en person ble returnert
                 !this.personMunicipalityAndRegions ||
                 // OR sjekker om alle kommune/fylke felter er null
-                (
-                    !this.personMunicipalityAndRegions.INT_RegionNumber__c &&
+                (!this.personMunicipalityAndRegions.INT_RegionNumber__c &&
                     !this.personMunicipalityAndRegions.INT_MunicipalityNumber__c &&
-                    !this.personMunicipalityAndRegions.INT_TemporaryMunicipalityNumber__c
-                )
+                    !this.personMunicipalityAndRegions.INT_TemporaryMunicipalityNumber__c)
             ) {
-                this.hjelpemiddelsentralError =
-                    'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
-            }  else {
+                this.hjelpemiddelsentralError = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
+            } else {
                 getAllHjelpemiddelSentraler({}).then((result) => {
                     this.allHjelpemiddelSentraler = result;
                     const regionNumber = this.personMunicipalityAndRegions?.INT_RegionNumber__c || null;
