@@ -5,7 +5,6 @@ import { resolve } from 'c/nksComponentsUtils';
 import PERSON_FIRST_NAME from '@salesforce/schema/Person__c.INT_FirstName__c';
 import PERSON_IDENT_FIELD from '@salesforce/schema/Person__c.Name';
 import FULL_NAME_FIELD from '@salesforce/schema/Person__c.NKS_Full_Name__c';
-import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenStandard__c';
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonBadgesAndInfo from '@salesforce/apex/NKS_PersonBadgesController.getPersonBadgesAndInfo';
@@ -43,7 +42,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
     errorMessages;
     erNasjonalOppfolging = false;
 
-    oppfolgingAndMeldekortData = {};
     personDetails = {};
 
     uuAlertText = '';
@@ -164,7 +162,6 @@ export default class NksPersonHighlightPanel extends LightningElement {
         })
             .then((record) => {
                 this.personId = resolve(relationshipField, record);
-                this.oppfolgingAndMeldekortData.personId = this.personId;
             })
             .catch((error) => {
                 this.addErrorMessage('getRelatedRecord', error);
@@ -186,8 +183,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
                 personId: this.personId,
                 firstName: this.firstName,
                 personIdent: this.personIdent,
-                fullName: this.fullName,
-                writtenStandard: getFieldValue(data, WRITTEN_STANDARD_FIELD)
+                fullName: this.fullName
             };
 
             // this.handleBackgroundColor();
