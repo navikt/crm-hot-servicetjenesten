@@ -1,6 +1,6 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { getFieldValue, getRecord } from 'lightning/uiRecordApi';
-import { resolve } from 'c/nksComponentsUtils';
+import { resolve } from 'c/hot_componentsUtils';
 
 import PERSON_FIRST_NAME from '@salesforce/schema/Person__c.INT_FirstName__c';
 import PERSON_IDENT_FIELD from '@salesforce/schema/Person__c.Name';
@@ -118,7 +118,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
     onClickHandler(event) {
         const selectedBadge = event.target.dataset.id;
         const cmp = this.template.querySelector(
-            `lightning-layout-item[data-id="${selectedBadge}"] c-hot_person-highlight-panel-badge-content`
+            `lightning-layout-item[data-id="${selectedBadge}"] c-hot_person-panel-badge-content`
         );
         if (cmp == null) return;
         this.handleSelectedBadge(cmp.dataset.id, selectedBadge);

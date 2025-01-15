@@ -3,7 +3,7 @@ import { LightningElement, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
 import guardianships from './hot_guardianships.html';
 import powerOfAttorneys from './hot_powerOfAttorneys.html';
-import nksPersonHighlightPanelBadgeContent from './hot_personHighlightPanelBadgeContent.html';
+import nksPersonHighlightPanelBadgeContent from './hot_personPanelBadgeContent.html';
 import historicalPowerOfAttorney from './hot_historicalPowerOfAttorney.html';
 import sharedStyling from './hot_sharedStyling.css';
 

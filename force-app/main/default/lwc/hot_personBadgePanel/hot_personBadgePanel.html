@@ -21,7 +21,7 @@
         <template lwc:else>
             <lightning-layout class="panelBackground">
                 <div class={panelClass}>
-                    <lightning-layout-item class="highlightPanelTop nowrap-selector">
+                    <lightning-layout-item class="highlightPanelBadges nowrap-selector">
                         <template lwc:if={fullName}>
                             <span lwc:if={errorMessages} class="slds-assistive-text" role="alert">{errorMessages}</span>
                             <lightning-layout-item class="custom-padding-left">
@@ -58,13 +58,13 @@
                                             </lightning-badge>
                                         </template>
                                         <lightning-layout-item lwc:if={badge.badgeContent}>
-                                            <c-hot_person-highlight-panel-badge-content
+                                            <c-hot_person-panel-badge-content
                                                 data-id={badge.badgeContentType}
                                                 shown-badge={shownBadge}
                                                 type={badge.badgeContentType}
                                                 badge-data={badge.badgeContent}
                                                 onbadgeclosed={closeBadge}
-                                            ></c-hot_person-highlight-panel-badge-content>
+                                            ></c-hot_person-panel-badge-content>
                                         </lightning-layout-item>
                                     </lightning-layout-item>
                                 </template>
