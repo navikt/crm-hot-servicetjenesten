@@ -9,8 +9,8 @@ import WRITTEN_STANDARD_FIELD from '@salesforce/schema/Person__c.INT_KrrWrittenS
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonBadgesAndInfo from '@salesforce/apex/HOT_PersonBadgesController.getPersonBadgesAndInfo';
-import getHistorikk from '@salesforce/apex/NKS_FullmaktController.getHistorikk';
-import getRelatedRecord from '@salesforce/apex/NksRecordInfoController.getRelatedRecord';
+import getHistorikk from '@salesforce/apex/HOT_FullmaktController.getHistorikk';
+import getRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
 
 const PERSON_FIELDS = [PERSON_FIRST_NAME, PERSON_IDENT_FIELD, FULL_NAME_FIELD, WRITTEN_STANDARD_FIELD];
 
