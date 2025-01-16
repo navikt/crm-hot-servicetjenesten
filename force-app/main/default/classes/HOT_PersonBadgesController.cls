@@ -143,7 +143,7 @@ public with sharing class HOT_PersonBadgesController {
 
         private void setPowerOfAttorney() {
             try {
-                List<NKS_FullmaktController.Fullmaktsgiver> fullmaktsgivere = (List<NKS_FullmaktController.Fullmaktsgiver>) NKS_FullmaktController.getFullmaktsgiver(
+                List<HOT_FullmaktController.Fullmaktsgiver> fullmaktsgivere = (List<HOT_FullmaktController.Fullmaktsgiver>) HOT_FullmaktController.getFullmaktsgiver(
                     person.Id,
                     'Person__c'
                 );
@@ -154,7 +154,7 @@ public with sharing class HOT_PersonBadgesController {
 
                 Date today = Date.today();
                 for (Integer i = 0; i < fullmaktsgivere.size(); i++) {
-                    NKS_FullmaktController.Fullmaktsgiver fullmaktsgiver = fullmaktsgivere[i];
+                    HOT_FullmaktController.Fullmaktsgiver fullmaktsgiver = fullmaktsgivere[i];
 
                     if (
                         fullmaktsgiver.gyldigFraOgMed <= today &&
@@ -193,14 +193,14 @@ public with sharing class HOT_PersonBadgesController {
             }
         }
 
-        private void filterFullmaktOmraade(List<NKS_FullmaktController.Fullmaktsgiver> fullmaktsgivere) {
+        private void filterFullmaktOmraade(List<HOT_FullmaktController.Fullmaktsgiver> fullmaktsgivere) {
             if (fullmaktsgivere == null || fullmaktsgivere.isEmpty())
                 return;
 
             for (Integer i = (fullmaktsgivere.size() - 1); i >= 0; i--) {
-                NKS_FullmaktController.Fullmaktsgiver fullmakt = fullmaktsgivere[i];
+                HOT_FullmaktController.Fullmaktsgiver fullmakt = fullmaktsgivere[i];
                 for (Integer j = (fullmakt.omraader.size() - 1); j >= 0; j--) {
-                    NKS_FullmaktController.Omraade omraade = fullmakt.omraader[j];
+                    HOT_FullmaktController.Omraade omraade = fullmakt.omraader[j];
                     if (omraade.handling.contains('KOMMUNISER') || omraade.handling.contains('SKRIV')) {
                         continue;
                     }
@@ -387,7 +387,7 @@ public with sharing class HOT_PersonBadgesController {
     public interface BadgeContent {
     }
 
-    public class PowerOfAttorney extends NKS_FullmaktController.Fullmaktsgiver implements BadgeContent {
+    public class PowerOfAttorney extends HOT_FullmaktController.Fullmaktsgiver implements BadgeContent {
     }
 
     public class Navn {
