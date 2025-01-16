@@ -289,14 +289,14 @@ public with sharing class HOT_FullmaktController {
                 'Body: ' +
                 resp.getBody(),
             null,
-            CRM_ApplicationDomain.Domain.NKS
+            CRM_ApplicationDomain.Domain.HOT
         );
         logger.publish();
     }
 
     @TestVisible
     private static void logError(String message) {
-        logger.error(message + '\n ', null, CRM_ApplicationDomain.Domain.NKS);
+        logger.error(message + '\n ', null, CRM_ApplicationDomain.Domain.HOT);
         logger.publish();
     }
 
