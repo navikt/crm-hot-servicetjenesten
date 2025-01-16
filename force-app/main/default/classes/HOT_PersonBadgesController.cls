@@ -1,4 +1,21 @@
 public with sharing class HOT_PersonBadgesController {
+    private static Map<String, String> languageMap {
+        get {
+            if (languageMap == null) {
+                languageMap = new Map<String, String>();
+                for (Common_Code__c land : [
+                    SELECT Id, Name, CRM_Code__c
+                    FROM Common_Code__c
+                    WHERE CRM_Code_set__c = 'Språk'
+                ]) {
+                    languageMap.put(land.CRM_Code__c, land.Name);
+                }
+            }
+            return languageMap;
+        }
+        private set {
+        }
+    }
     /**
      * @description Get an apex type holding all the data we need for showing badges.
      */
@@ -12,6 +29,11 @@ public with sharing class HOT_PersonBadgesController {
         Id personId = getPersonId(field, parentObject, parentRecordId);
         Person__c person = getPerson(personId);
         PersonBadgeData badges = new PersonBadgeData(person);
+        if (parentObject.equalsIgnoreCase('Case')) {
+            if (filterOpenSTO == null)
+                filterOpenSTO = false;
+            badges.setOpenSTO(parentRecordId, filterOpenSTO);
+        }
         return badges;
     }
 
@@ -47,8 +69,14 @@ public with sharing class HOT_PersonBadgesController {
         Set<String> fields = new Set<String>{
             'Id',
             'INT_GuardianshipOrFuturePowerOfAttorney__c',
-            'INT_PowerOfAttorney__c'
+            'INT_IsDeceased__c',
+            'INT_DateOfDeath__c',
+            'INT_PowerOfAttorney__c',
+            'INT_SpokenLanguageIntepreter__c',
+            'INT_KRR_Reservation__c',
+            'NKS_NumberOfSecurityMeasures__c'
         };
+        Set<String> fieldsToLabel = new Set<String>{ 'HOT_DegreeOfHearingAndVisualImpairment__c' };
 
         String queryString = 'SELECT ';
         for (String str : fields) {
@@ -57,12 +85,20 @@ public with sharing class HOT_PersonBadgesController {
             }
         }
 
+        for (String str : fieldsToLabel) {
+            if (objectFields.contains(str.toLowerCase())) {
+                queryString += 'toLabel(' + str + '), ';
+            }
+        }
+
         queryString +=
             '(' +
             '	SELECT Id,' +
             '		INT_Person__c,' +
+            '		toLabel(INT_SecurityMeasure__c),' +
             '		INT_ValidFromDate__c,' +
             '		INT_ValidToDate__c' +
+            '	FROM SecurityMeasures__r' +
             ')';
         queryString += ' FROM Person__c WHERE Id = :personId';
 
@@ -77,11 +113,19 @@ public with sharing class HOT_PersonBadgesController {
         @AuraEnabled
         public List<Badge> badges;
         @AuraEnabled
+        public List<SecurityMeasure> securityMeasures;
+        @AuraEnabled
+        public List<String> spokenLanguagesIntepreter;
+        @AuraEnabled
         public List<GuardianshipOrFuturePowerOfAttorney> guardianships;
         @AuraEnabled
         public List<PowerOfAttorney> powerOfAttorneys;
         @AuraEnabled
         public List<String> errors;
+        @AuraEnabled
+        public Date dateOfDeath;
+        // @AuraEnabled
+        // public List<String> entitlements;
 
         private Person__c person;
         private Set<String> fieldSet;
@@ -89,12 +133,16 @@ public with sharing class HOT_PersonBadgesController {
 
         public PersonBadgeData(Person__c person) {
             this.badges = new List<Badge>();
+            this.securityMeasures = new List<SecurityMeasure>();
+            this.spokenLanguagesIntepreter = new List<String>();
             this.guardianships = new List<GuardianshipOrFuturePowerOfAttorney>();
             this.powerOfAttorneys = new List<PowerOfAttorney>();
             this.errors = new List<String>();
             this.personIdentNameMap = new Map<String, String>();
+            // this.entitlements = new List<String>();
 
             if (person != null) {
+                this.dateOfDeath = person.INT_DateOfDeath__c;
                 this.person = person;
                 //Get field set for use later in the class
                 this.fieldSet = Schema.SObjectType.Person__c.fields.getMap().keySet();
@@ -103,9 +151,101 @@ public with sharing class HOT_PersonBadgesController {
         }
 
         private void setBadgeData() {
+            setSecurityMeasures();
+            setIsDeceased();
             setPowerOfAttorney();
             setGuardianshipOrFuturePowerOfAttorney();
+            setSpokenLanguagesIntepreter();
+            setDegreeOfHearingAndVisualImpairment();
             setPersonName();
+            setKrrReservation();
+            // setEntitlements();
+        }
+
+        private void setSecurityMeasures() {
+            try {
+                for (SecurityMeasure__c sm : person.SecurityMeasures__r) {
+                    if (sm.INT_ValidToDate__c == null || sm.INT_ValidToDate__c >= Date.today()) {
+                        securityMeasures.add(
+                            new SecurityMeasure(
+                                sm.Id,
+                                sm.INT_ValidToDate__c,
+                                sm.INT_ValidFromDate__c,
+                                sm.INT_SecurityMeasure__c
+                            )
+                        );
+                    }
+                }
+                if (person.NKS_NumberOfSecurityMeasures__c > 0 && !securityMeasures.isEmpty()) {
+                    badges.add(
+                        new Badge(
+                                'securityMeasures',
+                                person.NKS_NumberOfSecurityMeasures__c + ' sikkerhetstiltak',
+                                'slds-theme_error slds-m-left_x-small slds-m-vertical_xx-small pointer redBadge',
+                                '',
+                                '',
+                                true
+                            )
+                            .setBadgeContent(securityMeasures)
+                    );
+                }
+            } catch (Exception e) {
+                errors.add('Feil ved uthenting av sikkerhetstiltak');
+            }
+        }
+
+        private void setSpokenLanguagesIntepreter() {
+            if (String.isNotBlank(person.INT_SpokenLanguageIntepreter__c)) {
+                List<SpokenLanguagesIntepreter> languages = new List<SpokenLanguagesIntepreter>();
+                try {
+                    for (String language : person.INT_SpokenLanguageIntepreter__c.split(';')) {
+                        if (languageMap.containsKey(language)) {
+                            String capCase = languageMap.get(language).toLowerCase().capitalize();
+                            spokenLanguagesIntepreter.add(capCase + ' (' + language + ')');
+                            languages.add(new SpokenLanguagesIntepreter(capCase + ' (' + language + ')'));
+                        } else {
+                            spokenLanguagesIntepreter.add(language);
+                            languages.add(new SpokenLanguagesIntepreter(language));
+                        }
+                    }
+                } catch (Exception e) {
+                    errors.add('Feil ved uthenting av språk for talespråktolk');
+                }
+
+                badges.add(
+                    new Badge(
+                            'spokenLanguageIntepreter',
+                            getFieldLabel('INT_SpokenLanguageIntepreter__c'),
+                            'slds-theme_warning slds-m-left_x-small slds-m-vertical_xx-small pointer yellowBadge',
+                            '',
+                            '',
+                            true
+                        )
+                        .setBadgeContent(languages)
+                );
+            }
+        }
+
+        private void setKrrReservation() {
+            if (person.INT_KRR_Reservation__c) {
+                badges.add(new Badge('krr', getFieldLabel('INT_KRR_Reservation__c')));
+            }
+        }
+
+        private void setIsDeceased() {
+            if (person.INT_IsDeceased__c) {
+                badges.add(
+                    new Badge(
+                            'isDeceased',
+                            getFieldLabel('INT_IsDeceased__c'),
+                            'slds-theme_warning slds-m-left_x-small slds-m-vertical_xx-small pointer yellowBadge',
+                            '',
+                            '',
+                            true
+                        )
+                        .setBadgeContent(new IsDeceased(person.INT_DateOfDeath__c))
+                );
+            }
         }
 
         private void setPowerOfAttorney() {
@@ -211,6 +351,299 @@ public with sharing class HOT_PersonBadgesController {
                 );
             }
         }
+
+        /**
+         * @description We don't have the HOT fields in all sanboxes or scratch orgs, therefore we need to check if they exist before trying to add any badges;
+         */
+        private void setDegreeOfHearingAndVisualImpairment() {
+            if (fieldSet.contains('hot_degreeofhearingandvisualimpairment__c')) {
+                String degreeOfHearingAndVisualImpairment = (String) person.get(
+                    'HOT_DegreeOfHearingAndVisualImpairment__c'
+                );
+
+                if (String.isNotBlank(degreeOfHearingAndVisualImpairment)) {
+                    badges.add(new Badge('degreeOfHearingAndVisualImpairment', degreeOfHearingAndVisualImpairment));
+                }
+            }
+        }
+
+        /**
+         * @description Setting badge for open STOs
+         * This function could have been used to check Case instead of PSR, which means we probably could have removed
+         * fetchSpecialSkills() and had a much easier query than the one that fetches PSR. However, since the
+         * Case table of records is so big, the query likely would have timed out or taken too long.
+         *
+         * The code is mostly a duplication of the nksGetStoUtilityController class in crm-sto.
+         */
+        public void setOpenSTO(String caseId, Boolean filterSTO) {
+            if (!filterSTO) {
+                setOpenSTO(caseId);
+                return;
+            }
+
+            Case currentCase = getCurrentCase(caseId);
+            if (currentCase == null) {
+                return;
+            }
+
+            List<String> confidentialitySkillsName = new List<String>{ 'Fortrolig_addresse', 'Skjermede_personer' };
+            List<String> originSkillsName = new List<String>{ 'BTO', 'STO' };
+            Map<String, String> stoThemeRenames = new Map<String, String>{ 'Ufør' => 'Ufoeretrygd' };
+
+            // Since Omni channel skills are org based, we want to only include skills that are used in STO
+            List<String> allRelevantSkills = getAllRelevantSkills(stoThemeRenames);
+            allRelevantSkills.addAll(confidentialitySkillsName);
+            allRelevantSkills.addAll(originSkillsName);
+
+            Set<Id> skillIds = new Set<Id>();
+            Map<Id, String> userConfidentialMap = new Map<Id, String>();
+            Map<Id, String> userOriginMap = new Map<Id, String>();
+
+            fetchUserSkills(
+                allRelevantSkills,
+                confidentialitySkillsName,
+                originSkillsName,
+                skillIds,
+                userConfidentialMap,
+                userOriginMap
+            );
+
+            List<Id> confidentialitySkillsIds = new List<Id>();
+            List<Id> originSkillsIds = new List<Id>();
+            fetchSpecialSkills(confidentialitySkillsName, originSkillsName, confidentialitySkillsIds, originSkillsIds);
+
+            List<Id> casesInQueueList = fetchPendingServiceRoutings(
+                currentCase,
+                skillIds,
+                userConfidentialMap.keySet(),
+                confidentialitySkillsIds,
+                userOriginMap.keySet(),
+                originSkillsIds
+            );
+
+            if (casesInQueueList.isEmpty()) {
+                return;
+            }
+
+            List<Thread__c> threadList = fetchThreads(casesInQueueList);
+
+            if (threadList.isEmpty()) {
+                return;
+            }
+
+            countThreadsAndAddBadges(threadList);
+        }
+
+        private List<String> getAllRelevantSkills(Map<String, String> stoThemeRenames) {
+            List<String> allRelevantSkills = new List<String>();
+            Schema.DescribeFieldResult fieldResult = Case.STO_Category__c.getDescribe();
+            for (Schema.PicklistEntry pl : fieldResult.getPicklistValues()) {
+                String label = pl.getLabel();
+                if (stoThemeRenames.containsKey(label)) {
+                    allRelevantSkills.add(stoThemeRenames.get(label));
+                } else {
+                    allRelevantSkills.add(label);
+                }
+            }
+            return allRelevantSkills;
+        }
+
+        private Case getCurrentCase(String caseId) {
+            return [
+                SELECT Id, RecordType.DeveloperName, AccountId, STO_Category__c, NKS_Theme_Group__r.Name
+                FROM Case
+                WHERE Id = :caseId
+                LIMIT 1
+            ];
+        }
+
+        private void fetchUserSkills(
+            List<String> allRelevantSkills,
+            List<String> confidentialitySkillsName,
+            List<String> originSkillsName,
+            Set<Id> skillIds,
+            Map<Id, String> userConfidentialMap,
+            Map<Id, String> userOriginMap
+        ) {
+            for (ServiceResourceSkill srs : [
+                SELECT SkillId, Skill.DeveloperName, Skill.MasterLabel
+                FROM ServiceResourceSkill
+                WHERE
+                    ServiceResource.RelatedRecordId = :UserInfo.getUserId()
+                    AND Skill.DeveloperName IN :allRelevantSkills
+                    AND EffectiveStartDate <= TODAY
+                    AND (EffectiveEndDate >= TODAY
+                    OR EffectiveEndDate = NULL)
+                    AND ServiceResource.IsActive = TRUE
+            ]) {
+                //Separating domain skills and person access skills
+                if (confidentialitySkillsName.contains(srs.Skill.DeveloperName)) {
+                    userConfidentialMap.put(srs.SkillId, srs.Skill.DeveloperName);
+                } else if (originSkillsName.contains(srs.Skill.DeveloperName)) {
+                    userOriginMap.put(srs.SkillId, srs.Skill.DeveloperName);
+                } else {
+                    skillIds.add(srs.SkillId);
+                }
+            }
+        }
+
+        // Salesforce has a weird bug with filtering on skills, so we query them and add them to a list
+        // for use in the PendingServiceRoutning query.
+        private void fetchSpecialSkills(
+            List<String> confidentialitySkillsName,
+            List<String> originSkillsName,
+            List<Id> confidentialitySkillsIds,
+            List<Id> originSkillsIds
+        ) {
+            for (Skill skill : [
+                SELECT Id, DeveloperName
+                FROM Skill
+                WHERE DeveloperName IN :confidentialitySkillsName OR DeveloperName IN :originSkillsName
+            ]) {
+                if (confidentialitySkillsName.contains(skill.DeveloperName)) {
+                    confidentialitySkillsIds.add(skill.Id);
+                }
+                if (originSkillsName.contains(skill.DeveloperName)) {
+                    originSkillsIds.add(skill.Id);
+                }
+            }
+        }
+
+        // Salesforce gives us a System.UnexpectedException: Illegal filter on SkillRequirement
+        // if we use Skill.DeveloperName instead of SkillId in the filters, so we query the skills
+        // as we did previously. For some unknown reason this works ¯\_(ツ)_/¯
+        private List<Id> fetchPendingServiceRoutings(
+            Case currentCase,
+            Set<Id> skillIds,
+            Set<Id> userConfidentialSkillIds,
+            List<Id> confidentialitySkillsIds,
+            Set<Id> userOriginSkillIds,
+            List<Id> originSkillsIds
+        ) {
+            List<Id> casesInQueueList = new List<Id>();
+            for (PendingServiceRouting psr : [
+                SELECT WorkItemId
+                FROM PendingServiceRouting
+                WHERE
+                    WorkItem.AccountId = :currentCase.AccountId
+                    AND Id IN (
+                        SELECT RelatedRecordId
+                        FROM SkillRequirement
+                        WHERE SkillId IN :skillIds
+                    )
+                    AND Id NOT IN (
+                        SELECT RelatedRecordId
+                        FROM SkillRequirement
+                        WHERE
+                            (SkillId NOT IN :userConfidentialSkillIds
+                            AND SkillId IN :confidentialitySkillsIds)
+                            OR (SkillId NOT IN :userOriginSkillIds
+                            AND SkillId IN :originSkillsIds)
+                    )
+                    AND ServiceChannel.DeveloperName = 'Skriv_til_oss'
+                    AND IsReadyForRouting = TRUE
+                    AND IsPushed = FALSE
+            ]) {
+                casesInQueueList.add(psr.WorkItemId);
+            }
+            return casesInQueueList;
+        }
+
+        @TestVisible
+        private List<Thread__c> fetchThreads(List<Id> casesInQueueList) {
+            return [
+                SELECT Id, STO_Category__c, CRM_Thread_Type__c, CRM_Latest_Message_Datetime__c
+                FROM Thread__c
+                WHERE
+                    CRM_Case__c IN (
+                        SELECT Id
+                        FROM Case
+                        WHERE
+                            IsClosed = FALSE
+                            AND STO_Category__c != NULL
+                            AND Status NOT IN ('In progress', 'On Hold', 'Reserved')
+                            AND Id IN :casesInQueueList
+                    )
+                ORDER BY STO_Category__c ASC, CRM_Latest_Message_Datetime__c DESC
+            ];
+        }
+
+        @TestVisible
+        private void countThreadsAndAddBadges(List<Thread__c> threadList) {
+            Integer count = 0;
+            Map<String, List<Thread__c>> threadsGroupedByQueue = new Map<String, List<Thread__c>>();
+            for (Thread__c th : threadList) {
+                String category = th.STO_Category__c;
+                if (!threadsGroupedByQueue.containsKey(category)) {
+                    threadsGroupedByQueue.put(category, new List<Thread__c>());
+                }
+                threadsGroupedByQueue.get(category).add(th);
+                count++;
+            }
+
+            List<OpenSTO> openSTOList = new List<OpenSTO>();
+            for (String queue : threadsGroupedByQueue.keySet()) {
+                openSTOList.add(new OpenSTO(queue, threadsGroupedByQueue.get(queue)));
+            }
+
+            badges.add(
+                new Badge(
+                        'openSTO',
+                        String.valueOf(count) + (count == 1 ? ' åpen STO' : ' åpne STO-er'),
+                        'slds-theme_success slds-m-left_x-small slds-m-vertical_xx-small pointer greenBadge',
+                        '',
+                        '',
+                        true
+                    )
+                    .setBadgeContent(openSTOList)
+            );
+        }
+
+        public void setOpenSTO(String caseId) {
+            Case c = [
+                SELECT Id, RecordType.DeveloperName, AccountId, STO_Category__c, NKS_Theme_Group__r.Name
+                FROM Case
+                WHERE Id = :caseId
+                LIMIT 1
+            ];
+
+            if (c == null) {
+                return;
+            }
+
+            List<AggregateResult> aggRes = [
+                SELECT COUNT(Id) numHenv, STO_Category__c, Origin
+                FROM Case
+                WHERE
+                    AccountId = :c.AccountId
+                    AND IsClosed = FALSE
+                    AND STO_Category__c != NULL
+                    AND Status NOT IN ('In progress', 'On Hold', 'Reserved')
+                GROUP BY STO_Category__c, Origin
+            ];
+
+            if (aggRes.isEmpty()) {
+                return;
+            }
+
+            Integer count = 0;
+            for (AggregateResult agg : aggRes) {
+                count += Integer.valueOf(agg.get('numHenv'));
+            }
+
+            badges.add(
+                new Badge(
+                    'openSTO',
+                    String.valueOf(count) + (count == 1 ? ' åpen STO' : ' åpne STO-er'),
+                    'slds-theme_success slds-m-left_x-small slds-m-vertical_xx-small pointer greenBadge',
+                    '',
+                    '',
+                    true,
+                    JSON.serialize(aggRes)
+                )
+            );
+        }
+
         private void setPersonName() {
             for (Account acc : [
                 SELECT Name, CRM_Person__r.Name, CRM_Person__r.NKS_Full_Name__c
@@ -538,6 +971,39 @@ public with sharing class HOT_PersonBadgesController {
                 }
                 return label.removeEnd(', ');
             }
+        }
+    }
+
+    public class SecurityMeasure implements BadgeContent {
+        @AuraEnabled
+        public Id RecordId;
+        @AuraEnabled
+        public Date ToDate;
+        @AuraEnabled
+        public Date FromDate;
+        @AuraEnabled
+        public string SecurityMeasure;
+
+        public SecurityMeasure(Id recordId, Date toDate, Date fromDate, String securityMeasure) {
+            this.RecordId = recordId;
+            this.ToDate = toDate;
+            this.FromDate = fromDate;
+            this.SecurityMeasure = securityMeasure;
+        }
+    }
+
+    public class OpenSTO implements BadgeContent {
+        @AuraEnabled
+        public String queue;
+        @AuraEnabled
+        public List<Thread__c> threadList;
+        @AuraEnabled
+        public Integer threadSize;
+
+        public OpenSTO(String queue, List<Thread__c> threadList) {
+            this.queue = queue;
+            this.threadList = threadList != null ? threadList : new List<Thread__c>();
+            this.threadSize = this.threadList.size();
         }
     }
 }
