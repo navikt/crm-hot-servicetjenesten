@@ -3,7 +3,7 @@
 public with sharing class HOT_FullmaktControllerTest {
     @TestSetup
     static void makeData() {
-        Person__c p1 = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p1 = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 Name = '01234567890',
                 INT_FirstName__c = 'Fullmaktsgiver',
@@ -12,8 +12,8 @@ public with sharing class HOT_FullmaktControllerTest {
             ),
             true
         );
-        Account a1 = (Account) UTIL_TestDataFactory.createRecord(new Account(Name = 'Fake person'), true);
-        Common_Code__c cCode = (Common_Code__c) UTIL_TestDataFactory.createRecord(
+        Account a1 = (Account) HOT_ST_TestDataFactory.createRecord(new Account(Name = 'Fake person'), true);
+        Common_Code__c cCode = (Common_Code__c) HOT_ST_TestDataFactory.createRecord(
             new Common_Code__c(Name = 'Test ccode', CRM_Code_Set__c = 'Tema', CRM_Code__c = 'ARP'),
             true
         );
@@ -22,7 +22,7 @@ public with sharing class HOT_FullmaktControllerTest {
     @IsTest
     static void getFullmaktsgiverHistorikkTest() {
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '01234567890'];
-        Case c = (Case) UTIL_TestDataFactory.createRecord(
+        Case c = (Case) HOT_ST_TestDataFactory.createRecord(
             new Case(AccountId = p.CRM_Account__c, STO_Category__c = 'Arbeid', Status = 'New'),
             true
         );
@@ -55,7 +55,7 @@ public with sharing class HOT_FullmaktControllerTest {
     @IsTest
     static void getFullmaktsgiverTest() {
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '01234567890'];
-        Case c = (Case) UTIL_TestDataFactory.createRecord(
+        Case c = (Case) HOT_ST_TestDataFactory.createRecord(
             new Case(AccountId = p.CRM_Account__c, STO_Category__c = 'Arbeid', Status = 'New'),
             true
         );
@@ -89,7 +89,7 @@ public with sharing class HOT_FullmaktControllerTest {
     @IsTest
     static void testGetFullmaktsgiverHistorikkErrorHandling() {
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '01234567890'];
-        Case c = (Case) UTIL_TestDataFactory.createRecord(
+        Case c = (Case) HOT_ST_TestDataFactory.createRecord(
             new Case(AccountId = p.CRM_Account__c, STO_Category__c = 'Arbeid', Status = 'New'),
             true
         );
@@ -114,7 +114,7 @@ public with sharing class HOT_FullmaktControllerTest {
     @IsTest
     static void testGetFullmaktsgiverErrorHandling() {
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '01234567890'];
-        Case c = (Case) UTIL_TestDataFactory.createRecord(
+        Case c = (Case) HOT_ST_TestDataFactory.createRecord(
             new Case(AccountId = p.CRM_Account__c, STO_Category__c = 'Arbeid', Status = 'New'),
             true
         );
@@ -161,7 +161,7 @@ public with sharing class HOT_FullmaktControllerTest {
     @IsTest
     static void testCheckAccessAndGetPersonIdentWithCase() {
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '01234567890'];
-        Case c = (Case) UTIL_TestDataFactory.createRecord(
+        Case c = (Case) HOT_ST_TestDataFactory.createRecord(
             new Case(AccountId = p.CRM_Account__c, STO_Category__c = 'Arbeid', Status = 'New'),
             true
         );

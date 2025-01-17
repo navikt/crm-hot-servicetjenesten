@@ -6,7 +6,7 @@ public with sharing class HOT_PersonBadgesControllerTest {
 
     @TestSetup
     static void makeData() {
-        Person__c p = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 Name = '12345678901',
                 INT_FirstName__c = 'Harry',
@@ -16,7 +16,7 @@ public with sharing class HOT_PersonBadgesControllerTest {
             true
         );
 
-        Person__c p2 = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p2 = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 Name = '01234567890',
                 INT_FirstName__c = 'Motpart',
