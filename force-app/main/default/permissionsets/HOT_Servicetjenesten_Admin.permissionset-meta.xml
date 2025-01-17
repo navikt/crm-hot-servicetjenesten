@@ -17,6 +17,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FullmaktService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_ButtonContainerController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -33,11 +37,19 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_FullmaktController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_HjelpemiddelsentralController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
         <apexClass>HOT_KrrInformationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOT_PersonBadgesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -149,6 +161,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CRM_In_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.CRM_Run_Case_Assignment__c</field>
         <readable>true</readable>
@@ -176,11 +193,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Case.EntitlementId</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CRM_In_Queue__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
