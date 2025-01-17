@@ -213,6 +213,16 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>relationshipField</name>
+                    <value>CRM_Person__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_personBadgePanel</componentName>
+                <identifier>c_hot_personBadgePanel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-d4eb155a-607a-4136-97f8-5b56c413966e</value>
                 </componentInstanceProperties>
@@ -682,7 +692,8 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>
+                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
