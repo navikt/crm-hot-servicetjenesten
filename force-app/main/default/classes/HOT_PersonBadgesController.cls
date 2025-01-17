@@ -47,25 +47,14 @@ public with sharing class HOT_PersonBadgesController {
         Set<String> fields = new Set<String>{
             'Id',
             'INT_GuardianshipOrFuturePowerOfAttorney__c',
-            'INT_IsDeceased__c',
-            'INT_DateOfDeath__c',
             'INT_PowerOfAttorney__c',
-            'INT_SpokenLanguageIntepreter__c',
-            'INT_KRR_Reservation__c',
-            'NKS_NumberOfSecurityMeasures__c'
+            'INT_KRR_Reservation__c'
         };
-        Set<String> fieldsToLabel = new Set<String>{ 'HOT_DegreeOfHearingAndVisualImpairment__c' };
 
         String queryString = 'SELECT ';
         for (String str : fields) {
             if (objectFields.contains(str.toLowerCase())) {
                 queryString += str += ', ';
-            }
-        }
-
-        for (String str : fieldsToLabel) {
-            if (objectFields.contains(str.toLowerCase())) {
-                queryString += 'toLabel(' + str + '), ';
             }
         }
 
@@ -91,19 +80,11 @@ public with sharing class HOT_PersonBadgesController {
         @AuraEnabled
         public List<Badge> badges;
         @AuraEnabled
-        public List<SecurityMeasure> securityMeasures;
-        @AuraEnabled
-        public List<String> spokenLanguagesIntepreter;
-        @AuraEnabled
         public List<GuardianshipOrFuturePowerOfAttorney> guardianships;
         @AuraEnabled
         public List<PowerOfAttorney> powerOfAttorneys;
         @AuraEnabled
         public List<String> errors;
-        @AuraEnabled
-        public Date dateOfDeath;
-        // @AuraEnabled
-        // public List<String> entitlements;
 
         private Person__c person;
         private Set<String> fieldSet;
@@ -111,8 +92,6 @@ public with sharing class HOT_PersonBadgesController {
 
         public PersonBadgeData(Person__c person) {
             this.badges = new List<Badge>();
-            this.securityMeasures = new List<SecurityMeasure>();
-            this.spokenLanguagesIntepreter = new List<String>();
             this.guardianships = new List<GuardianshipOrFuturePowerOfAttorney>();
             this.powerOfAttorneys = new List<PowerOfAttorney>();
             this.errors = new List<String>();
@@ -120,7 +99,6 @@ public with sharing class HOT_PersonBadgesController {
             // this.entitlements = new List<String>();
 
             if (person != null) {
-                this.dateOfDeath = person.INT_DateOfDeath__c;
                 this.person = person;
                 //Get field set for use later in the class
                 this.fieldSet = Schema.SObjectType.Person__c.fields.getMap().keySet();
@@ -554,24 +532,6 @@ public with sharing class HOT_PersonBadgesController {
                 }
                 return label.removeEnd(', ');
             }
-        }
-    }
-
-    public class SecurityMeasure implements BadgeContent {
-        @AuraEnabled
-        public Id RecordId;
-        @AuraEnabled
-        public Date ToDate;
-        @AuraEnabled
-        public Date FromDate;
-        @AuraEnabled
-        public string SecurityMeasure;
-
-        public SecurityMeasure(Id recordId, Date toDate, Date fromDate, String securityMeasure) {
-            this.RecordId = recordId;
-            this.ToDate = toDate;
-            this.FromDate = fromDate;
-            this.SecurityMeasure = securityMeasure;
         }
     }
 }
