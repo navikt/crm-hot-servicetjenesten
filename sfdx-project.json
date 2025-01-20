@@ -12,6 +12,14 @@
                     "versionNumber": "0.247.0.LATEST"
                 },
                 {
+                    "package": "crm-journal-utilities",
+                    "versionNumber": "0.40.0.LATEST"
+                },
+                                {
+                    "package": "crm-platform-reporting",
+                    "versionNumber": "0.39.0.LATEST"
+                },
+                {
                     "package": "crm-shared-flowComponents",
                     "versionNumber": "0.4.0.LATEST"
                 },
@@ -20,28 +28,24 @@
                     "versionNumber": "0.27.0.LATEST"
                 },
                 {
+                    "package": "crm-platform-integration",
+                    "versionNumber": "0.142.0.LATEST"
+                },
+                {
                     "package": "crm-sf-saf",
                     "versionNumber": "0.23.0.LATEST"
-                },
-                {
-                    "package": "crm-nks-integration",
-                    "versionNumber": "0.70.0.LATEST"
-                },
-                {
-                    "package": "crm-journal-utilities",
-                    "versionNumber": "0.40.0.LATEST"
                 },
                 {
                     "package": "crm-shared-user-notification",
                     "versionNumber": "0.24.0.LATEST"
                 },
                 {
-                    "package": "crm-platform-integration",
-                    "versionNumber": "0.142.0.LATEST"
-                },
-                {
                     "package": "crm-platform-oppgave",
                     "versionNumber": "0.63.0.LATEST"
+                },
+                {
+                    "package": "crm-nks-integration",
+                    "versionNumber": "0.70.0.LATEST"
                 },
                 {
                     "package": "crm-platform-access-control",
@@ -50,10 +54,6 @@
                 {
                     "package": "crm-community-base",
                     "versionNumber": "0.119.0.LATEST"
-                },
-                {
-                    "package": "crm-platform-reporting",
-                    "versionNumber": "0.39.0.LATEST"
                 },
                 {
                     "package": "crm-henvendelse",
