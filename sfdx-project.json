@@ -4,12 +4,12 @@
             "path": "force-app",
             "default": true,
             "package": "crm-hot-servicetjenesten",
-            "versionNumber": "0.2.0.NEXT",
+            "versionNumber": "1.4.0.NEXT",
             "versionDescription": "",
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.246.0.LATEST"
+                    "versionNumber": "0.247.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -17,7 +17,7 @@
                 },
                 {
                     "package": "crm-henvendelse-base",
-                    "versionNumber": "0.24.0.LATEST"
+                    "versionNumber": "0.27.0.LATEST"
                 },
                 {
                     "package": "crm-journal-utilities",
@@ -37,7 +37,7 @@
                 },
                 {
                     "package": "crm-platform-access-control",
-                    "versionNumber": "0.143.0.LATEST"
+                    "versionNumber": "0.146.0.LATEST"
                 },
                 {
                     "package": "crm-community-base",

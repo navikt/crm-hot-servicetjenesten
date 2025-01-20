@@ -83,7 +83,7 @@
             <assignToReference>NAVTask.NKS_TaskType__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Type_Selector_1.selectedTaskTypeId</elementReference>
+                <elementReference>Selected_Task_Type_Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -97,14 +97,14 @@
             <assignToReference>NAVTask.CRM_Account__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Get_Case.Account.Id</elementReference>
+                <elementReference>Get_Case.AccountId</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>NAVTask.Name</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Theme_Code</elementReference>
+                <elementReference>Task_Name</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -155,10 +155,10 @@
         <locationX>864</locationX>
         <locationY>458</locationY>
         <assignmentItems>
-            <assignToReference>NAVTask.CRM_Comments__c</assignToReference>
+            <assignToReference>NAVTask.NKS_Comments__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Oppgave_til_NAV_enhet</elementReference>
+                <elementReference>Oppgave_til_NAV_enhet_1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -186,7 +186,7 @@
             <assignToReference>NAVTask.CRM_Priority__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Priority</elementReference>
+                <elementReference>Prioritet_1</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -228,7 +228,14 @@
             <assignToReference>NAVTask.NKS_TaskType__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Task_Type_Selector_1.selectedTaskTypeId</elementReference>
+                <elementReference>Selected_Task_Type_Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>NAVTask.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Task_Name</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -347,6 +354,13 @@
         <picklistObject>NavTask__c</picklistObject>
     </dynamicChoiceSets>
     <environments>Default</environments>
+    <formulas>
+        <name>Task_Name</name>
+        <dataType>String</dataType>
+        <expression>Case({!Selected_Task_Type}, &apos;KONT_BRUK&apos;,
+            &apos;Kontakt bruker&apos;, &apos;VURD_HENV&apos;, &apos;Vurder henvendelse&apos;,
+            &apos;Vurder konsekvens for ytelse&apos;)</expression>
+    </formulas>
     <formulas>
         <name>Task_Theme_Code</name>
         <dataType>String</dataType>
@@ -518,7 +532,22 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_Id</assignToReference>
+                <name>subtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtype_SF_Id</assignToReference>
+                <name>subtype</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Groupe_SF_Id</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>theme</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Task_Type_Selector_1</name>
@@ -538,7 +567,14 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type</assignToReference>
+                <name>selectedTaskType</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type_Id</assignToReference>
+                <name>selectedTaskTypeId</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Prioritet</name>
@@ -580,7 +616,14 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Assigned_Resource</assignToReference>
+                <name>assignedResource</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Id</assignToReference>
+                <name>selectedUnitId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -680,7 +723,22 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_Id</assignToReference>
+                <name>subtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtype_SF_Id</assignToReference>
+                <name>subtype</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Groupe_SF_Id</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>theme</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Task_Type_Selector</name>
@@ -700,10 +758,17 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type</assignToReference>
+                <name>selectedTaskType</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Task_Type_Id</assignToReference>
+                <name>selectedTaskTypeId</name>
+            </outputParameters>
         </fields>
         <fields>
-            <name>Task_Priority</name>
+            <name>Prioritet_1</name>
             <choiceReferences>Priority_Picklist</choiceReferences>
             <dataType>String</dataType>
             <defaultValue>
@@ -715,11 +780,38 @@
             <isRequired>true</isRequired>
         </fields>
         <fields>
-            <name>Task_Description</name>
+            <name>Oppgave_til_NAV_enhet_1</name>
             <fieldText>Oppgave til NAV-enhet</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Work_Allocation</name>
+            <extensionName>c:crmNavTaskWorkAllocation</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>personId</name>
+                <value>
+                    <elementReference>Get_Thread.CRM_Account__r.CRM_Person__r.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>disableConditionalRendering</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>Selected_Assigned_Resource</assignToReference>
+                <name>assignedResource</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Id</assignToReference>
+                <name>selectedUnitId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -838,6 +930,20 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Task_Type</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Task_Type_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>

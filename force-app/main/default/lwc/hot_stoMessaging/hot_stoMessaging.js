@@ -160,7 +160,7 @@ export default class hotStoMessaging extends LightningElement {
         let salutation = this.userName == null ? 'Hei,' : 'Hei, ' + this.userName;
         let regards = 'Med vennlig hilsen';
 
-        return `${salutation}\n\n\n\n${regards}\n${this.supervisorName}\nNAV Servicetjenesten`;
+        return `${salutation}\n\n\n\n${regards}\n${this.supervisorName}\nServicetjenesten Nav hjelpemidler og tilrettelegging`;
     }
 
     get computeClasses() {
