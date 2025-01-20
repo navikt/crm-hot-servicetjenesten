@@ -4,6 +4,9 @@ call sf org create scratch --definition-file config\project-scratch-def.json --a
 echo "Installerer crm-platform-base ver. 0.247"
 call sf package install --package 04tKB000000Y6N2YAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
+echo "Installerer crm-thread-view ver. 0.2"
+call sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+
 echo "Installerer crm-journal-utilities ver. 0.40"
 call sf package install --package 04tKB000000Y65FYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
@@ -31,7 +34,6 @@ call sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-
 echo "Installerer crm-nks-integration ver. 0.78"
 call sf package install --package 04tKB000000Y73CYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-
 echo "Installerer crm-platform-access-control ver. 0.146"
 call sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
@@ -40,9 +42,6 @@ call sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-
 
 echo "Installerer crm-henvendelse ver. 0.154"
 call sf package install --package 04tKB000000Y5fXYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
-
-echo "Installerer crm-thread-view ver. 0.2"
-call sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-timeline ver. 1.27"
 call sf package install --package 04tKB000000Y655YAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30

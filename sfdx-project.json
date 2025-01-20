@@ -12,6 +12,10 @@
                     "versionNumber": "0.247.0.LATEST"
                 },
                 {
+                    "package": "crm-thread-view",
+                    "versionNumber": "0.2.0.LATEST"
+                },
+                {
                     "package": "crm-journal-utilities",
                     "versionNumber": "0.40.0.LATEST"
                 },
@@ -58,10 +62,6 @@
                 {
                     "package": "crm-henvendelse",
                     "versionNumber": "0.154.0.LATEST"
-                },
-                {
-                    "package": "crm-thread-view",
-                    "versionNumber": "0.2.0.LATEST"
                 },
                 {
                     "package": "crm-shared-timeline",
