@@ -188,6 +188,9 @@
                         <valueListItems>
                             <value>DeleteDraftKnowledgeArticleVersion</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Knowledge__kav.HOT_KnowledgeFeedbackBtn</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
