@@ -151,6 +151,12 @@
                 <identifier>RecordAccountCRM_Person_rINT_ResidentialAddress_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.INT_MunicipalityName__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rINT_MunicipalityName_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-2e6e5b68-7f60-4fe7-948d-f9d90689b522</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -603,7 +609,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Saker</value>
+                    <value>Henvendelser</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>

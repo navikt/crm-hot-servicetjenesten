@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>POST HOTSAK GRAPHQL</label>
+    <protected>false</protected>
+    <values>
+        <field>API_Base_Configuration__c</field>
+        <value xsi:type="xsd:string">HOTSAK</value>
+    </values>
+    <values>
+        <field>HTTP_Method__c</field>
+        <value xsi:type="xsd:string">POST</value>
+    </values>
+    <values>
+        <field>Has_Path_Parameters__c</field>
+        <value xsi:type="xsd:boolean">false</value>
+    </values>
+    <values>
+        <field>Mock_Response__c</field>
+        <value xsi:type="xsd:string">{
+            &quot;200&quot;: {
+            &quot;headers&quot;: null,
+            &quot;body&quot;: {
+            &quot;data&quot;: {
+            &quot;saksoversiktInnbygger&quot;: {
+            &quot;saker&quot;: [
+            {
+            &quot;opprettet&quot;: &quot;2024-01-04T12:22:55.157985Z&quot;,
+            &quot;sakId&quot;: &quot;2755&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;344&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-03-04&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-01-04T12:22:55.157985Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;57c6031f-a1c7-4692-9640-09b9a59581a7&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: sittepute&quot;,
+            &quot;mottatt&quot;: &quot;2024-01-04T12:22:55.157985Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-03-04T12:01:02.489643Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;5604&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-03-04T12:00:58.746674Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;5603&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: sittepute&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-04T12:28:28.400928Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;5183&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-04T12:22:55.157985Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;5182&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-01-18T13:06:33.323142Z&quot;,
+            &quot;sakId&quot;: &quot;2785&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;309&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-01-18&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-01-18T13:06:33.323142Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;096c147d-5a44-4d3b-8939-cfd30d2d1d8d&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;mottatt&quot;: &quot;2024-01-18T13:06:33.322254Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-18T13:06:46.341964Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;5275&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-18T13:06:43.019594Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;5274&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-18T13:06:34.901893Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;5273&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-01-18T13:06:33.323142Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;5272&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-05-06T08:25:57.522405Z&quot;,
+            &quot;sakId&quot;: &quot;2970&quot;,
+            &quot;saksstatus&quot;: &quot;UNDER_BEHANDLING&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-05-06T08:25:57.522405Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;6ce755fc-2cff-4cde-ac8c-42ab54a52f45&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;mottatt&quot;: &quot;2024-05-06T08:25:57.507559Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-06T11:24:17.490036Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6332&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-06T08:26:05.934772Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6331&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-06T08:25:57.522405Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6330&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-05-07T10:59:24.220784Z&quot;,
+            &quot;sakId&quot;: &quot;2972&quot;,
+            &quot;saksstatus&quot;: &quot;UNDER_BEHANDLING&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-05-07T10:59:24.220784Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;aff6ad74-a207-45a7-8c95-a4cfe353d027&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: dusjkrakk&quot;,
+            &quot;mottatt&quot;: &quot;2024-05-07T10:59:24.219384Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-08T07:14:20.300916Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6345&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: dusjkrakk&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-07T11:35:21.629426Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6343&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-07T10:59:24.220784Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6342&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-05-08T13:21:22.006178Z&quot;,
+            &quot;sakId&quot;: &quot;2974&quot;,
+            &quot;saksstatus&quot;: &quot;UNDER_BEHANDLING&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-05-08T13:21:22.006178Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;57e11e54-a375-401a-bba0-7278c713adfc&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: terskeleliminator&quot;,
+            &quot;mottatt&quot;: &quot;2024-05-08T13:21:22.003654Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-13T12:11:22.286416Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6350&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: terskeleliminator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-08T13:47:00.033857Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6348&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-05-08T13:21:22.006178Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6347&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-07-05T12:32:35.915736Z&quot;,
+            &quot;sakId&quot;: &quot;3077&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;450&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-07-05&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-07-05T12:32:35.915736Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;66eb6567-3f02-49a7-9f9e-36ffda04f176&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: sittepute, terskeleliminator&quot;,
+            &quot;mottatt&quot;: &quot;2024-07-05T12:32:35.801414Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-07-05T12:47:38.712884Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6541&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-07-05T12:47:24.908356Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6540&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: sittepute, terskeleliminator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-07-05T12:32:45.464776Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6539&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-07-05T12:32:35.915736Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6538&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-09-05T10:54:29.673750Z&quot;,
+            &quot;sakId&quot;: &quot;3142&quot;,
+            &quot;saksstatus&quot;: &quot;OPPRETTET&quot;,
+            &quot;sakstype&quot;: &quot;BESTILLING&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-09-05T10:54:29.673750Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;2e295029-1e89-470f-a311-d15848917b30&quot;,
+            &quot;gjelder&quot;: &quot;Bestilling av: terskeleliminator&quot;,
+            &quot;mottatt&quot;: &quot;2024-09-05T10:54:29.672067Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Bestilling av: terskeleliminator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-05T10:54:30.799285Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6697&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestillingen ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-05T10:54:29.673750Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6696&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-09-05T11:04:17.978565Z&quot;,
+            &quot;sakId&quot;: &quot;3143&quot;,
+            &quot;saksstatus&quot;: &quot;OPPRETTET&quot;,
+            &quot;sakstype&quot;: &quot;BESTILLING&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-09-05T11:04:17.978565Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;ab597d11-c090-4f18-a622-08792a3db894&quot;,
+            &quot;gjelder&quot;: &quot;Bestilling av: krykker, toalettstol&quot;,
+            &quot;mottatt&quot;: &quot;2024-09-05T11:04:17.977296Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Bestilling av: krykker, toalettstol&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-05T11:04:19.153074Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6699&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestillingen ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-05T11:04:17.978565Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6698&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-09-16T07:00:30.881262Z&quot;,
+            &quot;sakId&quot;: &quot;3164&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;480&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-10-17&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-09-16T07:00:30.881262Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;7fab8b9c-ce2b-48e7-9fb0-51e2495f1acb&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: manuell rullestol&quot;,
+            &quot;mottatt&quot;: &quot;2024-09-16T07:00:29.308264Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-17T12:43:58.377559Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7156&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-26T10:19:36.168155Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;6861&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: manuell rullestol&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-16T07:00:33.253060Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6758&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-16T07:00:30.881262Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6757&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-09-18T09:39:29.569447Z&quot;,
+            &quot;sakId&quot;: &quot;3173&quot;,
+            &quot;saksstatus&quot;: &quot;OPPRETTET&quot;,
+            &quot;sakstype&quot;: &quot;BESTILLING&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-09-18T09:39:29.569447Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;70eb4786-e251-4494-868d-04207bdb69a9&quot;,
+            &quot;gjelder&quot;: &quot;Bestilling av: krykker&quot;,
+            &quot;mottatt&quot;: &quot;2024-09-18T09:39:23.262973Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Bestilling av: krykker&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-18T09:43:00.351569Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6776&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestillingen ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-09-18T09:39:29.569447Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;6775&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-16T14:43:13.093169Z&quot;,
+            &quot;sakId&quot;: &quot;3269&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;BESTILLING&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-10-16T14:43:13.093169Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;3909d3f0-153d-4ab3-89d1-07915fa54b97&quot;,
+            &quot;gjelder&quot;: &quot;Bestilling av: krykker&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-16T14:43:13.476346Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041969 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-28T12:32:34.489129Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7358&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041966 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-28T12:32:30.960632Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7356&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041963 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-28T12:32:19.828735Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7354&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041954 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-25T13:14:15.500674Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7325&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041953 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-25T12:44:14.299032Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7324&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041955 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-25T12:41:14.507005Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7323&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041949 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-25T11:11:08.256901Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7320&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestilling godkjent i Hotsak&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-23T14:23:26.096448Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7274&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-23T14:23:22.394972Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7273&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Bestilling av: krykker&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-16T14:43:14.810525Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7131&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestillingen ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-16T14:43:13.093169Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7130&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-16T14:58:08.840798Z&quot;,
+            &quot;sakId&quot;: &quot;3270&quot;,
+            &quot;saksstatus&quot;: &quot;UNDER_BEHANDLING&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-10-16T14:58:08.840798Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;84d9bcf4-fe08-45ff-bf87-036ab016eeae&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: trygghetsalarm&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-16T14:58:09.708760Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9042068 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-12-12T08:11:28.268858Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;8100&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9042062 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-12-12T06:31:50.435573Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;8098&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9042017 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-07T08:27:29.102761Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7500&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9042016 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-07T08:26:54.388302Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7499&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041981 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:10:23.285365Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7403&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041979 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:10:23.175964Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7402&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041977 | Status: Klargjort&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:10:23.011401Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7401&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041981 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:01:55.964317Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7397&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041979 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:01:52.520336Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7396&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Ordrenummer: 9041977 | Status: Registrert&quot;,
+            &quot;hendelse&quot;: &quot;Ordre oppdatert i OeBS&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-30T07:01:47.787962Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7395&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-18T12:33:52.733284Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7171&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: trygghetsalarm&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-16T14:58:10.739457Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7133&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-16T14:58:08.840798Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7132&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-31T11:21:11.307539Z&quot;,
+            &quot;sakId&quot;: &quot;3330&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;492&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-11-01&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-10-31T11:21:11.307539Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;dd1f8182-98b8-4981-8702-07c68a8dbdef&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-31T11:21:11.871044Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-01T16:20:22.564438Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7451&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-01T16:20:10.376858Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7450&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:21:13.971981Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7427&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:21:11.307539Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7426&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-31T11:47:31.094769Z&quot;,
+            &quot;sakId&quot;: &quot;3331&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;493&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-11-01&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-10-31T11:47:31.094769Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;794d03db-ff88-4b4f-9a43-72f48af0a036&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-31T11:47:31.689453Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-01T16:20:30.991976Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7453&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-01T16:20:28.414510Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7452&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:47:33.157585Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7429&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:47:31.094769Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7428&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-31T11:54:50.950196Z&quot;,
+            &quot;sakId&quot;: &quot;3332&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;507&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-11-19&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-10-31T11:54:50.950196Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;c2135692-cf32-4984-be6a-3ea1e52625b5&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-31T11:54:51.356017Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-19T14:52:42.215145Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7678&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-19T14:52:36.428967Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7677&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: rullator&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:54:52.086716Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7431&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T11:54:50.950196Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7430&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:02.059742Z&quot;,
+            &quot;sakId&quot;: &quot;3334&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;BESTILLING&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-10-31T15:33:02.059742Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;b94ed605-bcec-4e6e-8338-a9512523ab63&quot;,
+            &quot;gjelder&quot;: &quot;Bestilling av: gåbord&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-31T15:33:02.656241Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Duplikat av en annen bestilling;\n&quot;,
+            &quot;hendelse&quot;: &quot;Bestillingen ble avvist&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-05T11:11:21.654996Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7482&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-05T11:11:17.459619Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7481&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Bestilling av: gåbord&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:10.680305Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7438&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Bestillingen ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:02.059742Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7434&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:04.626632Z&quot;,
+            &quot;sakId&quot;: &quot;3335&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: {
+            &quot;vedtakId&quot;: &quot;505&quot;,
+            &quot;vedtaksdato&quot;: &quot;2024-11-19&quot;,
+            &quot;vedtaksstatus&quot;: &quot;INNVILGET&quot;
+            },
+            &quot;endret&quot;: &quot;2024-10-31T15:33:04.626632Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;e78a5932-3e22-46e3-9dad-b0c49f3b0fed&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: overmadrass&quot;,
+            &quot;mottatt&quot;: &quot;2024-10-31T15:33:05.271180Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknaden ble innvilget&quot;,
+            &quot;hendelse&quot;: &quot;Vedtak fattet&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-19T13:33:18.378601Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7666&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-19T13:33:14.166584Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z991054.E_Z991054@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z991054 E_Z991054&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z991054&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7665&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: overmadrass&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:10.879618Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7439&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-10-31T15:33:04.626632Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7435&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-11-11T11:55:08.059253Z&quot;,
+            &quot;sakId&quot;: &quot;3399&quot;,
+            &quot;saksstatus&quot;: &quot;FERDIGSTILT&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-11-11T11:55:08.059253Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;8ec5acc1-7a9e-4153-a5bc-fae5a8996d45&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: elektrisk rullestol&quot;,
+            &quot;mottatt&quot;: &quot;2024-11-11T11:55:08.518349Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Begrunnelse: Må kontakte formidler/bruker&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble overført Gosys&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-12T13:23:28.797653Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7616&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Saksbehandler har tatt saken&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-12T13:22:37.862089Z&quot;,
+            &quot;saksbehandler&quot;: {
+            &quot;epost&quot;: &quot;F_Z994377.E_Z994377@trygdeetaten.no&quot;,
+            &quot;navn&quot;: &quot;F_Z994377 E_Z994377&quot;,
+            &quot;saksbehandlerId&quot;: &quot;Z994377&quot;
+            },
+            &quot;sakshendelseId&quot;: &quot;7615&quot;
+            },
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: elektrisk rullestol&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-11T11:55:10.797576Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7554&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-11-11T11:55:08.059253Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;7553&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: []
+            },
+            {
+            &quot;opprettet&quot;: &quot;2024-12-13T12:35:35.343199Z&quot;,
+            &quot;sakId&quot;: &quot;3489&quot;,
+            &quot;saksstatus&quot;: &quot;OPPRETTET&quot;,
+            &quot;sakstype&quot;: &quot;SOEKNAD&quot;,
+            &quot;vedtak&quot;: null,
+            &quot;endret&quot;: &quot;2024-12-13T12:35:35.343199Z&quot;,
+            &quot;behovsmelding&quot;: {
+            &quot;behovsmeldingId&quot;: &quot;77dd0dd0-486f-4123-a92f-82124e3d0813&quot;,
+            &quot;gjelder&quot;: &quot;Søknad om: manuell rullestol&quot;,
+            &quot;mottatt&quot;: &quot;2024-12-13T12:35:36.934235Z&quot;
+            },
+            &quot;hendelser&quot;: [
+            {
+            &quot;detaljer&quot;: &quot;Søknad om: manuell rullestol&quot;,
+            &quot;hendelse&quot;: &quot;Saken ble automatisk journalført&quot;,
+            &quot;opprettet&quot;: &quot;2024-12-13T12:35:38.846853Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;8106&quot;
+            },
+            {
+            &quot;detaljer&quot;: null,
+            &quot;hendelse&quot;: &quot;Søknaden ble registrert mottatt&quot;,
+            &quot;opprettet&quot;: &quot;2024-12-13T12:35:35.343199Z&quot;,
+            &quot;saksbehandler&quot;: null,
+            &quot;sakshendelseId&quot;: &quot;8105&quot;
+            }
+            ],
+            &quot;oppgaver&quot;: [
+            {
+            &quot;feilregistrert&quot;: null,
+            &quot;ferdigstilt&quot;: null,
+            &quot;oppgaveId&quot;: &quot;250432&quot;,
+            &quot;oppgavetype&quot;: &quot;BEHANDLE_SAK&quot;,
+            &quot;opprettet&quot;: &quot;2024-12-13T12:35:38.846853Z&quot;
+            }
+            ]
+            }
+            ]
+            }
+            }
+            }
+            },
+            &quot;401&quot;: {
+            &quot;headers&quot;: null,
+            &quot;body&quot;: null
+            },
+            &quot;404&quot;: {
+            &quot;headers&quot;: null,
+            &quot;body&quot;: null
+            },
+            &quot;500&quot;: {
+            &quot;headers&quot;: null,
+            &quot;body&quot;: null
+            }
+            }</value>
+    </values>
+    <values>
+        <field>Service_Path__c</field>
+        <value xsi:type="xsd:string">/graphql</value>
+    </values>
+</CustomMetadata>

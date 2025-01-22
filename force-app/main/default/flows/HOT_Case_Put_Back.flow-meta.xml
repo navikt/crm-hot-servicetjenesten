@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionCalls>
         <name>Close_workspace_tab</name>
         <label>Close workspace tab</label>
         <locationX>512</locationX>
-        <locationY>1382</locationY>
+        <locationY>1490</locationY>
         <actionName>c:fcTabCloser</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -17,7 +18,7 @@
         <name>Assign_Case_Values</name>
         <label>Assign Case Values</label>
         <locationX>512</locationX>
-        <locationY>1166</locationY>
+        <locationY>1274</locationY>
         <assignmentItems>
             <assignToReference>Get_Case_Record.CRM_Run_Case_Assignment__c</assignToReference>
             <operator>Assign</operator>
@@ -65,9 +66,16 @@
         <name>Set_STO_Category</name>
         <label>Set STO Category</label>
         <locationX>182</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>Get_Case_Record.STO_Category__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Chosen_Queue</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Thread.STO_Category__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Chosen_Queue</elementReference>
@@ -78,10 +86,10 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Set_STO_Origin_and_Status_New</name>
-        <label>Set STO Origin and Status New</label>
+        <name>Set_STO_Origin_Status_And_Thread_Type</name>
+        <label>Set STO Origin, Status And Thread Type</label>
         <locationX>50</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <assignmentItems>
             <assignToReference>Get_Case_Record.Origin</assignToReference>
             <operator>Assign</operator>
@@ -96,8 +104,15 @@
                 <stringValue>New</stringValue>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Get_Thread.CRM_Thread_Type__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>STO</stringValue>
+            </value>
+        </assignmentItems>
         <connector>
-            <targetReference>Update_Thread_Type</targetReference>
+            <targetReference>Update_Thread_Type_and_Category</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -201,7 +216,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Set_STO_Category</targetReference>
+                <targetReference>Get_Thread</targetReference>
             </connector>
             <label>Wrong Queue</label>
         </rules>
@@ -225,10 +240,9 @@
         <name>IsBTO</name>
         <label>IsBTO?</label>
         <locationX>182</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <defaultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Set_forwarded_status</targetReference>
+            <targetReference>Update_Thread_Category</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
@@ -242,7 +256,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Set_STO_Origin_and_Status_New</targetReference>
+                <targetReference>Set_STO_Origin_Status_And_Thread_Type</targetReference>
             </connector>
             <label>BTO</label>
         </rules>
@@ -251,8 +265,8 @@
     <dynamicChoiceSets>
         <name>STO_Category_Picklist</name>
         <dataType>Picklist</dataType>
-        <displayField xsi:nil="true"/>
-        <object xsi:nil="true"/>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
         <picklistField>STO_Category__c</picklistField>
         <picklistObject>Case</picklistObject>
     </dynamicChoiceSets>
@@ -311,24 +325,14 @@
         <object>Case</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordUpdates>
-        <description>Updates the case to retrigger assignment to be put back to queue.</description>
-        <name>Update_Case</name>
-        <label>Update Case</label>
-        <locationX>512</locationX>
-        <locationY>1274</locationY>
+    <recordLookups>
+        <name>Get_Thread</name>
+        <label>Get Thread</label>
+        <locationX>182</locationX>
+        <locationY>566</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Close_workspace_tab</targetReference>
-        </connector>
-        <inputReference>Get_Case_Record</inputReference>
-    </recordUpdates>
-    <recordUpdates>
-        <name>Update_Thread_Type</name>
-        <label>Update Thread Type</label>
-        <locationX>50</locationX>
-        <locationY>890</locationY>
-        <connector>
-            <targetReference>Assign_Case_Values</targetReference>
+            <targetReference>Set_STO_Category</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -338,13 +342,41 @@
                 <elementReference>recordId</elementReference>
             </value>
         </filters>
-        <inputAssignments>
-            <field>CRM_Thread_Type__c</field>
-            <value>
-                <stringValue>STO</stringValue>
-            </value>
-        </inputAssignments>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
         <object>Thread__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordUpdates>
+        <description>Updates the case to retrigger assignment to be put back to queue.</description>
+        <name>Update_Case</name>
+        <label>Update Case</label>
+        <locationX>512</locationX>
+        <locationY>1382</locationY>
+        <connector>
+            <targetReference>Close_workspace_tab</targetReference>
+        </connector>
+        <inputReference>Get_Case_Record</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Thread_Category</name>
+        <label>Update Thread Category</label>
+        <locationX>314</locationX>
+        <locationY>890</locationY>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Set_forwarded_status</targetReference>
+        </connector>
+        <inputReference>Get_Thread</inputReference>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Thread_Type_and_Category</name>
+        <label>Update Thread Type and Category</label>
+        <locationX>50</locationX>
+        <locationY>998</locationY>
+        <connector>
+            <targetReference>Assign_Case_Values</targetReference>
+        </connector>
+        <inputReference>Get_Thread</inputReference>
     </recordUpdates>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
@@ -392,7 +424,6 @@
                     <dataType>String</dataType>
                     <defaultSelectedChoiceReference>Wrong_Queue</defaultSelectedChoiceReference>
                     <fieldType>RadioButtons</fieldType>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                 </fields>
                 <inputParameters>
@@ -410,7 +441,6 @@
                     <name>Put_Back_Reason_Input</name>
                     <fieldText>Årsak</fieldText>
                     <fieldType>LargeTextArea</fieldType>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>
@@ -429,7 +459,6 @@
                     <dataType>String</dataType>
                     <fieldText>Velg temagruppe</fieldText>
                     <fieldType>DropdownBox</fieldType>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>

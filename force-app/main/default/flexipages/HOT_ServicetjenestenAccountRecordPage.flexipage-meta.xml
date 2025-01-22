@@ -47,12 +47,6 @@
                 <identifier>RecordCRM_Person_rINT_Citizenships_cField2</identifier>
             </fieldInstance>
         </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_GuardianshipOrFuturePowerOfAttorney__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_GuardianshipOrFuturePowerOfAttorney_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
         <name>Facet-4d871b21-856c-4623-94ac-49b03439058d</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -635,7 +629,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
-                    <value>Saker</value>
+                    <value>Henvendelser</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>
@@ -675,7 +669,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Servicetjenesten Account Record</masterLabel>
+    <masterLabel>HOT Servicetjenesten Account Record Page</masterLabel>
     <parentFlexiPage>sfa__Account_rec_L</parentFlexiPage>
     <sobjectType>Account</sobjectType>
     <template>

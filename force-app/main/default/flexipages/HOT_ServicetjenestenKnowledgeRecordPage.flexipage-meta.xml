@@ -188,6 +188,9 @@
                         <valueListItems>
                             <value>DeleteDraftKnowledgeArticleVersion</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Knowledge__kav.HOT_KnowledgeFeedbackBtn</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -222,7 +225,10 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 141, 0);&quot;&gt;﻿&lt;/span&gt;&lt;u style=&quot;color: rgb(255, 115, 0);&quot;&gt;Du ser på en gammel versjon av artikkelen&lt;/u&gt;&lt;/h2&gt;</value>
+                    <value>&lt;h2 style=&quot;text-align: center;&quot;&gt;&lt;span
+                        style=&quot;color: rgb(255, 141, 0);&quot;&gt;﻿&lt;/span&gt;&lt;u
+                        style=&quot;color: rgb(255, 115, 0);&quot;&gt;Du ser på en gammel versjon av
+                        artikkelen&lt;/u&gt;&lt;/h2&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText</identifier>
@@ -266,7 +272,9 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>richTextValue</name>
-                    <value>&lt;h3 style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(255, 132, 0);&quot;&gt;Forhåndsvisning&lt;/span&gt;&lt;/h3&gt;</value>
+                    <value>&lt;h3 style=&quot;text-align: center;&quot;&gt;&lt;span
+                        style=&quot;color: rgb(255, 132,
+                        0);&quot;&gt;Forhåndsvisning&lt;/span&gt;&lt;/h3&gt;</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:richText</componentName>
                 <identifier>flexipage_richText3</identifier>
@@ -379,7 +387,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Mer informasjon</value>
+                    <value>Intern informasjon</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection4</identifier>
@@ -475,13 +483,201 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>label</name>
-                    <value>Mer informasjon</value>
+                    <value>Intern informasjon</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection6</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-3400792f-3035-4e2f-bf91-b95ace71105e</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NKS_English__c</fieldItem>
+                <identifier>RecordNKS_English_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-77ff3478-00af-46da-9bc0-de16fad00e68</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-77ff3478-00af-46da-9bc0-de16fad00e68</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-677b4b5f-af9d-4dbb-ba40-e32a887fadd4</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NKS_English_Employer__c</fieldItem>
+                <identifier>RecordNKS_English_Employer_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-21025391-94eb-4ecc-a1b8-8d90df6cc1ff</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-21025391-94eb-4ecc-a1b8-8d90df6cc1ff</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-0d317de9-2efe-414a-9d78-f10ec337483a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NKS_Nynorsk__c</fieldItem>
+                <identifier>RecordNKS_Nynorsk_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-a5298911-12d9-4faa-b703-80aba384557a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-a5298911-12d9-4faa-b703-80aba384557a</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b58cefe1-18b8-47a2-bb50-446fa21e90e7</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.NKS_Nynorsk_Employer__c</fieldItem>
+                <identifier>RecordNKS_Nynorsk_Employer_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <name>Facet-5dc7c766-2910-4fbd-bfc0-1dcbec7633a8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-5dc7c766-2910-4fbd-bfc0-1dcbec7633a8</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:column</componentName>
+                <identifier>flexipage_column10</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-023e3cf4-278f-4da4-821f-1bc90e64b7f3</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-677b4b5f-af9d-4dbb-ba40-e32a887fadd4</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Engelsk - personbruker</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-0d317de9-2efe-414a-9d78-f10ec337483a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Engelsk - samarbeidspartnere</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-b58cefe1-18b8-47a2-bb50-446fa21e90e7</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Nynorsk - personbruker</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-023e3cf4-278f-4da4-821f-1bc90e64b7f3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>horizontalAlignment</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Nynorsk - samarbeidspartnere</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:fieldSection</componentName>
+                <identifier>flexipage_fieldSection11</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-bb19b44b-318d-4f3b-9900-cc7a1175280e</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -517,6 +713,20 @@
                 <identifier>flexipage_tab2</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-bb19b44b-318d-4f3b-9900-cc7a1175280e</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Oversettelser</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>Facet-f3e03662-5fe9-43ed-90a4-da9fa678eef6</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -543,16 +753,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.WhoDoesWhat__c</fieldItem>
                 <identifier>RecordWhoDoesWhat_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.How_you_send_a_task__c</fieldItem>
-                <identifier>RecordHow_you_send_a_task_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-c2f52cda-ec8e-415b-b896-ec5f59a14f4a</name>
@@ -682,7 +882,8 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>searchHint</name>
-                    <value>Type a topic name, use the arrow keys to select your topic, then press Enter.</value>
+                    <value>Type a topic name, use the arrow keys to select your topic, then press
+                        Enter.</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -709,6 +910,12 @@
                         <rightValue>false</rightValue>
                     </criteria>
                 </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>forceKnowledge:articleDataCategoryViewer</componentName>
+                <identifier>forceKnowledge_articleDataCategoryViewer</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>

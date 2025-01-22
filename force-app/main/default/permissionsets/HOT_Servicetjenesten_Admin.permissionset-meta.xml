@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <applicationVisibilities>
-        <application>Servicetjenesten</application>
-        <visible>true</visible>
-    </applicationVisibilities>
     <classAccesses>
         <apexClass>CRM_HenvendelseQuicktextController</apexClass>
         <enabled>true</enabled>
@@ -157,6 +153,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.CRM_In_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Case.CRM_Run_Case_Assignment__c</field>
         <readable>true</readable>
@@ -187,8 +188,8 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
-        <field>Case.CRM_In_Queue__c</field>
+        <editable>true</editable>
+        <field>Case.HOT_KowledgeArea__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
