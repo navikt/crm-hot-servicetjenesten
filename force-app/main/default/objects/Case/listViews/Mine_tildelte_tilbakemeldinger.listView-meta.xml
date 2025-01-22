@@ -24,6 +24,6 @@
     </filters>
     <label>Mine tildelte tilbakemeldinger</label>
     <sharedTo>
-        <group>HOT_Kunnskapsbasen_Redakt_rer</group>
+        <group>HOT_Servicetjenesten_Kunnskapsredaktor</group>
     </sharedTo>
 </ListView>
