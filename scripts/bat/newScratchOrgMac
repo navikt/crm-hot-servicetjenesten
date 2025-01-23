@@ -27,17 +27,11 @@ sf package install --package 04tKB000000Y77jYAC --no-prompt --installation-key $
 # Installerer crm-platform-integration ver. 0.142
 sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-sf-saf ver. 0.29
-sf package install --package 04tKB000000Y7qsYAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
-
 # Installerer crm-shared-user-notification ver. 0.24
 sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-platform-oppgave ver. 0.63
 sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
-
-# Installerer crm-nks-integration ver. 0.78
-sf package install --package 04tKB000000Y73CYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-community-base ver. 0.119
 sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30

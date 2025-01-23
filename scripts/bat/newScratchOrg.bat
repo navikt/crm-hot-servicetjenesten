@@ -22,17 +22,11 @@ call sf package install --package 04tKB000000Y77jYAC --no-prompt --installation-
 echo "Installerer crm-platform-integration ver. 0.142"
 call sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-sf-saf ver. 0.29"
-call sf package install --package 04tKB000000Y7qsYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
-
 echo "Installerer crm-shared-user-notification ver. 0.24"
 call sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-platform-oppgave ver. 0.63"
 call sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
-
-echo "Installerer crm-nks-integration ver. 0.78"
-call sf package install --package 04tKB000000Y73CYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-platform-access-control ver. 0.146"
 call sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
