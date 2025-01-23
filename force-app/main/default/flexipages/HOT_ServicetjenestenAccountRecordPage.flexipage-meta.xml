@@ -162,8 +162,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.CRM_Person__r.INT_MunicipalityName__c</fieldItem>
-                <identifier>RecordCRM_Person_rINT_MunicipalityName_cField</identifier>
+                <fieldItem>Record.CRM_Person__r.HOT_MunicipalityUrl__c</fieldItem>
+                <identifier>RecordCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-646d07e0-264d-419b-a88b-bd383eddd657</name>
