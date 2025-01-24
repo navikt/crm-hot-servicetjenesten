@@ -4,12 +4,24 @@
             "path": "force-app",
             "default": true,
             "package": "crm-hot-servicetjenesten",
-            "versionNumber": "1.6.0.NEXT",
+            "versionNumber": "1.9.0.NEXT",
             "versionDescription": "",
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.247.0.LATEST"
+                    "versionNumber": "0.253.0.LATEST"
+                },
+                {
+                    "package": "crm-thread-view",
+                    "versionNumber": "0.2.0.LATEST"
+                },
+                {
+                    "package": "crm-journal-utilities",
+                    "versionNumber": "0.40.0.LATEST"
+                },
+                {
+                    "package": "crm-platform-reporting",
+                    "versionNumber": "0.39.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -20,16 +32,12 @@
                     "versionNumber": "0.27.0.LATEST"
                 },
                 {
-                    "package": "crm-journal-utilities",
-                    "versionNumber": "0.40.0.LATEST"
+                    "package": "crm-platform-integration",
+                    "versionNumber": "0.142.0.LATEST"
                 },
                 {
                     "package": "crm-shared-user-notification",
                     "versionNumber": "0.24.0.LATEST"
-                },
-                {
-                    "package": "crm-platform-integration",
-                    "versionNumber": "0.142.0.LATEST"
                 },
                 {
                     "package": "crm-platform-oppgave",
@@ -44,16 +52,8 @@
                     "versionNumber": "0.119.0.LATEST"
                 },
                 {
-                    "package": "crm-platform-reporting",
-                    "versionNumber": "0.39.0.LATEST"
-                },
-                {
                     "package": "crm-henvendelse",
                     "versionNumber": "0.154.0.LATEST"
-                },
-                {
-                    "package": "crm-thread-view",
-                    "versionNumber": "0.2.0.LATEST"
                 },
                 {
                     "package": "crm-shared-timeline",

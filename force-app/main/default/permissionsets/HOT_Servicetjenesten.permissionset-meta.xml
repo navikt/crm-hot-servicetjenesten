@@ -33,6 +33,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>FullmaktService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_ButtonContainerController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -49,6 +53,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_FullmaktController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_GetStoUtilityController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -58,6 +66,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>HOT_KrrInformationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOT_PersonBadgesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -396,6 +408,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Person__c.CRM_FullName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Person__c.HOT_MunicipalityUrl__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
