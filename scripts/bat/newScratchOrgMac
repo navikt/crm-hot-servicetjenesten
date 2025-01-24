@@ -3,8 +3,8 @@
 # Oppretter scratch org
 sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30
 
-# Installer crm-platform-base ver. 0.247
-sf package install --package 04tKB000000Y6N2YAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installer crm-platform-base ver. 0.253
+sf package install --package 04tKB000000Y89EYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-thread-view ver. 0.2
 sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30

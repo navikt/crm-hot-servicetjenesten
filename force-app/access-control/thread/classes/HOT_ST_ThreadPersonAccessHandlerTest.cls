@@ -143,15 +143,6 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
 
         Thread__c thread = [SELECT Id FROM Thread__c WHERE CRM_Account__c = :person.CRM_Account__c LIMIT 1];
 
-        System.debug(
-            JSON.serializePretty(
-                [
-                    SELECT Id, UserOrGroupId, UserOrGroup.Name, AccessLevel
-                    FROM Thread__Share
-                    WHERE ParentId = :thread.Id
-                ]
-            )
-        );
         System.assertEquals(
             0,
             [
@@ -237,15 +228,6 @@ private class HOT_ST_ThreadPersonAccessHandlerTest {
 
         Thread__c thread = [SELECT Id FROM Thread__c WHERE CRM_Account__c = :person.CRM_Account__c LIMIT 1];
 
-        System.debug(
-            JSON.serializePretty(
-                [
-                    SELECT Id, UserOrGroupId, UserOrGroup.Name, AccessLevel
-                    FROM Thread__Share
-                    WHERE ParentId = :thread.Id
-                ]
-            )
-        );
         System.assertEquals(
             1,
             [
