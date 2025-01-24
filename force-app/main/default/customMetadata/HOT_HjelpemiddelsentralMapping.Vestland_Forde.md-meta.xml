@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <label>Vestland-Førde</label>
     <protected>false</protected>
     <values>
         <field>Hjelpemiddelsentral_name__c</field>
-        <value xsi:type="xsd:string">Vestland-Førde Hjelpemiddelsentral</value>
+        <value xsi:type="xsd:string">Nav hjelpemiddelsentral Vestland-Førde</value>
     </values>
     <values>
         <field>MunicipalityNumbers__c</field>
-        <value xsi:type="xsd:string">4645,4641,4648,4646,4650,4635,4637,4638,4602,4644,4642,4640,4636,4649,4651,4647,4639,4643</value>
+        <value xsi:type="xsd:string">
+            4645,4641,4648,4646,4650,4635,4637,4638,4602,4644,4642,4640,4636,4649,4651,4647,4639,4643</value>
     </values>
     <values>
         <field>NAVurl__c</field>
-        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-vestland-forde</value>
+        <value xsi:type="xsd:string">
+            https://www.nav.no/kontor/nav-hjelpemiddelsentral-vestland-forde</value>
     </values>
     <values>
         <field>RegionNumbers__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:nil="true" />
     </values>
 </CustomMetadata>
