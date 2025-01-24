@@ -1,18 +1,31 @@
-import { LightningElement, wire } from 'lwc';
+import { LightningElement, wire, track } from 'lwc';
 import getSaker from '@salesforce/apex/HOT_HotsakIntegrationController.getSaker';
 
-export default class hot_hotsak extends LightningElement {
+export default class Hot_hotsak extends LightningElement {
     fnrValue = '15084300133';
-    saker;
+    @track saker; // data
+    @track error; // store error object or message
+    @track isLoading = true; // start true until data/error returns
 
     @wire(getSaker, { fnr: '$fnrValue' })
     wiredSaker({ data, error }) {
+        // Once the wire returns, we're no longer "loading"
+        this.isLoading = false;
+
         if (data) {
-            console.log('Saker data: ', data);
-            this.saker = data; // lagre i `saker`
+            this.error = undefined; // clear any old error
+            this.saker = data;      // store data
         } else if (error) {
-            console.error('Saker error: ', error);
-            this.saker = undefined;
+            this.saker = undefined; // clear data
+            this.error = error;     // store error info
         }
+    }
+
+    // Optional getters for clarity in the template
+    get hasData() {
+        return !this.isLoading && this.saker && this.saker.length > 0;
+    }
+    get hasNoData() {
+        return !this.isLoading && this.saker && this.saker.length === 0;
     }
 }

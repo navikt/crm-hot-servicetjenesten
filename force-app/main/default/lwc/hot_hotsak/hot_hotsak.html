@@ -1,69 +1,71 @@
 <template>
-    <!-- 1) Hvis saker er tilgjengelig, vis tabell -->
-    <template if:true={saker}>
-        <lightning-card title="Saker">
-            <div class="slds-p-horizontal_medium slds-p-vertical_medium">
-                <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
-                    <thead>
-                        <tr class="slds-line-height_reset">
-                            <th scope="col">
-                                <div class="slds-truncate" title="Mottatt dato">Mottatt dato</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Beskrivelse">Beskrivelse</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Sakstype">Sakstype</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Status">Status</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Behandlet dato">Behandlet dato</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Saksbehandler">Saksbehandler</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Fagsystem">Fagsystem</div>
-                            </th>
-                            <th scope="col">
-                                <div class="slds-truncate" title="Saksid">Saksid</div>
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <template for:each={saker} for:item="sak">
-                            <tr key={sak.saksid}>
-                                <td>
-                                    <div class="slds-truncate" title={sak.opprettet}>{sak.opprettet}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.detaljer}>{sak.detaljer}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.sakstype}>{sak.sakstype}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.sakstatus}>{sak.sakstatus}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.endret}>{sak.endret}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.saksbehandler}>{sak.saksbehandler}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.fagsystem}>{sak.fagsystem}</div>
-                                </td>
-                                <td>
-                                    <div class="slds-truncate" title={sak.saksid}>{sak.saksid}</div>
-                                </td>
-                            </tr>
-                        </template>
-                    </tbody>
-                </table>
+    <!-- 1) LOADING STATE -->
+    <template lwc:if={isLoading}>
+        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+    </template>
+    <template lwc:else>
+        <!-- 2) ERROR STATE -->
+        <template if:true={error}>
+            <div class="slds-text-color_error">
+                <p>Noe gikk galt!</p>
             </div>
-        </lightning-card>
+        </template>
+
+        <!-- 3) DATA STATE: hvis vi har data, vis tabell -->
+        <template if:true={hasData}>
+            <lightning-card title="Saker">
+                <div class="slds-p-horizontal_medium slds-p-vertical_medium">
+                    <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-table_striped">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Mottatt dato">Mottatt dato</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Beskrivelse">Beskrivelse</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Status">Status</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Behandlet dato">Behandlet dato</div>
+                                </th>
+                                <th scope="col">
+                                    <div class="slds-truncate" title="Saksid">Saksid</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={saker} for:item="sak">
+                                <tr key={sak.saksid}>
+                                    <td>
+                                        <div class="slds-truncate" title={sak.opprettet}>{sak.opprettet}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={sak.behovsmelding.gjelder}>
+                                            {sak.behovsmelding.gjelder}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={sak.saksstatus}>{sak.saksstatus}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={sak.endret}>{sak.endret}</div>
+                                    </td>
+                                    <td>
+                                        <div class="slds-truncate" title={sak.saksid}>{sak.saksid}</div>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </lightning-card>
+        </template>
+
+        <!-- 4) NO DATA STATE: Hvis vi ikke har data, vis melding -->
+        <template if:true={hasNoData}>
+            <p>Ingen saker funnet på bruker.</p>
+        </template>
     </template>
 </template>

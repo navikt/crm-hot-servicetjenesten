@@ -8,12 +8,12 @@ public with sharing class HOT_HotsakIntegrationController {
         @AuraEnabled
         public String sakstype;
         @AuraEnabled
-        public String opprettet;
+        public Date opprettet;
         @AuraEnabled
-        public String endret;
+        public Date endret;
 
         @AuraEnabled
-        public List<Behovsmelding> behovsmeldinger = new List<Behovsmelding>();
+        public Behovsmelding behovsmelding;
         @AuraEnabled
         public List<Hendelse> hendelser = new List<Hendelse>();
         @AuraEnabled
@@ -152,10 +152,7 @@ public with sharing class HOT_HotsakIntegrationController {
         // Add headers
         String transactionId = String.valueOf(Crypto.getRandomLong());
         ac.setLogUuid(transactionId);
-        ac.setHeaders(new Map<String, String>{
-            'Nav-CallId'    => transactionId,
-            'Content-Type'  => 'application/json'
-        });
+        ac.setHeaders(new Map<String, String>{ 'Nav-CallId' => transactionId, 'Content-Type' => 'application/json' });
 
         // 3) Execute the call
         ac.doCallout();
@@ -192,8 +189,17 @@ public with sharing class HOT_HotsakIntegrationController {
             sw.saksid = (String) sakMap.get('sakId');
             sw.saksstatus = (String) sakMap.get('saksstatus');
             sw.sakstype = (String) sakMap.get('sakstype');
-            sw.opprettet = (String) sakMap.get('opprettet');
-            sw.endret = (String) sakMap.get('endret');
+
+            //For å gjøre om datatypen til Dato for Opprettet og Endret fra String
+            String rawOpprettet = (String) sakMap.get('opprettet');
+            if (!String.isBlank(rawOpprettet)) {
+                sw.opprettet = Date.valueOf(rawOpprettet.substring(0, 10));
+            }
+
+            String rawEndret = (String) sakMap.get('endret');
+            if (!String.isBlank(rawEndret)) {
+                sw.endret = Date.valueOf(rawEndret.substring(0, 10));
+            }
 
             // ---- behovsmelding (single object -> map) ----
             Map<String, Object> behovsmeldingMap = (Map<String, Object>) sakMap.get('behovsmelding');
@@ -202,7 +208,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 bm.behovsmeldingId = (String) behovsmeldingMap.get('behovsmeldingId');
                 bm.gjelder = (String) behovsmeldingMap.get('gjelder');
                 bm.mottatt = (String) behovsmeldingMap.get('mottatt');
-                sw.behovsmeldinger.add(bm);
+                sw.behovsmelding = bm;
             }
 
             // ---- hendelser (mulig liste eller enkeltobjekt) ----
