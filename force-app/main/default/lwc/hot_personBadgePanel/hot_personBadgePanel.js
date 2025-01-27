@@ -24,7 +24,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
         getHistorikk: true,
         getRecordPerson: true
     };
-
+    hasBadges = false;
     shownBadge;
     personId;
     wireFields;
@@ -81,6 +81,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
                 });
             }
             this.badges = badges;
+            this.hasBadges = this.badges.length > 0;
 
             if (data.errors && data.errors.length > 0) {
                 this.addErrorMessage('setWiredBadge', data.errors);
@@ -238,7 +239,7 @@ export default class NksPersonHighlightPanel extends LightningElement {
     }
 
     get panelClass() {
-        return this.fullName ? 'highlightPanel' : 'highlightPanelConfidential';
+        return 'highlightPanel';
     }
 
     get warningIconSrc() {
