@@ -157,6 +157,12 @@
                 <identifier>RecordAccountCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rHOT_DistrictUrl_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-2e6e5b68-7f60-4fe7-948d-f9d90689b522</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -738,7 +744,8 @@
         </properties>
         <properties>
             <name>saveOptions</name>
-            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
+            <value>
+                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
