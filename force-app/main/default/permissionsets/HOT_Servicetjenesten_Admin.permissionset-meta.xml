@@ -78,10 +78,6 @@
     </customMetadataTypeAccesses>
     <customPermissions>
         <enabled>true</enabled>
-        <name>HOT_Communication</name>
-    </customPermissions>
-    <customPermissions>
-        <enabled>true</enabled>
         <name>HOT_Manage_Traffic_Updates</name>
     </customPermissions>
     <fieldPermissions>
@@ -1012,15 +1008,6 @@
     <hasActivationRequired>false</hasActivationRequired>
     <label>HOT Servicetjenesten Admin</label>
     <objectPermissions>
-        <allowCreate>true</allowCreate>
-        <allowDelete>true</allowDelete>
-        <allowEdit>true</allowEdit>
-        <allowRead>true</allowRead>
-        <modifyAllRecords>true</modifyAllRecords>
-        <object>NKS_Announcement__c</object>
-        <viewAllRecords>true</viewAllRecords>
-    </objectPermissions>
-    <objectPermissions>
         <allowCreate>false</allowCreate>
         <allowDelete>false</allowDelete>
         <allowEdit>true</allowEdit>
@@ -1074,34 +1061,6 @@
         <object>Thread__c</object>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.Campaign</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.NKS_Current</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.NKS_Status</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.News</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.Operational</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.Salesforce_Update</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
-    <recordTypeVisibilities>
-        <recordType>NKS_Announcement__c.Traffic</recordType>
-        <visible>true</visible>
-    </recordTypeVisibilities>
     <tabSettings>
         <tab>Thread__c</tab>
         <visibility>Available</visibility>
