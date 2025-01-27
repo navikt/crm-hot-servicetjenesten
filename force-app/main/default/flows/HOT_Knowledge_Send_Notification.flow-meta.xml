@@ -4,7 +4,7 @@
         <name>Send_Notification</name>
         <label>Send Notification</label>
         <locationX>50</locationX>
-        <locationY>695</locationY>
+        <locationY>647</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -38,13 +38,15 @@
                 <elementReference>$Record.Id</elementReference>
             </value>
         </inputParameters>
+        <nameSegment>customNotificationAction</nameSegment>
+        <offset>0</offset>
     </actionCalls>
     <apiVersion>55.0</apiVersion>
     <assignments>
         <name>Assign_RecipientId</name>
         <label>Assign RecipientId</label>
         <locationX>50</locationX>
-        <locationY>575</locationY>
+        <locationY>539</locationY>
         <assignmentItems>
             <assignToReference>RecipientIds</assignToReference>
             <operator>Add</operator>
@@ -60,7 +62,7 @@
         <name>Check_RecordType</name>
         <label>Check RecordType</label>
         <locationX>182</locationX>
-        <locationY>335</locationY>
+        <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Is_Feedback</name>
@@ -69,7 +71,7 @@
                 <leftValueReference>$Record.RecordType.DeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Feedback</stringValue>
+                    <stringValue>HOT_Feedback</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -78,6 +80,7 @@
             <label>Is Feedback</label>
         </rules>
     </decisions>
+    <environments>Default</environments>
     <formulas>
         <name>RecipientId</name>
         <dataType>String</dataType>
@@ -108,7 +111,7 @@
         <name>Get_Custom_Notification</name>
         <label>Get Custom Notification</label>
         <locationX>50</locationX>
-        <locationY>455</locationY>
+        <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Assign_RecipientId</targetReference>
