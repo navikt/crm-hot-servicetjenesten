@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HOT_MunicipalityUrl__c</fullName>
     <externalId>false</externalId>
-    <formula>HYPERLINK(INT_Municipality__r.HOT_Url__c, INT_Municipality__r.Name, &quot;_blank&quot;)</formula>
+    <formula>HYPERLINK(CRM_Municipality__r.HOT_Url__c, CRM_Municipality__r.Name, &quot;_blank&quot;)</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Municipality url</label>
     <required>false</required>
