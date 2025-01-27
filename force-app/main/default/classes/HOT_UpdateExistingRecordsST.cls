@@ -28,7 +28,7 @@ public with sharing class HOT_UpdateExistingRecordsST implements Database.Batcha
         for (Common_Code__c validMunicipalityCode : validMunicipalityCodes) {
             municipalityAssociations.put(validMunicipalityCode.CRM_Code__c, validMunicipalityCode.Id);
         }
-        for (Common_Code__c validDistrictCode : districtAssociations) {
+        for (Common_Code__c validDistrictCode : validDistrictCodes) {
             districtAssociations.put(validDistrictCode.CRM_Code__c, validDistrictCode.Id);
         }
         List<Person__c> personsToUpdate = new List<Person__c>();
