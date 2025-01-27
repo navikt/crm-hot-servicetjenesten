@@ -1,16 +1,8 @@
-.highlightPanel,
-.highlightPanelConfidential {
+.highlightPanel {
     font-size: 16px;
     line-height: 1.5rem;
     width: 100%;
-}
-
-.highlightPanel {
     color: white;
-}
-
-.highlightPanelConfidential {
-    color: black;
 }
 
 .highlightPanelBadges {

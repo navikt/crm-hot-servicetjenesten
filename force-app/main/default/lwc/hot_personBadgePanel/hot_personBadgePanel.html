@@ -19,11 +19,11 @@
             <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
         </template>
         <template lwc:else>
-            <lightning-layout class="panelBackground">
-                <div class={panelClass}>
-                    <lightning-layout-item class="highlightPanelBadges nowrap-selector">
-                        <template lwc:if={fullName}>
-                            <span lwc:if={errorMessages} class="slds-assistive-text" role="alert">{errorMessages}</span>
+            <span lwc:if={errorMessages} class="slds-assistive-text" role="alert">{errorMessages}</span>
+            <template lwc:if={hasBadges}>
+                <lightning-layout class="panelBackground">
+                    <div class={panelClass}>
+                        <lightning-layout-item class="highlightPanelBadges nowrap-selector">
                             <lightning-layout-item class="custom-padding-left">
                                 <template for:each={badges} for:item="badge">
                                     <lightning-layout-item
@@ -69,10 +69,10 @@
                                     </lightning-layout-item>
                                 </template>
                             </lightning-layout-item>
-                        </template>
-                    </lightning-layout-item>
-                </div>
-            </lightning-layout>
+                        </lightning-layout-item>
+                    </div>
+                </lightning-layout>
+            </template>
         </template>
     </div>
 </template>
