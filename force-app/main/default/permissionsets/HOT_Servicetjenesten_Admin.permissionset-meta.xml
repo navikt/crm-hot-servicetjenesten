@@ -443,6 +443,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Person__c.HOT_DistrictUrl__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Person__c.HOT_MunicipalityUrl__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -554,11 +559,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Person__c.INT_Municipality__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Person__c.INT_RegionName__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
