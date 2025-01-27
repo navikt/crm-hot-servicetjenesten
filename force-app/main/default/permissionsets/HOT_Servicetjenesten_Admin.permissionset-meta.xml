@@ -76,10 +76,6 @@
         <enabled>true</enabled>
         <name>HOT_HjelpemiddelsentralMapping__mdt</name>
     </customMetadataTypeAccesses>
-    <customPermissions>
-        <enabled>true</enabled>
-        <name>HOT_Manage_Traffic_Updates</name>
-    </customPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Account.AccountNumber</field>
