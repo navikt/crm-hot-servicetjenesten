@@ -432,6 +432,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Person__c.INT_FirstName__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Person__c.INT_GTMunicipalityNumber__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -458,6 +463,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Person__c.INT_KrrMobilePhone__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Person__c.INT_KrrWrittenStandard__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
