@@ -166,6 +166,12 @@
                 <identifier>RecordCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Parent.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
+                <identifier>RecordParentCRM_Person_rHOT_DistrictUrl_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-646d07e0-264d-419b-a88b-bd383eddd657</name>
         <type>Facet</type>
     </flexiPageRegions>
