@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HOT_Mine_Oppgaver_Gosys</fullName>
+    <columns>NAME</columns>
+    <columns>NKS_Themeformula__c</columns>
+    <columns>CRM_DueDate__c</columns>
+    <columns>NKS_StatusFormula__c</columns>
+    <columns>CRM_NavUnit__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>NKS_Status__c</field>
+        <operation>notEqual</operation>
+        <value>FERDIGSTILT,FEILREGISTRERT</value>
+    </filters>
+    <filters>
+        <field>INT_External_Reference__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>NKS_Date_Registered__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>5/1/2022</value>
+    </filters>
+    <filters>
+        <field>CRM_Is_Assigned_To_Me__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>Mine oppgaver på personbruker</label>
+    <sharedTo>
+        <group>HOT_Servicetjenesten_AD</group>
+        <group>HOT_Servicetjenesten_Admin</group>
+    </sharedTo>
+</ListView>
