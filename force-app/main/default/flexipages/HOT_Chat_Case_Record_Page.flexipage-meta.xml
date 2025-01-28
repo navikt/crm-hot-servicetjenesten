@@ -636,63 +636,13 @@
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
             </componentInstance>
         </itemInstances>
-        <name>rightsidebar</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.CaseNumber</fieldItem>
-                <identifier>RecordCaseNumberField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-a262869d-9813-4c4b-adf8-7c6f88fb7b71</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-a262869d-9813-4c4b-adf8-7c6f88fb7b71</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-80f2eb3e-350c-41ce-ae28-aa74c36cee2b</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-80f2eb3e-350c-41ce-ae28-aa74c36cee2b</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>@@@SFDCCase_InformationSFDC@@@</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>leftsidebar</name>
+        <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
     <masterLabel>HOT Chat Case Record Page</masterLabel>
     <sobjectType>Case</sobjectType>
     <template>
-        <name>flexipage:recordHomePinnedHeaderLeftSidebarTemplateDesktop</name>
+        <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>enablePageActionConfig</name>
             <value>false</value>
