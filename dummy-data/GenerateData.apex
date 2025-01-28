@@ -1,4 +1,5 @@
 //Dummy data script for creating community user and associated dummy data
+/*
 Contact personContact = [SELECT Id, FirstName, LastName, AccountId FROM Contact WHERE Account.CRM_Person__r.Name = '12345678901' LIMIT 1];
 
 
@@ -20,3 +21,4 @@ Message__c message = new Message__c(CRM_Thread__c = thread.Id,
                     CRM_Sent_Date__c = Datetime.now().addDays(-1));
 
 insert message;
+*/
