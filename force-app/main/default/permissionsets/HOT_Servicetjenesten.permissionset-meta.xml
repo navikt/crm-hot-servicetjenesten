@@ -322,6 +322,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>NavTask__c.CRM_Is_Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>NavTask__c.NKS_Assignee__c</field>
         <readable>true</readable>
     </fieldPermissions>
