@@ -14,7 +14,7 @@ import getRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelat
 
 const PERSON_FIELDS = [PERSON_FIRST_NAME, PERSON_IDENT_FIELD, FULL_NAME_FIELD, WRITTEN_STANDARD_FIELD];
 
-export default class NksPersonHighlightPanel extends LightningElement {
+export default class hot_personBadgePanel extends LightningElement {
     @api recordId;
     @api objectApiName;
     @api relationshipField;
