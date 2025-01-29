@@ -168,8 +168,8 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Parent.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
-                <identifier>RecordParentCRM_Person_rHOT_DistrictUrl_cField</identifier>
+                <fieldItem>Record.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
+                <identifier>RecordCRM_Person_rHOT_DistrictUrl_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <name>Facet-646d07e0-264d-419b-a88b-bd383eddd657</name>
@@ -692,8 +692,7 @@
         <name>flexipage:recordHomeTemplateDesktop</name>
         <properties>
             <name>saveOptions</name>
-            <value>
-                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
+            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;NONE&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
