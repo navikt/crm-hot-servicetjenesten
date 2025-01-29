@@ -1,4 +1,3 @@
-
 @IsTest
 public with sharing class HOT_FullmaktControllerTest {
     @TestSetup
@@ -70,6 +69,8 @@ public with sharing class HOT_FullmaktControllerTest {
 
         Assert.isNotNull(fullmaktsGiver);
         Assert.areNotEqual(0, fullmaktsGiver.size());
+        Assert.isNotNull(fullmaktsGiver[0].formattedOmraadeListByThemeGroup);
+        Assert.areNotEqual(0, fullmaktsGiver[0].formattedOmraadeListByThemeGroup.size());
     }
 
     @IsTest

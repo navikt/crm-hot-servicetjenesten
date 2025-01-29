@@ -9,9 +9,9 @@ public class HOT_ST_UserHandlerTest {
 
             Test.startTest();
             insert user;
-            
-            List<ServiceResource> serviceResources = [SELECT Id, Name, RelatedRecordId FROM ServiceResource];
             Test.stopTest();
+
+            List<ServiceResource> serviceResources = [SELECT Id, Name, RelatedRecordId FROM ServiceResource];
             System.debug(serviceResources);
             System.assertEquals(1, serviceResources.size());
         }
