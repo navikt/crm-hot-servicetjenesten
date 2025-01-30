@@ -163,4 +163,26 @@ private class HOT_ST_ThreadAccessRecalcBatchTest {
             'Expected thread not to be shared with group 470014'
         );
     }
+    @IsTest
+    private static void setCustomThreadTypesAndCategories() {
+        HOT_ST_ThreadAccessRecalcBatch batch = new HOT_ST_ThreadAccessRecalcBatch();
+        System.assertEquals(
+            new Map<String, List<String>>{
+                'categories' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_CATEGORIES,
+                'threadTypes' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_THREAD_TYPES
+            },
+            batch.getBindings(),
+            'Expected default values'
+        );
+        batch.setCustomCategories(new List<String>{ 'TEST_CATEGORY' });
+        batch.setCustomThreadTypes(new List<String>{ 'TEST_THREAD_TYPE' });
+        System.AssertEquals(
+            new Map<String, List<String>>{
+                'categories' => new List<String>{ 'TEST_CATEGORY' },
+                'threadTypes' => new List<String>{ 'TEST_THREAD_TYPE' }
+            },
+            batch.getBindings(),
+            'Expected set values'
+        );
+    }
 }
