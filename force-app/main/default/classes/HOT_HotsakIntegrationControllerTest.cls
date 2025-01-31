@@ -64,13 +64,12 @@ private class HOT_HotsakIntegrationControllerTest {
     // Denne mock-klassen returnerer en JSON-respons uten 'data'-nøkkelen.
     private class NoDataMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
-            String mockResponse = '{}'; // Tom root uten 'data'
             HttpResponse res = new HttpResponse();
-            res.setBody(mockResponse);
             res.setStatusCode(200);
             return res;
         }
     }
+    
 
     // Denne mock-klassen returnerer en JSON-respons med 'data', men uten 'saksoversiktInnbygger'.
     private class NoSaksoversiktMock implements HttpCalloutMock {

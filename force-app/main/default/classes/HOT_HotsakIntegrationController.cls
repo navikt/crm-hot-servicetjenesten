@@ -159,10 +159,13 @@ public with sharing class HOT_HotsakIntegrationController {
         String responseBody = ac.getResponse().getBody();
 
         // 4) Parse and build wrapper
-        Map<String, Object> rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-        if (rootMap == null) {
+        // Check for empty/blank response before trying to parse
+        if (String.isBlank(responseBody)) {
+            // Return an empty list if there is no JSON content
             return new List<SakWrapper>();
         }
+
+        Map<String, Object> rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
 
         Map<String, Object> dataMap = (Map<String, Object>) rootMap.get('data');
         if (dataMap == null) {
