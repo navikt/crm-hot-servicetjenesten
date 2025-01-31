@@ -1,0 +1,31 @@
+<template>
+    <lightning-layout class="custom-padding-left-small button-container">
+        <lightning-layout-item class="custom-padding-around-small custom-grid-vertical-align-center">
+            <lightning-button
+                label="OeBS"
+                title="OeBS"
+                onclick={handleClickOebs}
+                class="slds-m-left_x-medium"
+                disabled={isDisabledButtons}
+            ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item class="custom-padding-around-small custom-grid-vertical-align-center">
+            <lightning-button
+                label="HotSak"
+                title="HotSak"
+                onclick={handleClickHotSak}
+                class="slds-m-left_x-medium"
+                disabled={isDisabledButtons}
+            ></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item class="custom-padding-around-small custom-grid-vertical-align-center">
+            <lightning-button
+                label="Gosys"
+                title="Gosys"
+                onclick={handleClickGosys}
+                class="slds-m-left_x-medium"
+                disabled={isDisabledButtons}
+            ></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
