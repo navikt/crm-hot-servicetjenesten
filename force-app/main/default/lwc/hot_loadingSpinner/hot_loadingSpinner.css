@@ -1,0 +1,25 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 80px;
+    aspect-ratio: 1.154;
+    background: repeating-conic-gradient(from -30deg, #027b7f 0 60deg, #ffa588 0 120deg, #bf1e62 0 180deg);
+    animation: l13 1.5s infinite alternate;
+}
+@keyframes l13 {
+    0%,
+    10% {
+        clip-path: polygon(50% 50%, 25% 100%, 25% 100%, 25% 100%, 25% 100%, 75% 100%, 75% 100%, 75% 100%);
+    }
+    33%,
+    43% {
+        clip-path: polygon(50% 50%, 0 50%, 0 50%, 0 50%, 25% 100%, 75% 100%, 100% 50%, 100% 50%);
+    }
+    66%,
+    76% {
+        clip-path: polygon(50% 50%, 25% 0, 25% 0, 0 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0);
+    }
+    95%,
+    100% {
+        clip-path: polygon(50% 50%, 75% 0, 25% 0, 0 50%, 25% 100%, 75% 100%, 100% 50%, 75% 0);
+    }
+}

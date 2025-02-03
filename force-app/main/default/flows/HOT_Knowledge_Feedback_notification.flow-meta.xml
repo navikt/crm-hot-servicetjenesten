@@ -33,9 +33,14 @@
                 <elementReference>$Record.Description</elementReference>
             </value>
         </inputParameters>
+        <inputParameters>
+            <name>targetId</name>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </inputParameters>
         <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
     <assignments>
@@ -134,7 +139,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>	HOT_Kunnskapsbasen_Redakt_rer</stringValue>
+                <stringValue>HOT_Servicetjenesten_Kunnskapsredaktor</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
