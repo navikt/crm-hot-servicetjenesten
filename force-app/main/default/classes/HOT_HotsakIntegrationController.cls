@@ -1,5 +1,5 @@
 public with sharing class HOT_HotsakIntegrationController {
-    // Root wrapper for each "sak"
+    // Topp-nivå wrapper for hver "sak"
     public class SakWrapper {
         @AuraEnabled
         public String saksid;
@@ -78,8 +78,15 @@ public with sharing class HOT_HotsakIntegrationController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static List<SakWrapper> getSaker(String fnr) {
-        // 1) Build GraphQL variables/operations
+    public static List<SakWrapper> getCases(Id recordId, String objectApiName) {
+        // Henter fnr nummer basert på objekt type
+        String fnr = fetchPersonIdent(recordId, objectApiName);
+        if (String.isBlank(fnr)) {
+            // Hvis vi ikke finner fnr, returner en tom liste
+            return new List<SakWrapper>();
+        }
+
+        // 1) Bygg GraphQL-variabler/operasjoner
         GQLVariable fnrVar = new GQLVariable('fnr', new GQLVariableType('FNR', false, true, false));
         GQLOperation operation = new GQLOperation(
             new GQLOperationType(),
@@ -136,7 +143,7 @@ public with sharing class HOT_HotsakIntegrationController {
         GQLQuery query = new GQLQuery(operation, (Object) new Map<String, Object>{ fnrVar.getName() => fnr });
         String gqlQueryString = query.build();
 
-        // 2) Create and configure ApiController
+        // 2) Opprett og konfigurer ApiController
         LoggerUtility logger = new LoggerUtility('HOT');
         ApiController ac = new ApiController()
             .setLogCategory('HOT')
@@ -149,24 +156,22 @@ public with sharing class HOT_HotsakIntegrationController {
         ac.addServiceAuthHeader('gcpsaasproxy');
         ac.setBody(gqlQueryString);
 
-        // Add headers
+        // Legg til ekstra headers
         String transactionId = String.valueOf(Crypto.getRandomLong());
         ac.setLogUuid(transactionId);
         ac.setHeaders(new Map<String, String>{ 'Nav-CallId' => transactionId, 'Content-Type' => 'application/json' });
 
-        // 3) Execute the call
+        // 3) Utfør kall
         ac.doCallout();
         String responseBody = ac.getResponse().getBody();
 
-        // 4) Parse and build wrapper
-        // Check for empty/blank response before trying to parse
+        // 4) Analyser og bygg wrapper-objekter
+        // Sjekk for tom/blank respons før parsing
         if (String.isBlank(responseBody)) {
-            // Return an empty list if there is no JSON content
             return new List<SakWrapper>();
         }
 
         Map<String, Object> rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-
         Map<String, Object> dataMap = (Map<String, Object>) rootMap.get('data');
         if (dataMap == null) {
             return new List<SakWrapper>();
@@ -177,7 +182,6 @@ public with sharing class HOT_HotsakIntegrationController {
             return new List<SakWrapper>();
         }
 
-        // 'saker' er forventet å være en liste i GraphQL-responsen
         List<Object> sakerList = (List<Object>) saksoversiktInnbygger.get('saker');
         if (sakerList == null) {
             return new List<SakWrapper>();
@@ -193,7 +197,7 @@ public with sharing class HOT_HotsakIntegrationController {
             sw.saksstatus = (String) sakMap.get('saksstatus');
             sw.sakstype = (String) sakMap.get('sakstype');
 
-            //For å gjøre om datatypen til Dato for Opprettet og Endret fra String
+            // Konverter til Dato hvis ikke tom
             String rawOpprettet = (String) sakMap.get('opprettet');
             if (!String.isBlank(rawOpprettet)) {
                 sw.opprettet = Date.valueOf(rawOpprettet.substring(0, 10));
@@ -204,7 +208,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 sw.endret = Date.valueOf(rawEndret.substring(0, 10));
             }
 
-            // ---- behovsmelding (single object -> map) ----
+            // Enkeltobjekt behovsmelding
             Map<String, Object> behovsmeldingMap = (Map<String, Object>) sakMap.get('behovsmelding');
             if (behovsmeldingMap != null) {
                 Behovsmelding bm = new Behovsmelding();
@@ -214,7 +218,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 sw.behovsmelding = bm;
             }
 
-            // ---- hendelser (mulig liste eller enkeltobjekt) ----
+            // Hendelser (liste eller enkeltobjekt)
             List<Object> hendelserList = new List<Object>();
             Object rawHendelser = sakMap.get('hendelser');
             if (rawHendelser != null) {
@@ -232,6 +236,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 hendelse.hendelse = (String) hMap.get('hendelse');
                 hendelse.opprettet = (String) hMap.get('opprettet');
 
+                // Saksbehandler inne i Hendelse
                 Map<String, Object> sbMap = (Map<String, Object>) hMap.get('saksbehandler');
                 if (sbMap != null) {
                     Saksbehandler sb = new Saksbehandler();
@@ -243,7 +248,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 sw.hendelser.add(hendelse);
             }
 
-            // ---- oppgaver (mulig liste eller enkeltobjekt) ----
+            // Oppgaver (liste eller enkeltobjekt)
             List<Object> oppgaverList = new List<Object>();
             Object rawOppgaver = sakMap.get('oppgaver');
             if (rawOppgaver != null) {
@@ -264,7 +269,7 @@ public with sharing class HOT_HotsakIntegrationController {
                 sw.oppgaver.add(oppg);
             }
 
-            // ---- vedtak (mulig liste eller enkeltobjekt) ----
+            // Vedtak (liste eller enkeltobjekt)
             List<Object> vedtakList = new List<Object>();
             Object rawVedtak = sakMap.get('vedtak');
             if (rawVedtak != null) {
@@ -285,7 +290,26 @@ public with sharing class HOT_HotsakIntegrationController {
 
             sakWrappers.add(sw);
         }
-
         return sakWrappers;
+    }
+
+    @TestVisible
+    private static String fetchPersonIdent(Id recordId, String objectApiName) {
+        Id personId = getPersonId(recordId, objectApiName);
+        if (personId == null) {
+            return null;
+        }
+        return [SELECT Name FROM Person__c WHERE Id = :personId].Name;
+    }
+
+    private static Id getPersonId(Id recordId, String objectApiName) {
+        if (objectApiName == 'Case') {
+            return [SELECT Account.CRM_Person__c FROM Case WHERE Id = :recordId].Account.CRM_Person__c;
+        } else if (objectApiName == 'Account') {
+            return [SELECT CRM_Person__c FROM Account WHERE Id = :recordId].CRM_Person__c;
+        } else if (objectApiName == 'Person__c') {
+            return recordId;
+        }
+        return null;
     }
 }

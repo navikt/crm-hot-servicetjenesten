@@ -1,11 +1,13 @@
-import { LightningElement, wire, track } from 'lwc';
-import getSaker from '@salesforce/apex/HOT_HotsakIntegrationController.getSaker';
+import { LightningElement, wire, track, api } from 'lwc';
+import getCases from '@salesforce/apex/HOT_HotsakIntegrationController.getCases';
 
 export default class Hot_hotsak extends LightningElement {
     fnrValue = '15084300133';
     @track saker;
     @track error;
     @track isLoading = true;
+    @api objectApiName;
+    @api recordId
 
     columns = [
         { label: 'Mottatt dato', fieldName: 'opprettet', type: 'date' },
@@ -15,7 +17,7 @@ export default class Hot_hotsak extends LightningElement {
         { label: 'Saksid', fieldName: 'saksid', type: 'text' }
     ];
 
-    @wire(getSaker, { fnr: '$fnrValue' })
+    @wire(getCases, { recordId: '$recordId', objectApiName: '$objectApiName'})
     wiredSaker({ data, error }) {
         this.isLoading = false;
 
