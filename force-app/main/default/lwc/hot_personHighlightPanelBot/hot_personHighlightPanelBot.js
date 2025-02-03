@@ -7,7 +7,7 @@ export default class hot_personHighlightPanelBot extends LightningElement {
     fnr;
 
     get isDisabledButtons() {
-        return this.personDetails.personIdent == null;
+        return !this.personDetails?.fullName;
     }
 
     handleButtonClick(event) {
