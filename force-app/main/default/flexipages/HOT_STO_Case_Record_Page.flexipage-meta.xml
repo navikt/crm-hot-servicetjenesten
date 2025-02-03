@@ -157,6 +157,12 @@
                 <identifier>RecordAccountCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rHOT_DistrictUrl_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-2e6e5b68-7f60-4fe7-948d-f9d90689b522</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -679,6 +685,16 @@
                 </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>relationshipField</name>
+                    <value>Account.CRM_Person__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_dataSyncher</componentName>
+                <identifier>c_hot_dataSyncher</identifier>
             </componentInstance>
         </itemInstances>
         <name>rightsidebar</name>

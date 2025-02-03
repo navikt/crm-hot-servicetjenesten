@@ -1,0 +1,42 @@
+<template>
+    <!-- <c-hot_fast-einstein-spinner></c-hot_fast-einstein-spinner> -->
+    <div class="slds-box slds-theme_shade">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item class="slds-align_absolute-center" size="8">
+                <h1 class="slds-text-heading_medium">Henter informasjon fra fagsystemer</h1>
+            </lightning-layout-item>
+            <lightning-layout-item size="4" class="slds-align_absolute-center">
+                <c-hot_loading-spinner lwc:if={notSynced}></c-hot_loading-spinner>
+            </lightning-layout-item>
+            <lightning-layout-item size="12" style="padding-top: 1vw">
+                <ul class="slds-list_horizontal slds-has-dividers_left">
+                    <template for:each={syncStatuses} for:item="status">
+                        <li class="slds-item" key={status.name}>
+                            <lightning-icon
+                                if:true={status.isSyncing}
+                                icon-name="utility:sync"
+                                alternative-text="Oppdatering pågår"
+                                size="x-small"
+                            ></lightning-icon>
+                            <lightning-icon
+                                if:true={status.isSynced}
+                                icon-name="utility:success"
+                                alternative-text="Oppdatering fullført"
+                                size="x-small"
+                                variant="success"
+                            ></lightning-icon>
+                            <lightning-icon
+                                if:true={status.isError}
+                                icon-name="utility:error"
+                                alternative-text="Oppdatering feilet"
+                                variant="error"
+                                size="x-small"
+                            ></lightning-icon>
+                            {status.label}
+                        </li>
+                    </template>
+                </ul>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

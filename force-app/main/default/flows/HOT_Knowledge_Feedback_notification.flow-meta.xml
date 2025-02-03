@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Send_Notification</name>
-        <label>Send Notification</label>
+        <description>send notification about feedback on knowledge article to redaktor group</description>
+        <name>Send_notification</name>
+        <label>Send notification</label>
         <locationX>50</locationX>
-        <locationY>647</locationY>
+        <locationY>755</locationY>
         <actionName>customNotificationAction</actionName>
         <actionType>customNotificationAction</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -15,21 +16,21 @@
             </value>
         </inputParameters>
         <inputParameters>
-            <name>body</name>
+            <name>recipientIds</name>
             <value>
-                <elementReference>$Record.Description</elementReference>
+                <elementReference>RecipientID</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
             <name>title</name>
             <value>
-                <stringValue>Du ble tildelt en tilbakemelding</stringValue>
+                <stringValue>Det er en tilbakemelding på kunnskapsartikkel</stringValue>
             </value>
         </inputParameters>
         <inputParameters>
-            <name>recipientIds</name>
+            <name>body</name>
             <value>
-                <elementReference>RecipientIds</elementReference>
+                <elementReference>$Record.Description</elementReference>
             </value>
         </inputParameters>
         <inputParameters>
@@ -41,26 +42,26 @@
         <nameSegment>customNotificationAction</nameSegment>
         <offset>0</offset>
     </actionCalls>
-    <apiVersion>55.0</apiVersion>
+    <apiVersion>62.0</apiVersion>
     <assignments>
-        <name>Assign_RecipientId</name>
-        <label>Assign RecipientId</label>
+        <name>Assign_Recipient_IDs</name>
+        <label>Assign Recipient IDs</label>
         <locationX>50</locationX>
-        <locationY>539</locationY>
+        <locationY>647</locationY>
         <assignmentItems>
-            <assignToReference>RecipientIds</assignToReference>
+            <assignToReference>RecipientID</assignToReference>
             <operator>Add</operator>
             <value>
-                <elementReference>$Record.Assignee__r.Id</elementReference>
+                <elementReference>Get_Group.Id</elementReference>
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Send_Notification</targetReference>
+            <targetReference>Send_notification</targetReference>
         </connector>
     </assignments>
     <decisions>
-        <name>Check_RecordType</name>
-        <label>Check RecordType</label>
+        <name>Check_record_type</name>
+        <label>Check Record Type</label>
         <locationX>182</locationX>
         <locationY>323</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
@@ -80,14 +81,10 @@
             <label>Is Feedback</label>
         </rules>
     </decisions>
+    <description>Send notification to redaktor group when a feedback is received on knowledge article</description>
     <environments>Default</environments>
-    <formulas>
-        <name>RecipientId</name>
-        <dataType>String</dataType>
-        <expression>{!$Record.Assignee__r.Id}</expression>
-    </formulas>
-    <interviewLabel>HOT Knowledge Send Notification {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT Knowledge Send Notification</label>
+    <interviewLabel>HOT {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Knowledge Feedback notification</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -114,7 +111,7 @@
         <locationY>431</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Assign_RecipientId</targetReference>
+            <targetReference>Get_Group</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -128,27 +125,40 @@
         <object>CustomNotificationType</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordLookups>
+        <name>Get_Group</name>
+        <label>Get Group</label>
+        <locationX>50</locationX>
+        <locationY>539</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_Recipient_IDs</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>HOT_Servicetjenesten_Kunnskapsredaktor</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Group</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <start>
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_RecordType</targetReference>
+            <targetReference>Check_record_type</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Assignee__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
         <object>Case</object>
-        <recordTriggerType>Update</recordTriggerType>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
     <status>Active</status>
     <variables>
-        <name>RecipientIds</name>
+        <name>RecipientID</name>
         <dataType>String</dataType>
         <isCollection>true</isCollection>
         <isInput>false</isInput>
