@@ -21,7 +21,7 @@ public with sharing class HOT_PostAddressController {
         @AuraEnabled
         public String land;
 
-        public PostAddress(HOT_PostAddressService.HOT_PostAddressResponse response) {
+        public PostAddress(NKS_PostAddressService.NKS_PostAddressResponse response) {
             status = response.status;
             if (status != '200') {
                 return;
@@ -55,6 +55,6 @@ public with sharing class HOT_PostAddressController {
         } else {
             return null;
         }
-        return new PostAddress(HOT_PostAddressService.getPostAddress(ident));
+        return new PostAddress(NKS_PostAddressService.getPostAddress(ident));
     }
 }
