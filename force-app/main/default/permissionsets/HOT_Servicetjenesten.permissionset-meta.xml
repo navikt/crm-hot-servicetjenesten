@@ -29,6 +29,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>CRM_OppgaveSyncController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>CRM_ThemeUtils</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -271,6 +275,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>NavTask__c.CRM_Is_Assigned_To_Me__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>NavTask__c.CRM_NavUnit__c</field>
         <readable>true</readable>
@@ -318,11 +327,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>NavTask__c.INT_Journal_Entry_ID__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>NavTask__c.CRM_Is_Assigned_To_Me__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
