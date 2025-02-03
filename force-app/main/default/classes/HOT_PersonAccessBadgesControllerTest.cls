@@ -2,7 +2,7 @@
 private inherited sharing class HOT_PersonAccessBadgesControllerTest {
     @IsTest
     static void getPersonAccessBadgesNavEmployee() {
-        Person__c p = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 INT_ActorId__c = '100003000120',
                 INT_Confidential__c = 'UGRADERT',
@@ -26,7 +26,7 @@ private inherited sharing class HOT_PersonAccessBadgesControllerTest {
 
     @IsTest
     static void getPersonAccessBadgesFORTROLIG() {
-        Person__c p = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 INT_ActorId__c = '100003000120',
                 INT_Confidential__c = 'FORTROLIG',
@@ -51,7 +51,7 @@ private inherited sharing class HOT_PersonAccessBadgesControllerTest {
 
     @IsTest
     static void getPersonAccessBadgesSTRENGT_FORTROLIG() {
-        Person__c p = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 INT_ActorId__c = '100003000120',
                 INT_Confidential__c = 'STRENGT_FORTROLIG',
