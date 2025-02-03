@@ -155,16 +155,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>relationshipField</name>
-                    <value>CRM_Person__c</value>
-                </componentInstanceProperties>
-                <componentName>hot_personBadgePanel</componentName>
-                <identifier>c_hot_personBadgePanel</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-d4eb155a-607a-4136-97f8-5b56c413966e</value>
                 </componentInstanceProperties>
