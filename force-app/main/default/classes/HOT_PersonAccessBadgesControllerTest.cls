@@ -18,7 +18,7 @@ private inherited sharing class HOT_PersonAccessBadgesControllerTest {
         List<HOT_PersonAccessBadgesController.AccessBadge> result;
 
         Test.startTest();
-        result = NKS_PersonAccessBadgesController.getPersonAccessBadges('CRM_Person__c', 'Account', p.CRM_Account__c);
+        result = HOT_PersonAccessBadgesController.getPersonAccessBadges('CRM_Person__c', 'Account', p.CRM_Account__c);
         Test.stopTest();
 
         System.assertEquals(1, result.size(), 'Expected one result');
@@ -80,7 +80,7 @@ private inherited sharing class HOT_PersonAccessBadgesControllerTest {
 
     @IsTest
     static void getPersonAccessBadgesSTRENGT_FORTROLIG_UTLAND() {
-        Person__c p = (Person__c) UTIL_TestDataFactory.createRecord(
+        Person__c p = (Person__c) HOT_ST_TestDataFactory.createRecord(
             new Person__c(
                 INT_ActorId__c = '100003000120',
                 INT_Confidential__c = 'STRENGT_FORTROLIG_UTLAND',
