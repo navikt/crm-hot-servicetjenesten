@@ -13,7 +13,7 @@ const syncStatus = {
     ERROR: 'ERROR'
 };
 
-export default class NksDataSyncher extends LightningElement {
+export default class hot_dataSyncher extends LightningElement {
     @api recordId;
     @api objectApiName;
     @api relationshipField;
