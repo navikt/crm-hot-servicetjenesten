@@ -1,6 +1,27 @@
 @IsTest
 private class HOT_HotsakIntegrationControllerTest {
-    // Denne mock-klassen simulerer et vanlig, gyldig svar.
+    /** 
+     * Helper method to create a test Person and Account.
+     */
+    private static Account createTestAccountWithFnr(String fnr) {
+        // Create a Person__c record with Name = <fnr>
+        Person__c person = new Person__c(Name = fnr);
+        insert person;
+
+        // Create an Account referencing that Person__c via CRM_Person__c
+        Account acc = new Account(
+            Name = 'Test Account',
+            CRM_Person__c = person.Id
+        );
+        insert acc;
+        return acc;
+    }
+
+    // -------------------------------------------------------------
+    // MOCK CLASSES
+    // -------------------------------------------------------------
+
+    // Simulerer et vanlig, gyldig svar.
     private class HotsakMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
@@ -61,17 +82,17 @@ private class HOT_HotsakIntegrationControllerTest {
         }
     }
 
-    // Denne mock-klassen returnerer en JSON-respons uten 'data'-nøkkelen.
+    // Returnerer en JSON-respons uten 'data'-nøkkelen.
     private class NoDataMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
             res.setStatusCode(200);
+            // Body is empty or missing data
             return res;
         }
     }
-    
 
-    // Denne mock-klassen returnerer en JSON-respons med 'data', men uten 'saksoversiktInnbygger'.
+    // Returnerer en JSON-respons med 'data', men uten 'saksoversiktInnbygger'.
     private class NoSaksoversiktMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
@@ -87,7 +108,7 @@ private class HOT_HotsakIntegrationControllerTest {
         }
     }
 
-    // Denne mock-klassen returnerer en JSON-respons med saksoversiktInnbygger, men uten 'saker'.
+    // Returnerer en JSON-respons med saksoversiktInnbygger, men uten 'saker'.
     private class NoSakerMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
@@ -105,7 +126,7 @@ private class HOT_HotsakIntegrationControllerTest {
         }
     }
 
-    // Denne mock-klassen returnerer en JSON-respons med bare én hendelse (ikke liste).
+    // Returnerer en JSON-respons med bare én hendelse (ikke liste).
     private class SingleHendelseMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
@@ -115,7 +136,7 @@ private class HOT_HotsakIntegrationControllerTest {
             '      \"saker\": ['+
             '        {'+
             '          \"sakId\": \"999\",'+
-            '          \"hendelser\": {'+  // Én enkelt objekt i stedet for liste.\n
+            '          \"hendelser\": {'+  // Én enkelt objekt\n
             '            \"sakshendelseId\": \"H-9\",'+
             '            \"detaljer\": \"Noe\",'+
             '            \"hendelse\": \"SingleEvent\",'+
@@ -143,7 +164,7 @@ private class HOT_HotsakIntegrationControllerTest {
             '      \"saker\": ['+
             '        {'+
             '          \"sakId\": \"888\",'+
-            '          \"oppgaver\": {'+  // Én enkelt oppgave.\n
+            '          \"oppgaver\": {'+  // Én enkelt oppgave\n
             '            \"feilregistrert\": true,'+
             '            \"ferdigstilt\": false,'+
             '            \"oppgaveId\": \"O-9\",'+
@@ -172,7 +193,7 @@ private class HOT_HotsakIntegrationControllerTest {
             '      \"saker\": ['+
             '        {'+
             '          \"sakId\": \"777\",'+
-            '          \"vedtak\": {'+  // Én enkelt vedtak.\n
+            '          \"vedtak\": {'+  // Én enkelt vedtak\n
             '            \"vedtakId\": \"V-9\",'+
             '            \"vedtaksdato\": \"2023-12-01T00:00:00\",'+
             '            \"vedtaksstatus\": \"SingleStatus\"'+
@@ -190,16 +211,18 @@ private class HOT_HotsakIntegrationControllerTest {
     }
 
     // -------------------------------------------------------------
-    // TESTER
+    // TESTS
     // -------------------------------------------------------------
 
     // Test 1: Standard gyldig respons.
     @IsTest
-    static void testGetSaker_StandardMock() {
+    static void testGetCases_StandardMock() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new HotsakMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertNotEquals(null, result, 'Result list should not be null');
@@ -208,11 +231,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 2: Respons uten data-nøkkel.
     @IsTest
-    static void testGetSaker_NoData() {
+    static void testGetCases_NoData() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new NoDataMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         // Forventer tom liste, siden dataMap blir null.
@@ -222,11 +247,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 3: Respons med data, men uten 'saksoversiktInnbygger'.
     @IsTest
-    static void testGetSaker_NoSaksoversikt() {
+    static void testGetCases_NoSaksoversikt() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new NoSaksoversiktMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         // Forventer tom liste.
@@ -236,11 +263,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 4: Respons med saksoversiktInnbygger, men uten 'saker'.
     @IsTest
-    static void testGetSaker_NoSaker() {
+    static void testGetCases_NoSaker() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new NoSakerMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         // Forventer tom liste.
@@ -250,11 +279,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 5: Én enkelt hendelse i stedet for liste.
     @IsTest
-    static void testGetSaker_SingleHendelse() {
+    static void testGetCases_SingleHendelse() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new SingleHendelseMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         // Verifiser at sakene ikke er null og at vi faktisk fikk 1 sak.
@@ -266,11 +297,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 6: Én enkelt oppgave i stedet for liste.
     @IsTest
-    static void testGetSaker_SingleOppgave() {
+    static void testGetCases_SingleOppgave() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new SingleOppgaveMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertNotEquals(null, result);
@@ -281,11 +314,13 @@ private class HOT_HotsakIntegrationControllerTest {
 
     // Test 7: Én enkelt vedtak i stedet for liste.
     @IsTest
-    static void testGetSaker_SingleVedtak() {
+    static void testGetCases_SingleVedtak() {
+        Account acc = createTestAccountWithFnr('12345678910');
         Test.setMock(HttpCalloutMock.class, new SingleVedtakMock());
+
         Test.startTest();
         List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getSaker('12345678910');
+            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertNotEquals(null, result);
