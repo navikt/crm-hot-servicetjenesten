@@ -2,63 +2,13 @@
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
     <flexiPageRegions>
         <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>readonly</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.AccountId</fieldItem>
-                <identifier>RecordAccountIdField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-da57754a-f863-4148-a718-be0dbbf762c9</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.CRM_FullName__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rCRM_FullName_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.Name</fieldItem>
-                <identifier>RecordAccountCRM_Person_rNameField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_KrrMobilePhone__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_KrrMobilePhone_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_Citizenships__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_Citizenships_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-9ca24e01-21df-4f79-9c1d-95c3093469a4</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>numVisibleActions</name>
-                    <value>3</value>
+                    <name>relationshipField</name>
+                    <value>Account.CRM_Person__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>primaryField</name>
-                    <value>Facet-da57754a-f863-4148-a718-be0dbbf762c9</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>secondaryFields</name>
-                    <value>Facet-9ca24e01-21df-4f79-9c1d-95c3093469a4</value>
-                </componentInstanceProperties>
-                <componentName>record_flexipage:dynamicHighlights</componentName>
-                <identifier>record_flexipage_dynamicHighlights</identifier>
+                <componentName>hot_personHighlightPanel</componentName>
+                <identifier>c_hot_personHighlightPanel</identifier>
             </componentInstance>
         </itemInstances>
         <name>header</name>
@@ -634,6 +584,16 @@
                 </componentInstanceProperties>
                 <componentName>forceKnowledge:articleSearchDesktop</componentName>
                 <identifier>forceKnowledge_articleSearchDesktop</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>relationshipField</name>
+                    <value>Account.CRM_Person__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_dataSyncher</componentName>
+                <identifier>c_hot_dataSyncher</identifier>
             </componentInstance>
         </itemInstances>
         <name>sidebar</name>
