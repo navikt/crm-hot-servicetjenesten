@@ -7,7 +7,7 @@ export default class Hot_hotsak extends LightningElement {
     @track error;
     @track isLoading = true;
     @api objectApiName;
-    @api recordId
+    @api recordId;
 
     columns = [
         { label: 'Mottatt dato', fieldName: 'opprettet', type: 'date' },
@@ -17,7 +17,7 @@ export default class Hot_hotsak extends LightningElement {
         { label: 'Saksid', fieldName: 'saksid', type: 'text' }
     ];
 
-    @wire(getCases, { recordId: '$recordId', objectApiName: '$objectApiName'})
+    @wire(getCases, { recordId: '$recordId', objectApiName: '$objectApiName' })
     wiredSaker({ data, error }) {
         this.isLoading = false;
 
