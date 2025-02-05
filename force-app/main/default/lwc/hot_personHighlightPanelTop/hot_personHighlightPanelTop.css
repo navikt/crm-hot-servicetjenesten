@@ -3,6 +3,9 @@
     padding-left: 2px;
     float: right;
 }
+.fullName {
+    font-size: 1.5rem;
+}
 
 .custom-padding-around-small {
     padding: 0.5rem;
