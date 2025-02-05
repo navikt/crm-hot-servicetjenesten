@@ -16,7 +16,7 @@ export default class hot_personHighlightPanelBot extends LightningElement {
         console.log(url);
 
         //gå til url her
-        // window.open(url);
+        window.open(url);
     }
     generateUrl(fagsystem) {
         switch (fagsystem) {
