@@ -533,7 +533,7 @@
                 <identifier>c_hot_hotsak</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-b2b04585-5bab-4042-8f71-4ac4e45ab427</name>
+        <name>Facet-dc7ffc00-0eb5-4261-aa9b-b20ab2e48f27</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -597,7 +597,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-b2b04585-5bab-4042-8f71-4ac4e45ab427</value>
+                    <value>Facet-dc7ffc00-0eb5-4261-aa9b-b20ab2e48f27</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
