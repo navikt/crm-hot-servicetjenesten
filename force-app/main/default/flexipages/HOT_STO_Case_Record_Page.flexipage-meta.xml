@@ -521,7 +521,7 @@
                 <identifier>c_hot_hotsak</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-d13c96ec-6800-4deb-b8e9-dad3f4021533</name>
+        <name>Facet-2e874d8b-64a1-4269-9301-ec89bcc8e4ad</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -585,7 +585,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-d13c96ec-6800-4deb-b8e9-dad3f4021533</value>
+                    <value>Facet-2e874d8b-64a1-4269-9301-ec89bcc8e4ad</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>title</name>
@@ -599,16 +599,6 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>relationshipField</name>
-                    <value>Account.CRM_Person__c</value>
-                </componentInstanceProperties>
-                <componentName>hot_personBadgePanel</componentName>
-                <identifier>c_hot_personBadgePanel</identifier>
-            </componentInstance>
-        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
