@@ -1,6 +1,6 @@
 @IsTest
 private class HOT_HotsakIntegrationControllerTest {
-    /** 
+    /**
      * Helper method to create a test Person and Account.
      */
     private static Account createTestAccountWithFnr(String fnr) {
@@ -9,10 +9,7 @@ private class HOT_HotsakIntegrationControllerTest {
         insert person;
 
         // Create an Account referencing that Person__c via CRM_Person__c
-        Account acc = new Account(
-            Name = 'Test Account',
-            CRM_Person__c = person.Id
-        );
+        Account acc = new Account(Name = 'Test Account', CRM_Person__c = person.Id);
         insert acc;
         return acc;
     }
@@ -25,55 +22,55 @@ private class HOT_HotsakIntegrationControllerTest {
     private class HotsakMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-            '{'+
-            '   \"data\": {'+
-            '       \"saksoversiktInnbygger\": {'+
-            '           \"saker\": ['+
-            '               {'+
-            '                   \"sakId\": \"123\",'+
-            '                   \"saksstatus\": \"Under behandling\",'+
-            '                   \"sakstype\": \"Type A\",'+
-            '                   \"opprettet\": \"2023-01-01T10:00:00\",'+
-            '                   \"endret\": \"2023-01-02T10:00:00\",'+
-            '                   \"behovsmelding\": {'+
-            '                       \"behovsmeldingId\": \"BM-1\",'+
-            '                       \"gjelder\": \"Some info\",'+
-            '                       \"mottatt\": \"2023-01-01T09:00:00\"'+
-            '                   },'+
-            '                   \"hendelser\": ['+
-            '                       {'+
-            '                           \"sakshendelseId\": \"H-1\",'+
-            '                           \"detaljer\": \"details\",'+
-            '                           \"hendelse\": \"event\",'+
-            '                           \"opprettet\": \"2023-01-01T09:30:00\",'+
-            '                           \"saksbehandler\": {'+
-            '                               \"epost\": \"test@domain.com\",'+
-            '                               \"navn\": \"Tester\",'+
-            '                               \"saksbehandlerId\": \"SB-1\"'+
-            '                           }'+
-            '                       }'+
-            '                   ],'+
-            '                   \"oppgaver\": ['+
-            '                       {'+
-            '                           \"feilregistrert\": false,'+
-            '                           \"ferdigstilt\": true,'+
-            '                           \"oppgaveId\": \"O-1\",'+
-            '                           \"oppgavetype\": \"Assignment\",'+
-            '                           \"opprettet\": \"2023-01-01T09:45:00\"'+
-            '                       }'+
-            '                   ],'+
-            '                   \"vedtak\": ['+
-            '                       {'+
-            '                           \"vedtakId\": \"V-1\",'+
-            '                           \"vedtaksdato\": \"2023-01-10T00:00:00\",'+
-            '                           \"vedtaksstatus\": \"Approved\"'+
-            '                       }'+
-            '                   ]'+
-            '               }'+
-            '           ]'+
-            '       }'+
-            '   }'+
-            '}';
+                '{' +
+                '   \"data\": {' +
+                '       \"saksoversiktInnbygger\": {' +
+                '           \"saker\": [' +
+                '               {' +
+                '                   \"sakId\": \"123\",' +
+                '                   \"saksstatus\": \"Under behandling\",' +
+                '                   \"sakstype\": \"Type A\",' +
+                '                   \"opprettet\": \"2023-01-01T10:00:00\",' +
+                '                   \"endret\": \"2023-01-02T10:00:00\",' +
+                '                   \"behovsmelding\": {' +
+                '                       \"behovsmeldingId\": \"BM-1\",' +
+                '                       \"gjelder\": \"Some info\",' +
+                '                       \"mottatt\": \"2023-01-01T09:00:00\"' +
+                '                   },' +
+                '                   \"hendelser\": [' +
+                '                       {' +
+                '                           \"sakshendelseId\": \"H-1\",' +
+                '                           \"detaljer\": \"details\",' +
+                '                           \"hendelse\": \"event\",' +
+                '                           \"opprettet\": \"2023-01-01T09:30:00\",' +
+                '                           \"saksbehandler\": {' +
+                '                               \"epost\": \"test@domain.com\",' +
+                '                               \"navn\": \"Tester\",' +
+                '                               \"saksbehandlerId\": \"SB-1\"' +
+                '                           }' +
+                '                       }' +
+                '                   ],' +
+                '                   \"oppgaver\": [' +
+                '                       {' +
+                '                           \"feilregistrert\": false,' +
+                '                           \"ferdigstilt\": true,' +
+                '                           \"oppgaveId\": \"O-1\",' +
+                '                           \"oppgavetype\": \"Assignment\",' +
+                '                           \"opprettet\": \"2023-01-01T09:45:00\"' +
+                '                       }' +
+                '                   ],' +
+                '                   \"vedtak\": [' +
+                '                       {' +
+                '                           \"vedtakId\": \"V-1\",' +
+                '                           \"vedtaksdato\": \"2023-01-10T00:00:00\",' +
+                '                           \"vedtaksstatus\": \"Approved\"' +
+                '                       }' +
+                '                   ]' +
+                '               }' +
+                '           ]' +
+                '       }' +
+                '   }' +
+                '}';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -95,12 +92,7 @@ private class HOT_HotsakIntegrationControllerTest {
     // Returnerer en JSON-respons med 'data', men uten 'saksoversiktInnbygger'.
     private class NoSaksoversiktMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
-            String mockResponse =
-            '{'+
-            '   \"data\": {'+
-            '       \"somethingElse\": \"value\"'+
-            '   }'+
-            '}';
+            String mockResponse = '{' + '   \"data\": {' + '       \"somethingElse\": \"value\"' + '   }' + '}';
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
             res.setStatusCode(200);
@@ -112,13 +104,13 @@ private class HOT_HotsakIntegrationControllerTest {
     private class NoSakerMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
-            '{'+
-            '   \"data\": {'+
-            '       \"saksoversiktInnbygger\": {'+
-            '           \"somethingElse\": \"val\"'+
-            '       }'+
-            '   }'+
-            '}';
+                '{' +
+                '   \"data\": {' +
+                '       \"saksoversiktInnbygger\": {' +
+                '           \"somethingElse\": \"val\"' +
+                '       }' +
+                '   }' +
+                '}';
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
             res.setStatusCode(200);
@@ -130,23 +122,23 @@ private class HOT_HotsakIntegrationControllerTest {
     private class SingleHendelseMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
-            '{'+
-            '  \"data\": {'+
-            '    \"saksoversiktInnbygger\": {'+
-            '      \"saker\": ['+
-            '        {'+
-            '          \"sakId\": \"999\",'+
-            '          \"hendelser\": {'+  // Én enkelt objekt\n
-            '            \"sakshendelseId\": \"H-9\",'+
-            '            \"detaljer\": \"Noe\",'+
-            '            \"hendelse\": \"SingleEvent\",'+
-            '            \"opprettet\": \"2024-05-01T10:00:00\"'+
-            '          }'+
-            '        }'+
-            '      ]'+
-            '    }'+
-            '  }'+
-            '}';
+                '{' +
+                '  \"data\": {' +
+                '    \"saksoversiktInnbygger\": {' +
+                '      \"saker\": [' +
+                '        {' +
+                '          \"sakId\": \"999\",' +
+                '          \"hendelser\": {' + // Én enkelt objekt\n
+                '            \"sakshendelseId\": \"H-9\",' +
+                '            \"detaljer\": \"Noe\",' +
+                '            \"hendelse\": \"SingleEvent\",' +
+                '            \"opprettet\": \"2024-05-01T10:00:00\"' +
+                '          }' +
+                '        }' +
+                '      ]' +
+                '    }' +
+                '  }' +
+                '}';
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
             res.setStatusCode(200);
@@ -158,24 +150,24 @@ private class HOT_HotsakIntegrationControllerTest {
     private class SingleOppgaveMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
-            '{'+
-            '  \"data\": {'+
-            '    \"saksoversiktInnbygger\": {'+
-            '      \"saker\": ['+
-            '        {'+
-            '          \"sakId\": \"888\",'+
-            '          \"oppgaver\": {'+  // Én enkelt oppgave\n
-            '            \"feilregistrert\": true,'+
-            '            \"ferdigstilt\": false,'+
-            '            \"oppgaveId\": \"O-9\",'+
-            '            \"oppgavetype\": \"SingleOppgaveType\",'+
-            '            \"opprettet\": \"2025-01-01T12:00:00\"'+
-            '          }'+
-            '        }'+
-            '      ]'+
-            '    }'+
-            '  }'+
-            '}';
+                '{' +
+                '  \"data\": {' +
+                '    \"saksoversiktInnbygger\": {' +
+                '      \"saker\": [' +
+                '        {' +
+                '          \"sakId\": \"888\",' +
+                '          \"oppgaver\": {' + // Én enkelt oppgave\n
+                '            \"feilregistrert\": true,' +
+                '            \"ferdigstilt\": false,' +
+                '            \"oppgaveId\": \"O-9\",' +
+                '            \"oppgavetype\": \"SingleOppgaveType\",' +
+                '            \"opprettet\": \"2025-01-01T12:00:00\"' +
+                '          }' +
+                '        }' +
+                '      ]' +
+                '    }' +
+                '  }' +
+                '}';
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
             res.setStatusCode(200);
@@ -187,22 +179,22 @@ private class HOT_HotsakIntegrationControllerTest {
     private class SingleVedtakMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             String mockResponse =
-            '{'+
-            '  \"data\": {'+
-            '    \"saksoversiktInnbygger\": {'+
-            '      \"saker\": ['+
-            '        {'+
-            '          \"sakId\": \"777\",'+
-            '          \"vedtak\": {'+  // Én enkelt vedtak\n
-            '            \"vedtakId\": \"V-9\",'+
-            '            \"vedtaksdato\": \"2023-12-01T00:00:00\",'+
-            '            \"vedtaksstatus\": \"SingleStatus\"'+
-            '          }'+
-            '        }'+
-            '      ]'+
-            '    }'+
-            '  }'+
-            '}';
+                '{' +
+                '  \"data\": {' +
+                '    \"saksoversiktInnbygger\": {' +
+                '      \"saker\": [' +
+                '        {' +
+                '          \"sakId\": \"777\",' +
+                '          \"vedtak\": {' + // Én enkelt vedtak\n
+                '            \"vedtakId\": \"V-9\",' +
+                '            \"vedtaksdato\": \"2023-12-01T00:00:00\",' +
+                '            \"vedtaksstatus\": \"SingleStatus\"' +
+                '          }' +
+                '        }' +
+                '      ]' +
+                '    }' +
+                '  }' +
+                '}';
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
             res.setStatusCode(200);
@@ -221,8 +213,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new HotsakMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         System.assertNotEquals(null, result, 'Result list should not be null');
@@ -236,8 +230,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new NoDataMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         // Forventer tom liste, siden dataMap blir null.
@@ -252,8 +248,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new NoSaksoversiktMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         // Forventer tom liste.
@@ -268,8 +266,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new NoSakerMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         // Forventer tom liste.
@@ -284,8 +284,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new SingleHendelseMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         // Verifiser at sakene ikke er null og at vi faktisk fikk 1 sak.
@@ -302,8 +304,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new SingleOppgaveMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         System.assertNotEquals(null, result);
@@ -319,8 +323,10 @@ private class HOT_HotsakIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new SingleVedtakMock());
 
         Test.startTest();
-        List<HOT_HotsakIntegrationController.SakWrapper> result =
-            HOT_HotsakIntegrationController.getCases(acc.Id, 'Account');
+        List<HOT_HotsakIntegrationController.SakWrapper> result = HOT_HotsakIntegrationController.getCases(
+            acc.Id,
+            'Account'
+        );
         Test.stopTest();
 
         System.assertNotEquals(null, result);
