@@ -1,0 +1,73 @@
+<template>
+    <div class="slds-card slds-theme_default">
+        <c-nks-button-container-top
+            record-id={recordId}
+            channel-name="Conversation note"
+            flow-button-label={flowButtonLabel}
+            flow-api-name={flowApiName}
+        ></c-nks-button-container-top>
+        <template lwc:if={hasCNotes}>
+            <div class={sectionClasses}>
+                <!-- Expandable button -->
+                <h2 class="slds-section__title">
+                    <button
+                        aria-controls="expando-unique-id"
+                        aria-expanded={expanded}
+                        onclick={handleExpandClick}
+                        class="slds-button slds-section__title-action"
+                    >
+                        <lightning-icon
+                            icon-name="utility:switch"
+                            alternative-text="button icon"
+                            aria-hidden="true"
+                            size="x-small"
+                            class="slds-section__title-action-icon slds-button__icon slds-button__icon_left"
+                        ></lightning-icon>
+                        <span class="slds-truncate" title="Section Title">{recordLabel}</span>
+                    </button>
+                </h2>
+                <!-- Expandable content -->
+                <div aria-hidden={reverseExpanded} class="slds-section__content" id="expando-unique-id">
+                    <div>
+                        <template for:each={notes} for:item="note" for:index="index">
+                            <section
+                                key={note.Id}
+                                aria-labelledby={index}
+                                class="slds-var-p-horizontal_x-small slds-var-m-bottom_small slds-var-p-bottom_small slds-var-p-top_small"
+                                style="border: 1px solid #929292; border-radius: 5px"
+                            >
+                                <div
+                                    style="border-bottom: 1px solid #c9c9c9"
+                                    class="slds-var-p-bottom_x-small slds-var-m-bottom_x-small"
+                                >
+                                    <h3 class="slds-text-heading_small" id={index}>{note.name}</h3>
+                                    <lightning-formatted-date-time
+                                        value={note.CreatedDate}
+                                        year="numeric"
+                                        month="2-digit"
+                                        day="2-digit"
+                                        hour="2-digit"
+                                        minute="2-digit"
+                                    ></lightning-formatted-date-time>
+                                </div>
+                                <lightning-formatted-text
+                                    value={note.CRM_Conversation_Note__c}
+                                    linkify
+                                ></lightning-formatted-text>
+                            </section>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <lightning-flow
+            flow-api-name="NKS_Case_Log_Call_v_2"
+            flow-input-variables={inputVariables}
+            onstatuschange={handleStatusChange}
+            onchange={handleChange}
+        ></lightning-flow>
+        <div class="slds-var-m-horizontal_medium slds-var-m-bottom_medium">
+            <c-nks-notification-box></c-nks-notification-box>
+        </div>
+    </div>
+</template>
