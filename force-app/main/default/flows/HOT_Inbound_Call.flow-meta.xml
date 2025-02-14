@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Redirects user to the created case</description>
+        <name>Redirect_To_Case</name>
+        <label>Redirect To Case</label>
+        <locationX>182</locationX>
+        <locationY>650</locationY>
+        <actionName>c:hotFlowRedirect</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>Call_Case.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:hotFlowRedirect</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <versionSegment>1</versionSegment>
+    </actionCalls>
+    <apiVersion>62.0</apiVersion>
+    <assignments>
+        <name>Case_Assignment</name>
+        <label>Case Assignment</label>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>Call_Case.AccountId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>RELATED_ACCOUNT_ID</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.Origin</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Phone</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Case</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Case_Assignment_0</name>
+        <label>Case Assignment</label>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
+        <assignmentItems>
+            <assignToReference>Call_Case.Origin</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Phone</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.Status</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>New</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.Subject</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Subject</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.ContactPhone</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Search</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Case_0</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <description>Since ServiceTjenesten only has one queue, we set the subject to Servicetjenesten</description>
+        <name>Subject</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Telefon Puzzel - ServiceTjenesten</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <description>Person identified through puzzle call</description>
+        <name>Check_identifier</name>
+        <label>Check identifier</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <defaultConnector>
+            <targetReference>Case_Assignment_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Phone number</defaultConnectorLabel>
+        <rules>
+            <name>Person_Identifier</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>INPUT_TYPE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PERSON_IDENT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Person_Account</targetReference>
+            </connector>
+            <label>Person Identifier</label>
+        </rules>
+    </decisions>
+    <description>Flow to be used with SoftPhone Layout in order to create a case and redirect to the case</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Formula to determine the type of input from the IVR. Either, PHONE_NUMBER, PERSON_IDENT or ORG_IDENT.</description>
+        <name>INPUT_TYPE</name>
+        <dataType>String</dataType>
+        <expression>CASE(LEN({!Search}),
+11, &apos;PERSON_IDENT&apos;,
+&apos;PHONE_NUMBER&apos;
+)</expression>
+    </formulas>
+    <interviewLabel>HOT_Inbound_Call {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT_Inbound_Call</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <description>Creates a case for the incoming phone call.</description>
+        <name>Create_Case</name>
+        <label>Create Case</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <connector>
+            <targetReference>Redirect_To_Case</targetReference>
+        </connector>
+        <inputReference>Call_Case</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <description>Creates a case for the incoming phone call.</description>
+        <name>Create_Case_0</name>
+        <label>Create Case</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <connector>
+            <targetReference>Redirect_To_Case</targetReference>
+        </connector>
+        <inputReference>Call_Case</inputReference>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Person_Account</name>
+        <label>Get Person Account</label>
+        <locationX>50</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Case_Assignment</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>INT_PersonIdent__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Search</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>INT_IsHasTombstone__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>RELATED_ACCOUNT_ID</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <start>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Check_identifier</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>Case to be created for person phone queues.</description>
+        <name>Call_Case</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>Case</objectType>
+    </variables>
+    <variables>
+        <description>For testing purpose. Used as input to simulate context in sandboxes.</description>
+        <name>CONTEXT_OVERRIDE</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <name>RELATED_ACCOUNT_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Input parameter from the IVR</description>
+        <name>Search</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Unique puzzel session ID to match enquiry log</description>
+        <name>SessionId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
