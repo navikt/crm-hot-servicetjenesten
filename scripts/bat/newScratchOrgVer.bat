@@ -15,7 +15,7 @@ set PACKAGES=(
     "crm-platform-reporting:0.39.0"
     "crm-journal-utilities:0.40.0"
     "crm-shared-user-notification:0.24.0"
-    "crm-henvendelse:0.154.0"
+    "crm-henvendelse:0.159.0"
     "crm-thread-view:0.2.0"
     "crm-shared-timeline:1.27.0"
 )

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_StatusFormula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE( NKS_Status__c , &quot;FEILREGISTRERT&quot;, IMAGE(&quot;/resource/warning&quot;,
+        &quot;Feilregistrert&quot;, 17,17) &amp; &apos; Feilregistrert&apos;,
+        &quot;FERDIGSTILT&quot;, IMAGE(&quot;/resource/greencheck&quot;, &quot;Ferdigstilt&quot; ,
+        17, 17)&amp; &apos; Ferdigstilt&apos;,
+
+        IMAGE(&quot;/resource/bluedot&quot;, &quot;Åpen&quot; , 15, 15)&amp; &apos; Åpen&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Status</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

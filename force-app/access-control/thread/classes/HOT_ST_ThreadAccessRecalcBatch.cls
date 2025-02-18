@@ -5,7 +5,9 @@ public with sharing class HOT_ST_ThreadAccessRecalcBatch implements Database.Bat
         'CRM_Theme_Code__c ' +
         'FROM Thread__c ' +
         'WHERE CRM_Account__c != null AND STO_Category__c IN :categories AND  CRM_Thread_Type__c IN :threadTypes';
+    @TestVisible
     private final static List<String> DEFAULT_THREAD_TYPES = new List<String>{ 'STO', 'BTO', 'STB' };
+    @TestVisible
     private final static List<String> DEFAULT_CATEGORIES = new List<String>{ 'Hjelpemidler' };
     private List<String> customThreadTypes;
     private List<String> customCategories;
@@ -27,6 +29,7 @@ public with sharing class HOT_ST_ThreadAccessRecalcBatch implements Database.Bat
     }
     public void finish(Database.BatchableContext bc) {
     }
+    @TestVisible
     private Map<String, Object> getBindings() {
         if (this.customThreadTypes == null) {
             this.customThreadTypes = DEFAULT_THREAD_TYPES;
