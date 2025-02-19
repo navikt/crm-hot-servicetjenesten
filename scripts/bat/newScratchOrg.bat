@@ -16,8 +16,8 @@ call sf package install --package 04tKB000000Y5GEYA0 --no-prompt --installation-
 echo "Installerer crm-shared-flowComponents ver. 0.4"
 call sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-henvendelse-base ver. 0.27"
-call sf package install --package 04tKB000000Y77jYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-henvendelse-base ver. 0.29"
+call sf package install --package 04tKB000000Y90HYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-platform-integration ver. 0.147"
 call sf package install --package 04tKB000000Y8yLYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
@@ -34,8 +34,8 @@ call sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-
 echo "Installerer crm-community-base ver. 0.119"
 call sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-henvendelse ver. 0.154"
-call sf package install --package 04tKB000000Y5fXYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-henvendelse ver. 0.159"
+call sf package install --package 04tKB000000Y8s2YAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-timeline ver. 1.27"
 call sf package install --package 04tKB000000Y655YAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
