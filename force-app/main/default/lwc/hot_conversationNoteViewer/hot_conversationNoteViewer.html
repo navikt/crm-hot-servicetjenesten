@@ -1,0 +1,36 @@
+<template>
+    <lightning-card>
+        <div slot="title" class="slds-var-p-top_x-small">
+            <lightning-icon icon-name="standard:voice_call" size="small"></lightning-icon>
+            <span class="slds-var-p-left_small">{timelineName}</span>
+        </div>
+        <template lwc:if={conversationNote}>
+            <div class="slds-var-p-horizontal_medium custom-padding-top-bottom-small">
+                <div class="slds-box">
+                    <lightning-formatted-text value={conversationNote}></lightning-formatted-text>
+                </div>
+            </div>
+            <div class="slds-m-around_medium">
+                <lightning-button 
+                    variant="neutral" 
+                    label="NKS_Journal" 
+                    onclick={handleJournal}>
+                </lightning-button>
+                <lightning-button 
+                    variant="neutral" 
+                    label="NKS_Set_To_Redaction" 
+                    onclick={handleSetToRedaction}>
+                </lightning-button>
+                <lightning-button 
+                    variant="brand" 
+                    label="NKS_Create_NAV_Task" 
+                    onclick={handleCreateNavTask}>
+                </lightning-button>
+            </div>
+            <lightning-flow></lightning-flow>
+        </template>
+        <template lwc:else>
+            <p class="slds-text-align_center">Ingen informasjon tilgjengelig.</p>
+        </template>
+    </lightning-card>
+</template>
