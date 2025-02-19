@@ -3,7 +3,7 @@
     <adapterUrl>/apex/hotCallPage</adapterUrl>
     <customSettings
     >{&quot;reqTimeout&quot;:&quot;10000&quot;,&quot;reqStandbyUrl&quot;:&quot;/apex/hotCallPage&quot;,&quot;reqSoftphoneHeight&quot;:&quot;550&quot;,&quot;reqUseApi&quot;:&quot;true&quot;,&quot;reqSoftphoneWidth&quot;:&quot;400&quot;,&quot;reqSalesforceCompatibilityMode&quot;:&quot;Lightning&quot;}</customSettings>
-    <displayName>Demo Call Center Adapter</displayName>
+    <displayName>HOT Demo Call Center Adapter</displayName>
     <displayNameLabel>Display Name</displayNameLabel>
     <internalNameLabel>InternalName</internalNameLabel>
     <sections>
