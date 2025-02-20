@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-import getReverseRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getReverseRelatedRecord';
+import getReverseRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
 import { refreshApex } from '@salesforce/apex';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import CONVERSATION_NOTE_OBJECT from '@salesforce/schema/Conversation_Note__c';
@@ -7,8 +7,8 @@ import CONVERSATION_NOTE_OBJECT from '@salesforce/schema/Conversation_Note__c';
 //import CREATE_TASK_LABEL from '@salesforce/label/c.NKS_Create_NAV_Task';
 import { publishToAmplitude } from 'c/amplitude';
 import { handleShowNotifications, getOutputVariableValue } from 'c/hot_ComponentsUtils';
-import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/conversationNoteNotifications__c';
-import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/buttonContainerNotifications__c';
+//import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/conversationNoteNotifications__c';
+//import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/buttonContainerNotifications__c';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import invokeSendNavTaskFlow from '@salesforce/apex/HOT_SendNavTaskHandler.invokeSendNavTaskFlow';
 import getProcessingId from '@salesforce/apex/HOT_SendNavTaskHandler.getProcessingId';
@@ -96,7 +96,7 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
         const hasReadAccess = getOutputVariableValue(outputVariables, 'HAS_PERSON_READ');
         const hasNoAccount = getOutputVariableValue(outputVariables, 'HAS_NO_ACCOUNT');
         this.flowButtonLabel = hasReadAccess || hasNoAccount ? this.changeUserLabel : this.createTaskLabel;
-        this.flowApiName = hasReadAccess || hasNoAccount ? 'NKS_Case_Change_Account' : 'NKS_Case_Send_NAV_Task_v_2';
+        this.flowApiName = hasReadAccess || hasNoAccount ? 'HOT_Case_Change_Account' : 'HOT_Case_Send_NAV_Task_v_2';
     }
 
     handleStatusChange(event) {

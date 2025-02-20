@@ -1,0 +1,19 @@
+<template>
+    <lightning-record-edit-form
+        object-api-name={objectApiName}
+        record-id={recordId}
+        record-type-id={recordTypeId}
+        density={density}
+    >
+        <lightning-input-field
+            field-name={fieldName}
+            read-only={readOnly}
+            disabled={disabled}
+            required={required}
+            value={value}
+            variant={variant}
+            onchange={onChange}
+        >
+        </lightning-input-field>
+    </lightning-record-edit-form>    
+</template>
