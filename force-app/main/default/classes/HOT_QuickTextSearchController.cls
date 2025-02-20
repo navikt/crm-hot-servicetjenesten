@@ -1,7 +1,7 @@
 public with sharing class HOT_QuickTextSearchController {
     @AuraEnabled
-    public static List<NKS_QuickTextSearchController.QuickTextMessage> searchRecords(String search) {
-        List<NKS_QuickTextSearchController.QuickTextMessage> quickTexts = new List<NKS_QuickTextSearchController.QuickTextMessage>();
+    public static List<HOT_QuickTextSearchController.QuickTextMessage> searchRecords(String search) {
+        List<HOT_QuickTextSearchController.QuickTextMessage> quickTexts = new List<HOT_QuickTextSearchController.QuickTextMessage>();
         for (QuickText qt : [SELECT Id, Name, Message FROM QuickText]) {
             if (
                 qt.Message.toLowerCase().contains(search.toLowerCase()) ||

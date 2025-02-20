@@ -1,7 +1,6 @@
 import { LightningElement, track, api, wire } from 'lwc';
-import searchRecords from '@salesforce/apex/NKS_QuickTextSearchController.searchRecords';
-import getQuicktexts from '@salesforce/apex/NKS_QuickTextSearchController.getQuicktexts';
-import BLANK_ERROR from '@salesforce/label/c.NKS_Conversation_Note_Blank_Error';
+import searchRecords from '@salesforce/apex/HOT_QuickTextSearchController.searchRecords';
+import getQuicktexts from '@salesforce/apex/HOT_QuickTextSearchController.getQuicktexts';
 
 const ESC_KEY_CODE = 27;
 const ESC_KEY_STRING = 'Escape';
@@ -11,7 +10,6 @@ const LIGHTNING_INPUT_FIELD = 'LIGHTNING-INPUT-FIELD';
 
 const QUICK_TEXT_TRIGGER_KEYS = ['Enter', ' ', ','];
 export default class hot_quickText extends LightningElement {
-    labels = { BLANK_ERROR };
     _conversationNote;
     qmap;
     initialRender = true;
@@ -349,7 +347,7 @@ export default class hot_quickText extends LightningElement {
         if (this.required === true) {
             return this.conversationNote && this.conversationNote.length > 0
                 ? { isValid: true }
-                : { isValid: false, errorMessage: this.labels.BLANK_ERROR }; //CUSTOM LABEL HERE
+                : { isValid: false, errorMessage: '	Samtalereferatet kan ikke være tomt!' };
         }
         return { isValid: true };
     }
