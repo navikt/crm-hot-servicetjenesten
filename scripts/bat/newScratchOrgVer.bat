@@ -8,7 +8,7 @@ set PACKAGES=(
     "crm-platform-base:0.254.0"
     "crm-platform-access-control:0.146.0"
     "crm-shared-flowComponents:0.4.0"
-    "crm-henvendelse-base:0.29.0"
+    "crm-henvendelse-base:0.31.0"
     "crm-platform-integration:0.147.0"
     "crm-platform-oppgave:0.63.0"
     "crm-community-base:0.119.0"
