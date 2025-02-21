@@ -1,0 +1,33 @@
+<template>
+    <!-- If a journal conversation is active, show a next-screen navigator -->
+    <template if:true={journalConversation}>
+        <div class="slds-m-bottom_medium">
+            <lightning-button 
+                label="Next Screen" 
+                variant="neutral" 
+                onclick={handleJournalNext}>
+            </lightning-button>
+        </div>
+    </template>
+
+    <!-- Lightning Flow component to run the flows -->
+    <lightning-flow onstatuschange={handleStatusChange}></lightning-flow>
+
+    <!-- Button container -->
+    <div class="slds-grid slds-grid_align-end slds-m-top_small">
+        <template if:true={showBackButton}>
+            <div class="slds-m-right_small">
+                <lightning-button 
+                    label={labels.back} 
+                    variant="brand-outline"
+                    onclick={handleBack}>
+                </lightning-button>
+            </div>
+        </template>
+        <lightning-button 
+            label={conversationNoteButtonLabel} 
+            variant={conversationNoteButtonVariant} 
+            onclick={handleNext}>
+        </lightning-button>
+    </div>
+</template>
