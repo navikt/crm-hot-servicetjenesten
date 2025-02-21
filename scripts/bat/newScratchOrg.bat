@@ -4,8 +4,8 @@ call sf org create scratch --definition-file config\project-scratch-def.json --a
 echo "Installerer crm-platform-base ver. 0.254"
 call sf package install --package 04tKB000000Y8JkYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-thread-view ver. 0.2"
-call sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-thread-view ver. 0.5"
+call sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-journal-utilities ver. 0.40"
 call sf package install --package 04tKB000000Y65FYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
@@ -16,11 +16,11 @@ call sf package install --package 04tKB000000Y5GEYA0 --no-prompt --installation-
 echo "Installerer crm-shared-flowComponents ver. 0.4"
 call sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-henvendelse-base ver. 0.29"
-call sf package install --package 04tKB000000Y90HYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-henvendelse-base ver. 0.31"
+call sf package install --package 04tKB000000Y9AdYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-platform-integration ver. 0.142"
-call sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-platform-integration ver. 0.147"
+call sf package install --package 04tKB000000Y8yLYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-user-notification ver. 0.24"
 call sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
