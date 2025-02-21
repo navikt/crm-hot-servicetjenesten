@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-//import crmSingleValueUpdate from '@salesforce/messageChannel/crmSingleValueUpdate__c';
+import crmSingleValueUpdate from '@salesforce/messageChannel/hotNotifications__c';
 import { publish, MessageContext } from 'lightning/messageService';
 import { FlowAttributeChangeEvent } from 'lightning/flowSupport';
 

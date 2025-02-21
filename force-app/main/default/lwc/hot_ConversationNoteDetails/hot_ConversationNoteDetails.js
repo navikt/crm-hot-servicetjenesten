@@ -6,8 +6,8 @@ import CONVERSATION_NOTE_OBJECT from '@salesforce/schema/Conversation_Note__c';
 //import CHANGE_USER_LABEL from '@salesforce/label/c.NKS_Change_User';
 //import CREATE_TASK_LABEL from '@salesforce/label/c.NKS_Create_NAV_Task';
 import { publishToAmplitude } from 'c/amplitude';
-import { handleShowNotifications, getOutputVariableValue } from 'c/hot_ComponentsUtils';
-//import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/conversationNoteNotifications__c';
+import { handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
+import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
 //import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/buttonContainerNotifications__c';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import invokeSendNavTaskFlow from '@salesforce/apex/HOT_SendNavTaskHandler.invokeSendNavTaskFlow';
@@ -89,7 +89,7 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     }
 
     get notificationBoxTemplate() {
-        return this.template.querySelector('c-nks-notification-box');
+        return this.template.querySelector('c-hot_notification-box');
     }
 
     handleShowButtons(outputVariables) {
@@ -141,14 +141,14 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
             );
         }
 
-        if (!this.buttonContainerSubscription) {
+        /*if (!this.buttonContainerSubscription) {
             this.buttonContainerSubscription = subscribe(
                 this.messageContext,
                 BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL,
                 (message) => this.handleMessage(message),
                 { scope: APPLICATION_SCOPE }
             );
-        }
+        }*/
     }
 
     unsubscribeToMessageChannel() {
@@ -157,10 +157,10 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
             this.conversationNoteSubscription = null;
         }
 
-        if (this.buttonContainerSubscription) {
+        /*if (this.buttonContainerSubscription) {
             unsubscribe(this.buttonContainerSubscription);
             this.buttonContainerSubscription = null;
-        }
+        }*/
     }
 
     handleMessage(message) {

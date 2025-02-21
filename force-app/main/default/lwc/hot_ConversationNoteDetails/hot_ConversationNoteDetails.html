@@ -1,11 +1,11 @@
 <template>
     <div class="slds-card slds-theme_default">
-        <c-nks-button-container-top
+        <c-hot-button-container-top
             record-id={recordId}
             channel-name="Conversation note"
             flow-button-label={flowButtonLabel}
             flow-api-name={flowApiName}
-        ></c-nks-button-container-top>
+        ></c-hot-button-container-top>
         <template lwc:if={hasCNotes}>
             <div class={sectionClasses}>
                 <!-- Expandable button -->
@@ -67,7 +67,7 @@
             onchange={handleChange}
         ></lightning-flow>
         <div class="slds-var-m-horizontal_medium slds-var-m-bottom_medium">
-            <c-nks-notification-box></c-nks-notification-box>
+            <c-hot_notification-box></c-hot_notification-box>
         </div>
     </div>
 </template>
