@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-import getCRMRelatedList from '@salesforce/apex/NKS_RelatedListController.getCRMRelatedList';
+import getCRMRelatedList from '@salesforce/apex/HOT_RelatedListController.getCRMRelatedList';
 import { NavigationMixin } from 'lightning/navigation';
 import { getRecord } from 'lightning/uiRecordApi';
 
