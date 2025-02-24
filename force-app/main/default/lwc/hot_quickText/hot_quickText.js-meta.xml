@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="conversationNote" type="String" label="Conversation Note Output"
+                role="OutputOnly" />
+            <property name="conversationNoteRich" type="String" label="Conversation Note Input" />
+            <property name="required" type="Boolean" label="Required" default="false"
+                role="inputOnly" />
+            <property name="comments" type="String" label="Comments" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
