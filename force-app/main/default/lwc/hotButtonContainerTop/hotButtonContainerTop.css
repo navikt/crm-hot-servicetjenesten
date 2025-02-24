@@ -1,0 +1,10 @@
+.redact-button {
+    --slds-c-button-brand-color-background: #99c3ff;
+    --slds-c-button-brand-color-border: #99c3ff;
+    --slds-c-button-brand-color-background-hover: #66a5f4;
+    --slds-c-button-brand-color-border-hover: #66a5f4;
+    --slds-c-button-brand-color-background-active: #66a5f4;
+    --slds-c-button-brand-text-color: black;
+    --slds-c-button-brand-text-color-active: black;
+    --slds-c-button-brand-text-color-hover: black;
+}

@@ -1,0 +1,20 @@
+<template>
+    <a lwc:if={isLink} onclick={handleClick} class={buttonClass} tabindex="0">{buttonLabel}</a>
+    <button
+        lwc:else
+        id={elementId}
+        data-id={elementDataId}
+        name={name}
+        class={buttonClass}
+        autofocus={autofocus}
+        disabled={disabled}
+        type={type}
+        value={defaultValue}
+        title={defaultTitle}
+        aria-label={defaultAriaLabel}
+        aria-expanded={ariaExpanded}
+        onclick={handleClick}
+    >
+        {defaultButtonLabel}
+    </button>
+</template>
