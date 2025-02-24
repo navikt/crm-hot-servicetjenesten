@@ -1,0 +1,20 @@
+<template>
+    <lightning-button
+        label="Ny henvendelse"
+        title="Opprett ny telefonihenvendelse"
+        disabled={runFlow}
+        variant="brand"
+        onclick={handleOnClick}
+        stretch
+    >
+    </lightning-button>
+    <template if:true={runFlow}>
+        <lightning-flow
+            flow-api-name="HOT_Create_Phone_Case_For_Account"
+            onstatuschange={handleStatusChange}
+            flow-finish-behavior="NONE"
+            flow-input-variables={inputVariables}
+        >
+        </lightning-flow>
+    </template>
+</template>
