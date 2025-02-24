@@ -96,7 +96,7 @@ private class HOT_FamilyViewControllerTest {
             '{' +
             '"data" : {' +
             '"hentPerson" : {' +
-            '"foedsel" : [ {' +
+            '"foedselsdato" : [ {' +
             '"foedselsdato" : "1965-10-12",' +
             '"foedselsaar" : 1965,' +
             '"foedested" : "Fødested i/på Gjemnes",' +
@@ -372,13 +372,13 @@ private class HOT_FamilyViewControllerTest {
         String person =
             '{' +
             '"data" : {' +
-            '"hentPerson" : {"foedsel" : [{"foedselsaar":"2023"}],"doedsfall" : [{"doedsdato" : "2023-01-2"}]}' +
+            '"hentPerson" : {"foedselsdato" : [{"foedselsaar":"2023"}],"doedsfall" : [{"doedsdato" : "2023-01-2"}]}' +
             '}' +
             '}';
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         Date result = HOT_FamilyViewController.getAgeDate(response);
         System.assertEquals(Date.valueOf('0001-01-02'), result);
-        person = '{' + '"data" : {' + '"hentPerson" : {"foedsel" : [{}]}' + '}' + '}';
+        person = '{' + '"data" : {' + '"hentPerson" : {"foedselsdato" : [{}]}' + '}' + '}';
         response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         result = HOT_FamilyViewController.getAgeDate(response);
         System.assertEquals(null, result);
