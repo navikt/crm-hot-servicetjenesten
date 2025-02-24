@@ -1,12 +1,13 @@
 import { LightningElement, api, wire } from 'lwc';
-import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/conversationNoteNotifications__c';
+//import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/conversationNoteNotifications__c';
 import { publish, MessageContext } from 'lightning/messageService';
 import { getOutputVariableValue } from 'c/hot_componentsUtils';
+import { FlowNavigationBackEvent, FlowNavigationNextEvent, FlowNavigationFinishEvent } from 'lightning/flowSupport';
 
 const JOURNAL_FLOW_API_NAME = 'HOT_Conversation_Note_Journal_Case';
 const NAV_TASK_FLOW_API_NAME = 'HOT_Case_Send_NAV_Task';
 
-export default class HOT_ConversationNoteButtonContainer extends LightningElement {
+export default class Hot_ConversationNoteButtonContainer extends LightningElement {
     @api recordId;
     @api conversationNoteButtonLabel;
     @api journalAndShare = false;
@@ -43,13 +44,38 @@ export default class HOT_ConversationNoteButtonContainer extends LightningElemen
     @wire(MessageContext)
     messageContext;
 
-    // Handle clicking the Next button by starting the appropriate flow.
-    handleNext() {
-        const flowApiName =
-            this.conversationNoteButtonLabel === this.labels.newConversationNote
-                ? JOURNAL_FLOW_API_NAME
-                : NAV_TASK_FLOW_API_NAME;
+    /**
+     * Helper to dispatch a navigation event.
+     * @param {string} action - 'NEXT', 'BACK', or 'FINISH'
+     */
+    handleNavigation(action) {
+        let flowEvent;
+        switch (action) {
+            case 'NEXT':
+                flowEvent = new FlowNavigationNextEvent();
+                break;
+            case 'BACK':
+                flowEvent = new FlowNavigationBackEvent();
+                break;
+            case 'FINISH':
+                flowEvent = new FlowNavigationFinishEvent();
+                break;
+            default:
+                console.error('Invalid action:', action);
+                return;
+        }
+        this.dispatchEvent(flowEvent);
+    }
 
+    /**
+     * Handles the Next button click.
+     * Determines the proper flow to start and dispatches a NEXT navigation event.
+     */
+    handleNext() {
+        const flowApiName = this.conversationNoteButtonLabel === this.labels.newConversationNote
+            ? JOURNAL_FLOW_API_NAME
+            : NAV_TASK_FLOW_API_NAME;
+            
         if (this.journalAndShare && flowApiName === JOURNAL_FLOW_API_NAME) {
             this.journalConversation = true;
         }
@@ -58,15 +84,23 @@ export default class HOT_ConversationNoteButtonContainer extends LightningElemen
         if (flow) {
             flow.startFlow(flowApiName, [{ name: 'recordId', type: 'String', value: this.recordId }]);
         }
+        // Dispatch NEXT navigation event
+        this.handleNavigation('NEXT');
     }
 
-    // Handle Back button click – adjust as needed.
+    /**
+     * Handles the Back button click and dispatches a BACK navigation event.
+     */
     handleBack() {
         console.log('Back button clicked');
-        // Implement your back navigation logic here.
+        this.handleNavigation('BACK');
     }
 
-    // Handle status change events from the lightning-flow component.
+    /**
+     * Listens for status change events from the lightning-flow component.
+     * When the flow finishes, processes output variables, publishes a message,
+     * and optionally dispatches a FINISH navigation event.
+     */
     handleStatusChange(event) {
         if (event.detail.status === 'FINISHED') {
             const flowApiName = event.detail.flowApiName;
@@ -81,16 +115,20 @@ export default class HOT_ConversationNoteButtonContainer extends LightningElemen
                 outputVariables: outputVariables
             };
             try {
-                publish(this.messageContext, CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL, payload);
+                //publish(this.messageContext, CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL, payload);
             } catch (error) {
                 console.error('Error publishing message on conversation note message channel: ', error);
             }
+            // Optionally dispatch a FINISH navigation event if required
+            this.handleNavigation('FINISH');
         }
     }
 
-    // If journalConversation is true, allow user to navigate to the next screen.
+    /**
+     * For journal conversation navigation. Dispatches a NEXT navigation event.
+     */
     handleJournalNext() {
         console.log('Navigating to next screen in journal conversation');
-        // Implement any additional navigation logic as needed.
+        this.handleNavigation('NEXT');
     }
 }
