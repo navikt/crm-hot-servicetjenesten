@@ -96,7 +96,7 @@ private class HOT_FamilyViewControllerTest {
             '{' +
             '"data" : {' +
             '"hentPerson" : {' +
-            '"foedsel" : [ {' +
+            '"foedselsdato" : [ {' +
             '"foedselsdato" : "1965-10-12",' +
             '"foedselsaar" : 1965,' +
             '"foedested" : "Fødested i/på Gjemnes",' +
@@ -140,14 +140,14 @@ private class HOT_FamilyViewControllerTest {
     private static void queryRelationsFromPDL() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_Response r = HOT_FamilyViewController.queryRelationsFromPDL('12106519356');
-        System.assertEquals(1965, r.data?.hentPerson?.foedsel[0]?.foedselsaar);
+        System.assertEquals(1965, r.data?.hentPerson?.foedselsdato[0]?.foedselsaar);
     }
 
     @IsTest
     private static void queryMaritalStatusFromPDL() {
         ApiMock.setTestMock('POST_PDL_API', 200, 'OK');
         PDL_API_Response r = HOT_FamilyViewController.queryMaritalStatusFromPDL('12106519356');
-        System.assertEquals(1965, r.data?.hentPerson?.foedsel[0]?.foedselsaar);
+        System.assertEquals(1965, r.data?.hentPerson?.foedselsdato[0]?.foedselsaar);
     }
 
     @IsTest
@@ -372,13 +372,13 @@ private class HOT_FamilyViewControllerTest {
         String person =
             '{' +
             '"data" : {' +
-            '"hentPerson" : {"foedsel" : [{"foedselsaar":"2023"}],"doedsfall" : [{"doedsdato" : "2023-01-2"}]}' +
+            '"hentPerson" : {"foedselsdato" : [{"foedselsaar":"2023"}],"doedsfall" : [{"doedsdato" : "2023-01-2"}]}' +
             '}' +
             '}';
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         Date result = HOT_FamilyViewController.getAgeDate(response);
         System.assertEquals(Date.valueOf('0001-01-02'), result);
-        person = '{' + '"data" : {' + '"hentPerson" : {"foedsel" : [{}]}' + '}' + '}';
+        person = '{' + '"data" : {' + '"hentPerson" : {"foedselsdato" : [{}]}' + '}' + '}';
         response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         result = HOT_FamilyViewController.getAgeDate(response);
         System.assertEquals(null, result);
@@ -547,11 +547,11 @@ private class HOT_FamilyViewControllerTest {
 
     @IsTest
     private static void getBirthdateTest() {
-        String person = '{' + '"data" : {' + '"hentPerson" : {"foedsel" : []}' + '}' + '}';
+        String person = '{' + '"data" : {' + '"hentPerson" : {"foedselsdato" : []}' + '}' + '}';
         PDL_API_Response response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         String result = HOT_FamilyViewController.getBirthdate(response);
         System.assertEquals(null, result);
-        person = '{' + '"data" : {' + '"hentPerson" : {"foedsel" : [{}]}' + '}' + '}';
+        person = '{' + '"data" : {' + '"hentPerson" : {"foedselsdato" : [{}]}' + '}' + '}';
         response = (PDL_API_Response) System.JSON.deserialize(person, PDL_API_Response.class);
         result = HOT_FamilyViewController.getBirthdate(response);
         System.assertEquals(null, result);
@@ -767,7 +767,7 @@ private class HOT_FamilyViewControllerTest {
         '"status" : "I_BRUK",' +
         '"identifikasjonsnummer" : "12106519356"' +
         '} ],' +
-        '"foedsel" : [ {' +
+        '"foedselsdato" : [ {' +
         '"foedselsdato" : "1965-10-12",' +
         '"foedselsaar" : 1965,' +
         '"foedested" : "Fødested i/på Gjemnes",' +
@@ -859,7 +859,7 @@ private class HOT_FamilyViewControllerTest {
         '"status" : "I_BRUK",' +
         '"identifikasjonsnummer" : "12106519356"' +
         '} ],' +
-        '"foedsel" : [ {' +
+        '"foedselsdato" : [ {' +
         '"foedselsdato" : "2005-10-12",' +
         '"foedselsaar" : 2005,' +
         '"foedested" : "Fødested i/på Gjemnes",' +
@@ -1132,7 +1132,7 @@ private class HOT_FamilyViewControllerTest {
         '"aarsak" : null' +
         '}' +
         '} ],' +
-        '"foedsel" : [ {' +
+        '"foedselsdato" : [ {' +
         '"metadata" : {' +
         '"opplysningsId" : "20e8b676-568e-4eee-b5ce-b57156f850f5",' +
         '"master" : "FREG",' +
