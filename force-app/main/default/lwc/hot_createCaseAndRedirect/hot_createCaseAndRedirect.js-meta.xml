@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>Creates Phone Case for Account and redirects</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Create Phone Case(SERVICETJENESTEN)</masterLabel>
+    <targets>
+        <target>
+            lightning__RecordPage
+        </target>
+    </targets>
+</LightningComponentBundle>

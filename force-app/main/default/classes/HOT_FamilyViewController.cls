@@ -67,8 +67,8 @@ public with sharing class HOT_FamilyViewController {
         query.hentPerson.navn.fornavn = true;
         query.hentPerson.navn.mellomnavn = true;
         query.hentPerson.navn.etternavn = true;
-        query.hentPerson.foedsel.foedselsaar = true;
-        query.hentPerson.foedsel.foedselsdato = true;
+        query.hentPerson.foedselsdato.foedselsaar = true;
+        query.hentPerson.foedselsdato.foedselsdato = true;
         query.hentPerson.kjoenn.kjoenn = true;
         query.hentPerson.doedsfall.doedsdato = true;
         query.hentPerson.adressebeskyttelse.gradering = true;
@@ -85,8 +85,8 @@ public with sharing class HOT_FamilyViewController {
         query.hentPerson.doedfoedtBarn.selectAll();
         query.hentPerson.adressebeskyttelse.gradering = true;
         query.hentPerson.foreldreansvar.selectAll();
-        query.hentPerson.foedsel.foedselsdato = true;
-        query.hentPerson.foedsel.foedselsaar = true;
+        query.hentPerson.foedselsdato.foedselsdato = true;
+        query.hentPerson.foedselsdato.foedselsaar = true;
         query.hentPerson.bostedsadresse.vegadresse.selectAll();
         query.hentPerson.bostedsadresse.matrikkeladresse.selectAll();
         query.hentPerson.deltBosted.vegadresse.selectAll();
@@ -101,8 +101,8 @@ public with sharing class HOT_FamilyViewController {
         query.hentPerson.navn.fornavn = true;
         query.hentPerson.navn.mellomnavn = true;
         query.hentPerson.navn.etternavn = true;
-        query.hentPerson.foedsel.foedselsaar = true;
-        query.hentPerson.foedsel.foedselsdato = true;
+        query.hentPerson.foedselsdato.foedselsaar = true;
+        query.hentPerson.foedselsdato.foedselsdato = true;
         query.hentPerson.kjoenn.kjoenn = true;
         query.hentPerson.doedsfall.doedsdato = true;
         query.hentPerson.adressebeskyttelse.gradering = true;
@@ -448,27 +448,27 @@ public with sharing class HOT_FamilyViewController {
 
     @TestVisible
     private static String getBirthdate(PDL_API_Response response) {
-        List<PDL_Foedsel> foedsel = response.data?.hentPerson?.foedsel;
-        if (foedsel == null || foedsel.isEmpty()) {
+        List<PDL_Foedselsdato> foedselsdato = response.data?.hentPerson?.foedselsdato;
+        if (foedselsdato == null || foedselsdato.isEmpty()) {
             return null;
         }
-        if (foedsel[0]?.foedselsdato == null) {
+        if (foedselsdato[0]?.foedselsdato == null) {
             return null;
         }
-        return formatDate(foedsel[0].foedselsdato);
+        return formatDate(foedselsdato[0].foedselsdato);
     }
 
     @TestVisible
     private static Date getAgeDate(PDL_API_Response response) {
         Date birthDate;
-        List<PDL_Foedsel> foedsel = response.data?.hentPerson?.foedsel;
-        if (foedsel == null || foedsel.isEmpty()) {
+        List<PDL_Foedselsdato> foedselsdato = response.data?.hentPerson?.foedselsdato;
+        if (foedselsdato == null || foedselsdato.isEmpty()) {
             return null;
         }
-        if (foedsel[0]?.foedselsdato != null) {
-            birthDate = foedsel[0].foedselsdato;
-        } else if (foedsel[0]?.foedselsaar != null) {
-            birthDate = Date.newInstance(foedsel[0].foedselsaar, 1, 1);
+        if (foedselsdato[0]?.foedselsdato != null) {
+            birthDate = foedselsdato[0].foedselsdato;
+        } else if (foedselsdato[0]?.foedselsaar != null) {
+            birthDate = Date.newInstance(foedselsdato[0].foedselsaar, 1, 1);
         } else {
             return null;
         }
@@ -808,14 +808,14 @@ public with sharing class HOT_FamilyViewController {
     }
 
     private static Date getBirthdayDate(PDL_API_Response response) {
-        List<PDL_Foedsel> foedsel = response.data?.hentPerson?.foedsel;
-        if (foedsel == null || foedsel.isEmpty()) {
+        List<PDL_Foedselsdato> foedselsdato = response.data?.hentPerson?.foedselsdato;
+        if (foedselsdato == null || foedselsdato.isEmpty()) {
             return null;
         }
-        if (foedsel[0]?.foedselsdato == null) {
+        if (foedselsdato[0]?.foedselsdato == null) {
             return null;
         }
-        return foedsel[0].foedselsdato;
+         return foedselsdato[0].foedselsdato;
     }
 
     @TestVisible
