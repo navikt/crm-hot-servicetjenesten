@@ -1,5 +1,15 @@
 @isTest
 public class HOT_ST_TestDataFactory {
+    public static List<QuickText> createQuickTexts(Integer amount) {
+        List<QuickText> quickTexts = new List<QuickText>();
+        for (Integer i = 0; i < amount; i++) {
+            QuickText qt = new QuickText(Name = 'Test ' + i, Message = 'Dette er en melding');
+            quickTexts.add(qt);
+        }
+        insert quickTexts;
+        return quickTexts;
+    }
+
     public static Case createCase(String lastname) {
         Account a = [SELECT Id FROM Account WHERE LastName = :lastname];
         Case c = new Case(AccountId = a.Id, Status = 'New', Origin = 'Web');
