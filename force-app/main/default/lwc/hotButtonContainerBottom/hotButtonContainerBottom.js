@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { publishToAmplitude } from 'c/amplitude';
-//import getLabels from '@salesforce/apex/NKS_ButtonContainerController.getLabels';
+import getLabels from '@salesforce/apex/HOT_ButtonContainerController.getLabels';
 import { handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
@@ -24,12 +24,12 @@ export default class HotButtonContainerBottom extends LightningElement {
     timer;
     _activeFlow;
     subscription = null;
-    getLabels = '';
+    labelList = [];
 
     @wire(MessageContext)
     messageContext;
 
-    /*@wire(getLabels, { labels: '$flowLabelList' })
+    @wire(getLabels, { labels: '$flowLabelList' })
     labelWire({ data, error }) {
         if (data) {
             this.labelList = data;
@@ -37,6 +37,11 @@ export default class HotButtonContainerBottom extends LightningElement {
         } else if (error) {
             console.error('Could not fetch labels for buttonContainerBottom', error);
         }
+    }
+
+    /*setLabelList() {
+        this.labelList = ['Journal', 'Nav Oppgave']; 
+        this.updateFlowLoop();
     }*/
 
     connectedCallback() {
@@ -92,7 +97,7 @@ export default class HotButtonContainerBottom extends LightningElement {
     }
 
     get notificationBoxTemplate() {
-        return this.template.querySelector('c-nks-notification-box');
+        return this.template.querySelector('c-hot_notification-box');
     }
 
     get buttonClass() {
@@ -109,6 +114,15 @@ export default class HotButtonContainerBottom extends LightningElement {
             buttonStyling: this.buttonStylingList.length ? this.buttonStylingList[index] : 'secondary'
         }));
     }
+
+    /*updateFlowLoop() {
+    this.flowLoop = this.flowNameList?.map((flowName, index) => ({
+        developerName: flowName,
+        label: this.labelList[index] || flowName,
+        expanded: 'false',
+        buttonStyling:'secondary'
+    }));
+    }*/
 
     toggleFlow(event) {
         const flowName = event.detail?.dataId;
@@ -175,9 +189,9 @@ export default class HotButtonContainerBottom extends LightningElement {
 
     handleMessage(message) {
         handleShowNotifications(message.flowApiName, message.outputVariables, this.notificationBoxTemplate);
-        const publishNotification = getOutputVariableValue(message.outputVariables, 'Publish_Notification');
+        /*const publishNotification = getOutputVariableValue(message.outputVariables, 'Publish_Notification');
         if (publishNotification) {
             this.notificationBoxTemplate.scrollIntoView({ behavior: 'smooth' });
-        }
+        }*/
     }
 }

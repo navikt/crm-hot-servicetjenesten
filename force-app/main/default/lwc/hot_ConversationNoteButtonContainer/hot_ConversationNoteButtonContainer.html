@@ -1,0 +1,38 @@
+<template>
+    <template lwc:if={journalConversation}>
+        <c-fc-flow-next-screen-navigator></c-fc-flow-next-screen-navigator>
+    </template>
+    <c-hot-button-container-bottom
+        class="slds-p-right_none"
+        record-id={recordId}
+        channel-name="Conversation note"
+        flow-names="HOT_Conversation_Note_Journal_Case_v_2, HOT_Case_Send_NAV_Task_v_2"
+        flow-labels="HOT_Journal, HOT_Create_NAV_Task"
+        onflowclicked={handleFlowButtonClicked}
+        onflowsucceeded={handleFlowSucceeded}
+    >
+        <template if:true={showBackButton}>
+            <div slot="backButton" class="slds-var-p-right_small" style="height: 100%">
+                <c-hot-flow-navigation
+                    action="BACK"
+                    button-label={labels.back}
+                    button-variant="brand-outline"
+                    button-alignment="LEFT"
+                    remove-footer
+                >
+                </c-hot-flow-navigation>
+            </div>
+        </template>
+        <div slot="navigationButton">
+            <c-hot-flow-navigation
+                class="custom-button"
+                action="NEXT"
+                button-label={conversationNoteButtonLabel}
+                button-variant={conversationNoteButtonVariant}
+                button-alignment="RIGHT"
+                remove-footer
+            >
+            </c-hot-flow-navigation>
+        </div>
+    </c-hot-button-container-bottom>
+</template>

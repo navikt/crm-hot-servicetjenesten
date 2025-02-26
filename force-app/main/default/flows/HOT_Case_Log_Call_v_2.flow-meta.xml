@@ -503,6 +503,11 @@
     <description>HOT own version of NKS Case Log Call v. 2
 New version of NKS_Case_Log_a_Call</description>
     <environments>Default</environments>
+    <formulas>
+        <name>Show_Back_Button</name>
+        <dataType>Boolean</dataType>
+        <expression>{!Get_Case.IsClosed} = true</expression>
+    </formulas>
     <interviewLabel>HOT Case Log Call v. 2 {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT Case Log Call v. 2</label>
     <processMetadataValues>
@@ -889,6 +894,36 @@ New version of NKS_Case_Log_a_Call</description>
             <targetReference>Log_Screen</targetReference>
         </connector>
         <fields>
+            <name>Button_Container_Case_Closed</name>
+            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>conversationNoteButtonLabel</name>
+                <value>
+                    <stringValue>Nytt samtalereferat</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>recordId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>HAS_PERSON_READ</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <booleanValue>true</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
             <name>Record_Refresher_Case_Closed</name>
             <extensionName>c:hot_RecordRefresher</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1075,6 +1110,11 @@ New version of NKS_Case_Log_a_Call</description>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
+            <name>Disclaimer_Text</name>
+            <fieldText>&lt;p&gt;Samtalereferatet blir delt med bruker når det opprettes.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Conversation_Summary</name>
             <extensionName>c:hot_quickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1095,6 +1135,50 @@ New version of NKS_Case_Log_a_Call</description>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
+            <name>Theme_Categorization</name>
+            <extensionName>c:crmThemeCategorization</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>optionalTheme</name>
+                <value>
+                    <booleanValue>false</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>variant</name>
+                <value>
+                    <stringValue>HIDE_SUBTHEME</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>optionalThemeGroup</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>twoColumns</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>theme</name>
+                <value>
+                    <elementReference>Get_Case.NKS_Theme__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>themeGroup</name>
+                <value>
+                    <elementReference>Get_Case.NKS_Theme_Group__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
             <name>Record_Refresher</name>
             <extensionName>c:hot_RecordRefresher</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1102,6 +1186,38 @@ New version of NKS_Case_Log_a_Call</description>
                 <name>recordId</name>
                 <value>
                     <elementReference>recordId</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Button_Container_Log_Screen</name>
+            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>conversationNoteButtonLabel</name>
+                <value>
+                    <stringValue>Del med brukeren</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>journalAndShare</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>recordId</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showBackButton</name>
+                <value>
+                    <elementReference>Show_Back_Button</elementReference>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1169,6 +1285,57 @@ New version of NKS_Case_Log_a_Call</description>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <fields>
+            <name>Theme_Categorization_Conversation_Note</name>
+            <extensionName>c:crmThemeCategorization</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>variant</name>
+                <value>
+                    <stringValue>HIDE_SUBTHEME</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>optionalTheme</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>optionalThemeGroup</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>twoColumns</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>themeGroup</name>
+                <value>
+                    <elementReference>Get_Case.NKS_Theme_Group__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>theme</name>
+                <value>
+                    <elementReference>Get_Case.NKS_Theme__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>Theme_Group</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Theme</assignToReference>
+                <name>theme</name>
+            </outputParameters>
+        </fields>
+        <fields>
             <name>Record_Refresher_Conversation_Note</name>
             <extensionName>c:hot_RecordRefresher</extensionName>
             <fieldType>ComponentInstance</fieldType>
@@ -1181,6 +1348,45 @@ New version of NKS_Case_Log_a_Call</description>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Button_Container_Conversation_Note</name>
+            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>conversationNoteButtonLabel</name>
+                <value>
+                    <stringValue>Del med brukeren</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>journalAndShare</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>recordId</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showBackButton</name>
+                <value>
+                    <elementReference>Show_Back_Button</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>journalConversation</assignToReference>
+                <name>journalConversation</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>navTasks</assignToReference>
+                <name>navTasks</name>
+            </outputParameters>
         </fields>
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
@@ -1274,7 +1480,7 @@ New version of NKS_Case_Log_a_Call</description>
         </fields>
         <fields>
             <name>No_Account_Next_Button</name>
-            <extensionName>c:hot_FlowNavigation</extensionName>
+            <extensionName>c:hotFlowNavigation</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>buttonLabel</name>
@@ -1289,7 +1495,7 @@ New version of NKS_Case_Log_a_Call</description>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
                     <leftValueReference>Account_Relation.value</leftValueReference>
-                    <operator>NotEqualTo</operator>
+                    <operator>EqualTo</operator>
                     <rightValue>
                         <stringValue></stringValue>
                     </rightValue>
@@ -1352,6 +1558,14 @@ New version of NKS_Case_Log_a_Call</description>
         <value>
             <booleanValue>false</booleanValue>
         </value>
+    </variables>
+    <variables>
+        <name>navTasks</name>
+        <dataType>SObject</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <objectType>NavTask__c</objectType>
     </variables>
     <variables>
         <name>PERSON_ID</name>
