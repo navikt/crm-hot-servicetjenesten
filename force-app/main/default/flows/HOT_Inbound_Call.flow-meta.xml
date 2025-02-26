@@ -5,7 +5,7 @@
         <name>Redirect_To_Case</name>
         <label>Redirect To Case</label>
         <locationX>182</locationX>
-        <locationY>650</locationY>
+        <locationY>758</locationY>
         <actionName>c:hotFlowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -18,14 +18,13 @@
         <nameSegment>c:hotFlowRedirect</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
-        <versionSegment>1</versionSegment>
     </actionCalls>
     <apiVersion>62.0</apiVersion>
     <assignments>
         <name>Case_Assignment</name>
         <label>Case Assignment</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.AccountId</assignToReference>
             <operator>Assign</operator>
@@ -54,6 +53,20 @@
                 <elementReference>Subject</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.NKS_Puzzel_Queue_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Hjelpemidler</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.NKS_Theme_Group__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>THEME_GROUP_ID</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case</targetReference>
         </connector>
@@ -62,7 +75,7 @@
         <name>Case_Assignment_0</name>
         <label>Case Assignment</label>
         <locationX>314</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.Origin</assignToReference>
             <operator>Assign</operator>
@@ -91,6 +104,20 @@
                 <elementReference>Search</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.NKS_Puzzel_Queue_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Hjelpemidler</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.NKS_Theme_Group__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>THEME_GROUP_ID</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case_0</targetReference>
         </connector>
@@ -108,7 +135,7 @@
         <name>Check_identifier</name>
         <label>Check identifier</label>
         <locationX>182</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <defaultConnector>
             <targetReference>Case_Assignment_0</targetReference>
         </defaultConnector>
@@ -141,7 +168,7 @@
 )</expression>
     </formulas>
     <interviewLabel>HOT_Inbound_Call {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT_Inbound_Call</label>
+    <label>HOT Inbound Call</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -166,7 +193,7 @@
         <name>Create_Case</name>
         <label>Create Case</label>
         <locationX>50</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>Redirect_To_Case</targetReference>
         </connector>
@@ -177,7 +204,7 @@
         <name>Create_Case_0</name>
         <label>Create Case</label>
         <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <connector>
             <targetReference>Redirect_To_Case</targetReference>
         </connector>
@@ -187,7 +214,7 @@
         <name>Get_Person_Account</name>
         <label>Get Person Account</label>
         <locationX>50</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Case_Assignment</targetReference>
@@ -213,12 +240,47 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
+    <recordLookups>
+        <description>Queries the theme group that was mapped to the queue.</description>
+        <name>Get_Theme_Group</name>
+        <label>Get Theme Group</label>
+        <locationX>182</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Check_identifier</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>CRM_Code_Set__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Temagrupper</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>CRM_Code__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>HJLPM</stringValue>
+            </value>
+        </filters>
+        <object>Common_Code__c</object>
+        <outputAssignments>
+            <assignToReference>THEME_GROUP_ID</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>THEME_GROUP_NAME</assignToReference>
+            <field>Name</field>
+        </outputAssignments>
+    </recordLookups>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <start>
         <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Check_identifier</targetReference>
+            <targetReference>Get_Theme_Group</targetReference>
         </connector>
     </start>
     <status>Active</status>
@@ -263,6 +325,20 @@
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>THEME_GROUP_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>THEME_GROUP_NAME</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>
 </Flow>
