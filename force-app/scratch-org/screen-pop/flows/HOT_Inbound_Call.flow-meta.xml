@@ -6,7 +6,7 @@
         <label>Redirect To Case</label>
         <locationX>182</locationX>
         <locationY>758</locationY>
-        <actionName>c:hotFlowRedirect</actionName>
+        <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
@@ -15,7 +15,7 @@
                 <elementReference>Call_Case.Id</elementReference>
             </value>
         </inputParameters>
-        <nameSegment>c:hotFlowRedirect</nameSegment>
+        <nameSegment>c:hot_flowRedirect</nameSegment>
         <offset>0</offset>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>

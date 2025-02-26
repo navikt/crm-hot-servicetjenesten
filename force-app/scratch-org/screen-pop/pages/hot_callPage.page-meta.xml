@@ -3,5 +3,5 @@
     <apiVersion>61.0</apiVersion>
     <availableInTouch>false</availableInTouch>
     <confirmationTokenRequired>false</confirmationTokenRequired>
-    <label>hotCallPage</label>
+    <label>hot_callPage</label>
 </ApexPage>

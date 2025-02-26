@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <CallCenter xmlns="http://soap.sforce.com/2006/04/metadata">
-    <adapterUrl>/apex/hotCallPage</adapterUrl>
+    <adapterUrl>/apex/hot_callPage</adapterUrl>
     <customSettings
-    >{&quot;reqTimeout&quot;:&quot;10000&quot;,&quot;reqStandbyUrl&quot;:&quot;/apex/hotCallPage&quot;,&quot;reqSoftphoneHeight&quot;:&quot;550&quot;,&quot;reqUseApi&quot;:&quot;true&quot;,&quot;reqSoftphoneWidth&quot;:&quot;400&quot;,&quot;reqSalesforceCompatibilityMode&quot;:&quot;Lightning&quot;}</customSettings>
+    >{&quot;reqTimeout&quot;:&quot;10000&quot;,&quot;reqStandbyUrl&quot;:&quot;/apex/hot_callPage&quot;,&quot;reqSoftphoneHeight&quot;:&quot;550&quot;,&quot;reqUseApi&quot;:&quot;true&quot;,&quot;reqSoftphoneWidth&quot;:&quot;400&quot;,&quot;reqSalesforceCompatibilityMode&quot;:&quot;Lightning&quot;}</customSettings>
     <displayName>HOT Demo Call Center Adapter</displayName>
     <displayNameLabel>Display Name</displayNameLabel>
     <internalNameLabel>InternalName</internalNameLabel>
@@ -10,12 +10,12 @@
         <items>
             <label>CTI Adapter URL</label>
             <name>reqAdapterUrl</name>
-            <value>/apex/hotCallPage</value>
+            <value>/apex/hot_callPage</value>
         </items>
         <items>
             <label>CTI Adapter URL2</label>
             <name>reqStandbyUrl</name>
-            <value>/apex/hotCallPage</value>
+            <value>/apex/hot_callPage</value>
         </items>
         <items>
             <label>Timeout</label>

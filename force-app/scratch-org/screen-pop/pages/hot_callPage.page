@@ -4,8 +4,8 @@
     <div id="lightning"></div>
 
     <script type="text/javascript">
-        $Lightning.use("c:hotTestAdapter", function() {
-            $Lightning.createComponent("c:hotCallSimulator", 
+        $Lightning.use("c:hot_testAdapter", function() {
+            $Lightning.createComponent("c:hot_callSimulator", 
             {},
             "lightning",
             function(cmp) {
