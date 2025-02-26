@@ -605,12 +605,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>hot_createCaseAndRedirect</componentName>
-                <identifier>c_hot_createCaseAndRedirect</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
                 <componentInstanceProperties>
                     <name>maxEARContainerHeight</name>
                     <value>500</value>
