@@ -85,7 +85,7 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>NKS_PostAddressService</apexClass>
+        <apexClass>HOT_QuickTextSearchController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -94,6 +94,10 @@
     </classAccesses>
     <classAccesses>
         <apexClass>HOT_STORecordInfoController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>NKS_PostAddressService</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -115,12 +119,12 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.PersonGenderIdentity</field>
+        <field>Account.INT_PersonIdent__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Account.INT_PersonIdent__c</field>
+        <field>Account.PersonGenderIdentity</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
