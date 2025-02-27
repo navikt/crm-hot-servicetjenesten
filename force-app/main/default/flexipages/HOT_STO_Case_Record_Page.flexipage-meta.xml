@@ -189,6 +189,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_postAddress</componentName>
+                <identifier>c_hot_postAddress</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>hot_hjelpemiddelsentral</componentName>
                 <identifier>c_hot_hjelpemiddelsentral</identifier>
             </componentInstance>

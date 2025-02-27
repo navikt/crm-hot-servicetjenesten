@@ -3,11 +3,11 @@
 # Oppretter scratch org
 sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30
 
-# Installer crm-platform-base ver. 0.254
-sf package install --package 04tKB000000Y8JkYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installer crm-platform-base ver. 0.258
+sf package install --package 04tKB000000Y8p3YAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-thread-view ver. 0.2
-sf package install --package 04t7U000000TqvIQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-thread-view ver. 0.5
+sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-journal-utilities ver. 0.40
 sf package install --package 04tKB000000Y65FYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
@@ -21,11 +21,11 @@ sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-key $
 # Installerer crm-shared-flowComponents ver. 0.4
 sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-henvendelse-base ver. 0.27
-sf package install --package 04tKB000000Y77jYAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-henvendelse-base ver. 0.31
+sf package install --package 04tKB000000Y9AdYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-platform-integration ver. 0.142
-sf package install --package 04tKB000000Y6CWYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-platform-integration ver. 0.148
+sf package install --package 04tKB000000Y9f3YAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-shared-user-notification ver. 0.24
 sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
@@ -36,8 +36,8 @@ sf package install --package 04tKB000000Y5H7YAK --no-prompt --installation-key $
 # Installerer crm-community-base ver. 0.119
 sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-henvendelse ver. 0.154
-sf package install --package 04tKB000000Y5fXYAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-henvendelse ver. 0.159
+sf package install --package 04tKB000000Y8s2YAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-shared-timeline ver. 1.27
 sf package install --package 04tKB000000Y655YAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
