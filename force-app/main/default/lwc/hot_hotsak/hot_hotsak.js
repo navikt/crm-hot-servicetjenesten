@@ -24,7 +24,7 @@ export default class Hot_hotsak extends LightningElement {
         if (data) {
             this.error = undefined;
 
-            // må flytte beskrivelse/gjelder til top level for at det skal fungere med lightning table
+            // Flytter beskrivelse/gjelder til top level for at det skal fungere med lightning table
             this.saker = data.map((record) => {
                 return {
                     ...record,
