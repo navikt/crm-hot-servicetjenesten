@@ -7,12 +7,12 @@ public class HOT_RecordInfoController {
      * @param objectApiName [API name of parent]
      * @return sObject
      **/
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static sObject getRelatedRecord(String parentId, String relationshipField, String objectApiName) {
         return getReverseRelatedRecord(parentId, relationshipField, objectApiName, 'Id', null)[0];
     }
 
-    // @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static List<SObject> getReverseRelatedRecord(
         String parentId,
         string queryFields,
@@ -21,9 +21,7 @@ public class HOT_RecordInfoController {
     ) {
         return getReverseRelatedRecord(parentId, queryFields, objectApiName, relationshipField, null);
     }
-
-    // @AuraEnabled(cacheable=true)
-    public static List<SObject> getReverseRelatedRecord(
+    private static List<SObject> getReverseRelatedRecord(
         String parentId,
         string queryFields,
         string objectApiName,

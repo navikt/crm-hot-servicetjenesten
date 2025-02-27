@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-import getReverseRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
+import getReverseRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getReverseRelatedRecord';
 import { refreshApex } from '@salesforce/apex';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import CONVERSATION_NOTE_OBJECT from '@salesforce/schema/Conversation_Note__c';
