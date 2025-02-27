@@ -11,6 +11,48 @@
             <targetReference>Set_Publish_Notification_To_True</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>Journal_Case_ID</name>
+            <value>
+                <elementReference>Selected_Case_Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Journal_Case_Legacy_System</name>
+            <value>
+                <elementReference>Selected_Legacy_System</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Journal_Entry_NAV_Ident</name>
+            <value>
+                <elementReference>$User.CRM_NAV_Ident__c</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Journal_Entry_Unit</name>
+            <value>
+                <elementReference>$User.Department</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Journal_Subtheme_Code</name>
+            <value>
+                <elementReference>Selected_Subtheme</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>Journal_Theme_Code</name>
+            <value>
+                <elementReference>Selected_Theme_Code</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>Conversation_Note_Record.Id</elementReference>
+            </value>
+        </inputParameters>
         <nameSegment>CRM_ConvNoteJournalHelper</nameSegment>
         <offset>0</offset>
     </actionCalls>
@@ -214,14 +256,23 @@
         <assignmentItems>
             <assignToReference>Get_Case.NKS_Theme_Group__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>Selected_Theme_Group_SF_ID</elementReference>
+            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>Get_Case.NKS_Theme__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>Selected_Theme_SF_ID</elementReference>
+            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>Get_Case.NKS_Subtheme__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>Selected_Subtheme_SF_ID</elementReference>
+            </value>
         </assignmentItems>
         <connector>
             <targetReference>Journal_Conversation_Note_Assignment</targetReference>
@@ -1071,8 +1122,42 @@ New version of NKS_Case_Log_a_Call</description>
                     <elementReference>Get_Case.NKS_Theme_Group__c</elementReference>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>actorId</name>
+                <value>
+                    <elementReference>Get_Case.Account.CRM_Person__r.INT_ActorId__c</elementReference>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Group_SF_ID</assignToReference>
+                <name>selectedThemeGroupSfId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_ID</assignToReference>
+                <name>selectedCaseThemeSfId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Case_Id</assignToReference>
+                <name>selectedCaseId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Legacy_System</assignToReference>
+                <name>selectedCaseLegacySystem</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Code</assignToReference>
+                <name>selectedCaseTheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme</assignToReference>
+                <name>selectedSubtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_ID</assignToReference>
+                <name>selectedSubthemeSfId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Journalfør og del med brukeren</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -1611,6 +1696,55 @@ New version of NKS_Case_Log_a_Call</description>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Case_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Legacy_System</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Subtheme</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Subtheme_SF_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Theme_Code</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Theme_Group_SF_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Theme_SF_ID</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <description>Salesforce ID to the Person__c record</description>

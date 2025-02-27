@@ -39,11 +39,6 @@ export default class HotButtonContainerBottom extends LightningElement {
         }
     }
 
-    /*setLabelList() {
-        this.labelList = ['Journal', 'Nav Oppgave']; 
-        this.updateFlowLoop();
-    }*/
-
     connectedCallback() {
         this.subscribeToMessageChannel();
     }
@@ -114,15 +109,6 @@ export default class HotButtonContainerBottom extends LightningElement {
             buttonStyling: this.buttonStylingList.length ? this.buttonStylingList[index] : 'secondary'
         }));
     }
-
-    /*updateFlowLoop() {
-    this.flowLoop = this.flowNameList?.map((flowName, index) => ({
-        developerName: flowName,
-        label: this.labelList[index] || flowName,
-        expanded: 'false',
-        buttonStyling:'secondary'
-    }));
-    }*/
 
     toggleFlow(event) {
         const flowName = event.detail?.dataId;
