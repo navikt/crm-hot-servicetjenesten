@@ -57,7 +57,7 @@
         <connector>
             <targetReference>Check_if_record_has_conversation_note</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>CRM_Case__c</field>
             <operator>EqualTo</operator>
@@ -111,7 +111,30 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Case_Id</assignToReference>
+                <name>selectedCaseId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Case_Legacy_System</assignToReference>
+                <name>selectedCaseLegacySystem</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme</assignToReference>
+                <name>selectedCaseTheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme</assignToReference>
+                <name>selectedSubtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_Id</assignToReference>
+                <name>selectedSubthemeSfId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>selectedCaseThemeSfId</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Journalfør</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -235,10 +258,31 @@
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>Selected_Subtheme</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Subtheme_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>Selected_Theme</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Theme_SF_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>
