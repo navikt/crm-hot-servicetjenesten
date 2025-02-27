@@ -35,6 +35,7 @@ export default class Hot_hotsak extends LightningElement {
         } else if (error) {
             this.saker = undefined;
             this.error = error;
+            console.error(error);
         }
     }
 
