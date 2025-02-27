@@ -40,6 +40,8 @@ export default class hotButtonContainerTop extends LightningElement {
     }
 
     handleStatusChange(event) {
+        console.log('handleStatusChange_Top');
+        console.log(event.detail);
         const { status, outputVariables } = event.detail;
         if (status === 'FINISHED' || status === 'FINISHED_SCREEN') {
             this.showFlow = false;
@@ -50,9 +52,10 @@ export default class hotButtonContainerTop extends LightningElement {
 
     publishMessage(outputVariables) {
         const payload = {
+            type: 'BUTTON_CONTAINER_NOTIFICATIONS',
             recordId: this.recordId,
             flowApiName: this.flowApiName,
-            outputVariables
+            outputVariables: outputVariables
         };
         try {
             publish(this.messageContext, BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL, payload);

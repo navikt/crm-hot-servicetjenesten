@@ -140,6 +140,8 @@ export default class HotButtonContainerBottom extends LightningElement {
     }
 
     handleStatusChange(event) {
+        console.log('handleStatusChange_bottom');
+        console.log(event);
         const { status, outputVariables } = event.detail;
         if (status !== CONSTANTS.FINISHED && status !== CONSTANTS.FINISHED_SCREEN) return;
 
@@ -188,10 +190,13 @@ export default class HotButtonContainerBottom extends LightningElement {
     }
 
     handleMessage(message) {
+        console.log('handleMessage_bottom');
+        console.log(message);
+        if (message.type !== 'BUTTON_CONTAINER_NOTIFICATIONS') return;
         handleShowNotifications(message.flowApiName, message.outputVariables, this.notificationBoxTemplate);
-        /*const publishNotification = getOutputVariableValue(message.outputVariables, 'Publish_Notification');
+        const publishNotification = getOutputVariableValue(message.outputVariables, 'Publish_Notification');
         if (publishNotification) {
             this.notificationBoxTemplate.scrollIntoView({ behavior: 'smooth' });
-        }*/
+        }
     }
 }

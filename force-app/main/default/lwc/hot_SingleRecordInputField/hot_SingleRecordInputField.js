@@ -28,7 +28,7 @@ export default class HotSingleRecordInputField extends LightningElement {
     VALIDATION_ERROR = 'Vennligst fyll ut feltet';
 
     connectedCallback() {
-        const payload = { name: this.fieldName, value: this.value };
+        const payload = { name: this.fieldName, value: this.value, type: 'RECORD_VALUE_UPDATE' };
         publish(this.messageContext, crmSingleValueUpdate, payload);
     }
 
@@ -39,7 +39,7 @@ export default class HotSingleRecordInputField extends LightningElement {
             this.value = event.detail.value;
         }
         this.dispatchEvent(new FlowAttributeChangeEvent('value', this.value));
-        const payload = { name: this.fieldName, value: this.value };
+        const payload = { name: this.fieldName, value: this.value, type: 'RECORD_VALUE_UPDATE' };
         publish(this.messageContext, crmSingleValueUpdate, payload);
     }
 

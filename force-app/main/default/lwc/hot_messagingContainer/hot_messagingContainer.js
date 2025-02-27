@@ -236,6 +236,8 @@ export default class StoMessagingContainer extends LightningElement {
             // publishToAmplitude('STO', { type: `${this.label} pressed` });
 
             if (outputVariables != null) {
+                console.log('handleFlowStatusChange');
+                console.log(event);
                 handleShowNotifications(flowTitle, outputVariables, this.notificationBoxTemplate);
                 const publishNotification = getOutputVariableValue(outputVariables, 'Publish_Notification');
                 if (publishNotification) {
@@ -254,6 +256,8 @@ export default class StoMessagingContainer extends LightningElement {
     }
 
     handleSubmitStatusChange(event) {
+        console.log('handleStatusChange_submit');
+        console.log(event.detail);
         const flowStatus = event.detail.status;
         if (flowStatus === CONSTANTS.FINISHED || flowStatus === CONSTANTS.FINISHED_SCREEN) {
             refreshApex(this.wiredCase);

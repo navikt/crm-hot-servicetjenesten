@@ -17,7 +17,7 @@ export default class HotRecordRefresher extends LightningElement {
 
     //Published message for custom components to trigger refresh
     publishRefreshMessage() {
-        const payload = { recordId: this.recordId };
+        const payload = { recordId: this.recordId, type: 'RECORD_REFRESH' };
         publish(this.messageContext, hotRefreshRecord, payload);
     }
 

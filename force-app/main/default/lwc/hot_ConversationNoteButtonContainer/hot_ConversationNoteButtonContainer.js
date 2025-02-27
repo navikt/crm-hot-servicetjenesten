@@ -5,7 +5,7 @@ import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/
 import { publish, MessageContext } from 'lightning/messageService';
 import { getOutputVariableValue } from 'c/hot_componentsUtils';
 
-const JOURNAL_FLOW_API_NAME = 'HOT_Conversation_Note_Journal_Case_v_2';
+const JOURNAL_FLOW_API_NAME = 'HOT_Conversation_Note_Journal_Case';
 
 export default class Hot_ConversationNoteButtonContainer extends LightningElement {
     @api recordId;
@@ -61,6 +61,7 @@ export default class Hot_ConversationNoteButtonContainer extends LightningElemen
 
         try {
             const payload = {
+                type: 'CONVERSATION_NOTE_NOTIFICATIONS',
                 recordId: this.recordId,
                 flowApiName: flowApiName,
                 outputVariables: outputVariables

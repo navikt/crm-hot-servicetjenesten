@@ -9,7 +9,6 @@ import { publishToAmplitude } from 'c/amplitude';
 import { handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
 //import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/buttonContainerNotifications__c';
-import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import invokeSendNavTaskFlow from '@salesforce/apex/HOT_SendNavTaskHandler.invokeSendNavTaskFlow';
 import getProcessingId from '@salesforce/apex/HOT_SendNavTaskHandler.getProcessingId';
@@ -17,7 +16,6 @@ import getNavUnitInfo from '@salesforce/apex/HOT_SendNavTaskHandler.getNavUnitIn
 import getCommonCodeName from '@salesforce/apex/HOT_ButtonContainerController.getCommonCodeName';
 
 export default class Hot_ConversationNoteDetails extends LightningElement {
-
     @api recordId;
     @api objectApiName;
 
@@ -29,7 +27,6 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     changeUserLabel = 'Bytt bruker';
     createTaskLabel = 'Opprett NAV-oppgave';
     conversationNoteSubscription = null;
-    buttonContainerSubscription = null;
     flowButtonLabel;
     flowApiName;
     _wiredRecord;
@@ -141,15 +138,6 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
                 { scope: APPLICATION_SCOPE }
             );
         }
-
-        if (!this.buttonContainerSubscription) {
-            this.buttonContainerSubscription = subscribe(
-                this.messageContext,
-                BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL,
-                (message) => this.handleMessage(message),
-                { scope: APPLICATION_SCOPE }
-            );
-        }
     }
 
     unsubscribeToMessageChannel() {
@@ -157,14 +145,11 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
             unsubscribe(this.conversationNoteSubscription);
             this.conversationNoteSubscription = null;
         }
-
-        if (this.buttonContainerSubscription) {
-            unsubscribe(this.buttonContainerSubscription);
-            this.buttonContainerSubscription = null;
-        }
     }
 
     handleMessage(message) {
+        if (message.type !== 'CONVERSATION_NOTE_NOTIFICATIONS' && message.type !== 'BUTTON_CONTAINER_NOTIFICATIONS')
+            return;
         if (this.recordId === message.recordId) {
             handleShowNotifications(message.flowApiName, message.outputVariables, this.notificationBoxTemplate);
         }
