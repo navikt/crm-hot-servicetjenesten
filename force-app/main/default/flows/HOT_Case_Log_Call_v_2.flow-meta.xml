@@ -91,6 +91,9 @@
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Conversation_Note__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>Conversation_Summary.conversationNote</elementReference>
+            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Theme_Group__c</assignToReference>
@@ -160,6 +163,9 @@
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Conversation_Note__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>Conversation_Summary.conversationNote</elementReference>
+            </value>
         </assignmentItems>
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Theme_Group__c</assignToReference>
@@ -1141,7 +1147,7 @@ New version of NKS_Case_Log_a_Call</description>
             <inputParameters>
                 <name>optionalTheme</name>
                 <value>
-                    <booleanValue>false</booleanValue>
+                    <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -1495,7 +1501,7 @@ New version of NKS_Case_Log_a_Call</description>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
                     <leftValueReference>Account_Relation.value</leftValueReference>
-                    <operator>EqualTo</operator>
+                    <operator>NotEqualTo</operator>
                     <rightValue>
                         <stringValue></stringValue>
                     </rightValue>
@@ -1512,7 +1518,7 @@ New version of NKS_Case_Log_a_Call</description>
             <targetReference>Get_Case</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>BEHANDLINGS_ID</name>
         <dataType>String</dataType>
