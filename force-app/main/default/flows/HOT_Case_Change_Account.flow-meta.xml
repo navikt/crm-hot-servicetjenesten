@@ -2,7 +2,7 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <description>Creates a duplicate case with a new account relation.
-Copied from &quot;NKS_Case_Change_Account&quot;</description>
+        Copied from &quot;NKS_Case_Change_Account&quot;</description>
     <environments>Default</environments>
     <interviewLabel>HOT Case Change Account {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT Case Change Account</label>
@@ -118,7 +118,7 @@ Copied from &quot;NKS_Case_Change_Account&quot;</description>
         </connector>
         <fields>
             <name>Select_Account_Header</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>center</name>
@@ -144,12 +144,12 @@ Copied from &quot;NKS_Case_Change_Account&quot;</description>
         </fields>
         <fields>
             <name>Select_Account_Text</name>
-            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Velg hvilken bruker henvendelsen skal knyttes til&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color:rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Velg hvilken bruker henvendelsen skal knyttes til&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Account_Relation</name>
-            <extensionName>c:hot_SingleRecordInputField</extensionName>
+            <extensionName>c:hot_singleRecordInputField</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>disabled</name>

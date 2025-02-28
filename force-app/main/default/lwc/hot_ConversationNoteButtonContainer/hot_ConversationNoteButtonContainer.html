@@ -2,7 +2,7 @@
     <template lwc:if={journalConversation}>
         <c-fc-flow-next-screen-navigator></c-fc-flow-next-screen-navigator>
     </template>
-    <c-hot-button-container-bottom
+    <c-hot_button-container-bottom
         class="slds-p-right_none"
         record-id={recordId}
         channel-name="Conversation note"
@@ -13,18 +13,18 @@
     >
         <template if:true={showBackButton}>
             <div slot="backButton" class="slds-var-p-right_small" style="height: 100%">
-                <c-hot-flow-navigation
+                <c-hot_flow-navigation
                     action="BACK"
                     button-label={labels.back}
                     button-variant="brand-outline"
                     button-alignment="LEFT"
                     remove-footer
                 >
-                </c-hot-flow-navigation>
+                </c-hot_flow-navigation>
             </div>
         </template>
         <div slot="navigationButton">
-            <c-hot-flow-navigation
+            <c-hot_flow-navigation
                 class="custom-button"
                 action="NEXT"
                 button-label={conversationNoteButtonLabel}
@@ -32,7 +32,7 @@
                 button-alignment="RIGHT"
                 remove-footer
             >
-            </c-hot-flow-navigation>
+            </c-hot_flow-navigation>
         </div>
-    </c-hot-button-container-bottom>
+    </c-hot_button-container-bottom>
 </template>

@@ -558,7 +558,7 @@
         </rules>
     </decisions>
     <description>HOT own version of NKS Case Log Call v. 2
-New version of NKS_Case_Log_a_Call</description>
+        New version of NKS_Case_Log_a_Call</description>
     <environments>Default</environments>
     <formulas>
         <name>Show_Back_Button</name>
@@ -952,7 +952,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Button_Container_Case_Closed</name>
-            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <extensionName>c:hot_conversationNoteButtonContainer</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteButtonLabel</name>
@@ -1008,7 +1008,7 @@ New version of NKS_Case_Log_a_Call</description>
         <allowPause>true</allowPause>
         <fields>
             <name>Closed_WO_Account_Text</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>center</name>
@@ -1048,7 +1048,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Error_Text</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;Velg en&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;                temagruppe for å opprette samtalereferat.&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt;Velg en&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0);&quot;&gt; temagruppe for å opprette samtalereferat.&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>Prøv på nytt</nextOrFinishButtonLabel>
@@ -1069,7 +1069,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Header_Journal</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>headertag</name>
@@ -1176,7 +1176,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Header</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>center</name>
@@ -1292,7 +1292,7 @@ New version of NKS_Case_Log_a_Call</description>
         </fields>
         <fields>
             <name>Button_Container_Log_Screen</name>
-            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <extensionName>c:hot_conversationNoteButtonContainer</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteButtonLabel</name>
@@ -1339,7 +1339,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Header_Conversation_Note</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>headertag</name>
@@ -1350,7 +1350,7 @@ New version of NKS_Case_Log_a_Call</description>
             <inputParameters>
                 <name>input</name>
                 <value>
-                    <stringValue>Opprett samtalereferat	</stringValue>
+                    <stringValue>Opprett samtalereferat </stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1449,7 +1449,7 @@ New version of NKS_Case_Log_a_Call</description>
         </fields>
         <fields>
             <name>Button_Container_Conversation_Note</name>
-            <extensionName>c:hot_ConversationNoteButtonContainer</extensionName>
+            <extensionName>c:hot_conversationNoteButtonContainer</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteButtonLabel</name>
@@ -1503,7 +1503,7 @@ New version of NKS_Case_Log_a_Call</description>
         </connector>
         <fields>
             <name>Missing_Account_Header</name>
-            <extensionName>c:hot_Header</extensionName>
+            <extensionName>c:hot_header</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>headertag</name>
@@ -1523,12 +1523,12 @@ New version of NKS_Case_Log_a_Call</description>
         </fields>
         <fields>
             <name>Update_Account_Text</name>
-            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Henvendelsen er ikke tilknyttet en&lt;/p&gt;&lt;p&gt;                bruker. Vennligst oppdater med riktig bruker referat skal knyttes til.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Henvendelsen er ikke tilknyttet en&lt;/p&gt;&lt;p&gt; bruker. Vennligst oppdater med riktig bruker referat skal knyttes til.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Account_Relation</name>
-            <extensionName>c:hot_SingleRecordInputField</extensionName>
+            <extensionName>c:hot_singleRecordInputField</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>disabled</name>
@@ -1578,7 +1578,7 @@ New version of NKS_Case_Log_a_Call</description>
         </fields>
         <fields>
             <name>No_Account_Next_Button</name>
-            <extensionName>c:hotFlowNavigation</extensionName>
+            <extensionName>c:hot_flowNavigation</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>buttonLabel</name>
