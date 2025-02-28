@@ -1,0 +1,24 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "ArbeidRef"
+            },
+            "Name": "Arbeid",
+            "CRM_Code__c": "ARBD",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Temagrupper"
+        },
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "FamilieRef"
+            },
+            "Name": "Familie",
+            "CRM_Code__c": "FMLI",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Temagrupper"
+        }
+    ]
+}
