@@ -1,0 +1,41 @@
+<aura:component>
+    <ltng:require scripts="/support/api/61.0/lightning/opencti_min.js" afterScriptsLoaded="{!c.ctiLoaded}" />
+
+    <aura:attribute name="ctiLoaded" type="Boolean" default="false" />
+    <aura:attribute name="identifier" type="String" default="" />
+    <aura:attribute name="chosenContext" type="String" default="PERSON" />
+
+    <aura:attribute
+        name="contextOptions"
+        type="List"
+        default="[
+    {'label': 'PERSON', 'value': 'PERSON'},
+    {'label': 'ARBEIDSGIVER', 'value': 'ARBEIDSGIVER'}
+    ]"
+    />
+
+    <lightning:layout multipleRows="true">
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:combobox
+                name="Context"
+                label="Context"
+                value="{!v.chosenContext}"
+                placeholder="Select Context"
+                options="{! v.contextOptions }"
+            />
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:input type="text" label="Identifier" value="{!v.identifier}"></lightning:input>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12" padding="around-small">
+            <lightning:button
+                variant="brand"
+                class="slds-button_stretch"
+                label="Simulate Call"
+                title="Simulate Call"
+                disabled="{!not(v.ctiLoaded)}"
+                onclick="{! c.simulateCall }"
+            />
+        </lightning:layoutItem>
+    </lightning:layout>
+</aura:component>
