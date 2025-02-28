@@ -1,0 +1,3 @@
+({
+    myAction: function () {}
+});
