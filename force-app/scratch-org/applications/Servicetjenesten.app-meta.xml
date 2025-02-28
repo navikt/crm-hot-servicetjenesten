@@ -223,7 +223,7 @@
     <tabs>standard-Case</tabs>
     <tabs>Knowledge__kav</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>NSV_UtilityBar</utilityBar>
+    <utilityBar>HOT_Servicetjenesten_UtilityBar</utilityBar>
     <workspaceConfig>
         <mappings>
             <tab>Knowledge__kav</tab>
