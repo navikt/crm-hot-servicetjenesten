@@ -7,8 +7,8 @@ call sf package install --package 04tKB000000Y8p3YAC --no-prompt --installation-
 echo "Installerer crm-thread-view ver. 0.5"
 call sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-journal-utilities ver. 0.40"
-call sf package install --package 04tKB000000Y65FYAS --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-journal-utilities ver. 0.43"
+call sf package install --package 04tKB000000Y9WtYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-platform-reporting ver. 0.39"
 call sf package install --package 04tKB000000Y5GEYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
