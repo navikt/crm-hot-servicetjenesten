@@ -1,7 +1,6 @@
-public class HOT_RecordInfoController {
+public with sharing class HOT_RecordInfoController {
     /**
      * @description
-     * @author Stian Ruud Schikora | 09-14-2020
      * @param parentId [Id of the object to query to relation from]
      * @param relationshipField [API name of lookup field]
      * @param objectApiName [API name of parent]
