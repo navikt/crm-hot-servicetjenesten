@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <description>Redirects user to the organization account</description>
+        <name>Recirect_to_Account</name>
+        <label>Recirect to Account</label>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
+        <actionName>c:hot_flowRedirect</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>RELATED_ACCOUNT_ID</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:hot_flowRedirect</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
         <description>Redirects user to the created case</description>
         <name>Redirect_To_Case</name>
         <label>Redirect To Case</label>
-        <locationX>182</locationX>
-        <locationY>758</locationY>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <actionName>c:hot_flowRedirect</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value>
+                <elementReference>Call_Case.Id</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>c:hot_flowRedirect</nameSegment>
+        <offset>0</offset>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </actionCalls>
+    <actionCalls>
+        <description>Redirects user to the created case</description>
+        <name>Redirect_To_Case_0</name>
+        <label>Redirect To Case</label>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -57,7 +95,7 @@
             <assignToReference>Call_Case.NKS_Puzzel_Queue_Name__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <stringValue>Hjelpemidler</stringValue>
+                <elementReference>PUZZEL_QUEUE_NAME</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -74,8 +112,8 @@
     <assignments>
         <name>Case_Assignment_0</name>
         <label>Case Assignment</label>
-        <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationX>842</locationX>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.Origin</assignToReference>
             <operator>Assign</operator>
@@ -118,6 +156,13 @@
                 <elementReference>THEME_GROUP_ID</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.NKS_Puzzel_Queue_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PUZZEL_QUEUE_NAME</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case_0</targetReference>
         </connector>
@@ -131,13 +176,75 @@
         </value>
     </constants>
     <decisions>
+        <name>Check_Call_Queue_0</name>
+        <label>Check Call Queue</label>
+        <locationX>1106</locationX>
+        <locationY>350</locationY>
+        <defaultConnectorLabel>Other</defaultConnectorLabel>
+        <rules>
+            <name>Personbruker</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>CALLER_CONTEXT</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PERSON</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>PERSON</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Case_Assignment_0</targetReference>
+            </connector>
+            <label>Personbruker</label>
+        </rules>
+        <rules>
+            <name>Arbeidsgiver</name>
+            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
+            <conditions>
+                <leftValueReference>CALLER_CONTEXT</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ARBEIDSGIVER</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ARBEIDSGIVER</stringValue>
+                </rightValue>
+            </conditions>
+            <label>Arbeidsgiver</label>
+        </rules>
+    </decisions>
+    <decisions>
         <description>Person identified through puzzle call</description>
         <name>Check_identifier</name>
         <label>Check identifier</label>
-        <locationX>182</locationX>
+        <locationX>578</locationX>
         <locationY>242</locationY>
         <defaultConnector>
-            <targetReference>Case_Assignment_0</targetReference>
+            <targetReference>Check_Call_Queue_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Phone number</defaultConnectorLabel>
         <rules>
@@ -155,8 +262,53 @@
             </connector>
             <label>Person Identifier</label>
         </rules>
+        <rules>
+            <name>Organization_Identifier</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>INPUT_TYPE</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>ORG_IDENT</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Organization_Account</targetReference>
+            </connector>
+            <label>Organization Identifier</label>
+        </rules>
     </decisions>
-    <description>Flow to be used with SoftPhone Layout in order to create a case and redirect to the case</description>
+    <decisions>
+        <name>Verify_Account</name>
+        <label>Verify Account</label>
+        <locationX>446</locationX>
+        <locationY>458</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Found_Account</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>RELATED_ACCOUNT_ID</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>RELATED_ACCOUNT_ID</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Recirect_to_Account</targetReference>
+            </connector>
+            <label>Found Account</label>
+        </rules>
+    </decisions>
+    <description>Flow to be used with SoftPhone Layout in order to create a case and redirect to the case
+Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidler only has one</description>
     <environments>Default</environments>
     <formulas>
         <description>Formula to determine the type of input from the IVR. Either, PHONE_NUMBER, PERSON_IDENT or ORG_IDENT.</description>
@@ -164,6 +316,7 @@
         <dataType>String</dataType>
         <expression>CASE(LEN({!Search}),
 11, &apos;PERSON_IDENT&apos;,
+9, &apos;ORG_IDENT&apos;,
 &apos;PHONE_NUMBER&apos;
 )</expression>
     </formulas>
@@ -203,13 +356,37 @@
         <description>Creates a case for the incoming phone call.</description>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
         <connector>
-            <targetReference>Redirect_To_Case</targetReference>
+            <targetReference>Redirect_To_Case_0</targetReference>
         </connector>
         <inputReference>Call_Case</inputReference>
     </recordCreates>
+    <recordLookups>
+        <description>Queries the organization account.</description>
+        <name>Get_Organization_Account</name>
+        <label>Get Organization Account</label>
+        <locationX>446</locationX>
+        <locationY>350</locationY>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Verify_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>INT_OrganizationNumber__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Search</elementReference>
+            </value>
+        </filters>
+        <object>Account</object>
+        <outputAssignments>
+            <assignToReference>RELATED_ACCOUNT_ID</assignToReference>
+            <field>Id</field>
+        </outputAssignments>
+    </recordLookups>
     <recordLookups>
         <name>Get_Person_Account</name>
         <label>Get Person Account</label>
@@ -244,7 +421,7 @@
         <description>Queries the theme group that was mapped to the queue.</description>
         <name>Get_Theme_Group</name>
         <label>Get Theme Group</label>
-        <locationX>182</locationX>
+        <locationX>578</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -277,7 +454,7 @@
     </recordLookups>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <start>
-        <locationX>56</locationX>
+        <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Theme_Group</targetReference>
@@ -294,6 +471,18 @@
         <objectType>Case</objectType>
     </variables>
     <variables>
+        <description>Defines what kind of user type is making the incoming call.
+PERSON, ARBEIDSGIVER, OTHER</description>
+        <name>CALLER_CONTEXT</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>OTHER</stringValue>
+        </value>
+    </variables>
+    <variables>
         <description>For testing purpose. Used as input to simulate context in sandboxes.</description>
         <name>CONTEXT_OVERRIDE</name>
         <dataType>String</dataType>
@@ -302,6 +491,17 @@
         <isOutput>false</isOutput>
         <value>
             <stringValue></stringValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Name of the incoming call queue.</description>
+        <name>PUZZEL_QUEUE_NAME</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>Hjelpemidler</stringValue>
         </value>
     </variables>
     <variables>
@@ -326,6 +526,17 @@
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>If set, automatically related a created case to a theme group.</description>
+        <name>THEME_GROUP_CODE</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <stringValue>HJE</stringValue>
+        </value>
     </variables>
     <variables>
         <name>THEME_GROUP_ID</name>
