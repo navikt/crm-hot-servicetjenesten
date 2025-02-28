@@ -192,7 +192,8 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>displayedFields</name>
-                    <value>NameINT_MovedFromCountry__c,                        INT_MovedFromPlace__c,INT_MovedToCountry__c,INT_MovedToPlace__c</value>
+                    <value>NameINT_MovedFromCountry__c,
+                        INT_MovedFromPlace__c,INT_MovedToCountry__c,INT_MovedToPlace__c</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>enableRefresh</name>
@@ -287,7 +288,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>buttonIsHidden</name>
-                    <value>false</value>
+                    <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>configId</name>
@@ -299,11 +300,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>filterIsActive</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerIcon</name>
-                    <value>standard:case</value>
+                    <value>custom:custom18</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerTitleEnglish</name>
@@ -311,7 +312,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerTitleNorwegian</name>
-                    <value>henvendelser</value>
+                    <value>Henvendelser</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>hideMyActivitiesFilter</name>
@@ -323,7 +324,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>logEvent</name>
-                    <value>true</value>
+                    <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>picklistFilter1Label</name>
@@ -659,7 +660,8 @@
         </properties>
         <properties>
             <name>saveOptions</name>
-            <value>[{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
+            <value>
+                [{&quot;name&quot;:&quot;UseDefaultAssignmentRule&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;},{&quot;name&quot;:&quot;triggerOtherEmail&quot;,&quot;value&quot;:&quot;SHOW_CHECKBOX_WITH_DEFAULT_OFF&quot;}]</value>
         </properties>
     </template>
     <type>RecordPage</type>
