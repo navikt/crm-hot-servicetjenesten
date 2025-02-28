@@ -30,6 +30,9 @@
         <label>Create New Case</label>
         <locationX>176</locationX>
         <locationY>350</locationY>
+        <connector>
+            <targetReference>Redirect_To_New_Case</targetReference>
+        </connector>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -64,6 +67,12 @@
             <field>Origin</field>
             <value>
                 <elementReference>Get_Case.Origin</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Case.RecordTypeId</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -202,7 +211,20 @@
             <targetReference>Get_Case</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <subflows>
+        <name>Redirect_To_New_Case</name>
+        <label>Redirect To New Case</label>
+        <locationX>176</locationX>
+        <locationY>458</locationY>
+        <flowName>HOT_RedirectFlow</flowName>
+        <inputAssignments>
+            <name>recordId</name>
+            <value>
+                <elementReference>Create_New_Case</elementReference>
+            </value>
+        </inputAssignments>
+    </subflows>
     <variables>
         <description>ID of the case record triggering this flow</description>
         <name>recordId</name>
