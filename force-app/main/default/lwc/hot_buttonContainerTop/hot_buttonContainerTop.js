@@ -40,8 +40,6 @@ export default class hotButtonContainerTop extends LightningElement {
     }
 
     handleStatusChange(event) {
-        console.log('handleStatusChange_Top');
-        console.log(event.detail);
         const { status, outputVariables } = event.detail;
         if (status === 'FINISHED' || status === 'FINISHED_SCREEN') {
             this.showFlow = false;
