@@ -76,6 +76,7 @@
         <object>Conversation_Note__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <runInMode>SystemModeWithSharing</runInMode>
     <screens>
         <name>Journal_Screen</name>
         <label>Journal Screen</label>
@@ -95,6 +96,12 @@
                 <name>actorId</name>
                 <value>
                     <elementReference>Get_Conversation_Notes.CRM_Account__r.CRM_Person__r.INT_ActorId__c</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>FAGSAK_ONLY</name>
+                <value>
+                    <booleanValue>false</booleanValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -196,6 +203,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <name>Journal_Subtheme_Code</name>
+            <value>
+                <elementReference>Selected_Subtheme</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <name>Journal_Theme_Code</name>
             <value>
                 <elementReference>Selected_Theme</elementReference>
@@ -244,6 +257,7 @@
         </value>
     </variables>
     <variables>
+        <description>ID of the conversation note where the flow is triggered from.</description>
         <name>recordId</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
