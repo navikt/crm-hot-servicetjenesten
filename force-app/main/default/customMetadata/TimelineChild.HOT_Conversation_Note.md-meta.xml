@@ -17,6 +17,10 @@
         <value xsi:type="xsd:boolean">false</value>
     </values>
     <values>
+        <field>ClampLines__c</field>
+        <value xsi:nil="true" />
+    </values>
+    <values>
         <field>CreateableObject_Field1__c</field>
         <value xsi:nil="true" />
     </values>
@@ -118,7 +122,7 @@
     </values>
     <values>
         <field>SObjectRelatedUserId__c</field>
-        <value xsi:nil="true" />
+        <value xsi:type="xsd:string">CRM_Account__c</value>
     </values>
     <values>
         <field>SObjectSubtitle__c</field>
