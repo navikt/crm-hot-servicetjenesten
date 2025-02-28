@@ -10,26 +10,16 @@
                     <lightning-formatted-text value={conversationNote}></lightning-formatted-text>
                 </div>
             </div>
-            <div class="slds-m-around_medium">
-                <lightning-button 
-                    variant="neutral" 
-                    label="Journalfør" 
-                    class="slds-m-right_small"
-                    onclick={handleJournal}>
-                </lightning-button>
-                <lightning-button 
-                    variant="neutral" 
-                    label="Send til sladding" 
-                    class="slds-m-right_small"
-                    onclick={handleSetToRedaction}>
-                </lightning-button>
-                <lightning-button 
-                    variant="brand" 
-                    label="Lag ny oppgave" 
-                    onclick={handleCreateNavTask}>
-                </lightning-button>
+            <div>
+                <c-nks-button-container-bottom
+                    record-id={recordId}
+                    flow-names="HOT_Conversation_Note_Journal_Case,HOT_Conversation_Note_Set_to_Redaction,HOT_Conversation_Note_Send_NAV_Task"
+                    flow-labels="HOT Conversation Note Journal Case, HOT Conversation Note Set to Redaction, HOT Conversation Note Send Nav Task"
+                    button-stylings="secondary, secondary, primary"
+                    show-notifications
+                >
+                </c-nks-button-container-bottom>
             </div>
-            <lightning-flow></lightning-flow>
         </template>
         <template lwc:else>
             <p class="slds-text-align_center">Ingen informasjon tilgjengelig.</p>
