@@ -4,7 +4,7 @@
             "path": "force-app",
             "default": true,
             "package": "crm-hot-servicetjenesten",
-            "versionNumber": "1.11.0.NEXT",
+            "versionNumber": "1.12.0.NEXT",
             "versionDescription": "",
             "dependencies": [
                 {
