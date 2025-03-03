@@ -317,12 +317,16 @@
                     <value>Denne brukeren har ingen registrerte henvendelser.‎</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>design</name>
+                    <value>Slick</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>filterIsActive</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerIcon</name>
-                    <value>custom:custom18</value>
+                    <value>standard:case</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerTitleEnglish</name>
