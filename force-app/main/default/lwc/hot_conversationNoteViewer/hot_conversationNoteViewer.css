@@ -1,0 +1,38 @@
+.icon-container {
+    --slds-c-icon-color-background: #5c8ba7;
+}
+
+.custom-padding-left-right-small {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.custom-padding-around-medium {
+    padding: 1rem;
+}
+
+.custom-padding-left-right-medium {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.custom-padding-top-bottom-small {
+    padding-top: 0.25rem;
+    padding-bottom: 0.5rem;
+}
+
+.custom-padding-around-small {
+    padding: 0.5rem;
+}
+
+.custom-margin-right-small {
+    margin-right: 0.5rem;
+}
+
+.custom-p-top-xx-small {
+    padding-top: 0.25rem;
+}
+
+.custom-p-top-medium {
+    padding-top: 1rem;
+}
