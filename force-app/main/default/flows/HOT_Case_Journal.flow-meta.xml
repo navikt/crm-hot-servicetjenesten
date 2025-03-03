@@ -29,8 +29,8 @@
     </decisions>
     <description>STO Servicetjenesten</description>
     <environments>Default</environments>
-    <interviewLabel>HOT Case Journal V2 {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT Case Journal V2</label>
+    <interviewLabel>HOT Case Journal {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Case Journal </label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>

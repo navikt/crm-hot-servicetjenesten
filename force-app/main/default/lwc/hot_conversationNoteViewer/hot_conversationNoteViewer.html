@@ -1,0 +1,28 @@
+<template>
+    <lightning-card>
+        <div slot="title" class="slds-var-p-top_x-small">
+            <lightning-icon icon-name="standard:voice_call" size="small"></lightning-icon>
+            <span class="slds-var-p-left_small">{timelineName}</span>
+        </div>
+        <template lwc:if={conversationNote}>
+            <div class="slds-var-p-horizontal_medium custom-padding-top-bottom-small">
+                <div class="slds-box">
+                    <lightning-formatted-text value={conversationNote}></lightning-formatted-text>
+                </div>
+            </div>
+            <div>
+                <c-hot_button-container-bottom
+                    record-id={recordId}
+                    flow-names="HOT_Conversation_Note_Journal_Case,HOT_Conversation_Note_Set_to_Redaction,HOT_Conversation_Note_Send_NAV_Task"
+                    flow-labels="HOT Conversation Note Journal Case,HOT Conversation Note Set to Redaction,HOT Conversation Note Send Nav Task"
+                    button-stylings="secondary, secondary, primary"
+                    show-notifications
+                >
+                </c-hot_button-container-bottom>
+            </div>
+        </template>
+        <template lwc:else>
+            <p class="slds-text-align_center">Ingen informasjon tilgjengelig.</p>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,15 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "YrkesSkadeRef"
+            },
+            "Name": "Yrkesskade",
+            "CRM_Code__c": "ab0339",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Behandlingstema",
+            "CRM_Parent_Code__c": "@AAPRef"
+        }
+    ]
+}

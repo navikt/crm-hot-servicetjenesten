@@ -1,0 +1,11 @@
+[data-expanded='true'] {
+    --slds-c-button-outline-brand-color-background: #cce1ff;
+    --slds-c-button-outline-brand-color-border: #0056b4;
+}
+
+.button-container {
+    display: flex !important;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
