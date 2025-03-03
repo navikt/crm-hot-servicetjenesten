@@ -1,0 +1,48 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Conversation_Note__c",
+                "referenceId": "Conversation_Note__cRef1"
+            },
+            "CRM_Created_By_Ident__c": "Z994452",
+            "CRM_Date_Time_Registered__c": "2022-09-15T15:53:01.000+0000",
+            "CRM_Is_Read__c": true,
+            "CRM_Conversation_Note__c": "而已",
+            "CRM_Account__c": "@AccountRef1"
+        },
+        {
+            "attributes": {
+                "type": "Conversation_Note__c",
+                "referenceId": "Conversation_Note__cRef2"
+            },
+            "CRM_Created_By_Ident__c": "Z994452",
+            "CRM_Date_Time_Registered__c": "2022-09-19T08:26:03.000+0000",
+            "CRM_Is_Read__c": true,
+            "CRM_Conversation_Note__c": "Deyr fé,\ndeyja frændr\ndeyr sjalfr it sama.",
+            "CRM_Account__c": "@AccountRef1"
+        },
+        {
+            "attributes": {
+                "type": "Conversation_Note__c",
+                "referenceId": "Conversation_Note__cRef3"
+            },
+            "CRM_Created_By_Ident__c": null,
+            "CRM_Date_Time_Registered__c": "2022-09-23T10:13:13.000+0000",
+            "CRM_Is_Read__c": true,
+            "CRM_Conversation_Note__c": "Sjekker mye ting jeg i dag\nLes mer på nav.no: \n- Foreldrepenger ved sykdom/innleggelse: https://www.nav.no/foreldrepenger#sykdom \n- Sykepenger: Se www.nav.no/sykepenger-arbeidstaker",
+            "CRM_Account__c": "@AccountRef1"
+        },
+        {
+            "attributes": {
+                "type": "Conversation_Note__c",
+                "referenceId": "Conversation_Note__cRef4"
+            },
+            "CRM_Created_By_Ident__c": null,
+            "CRM_Date_Time_Registered__c": "2022-09-23T10:21:52.000+0000",
+            "CRM_Is_Read__c": false,
+            "CRM_Conversation_Note__c": "Slik søker du\nVurdering av arbeidsevne\nHvilke opplysninger trenger NAV - Arbeidsavklaringspenger (AAP)",
+            "CRM_Account__c": "@AccountRef1"
+        }
+    ]
+}

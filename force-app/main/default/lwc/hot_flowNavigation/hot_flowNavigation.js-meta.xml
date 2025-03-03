@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+        <isExposed>true</isExposed>
+    <masterLabel>Flow Navigation Button</masterLabel>
+    <description>Simple button utilizing flow-support to allow flow navigation</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property
+                name="action"
+                type="String"
+                label="Action: (NEXT, BACK OR FINISH)"
+                default="NEXT"
+                description="Flow action triggered by the button"
+            />
+            <property
+                name="buttonLabel"
+                type="String"
+                label="Button label:"
+                default="LABEL"
+            />
+            <property
+                name="buttonAlignment"
+                type="String"
+                label="Alignment: (RIGHT, LEFT OR CENTER)"
+                default="RIGHT"
+                description="Alignment of the flow button"
+            />
+            <property
+                name="buttonVariant"
+                type="String"
+                label="Button variant (Valid values are: base, neutral, brand, destructive, inverse and success"
+                default="brand"
+            />
+            <property
+                name="stretched"
+                type="Boolean"
+                label="Stretch button to full width?"
+                default="false"
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

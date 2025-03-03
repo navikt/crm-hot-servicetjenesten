@@ -151,7 +151,7 @@ export default class StoMessagingContainer extends LightningElement {
             {
                 id: 'journal',
                 condition: this.showJournalButton,
-                flowApiName: 'HOT_Case_Journal_V2',
+                flowApiName: 'HOT_Case_Journal',
                 handleStatusChange: this.handleFlowStatusChange
             },
             {
