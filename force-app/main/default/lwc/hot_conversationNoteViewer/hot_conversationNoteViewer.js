@@ -5,7 +5,7 @@ import TIMELINE_NAME_FIELD from '@salesforce/schema/Conversation_Note__c.HOT_Tim
 
 const CONVERSATION_NOTE_FIELDS = [CONVERSATION_NOTE_FIELD, TIMELINE_NAME_FIELD];
 
-export default class NksConversationNoteViewer extends LightningElement {
+export default class HOTConversationNoteViewer extends LightningElement {
     @api recordId;
     @api objectApiName;
 
