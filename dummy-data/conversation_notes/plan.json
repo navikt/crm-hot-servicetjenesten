@@ -1,0 +1,18 @@
+[
+    {
+        "sobject": "Account",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": [
+            "accounts.json"
+        ]
+    },
+    {
+        "sobject": "Conversation_Note__c",
+        "saveRefs": false,
+        "resolveRefs": true,
+        "files": [
+            "conversation_notes.json"
+        ]
+    }
+]

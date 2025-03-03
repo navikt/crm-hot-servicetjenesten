@@ -401,7 +401,7 @@
                             <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CRM_GjelderFormula__c</value>
+                            <value>NKS_Themeformula__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CRM_Status__c</value>
@@ -603,6 +603,12 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_createCaseAndRedirect</componentName>
+                <identifier>c_hot_createCaseAndRedirect</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

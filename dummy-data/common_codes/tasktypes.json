@@ -1,0 +1,44 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "BEHHENVRef"
+            },
+            "Name": "Behandle henvendelse",
+            "CRM_Code__c": "BEH_HENV",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Oppgavetyper"
+        },
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "VURKONSYTERef"
+            },
+            "Name": "Vurder konsekvens for ytelse",
+            "CRM_Code__c": "VUR_KONS_YTE",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Oppgavetyper"
+        },
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "KONTBRUKVRef"
+            },
+            "Name": "Kontakt bruker",
+            "CRM_Code__c": "KONT_BRUK",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Oppgavetyper"
+        },
+        {
+            "attributes": {
+                "type": "Common_Code__c",
+                "referenceId": "VURDHENVRef"
+            },
+            "Name": "Vurder henvendelse",
+            "CRM_Code__c": "VURD_HENV",
+            "CRM_Active__c": true,
+            "CRM_Code_Set__c": "Oppgavetyper"
+        }
+    ]
+}

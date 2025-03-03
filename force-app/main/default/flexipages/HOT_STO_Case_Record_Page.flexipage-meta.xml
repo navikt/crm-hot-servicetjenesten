@@ -399,10 +399,7 @@
                             <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CRM_Theme__c</value>
-                        </valueListItems>
-                        <valueListItems>
-                            <value>CRM_GjelderFormula__c</value>
+                            <value>NKS_Themeformula__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CRM_Status__c</value>
