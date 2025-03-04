@@ -1,16 +1,11 @@
 @isTest
 public class HOT_SendNavTaskHandlerTest {
-
     @testSetup
     static void setupTestData() {
-        NavUnit__c navUnit = new NavUnit__c(
-            Name = 'Test Unit',
-            INT_UnitNumber__c = '1234'
-        );
+        NavUnit__c navUnit = new NavUnit__c(Name = 'Test Unit', INT_UnitNumber__c = '1234');
         insert navUnit;
     }
 
-    
     @isTest
     static void testInvokeSendNavTaskFlowException() {
         Test.startTest();
@@ -18,12 +13,15 @@ public class HOT_SendNavTaskHandlerTest {
             Boolean res = HOT_SendNavTaskHandler.invokeSendNavTaskFlow(null);
             Assert.fail('Expected AuraHandledException was not thrown');
         } catch (AuraHandledException e) {
-            Assert.isTrue(e.getMessage() != null, 'Exception message should not be empty and should indicate an error: ' + e.getMessage());
+            Assert.isTrue(
+                e.getMessage() != null,
+                'Exception message should not be empty and should indicate an error: ' + e.getMessage()
+            );
         }
         Test.stopTest();
     }
 
-    @isTest 
+    @isTest
     static void testGetProcessingId() {
         Case c = new Case(Subject = 'Test Case', NKS_Henvendelse_BehandlingsId__c = 'SomeProcessingId');
         insert c;

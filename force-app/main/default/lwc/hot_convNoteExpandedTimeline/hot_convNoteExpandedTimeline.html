@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-card slds-is-relative">
+        <lightning-spinner lwc:if={isLoading} size="medium" variant="brand" alternative-text="Laster samtalereferat">
+        </lightning-spinner>
+        <div lwc:else class="conv-note-details padding-bottom">
+            <lightning-layout multiple-rows="true">
+                <lightning-layout-item size="12">
+                    <lightning-formatted-text
+                        value={conversationNote.CRM_Conversation_Note__c}
+                    ></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="12">
+                    <p class="weak-text padding-top">
+                        <c-crm-nav-formatted-date date={conversationNote.CreatedDate}></c-crm-nav-formatted-date>
+                        {conversationNote.CRM_Created_By_NAV_Unit__c} &nbsp;
+                    </p>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </div>
+    <div lwc:if={isLoading}></div>
+    <div lwc:else>
+        <div class="button-padding-bottom">
+            <c-hot_button
+                button-label="Behandle henvendelse"
+                onclick={openRecord}
+                is-link
+                standard-length
+            ></c-hot_button>
+        </div>
+    </div>
+</template>

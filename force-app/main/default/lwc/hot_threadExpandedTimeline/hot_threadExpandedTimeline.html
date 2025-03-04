@@ -1,0 +1,13 @@
+<template>
+    <section role="log" class="slds-theme_default padding-border-bottom">
+        <template if:true={hasMessages}>
+            <template for:each={messages} for:item="message">
+                <c-crm-messaging-message-container message={message} key={message.Id}>
+                </c-crm-messaging-message-container>
+            </template>
+        </template>
+    </section>
+    <div class="button-padding">
+        <c-hot_button button-label="Behandle henvendelse" onclick={openRecord} is-link standard-length></c-hot_button>
+    </div>
+</template>

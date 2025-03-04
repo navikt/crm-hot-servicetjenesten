@@ -1,0 +1,42 @@
+<template>
+    <lightning-layout class={layoutClassName} multiple-rows="true">
+        <lightning-layout-item size="12">
+            <lightning-layout class="slds-size_12-of-12 slds-grid slds-grid_align-end">
+                <lightning-layout-item>
+                    <slot name="backButton"></slot>
+                </lightning-layout-item>
+                <lightning-layout-item class={buttonClass}>
+                    <template for:each={flowLoop} for:item="flow">
+                        <lightning-layout-item key={flow.developerName} data-expanded={flow.expanded}>
+                            <c-hot_button
+                                button-label={flow.label}
+                                button-styling={flow.buttonStyling}
+                                element-data-id={flow.developerName}
+                                aria-expanded={flow.expanded}
+                                onbuttonclick={toggleFlow}
+                                full-height
+                            ></c-hot_button>
+                        </lightning-layout-item>
+                    </template>
+                    <slot name="navigationButton"></slot>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" class="slds-var-m-top_xx-small">
+            <template lwc:if={showFlow}>
+                <lightning-card>
+                    <lightning-flow
+                        flow-api-name={activeFlow}
+                        flow-input-variables={inputVariables}
+                        onstatuschange={handleStatusChange}
+                    ></lightning-flow>
+                </lightning-card>
+            </template>
+        </lightning-layout-item>
+        <template lwc:if={showNotifications}>
+            <lightning-layout-item class="slds-size_12-of-12 slds-var-p-top_x-small slds-var-p-horizontal_medium">
+                <c-hot_notification-box></c-hot_notification-box>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

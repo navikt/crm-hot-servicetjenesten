@@ -319,12 +319,16 @@
                     <value>Denne brukeren har ingen registrerte henvendelser.‎</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>design</name>
+                    <value>Slick</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>filterIsActive</name>
                     <value>false</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerIcon</name>
-                    <value>custom:custom18</value>
+                    <value>standard:case</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>headerTitleEnglish</name>
@@ -401,7 +405,7 @@
                             <value>NAME</value>
                         </valueListItems>
                         <valueListItems>
-                            <value>CRM_GjelderFormula__c</value>
+                            <value>NKS_Themeformula__c</value>
                         </valueListItems>
                         <valueListItems>
                             <value>CRM_Status__c</value>
@@ -627,6 +631,12 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_createCaseAndRedirect</componentName>
+                <identifier>c_hot_createCaseAndRedirect</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

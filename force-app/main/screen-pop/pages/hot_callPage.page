@@ -1,0 +1,15 @@
+<apex:page >
+    <apex:includeLightning />
+    <script type="text/javascript" src="/support/api/61.0/lightning/opencti.js"></script>
+    <div id="lightning"></div>
+
+    <script type="text/javascript">
+        $Lightning.use("c:hot_testAdapter", function() {
+            $Lightning.createComponent("c:hot_callSimulator", 
+            {},
+            "lightning",
+            function(cmp) {
+            });
+        });
+    </script>
+</apex:page>
