@@ -317,6 +317,10 @@
                     <value>Denne brukeren har ingen registrerte henvendelser.‎</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>design</name>
+                    <value>Slick</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>filterIsActive</name>
                     <value>false</value>
                 </componentInstanceProperties>
