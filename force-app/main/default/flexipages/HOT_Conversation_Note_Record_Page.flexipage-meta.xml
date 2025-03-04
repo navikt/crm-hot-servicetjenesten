@@ -184,6 +184,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_conversationNoteViewer</componentName>
+                <identifier>c_hot_conversationNoteViewer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>clickableRows</name>
                     <value>false</value>
