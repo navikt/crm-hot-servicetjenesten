@@ -1,0 +1,31 @@
+<template>
+    <!-- 1) LOADING STATE -->
+    <template lwc:if={isLoading}>
+        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+    </template>
+    <template lwc:else>
+        <!-- 2) ERROR STATE -->
+        <template if:true={error}>
+            <div class="slds-text-color_error">
+                <p>Noe gikk galt!</p>
+            </div>
+        </template>
+
+        <!-- 3) DATA STATE: if we have data, show lightning-datatable -->
+        <template if:true={hasData}>
+            <lightning-card title="Saker">
+                <lightning-datatable
+                    key-field="saksid"
+                    data={saker}
+                    columns={columns}
+                    hide-checkbox-column
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+
+        <!-- 4) NO DATA STATE: If no data, show message -->
+        <template if:true={hasNoData}>
+            <p>Ingen saker funnet på bruker.</p>
+        </template>
+    </template>
+</template>
