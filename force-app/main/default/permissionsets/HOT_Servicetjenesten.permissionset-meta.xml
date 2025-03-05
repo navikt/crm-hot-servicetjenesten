@@ -296,6 +296,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>false</editable>
+        <field>Message__c.CRM_Event_Type__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>true</editable>
         <field>Message__c.CRM_External_Message__c</field>
         <readable>true</readable>
@@ -353,6 +358,16 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Message__c.CRM_Read__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Message__c.CRM_Sent_Datetime_Formula__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Message__c.CRM_Sent_date__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
