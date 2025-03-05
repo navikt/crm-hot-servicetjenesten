@@ -517,6 +517,16 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_hotsak</componentName>
+                <identifier>c_hot_hotsak</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-5cfe5e4f-e2cf-4d16-a494-f7e095a2f6b3</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-c1ec1af6-d6d9-4387-a0f3-7e17314b60a7</value>
@@ -569,6 +579,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-5cfe5e4f-e2cf-4d16-a494-f7e095a2f6b3</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Hotsak</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab5</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-79331d7b-c124-47aa-ae2f-5dcfd0270368</name>
