@@ -1,21 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
     <label>Møre og Romsdal Hjelpemiddelsentral</label>
     <protected>false</protected>
     <values>
         <field>Hjelpemiddelsentral_name__c</field>
-        <value xsi:type="xsd:string">Nav hjelpemiddelsentral Møre og Romsdal</value>
+        <value xsi:type="xsd:string">Nav hjelpemiddelsentral Møre og Romsdal (4715)</value>
     </values>
     <values>
         <field>MunicipalityNumbers__c</field>
-        <value xsi:nil="true" />
+        <value xsi:nil="true"/>
     </values>
     <values>
         <field>NAVurl__c</field>
-        <value xsi:type="xsd:string">
-            https://www.nav.no/kontor/nav-hjelpemiddelsentral-more-og-romsdal</value>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-more-og-romsdal</value>
     </values>
     <values>
         <field>RegionNumbers__c</field>
