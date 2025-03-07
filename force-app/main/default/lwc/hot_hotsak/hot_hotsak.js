@@ -24,10 +24,11 @@ export default class Hot_hotsak extends LightningElement {
         this.isLoading = false;
         if (data) {
             this.error = undefined;
-            this.saker = data.map(record => {
+            this.saker = data.map((record) => {
                 return {
                     ...record,
-                    beskrivelse: record.behovsmelding && record.behovsmelding.gjelder ? record.behovsmelding.gjelder : ''
+                    beskrivelse:
+                        record.behovsmelding && record.behovsmelding.gjelder ? record.behovsmelding.gjelder : ''
                 };
             });
             this.sortData(this.sortBy, this.sortDirection);
