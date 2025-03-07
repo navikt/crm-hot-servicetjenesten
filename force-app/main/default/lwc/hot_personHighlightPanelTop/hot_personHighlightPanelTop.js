@@ -75,4 +75,16 @@ export default class hot_personHighlightPanelTop extends LightningElement {
     get personIdent() {
         return this.personDetails?.personIdent;
     }
+    get municipalityName() {
+        return this.personDetails?.municipalityName;
+    }
+    get municipalityUrl() {
+        return this.personDetails?.municipalityUrl;
+    }
+    get districtName() {
+        return this.personDetails?.districtName;
+    }
+    get districtUrl() {
+        return this.personDetails?.districtUrl;
+    }
 }
