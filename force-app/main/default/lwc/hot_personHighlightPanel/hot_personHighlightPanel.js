@@ -11,6 +11,11 @@ import FULL_NAME_FIELD from '@salesforce/schema/Person__c.NKS_Full_Name__c';
 import AGE_FIELD from '@salesforce/schema/Person__c.CRM_Age__c';
 import CITIZENSHIP_FIELD from '@salesforce/schema/Person__c.INT_Citizenships__c';
 import LEGAL_STATUS_FIELD from '@salesforce/schema/Person__c.INT_LegalStatus__c';
+import MUNICIPALITY_NAME__FIELD from '@salesforce/schema/Person__c.CRM_Municipality__r.Name';
+import MUNICIPALITY_URL__FIELD from '@salesforce/schema/Person__c.CRM_Municipality__r.HOT_Url__c';
+import DISTRICT_NAME_FIELD from '@salesforce/schema/Person__c.CRM_District__r.Name';
+import DISTRICT_URL_FIELD from '@salesforce/schema/Person__c.CRM_District__r.HOT_Url__c';
+
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 import getPersonAccessBadges from '@salesforce/apex/HOT_PersonAccessBadgesController.getPersonAccessBadges';
@@ -27,7 +32,11 @@ const PERSON_FIELDS = [
     FULL_NAME_FIELD,
     AGE_FIELD,
     CITIZENSHIP_FIELD,
-    LEGAL_STATUS_FIELD
+    LEGAL_STATUS_FIELD,
+    MUNICIPALITY_NAME__FIELD,
+    MUNICIPALITY_URL__FIELD,
+    DISTRICT_NAME_FIELD,
+    DISTRICT_URL_FIELD
 ];
 
 export default class hot_personHighlightPanel extends LightningElement {
@@ -49,8 +58,6 @@ export default class hot_personHighlightPanel extends LightningElement {
     historikkWiredData;
     isLoaded;
     actorId;
-    veilederName;
-    veilederIdent;
     fullName;
     firstName;
     personIdent;
@@ -256,7 +263,11 @@ export default class hot_personHighlightPanel extends LightningElement {
                 isDeceased: getFieldValue(data, IS_DECEASED_FIELD),
                 age: getFieldValue(data, AGE_FIELD),
                 citizenship: this.capitalizeFirstLetter(getFieldValue(data, CITIZENSHIP_FIELD)),
-                legalStatus: getFieldValue(data, LEGAL_STATUS_FIELD)
+                legalStatus: getFieldValue(data, LEGAL_STATUS_FIELD),
+                municipalityName: getFieldValue(data, MUNICIPALITY_NAME__FIELD),
+                municipalityUrl: getFieldValue(data, MUNICIPALITY_URL__FIELD),
+                districtName: getFieldValue(data, DISTRICT_NAME_FIELD),
+                districtUrl: getFieldValue(data, DISTRICT_URL_FIELD)
             };
 
             this.handleBackgroundColor();
