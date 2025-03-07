@@ -9,7 +9,7 @@ export default class Hot_hotsak extends LightningElement {
     @api objectApiName;
     @api recordId;
     sortBy = 'opprettet';
-    sortDirection = 'desc'; // Note: "desc" for descending
+    sortDirection = 'desc';
 
     columns = [
         { label: 'Mottatt dato', fieldName: 'opprettet', type: 'date', sortable: true },
@@ -24,14 +24,12 @@ export default class Hot_hotsak extends LightningElement {
         this.isLoading = false;
         if (data) {
             this.error = undefined;
-            // Map the data as required
             this.saker = data.map(record => {
                 return {
                     ...record,
                     beskrivelse: record.behovsmelding && record.behovsmelding.gjelder ? record.behovsmelding.gjelder : ''
                 };
             });
-            // Call the sort function right after the data returns
             this.sortData(this.sortBy, this.sortDirection);
         } else if (error) {
             this.saker = undefined;
@@ -55,7 +53,6 @@ export default class Hot_hotsak extends LightningElement {
         this.saker = sortedData;
     }
 
-    // Existing sort handler for UI interactions
     handleSort(event) {
         const { fieldName: sortedBy, sortDirection } = event.detail;
         this.sortBy = sortedBy;
