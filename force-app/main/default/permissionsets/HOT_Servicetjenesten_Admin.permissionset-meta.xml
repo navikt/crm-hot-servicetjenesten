@@ -1178,6 +1178,10 @@
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
     <pageAccesses>
+        <apexPage>CRM_Conversation_Note_PDF</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+    <pageAccesses>
         <apexPage>hot_callPage</apexPage>
         <enabled>true</enabled>
     </pageAccesses>
