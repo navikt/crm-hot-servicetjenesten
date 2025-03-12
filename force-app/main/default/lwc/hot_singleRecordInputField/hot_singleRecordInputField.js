@@ -7,6 +7,10 @@ import { FlowAttributeChangeEvent } from 'lightning/flowSupport';
 //import VALIDATION_ERROR from '@salesforce/label/c.NKS_Single_Record_Input_Validation_Error';
 
 export default class HotSingleRecordInputField extends LightningElement {
+    //DEFAULT FLOW PARAMS
+    @api availableActions;
+    @api screenHelpText;
+    @api navigateFlow;
     //FIELD PARAMS
     @api dirty;
     @api disabled;

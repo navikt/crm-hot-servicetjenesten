@@ -20,7 +20,7 @@ export default class HotButtonContainerBottom extends LightningElement {
     @api setBorders = false;
     @api showNotifications = false; // Show notifications if the component is used independently
 
-    flowLoop;
+    flowLoop = [];
     timer;
     _activeFlow;
     subscription = null;

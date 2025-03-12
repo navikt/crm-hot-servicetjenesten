@@ -4,6 +4,9 @@ export default class Hot_Header extends LightningElement {
     @api input;
     @api headertag;
     @api center = false; //If true the header is centered in its container
+    @api availableActions;
+    @api screenHelpText;
+    @api navigateFlow;
     h1 = false;
     h2 = false;
     h3 = false;

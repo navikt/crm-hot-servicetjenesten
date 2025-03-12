@@ -6,6 +6,9 @@ import hotRefreshRecord from '@salesforce/messageChannel/hotNotifications__c';
 
 export default class HotRecordRefresher extends LightningElement {
     @api recordId;
+    @api availableActions;
+    @api screenHelpText;
+    @api navigateFlow;
 
     @wire(MessageContext)
     messageContext;
