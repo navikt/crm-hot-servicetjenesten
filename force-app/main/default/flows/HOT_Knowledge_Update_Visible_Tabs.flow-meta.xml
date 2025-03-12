@@ -117,7 +117,7 @@ ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>hasCategories</name>
         <dataType>Boolean</dataType>
