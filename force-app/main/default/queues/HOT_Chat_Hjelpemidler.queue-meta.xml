@@ -7,7 +7,6 @@
             <publicGroup>HOT_ServicetjenestenVeiledere</publicGroup>
         </publicGroups>
     </queueMembers>
-    <queueRoutingConfig>HOT_Chat_Hjelpemidler_RConfig</queueRoutingConfig>
     <queueSobject>
         <sobjectType>LiveChatTranscript</sobjectType>
     </queueSobject>
