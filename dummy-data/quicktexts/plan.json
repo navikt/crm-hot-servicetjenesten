@@ -1,0 +1,8 @@
+[
+    {
+        "sobject": "QuickText",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": ["quicktexts.json"]
+    }
+]
