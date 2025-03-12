@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HOT_HideTranselationTab__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Dette skjuler Oversettelser fanen når artikkelen er publisert. Alt som eventuellt står der blir ikke synlig.</inlineHelpText>
+    <label>Skjul Oversettelser Fane</label>
+    <type>Checkbox</type>
+</CustomField>
