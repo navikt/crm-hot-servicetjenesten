@@ -1099,7 +1099,7 @@
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
-                    <elementReference>Conversation_Summary.conversationNote</elementReference>
+                    <elementReference>Conversation_Summary.conversationNoteRich</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -1217,6 +1217,12 @@
             </inputParameters>
             <inputParameters>
                 <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>signatureCheckbox</name>
                 <value>
                     <booleanValue>true</booleanValue>
                 </value>
@@ -1369,11 +1375,17 @@
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
-                    <elementReference>Conversation_Summary.conversationNote</elementReference>
+                    <elementReference>Conversation_Summary.conversationNoteRich</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>signatureCheckbox</name>
                 <value>
                     <booleanValue>true</booleanValue>
                 </value>

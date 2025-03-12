@@ -96,7 +96,7 @@
                             <lightning-button-icon
                                 icon-name="utility:quick_text"
                                 variant="border-filled"
-                                onclick={showModal}
+                                onclick={toggleModal}
                                 alternative-text="Legg til hurtigtekst"
                                 title="Hurtigtekst"
                                 aria-label="Legg til hurtigtekst"
@@ -104,17 +104,33 @@
                         </li>
                     </ul>
                 </div>
-                <span class=sr-only aria-live=polite aria-atomic=true>{recentlyInserted}</span>
+                <span class="sr-only" aria-live="polite" aria-atomic="true">{recentlyInserted}</span>
                 <textarea
                     onkeyup={insertquicktext}
                     onchange={handleChange}
                     onpaste={handlePaste}
                     class="slds-rich-text-editor__textarea slds-grid slds-textarea conversationNoteTextArea"
-                    rows="15"
+                    rows="12"
                 >
-                    {conversationNote}
+                    {conversationNoteTextArea}                 
                     </textarea
                 >
+                <textarea
+                    class="standardSignature signature-textarea slds-rich-text-editor__textarea slds-grid slds-textarea"
+                    rows="3"
+                    readonly
+                    name="Signatur"
+                >
+                {standardSignature}
+                </textarea>
+                <div class="slds-var-p-around_xx-small">
+                    <lightning-checkbox-group
+                        lwc:if={signatureCheckbox}
+                        options={checkBoxOptions}
+                        value={checkBoxValue}
+                        onchange={handleCheckBoxChange}
+                    ></lightning-checkbox-group>
+                </div>
             </div>
         </div>
     </div>
