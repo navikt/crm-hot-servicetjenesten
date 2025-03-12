@@ -36,8 +36,8 @@ ISBLANK({!$Record.NKS_English__c}) &amp;&amp;
 ISBLANK({!$Record.NKS_Nynorsk__c}) &amp;&amp;
 ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
     </formulas>
-    <interviewLabel>HOT Update Visible Tabs {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT Update Visible Tabs</label>
+    <interviewLabel>HOT Knowledge Update Visible Tabs {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Knowledge Update Visible Tabs</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
@@ -117,7 +117,7 @@ ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>hasCategories</name>
         <dataType>Boolean</dataType>
