@@ -56,7 +56,7 @@ export default class HotSingleRecordInputField extends LightningElement {
         }
         return {
             isValid: false,
-            errorMessage: VALIDATION_ERROR
+            errorMessage: this.VALIDATION_ERROR
         };
     }
 }
