@@ -19,3 +19,12 @@
     height: 1px;
     overflow: hidden;
 }
+.signature-textarea {
+    resize: none;
+    text-wrap: nowrap;
+}
+.signature-textarea-hidden {
+    resize: none;
+    text-wrap: nowrap;
+    display: none;
+}

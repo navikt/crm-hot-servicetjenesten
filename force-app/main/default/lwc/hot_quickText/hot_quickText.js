@@ -1,6 +1,9 @@
 import { LightningElement, track, api, wire } from 'lwc';
 import searchRecords from '@salesforce/apex/HOT_QuickTextSearchController.searchRecords';
 import getQuicktexts from '@salesforce/apex/HOT_QuickTextSearchController.getQuicktexts';
+import currentUserId from '@salesforce/user/Id';
+import NKS_FULL_NAME from '@salesforce/schema/User.NKS_FullName__c';
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 
 const ESC_KEY_CODE = 27;
 const ESC_KEY_STRING = 'Escape';
@@ -10,13 +13,24 @@ const LIGHTNING_INPUT_FIELD = 'LIGHTNING-INPUT-FIELD';
 
 const QUICK_TEXT_TRIGGER_KEYS = ['Enter', ' ', ','];
 export default class hot_quickText extends LightningElement {
-    _conversationNote;
+    /**
+     * api poperties for flow lwc components. if not exist - produces errors(warnings) in debug mode
+     */
+    @api availableActions;
+    @api screenHelpText;
+    @api navigateFlow;
+    _conversationNote = '';
+    _isOpen = false;
     qmap;
     initialRender = true;
     loadingData = false;
+    checkBoxValue = 'Standard';
+    supervisorName;
+    userId = currentUserId;
 
     @track data = [];
 
+    @api signatureCheckbox;
     @api comments;
     @api required = false;
 
@@ -25,7 +39,9 @@ export default class hot_quickText extends LightningElement {
     get textArea() {
         return this.template.querySelector('.conversationNoteTextArea');
     }
-
+    get checkBoxOptions() {
+        return [{ label: 'Standard signatur', value: 'Standard' }];
+    }
     renderedCallback() {
         if (this.initialRender === true) {
             let inputField = this.textArea;
@@ -43,15 +59,42 @@ export default class hot_quickText extends LightningElement {
     }
 
     @api
-    isOpen() {
-        return this.template.querySelector('[data-id="modal"]').className === 'modalShow';
+    get isOpen() {
+        return this._isOpen;
+    }
+    set isOpen(value) {
+        this._isOpen = value;
+    }
+
+    handleCheckBoxChange(event) {
+        let signature = this.template.querySelector('.standardSignature');
+        let noteArea = this.template.querySelector('.conversationNoteTextArea');
+        if (event.detail.value.includes('Standard')) {
+            this.checkBoxValue = 'Standard';
+            signature.className = signature.className
+                .split(' ')
+                .filter((e) => e !== 'signature-textarea-hidden')
+                .concat('signature-textarea')
+                .join(' ');
+            noteArea.style.height = noteArea.offsetHeight - signature.offsetHeight + 'px';
+        } else {
+            this.checkBoxValue = 'Ingen';
+            noteArea.style.height = noteArea.offsetHeight + signature.offsetHeight + 'px';
+            signature.className = signature.className
+                .split(' ')
+                .filter((e) => e !== 'signature-textarea')
+                .concat('signature-textarea-hidden')
+                .join(' ');
+        }
     }
 
     toggleModal() {
-        this.isOpen = !this.isOpen;
         if (this.isOpen) {
+            this.hideModal();
             this.focusFirstChild();
+            return;
         }
+        this.showModal();
     }
 
     get cssClass() {
@@ -65,11 +108,13 @@ export default class hot_quickText extends LightningElement {
     }
 
     showModal() {
+        this._isOpen = true;
         this.template.querySelector('[data-id="modal"]').className = 'modalShow';
         this.template.querySelector('lightning-input').focus();
     }
 
     hideModal() {
+        this._isOpen = false;
         this.template.querySelector('[data-id="modal"]').className = 'modalHide';
     }
 
@@ -143,6 +188,7 @@ export default class hot_quickText extends LightningElement {
             } catch (ex) {
                 return resolve(false);
             }
+            return resolve(false);
         });
     }
 
@@ -172,11 +218,38 @@ export default class hot_quickText extends LightningElement {
         }
     }
 
+    @wire(getRecord, {
+        recordId: '$userId',
+        fields: [NKS_FULL_NAME]
+    })
+    wiredUser({ error, data }) {
+        if (error) {
+            console.error('wiredUser failed: ', error);
+        } else if (data) {
+            this.supervisorName = getFieldValue(data, NKS_FULL_NAME);
+        }
+    }
+
+    get standardSignature() {
+        let regards = 'Med vennlig hilsen';
+        return `${regards}\n${this.supervisorName}\nServicetjenesten Nav hjelpemidler og tilrettelegging`;
+    }
+
     @api get conversationNote() {
+        if (this.checkBoxValue === 'Standard') {
+            return this._conversationNote + '\n\n' + this.standardSignature;
+        }
         return this._conversationNote;
     }
 
     set conversationNote(value) {
+        //skip as readonly
+    }
+    get conversationNoteTextArea() {
+        return this._conversationNote;
+    }
+
+    set conversationNoteTextArea(value) {
         this._conversationNote = value;
     }
 
@@ -200,10 +273,6 @@ export default class hot_quickText extends LightningElement {
         evt.stopImmediatePropagation();
 
         this._conversationNote = editor.value;
-        const attributeChangeEvent = new CustomEvent('commentschange', {
-            detail: this.conversationNote
-        });
-        this.dispatchEvent(attributeChangeEvent);
     }
 
     handleKeyUp(evt) {
@@ -243,19 +312,11 @@ export default class hot_quickText extends LightningElement {
 
         this.hideModal(undefined);
         this._conversationNote = editor.value;
-        const attributeChangeEvent = new CustomEvent('commentschange', {
-            detail: this.conversationNote
-        });
-        this.dispatchEvent(attributeChangeEvent);
     }
 
     handleChange(event) {
         this[event.target.name] = event.target.value;
         this._conversationNote = event.target.value;
-        const attributeChangeEvent = new CustomEvent('commentschange', {
-            detail: this.conversationNote
-        });
-        this.dispatchEvent(attributeChangeEvent);
     }
 
     _getQmappedItem(abbreviation) {
@@ -345,7 +406,7 @@ export default class hot_quickText extends LightningElement {
     @api
     validate() {
         if (this.required === true) {
-            return this.conversationNote && this.conversationNote.length > 0
+            return this.conversationNoteTextArea && this.conversationNoteTextArea.length > 0
                 ? { isValid: true }
                 : { isValid: false, errorMessage: '	Samtalereferatet kan ikke være tomt!' };
         }

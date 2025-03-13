@@ -1,0 +1,296 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef1"
+            },
+            "Name": "Nedbemanning - Permittering",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om TEMA \r\n\r\nArbeidsgiver er informert om\r\n• INFORMASJON I PUNKTER\r\n\r\nArbeidsgiver har i tillegg fått informasjon om:\r\n• Hovedreglene rundt permittering og fremgangsmåte. \r\nhttps://arbeidsgiver.nav.no/arbeidsgiver-permittering \r\n• Meldeplikt til NAV ved permittering\r\nhttps://www.nav.no/soknader/nb/bedrift/permitteringer-oppsigelser-og-konkurs/masseoppsigelser"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef2"
+            },
+            "Name": "Rekruttering - Informasjon om rekruttering",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt og ønsker informasjon om rekruttering. \r\n\r\nArbeidsgiver har fått informasjon om:\r\n• https://arbeidsplassen.nav.no/ \r\n• kandidatsøk \r\n• veiviser for inkludering på nav.no https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge \r\n\r\nArbeidsgiver er informert om muligheten til å ta kontakt med markedskontakter for å finne aktuelle kandidater i oversikten på arbeidsplassen.no"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef3"
+            },
+            "Name": "Søknader og skjema - Utfylling",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har fått veiledning i utfylling av SKJEMA-NAVN+NUMMER"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef4"
+            },
+            "Name": "Søknader og skjema - Sende inn",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har fått veiledning i hvor de finner SKJEMA-NAVN+NUMMER og hvordan de sender det inn."
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef5"
+            },
+            "Name": "Rekruttering - Bistand til rekruttering",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt og ønsker bistand med rekruttering. \r\n\r\nType stilling: \r\nStillingsprosent:\r\nVikar/fast: \r\nOppstart: \r\nKvalifikasjoner: \r\nArbeidsgiver er informert om: arbeidsplassen.no  \r\n \r\nHenvendelsen er videreformidlet til ENHET \r\nDu blir kontaktet innen utgangen av DAG+DATO"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef6"
+            },
+            "Name": "Rekruttering - Tilbyr arbeidsrettet tiltak",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt og ønsker å tilby arbeidsrettet tiltak \r\n\r\nGjelder følgende stilling:\r\nType stilling: \r\nStillingsprosent: \r\nVikar/fast:\r\nOppstart: \r\n\r\nArbeidsgiver har muligheten for:\r\n• Tilrettelegging av arbeidstid\r\n• Tilpasninger i arbeidshverdagen\r\n• Fysisk tilrettelegging på arbeidsplassen\r\n• Tilrettelegging for utfordringer med norsk\r\n\r\nArbeidsgiver er informert om veiviser for inkludering (lenke)\r\n\r\nHenvendelsen er videreformidlet til ENHET \r\nDu blir kontaktet innen utgangen av DAG+DATO"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef7"
+            },
+            "Name": "Rekruttering - Informasjon om inkludering og arbeidsrettet tiltak",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt og ønsker generell informasjon om inkludering og arbeidsrettede tiltak. \r\n\r\nArbeidsgiver har fått informasjon om:\r\n• veiviser for inkludering på nav.no https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge \r\n• inkludering og virkemidler \r\n• hva inkluderingsdugnaden er, hva de som arbeidsgiver kan bidra med \r\n• oversikt av markedskontakter / kontaktskjema"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef8"
+            },
+            "Name": "Sykefravær - Dialogmøte",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt og ønsker at NAV kaller inn til dialogmøte. \r\n\r\nArbeidsgiver har fått informasjon om: \r\n• tjenesten Dine sykemeldte, møtebehov og oppfølgingsplan \r\n• viktigheten av å lage og sende oppfølgingsplan"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef9"
+            },
+            "Name": "Rekruttering - Informasjon om virkemidler",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har en person på arbeidsrettet tiltak og ønsker informasjon om TEMA\r\n\r\nArbeidsgiver har fått informasjon om:\r\n• INFORMASJON I PUNKTER"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef10"
+            },
+            "Name": "Teknisk - Problemer med NAVs tekniske løsninger",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt om problemer med NAVs tekniske løsninger \r\n\r\nArbeidsgiver har fått informasjon om:\r\n• tilgangsstyring i altinn https://arbeidsgiver.nav.no/min-side-arbeidsgiver/informasjon-om-tilgangsstyring \r\n• INFORMASJON I PUNKTER\r\n\r\nProblemer som gjelder nettleser/nettleserlogg/brannmursproblematikk\r\n• bytt nettleser, eller oppdater nettleser\r\n• slett nettlogg og cookies\r\n• prøv utenfor brannmuren, for eksempel logg deg inn via mobil (4G)"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef11"
+            },
+            "Name": "Sykefravær - Forebygge sykefravær",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt angående forebygging av sykefravær. Har fått veiledning og informasjon om våre digitale tjenester:\r\n• Veiviser for inkludering https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge \r\n• Webinar relatert til sykefravær og arbeidsmiljø \r\n• Idebanken.org\r\n• Podcasten «På jobben»\r\n• Kontaktskjema på nav.no"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef12"
+            },
+            "Name": "Nedbemanning - Oppsigelser",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver skal permittere /si opp og ønsker kontakt med NAV for informasjonsmøte med de ansatte.\r\n\r\nArbeidsgiver er informert om: \r\n• meldeplikt til NAV ved permittering av flere enn 10 arbeidstakere \r\n• mer informasjon er tilgjengelig på https://www.nav.no/soknader/nb/bedrift/permitteringer-oppsigelser-og-konkurs/masseoppsigelser \r\n\r\nHenvendelsen er videreformidlet til ENHET\r\nDu blir kontaktet innen utgangen av DAG+DATO"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef13"
+            },
+            "Name": "Sykefravær - Psykisk sykdom",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om hva de kan gjøre hvis en ansatt sliter psykisk. \r\n\r\nArbeidsgiver har fått informasjon om: \r\n• temaside på nav.no https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge \r\n• arbeidsgiverlos og kurset \"Sees i morgen\"\r\n• at de også kan kontakte sin Bedriftshelsetjenste (BHT)"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef14"
+            },
+            "Name": "TEST CHAT - Sykefravær - Forebygge sykefravær",
+            "Channel": "Live Agent",
+            "Message": "Arbeidsgiver tar kontakt angående forebygging av sykefravær. Har fått veiledning og informasjon om våre digitale tjenester:\r\n• Veiviser for inkludering https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge\r\n• Webinar relatert til sykefravær og arbeidsmiljø\r\n• Idebanken.org\r\n• Podcasten «På jobben»\r\n• Kontaktskjema på nav.no",
+            "Category": "Greetings"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef15"
+            },
+            "Name": "TEST CHAT - Rekruttering - Tilbyr arbeidsrettet tiltak",
+            "Channel": "Live Agent",
+            "Message": "Arbeidsgiver tar kontakt og ønsker å tilby arbeidsrettet tiltak\r\n\r\nGjelder følgende stilling:\r\nType stilling:\r\nStillingsprosent:\r\nVikar/fast:\r\nOppstart:\r\n\r\nArbeidsgiver har muligheten for:\r\n• Tilrettelegging av arbeidstid\r\n• Tilpasninger i arbeidshverdagen\r\n• Fysisk tilrettelegging på arbeidsplassen\r\n• Tilrettelegging for utfordringer med norsk\r\n\r\nArbeidsgiver er informert om veiviser for inkludering (lenke)\r\n\r\nHenvendelsen er videreformidlet til ENHET\r\nDu blir kontaktet innen utgangen av DAG+DATO",
+            "Category": "Greetings"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef16"
+            },
+            "Name": "Tiltaksøkonomi – Refusjonskrav og beløp",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om mottatt refusjonskrav NUMMER/mottatt refusjonsbeløp STRYK DET SOM IKKE PASSER\r\n\r\nArbeidsgiver har fått informasjon om:\r\n-\tBeregning av refusjonsbeløp"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef17"
+            },
+            "Name": "Tiltaksøkonomi – Etterlyser refusjon",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver etterlyser refusjon på refusjonskrav / tilsagn NUMMER og kravet er mottatt for mer enn 1 måned siden. \r\n\r\nArbeidsgiver har fått informasjon om at: \r\n• henvendelsen er videreformidlet til behandlende enhet\r\n• du blir kontaktet innen utgangen av DAG+DATO\r\n\r\nDERSOM KRAV IKKE ER MOTTATT:\r\n\r\nArbeidsgiver har fått informasjon om at refusjonskrav ikke er mottatt."
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef18"
+            },
+            "Name": "Dette er en test",
+            "Channel": "Email;Portal;Phone;Internal;Event;Task;Live Agent;Knowledge",
+            "Message": "Hei. Hva kan jeg hjelpe deg med?",
+            "Category": "Greetings"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef19"
+            },
+            "Name": "Dette er en test 2",
+            "Channel": "Email;Portal;Phone;Internal;Event;Task;Live Agent;Knowledge",
+            "Message": "Bruker ønsker å få informasjon om sine rettigheter angående permittering.. blabla",
+            "Category": "Greetings"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef20"
+            },
+            "Name": "Tiltaksøkonomi – Saksbehandlingstid",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om saksbehandlingstid på refusjonskrav\r\n\r\nArbeidsgiver er informert om at: \r\n• refusjonskravet er mottatt og at alle krav skal behandles innen 1 måned."
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef21"
+            },
+            "Name": "Tiltaksøkonomi – Etterlyser tilsagnsbrev",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om fristutsettelse på tilsagn NUMMER.  \r\n\r\nArbeidsgiver har fått informasjon om at: \r\n• det er ikke mulig å gi ytterligere fristutsettelse\r\n• kravet må sendes fortløpende"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef22"
+            },
+            "Name": "Tiltaksøkonomi – Etterlyser tilsagnsbrev",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om hvilket skjema en skal benytte i forbindelse med refusjon\r\n\r\nArbeidsgiver har fått informasjon om at skjema NAVN+NUMMER skal benyttes"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef23"
+            },
+            "Name": "Sykefravær - Unntak arbeidsgiverperiode",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt med spørsmål unntak for arbeidsgiverperiode. \r\n\r\nArbeidsgiver har fått informasjon om:\r\n• hvordan ordningen fungerer og vilkår\r\n• hvor de finner søknadsskjema \r\n• søknadsprosess"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef24"
+            },
+            "Name": "Tiltaksøkonomi – Tilsagnsbeløp",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om tilsagnsbeløp/spørsmål om tilsagnsbeløp på NUMMER - STRYK DET SOM IKKE PASSER\r\n\r\nArbeidsgiver har fått informasjon om:\r\n- beregning av tilsagnsbeløp"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef25"
+            },
+            "Name": "Sykefravær - Nedsatt arbeidsevne",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har spørsmål om tiltak for å beholde ansatt med nedsatt arbeidsevne. \r\n\r\nArbeidsgiver har fått informasjon om: \r\n• «Veiviser for inkludering – beholde ansatt» på nav.no https://tjenester.nav.no/veiviserarbeidsgiver/tilrettelegge \r\n• lønnstilskudd\r\n• mentor\r\n• at de kan rette forespørsel om tiltak i konkrete tilfeller til NAV-kontoret"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef26"
+            },
+            "Name": "Tiltaksøkonomi - Etterlyser tilsagnsbrev",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver etterlyser tilsagnsbrev. \r\n\r\nArbeidsgiver har fått informasjon om at:\r\n• brevet er synlig i innboksen for alle i virksomheten som har enkeltrettigheten «Tilskuddsbrev – NAV-tiltak» i Altinn. \r\n• brevet er synlig på Min side – Arbeidsgiver for de som har enkeltrettigheten “Tilskuddsbrev - NAV-tiltak\"\r\n• daglig leder har automatisk tilgang."
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef27"
+            },
+            "Name": "Informasjon - Generelle spørsmål",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver har vært i kontakt med arbeidsgivertelefonen og fått informasjon om  \r\n\r\n• INFORMASJON I PUNKTER\r\n• LENKE TIL AKTUELL SIDE PÅ NAV.NO"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef28"
+            },
+            "Name": "Sykefravær - Oppfølging",
+            "Channel": "Phone",
+            "Message": "Arbeidsgiver tar kontakt om oppfølging av sykmeldte. \r\n\r\nArbeidsgiver har fått informasjon om: \r\n• siden «Slik følger du opp sykmeldte» på nav.no https://www.nav.no/no/bedrift/oppfolging/sykmeldt-arbeidstaker \r\n• hvem gjør hva?\r\n• avtalepunkter og frister i sykefraværsoppfølgingen\r\n• oppfølgingsplan \r\n• dialogmøter\r\n• tilrettelegging"
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef29"
+            },
+            "Name": "AAP",
+            "Channel": "Phone",
+            "Message": "Arbeidsavklaringspenger",
+            "nksAbbreviationKey__c": "AAP",
+            "nksType__c": "Abbreviation",
+            "Case_sensitive__c": true
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef30"
+            },
+            "Name": "NAY",
+            "Channel": "Phone",
+            "Message": "NAV Arbeid og ytelser",
+            "nksAbbreviationKey__c": "NAY",
+            "nksType__c": "Abbreviation",
+            "Case_sensitive__c": false
+        },
+        {
+            "attributes": {
+                "type": "QuickText",
+                "referenceId": "QuickTextRef31"
+            },
+            "Name": "NFP",
+            "Channel": "Phone",
+            "Message": "NAV familie- og pensjonsytelser",
+            "nksAbbreviationKey__c": "NFP",
+            "nksType__c": "Abbreviation",
+            "Case_sensitive__c": false
+        }
+    ]
+}

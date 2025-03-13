@@ -8,6 +8,9 @@ import { getOutputVariableValue } from 'c/hot_componentsUtils';
 const JOURNAL_FLOW_API_NAME = 'HOT_Conversation_Note_Journal_Case';
 
 export default class Hot_ConversationNoteButtonContainer extends LightningElement {
+    @api availableActions;
+    @api screenHelpText;
+    @api navigateFlow;
     @api recordId;
     @api conversationNoteButtonLabel;
     @api journalAndShare = false;

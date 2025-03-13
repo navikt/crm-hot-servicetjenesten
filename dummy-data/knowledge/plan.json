@@ -1,0 +1,8 @@
+[
+    {
+        "sobject": "Knowledge__kav",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": ["articles.json"]
+    }
+]

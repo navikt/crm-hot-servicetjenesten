@@ -13,6 +13,9 @@
             <property name="required" type="Boolean" label="Required" default="false"
                 role="inputOnly" />
             <property name="comments" type="String" label="Comments" />
+            <property name="signatureCheckbox" type="Boolean"
+                label="Show standard signature Checkbox" default="false"
+                role="inputOnly" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

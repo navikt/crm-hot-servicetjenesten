@@ -1,0 +1,31 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Knowledge__kav",
+                "referenceId": "Knowledge__kavRef1"
+            },
+            "Summary": "Innlogging via ID-porten, med for eksempel MinID eller BankID, gjør at tjenestene er helt sikre å bruke – og at personopplysningene dine er godt ivaretatt. Samtidig slipper du å huske enda et brukernavn og passord.",
+            "Title": "Hvorfor må jeg logge inn med ID-porten, og ikke med brukernavn og passord?",
+            "UrlName": "Hvorfor-må-jeg-logge-inn-med-ID-porten-og-ikke-med-brukernavn-og-passord"
+        },
+        {
+            "attributes": {
+                "type": "Knowledge__kav",
+                "referenceId": "Knowledge__kavRef2"
+            },
+            "Summary": "Vi vet det kan være utfordrende å være på jakt etter jobb. Derfor har vi samlet mange jobbsøkertips på denne siden . Du bør starte med å fylle ut CV-en og jobbprofilen din med så mye relevant informasjon som mulig. Da blir det lettere for arbeidsgivere å vurdere om du kan være den riktige kandidaten. Vi anbefaler også at du lagrer faste søk i stillingssøket. Da kan du få varsel på e-post når det blir publisert stillingsannonser som er interessante for deg.",
+            "Title": "Jeg er jobbsøker. Har dere noen råd til meg når jeg skal begynne å bruke Arbeidsplassen?",
+            "UrlName": "Råd-bruke-arbeidsplassen"
+        },
+        {
+            "attributes": {
+                "type": "Knowledge__kav",
+                "referenceId": "Knowledge__kavRef3"
+            },
+            "Summary": "Tjenestene på Arbeidsplassen har cirka 700 000 unike brukere i måneden. Hver dag åpner arbeidsgivere rundt 8000 CV-er. 45 000 nye stillinger blir registrert hver måned.",
+            "Title": "Hvor mange bruker Arbeidsplassen i dag?",
+            "UrlName": "Hvor-mange-bruker-Arbeidsplassen-i-dag"
+        }
+    ]
+}

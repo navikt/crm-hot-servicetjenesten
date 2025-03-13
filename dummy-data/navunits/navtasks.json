@@ -1,0 +1,17 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "NavTask__c",
+                "referenceId": "NavTaskRef1"
+            },
+            "Name": "TEST",
+            "CRM_NavUnit__c": "@NavUnitRef1",
+            "NKS_Status__c": "OPPRETTET",
+            "NKS_Assignee__c": "S000000",
+            "CRM_Priority__c": "NORM",
+            "CRM_Comments__c": "TEST COMMENTS",
+            "CRM_NoPersonInformation__c": true
+        }
+    ]
+}

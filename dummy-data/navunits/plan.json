@@ -1,0 +1,14 @@
+[
+    {
+        "sobject": "NavUnit__c",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": ["navunits.json"]
+    },
+    {
+        "sobject": "NavTask__c",
+        "saveRefs": false,
+        "resolveRefs": true,
+        "files": ["navtasks.json"]
+    }
+]
