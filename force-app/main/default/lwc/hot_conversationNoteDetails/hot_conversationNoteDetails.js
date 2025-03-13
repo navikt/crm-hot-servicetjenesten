@@ -17,7 +17,7 @@ import getCommonCodeName from '@salesforce/apex/HOT_ButtonContainerController.ge
 
 export default class Hot_ConversationNoteDetails extends LightningElement {
     @api recordId;
-
+    @api objectApiName;
     navTasks = [];
     notes = [];
     expanded = true;
