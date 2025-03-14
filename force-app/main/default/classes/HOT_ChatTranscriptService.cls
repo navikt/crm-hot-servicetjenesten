@@ -72,12 +72,12 @@ global class HOT_ChatTranscriptService {
                     delete existingMessages;
                 } catch (Exception ex) {
                     //Pokémon catch
-                    logger.exception(ex, chatThread, CRM_ApplicationDomain.Domain.NKS);
+                    logger.exception(ex, chatThread, CRM_ApplicationDomain.Domain.HOT);
                 }
             }
             updateThreadClosedate(chatThread.Id, System.now());
         } catch (Exception ex) {
-            logger.exception(ex, CRM_ApplicationDomain.Domain.NKS);
+            logger.exception(ex, CRM_ApplicationDomain.Domain.HOT);
         } finally {
             logger.publish();
         }
@@ -168,7 +168,7 @@ global class HOT_ChatTranscriptService {
             //Agent name is designed to include the NAV ident in parenthesis i.e. (<NAV_IDENT>)
             String navIdent = wrapperMessage.name.substringBetween('(', ')');
             if (!navIdentUserMap.containsKey(navIdent)) {
-                logger.error('Could not find user record for agent', chatThread, CRM_ApplicationDomain.Domain.NKS);
+                logger.error('Could not find user record for agent', chatThread, CRM_ApplicationDomain.Domain.HOT);
             } else {
                 convertedMessage.CRM_From_User__c = navIdentUserMap.get(navIdent).Id;
                 convertedMessage.CRM_From_NAV_Unit__c = navIdentUserMap.get(navIdent).Department;
