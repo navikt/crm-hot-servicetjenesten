@@ -1,0 +1,23 @@
+[
+  {
+    "content": "TEST CONTENT 1",
+    "name": "TestName1 (Z999999)",
+    "recordId": "DUMMY",
+    "timestamp": "0",
+    "type": "Agent"
+  },
+  {
+    "content": "TEST CONTENT 1",
+    "name": "TestName2",
+    "recordId": "DUMMY",
+    "timestamp": "0",
+    "type": "EndUser"
+  },
+  {
+    "content": "TEST EVENT",
+    "name": "TestEvent",
+    "recordId": "DUMMY",
+    "timestamp": "0",
+    "type": "OperatorTransferred"
+  }
+]
