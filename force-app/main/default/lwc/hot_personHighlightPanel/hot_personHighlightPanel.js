@@ -51,6 +51,7 @@ export default class hot_personHighlightPanel extends LightningElement {
         getRecordPerson: true
     };
 
+    noPerson = false;
     shownBadge;
     personId;
     wireFields;
@@ -269,13 +270,13 @@ export default class hot_personHighlightPanel extends LightningElement {
                 districtName: getFieldValue(data, DISTRICT_NAME_FIELD),
                 districtUrl: getFieldValue(data, DISTRICT_URL_FIELD)
             };
-
             this.handleBackgroundColor();
         } else if (error) {
             this.addErrorMessage('getRecord', error);
             console.error(error);
             this.handleBackgroundColor();
         }
+        this.noPerson = this.personIdent == null;
     }
 
     @wire(getRecord, {
@@ -365,8 +366,10 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     get isLoading() {
-        // eslint-disable-next-line @salesforce/aura/ecma-intrinsics, compat/compat
-        return Object.values(this.loadingStates).some((isLoading) => isLoading);
+        return !this.noPerson && Object.values(this.loadingStates).some((isLoading) => isLoading);
+    }
+    get isPerson() {
+        return !this.noPerson && Object.values(this.loadingStates).every((isLoading) => !isLoading);
     }
 
     get panelClass() {

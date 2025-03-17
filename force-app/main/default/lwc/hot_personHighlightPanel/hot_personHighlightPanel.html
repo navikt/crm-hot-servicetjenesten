@@ -18,7 +18,7 @@
         <template lwc:if={isLoading}>
             <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
         </template>
-        <template lwc:else>
+        <template lwc:if={isPerson}>
             <lightning-layout class="panelBackground">
                 <div class={panelClass}>
                     <lightning-layout-item class="highlightPanelTop nowrap-selector">
