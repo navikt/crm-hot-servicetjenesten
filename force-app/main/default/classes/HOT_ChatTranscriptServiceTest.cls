@@ -1,5 +1,5 @@
 @isTest
-private class HOT_ChatTranscriptService_Test {
+private class HOT_ChatTranscriptServiceTest {
     @TestSetup
     static void makeData() {
         String botConversation = '22:15:14 - bot:\n';
