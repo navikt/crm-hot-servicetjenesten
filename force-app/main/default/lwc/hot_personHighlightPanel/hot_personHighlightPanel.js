@@ -366,10 +366,10 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     get isLoading() {
-        return !this.noPerson && Object.values(this.loadingStates).some((isLoading) => isLoading);
+        return !this.noPerson || Object.values(this.loadingStates).some((isLoading) => isLoading);
     }
-    get isPerson() {
-        return !this.noPerson && Object.values(this.loadingStates).every((isLoading) => !isLoading);
+    get personExist() {
+        return !this.noPerson;
     }
 
     get panelClass() {
