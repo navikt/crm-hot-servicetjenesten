@@ -1,0 +1,40 @@
+<aura:component implements="flexipage:availableForAllPageTypes, force:hasRecordId" controller="HOT_ChatAfterWork">
+    <lightning:workspaceAPI aura:id="workspace" />
+
+    <aura:registerEvent name="appEvent" type="c:hot_afterworkEvent" />
+    <aura:handler event="c:hot_afterworkEvent" action="{!c.handleChatEnded}" />
+
+    <aura:attribute name="timer" type="integer" default="150" />
+    <aura:attribute name="maxTimer" type="integer" />
+    <aura:attribute name="percentageTimer" type="integer" default="100" />
+    <aura:attribute name="showTimer" type="boolean" />
+    <aura:attribute name="stopped" type="boolean" default="false" />
+
+    <aura:if isTrue="{!v.showTimer}">
+        <div class="slds-card slds-var-p-around_small">
+            <lightning:button
+                variant="destructive"
+                label="Kritisk henvendelse"
+                title="Kritisk henvendelse"
+                onclick="{! c.stopTimer }"
+                class="slds-var-m-bottom_small slds-size_12-of-12"
+                disabled="{!v.stopped}"
+            />
+            <p class="slds-text-title_bold">Automatisk lukking</p>
+            <div class="slds-var-p-bottom_medium">
+                <p>Chatfanen lukkes automatisk etter {!v.maxTimer} sekunder. Ikke mulighet for forlengelse.</p>
+            </div>
+            <div>
+                <lightning:progressBar value="{! v.percentageTimer }" />
+                <lightning:layout horizontalAlign="spread">
+                    <lightning:layoutItem>
+                        <p>0</p>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem>
+                        <p>{!v.maxTimer}</p>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>
