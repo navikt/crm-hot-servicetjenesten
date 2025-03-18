@@ -26,15 +26,15 @@
         <name>isAdvisorInfoEmpty</name>
         <dataType>Boolean</dataType>
         <expression>ISBLANK({!$Record.AdvisorInformation__c}) &amp;&amp;
-ISBLANK({!$Record.AdvisorInformationInternal__c})</expression>
+            ISBLANK({!$Record.AdvisorInformationInternal__c})</expression>
     </formulas>
     <formulas>
         <name>IsTranslationTabEmpty</name>
         <dataType>Boolean</dataType>
         <expression>ISBLANK({!$Record.NKS_English_Employer__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_English__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_Nynorsk__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
+            ISBLANK({!$Record.NKS_English__c}) &amp;&amp;
+            ISBLANK({!$Record.NKS_Nynorsk__c}) &amp;&amp;
+            ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
     </formulas>
     <interviewLabel>HOT Knowledge Update Visible Tabs {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT Knowledge Update Visible Tabs</label>
