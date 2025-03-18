@@ -6,7 +6,7 @@
                 <h1 class="slds-text-heading_medium">Henter informasjon fra fagsystemer</h1>
             </lightning-layout-item>
             <lightning-layout-item size="4" class="slds-align_absolute-center">
-                <c-hot_loading-spinner lwc:if={notSynced}></c-hot_loading-spinner>
+                <c-hot_loading-spinner lwc:if={showSpinner}></c-hot_loading-spinner>
             </lightning-layout-item>
             <lightning-layout-item size="12" style="padding-top: 1vw">
                 <ul class="slds-list_horizontal slds-has-dividers_left">
