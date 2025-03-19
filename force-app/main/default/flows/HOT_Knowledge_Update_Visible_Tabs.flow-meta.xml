@@ -26,15 +26,15 @@
         <name>isAdvisorInfoEmpty</name>
         <dataType>Boolean</dataType>
         <expression>ISBLANK({!$Record.AdvisorInformation__c}) &amp;&amp;
-ISBLANK({!$Record.AdvisorInformationInternal__c})</expression>
+            ISBLANK({!$Record.AdvisorInformationInternal__c})</expression>
     </formulas>
     <formulas>
         <name>IsTranslationTabEmpty</name>
         <dataType>Boolean</dataType>
         <expression>ISBLANK({!$Record.NKS_English_Employer__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_English__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_Nynorsk__c}) &amp;&amp;
-ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
+            ISBLANK({!$Record.NKS_English__c}) &amp;&amp;
+            ISBLANK({!$Record.NKS_Nynorsk__c}) &amp;&amp;
+            ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
     </formulas>
     <interviewLabel>HOT Knowledge Update Visible Tabs {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT Knowledge Update Visible Tabs</label>
@@ -63,47 +63,12 @@ ISBLANK({!$Record.NKS_Nynorsk_Employer__c})</expression>
         <connector>
             <targetReference>Set_visiblity_of_tabs</targetReference>
         </connector>
-        <filterLogic>(1 OR 2 OR 3 OR 4 OR 5 OR 6) AND 7</filterLogic>
+        <filterLogic>and</filterLogic>
         <filters>
-            <field>NKS_English__c</field>
-            <operator>IsChanged</operator>
+            <field>PublishStatus</field>
+            <operator>EqualTo</operator>
             <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>NKS_English_Employer__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>NKS_Nynorsk__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>NKS_Nynorsk_Employer__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>AdvisorInformation__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </filters>
-        <filters>
-            <field>AdvisorInformationInternal__c</field>
-            <operator>IsChanged</operator>
-            <value>
-                <booleanValue>true</booleanValue>
+                <stringValue>Draft</stringValue>
             </value>
         </filters>
         <filters>
