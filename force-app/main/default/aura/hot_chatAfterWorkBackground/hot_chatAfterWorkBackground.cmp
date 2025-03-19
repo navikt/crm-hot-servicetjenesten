@@ -1,0 +1,14 @@
+<aura:component
+    implements="flexipage:availableForAllPageTypes, lightning:backgroundUtilityItem"
+    controller="HOT_ChatAfterWork"
+>
+    <lightning:workspaceAPI aura:id="workspace" />
+    <aura:handler event="lightning:tabClosed" action="{!c.onTabClosed}" />
+
+    <aura:handler event="lightning:conversationChatEnded" action="{!c.handleChatEnded}" />
+    <aura:attribute name="closedChatList" type="object[]" />
+
+    <aura:registerEvent name="appEvent" type="c:hot_afterworkEvent" />
+    <aura:handler event="c:hot_afterworkEvent" action="{!c.handleThreatReport}" />
+    <aura:attribute name="threatReportList" type="object[]" />
+</aura:component>

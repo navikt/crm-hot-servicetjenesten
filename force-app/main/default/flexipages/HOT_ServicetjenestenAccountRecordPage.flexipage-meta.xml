@@ -104,6 +104,12 @@
         </itemInstances>
         <itemInstances>
             <fieldInstance>
+                <fieldItem>Record.CRM_Person__r.INT_ResidentialZipCode__c</fieldItem>
+                <identifier>RecordCRM_Person_rINT_ResidentialZipCode_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
                 <fieldItem>Record.CRM_Person__r.HOT_MunicipalityUrl__c</fieldItem>
                 <identifier>RecordCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
             </fieldInstance>
