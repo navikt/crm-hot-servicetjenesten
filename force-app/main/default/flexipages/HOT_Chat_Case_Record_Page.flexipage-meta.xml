@@ -101,6 +101,24 @@
                 <identifier>RecordAccountCRM_Person_rINT_ResidentialAddress_cField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.INT_ResidentialZipCode__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rINT_ResidentialZipCode_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.HOT_MunicipalityUrl__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rHOT_MunicipalityUrl_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldItem>Record.Account.CRM_Person__r.HOT_DistrictUrl__c</fieldItem>
+                <identifier>RecordAccountCRM_Person_rHOT_DistrictUrl_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-0dc9fc8b-1e41-4b0f-ad8a-b76973bb397f</name>
         <type>Facet</type>
     </flexiPageRegions>

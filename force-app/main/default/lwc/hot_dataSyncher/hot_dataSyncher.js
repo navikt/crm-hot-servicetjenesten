@@ -7,7 +7,7 @@ import PERSON_ACCOUNT_FIELD from '@salesforce/schema/Person__c.CRM_Account__c';
 import { syncActorOppgaver } from 'c/crmOppgaveSyncher';
 import { resolve } from 'c/hot_componentsUtils';
 
-const syncStatus = {
+const SYNC_STATUS = {
     SYNCING: 'SYNCING',
     SYNCED: 'SYNCED',
     ERROR: 'ERROR'
@@ -25,9 +25,11 @@ export default class hot_dataSyncher extends LightningElement {
     personFields = [PERSON_ACTORID_FIELD, PERSON_IDENT_FIELD, PERSON_ACCOUNT_FIELD];
     initialized = false;
     synced = false;
+    noAccount = false;
 
     connectedCallback() {
-        this.addSyncStatus('oppgave', 'Oppgave', syncStatus.SYNCING);
+        this.noAccount = false;
+        this.addSyncStatus('oppgave', 'Oppgave', SYNC_STATUS.SYNCING);
         this.getRelatedRecordId(this.relationshipField, this.objectApiName);
         this.initialized = true;
     }
@@ -57,7 +59,7 @@ export default class hot_dataSyncher extends LightningElement {
             let personAccountId = getFieldValue(data, PERSON_ACCOUNT_FIELD);
 
             if (personIdent) {
-                this.doSynch(personIdent, personActorId);
+                this.startSynch(personIdent, personActorId, personAccountId);
             }
         }
         if (error) {
@@ -65,7 +67,7 @@ export default class hot_dataSyncher extends LightningElement {
         }
     }
 
-    async doSynch(personIdent, personActorId, eventName = 'e.force:refreshView') {
+    async startSynch(personIdent, personActorId, eventName = 'e.force:refreshView') {
         try {
             this.synced = false;
             await this.oppgaveSync(personActorId);
@@ -80,14 +82,14 @@ export default class hot_dataSyncher extends LightningElement {
     async oppgaveSync(personActorId) {
         try {
             const syncStatusObj = this.getSyncStatus('oppgave');
-            if (syncStatusObj.status !== syncStatus.SYNCING) {
+            if (syncStatusObj.status !== SYNC_STATUS.SYNCING) {
                 return;
             }
 
             await syncActorOppgaver(personActorId);
-            this.setSyncStatus('oppgave', syncStatus.SYNCED);
+            this.setSyncStatus('oppgave', SYNC_STATUS.SYNCED);
         } catch (error) {
-            this.setSyncStatus('oppgave', syncStatus.ERROR);
+            this.setSyncStatus('oppgave', SYNC_STATUS.ERROR);
             console.error('Error in oppgaveSync:', JSON.stringify(error, null, 2));
             throw new Error('Error syncing oppgave: ' + error.message);
         }
@@ -101,8 +103,12 @@ export default class hot_dataSyncher extends LightningElement {
         })
             .then((record) => {
                 let resolvedPersonId = resolve(relationshipField, record);
+                if (record.AccountId == null) {
+                    this.setSyncStatus('oppgave', SYNC_STATUS.ERROR);
+                    this.noAccount = true;
+                }
                 if (this.personId !== resolvedPersonId) {
-                    this.setSyncStatus('oppgave', syncStatus.SYNCING);
+                    this.setSyncStatus('oppgave', SYNC_STATUS.SYNCING);
                     this.personId = resolvedPersonId;
                 }
             })
@@ -145,15 +151,15 @@ export default class hot_dataSyncher extends LightningElement {
     }
 
     calculateSyncStatus(ss) {
-        ss.isSyncing = ss.status === syncStatus.SYNCING;
-        ss.isSynced = ss.status === syncStatus.SYNCED;
-        ss.isError = ss.status === syncStatus.ERROR;
+        ss.isSyncing = ss.status === SYNC_STATUS.SYNCING;
+        ss.isSynced = ss.status === SYNC_STATUS.SYNCED;
+        ss.isError = ss.status === SYNC_STATUS.ERROR;
     }
 
     getSyncStatus(name) {
         return this.syncStatuses.find((element) => element.name === name);
     }
-    get notSynced() {
-        return !this.synced;
+    get showSpinner() {
+        return !this.synced && !this.noAccount;
     }
 }
