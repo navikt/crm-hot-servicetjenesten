@@ -4,7 +4,7 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getRecordNotifyChange } from 'lightning/uiRecordApi';
 import getChatInfo from '@salesforce/apex/HOT_ChatAuthController.getChatInfo';
 import setStatusRequested from '@salesforce/apex/HOT_ChatAuthController.setStatusRequested';
-import getCommunityAuthUrl from '@salesforce/apex/ChatAuthController.getCommunityAuthUrl';
+import getCommunityAuthUrl from '@salesforce/apex/HOT_ChatAuthController.getCommunityAuthUrl';
 import getCounselorName from '@salesforce/apex/HOT_ChatAuthController.getCounselorName';
 
 import { refreshApex } from '@salesforce/apex';
