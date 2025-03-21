@@ -16,31 +16,32 @@ const STATUSES = {
     INPROGRESS: 'InProgress',
     AUTHREQUESTED: 'Authentication Requested'
 };
-labels = {
-    AUTH_STARTED: 'Venter på at bruker skal logge inn',
-    IDENTITY_CONFIRMED_DISCLAIMER: 'Brukeren har bekreftet sin identitet',
-    SEND_AUTH_REQUEST: 'Send autentiseringsforespørsel',
-    SET_TO_REDACTION_LABEL: 'Send til sladding',
-    CHAT_LOGIN_MSG_NO: `Vi veileder deg etter forvaltningsloven § 11. Av hensyn til personvern, ber vi deg om
-    å kun gi oss opplysninger som gjelder det du kontakter oss om. Veilederen har allerede
-    tilgang til saken din. Samtalen blir lagret og kan ikke endres senere. Når samtalen er
-    avsluttet, finner du chatloggen på Ditt Nav og den vil være tilgjengelig for Nav i
-    videre saksgang. Du kan lese mer om hvordan Nav behandler dine personopplysninger her:
-    https://www.nav.no/no/nav-og-samfunn/om-nav/personvern-i-arbeids-og-velferdsetaten`,
-    CHAT_LOGIN_MSG_EN: `We advise you according to forvaltningsloven §11. 
-    To ensure your right to privacy, we ask you to only provide information regarding your case. 
-    The counsellor already has access to your case. The transcript will be stored and cannot be amended after completion. 
-    When the chat is over, you will find the transcript on Ditt Nav and it will be available to Nav for future case handling. 
-    You can read more about how Nav processes your personal data here (norwegian):
-    https://www.nav.no/no/nav-og-samfunn/om-nav/personvern-i-arbeids-og-velferdsetaten`,
-    CHAT_GETTING_AUTH_STATUS: 'Henter autentiseringsstatus',
-    CHAT_SENDING_AUTH_REQUEST: 'Sender autentiseringsforespørsel'
-};
 
 export default class hot_chatAuthenticationInfoV2 extends LightningElement {
     @api recordId;
     @api loggingEnabled;
     @api chatEnded = false;
+
+    labels = {
+        AUTH_STARTED: 'Venter på at bruker skal logge inn',
+        IDENTITY_CONFIRMED_DISCLAIMER: 'Brukeren har bekreftet sin identitet',
+        SEND_AUTH_REQUEST: 'Send autentiseringsforespørsel',
+        SET_TO_REDACTION_LABEL: 'Send til sladding',
+        CHAT_LOGIN_MSG_NO: `Vi veileder deg etter forvaltningsloven § 11. Av hensyn til personvern, ber vi deg om
+    å kun gi oss opplysninger som gjelder det du kontakter oss om. Veilederen har allerede
+    tilgang til saken din. Samtalen blir lagret og kan ikke endres senere. Når samtalen er
+    avsluttet, finner du chatloggen på Ditt Nav og den vil være tilgjengelig for Nav i
+    videre saksgang. Du kan lese mer om hvordan Nav behandler dine personopplysninger her:
+    https://www.nav.no/no/nav-og-samfunn/om-nav/personvern-i-arbeids-og-velferdsetaten`,
+        CHAT_LOGIN_MSG_EN: `We advise you according to forvaltningsloven §11. 
+    To ensure your right to privacy, we ask you to only provide information regarding your case. 
+    The counsellor already has access to your case. The transcript will be stored and cannot be amended after completion. 
+    When the chat is over, you will find the transcript on Ditt Nav and it will be available to Nav for future case handling. 
+    You can read more about how Nav processes your personal data here (norwegian):
+    https://www.nav.no/no/nav-og-samfunn/om-nav/personvern-i-arbeids-og-velferdsetaten`,
+        CHAT_GETTING_AUTH_STATUS: 'Henter autentiseringsstatus',
+        CHAT_SENDING_AUTH_REQUEST: 'Sender autentiseringsforespørsel'
+    };
 
     currentAuthenticationStatus;
     sendingAuthRequest = false;
