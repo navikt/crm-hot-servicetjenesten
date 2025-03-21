@@ -1,0 +1,95 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef1"
+            },
+            "Name": "Feil i brev om stans av dagpenger",
+            "RecordType": {
+                "Name": "News"
+            },
+            "NKS_Information__c": "<p><b>Dette er saker hvor bruker har arbeidet ut over 60 % i 6 uker og dermed har gått i stans.</b></p><p>Teksten i stansvedtaket er ikke riktig. Her vises det til at bruker har jobbet mer enn 50 % i 6 uker. men, her skal det stå 60 %</p><p><br></p><p><img src=\"https://ruby-ruby-1385--c.documentforce.com/servlet/rtaImage?eid=a0L3N000001EDu7&amp;feoid=00N3N000007FDxP&amp;refid=0EM3N000000DMYZ\" alt=\"announcement1.jpeg\"></img></p><p>​​​​​​​Produktområde arbeid (PO Arbeid) jobber nå med å rette opp dette.</p>",
+            "NKS_ImageURL__c": "https://navno.sharepoint.com/_api/v2.1/sites/navno.sharepoint.com,dfbc8901-9846-417e-981f-437ccd333628,6408591b-3731-46ea-9f4a-a2d14008476a/items/05f9b665-3530-4a4d-a021-8acb3e324138/driveItem/thumbnails/0/c960x99999/content?preferNoRedirect=true&prefer=e"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef2"
+            },
+            "Name": "Saksbehandling for søknad om dagpenger med start etter 1. november.",
+            "RecordType": {
+                "Name": "News"
+            },
+            "NKS_Information__c": "<p><b>Leveransen lørdag 31. oktober ble levert som planlagt, og NAV Arbeid og ytelser kan derfor nå innvilge dagpenger til personer også fra den 1. november eller senere.</b></p><p><br></p><p>Opprinnelig melding 29.10.20:</p><p>Hvis bruker har søkt om dagpenger med virkningstidspunkt fra 1.november eller senere, så kan vi få henvendelser hvor bruker etterlyser svar på søknaden.</p><p>NAV Arbeid og ytelser behandler for tiden ingen søknader om dagpenger med virkningstidspunkt (startdato) fra 1. november eller senere. Årsaken er regelverksendringer fra den datoen, som vi må få oppdatert i fagsystemene først, for at utfall i saken skal bli rett.</p><p>Informer gjerne bruker om dette, og henvis eller til saksbehandlingstidene på <a href=\"https://www.nav.no/no/nav-og-samfunn/om-nav/saksbehandlingstider-i-nav\" target=\"_blank\" style=\"color: rgb(0, 120, 212);\">nav.no.</a></p><p>Gi også informasjon om viktigheten av å sende inn meldekort til riktig tid også for perioden du venter på svar på søknaden din.</p><p>Vi kommer tilbake med informasjon når fagsystemene er oppdaterte og NAV Arbeid og ytelser begynner med saksbehandling av disse søknadene som per i dag ligger på «vent».</p>",
+            "NKS_ImageURL__c": "https://navno.sharepoint.com/_api/v2.1/sites/navno.sharepoint.com,dfbc8901-9846-417e-981f-437ccd333628,6408591b-3731-46ea-9f4a-a2d14008476a/items/d8f57f96-a7d4-4246-b7f2-477cac205439/driveItem/thumbnails/0/c400x99999/content?preferNoRedirect=true&prefer=e"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef3"
+            },
+            "Name": "Felles svarberedskap for permittering",
+            "RecordType": {
+                "Name": "News"
+            },
+            "NKS_Information__c": "<p>Vi har nå publisert en felles svarberedskap for permittering som gjelder både for arbeidstakere og for arbeidsgivere som tar kontakt med oss. </p><p>Den nye svarberedskapen finner du <a href=\"https://navno.sharepoint.com/sites/enhet-kontaktsenter/SitePages/Grunnoppl%C3%A6ring-Permitering.aspx\" target=\"_blank\" style=\"color: rgb(0, 120, 212);\">her</a>. </p><h3><br></h3><h3>Svarberedskap Korona</h3><p>På den felles <a href=\"https://navno.sharepoint.com/sites/enhet-kontaktsenter/SitePages/Koronavirus--.aspx\" target=\"_blank\" style=\"color: rgb(0, 120, 212);\">svarberedskapen for korona</a> finner du nå alt om permittering under &quot;dette svarer alle på. Avsnittene om permittering i svarberedskapene på Arbeid og Arbeidsgiver er derfor slettet og innholdet flyttet til denne felles svarberedskapen.</p><p><br></p><p><img src=\"https://ruby-ruby-1385--c.documentforce.com/servlet/rtaImage?eid=a0L3N000001EE55&amp;feoid=00N3N000007FDxP&amp;refid=0EM3N000000DMYj\" alt=\"ann2.png\"></img></p><h3>Telleverk</h3><p>Etter innføringa av nytt regelverk fra 1. november har våre fagsystemer blitt oppdaterte i helga.</p><p>Dette innebærer at vi igjen kan begynne å bruke telleverket forbruk dagpenger og forbruk permitteringsperiode i Arena og Modia.</p><p>​​​​​​​Det vil være enkelte som må håndteres manuelt, men det store flertall skal være oppdatert.</p>",
+            "NKS_ImageURL__c": "https://navno.sharepoint.com/_api/v2.1/sites/navno.sharepoint.com,dfbc8901-9846-417e-981f-437ccd333628,6408591b-3731-46ea-9f4a-a2d14008476a/items/5dcb9661-30e7-4bb4-955e-a5dde209e74b/driveItem/thumbnails/0/c400x99999/content?preferNoRedirect=true&prefer=e"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef4"
+            },
+            "Name": "OPPDATERT: Arena - Ikke mulig å slette diagnoser",
+            "RecordType": {
+                "Name": "Operational"
+            },
+            "NKS_Information__c": "<p>Det har oppstått en feil i Arena som gjør at det ikke er mulig å slette diagnoser i Arena med sletteknappen.</p><p><br></p><p>Feilen oppleves oftest i forbindelse med oppgaven «Forbered vedtak - § 11-5» og vil derfor forsinke saksbehandlingen på AAP. En mulig «workaround» er å gå inn i feltene manuelt og oppdatere feltene med ny diagnose.</p><p><br></p><p>Feilen var planlagt rettet onsdag 04.11.2020, men ble forsinket, nytt tidspunkt er fredag 06.11.2020.</p>"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef5"
+            },
+            "Name": "FRISTER FOR KJØP AV IKT-, VIDEO- OG AV-UTSTYR - PÅ ÅRETS BUDSJETT",
+            "RecordType": {
+                "Name": "Operational"
+            },
+            "NKS_Information__c": "<p><b>PC/klienter og skjermer</b> (Dustin) : <b>1. november </b>(NB! PC bør bestilles så snart beslutning om innkjøp er tatt pga leveringsutfordringer)</p><p><br></p><p><b>Videoutstyr</b> (Kinly) : <b>15. oktober</b></p><p>AV-utstyr m installasjon (Kinly) : 25. oktober</p><p><br></p><p><b>Skrivere</b> (Atea) : <b>20. november</b></p><p><br></p><p>Minner også på at det <b>IKKE</b> er tillatt med forskuddsfaktura!</p>"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef6"
+            },
+            "Name": "Nedetid på Tableau tirsdag kveld",
+            "RecordType": {
+                "Name": "Operational"
+            },
+            "NKS_Information__c": "<p><span style=\"font-size: 18px; color: rgb(50, 49, 48);\">​​​​​​​Tableau blir utilgjengelig fra klokken 22:00 til 23:00 i kveld, tirsdag 3. november 2020 på grunn av oppdatering av lisensnøkler.</span></p>"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef7"
+            },
+            "Name": "Ukas tips",
+            "RecordType": {
+                "Name": "News"
+            },
+            "NKS_Information__c": "<p><b>Hurtigtaster i Teams! </b></p><p><br></p><p>Enten du er lat eller ikke er hurtigtaster en effektiv måte å jobbe på. Visste du at du kan slå av og på lyden og videokameraet ved hjelp av tastaturet? </p><p><br></p><p>Bruk CTRL + M for å slå av og på lyden. </p><p>Bruk CTRL + O for å slå av og på lyden. </p>"
+        },
+        {
+            "attributes": {
+                "type": "NKS_Announcement__c",
+                "referenceId": "NKS_Announcement__cRef8"
+            },
+            "Name": "Trafikkstyrers hjørne",
+            "RecordType": {
+                "Name": "Traffic"
+            },
+            "NKS_Information__c": "<p>OBS: Dette er en viktig melding om dagen i dag.<br>Det er viktig at alle leser denne superviktige meldingen. Hvis du lurer på noe ta kontakt med superbrukeren din.<br><br> Overtid<br>Overtid mandag 1. oktober.<br><br>Vi åpner for overtid fra kl 15.30 til 18.00 i dag. Du melder deg til overtid i Calabrio før kl 14 i dag.<br><br>Stengtmeldinger<br>Oppdatert kl. 10. 31<br><br>01. januar - problemene ser ut til å være løst og vi åpner telefon kl 10.45. Chat åpnes kl 11.<br><br>Driftsmeldinger<br>TVD-P i FSS utilgjengelig<br>01.11.2021, kl. 10.47<br>TDV-P i FSS blir utilgjengelig i dag mandag 01. november i forbindelse med en restart mellom klokken 16.30 og 17.30.<br><br>Problemer med treghet på nettverk og tilgang til NAV apps<br>01.11.2021, kl. 08.24 - Oppdatert kl. 10.49<br>Det er oppdaget tregheter på vårt nettverk grunnet høy last som følge av programvareoppdateringer for våre maskiner.<br><br>Dette påvirker også tilgang til NAV-applikasjoner vis Citrix fra hjemmekontor.<br><br>Nettverksavdelingen jobber med saken.</p>"
+        }
+    ]
+}
