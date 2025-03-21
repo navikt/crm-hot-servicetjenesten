@@ -364,6 +364,15 @@
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>personRelationField</name>
+                </componentInstanceProperties>
+                <componentName>hot_accessErrorMessage</componentName>
+                <identifier>c_hot_accessErrorMessage</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>main</name>
         <type>Region</type>
     </flexiPageRegions>
