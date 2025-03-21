@@ -1,0 +1,16 @@
+.custom-button {
+    --slds-c-button-radius-border: 15rem;
+    --slds-c-button-brand-color-background: #ffaa33;
+    --slds-c-button-brand-color-border: #ffaa33;
+    --slds-c-button-brand-color-background-hover: #ffc166;
+    --slds-c-button-brand-color-border-hover: #ffc166;
+    --slds-c-button-brand-color-background-active: #ffc166;
+    --slds-c-button-brand-text-color: black;
+    --slds-c-button-brand-text-color-active: black;
+    --slds-c-button-brand-text-color-hover: black;
+}
+
+.custom-badge {
+    --slds-c-badge-color-background: #ffb24914;
+    --slds-c-badge-color-border: #ffb249;
+}

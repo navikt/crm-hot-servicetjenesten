@@ -1,0 +1,3 @@
+<design:component label="HOT Chat Authentication Container v. 2 SERVICETJENESTEN">
+    <design:attribute label="Enable logging to console" name="loggingEnabled" default="false" />
+</design:component>

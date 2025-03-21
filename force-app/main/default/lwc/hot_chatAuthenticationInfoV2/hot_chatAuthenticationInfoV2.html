@@ -1,0 +1,56 @@
+<template>
+    <c-hot_button-container-top
+        record-id={recordId}
+        channel-name="Chat"
+        flow-api-name="HOT_Chat_Set_To_Redaction.flow-meta"
+        flow-button-label={labels.SET_TO_REDACTION_LABEL}
+    ></c-hot_button-container-top>
+    <div class="slds-border_bottom slds-var-p-horizontal_medium slds-var-p-bottom_medium slds-var-p-top_small">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate slds-grid">
+            <div class="slds-media__figure">
+                <lightning-icon icon-name="standard:messaging_user" size="small"></lightning-icon>
+            </div>
+            <div class="slds-media__body">
+                <h2 class="slds-card__header-title">
+                    <span class="slds-text-heading_small slds-truncate">Chat</span>
+                </h2>
+            </div>
+        </header>
+        <template lwc:if={showAuthInfo}>
+            <div class="slds-no-flex slds-var-p-top_small">
+                <template lwc:if={isLoading}>
+                    <div class="slds-var-p-vertical_small">
+                        <lightning-spinner size="medium" title={labels.CHAT_GETTING_AUTH_STATUS}> </lightning-spinner>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <template lwc:if={authenticationComplete}>
+                        <lightning-badge
+                            class="slds-theme_success slds-align_absolute-center slds-button_stretch slds-var-p-vertical_small"
+                            label={labels.IDENTITY_CONFIRMED_DISCLAIMER}
+                        ></lightning-badge>
+                    </template>
+                    <template lwc:elseif={isAuthenticating}>
+                        <lightning-badge
+                            class="slds-align_absolute-center slds-button_stretch slds-var-p-vertical_small custom-badge"
+                            label={labels.AUTH_STARTED}
+                        ></lightning-badge>
+                    </template>
+                    <template lwc:elseif={sendingAuthRequest}>
+                        <lightning-spinner size="medium" title={labels.CHAT_SENDING_AUTH_REQUEST}></lightning-spinner>
+                    </template>
+                    <template lwc:else>
+                        <button
+                            class="slds-button slds-button_brand slds-button_stretch slds-var-p-vertical_xx-small custom-button"
+                            title={labels.SEND_AUTH_REQUEST}
+                            disabled={cannotInitAuth}
+                            onclick={requestAuthentication}
+                        >
+                            {labels.SEND_AUTH_REQUEST}
+                        </button>
+                    </template>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>
