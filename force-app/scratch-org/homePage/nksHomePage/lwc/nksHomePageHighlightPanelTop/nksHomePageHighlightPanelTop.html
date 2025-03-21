@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-grid slds-grid_vertical-align-center container">
+        <div class="icon-container" aria-hidden="true">
+            <lightning-icon
+                icon-name="utility:home"
+                alternative-text="Home"
+                size="medium"
+                class="home-icon"
+            ></lightning-icon>
+        </div>
+        <div class="slds-page-header__title custom-padding-left">
+            <h1>Hjem</h1>
+        </div>
+        <div class="slds-col_bump-left">
+            <c-nks-home-page-highlight-panel-badge
+                class="slds-var-p-right_medium"
+                record-id={fagsystemId}
+                record-info={fagsystemInfo}
+                badge-label="Status fagsystemer"
+                show-content={showFagsystemContent}
+                onbadgeclick={handleBadgeClick}
+            ></c-nks-home-page-highlight-panel-badge>
+            <c-nks-home-page-highlight-panel-badge
+                record-id={navId}
+                record-info={navInfo}
+                badge-label="Status Nav.no"
+                show-content={showNavContent}
+                onbadgeclick={handleBadgeClick}
+            ></c-nks-home-page-highlight-panel-badge>
+        </div>
+    </div>
+</template>

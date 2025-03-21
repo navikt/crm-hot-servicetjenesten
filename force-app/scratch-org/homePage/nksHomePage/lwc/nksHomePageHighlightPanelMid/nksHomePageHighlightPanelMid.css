@@ -1,0 +1,16 @@
+.container {
+    min-height: 2.5rem;
+    height: auto;
+    display: flex;
+    align-items: center;
+    background-color: #2b5157;
+}
+
+.content-padding {
+    padding-right: 2.5rem;
+}
+
+.margin-area {
+    min-width: 5rem;
+    max-width: 5rem;
+}

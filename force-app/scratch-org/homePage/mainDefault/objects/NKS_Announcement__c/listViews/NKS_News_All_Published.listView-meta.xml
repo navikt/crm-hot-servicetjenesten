@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_News_All_Published</fullName>
+    <columns>NAME</columns>
+    <columns>NKS_News_Publish_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>Skills__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>NKS_Announcement__c.News</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Status__c</field>
+        <operation>equals</operation>
+        <value>Published</value>
+    </filters>
+    <label>Nyhet - Alle nyheter</label>
+</ListView>

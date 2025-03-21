@@ -1,0 +1,50 @@
+.badge-container {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-badge {
+    color: white;
+    border: 2px white solid;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    font-size: 0.875rem;
+    font-weight: normal;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge-icon {
+    --slds-c-icon-color-foreground-default: #fff;
+}
+
+.dropdown-content {
+    position: absolute;
+    z-index: 1001;
+    width: auto;
+    min-width: 400px;
+    right: 0rem;
+    background-color: #2b5157;
+    color: #fff;
+    margin-top: 1.6rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.headerLine {
+    width: 100%;
+    height: 0.5rem;
+    background: var(--badge-line, #ad0000);
+}
+
+.disabled-badge {
+    pointer-events: none;
+}

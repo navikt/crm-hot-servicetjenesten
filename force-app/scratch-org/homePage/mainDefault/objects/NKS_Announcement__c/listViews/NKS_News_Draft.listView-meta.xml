@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_News_Draft</fullName>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>NKS_News_Author__c</columns>
+    <columns>Skills__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>NKS_Announcement__c.News</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Status__c</field>
+        <operation>equals</operation>
+        <value>Draft</value>
+    </filters>
+    <label>Nyhet - Utkast</label>
+    <sharedTo>
+        <group>NKS_News_Editors</group>
+    </sharedTo>
+</ListView>

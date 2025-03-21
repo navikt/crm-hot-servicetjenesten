@@ -1,0 +1,10 @@
+img {
+    display: block;
+    height: auto;
+    border-radius: 0.25rem;
+    border: solid 1px transparent;
+}
+
+img:hover {
+    border-color: #ffffff;
+}

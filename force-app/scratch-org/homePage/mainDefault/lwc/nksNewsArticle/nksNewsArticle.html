@@ -1,0 +1,104 @@
+<template>
+    <h1 class="sr-only">{title}</h1>
+    <section class="slds-box slds-theme_default slds-is-relative">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12" aria-hidden="true">
+                <lightning-layout class="slds-grid slds-gutters slds-var-p-left_large">
+                    <lightning-layout-item class="slds-col slds-size_8-of-12 slds-p-right_none">
+                        <lightning-layout size="12" multiple-rows="true">
+                            <lightning-layout-item class="slds-size_12-of-12 slds-var-p-top_small">
+                                Forfatter:&nbsp;{author}.&nbsp;&nbsp;Publisert:&nbsp;
+                                <lightning-formatted-date-time
+                                    value={publishDate}
+                                    year="numeric"
+                                    month="long"
+                                    day="numeric"
+                                    hour="2-digit"
+                                    minute="2-digit"
+                                ></lightning-formatted-date-time>
+                                .&nbsp;&nbsp;
+                                <template if:true={lastUpdatedDate}>
+                                    Oppdatert:&nbsp;<lightning-formatted-date-time
+                                        value={lastUpdatedDate}
+                                        year="numeric"
+                                        month="long"
+                                        day="numeric"
+                                        hour="2-digit"
+                                        minute="2-digit"
+                                    ></lightning-formatted-date-time
+                                    >.
+                                </template>
+                            </lightning-layout-item>
+                            <template if:true={otherAuthors}>
+                                <lightning-layout-item class="slds-size_12-of-12 slds-var-p-top_small">
+                                    Andre forfattere:&nbsp;{otherAuthors}
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </lightning-layout-item>
+                    <lightning-layout-item class="slds-col slds-size_4-of-12">
+                        <template if:true={enableRefresh}>
+                            <lightning-button-icon
+                                class="slds-float_right"
+                                alternative-text="Oppdater"
+                                icon-name="utility:refresh"
+                                onclick={refreshRecord}
+                            ></lightning-button-icon>
+                        </template>
+                        <template if:true={showSpinner} class="slds-spinner_container">
+                            <lightning-spinner title="Loading" size="medium" type="brand"></lightning-spinner>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <lightning-layout-item size="12">
+                <lightning-layout class="slds-grid slds-gutters slds-var-p-top_large slds-var-p-left_large">
+                    <lightning-layout-item class="slds-col slds-size_8-of-12 slds-p-right_none">
+                        <lightning-formatted-rich-text value={information}></lightning-formatted-rich-text>
+                    </lightning-layout-item>
+                    <lightning-layout-item
+                        class="slds-col slds-size_4-of-12 slds-align-top slds-text-align_right slds-m-right_none"
+                    >
+                        <img aria-hidden="true" src={imageURL} style="max-height: 180px" />
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+            <div class="sr-only">
+                <h2>Detaljert informasjon</h2>
+                <span> Forfatter:&nbsp;{author}</span>
+                <span>
+                    Publisert:&nbsp;
+                    <lightning-formatted-date-time
+                        value={publishDate}
+                        year="numeric"
+                        month="long"
+                        day="numeric"
+                        hour="2-digit"
+                        minute="2-digit"
+                    ></lightning-formatted-date-time>
+                </span>
+                <template if:true={lastUpdatedDate}>
+                    <span>
+                        &nbsp;Oppdatert:&nbsp;<lightning-formatted-date-time
+                            value={lastUpdatedDate}
+                            year="numeric"
+                            month="long"
+                            day="numeric"
+                            hour="2-digit"
+                            minute="2-digit"
+                        ></lightning-formatted-date-time>
+                    </span>
+                </template>
+                <template if:true={otherAuthors}>
+                    <span>Andre forfattere:&nbsp;{otherAuthors}</span>
+                </template>
+            </div>
+            <template if:true={hasPermission}>
+                <lightning-layout-item size="12" class="slds-var-p-top_small slds-text-align_right">
+                    <lightning-icon class="" icon-name="utility:preview" size="x-small"></lightning-icon>&nbsp;&nbsp;
+                    <span>{numOfViews}</span>&nbsp; views
+                </lightning-layout-item>
+            </template>
+        </lightning-layout>
+    </section>
+</template>

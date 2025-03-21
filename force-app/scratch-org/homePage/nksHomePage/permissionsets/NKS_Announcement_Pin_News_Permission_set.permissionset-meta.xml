@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>NKS_Pin_News</name>
+    </customPermissions>
+    <description>Permission set to give access to pin the news in the newsfeed.</description>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>NKS_Announcement__c.NKS_News_Pin__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>NKS_Announcement__c.NKS_TypeFormula__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>NKS - Announcement Pin News Permission set</label>
+    <objectPermissions>
+        <allowCreate>false</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>NKS_Announcement__c</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <recordTypeVisibilities>
+        <recordType>NKS_Announcement__c.News</recordType>
+        <visible>true</visible>
+    </recordTypeVisibilities>
+    <tabSettings>
+        <tab>NKS_Announcement__c</tab>
+        <visibility>Visible</visibility>
+    </tabSettings>
+</PermissionSet>

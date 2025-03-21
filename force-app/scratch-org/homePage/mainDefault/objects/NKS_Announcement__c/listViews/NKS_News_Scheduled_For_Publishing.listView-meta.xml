@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_News_Scheduled_For_Publishing</fullName>
+    <booleanFilter>(1 AND 2 AND 3 AND 4) OR (4 AND 5 AND 6)</booleanFilter>
+    <columns>NAME</columns>
+    <columns>CREATEDBY_USER</columns>
+    <columns>CREATED_DATE</columns>
+    <columns>UPDATEDBY_USER</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>NKS_News_Author__c</columns>
+    <columns>NKS_News_Publish_Date__c</columns>
+    <columns>Skills__c</columns>
+    <columns>NKS_News_Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NKS_News_Status__c</field>
+        <operation>equals</operation>
+        <value>Draft</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Publish_Date__c</field>
+        <operation>notEqual</operation>
+    </filters>
+    <filters>
+        <field>NKS_News_Publish_Date__c</field>
+        <operation>greaterOrEqual</operation>
+        <value>TODAY</value>
+    </filters>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>NKS_Announcement__c.News</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Status__c</field>
+        <operation>equals</operation>
+        <value>Published</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Publish_Date__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Nyhet - Planlagte nyheter</label>
+    <sharedTo>
+        <group>NKS_News_Editors</group>
+    </sharedTo>
+</ListView>

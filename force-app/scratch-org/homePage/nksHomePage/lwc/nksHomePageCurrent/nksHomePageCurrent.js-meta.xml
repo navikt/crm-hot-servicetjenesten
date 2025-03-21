@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>NKS Home page Current</masterLabel>
+    <targets>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__HomePage">
+            <property name="cardLabel" type="String" label="Card Label" default="Aktuelt fra Navet" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
