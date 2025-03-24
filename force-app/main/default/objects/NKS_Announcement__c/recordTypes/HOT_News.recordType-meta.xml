@@ -2,6 +2,7 @@
 <RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HOT_News</fullName>
     <active>true</active>
+    <compactLayoutAssignment>HOT_News_Compact_Layout</compactLayoutAssignment>
     <label>HOT News</label>
     <picklistValues>
         <picklist>NKS_News_Status__c</picklist>
