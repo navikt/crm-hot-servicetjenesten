@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Layout xmlns="http://soap.sforce.com/2006/04/metadata">
     <excludeButtons>Delete</excludeButtons>
+    <excludeButtons>OpenSlackRecordChannel</excludeButtons>
     <excludeButtons>Submit</excludeButtons>
     <layoutSections>
         <customLabel>true</customLabel>
@@ -35,10 +36,6 @@
             <layoutItems>
                 <behavior>Edit</behavior>
                 <field>NKS_News_Pin__c</field>
-            </layoutItems>
-            <layoutItems>
-                <behavior>Edit</behavior>
-                <field>NKS_Send_Notification__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
