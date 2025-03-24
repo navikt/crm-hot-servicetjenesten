@@ -78,6 +78,71 @@
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardLabel</name>
+                    <value>Viktig informasjon</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>content</name>
+                    <value>NKS_Information__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>datefield</name>
+                    <value>NKS_News_Publish_Date__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filter</name>
+                    <value>(NKS_News_Publish_Date__c = LAST_N_DAYS:30 OR NKS_News_Update_Date__c = LAST_N_DAYS:30 OR NKS_News_Pin__c = TRUE) AND RecordType.DeveloperName = &apos;HOT_News&apos; AND NKS_News_Status__c = &apos;Published&apos;</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>filterbyskills</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>iconName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>limit</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>linklabel</name>
+                    <value>Vis alle</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listviewname</name>
+                    <value>HOT_Alle_nyheter</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>objectName</name>
+                    <value>NKS_Announcement__c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>orderby</name>
+                    <value>NKS_News_Pin__c DESC, NKS_News_Sorting_Date__c DESC NULLS LAST</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>refreshPageAutomatically</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showimage</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Name</value>
+                </componentInstanceProperties>
+                <componentName>nksHomePageList</componentName>
+                <identifier>c_nksHomePageList</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
