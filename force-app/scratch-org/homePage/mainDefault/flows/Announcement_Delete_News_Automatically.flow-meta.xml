@@ -57,7 +57,7 @@
         <connector>
             <targetReference>isToday</targetReference>
         </connector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>(1 OR 3) AND 2</filterLogic>
         <filters>
             <field>NKS_TypeFormula__c</field>
             <operator>EqualTo</operator>
@@ -70,6 +70,13 @@
             <operator>IsNull</operator>
             <value>
                 <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>NKS_TypeFormula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>HOT Nyhet</stringValue>
             </value>
         </filters>
         <object>NKS_Announcement__c</object>

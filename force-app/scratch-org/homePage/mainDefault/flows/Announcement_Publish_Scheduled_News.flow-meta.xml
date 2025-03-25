@@ -47,7 +47,7 @@
         <locationX>50</locationX>
         <locationY>0</locationY>
         <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
-        <filterLogic>and</filterLogic>
+        <filterLogic>(1 OR 3) AND 2</filterLogic>
         <filters>
             <field>NKS_TypeFormula__c</field>
             <operator>EqualTo</operator>
@@ -60,6 +60,13 @@
             <operator>EqualTo</operator>
             <value>
                 <stringValue>Draft</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>NKS_TypeFormula__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>HOT Nyhet</stringValue>
             </value>
         </filters>
         <object>NKS_Announcement__c</object>
