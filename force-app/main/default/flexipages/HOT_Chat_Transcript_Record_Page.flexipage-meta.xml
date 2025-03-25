@@ -411,6 +411,16 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>loggingEnabled</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>hot_chatAuthenticationInfoContainerV2</componentName>
+                <identifier>c_hot_chatAuthenticationInfoContainerV2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>chatHeight</name>
                     <value>700</value>
                 </componentInstanceProperties>
