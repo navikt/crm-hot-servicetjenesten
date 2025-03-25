@@ -81,6 +81,32 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Informasjon fra sentralene</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>enableRefresh</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>iconName</name>
+                    <value>standard:announcement</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>listViewName</name>
+                    <value>Recent</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>type</name>
+                    <value>HOT_Info</value>
+                </componentInstanceProperties>
+                <componentName>hot_homePageText</componentName>
+                <identifier>c_hot_homePageText</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>cardLabel</name>
                     <value>Viktig informasjon</value>
                 </componentInstanceProperties>
@@ -103,9 +129,6 @@
                 <componentInstanceProperties>
                     <name>filterbyskills</name>
                     <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>iconName</name>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>limit</name>
