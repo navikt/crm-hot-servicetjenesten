@@ -229,7 +229,8 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         this.isRefreshDisabled = true;
         await refreshApex(this.wiredResults);
         this.showSpinner = false;
-        setTimeout(() => { // 10 sec delay to avoid spamming requests
+        setTimeout(() => {
+            // 10 sec delay to avoid spamming requests
             this.isRefreshDisabled = false;
         }, 10000);
     }
