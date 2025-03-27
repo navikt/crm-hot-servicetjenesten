@@ -63,12 +63,12 @@ export default class NksHomePageListEntry extends NavigationMixin(LightningEleme
         const date = dateToCheck.getDate();
         const month = dateToCheck.toLocaleString('no', { month: 'long' });
 
-        const roundedNumOfDays = Math.trunc(numOfDays);
+        const roundedNumOfDays = Math.floor(numOfDays);
 
         if (this.isToday(dateToCheck)) {
             res = `${inputTxt} i dag kl. ${hour}:${minutes}`;
         } else {
-            if (numOfDays > 0 && numOfDays < 1) {
+            if (roundedNumOfDays > 0 && roundedNumOfDays < 1) {
                 res = `${inputTxt} i går kl. ${hour}:${minutes}`;
             }
             if (roundedNumOfDays >= 1 && roundedNumOfDays <= 6) {

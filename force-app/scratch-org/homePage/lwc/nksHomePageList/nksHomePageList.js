@@ -27,6 +27,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
     @api enableRefresh = false;
     @api filter = "Name = 'Navn'";
 
+    _filter = this.filter;
     records = [];
     userSkills = [];
     showSpinner = false;
@@ -39,7 +40,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         this.showSpinner = true;
         this.setWireParameters();
         if (this.isSTO || this.objectName === 'LiveChatTranscript') {
-            this.filter += " AND OwnerId='" + userId + "'";
+            this._filter += " AND OwnerId='" + userId + "'";
         }
         if (this.filterbyskills) {
             this.fetchUserSkills();
@@ -75,7 +76,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         title: '$title',
         content: '$content',
         objectName: '$objectNameForCase',
-        filter: '$filter',
+        filter: '$_filter',
         orderBy: '$orderby',
         limitNumber: '$limit',
         dateField: '$datefield'
@@ -90,7 +91,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         title: '$title',
         content: '$content',
         objectName: '$objectNameForAnnouncement',
-        filter: '$filter',
+        filter: '$_filter',
         orderBy: '$orderby',
         limitNumber: '$limit',
         dateField: '$datefield',
@@ -108,7 +109,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         title: '$title',
         content: '$content',
         objectName: '$objectNameForKnowledge',
-        filter: '$filter',
+        filter: '$_filter',
         orderBy: '$orderby',
         limitNumber: '$limit',
         dateField: '$datefield',
@@ -126,7 +127,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         title: '$title',
         content: '$content',
         objectName: '$objectNameForGeneral',
-        filter: '$filter',
+        filter: '$_filter',
         orderBy: '$orderby',
         limitNumber: '$limit',
         dateField: '$datefield'
@@ -144,7 +145,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         } else if (result.error) {
             this.handleError(result.error);
         }
-
+        // eslint-disable-next-line @lwc/lwc/no-async-operation, @locker/locker/distorted-window-set-timeout
         setTimeout(() => {
             this.showSpinner = false;
         }, 100);
@@ -229,6 +230,7 @@ export default class nksHomePageList extends NavigationMixin(LightningElement) {
         this.isRefreshDisabled = true;
         await refreshApex(this.wiredResults);
         this.showSpinner = false;
+        // eslint-disable-next-line @lwc/lwc/no-async-operation, @locker/locker/distorted-window-set-timeout
         setTimeout(() => {
             // 10 sec delay to avoid spamming requests
             this.isRefreshDisabled = false;
