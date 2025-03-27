@@ -1094,7 +1094,7 @@
         </fields>
         <fields>
             <name>Conversation_Summary_Journal</name>
-            <extensionName>c:hot_quickText</extensionName>
+            <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteRich</name>
@@ -1104,6 +1104,12 @@
             </inputParameters>
             <inputParameters>
                 <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>useForConversationNote</name>
                 <value>
                     <booleanValue>true</booleanValue>
                 </value>
@@ -1207,7 +1213,7 @@
         </fields>
         <fields>
             <name>Conversation_Summary</name>
-            <extensionName>c:hot_quickText</extensionName>
+            <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteRich</name>
@@ -1217,6 +1223,12 @@
             </inputParameters>
             <inputParameters>
                 <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>useForConversationNote</name>
                 <value>
                     <booleanValue>true</booleanValue>
                 </value>
@@ -1370,7 +1382,7 @@
         </fields>
         <fields>
             <name>Conversation_Summary_Conversation_Note</name>
-            <extensionName>c:hot_quickText</extensionName>
+            <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteRich</name>
@@ -1380,6 +1392,12 @@
             </inputParameters>
             <inputParameters>
                 <name>required</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>useForConversationNote</name>
                 <value>
                     <booleanValue>true</booleanValue>
                 </value>
