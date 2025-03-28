@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NKS_TypeFormula__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(RecordType.DeveloperName, &apos;News&apos;, &apos;Nyhet&apos;, &apos;Campaign&apos;, &apos;Kampanje&apos;, &apos;Operational&apos;, &apos;Teknisk og drift&apos;, 
+        &apos;Salesforce_Update&apos;, &apos;Salesforce oppdatering&apos;, &apos;Traffic&apos;, &apos;Trafikk&apos;,
+        &apos;NKS_Status&apos;, &apos;NKS status&apos;, &apos;HOT_News&apos;, &apos;HOT Nyhet&apos;, &apos;HOT_Info&apos;, &apos;HOT Info&apos;,&apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
