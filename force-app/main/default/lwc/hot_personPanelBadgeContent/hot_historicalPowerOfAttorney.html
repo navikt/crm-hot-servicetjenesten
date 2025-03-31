@@ -8,7 +8,12 @@
                     <div key={fullmakt}>
                         <p><Strong>Periode:</Strong> {fullmakt.periode}</p>
                         <p><Strong>Navn:</Strong> {fullmakt.fullmektigsNavn}</p>
-                        <p><Strong>Område:</Strong> For langt (sikkert)</p>
+                        <p>Områder:</p>
+                        <template for:each={fullmakt.formattedOmraadeListByThemeGroup} for:item="omraade">
+                            <div key={omraade.themeGroup} class="slds-line-clamp" title={omraade.temaString}>
+                                <p><strong>{omraade.themeGroup}</strong>: {omraade.temaString}</p>
+                            </div>
+                        </template>
                         <p><Strong>Status:</Strong> {fullmakt.status}</p>
                     </div>
                 </template>

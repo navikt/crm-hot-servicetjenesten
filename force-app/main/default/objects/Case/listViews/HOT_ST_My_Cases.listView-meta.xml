@@ -16,6 +16,11 @@
         <operation>equals</operation>
         <value>Case.STO_Case</value>
     </filters>
+    <filters>
+        <field>CASES.STATUS</field>
+        <operation>equals</operation>
+        <value>Reserved,On Hold,In progress,New,Forwarded,Escalated</value>
+    </filters>
     <label>Servicetjenesten Mine saker</label>
     <sharedTo>
         <group>HOT_Servicetjenesten_AD</group>
