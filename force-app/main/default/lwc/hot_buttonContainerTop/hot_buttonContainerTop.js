@@ -41,7 +41,7 @@ export default class hotButtonContainerTop extends LightningElement {
 
     handleStatusChange(event) {
         const { status, outputVariables } = event.detail;
-        if (status === 'FINISHED' || status === 'FINISHED_SCREEN') {
+        if ((status === 'FINISHED' || status === 'FINISHED_SCREEN') && outputVariables != null) {
             this.showFlow = false;
             publishToAmplitude(this.channelName, { type: this.flowButtonLabel + ' finished' });
             this.publishMessage(outputVariables);
