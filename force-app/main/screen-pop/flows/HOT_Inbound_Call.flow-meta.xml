@@ -5,7 +5,7 @@
         <name>Recirect_to_Account</name>
         <label>Recirect to Account</label>
         <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -24,7 +24,7 @@
         <name>Redirect_To_Case</name>
         <label>Redirect To Case</label>
         <locationX>50</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,7 +43,7 @@
         <name>Redirect_To_Case_0</name>
         <label>Redirect To Case</label>
         <locationX>842</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -62,7 +62,7 @@
         <name>Case_Assignment</name>
         <label>Case Assignment</label>
         <locationX>50</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.AccountId</assignToReference>
             <operator>Assign</operator>
@@ -105,6 +105,13 @@
                 <elementReference>THEME_GROUP_ID</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_recordtype.Id</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case</targetReference>
         </connector>
@@ -113,7 +120,7 @@
         <name>Case_Assignment_0</name>
         <label>Case Assignment</label>
         <locationX>842</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.Origin</assignToReference>
             <operator>Assign</operator>
@@ -163,6 +170,17 @@
                 <elementReference>PUZZEL_QUEUE_NAME</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_recordtype.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.HOT_Innringer__c</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case_0</targetReference>
         </connector>
@@ -179,7 +197,7 @@
         <name>Check_Call_Queue_0</name>
         <label>Check Call Queue</label>
         <locationX>1106</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>Personbruker</name>
@@ -242,7 +260,7 @@
         <name>Check_identifier</name>
         <label>Check identifier</label>
         <locationX>578</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>Check_Call_Queue_0</targetReference>
         </defaultConnector>
@@ -282,7 +300,7 @@
         <name>Verify_Account</name>
         <label>Verify Account</label>
         <locationX>446</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Found_Account</name>
@@ -308,7 +326,8 @@
         </rules>
     </decisions>
     <description>Flow to be used with SoftPhone Layout in order to create a case and redirect to the case
-Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidler only has one</description>
+V1. Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidler only has one
+V2. Added Recordtype handling and enquirylog to collect Caller number and store on Case</description>
     <environments>Default</environments>
     <formulas>
         <description>Formula to determine the type of input from the IVR. Either, PHONE_NUMBER, PERSON_IDENT or ORG_IDENT.</description>
@@ -346,7 +365,7 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         <name>Create_Case</name>
         <label>Create Case</label>
         <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Redirect_To_Case</targetReference>
         </connector>
@@ -357,7 +376,7 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         <name>Create_Case_0</name>
         <label>Create Case</label>
         <locationX>842</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Redirect_To_Case_0</targetReference>
         </connector>
@@ -368,7 +387,7 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         <name>Get_Organization_Account</name>
         <label>Get Organization Account</label>
         <locationX>446</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Verify_Account</targetReference>
@@ -391,7 +410,7 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         <name>Get_Person_Account</name>
         <label>Get Person Account</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Case_Assignment</targetReference>
@@ -418,11 +437,33 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <description>Get the Phone Case record type. We still use &quot;NKS_Phone_Case&quot;</description>
+        <name>Get_recordtype</name>
+        <label>Get recordtype</label>
+        <locationX>578</locationX>
+        <locationY>134</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Get_Theme_Group</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>NKS_Phone_Case</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <description>Queries the theme group that was mapped to the queue.</description>
         <name>Get_Theme_Group</name>
         <label>Get Theme Group</label>
         <locationX>578</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_identifier</targetReference>
@@ -457,10 +498,10 @@ Removed Puzzel queue mapping and added hardcoded Theme group because Hjelpemidle
         <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Theme_Group</targetReference>
+            <targetReference>Get_recordtype</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <description>Case to be created for person phone queues.</description>
         <name>Call_Case</name>

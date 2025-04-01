@@ -4,8 +4,8 @@
     <assignments>
         <name>errorAssignment</name>
         <label>errorAssignment</label>
-        <locationX>918</locationX>
-        <locationY>1370</locationY>
+        <locationX>1106</locationX>
+        <locationY>998</locationY>
         <assignmentItems>
             <assignToReference>error</assignToReference>
             <operator>Assign</operator>
@@ -20,8 +20,8 @@
     <assignments>
         <name>setChoosenQuickText</name>
         <label>setChoosenQuickText</label>
-        <locationX>700</locationX>
-        <locationY>1045</locationY>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>choosenQuickTextValue</assignToReference>
             <operator>Assign</operator>
@@ -36,13 +36,13 @@
     <assignments>
         <name>setSMSValue</name>
         <label>setSMSValue</label>
-        <locationX>700</locationX>
-        <locationY>1262</locationY>
+        <locationX>842</locationX>
+        <locationY>782</locationY>
         <assignmentItems>
             <assignToReference>sms.Account__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>getAccountFromRecord.CRM_Account__c</elementReference>
+                <elementReference>recordId.AccountId</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -63,7 +63,7 @@
             <assignToReference>sms.Recipient__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>getAccountFromRecord.INT_KrrMobilePhone__c</elementReference>
+                <elementReference>recordId.HOT_Innringer__c</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -91,51 +91,59 @@
         </value>
     </choices>
     <decisions>
-        <name>foundAccount</name>
-        <label>foundAccount?</label>
-        <locationX>752</locationX>
-        <locationY>623</locationY>
+        <name>anything_missing</name>
+        <label>anything missing?</label>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
         <defaultConnector>
             <targetReference>quickTextOptions</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <defaultConnectorLabel>Ready to send SMS</defaultConnectorLabel>
         <rules>
-            <name>No_Account_Or_Phone_Found</name>
-            <conditionLogic>or</conditionLogic>
+            <name>Missing_Phone</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>getAccountFromRecord.Id</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>recordId.HOT_Innringer__c</leftValueReference>
+                <operator>IsBlank</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>recipientIsNull</targetReference>
+            </connector>
+            <label>Missing Phone</label>
+        </rules>
+        <rules>
+            <name>Missing_Account</name>
+            <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>getAccountFromRecord.INT_KrrMobilePhone__c</leftValueReference>
+                <leftValueReference>recordId.AccountId</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Has_Phone</targetReference>
+                <targetReference>noAccountErrorScreen</targetReference>
             </connector>
-            <label>No Account Or Phone Found</label>
+            <label>Missing Account</label>
         </rules>
     </decisions>
     <decisions>
         <name>foundCase</name>
         <label>foundCase?</label>
-        <locationX>1089</locationX>
-        <locationY>430</locationY>
+        <locationX>314</locationX>
+        <locationY>242</locationY>
         <defaultConnector>
-            <targetReference>getAccountFromRecord</targetReference>
+            <targetReference>anything_missing</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>No_Case_Found</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>getCaseRecord.Id</leftValueReference>
+                <leftValueReference>recordId</leftValueReference>
                 <operator>IsNull</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
@@ -145,31 +153,6 @@
                 <targetReference>noCaseErrorScreen</targetReference>
             </connector>
             <label>No Case Found</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Has_Phone</name>
-        <label>Has Phone?</label>
-        <locationX>531</locationX>
-        <locationY>622</locationY>
-        <defaultConnector>
-            <targetReference>noAccountErrorScreen</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>No_Phone</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>getAccountFromRecord.INT_KrrMobilePhone__c</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>recipientIsNull</targetReference>
-            </connector>
-            <label>No Phone</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -184,7 +167,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -197,8 +180,8 @@
     <recordCreates>
         <name>createSMS</name>
         <label>createSMS</label>
-        <locationX>700</locationX>
-        <locationY>1370</locationY>
+        <locationX>842</locationX>
+        <locationY>890</locationY>
         <connector>
             <targetReference>SuccessScreen</targetReference>
         </connector>
@@ -207,59 +190,17 @@
         </faultConnector>
         <inputReference>sms</inputReference>
     </recordCreates>
-    <recordLookups>
-        <name>getAccountFromRecord</name>
-        <label>getAccountFromRecord</label>
-        <locationX>761</locationX>
-        <locationY>435</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>foundAccount</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>CRM_Account__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>getCaseRecord.Account.Id</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Person__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>getCaseRecord</name>
-        <label>getCaseRecord</label>
-        <locationX>1096</locationX>
-        <locationY>290</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>foundCase</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>recordId</elementReference>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Case</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
     <screens>
         <name>errorScreen</name>
         <label>errorScreen</label>
-        <locationX>916</locationX>
-        <locationY>1548</locationY>
+        <locationX>1106</locationX>
+        <locationY>1106</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>errorMessage</name>
-            <fieldText>&lt;p&gt;{!error}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Felmelding: {!error}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -268,14 +209,14 @@
     <screens>
         <name>noAccountErrorScreen</name>
         <label>noAccountErrorScreen</label>
-        <locationX>285</locationX>
-        <locationY>528</locationY>
+        <locationX>578</locationX>
+        <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>NoAccountErrorText</name>
-            <fieldText>&lt;p&gt;Det oppstod en feil!&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Saken ser ikke ut til å være tilknyttet en Konto.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -284,8 +225,8 @@
     <screens>
         <name>noCaseErrorScreen</name>
         <label>noCaseErrorScreen</label>
-        <locationX>1411</locationX>
-        <locationY>431</locationY>
+        <locationX>50</locationX>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -300,8 +241,8 @@
     <screens>
         <name>quickTextOptions</name>
         <label>quickTextOptions</label>
-        <locationX>762</locationX>
-        <locationY>865</locationY>
+        <locationX>842</locationX>
+        <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -325,8 +266,8 @@
     <screens>
         <name>recipientIsNull</name>
         <label>recipientIsNull</label>
-        <locationX>285</locationX>
-        <locationY>731</locationY>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -344,8 +285,8 @@
     <screens>
         <name>SuccessScreen</name>
         <label>SuccessScreen</label>
-        <locationX>534</locationX>
-        <locationY>1370</locationY>
+        <locationX>842</locationX>
+        <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -360,8 +301,8 @@
     <screens>
         <name>typeMessage</name>
         <label>typeMessage</label>
-        <locationX>700</locationX>
-        <locationY>1154</locationY>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -385,26 +326,26 @@
     <screens>
         <name>WantToSendSMSScreen</name>
         <label>WantToSendSMSScreen</label>
-        <locationX>1096</locationX>
-        <locationY>182</locationY>
+        <locationX>314</locationX>
+        <locationY>134</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>getCaseRecord</targetReference>
+            <targetReference>foundCase</targetReference>
         </connector>
         <nextOrFinishButtonLabel>Send SMS</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>970</locationX>
-        <locationY>48</locationY>
+        <locationX>188</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>WantToSendSMSScreen</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <textTemplates>
         <name>endMessageText</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
@@ -432,10 +373,11 @@ Mvh Nav</text>
     </variables>
     <variables>
         <name>recordId</name>
-        <dataType>String</dataType>
+        <dataType>SObject</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+        <objectType>Case</objectType>
     </variables>
     <variables>
         <name>sms</name>
