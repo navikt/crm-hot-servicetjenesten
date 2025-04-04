@@ -166,22 +166,6 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentInstanceProperties>
-                    <name>cardTitle</name>
-                    <value>Skriv til oss</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>checkMedskriv</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>hideChangeLngBtn</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>showClose</name>
-                    <value>true</value>
-                </componentInstanceProperties>
                 <componentName>hot_messagingContainer</componentName>
                 <identifier>c_hot_messagingContainer</identifier>
             </componentInstance>
