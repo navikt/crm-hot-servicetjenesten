@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
+        <name>Get_Caller</name>
+        <label>Get Caller</label>
+        <locationX>578</locationX>
+        <locationY>134</locationY>
+        <actionName>HOT_CallFlowController</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Get_recordtype</targetReference>
+        </connector>
+        <flowTransactionModel>Automatic</flowTransactionModel>
+        <inputParameters>
+            <name>sessionIds</name>
+            <value>
+                <elementReference>SessionId</elementReference>
+            </value>
+        </inputParameters>
+        <nameSegment>HOT_CallFlowController</nameSegment>
+        <offset>0</offset>
+        <outputParameters>
+            <assignToReference>PUZZEL_CALLER</assignToReference>
+            <name>callerNumber</name>
+        </outputParameters>
+    </actionCalls>
+    <actionCalls>
         <description>Redirects user to the organization account</description>
         <name>Recirect_to_Account</name>
         <label>Recirect to Account</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -24,7 +48,7 @@
         <name>Redirect_To_Case</name>
         <label>Redirect To Case</label>
         <locationX>50</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -43,7 +67,7 @@
         <name>Redirect_To_Case_0</name>
         <label>Redirect To Case</label>
         <locationX>842</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -62,7 +86,7 @@
         <name>Case_Assignment</name>
         <label>Case Assignment</label>
         <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.AccountId</assignToReference>
             <operator>Assign</operator>
@@ -112,6 +136,13 @@
                 <elementReference>Get_recordtype.Id</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.HOT_Innringer__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>PUZZEL_CALLER</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case</targetReference>
         </connector>
@@ -120,7 +151,7 @@
         <name>Case_Assignment_0</name>
         <label>Case Assignment</label>
         <locationX>842</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.Origin</assignToReference>
             <operator>Assign</operator>
@@ -180,6 +211,9 @@
         <assignmentItems>
             <assignToReference>Call_Case.HOT_Innringer__c</assignToReference>
             <operator>Assign</operator>
+            <value>
+                <elementReference>PUZZEL_CALLER</elementReference>
+            </value>
         </assignmentItems>
         <connector>
             <targetReference>Create_Case_0</targetReference>
@@ -197,7 +231,7 @@
         <name>Check_Call_Queue_0</name>
         <label>Check Call Queue</label>
         <locationX>1106</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <defaultConnectorLabel>Other</defaultConnectorLabel>
         <rules>
             <name>Personbruker</name>
@@ -260,7 +294,7 @@
         <name>Check_identifier</name>
         <label>Check identifier</label>
         <locationX>578</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Check_Call_Queue_0</targetReference>
         </defaultConnector>
@@ -300,7 +334,7 @@
         <name>Verify_Account</name>
         <label>Verify Account</label>
         <locationX>446</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Found_Account</name>
@@ -365,7 +399,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Create_Case</name>
         <label>Create Case</label>
         <locationX>50</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <connector>
             <targetReference>Redirect_To_Case</targetReference>
         </connector>
@@ -376,7 +410,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Create_Case_0</name>
         <label>Create Case</label>
         <locationX>842</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <connector>
             <targetReference>Redirect_To_Case_0</targetReference>
         </connector>
@@ -387,7 +421,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Get_Organization_Account</name>
         <label>Get Organization Account</label>
         <locationX>446</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Verify_Account</targetReference>
@@ -410,7 +444,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Get_Person_Account</name>
         <label>Get Person Account</label>
         <locationX>50</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Case_Assignment</targetReference>
@@ -441,7 +475,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Get_recordtype</name>
         <label>Get recordtype</label>
         <locationX>578</locationX>
-        <locationY>134</locationY>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Theme_Group</targetReference>
@@ -463,7 +497,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <name>Get_Theme_Group</name>
         <label>Get Theme Group</label>
         <locationX>578</locationX>
-        <locationY>242</locationY>
+        <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_identifier</targetReference>
@@ -498,7 +532,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_recordtype</targetReference>
+            <targetReference>Get_Caller</targetReference>
         </connector>
     </start>
     <status>Draft</status>
@@ -533,6 +567,13 @@ PERSON, ARBEIDSGIVER, OTHER</description>
         <value>
             <stringValue></stringValue>
         </value>
+    </variables>
+    <variables>
+        <name>PUZZEL_CALLER</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <description>Name of the incoming call queue.</description>
