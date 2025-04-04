@@ -1,0 +1,18 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "PushTopic",
+                "referenceId": "PushTopicRef2"
+            },
+            "Name": "Announcement_Updates",
+            "Query": "SELECT Id, Name, NKS_TypeFormula__c FROM NKS_Announcement__c",
+            "ApiVersion": 52.0,
+            "NotifyForOperationCreate": true,
+            "NotifyForOperationUpdate": true,
+            "NotifyForOperationDelete": true,
+            "NotifyForOperationUndelete": false,
+            "NotifyForFields": "Referenced"
+        }
+    ]
+}

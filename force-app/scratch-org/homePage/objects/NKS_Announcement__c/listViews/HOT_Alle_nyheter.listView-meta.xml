@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>HOT_Alle_nyheter</fullName>
+    <columns>NAME</columns>
+    <columns>NKS_News_Publish_Date__c</columns>
+    <columns>LAST_UPDATE</columns>
+    <columns>NKS_News_Author__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>NKS_Announcement__c.HOT_News</value>
+    </filters>
+    <filters>
+        <field>NKS_News_Status__c</field>
+        <operation>equals</operation>
+        <value>Published</value>
+    </filters>
+    <label>HOT - Alle nyheter</label>
+    <sharedTo>
+        <group>HOT_Servicetjenesten_AD</group>
+        <group>HOT_Servicetjenesten_Admin</group>
+    </sharedTo>
+</ListView>

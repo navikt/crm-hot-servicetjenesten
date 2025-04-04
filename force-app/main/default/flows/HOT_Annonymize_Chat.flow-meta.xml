@@ -101,9 +101,16 @@
                 <stringValue>Completed</stringValue>
             </value>
         </filters>
+        <filters>
+            <field>NKS_Chat_Queue__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Hjelpemidler</stringValue>
+            </value>
+        </filters>
         <object>LiveChatTranscript</object>
         <recordTriggerType>Update</recordTriggerType>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
 </Flow>
