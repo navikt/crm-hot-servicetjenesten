@@ -6,6 +6,7 @@
 
     simulateCall: function (component) {
         let identifier = component.get('v.identifier');
+        let session = component.get('v.session');
         let contextOverride = component.get('v.chosenContext');
 
         let callback = function (response) {
@@ -17,6 +18,7 @@
                 flowDevName: 'HOT_Inbound_Call',
                 flowArgs: [
                     { name: 'Search', type: 'String', value: identifier },
+                    { name: 'SessionId', type: 'String', value: identifier },
                     { name: 'CONTEXT_OVERRIDE', type: 'String', value: contextOverride }
                 ]
             },
