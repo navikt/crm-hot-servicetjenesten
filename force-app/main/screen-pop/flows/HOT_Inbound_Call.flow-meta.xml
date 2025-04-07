@@ -535,7 +535,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
             <targetReference>Get_Caller</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <description>Case to be created for person phone queues.</description>
         <name>Call_Case</name>
