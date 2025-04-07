@@ -47,7 +47,15 @@ public without sharing class HOT_CallFlowController {
 
         return Test.isRunningTest()
             ? (List<Object>) JSON.deserializeUntyped(HOT_CallFlowControllerTest.MOCK_ENQUIRY_LOG)
-            : (List<Object>) JSON.deserializeUntyped(JSON.serialize(Database.query(queryFactory.selectFields(QueryFields).setCondition('puzzel__SessionId__c in :sessionIds').toSOQL())));
+            : (List<Object>) JSON.deserializeUntyped(
+                  JSON.serialize(
+                      Database.query(
+                          queryFactory.selectFields(QueryFields)
+                              .setCondition('puzzel__SessionId__c in :sessionIds')
+                              .toSOQL()
+                      )
+                  )
+              );
     }
 
     public class CallerResponse {
