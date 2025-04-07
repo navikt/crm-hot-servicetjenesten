@@ -440,7 +440,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>flowNames</name>
-                    <value>HOT_Chat_Journal_Thread_v_2, HOT_Chat_Send_NAV_Task_v_2</value>
+                    <value>HOT_Chat_Journal_Thread, HOT_Chat_Send_NAV_Task</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>setBorders</name>
