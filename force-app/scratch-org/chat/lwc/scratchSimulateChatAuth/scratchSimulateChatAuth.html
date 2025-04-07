@@ -1,0 +1,19 @@
+<template>
+    <lightning-layout vertical-align="end">
+        <lightning-layout-item size="3">
+            <lightning-spinner if:true={loading} size="medium" variant="brand"></lightning-spinner>
+            <lightning-layout vertical-align="end">
+                <lightning-input type="text" max-length="18" label="Chat ID:"> </lightning-input>
+                <lightning-button
+                    label="Authenticate Chat"
+                    class="slds-var-p-left_small"
+                    variant="brand"
+                    onclick={initAuth}
+                >
+                </lightning-button>
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+
+    <div>{errorMsg}</div>
+</template>

@@ -1,0 +1,44 @@
+{
+    "appPageId": "e9a45ad3-f764-4838-8cde-d5bad3c95b02",
+    "componentName": "siteforce:sldsOneColLayout",
+    "id": "7ae029f4-c49f-4f87-9fd4-f8c34129cdd8",
+    "label": "Related Record List",
+    "regions": [
+        {
+            "id": "98e826e5-8840-49fc-897b-78e351d40ff1",
+            "regionName": "header",
+            "type": "region"
+        },
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "customTitle": "",
+                        "parentRecordId": "{!recordId}",
+                        "relatedListName": "{!relationshipApiName}",
+                        "showBreadCrumbs": true,
+                        "showCustomTitle": false,
+                        "showManualRefreshButton": true,
+                        "showRowNumbers": true
+                    },
+                    "componentName": "forceCommunity:relatedList",
+                    "id": "9f4a7c14-8d46-478b-ba8f-126ce2d45b05",
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "type": "component"
+                }
+            ],
+            "id": "a948c1bb-7422-4bac-95fb-f2dbe5ec84d3",
+            "regionName": "content",
+            "type": "region"
+        },
+        {
+            "id": "6bae6d43-76fb-404d-af85-1648ab10fbfb",
+            "regionName": "footer",
+            "type": "region"
+        }
+    ],
+    "themeLayoutType": "Inner",
+    "type": "view",
+    "viewType": "relatedlist"
+}

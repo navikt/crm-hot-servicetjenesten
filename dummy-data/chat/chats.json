@@ -1,0 +1,37 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "LiveChatTranscript",
+                "referenceId": "ChatTranscriptRef1"
+            },
+            "LiveChatVisitorId": "@VisitorRef1",
+            "CRM_Authentication_Status__c": "Completed",
+            "Body": "<p>Dette er en chat</p>",
+            "NKS_Conversation__c": "<p>Dette er en chat</p>",
+            "CaseId": "@CaseRef1"
+        },
+        {
+            "attributes": {
+                "type": "LiveChatTranscript",
+                "referenceId": "ChatTranscriptRef2"
+            },
+            "LiveChatVisitorId": "@VisitorRef1",
+            "CRM_Authentication_Status__c": "Completed",
+            "Body": "<p>Dette er en chat</p>",
+            "NKS_Conversation__c": "<p>Dette er en chat</p>",
+            "CaseId": "@CaseRef1"
+        },
+        {
+            "attributes": {
+                "type": "LiveChatTranscript",
+                "referenceId": "ChatTranscriptRef3"
+            },
+            "LiveChatVisitorId": "@VisitorRef1",
+            "CRM_Authentication_Status__c": "Completed",
+            "Body": "<p>Dette er en chat</p>",
+            "NKS_Conversation__c": "<p>Dette er en chat</p>",
+            "CaseId": "@CaseRef1"
+        }
+    ]
+}

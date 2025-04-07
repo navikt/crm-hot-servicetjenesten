@@ -1,10 +1,11 @@
 
 # profiles
 # ----------------------------------------------------------------------------------------
-**/profiles/*
+#**/profiles/*
 !**/profiles/Delegated Administrator - Tolk.profile-meta.xml
 !**/profiles/HOT Servicetjenesten.profile-meta.xml
 !**/profiles/NAV Administrator - Modify all data.profile-meta.xml
+#!**/profiles/Scratch Community Profile - Modify all data.profile-meta.xml
 
 # NOTE!! Do NOT use **/ before
 !unpackagable/profiles/*
