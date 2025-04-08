@@ -4,6 +4,7 @@
     <aura:attribute name="ctiLoaded" type="Boolean" default="false" />
     <aura:attribute name="identifier" type="String" default="" />
     <aura:attribute name="chosenContext" type="String" default="PERSON" />
+    <aura:attribute name="session" type="String" default="" />
 
     <aura:attribute
         name="contextOptions"

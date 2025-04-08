@@ -18,7 +18,7 @@
                 flowDevName: 'HOT_Inbound_Call',
                 flowArgs: [
                     { name: 'Search', type: 'String', value: identifier },
-                    { name: 'SessionId', type: 'String', value: identifier },
+                    { name: 'SessionId', type: 'String', value: session },
                     { name: 'CONTEXT_OVERRIDE', type: 'String', value: contextOverride }
                 ]
             },
