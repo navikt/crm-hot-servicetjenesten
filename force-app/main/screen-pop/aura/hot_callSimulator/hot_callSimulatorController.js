@@ -1,3 +1,4 @@
+/* global sforce */
 ({
     ctiLoaded: function (component) {
         console.log('CTI LOADED!');
