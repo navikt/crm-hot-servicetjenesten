@@ -13,7 +13,11 @@ Løsningen benytter seg av
 -   https://confluence.adeo.no/display/DigiHoT/Team+HoT+CRM
 -   https://confluence.adeo.no/display/PTC/Plattform+Team+CRM
 
-## Post scratch setup for Chat
+## scratch setup for Chat
+
+Vitkig: For og unngå høy deployment tid på Scratch-org så er Chat deaktivert via .forceignore filen by default. For å endre dette, åpne .forceignore filen og kommenter ut linje 17 (legg til #).
+Original verdi: **/scratch-org/chat/\*
+Ny verdi: #**/scratch-org/chat/\*
 
 Fordi noe av Salesforce sin metadata har dårlig support for pakkeløsningen og metadata deployment, så vil det være noen små steg å gjennomføre manuelt i Scratch for å teste Chat løsningen:
 

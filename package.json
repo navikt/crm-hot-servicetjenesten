@@ -13,9 +13,9 @@
         "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
         "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
         "postinstall": "node bin/check-version.js",
-        "activateMock": "sfdx force:apex:execute -f post-scratch/activateMock.cls",
-        "deactivateMock": "sfdx force:apex:execute -f post-scratch/deactivateMock.cls",
-        "scratchSetup": "sfdx force:apex:execute -f post-scratch/scratchSetup.cls"
+        "activateMock": "sfdx force:apex:execute -f scripts/apex/activateMock.apex",
+        "deactivateMock": "sfdx force:apex:execute -f scripts/apex/deactivateMock.apex",
+        "scratchSetup": "sfdx force:apex:execute -f scripts/apex/scratchSetup.apex"
     },
     "engines": {
         "node": ">= 16.0.0",

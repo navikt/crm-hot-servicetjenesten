@@ -1,15 +1,20 @@
 
 # profiles
 # ----------------------------------------------------------------------------------------
-#**/profiles/*
+**/profiles/*
 !**/profiles/Delegated Administrator - Tolk.profile-meta.xml
 !**/profiles/HOT Servicetjenesten.profile-meta.xml
 !**/profiles/NAV Administrator - Modify all data.profile-meta.xml
-#!**/profiles/Scratch Community Profile - Modify all data.profile-meta.xml
+!**/profiles/Scratch Community Profile.profile-meta.xml
 
 # NOTE!! Do NOT use **/ before
 !unpackagable/profiles/*
 # NOTE!! Do NOT use **/ before
+
+
+# Chat scratch folder (comment this with a # in front in order to deploy the Chat to Scratch org)
+# ----------------------------------------------------------------------------------------
+**/scratch-org/chat/*
 
 
 # standard fields not needed in source control

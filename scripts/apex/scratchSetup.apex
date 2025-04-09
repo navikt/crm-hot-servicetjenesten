@@ -1,4 +1,4 @@
-//Add default admin user to the chat queue and grant chat access and adds default role for community user creation
+//Script to Add default admin user to the chat queue and grant chat access and adds default role for community user creation
 User usr = [SELECT Id FROM User WHERE Name = 'User User'];
 usr.UserPermissionsLiveAgentUser = true;
 usr.UserRoleId = [SELECT Id FROM UserRole WHERE Name = 'NKS' LIMIT 1]?.Id;
