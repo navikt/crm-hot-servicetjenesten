@@ -28,9 +28,6 @@
             <lightning:input type="text" label="Identifier" value="{!v.identifier}"></lightning:input>
         </lightning:layoutItem>
         <lightning:layoutItem size="12" padding="around-small">
-            <lightning:input type="text" label="Session" value="{!v.session}"></lightning:input>
-        </lightning:layoutItem>
-        <lightning:layoutItem size="12" padding="around-small">
             <lightning:button
                 variant="brand"
                 class="slds-button_stretch"
