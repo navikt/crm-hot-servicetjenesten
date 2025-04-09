@@ -129,6 +129,9 @@
         <label>Check if record has Thread</label>
         <locationX>380</locationX>
         <locationY>242</locationY>
+        <defaultConnector>
+            <targetReference>No_Account_Screen</targetReference>
+        </defaultConnector>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Has_Thread</name>
@@ -389,9 +392,41 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Assigned_Resource</assignToReference>
+                <name>assignedResource</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Id</assignToReference>
+                <name>selectedUnitId</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Name</assignToReference>
+                <name>selectedUnitName</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Number</assignToReference>
+                <name>selectedUnitNumber</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>No_Account_Screen</name>
+        <label>No Account Screen</label>
+        <locationX>578</locationX>
+        <locationY>350</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>No_Account_Error_Screen</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Brukeren må være logget inn for at du skal kunne opprette oppgave.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>OK</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
@@ -451,6 +486,9 @@
         </inputAssignments>
         <inputAssignments>
             <name>NAV_Task</name>
+            <value>
+                <elementReference>NavTask</elementReference>
+            </value>
         </inputAssignments>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </subflows>
@@ -509,6 +547,20 @@
     </variables>
     <variables>
         <name>Selected_Unit_Id</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Unit_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Unit_Number</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
