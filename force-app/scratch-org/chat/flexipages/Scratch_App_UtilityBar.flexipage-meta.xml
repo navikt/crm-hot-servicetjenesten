@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>runtime_service_omnichannel:omniWidget</componentName>
+                <identifier>runtime_service_omnichannel_omniWidget</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>utilityItems</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_chatConversationHandler</componentName>
+                <identifier>hot_chatConversationHandler</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_chatAfterWorkBackground</componentName>
+                <identifier>hot_chatAfterWorkBackground</identifier>
+            </componentInstance>
+        </itemInstances>
+        <!--<itemInstances>
+            <componentInstance>
+                <componentName>nksBackgroundTabUpdator</componentName>
+                <identifier>nksBackgroundTabUpdator</identifier>
+            </componentInstance>
+        </itemInstances>-->
+        <name>backgroundComponents</name>
+        <type>Background</type>
+    </flexiPageRegions>
+    <masterLabel>Scratch App UtilityBar</masterLabel>
+    <template>
+        <name>one:utilityBarTemplateDesktop</name>
+        <properties>
+            <name>isLeftAligned</name>
+            <value>false</value>
+        </properties>
+    </template>
+    <type>UtilityBar</type>
+</FlexiPage>

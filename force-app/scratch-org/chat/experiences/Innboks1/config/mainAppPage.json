@@ -1,0 +1,12 @@
+{
+    "cmsSettings": {},
+    "currentThemeId": "3379cdce-350e-4be9-a09f-7427831cf1cb",
+    "favIconAssetRef": null,
+    "headMarkup": "<link rel=\"icon\" type=\"image/x-icon\" href=\"https://www.nav.no/dekoratoren/media/favicon.ico\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"https://www.nav.no/dekoratoren/media/favicon-16x16.png\">\n<link rel=\"icon\" type=\"image/png\" sizes=\"32x32\" href=\"https://www.nav.no/dekoratoren/media/favicon-32x32.png\">\n<link rel=\"apple-touch-icon\" sizes=\"180x180\" href=\"https://www.nav.no/dekoratoren/media/apple-touch-icon.png\">\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n<title>Innboks</title>\n\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/styles.css?{ versionKey }\" />\n\n\n<!-- webruntime-branding-shared stylesheets -->\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/salesforce-lightning-design-system.min.css?{ versionKey }\" />\n<!--<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-site-spacing-styling-hooks.min.css?{ versionKey }\" />\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-styling-hooks.min.css?{ versionKey }\" />\n<link rel=\"stylesheet\" href=\"{ basePath }/assets/styles/dxp-slds-extensions.min.css?{ versionKey }\" />-->\n\n\n<!-- webruntime-branding-shared stylesheets -->\n\n<style>\n\thtml {\n        background-color: #f1f1f1;\n    }\n</style>",
+    "id": "b4f60626-b2f1-47ed-9705-d0bc11ddf574",
+    "isRelaxedCSPLevel": true,
+    "isLockerServiceEnabled": false,
+    "label": "main",
+    "templateName": "talon-template-byo",
+    "type": "appPage"
+}

@@ -1,0 +1,42 @@
+{
+    "appPageId": "e9a45ad3-f764-4838-8cde-d5bad3c95b02",
+    "componentName": "siteforce:sldsOneColLayout",
+    "dataProviders": [],
+    "id": "286e2686-7a8d-4260-a901-f30fe9a57899",
+    "label": "Too Many Requests",
+    "regions": [
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "backgroundImageConfig": "",
+                        "backgroundImageOverlay": "rgba(0,0,0,0)",
+                        "sectionConfig": "{\"UUID\":\"76145219-12a3-429b-97e2-582d596c6aeb\",\"columns\":[{\"UUID\":\"8deeb003-2309-4375-9617-0d30a9c9a9ca\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+                    },
+                    "componentName": "community_layout:section",
+                    "id": "76145219-12a3-429b-97e2-582d596c6aeb",
+                    "regions": [
+                        {
+                            "components": [],
+                            "id": "8deeb003-2309-4375-9617-0d30a9c9a9ca",
+                            "regionLabel": "Column 1",
+                            "regionName": "col1",
+                            "renditionMap": {},
+                            "type": "region"
+                        }
+                    ],
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "scopedBrandingSetId": null,
+                    "type": "component"
+                }
+            ],
+            "id": "d2b3ae53-3ad4-48d2-b841-150d58542a53",
+            "regionName": "content",
+            "type": "region"
+        }
+    ],
+    "themeLayoutType": "ServiceNotAvailable",
+    "type": "view",
+    "viewType": "too-many-requests"
+}

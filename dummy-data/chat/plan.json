@@ -1,0 +1,32 @@
+[
+    {
+        "sobject": "Person__c",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": ["persons.json"]
+    },
+    {
+        "sobject": "LiveChatVisitor",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": ["visitors.json"]
+    },
+    {
+        "sobject": "Case",
+        "saveRefs": true,
+        "resolveRefs": false,
+        "files": ["cases.json"]
+    },
+    {
+        "sobject": "LiveChatTranscript",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": ["chats.json"]
+    },
+    {
+        "sobject": "PushTopic",
+        "saveRefs": true,
+        "resolveRefs": true,
+        "files": ["pushtopics.json"]
+    }
+]

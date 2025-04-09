@@ -1,0 +1,7 @@
+<design:component label="Chat Authentication Information">
+    <design:attribute label="Enable logging to console" name="loggingEnabled" default="false" />
+    <design:attribute label="Account fields to display (API names, comma separated)" name="accountFields" />
+    <design:attribute label="Case fields to display (API names, comma separated)" name="caseFields" />
+    <design:attribute label="Person fields to display (API names, comma separated)" name="personFields" />
+    <design:attribute label="Add copy button to Person fields(field number, comma separated)" name="copyPersonFields" />
+</design:component>

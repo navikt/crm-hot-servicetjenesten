@@ -1,0 +1,13 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef1"
+            },
+            "Subject": "TEST SUBJECT",
+            "Description": "TEST DESCRIPTION",
+            "Origin": "WEB"
+        }
+    ]
+}
