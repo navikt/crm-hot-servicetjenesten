@@ -13,6 +13,7 @@
     <aura:attribute name="chatRecord" type="Object" />
     <aura:attribute name="recordLoadError" type="String" />
     <aura:attribute name="authCompletedHandled" type="boolean" default="false" />
+    <aura:attribute name="chatEnded" type="boolean" default="false" />
 
     <lightning:conversationToolkitApi aura:id="chatToolkit" />
     <lightning:workspaceAPI aura:id="workspace" />
