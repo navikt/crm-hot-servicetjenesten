@@ -134,7 +134,7 @@
             <assignToReference>Conversation_Note_Record.CRM_Conversation_Note__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Conversation_Summary.conversationNote</elementReference>
+                <elementReference>CRM_Conversation_Summary.conversationNoteWithSignature</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -206,7 +206,7 @@
             <assignToReference>Conversation_Note_Record.CRM_Conversation_Note__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Conversation_Summary.conversationNote</elementReference>
+                <elementReference>CRM_Conversation_Summary_Journal.conversationNoteWithSignature</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -1044,7 +1044,8 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Log_Screen_Conversation_Note</targetReference>
+            <isGoTo>true</isGoTo>
+            <targetReference>Log_Screen</targetReference>
         </connector>
         <fields>
             <name>Error_Text</name>
@@ -1093,19 +1094,31 @@
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Conversation_Summary_Journal</name>
+            <name>CRM_Conversation_Summary_Journal</name>
             <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
-                    <elementReference>Conversation_Summary.conversationNoteRich</elementReference>
+                    <elementReference>CRM_Conversation_Summary.conversationNote</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>required</name>
                 <value>
                     <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>standardSignature</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>standardSignatureText</name>
+                <value>
+                    <elementReference>SignatureTemplate</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -1212,7 +1225,7 @@
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Conversation_Summary</name>
+            <name>CRM_Conversation_Summary</name>
             <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
@@ -1234,9 +1247,15 @@
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>signatureCheckbox</name>
+                <name>standardSignature</name>
                 <value>
                     <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>standardSignatureText</name>
+                <value>
+                    <elementReference>SignatureTemplate</elementReference>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1339,182 +1358,6 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <showFooter>false</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>Log_Screen_Conversation_Note</name>
-        <label>Log Screen</label>
-        <locationX>446</locationX>
-        <locationY>3254</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Get_Case_Verify</targetReference>
-        </connector>
-        <fields>
-            <name>Header_Conversation_Note</name>
-            <extensionName>c:hot_header</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>headertag</name>
-                <value>
-                    <stringValue>h2</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>input</name>
-                <value>
-                    <stringValue>Opprett samtalereferat </stringValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Disclaimer_Text_Conversation_Note</name>
-            <fieldText>&lt;p&gt;Samtalereferatet blir delt med bruker når det opprettes.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Conversation_Summary_Conversation_Note</name>
-            <extensionName>c:crmMessagingQuickText</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>conversationNoteRich</name>
-                <value>
-                    <elementReference>Conversation_Summary.conversationNoteRich</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>required</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>useForConversationNote</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>signatureCheckbox</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Theme_Categorization_Conversation_Note</name>
-            <extensionName>c:crmThemeCategorization</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>variant</name>
-                <value>
-                    <stringValue>HIDE_SUBTHEME</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>optionalTheme</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>optionalThemeGroup</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>twoColumns</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>themeGroup</name>
-                <value>
-                    <elementReference>Get_Case.NKS_Theme_Group__c</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>theme</name>
-                <value>
-                    <elementReference>Get_Case.NKS_Theme__c</elementReference>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>Theme_Group</assignToReference>
-                <name>themeGroup</name>
-            </outputParameters>
-            <outputParameters>
-                <assignToReference>Theme</assignToReference>
-                <name>theme</name>
-            </outputParameters>
-        </fields>
-        <fields>
-            <name>Record_Refresher_Conversation_Note</name>
-            <extensionName>c:hot_RecordRefresher</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>recordId</name>
-                <value>
-                    <elementReference>recordId</elementReference>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>Button_Container_Conversation_Note</name>
-            <extensionName>c:hot_conversationNoteButtonContainer</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>conversationNoteButtonLabel</name>
-                <value>
-                    <stringValue>Del med brukeren</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>journalAndShare</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>recordId</name>
-                <value>
-                    <elementReference>recordId</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>showBackButton</name>
-                <value>
-                    <elementReference>Show_Back_Button</elementReference>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <outputParameters>
-                <assignToReference>journalConversation</assignToReference>
-                <name>journalConversation</name>
-            </outputParameters>
-            <outputParameters>
-                <assignToReference>navTasks</assignToReference>
-                <name>navTasks</name>
-            </outputParameters>
         </fields>
         <showFooter>false</showFooter>
         <showHeader>false</showHeader>
@@ -1641,6 +1484,13 @@
         </connector>
     </start>
     <status>Active</status>
+    <textTemplates>
+        <name>SignatureTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Med vennlig hilsen
+{!$User.NKS_FullName__c}
+Servicetjenesten Nav hjelpemidler og tilrettelegging</text>
+    </textTemplates>
     <variables>
         <name>BEHANDLINGS_ID</name>
         <dataType>String</dataType>
