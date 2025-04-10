@@ -41,6 +41,18 @@
                     <elementReference>recordId</elementReference>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>closeCurrentTab</name>
+                <value>
+                    <elementReference>CloseCurrent</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>openAsSubtab</name>
+                <value>
+                    <elementReference>AsSubtab</elementReference>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -56,6 +68,28 @@
         </connector>
     </start>
     <status>Active</status>
+    <variables>
+        <description>Open record in subtab of current tab</description>
+        <name>AsSubtab</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
+    <variables>
+        <description>Close Current Tab. Not relevant if redirect to subtab.</description>
+        <name>CloseCurrent</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </variables>
     <variables>
         <name>recordId</name>
         <dataType>String</dataType>
