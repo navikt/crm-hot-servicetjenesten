@@ -219,6 +219,18 @@
         <locationY>458</locationY>
         <flowName>HOT_RedirectFlow</flowName>
         <inputAssignments>
+            <name>AsSubtab</name>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <name>CloseCurrent</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <name>recordId</name>
             <value>
                 <elementReference>Create_New_Case</elementReference>
