@@ -34,8 +34,8 @@ call sf package install --package 04tKB000000Y7NBYA0 --no-prompt --installation-
 echo "Installerer crm-community-base ver. 0.119"
 call sf package install --package 04tKB000000Y0CZYA0 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-henvendelse ver. 0.159"
-call sf package install --package 04tKB000000Y8s2YAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-henvendelse ver. 0.166"
+call sf package install --package 04tKB000000YEC8YAO --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-shared-timeline ver. 1.29"
 call sf package install --package 04tKB000000Y8znYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
