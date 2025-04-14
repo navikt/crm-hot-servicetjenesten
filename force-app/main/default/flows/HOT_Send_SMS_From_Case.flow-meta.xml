@@ -5,7 +5,7 @@
         <name>errorAssignment</name>
         <label>errorAssignment</label>
         <locationX>1106</locationX>
-        <locationY>998</locationY>
+        <locationY>890</locationY>
         <assignmentItems>
             <assignToReference>error</assignToReference>
             <operator>Assign</operator>
@@ -18,10 +18,23 @@
         </connector>
     </assignments>
     <assignments>
+        <name>set_flow_success</name>
+        <label>Set flow success variable</label>
+        <locationX>842</locationX>
+        <locationY>890</locationY>
+        <assignmentItems>
+            <assignToReference>flowSuccess</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <assignments>
         <name>setChoosenQuickText</name>
         <label>setChoosenQuickText</label>
         <locationX>842</locationX>
-        <locationY>566</locationY>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>choosenQuickTextValue</assignToReference>
             <operator>Assign</operator>
@@ -37,7 +50,7 @@
         <name>setSMSValue</name>
         <label>setSMSValue</label>
         <locationX>842</locationX>
-        <locationY>782</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>sms.Account__c</assignToReference>
             <operator>Assign</operator>
@@ -94,7 +107,7 @@
         <name>anything_missing</name>
         <label>anything missing?</label>
         <locationX>578</locationX>
-        <locationY>350</locationY>
+        <locationY>242</locationY>
         <defaultConnector>
             <targetReference>quickTextOptions</targetReference>
         </defaultConnector>
@@ -134,7 +147,7 @@
         <name>foundCase</name>
         <label>foundCase?</label>
         <locationX>314</locationX>
-        <locationY>242</locationY>
+        <locationY>134</locationY>
         <defaultConnector>
             <targetReference>anything_missing</targetReference>
         </defaultConnector>
@@ -181,9 +194,9 @@
         <name>createSMS</name>
         <label>createSMS</label>
         <locationX>842</locationX>
-        <locationY>890</locationY>
+        <locationY>782</locationY>
         <connector>
-            <targetReference>SuccessScreen</targetReference>
+            <targetReference>set_flow_success</targetReference>
         </connector>
         <faultConnector>
             <targetReference>errorAssignment</targetReference>
@@ -194,13 +207,13 @@
         <name>errorScreen</name>
         <label>errorScreen</label>
         <locationX>1106</locationX>
-        <locationY>1106</locationY>
+        <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>errorMessage</name>
-            <fieldText>&lt;p&gt;Felmelding: {!error}&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Det oppsto en feil under opprettelse og sending av SMS.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Felmelding: {!error}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -210,13 +223,13 @@
         <name>noAccountErrorScreen</name>
         <label>noAccountErrorScreen</label>
         <locationX>578</locationX>
-        <locationY>458</locationY>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>NoAccountErrorText</name>
-            <fieldText>&lt;p&gt;Saken ser ikke ut til å være tilknyttet en Konto.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;Saken mangler tilknytning til konto.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
@@ -226,7 +239,7 @@
         <name>noCaseErrorScreen</name>
         <label>noCaseErrorScreen</label>
         <locationX>50</locationX>
-        <locationY>350</locationY>
+        <locationY>242</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -242,13 +255,19 @@
         <name>quickTextOptions</name>
         <label>quickTextOptions</label>
         <locationX>842</locationX>
-        <locationY>458</locationY>
+        <locationY>350</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <backButtonLabel>Forrige</backButtonLabel>
         <connector>
             <targetReference>setChoosenQuickText</targetReference>
         </connector>
+        <fields>
+            <name>ShowCallerNumber</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Innringer nummer: &lt;/strong&gt;{!recordId.HOT_Innringer__c}&lt;/p&gt;&lt;p&gt;SMS vil bli sendt til dette nummeret.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Velg_en_hurtigtekst_eller_bare_g_videre</name>
             <choiceReferences>noQuickText</choiceReferences>
@@ -260,6 +279,7 @@
             <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
         </fields>
+        <nextOrFinishButtonLabel>Neste</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
@@ -267,45 +287,27 @@
         <name>recipientIsNull</name>
         <label>recipientIsNull</label>
         <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationY>350</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>errorMsng</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color:
-                rgb(68, 68, 68);&quot;&gt;Brukeren har ikke registrert et telefonnummer i kontakt-
-                og reservasjonsregisteret, og du kan derfor ikke sende en sms til bruker på denne
-                måten.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;Kunne ikke finne innringer nummer.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>SuccessScreen</name>
-        <label>SuccessScreen</label>
-        <locationX>842</locationX>
-        <locationY>998</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>SuccessText</name>
-            <fieldText>&lt;p&gt;SMS ble sendt!&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
+        <showFooter>false</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>typeMessage</name>
         <label>typeMessage</label>
         <locationX>842</locationX>
-        <locationY>674</locationY>
+        <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
+        <backButtonLabel>Forrige</backButtonLabel>
         <connector>
             <targetReference>setSMSValue</targetReference>
         </connector>
@@ -320,21 +322,7 @@
             <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
         </fields>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>WantToSendSMSScreen</name>
-        <label>WantToSendSMSScreen</label>
-        <locationX>314</locationX>
-        <locationY>134</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <connector>
-            <targetReference>foundCase</targetReference>
-        </connector>
-        <nextOrFinishButtonLabel>Send SMS</nextOrFinishButtonLabel>
+        <nextOrFinishButtonLabel>Send</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
@@ -342,7 +330,7 @@
         <locationX>188</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>WantToSendSMSScreen</targetReference>
+            <targetReference>foundCase</targetReference>
         </connector>
     </start>
     <status>Active</status>
@@ -370,6 +358,16 @@ Mvh Nav</text>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>flowSuccess</name>
+        <dataType>Boolean</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
     </variables>
     <variables>
         <name>recordId</name>
