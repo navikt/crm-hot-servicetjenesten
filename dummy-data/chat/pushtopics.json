@@ -1,0 +1,18 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "PushTopic",
+                "referenceId": "PushTopicRef1"
+            },
+            "Name": "Chat_Auth_Status_Changed",
+            "Query": "SELECT Id, CRM_Authentication_Status__c, AccountId FROM LiveChatTranscript",
+            "ApiVersion": 49.0,
+            "NotifyForOperationCreate": false,
+            "NotifyForOperationUpdate": true,
+            "NotifyForOperationUndelete": false,
+            "NotifyForOperationDelete": false,
+            "NotifyForFields": "Referenced"
+        }
+    ]
+}
