@@ -4,8 +4,8 @@ call sf org create scratch --definition-file config\project-scratch-def.json --a
 echo "Installerer crm-platform-base ver. 0.263"
 call sf package install --package 04tKB000000YBLkYAO --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installerer crm-thread-view ver. 0.5"
-call sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-thread-view ver. 0.6"
+call sf package install --package 04tKB000000YEDVYA4 --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-journal-utilities ver. 0.43"
 call sf package install --package 04tKB000000Y9WtYAK --no-prompt --installation-key %3 --wait 30 --publish-wait 30
