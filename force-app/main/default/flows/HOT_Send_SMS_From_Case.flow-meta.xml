@@ -4,7 +4,7 @@
     <assignments>
         <name>errorAssignment</name>
         <label>errorAssignment</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>890</locationY>
         <assignmentItems>
             <assignToReference>error</assignToReference>
@@ -20,7 +20,7 @@
     <assignments>
         <name>set_flow_success</name>
         <label>Set flow success variable</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>890</locationY>
         <assignmentItems>
             <assignToReference>flowSuccess</assignToReference>
@@ -33,7 +33,7 @@
     <assignments>
         <name>setChoosenQuickText</name>
         <label>setChoosenQuickText</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>choosenQuickTextValue</assignToReference>
@@ -49,7 +49,7 @@
     <assignments>
         <name>setSMSValue</name>
         <label>setSMSValue</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>sms.Account__c</assignToReference>
@@ -106,7 +106,7 @@
     <decisions>
         <name>anything_missing</name>
         <label>anything missing?</label>
-        <locationX>578</locationX>
+        <locationX>446</locationX>
         <locationY>242</locationY>
         <defaultConnector>
             <targetReference>quickTextOptions</targetReference>
@@ -127,26 +127,11 @@
             </connector>
             <label>Missing Phone</label>
         </rules>
-        <rules>
-            <name>Missing_Account</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>recordId.AccountId</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>true</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>noAccountErrorScreen</targetReference>
-            </connector>
-            <label>Missing Account</label>
-        </rules>
     </decisions>
     <decisions>
         <name>foundCase</name>
         <label>foundCase?</label>
-        <locationX>314</locationX>
+        <locationX>248</locationX>
         <locationY>134</locationY>
         <defaultConnector>
             <targetReference>anything_missing</targetReference>
@@ -193,7 +178,7 @@
     <recordCreates>
         <name>createSMS</name>
         <label>createSMS</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>782</locationY>
         <connector>
             <targetReference>set_flow_success</targetReference>
@@ -206,7 +191,7 @@
     <screens>
         <name>errorScreen</name>
         <label>errorScreen</label>
-        <locationX>1106</locationX>
+        <locationX>842</locationX>
         <locationY>998</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -216,23 +201,7 @@
             <fieldText>&lt;p&gt;Det oppsto en feil under opprettelse og sending av SMS.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Felmelding: {!error}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>noAccountErrorScreen</name>
-        <label>noAccountErrorScreen</label>
-        <locationX>578</locationX>
-        <locationY>350</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <fields>
-            <name>NoAccountErrorText</name>
-            <fieldText>&lt;p&gt;Saken mangler tilknytning til konto.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
+        <showFooter>false</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
@@ -254,7 +223,7 @@
     <screens>
         <name>quickTextOptions</name>
         <label>quickTextOptions</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>350</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -302,7 +271,7 @@
     <screens>
         <name>typeMessage</name>
         <label>typeMessage</label>
-        <locationX>842</locationX>
+        <locationX>578</locationX>
         <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -322,12 +291,12 @@
             <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
         </fields>
-        <nextOrFinishButtonLabel>Send</nextOrFinishButtonLabel>
+        <nextOrFinishButtonLabel>Send SMS</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>188</locationX>
+        <locationX>122</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>foundCase</targetReference>
