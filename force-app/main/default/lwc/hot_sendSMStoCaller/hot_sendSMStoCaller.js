@@ -1,9 +1,10 @@
 import { LightningElement, api } from 'lwc';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class Hot_sendSMStoCaller extends LightningElement {
-    isSMSFlowVisible = false;
     @api recordId;
+    isSMSFlowVisible = false;
+    confirmationMessage = '';
+    flowSuccess = false;
 
     get inputVariables() {
         return [
@@ -15,24 +16,30 @@ export default class Hot_sendSMStoCaller extends LightningElement {
         ];
     }
 
-    handleSMSButtonClick() {
-        this.isSMSFlowVisible = true;
+    // toggle brand <-> neutral
+    get buttonVariant() {
+        return this.isSMSFlowVisible ? 'neutral' : 'brand';
     }
+
+    handleSMSButtonClick() {
+        this.isSMSFlowVisible = !this.isSMSFlowVisible;
+        // clear old message when opening
+        if (this.isSMSFlowVisible) {
+            this.confirmationMessage = '';
+            // wait for DOM update, then scroll
+            setTimeout(() => {
+                const el = this.template.querySelector('.flowContainer');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }, 0);
+        }
+    }
+
     handleSMSFlowStatusChange(event) {
         if (event.detail.status === 'FINISHED') {
-            const outputVariables = event.detail.outputVariables || [];
-            const successOutput = outputVariables.find((v) => v.name === 'flowSuccess');
-            if (successOutput && successOutput.value === true) {
-                // Show success message
-                this.dispatchEvent(
-                    new ShowToastEvent({
-                        title: 'Suksess',
-                        message: 'SMS-en ble sendt velykket.',
-                        variant: 'success'
-                    })
-                );
-            }
-
+            const outputs = event.detail.outputVariables || [];
+            const success = outputs.find((v) => v.name === 'flowSuccess')?.value;
+            this.flowSuccess = success === true;
+            this.confirmationMessage = success ? 'SMS-en ble sendt velykket.' : 'Feil ved sending av SMS.';
             this.isSMSFlowVisible = false;
         }
     }
