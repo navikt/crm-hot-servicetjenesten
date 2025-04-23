@@ -3,10 +3,10 @@
     <apiVersion>63.0</apiVersion>
     <assignments>
         <description>Defines the chat theme group based on the original queue.</description>
-        <name>Assignment_1</name>
-        <label>Assignment 1</label>
+        <name>Assign_Theme_Group</name>
+        <label>Assign Theme Group</label>
         <locationX>50</locationX>
-        <locationY>503</locationY>
+        <locationY>611</locationY>
         <assignmentItems>
             <assignToReference>$Record.NKS_Theme_Group__c</assignToReference>
             <operator>Assign</operator>
@@ -20,7 +20,7 @@
         <name>Common_Code_Check</name>
         <label>Common Code Check</label>
         <locationX>182</locationX>
-        <locationY>395</locationY>
+        <locationY>503</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Common_Code_Not_Null</name>
@@ -33,9 +33,31 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Assignment_1</targetReference>
+                <targetReference>Assign_Theme_Group</targetReference>
             </connector>
             <label>Common Code Not Null</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Servicetjenesten_Chat</name>
+        <label>Is Servicetjenesten Chat</label>
+        <locationX>336</locationX>
+        <locationY>287</locationY>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>Yes</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.LiveChatButton.Queue.DeveloperName</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>HOT_Chat_Hjelpemidler</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Get_Theme_Group</targetReference>
+            </connector>
+            <label>Yes</label>
         </rules>
     </decisions>
     <environments>Default</environments>
@@ -65,7 +87,7 @@
         <name>Get_Theme_Group</name>
         <label>Get Theme Group</label>
         <locationX>182</locationX>
-        <locationY>287</locationY>
+        <locationY>395</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Common_Code_Check</targetReference>
@@ -100,10 +122,10 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>56</locationX>
+        <locationX>210</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Theme_Group</targetReference>
+            <targetReference>Is_Servicetjenesten_Chat</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
