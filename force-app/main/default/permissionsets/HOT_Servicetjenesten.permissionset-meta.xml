@@ -49,6 +49,18 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_ChatAfterWork</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOT_ChatAuthController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>HOT_ChatTranscriptService</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_DialogueViewController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -303,6 +315,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Journal_Entry__c.Theme__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LiveChatTranscript.CRM_Authentication_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
