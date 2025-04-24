@@ -47,11 +47,9 @@
         <connector>
             <targetReference>Assign_Theme_Group_Name</targetReference>
         </connector>
-        <filterFormula>(
-    {!$Record.RecordTypeId} = null
-    ||
-    {!$Record.RecordType.Name} = &apos;Phone Case&apos;
-)</filterFormula>
+        <filterFormula>{!$Record.RecordTypeId} &lt;&gt; null
+&amp;&amp;
+{!$Record.RecordType.Name} = &apos;Phone Case&apos;</filterFormula>
         <object>Case</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>

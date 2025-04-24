@@ -47,11 +47,9 @@
         <connector>
             <targetReference>Assign_Theme_Group_Name</targetReference>
         </connector>
-        <filterFormula>(
-    {!$Record.RecordTypeId} = null
-    ||
-    {!$Record.RecordType.Name} = &apos;Phone Case&apos;
-)
+        <filterFormula>{!$Record.RecordTypeId} &lt;&gt; null
+&amp;&amp;
+{!$Record.RecordType.Name} = &apos;Phone Case&apos;
 &amp;&amp;
 ISCHANGED({!$Record.NKS_Theme_Group__c})</filterFormula>
         <object>Case</object>
