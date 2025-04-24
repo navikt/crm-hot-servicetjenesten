@@ -5,7 +5,7 @@
         <name>errorAssignment</name>
         <label>errorAssignment</label>
         <locationX>842</locationX>
-        <locationY>890</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>error</assignToReference>
             <operator>Assign</operator>
@@ -21,7 +21,7 @@
         <name>set_flow_success</name>
         <label>Set flow success variable</label>
         <locationX>578</locationX>
-        <locationY>890</locationY>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>flowSuccess</assignToReference>
             <operator>Assign</operator>
@@ -31,26 +31,10 @@
         </assignmentItems>
     </assignments>
     <assignments>
-        <name>setChoosenQuickText</name>
-        <label>setChoosenQuickText</label>
-        <locationX>578</locationX>
-        <locationY>458</locationY>
-        <assignmentItems>
-            <assignToReference>choosenQuickTextValue</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Velg_en_hurtigtekst_eller_bare_g_videre</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>typeMessage</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>setSMSValue</name>
         <label>setSMSValue</label>
         <locationX>578</locationX>
-        <locationY>674</locationY>
+        <locationY>458</locationY>
         <assignmentItems>
             <assignToReference>sms.Account__c</assignToReference>
             <operator>Assign</operator>
@@ -109,7 +93,7 @@
         <locationX>446</locationX>
         <locationY>242</locationY>
         <defaultConnector>
-            <targetReference>quickTextOptions</targetReference>
+            <targetReference>typeMessage</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Ready to send SMS</defaultConnectorLabel>
         <rules>
@@ -179,7 +163,7 @@
         <name>createSMS</name>
         <label>createSMS</label>
         <locationX>578</locationX>
-        <locationY>782</locationY>
+        <locationY>566</locationY>
         <connector>
             <targetReference>set_flow_success</targetReference>
         </connector>
@@ -192,7 +176,7 @@
         <name>errorScreen</name>
         <label>errorScreen</label>
         <locationX>842</locationX>
-        <locationY>998</locationY>
+        <locationY>782</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -221,38 +205,6 @@
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>quickTextOptions</name>
-        <label>quickTextOptions</label>
-        <locationX>578</locationX>
-        <locationY>350</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>false</allowPause>
-        <backButtonLabel>Forrige</backButtonLabel>
-        <connector>
-            <targetReference>setChoosenQuickText</targetReference>
-        </connector>
-        <fields>
-            <name>ShowCallerNumber</name>
-            <fieldText>&lt;p&gt;&lt;strong&gt;Innringer nummer: &lt;/strong&gt;{!recordId.HOT_Innringer__c}&lt;/p&gt;&lt;p&gt;SMS vil bli sendt til dette nummeret.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Velg_en_hurtigtekst_eller_bare_g_videre</name>
-            <choiceReferences>noQuickText</choiceReferences>
-            <choiceReferences>quickTextChoice1</choiceReferences>
-            <dataType>String</dataType>
-            <defaultSelectedChoiceReference>noQuickText</defaultSelectedChoiceReference>
-            <fieldText>Velg en hurtigtekst eller bare gå videre</fieldText>
-            <fieldType>RadioButtons</fieldType>
-            <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
-            <isRequired>false</isRequired>
-        </fields>
-        <nextOrFinishButtonLabel>Neste</nextOrFinishButtonLabel>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>recipientIsNull</name>
         <label>recipientIsNull</label>
         <locationX>314</locationX>
@@ -272,7 +224,7 @@
         <name>typeMessage</name>
         <label>typeMessage</label>
         <locationX>578</locationX>
-        <locationY>566</locationY>
+        <locationY>350</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -281,9 +233,14 @@
             <targetReference>setSMSValue</targetReference>
         </connector>
         <fields>
+            <name>DisplayCallerInfo</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;Innringer nummer: &lt;/strong&gt;{!recordId.HOT_Innringer__c}&lt;/p&gt;&lt;p&gt;SMS vil bli sendt til dette nummeret.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Message</name>
             <defaultValue>
-                <stringValue>{!choosenQuickTextValue}
+                <stringValue>
 {!endMessageText}</stringValue>
             </defaultValue>
             <fieldText>Melding</fieldText>
@@ -302,12 +259,12 @@
             <targetReference>foundCase</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <textTemplates>
         <name>endMessageText</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
         <text>Du kan ikke svare på denne meldingen.
-Mvh Nav</text>
+Mvh Nav Hjelpemidler og tilrettelegging</text>
     </textTemplates>
     <textTemplates>
         <name>quickText1</name>
