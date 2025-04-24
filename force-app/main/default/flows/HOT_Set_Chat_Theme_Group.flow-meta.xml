@@ -14,6 +14,13 @@
                 <elementReference>Get_Theme_Group.Id</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>$Record.HOT_Theme_Group_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Theme_Group.Name</elementReference>
+            </value>
+        </assignmentItems>
     </assignments>
     <decisions>
         <description>Validate the queried common code</description>
@@ -41,7 +48,7 @@
     <decisions>
         <name>Is_Servicetjenesten_Chat</name>
         <label>Is Servicetjenesten Chat</label>
-        <locationX>336</locationX>
+        <locationX>380</locationX>
         <locationY>287</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -122,7 +129,7 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <start>
-        <locationX>210</locationX>
+        <locationX>254</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Is_Servicetjenesten_Chat</targetReference>
