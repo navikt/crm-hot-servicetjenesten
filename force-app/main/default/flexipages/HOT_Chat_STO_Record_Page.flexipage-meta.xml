@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Servicetjesten</description>
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
@@ -166,6 +167,22 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>cardTitle</name>
+                    <value>Skriv til oss</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>checkMedskriv</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChangeLngBtn</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>showClose</name>
+                    <value>false</value>
+                </componentInstanceProperties>
                 <componentName>hot_messagingContainer</componentName>
                 <identifier>c_hot_messagingContainer</identifier>
             </componentInstance>
@@ -173,7 +190,7 @@
         <name>rightcol</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>HOT Chat Record Page</masterLabel>
+    <masterLabel>HOT Chat STO Record Page</masterLabel>
     <sobjectType>Thread__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
