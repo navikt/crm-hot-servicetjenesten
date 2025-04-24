@@ -5,6 +5,7 @@ export default class Hot_sendSMStoCaller extends LightningElement {
     isSMSFlowVisible = false;
     confirmationMessage = '';
     flowSuccess = false;
+    hasScrolled = false;
 
     get inputVariables() {
         return [
@@ -16,21 +17,28 @@ export default class Hot_sendSMStoCaller extends LightningElement {
         ];
     }
 
-    // toggle brand <-> neutral
     get buttonVariant() {
         return this.isSMSFlowVisible ? 'neutral' : 'brand';
     }
 
     handleSMSButtonClick() {
         this.isSMSFlowVisible = !this.isSMSFlowVisible;
-        // clear old message when opening
         if (this.isSMSFlowVisible) {
+            // reset state for a fresh render
             this.confirmationMessage = '';
-            // wait for DOM update, then scroll
-            setTimeout(() => {
-                const el = this.template.querySelector('.flowContainer');
-                if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }, 0);
+            this.flowSuccess = false;
+            this.hasScrolled = false;
+        }
+    }
+
+    renderedCallback() {
+        // scroll only once after flow appears
+        if (this.isSMSFlowVisible && !this.hasScrolled) {
+            const el = this.template.querySelector('.flowContainer');
+            if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                this.hasScrolled = true;
+            }
         }
     }
 
@@ -39,7 +47,7 @@ export default class Hot_sendSMStoCaller extends LightningElement {
             const outputs = event.detail.outputVariables || [];
             const success = outputs.find((v) => v.name === 'flowSuccess')?.value;
             this.flowSuccess = success === true;
-            this.confirmationMessage = success ? 'SMS-en ble sendt velykket.' : 'Feil ved sending av SMS.';
+            this.confirmationMessage = this.flowSuccess ? 'SMS-en ble sendt velykket.' : 'Feil ved sending av SMS.';
             this.isSMSFlowVisible = false;
         }
     }
