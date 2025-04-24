@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>63.0</apiVersion>
+    <assignments>
+        <name>Assign_Theme_Group_Name</name>
+        <label>Assign Theme Group Name</label>
+        <locationX>176</locationX>
+        <locationY>287</locationY>
+        <assignmentItems>
+            <assignToReference>$Record.HOT_Theme_Group_Name__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Theme_Group_Name</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <environments>Default</environments>
+    <formulas>
+        <name>Theme_Group_Name</name>
+        <dataType>String</dataType>
+        <expression>IF({!$Record.NKS_Theme_Group__c}=null, &apos;&apos;, {!$Record.NKS_Theme_Group__r.Name})</expression>
+    </formulas>
+    <interviewLabel>HOT Set Case Theme Group Name {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT Set Case Theme Group Name On Create</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Theme_Group_Name</targetReference>
+        </connector>
+        <filterFormula>(
+    {!$Record.RecordTypeId} = null
+    ||
+    {!$Record.RecordType.Name} = &apos;Phone Case&apos;
+)</filterFormula>
+        <object>Case</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+</Flow>
