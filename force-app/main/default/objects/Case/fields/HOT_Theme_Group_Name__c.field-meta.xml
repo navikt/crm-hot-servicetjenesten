@@ -3,7 +3,7 @@
     <fullName>HOT_Theme_Group_Name__c</fullName>
     <description>Theme Group Name</description>
     <externalId>false</externalId>
-    <label>HOT Theme Group Name</label>
+    <label>Theme Group Name HOT</label>
     <length>20</length>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
