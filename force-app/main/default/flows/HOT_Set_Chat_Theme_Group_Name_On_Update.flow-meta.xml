@@ -175,8 +175,8 @@
         </rules>
     </decisions>
     <environments>Default</environments>
-    <interviewLabel>HOT_Update_Chat_Theme_Group_Name {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>HOT_Update_Chat_Theme_Group_Name</label>
+    <interviewLabel>HOT_Set_Chat_Theme_Group_Name_On_Update {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HOT_Set_Chat_Theme_Group_Name_On_Update</label>
     <processMetadataValues>
         <name>BuilderType</name>
         <value>
