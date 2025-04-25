@@ -10,6 +10,8 @@
     <targetConfigs>
         <targetConfig targets="lightning__FlowScreen">
             <property name="recordId" label="RecordId to redirect" type="String" role="inputOnly" />
+            <property name="openAsSubtab" label="As Subtab" type="Boolean" role="inputOnly" default="false" />
+            <property name="closeCurrentTab" label="Close current Tab" type="Boolean" role="inputOnly" default="false" description="Not relevant if As Subtab is set to 'true'."/>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

@@ -24,7 +24,7 @@
         <locationX>182</locationX>
         <locationY>866</locationY>
         <assignmentItems>
-            <assignToReference>NavTask.CRM_Comments__c</assignToReference>
+            <assignToReference>NavTask.NKS_Comments__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Oppgave_til_NAV_enhet</elementReference>
@@ -333,7 +333,18 @@
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>Selected_Subtheme_SF_Id</assignToReference>
+                <name>subtheme</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_Group_SF_Id</assignToReference>
+                <name>themeGroup</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Theme_SF_Id</assignToReference>
+                <name>theme</name>
+            </outputParameters>
         </fields>
         <fields>
             <name>Task_Type_Selector</name>

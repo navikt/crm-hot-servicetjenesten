@@ -1,0 +1,37 @@
+<template>
+    <div>
+        <hr class="separator" />
+
+        <div class="open-flow-button">
+            <lightning-button
+                label="Send SMS til innringer"
+                variant={buttonVariant}
+                onclick={handleSMSButtonClick}
+            ></lightning-button>
+        </div>
+
+        <template lwc:if={confirmationMessage}>
+            <div class="confirmation-message">
+                <template lwc:if={flowSuccess}>
+                    <lightning-icon
+                        variant="success"
+                        icon-name="utility:success"
+                        alternative-text="Success"
+                        size="small"
+                    ></lightning-icon>
+                </template>
+                <span>{confirmationMessage}</span>
+            </div>
+        </template>
+
+        <template lwc:if={isSMSFlowVisible}>
+            <div class="flowContainer">
+                <lightning-flow
+                    flow-api-name="HOT_Send_SMS_From_Case"
+                    flow-input-variables={inputVariables}
+                    onstatuschange={handleSMSFlowStatusChange}
+                ></lightning-flow>
+            </div>
+        </template>
+    </div>
+</template>
