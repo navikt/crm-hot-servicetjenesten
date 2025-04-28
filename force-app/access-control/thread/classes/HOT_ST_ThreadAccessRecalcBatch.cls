@@ -2,7 +2,9 @@ public with sharing class HOT_ST_ThreadAccessRecalcBatch implements Database.Bat
     private final static String QUERY =
         'SELECT Id, CRM_Account__c, CRM_Henvendelse_BehandlingsId__c, CRM_Office_Restriction__c, ' +
         'STO_Category__c, ' +
-        'CRM_Theme_Code__c ' +
+        'CRM_Theme_Code__c, ' +
+        'CRM_Thread_Type__c, ' +
+        'CRM_Theme_Group_Name__c'
         'FROM Thread__c ' +
         'WHERE CRM_Account__c != null AND STO_Category__c IN :categories AND  CRM_Thread_Type__c IN :threadTypes';
     @TestVisible
