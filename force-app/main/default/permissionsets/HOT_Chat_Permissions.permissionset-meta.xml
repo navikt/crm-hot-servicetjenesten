@@ -28,11 +28,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>LiveChatTranscript.HOT_Confidential__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>LiveChatTranscript.NKS_Authentication_Timestamp__c</field>
         <readable>true</readable>
     </fieldPermissions>
