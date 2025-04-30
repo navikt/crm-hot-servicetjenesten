@@ -302,7 +302,7 @@
             <targetReference>foundCase</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <textTemplates>
         <name>endMessageText</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
