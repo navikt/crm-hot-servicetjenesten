@@ -7,7 +7,7 @@
         <locationX>176</locationX>
         <locationY>287</locationY>
         <assignmentItems>
-            <assignToReference>$Record.HOT_Theme_Group_Name__c</assignToReference>
+            <assignToReference>$Record.NKS_Theme_Group_Name__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>Theme_Group_Name</elementReference>
