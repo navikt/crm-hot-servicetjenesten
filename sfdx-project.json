@@ -9,7 +9,7 @@
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.263.0.LATEST"
+                    "versionNumber": "0.268.0.LATEST"
                 },
                 {
                     "package": "crm-thread-view",
