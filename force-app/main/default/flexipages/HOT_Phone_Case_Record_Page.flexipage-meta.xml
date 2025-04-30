@@ -695,6 +695,12 @@
                 <identifier>c_hot_conversationNoteDetails</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_sendSMStoCaller</componentName>
+                <identifier>c_hot_sendSMStoCaller</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>leftsidebar</name>
         <type>Region</type>
     </flexiPageRegions>
