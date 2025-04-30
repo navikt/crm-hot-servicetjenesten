@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <applicationVisibilities>
+        <application>Servicetjenesten</application>
+        <visible>true</visible>
+    </applicationVisibilities>
     <classAccesses>
         <apexClass>CRM_HenvendelseQuicktextController</apexClass>
         <enabled>true</enabled>
@@ -318,7 +322,7 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
-        <editable>false</editable>
+        <editable>true</editable>
         <field>LiveChatTranscript.CRM_Authentication_Status__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -330,6 +334,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LiveChatTranscript.HOT_Citizenship__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LiveChatTranscript.HOT_Confidential__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -390,6 +399,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LiveChatTranscript.NKS_Chat_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LiveChatTranscript.NKS_Theme_Group__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
