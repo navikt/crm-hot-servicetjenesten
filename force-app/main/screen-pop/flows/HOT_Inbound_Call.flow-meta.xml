@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
-        <name>Get_Caller</name>
-        <label>Get Caller</label>
+        <name>Get_Caller_info</name>
+        <label>Get Caller Info</label>
         <locationX>578</locationX>
         <locationY>134</locationY>
         <actionName>HOT_CallFlowController</actionName>
@@ -20,8 +20,20 @@
         <nameSegment>HOT_CallFlowController</nameSegment>
         <offset>0</offset>
         <outputParameters>
+            <assignToReference>CALLER_CONTEXT</assignToReference>
+            <name>callerContext</name>
+        </outputParameters>
+        <outputParameters>
             <assignToReference>PUZZEL_CALLER</assignToReference>
             <name>callerNumber</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>PUZZEL_QUEUE_NAME</assignToReference>
+            <name>queueName</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>THEME_GROUP_CODE</assignToReference>
+            <name>themeGroup</name>
         </outputParameters>
     </actionCalls>
     <actionCalls>
@@ -532,7 +544,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <locationX>452</locationX>
         <locationY>0</locationY>
         <connector>
-            <targetReference>Get_Caller</targetReference>
+            <targetReference>Get_Caller_info</targetReference>
         </connector>
     </start>
     <status>Active</status>

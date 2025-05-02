@@ -1,5 +1,5 @@
 public without sharing class HOT_CallFlowController {
-    private static final List<String> QueryFields = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
+    private static final List<String> QUERY_FIELDS = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
     private static Map<String, Schema.SObjectType> globalDesc = Schema.getGlobalDescribe();
 
     /**
@@ -16,13 +16,13 @@ public without sharing class HOT_CallFlowController {
         description='Use the Puzzel Session ID to collect the Caller, and matches the Puzzel queue name from enquiry log to determine the caller context'
         category='Call Flow'
     )
-    public static List<CallInfoResponse> getCallerInfo(List<String> sessionIds) {
-        List<CallInfoResponse> results = new List<CallInfoResponse>();
+    public static List<CallerResponse> getCallerInfo(List<String> sessionIds) {
+        List<CallerResponse> results = new List<CallerResponse>();
 
         Boolean isFallback = getEnquiryLogObject() == null && !Test.isRunningTest();
         if (isFallback) {
             for (String sid : sessionIds) {
-                results.add(new CallInfoResponse('', 'PERSON', 'TEST QUEUE', ''));
+                results.add(new CallerResponse('', 'PERSON', 'TEST QUEUE', ''));
             }
             return results;
         }
@@ -54,7 +54,7 @@ public without sharing class HOT_CallFlowController {
             String themeGroup = (md != null) ? md.Theme_Group_Code__c : 'PERSON';
             String callerContext = (md != null) ? md.Caller_Context__c : 'TEST QUEUE';
 
-            results.add(new CallInfoResponse(caller, themeGroup, callerContext, queueName));
+            results.add(new CallerResponse(caller, themeGroup, callerContext, queueName));
         }
 
         return results;
@@ -62,7 +62,9 @@ public without sharing class HOT_CallFlowController {
 
     private static List<Object> getEnquiryLogs(List<String> sessionIds) {
         fflib_QueryFactory qf = new fflib_QueryFactory(getEnquiryLogObject());
-        String soql = qf.selectFields(QUERY_FIELDS).setCondition('puzzel__SessionId__c IN :sessionIds').toSOQL();
+        String soql = qf.selectFields(QUERY_FIELDS)
+            .setCondition('puzzel__SessionId__c IN :sessionIds')
+            .toSOQL();
 
         if (Test.isRunningTest()) {
             return (List<Object>) JSON.deserializeUntyped(HOT_CallFlowControllerTest.MOCK_ENQUIRY_LOG);
@@ -81,7 +83,7 @@ public without sharing class HOT_CallFlowController {
         ];
     }
 
-    public class CallerInfoResponse {
+    public class CallerResponse {
         @InvocableVariable
         public String callerNumber;
         @InvocableVariable
@@ -91,7 +93,7 @@ public without sharing class HOT_CallFlowController {
         @InvocableVariable
         public String queueName;
 
-        public CallInfoResponse(String callerNumber, String themeGroup, String callerContext, String queueName) {
+        public CallerResponse(String callerNumber, String themeGroup, String callerContext, String queueName) {
             this.callerNumber = callerNumber;
             this.themeGroup = themeGroup;
             this.callerContext = callerContext;
