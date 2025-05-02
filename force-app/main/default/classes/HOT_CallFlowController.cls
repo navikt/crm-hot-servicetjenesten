@@ -12,58 +12,90 @@ public without sharing class HOT_CallFlowController {
     }
 
     @InvocableMethod(
-        label='Get Caller'
-        description='Use the Puzzel Session ID to collect the Caller.'
+        label='Get Caller and Call queue'
+        description='Use the Puzzel Session ID to collect the Caller, and matches the Puzzel queue name from enquiry log to determine the caller context'
         category='Call Flow'
     )
-    public static List<CallerResponse> getCallerInfo(List<String> sessionIds) {
-        List<CallerResponse> respList = new List<CallerResponse>();
+    public static List<CallInfoResponse> getCallerInfo(List<String> sessionIds) {
+        List<CallInfoResponse> results = new List<CallInfoResponse>();
 
-        if (getEnquiryLogObject() == null && !Test.isRunningTest()) {
-            for (String puzSessionId : sessionIds) {
-                respList.add(new CallerResponse('')); //Blank Phonenumber as fallback when there is no match
+        Boolean isFallback = getEnquiryLogObject() == null && !Test.isRunningTest();
+        if (isFallback) {
+            for (String sid : sessionIds) {
+                results.add(new CallInfoResponse('', 'PERSON', 'TEST QUEUE', ''));
             }
-        } else {
-            List<Object> enqLogs = getEnquiryLogs(sessionIds);
-            system.debug('Enquirylog test' + getEnquiryLogs(sessionIds));
-            for (Object enqLog : enqLogs) {
-                Map<String, Object> enqMap = (Map<String, Object>) enqLog;
-                if (enqMap.containsKey('puzzel__Caller__c'))
-                    //String caller = (String) enqMap.get('puzzel__Caller__c');
-                    respList.add(new CallerResponse((String) enqMap.get('puzzel__Caller__c')));
+            return results;
+        }
+
+        List<Object> logs = getEnquiryLogs(sessionIds);
+
+        // collect all queue names for metadata lookup
+        Set<String> queueNames = new Set<String>();
+        for (Object record : logs) {
+            Map<String, Object> recMap = (Map<String, Object>) record;
+            if (recMap.containsKey('puzzel__Queue__c')) {
+                queueNames.add((String) recMap.get('puzzel__Queue__c'));
             }
         }
-        return respList;
+
+        // load metadata
+        Map<String, Puzzel_Queue_Mapping__mdt> mappings = new Map<String, Puzzel_Queue_Mapping__mdt>();
+        for (Puzzel_Queue_Mapping__mdt md : getQueueMappings(queueNames)) {
+            mappings.put(md.Puzzel_Queue_Name__c, md);
+        }
+
+        // build response
+        for (Object record : logs) {
+            Map<String, Object> recMap = (Map<String, Object>) record;
+            String caller = recMap.containsKey('puzzel__Caller__c') ? (String) recMap.get('puzzel__Caller__c') : '';
+            String queueName = recMap.containsKey('puzzel__Queue__c') ? (String) recMap.get('puzzel__Queue__c') : '';
+            Puzzel_Queue_Mapping__mdt md = mappings.get(queueName);
+
+            String themeGroup = (md != null) ? md.Theme_Group_Code__c : 'PERSON';
+            String callerContext = (md != null) ? md.Caller_Context__c : 'TEST QUEUE';
+
+            results.add(new CallInfoResponse(caller, themeGroup, callerContext, queueName));
+        }
+
+        return results;
     }
 
-    /**
-     * @description: Queries the enquiry logs matching the sessionId set.
-     * @author Stian Ruud Schikora | 05-28-2021
-     * @param sessionIds
-     * @return List<SObject>
-     **/
     private static List<Object> getEnquiryLogs(List<String> sessionIds) {
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(getEnquiryLogObject());
+        fflib_QueryFactory qf = new fflib_QueryFactory(getEnquiryLogObject());
+        String soql = qf.selectFields(QUERY_FIELDS).setCondition('puzzel__SessionId__c IN :sessionIds').toSOQL();
 
-        return Test.isRunningTest()
-            ? (List<Object>) JSON.deserializeUntyped(HOT_CallFlowControllerTest.MOCK_ENQUIRY_LOG)
-            : (List<Object>) JSON.deserializeUntyped(
-                  JSON.serialize(
-                      Database.query(
-                          queryFactory.selectFields(QueryFields)
-                              .setCondition('puzzel__SessionId__c in :sessionIds')
-                              .toSOQL()
-                      )
-                  )
-              );
+        if (Test.isRunningTest()) {
+            return (List<Object>) JSON.deserializeUntyped(HOT_CallFlowControllerTest.MOCK_ENQUIRY_LOG);
+        }
+        return (List<Object>) JSON.deserializeUntyped(JSON.serialize(Database.query(soql)));
     }
 
-    public class CallerResponse {
-        @invocableVariable
-        public String callerNumber;
+    private static List<Puzzel_Queue_Mapping__mdt> getQueueMappings(Set<String> queueNames) {
+        if (queueNames == null || queueNames.isEmpty()) {
+            return new List<Puzzel_Queue_Mapping__mdt>();
+        }
+        return [
+            SELECT Puzzel_Queue_Name__c, Theme_Group_Code__c, Caller_Context__c
+            FROM Puzzel_Queue_Mapping__mdt
+            WHERE Puzzel_Queue_Name__c IN :queueNames
+        ];
+    }
 
-        public CallerResponse(String callerNumber) {
+    public class CallerInfoResponse {
+        @InvocableVariable
+        public String callerNumber;
+        @InvocableVariable
+        public String themeGroup;
+        @InvocableVariable
+        public String callerContext;
+        @InvocableVariable
+        public String queueName;
+
+        public CallInfoResponse(String callerNumber, String themeGroup, String callerContext, String queueName) {
             this.callerNumber = callerNumber;
+            this.themeGroup = themeGroup;
+            this.callerContext = callerContext;
+            this.queueName = queueName;
         }
     }
 }
