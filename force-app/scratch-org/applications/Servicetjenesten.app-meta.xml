@@ -29,7 +29,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>HOT_Chat_STO_Record_Page</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -38,7 +38,7 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
         <content>HOT_Chat_STO_Record_Page</content>
         <formFactor>Small</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
@@ -97,42 +97,6 @@
     <navType>Console</navType>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>HOT_Info_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
-        <recordType>NKS_Announcement__c.HOT_Info</recordType>
-        <type>Flexipage</type>
-        <profile>HOT Servicetjenesten</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HOT_Info_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
-        <recordType>NKS_Announcement__c.HOT_Info</recordType>
-        <type>Flexipage</type>
-        <profile>HOT Servicetjenesten</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HOT_Info_Record_Page</content>
-        <formFactor>Small</formFactor>
-        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
-        <recordType>NKS_Announcement__c.HOT_Info</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>HOT_Info_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
-        <recordType>NKS_Announcement__c.HOT_Info</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
         <content>HOT_Phone_Case_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Case</pageOrSobjectType>
@@ -205,14 +169,6 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
-        <content>HOT_Chat_Case_Record_Page</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Case</pageOrSobjectType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
         <content>HOT_Knowledge_Feedback_Case_Record_Page</content>
         <formFactor>Large</formFactor>
         <pageOrSobjectType>Case</pageOrSobjectType>
@@ -273,6 +229,14 @@
     </profileActionOverrides>
     <profileActionOverrides>
         <actionName>View</actionName>
+        <content>HOT_Chat_Case_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Case</pageOrSobjectType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
         <content>HOT_News_Record_Page</content>
         <formFactor>Small</formFactor>
         <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
@@ -304,6 +268,42 @@
         <formFactor>Large</formFactor>
         <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
         <recordType>NKS_Announcement__c.HOT_News</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HOT_Info_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
+        <recordType>NKS_Announcement__c.HOT_Info</recordType>
+        <type>Flexipage</type>
+        <profile>HOT Servicetjenesten</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HOT_Info_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
+        <recordType>NKS_Announcement__c.HOT_Info</recordType>
+        <type>Flexipage</type>
+        <profile>HOT Servicetjenesten</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HOT_Info_Record_Page</content>
+        <formFactor>Small</formFactor>
+        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
+        <recordType>NKS_Announcement__c.HOT_Info</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>HOT_Info_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>NKS_Announcement__c</pageOrSobjectType>
+        <recordType>NKS_Announcement__c.HOT_Info</recordType>
         <type>Flexipage</type>
         <profile>Admin</profile>
     </profileActionOverrides>
@@ -312,9 +312,13 @@
     <tabs>standard-Account</tabs>
     <tabs>standard-Case</tabs>
     <tabs>Knowledge__kav</tabs>
+    <tabs>HOT_Notification__c</tabs>
     <uiType>Lightning</uiType>
-    <utilityBar>HOT_Servicetjenesten_UtilityBar</utilityBar>
+    <utilityBar>NSV_UtilityBar</utilityBar>
     <workspaceConfig>
+        <mappings>
+            <tab>HOT_Notification__c</tab>
+        </mappings>
         <mappings>
             <tab>Knowledge__kav</tab>
         </mappings>
