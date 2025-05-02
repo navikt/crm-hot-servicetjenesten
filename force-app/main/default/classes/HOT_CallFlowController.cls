@@ -2,11 +2,6 @@ public without sharing class HOT_CallFlowController {
     private static final List<String> QUERY_FIELDS = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
     private static Map<String, Schema.SObjectType> globalDesc = Schema.getGlobalDescribe();
 
-    /**
-     * @description: Returns the Enquiry log SObject type if it exists
-     * @author Stian Ruud Schikora | 05-28-2021
-     * @return Schema.SObjectType
-     **/
     private static Schema.SObjectType getEnquiryLogObject() {
         return globalDesc.containsKey('puzzel__EnquiryLog__c') ? globalDesc.get('puzzel__EnquiryLog__c') : null;
     }
