@@ -1,4 +1,4 @@
-public with sharing class HOT_ChatAuthController {
+public without sharing class HOT_ChatAuthController {
     @AuraEnabled
     public static void setStatus(Id chatTranscriptId, String status) {
         List<SObject> recordsToUpdate = new List<SObject>();
