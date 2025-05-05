@@ -42,7 +42,9 @@ global class HOT_ST_ThreadPersonAccessHandler extends MyTriggers {
                 CRM_Henvendelse_BehandlingsId__c,
                 CRM_Office_Restriction__c,
                 CRM_Theme_Code__c,
-                STO_Category__c
+                STO_Category__c,
+                CRM_Theme_Group_Name__c,
+                CRM_Thread_Type__c
             FROM Thread__c
             WHERE CRM_Account__r.CRM_Person__c IN :personIds AND CRM_Thread_Type__c IN :THREAD_TYPES_OF_INTEREST
         ];

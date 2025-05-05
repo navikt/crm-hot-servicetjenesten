@@ -9,7 +9,7 @@
             "dependencies": [
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.263.0.LATEST"
+                    "versionNumber": "0.268.0.LATEST"
                 },
                 {
                     "package": "crm-thread-view",
@@ -21,7 +21,7 @@
                 },
                 {
                     "package": "crm-platform-reporting",
-                    "versionNumber": "0.39.0.LATEST"
+                    "versionNumber": "0.40.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -41,7 +41,7 @@
                 },
                 {
                     "package": "crm-platform-oppgave",
-                    "versionNumber": "0.63.0.LATEST"
+                    "versionNumber": "0.64.0.LATEST"
                 },
                 {
                     "package": "crm-platform-access-control",
@@ -53,7 +53,7 @@
                 },
                 {
                     "package": "crm-henvendelse",
-                    "versionNumber": "0.166.0.LATEST"
+                    "versionNumber": "0.169.0.LATEST"
                 },
                 {
                     "package": "crm-shared-timeline",
