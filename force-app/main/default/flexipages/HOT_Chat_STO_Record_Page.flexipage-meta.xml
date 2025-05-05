@@ -169,7 +169,6 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>cardTitle</name>
-                    <value>Skriv til oss</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>checkMedskriv</name>
