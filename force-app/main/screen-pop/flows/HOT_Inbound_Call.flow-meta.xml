@@ -3,7 +3,7 @@
     <actionCalls>
         <name>Get_Caller</name>
         <label>Get Caller</label>
-        <locationX>578</locationX>
+        <locationX>182</locationX>
         <locationY>134</locationY>
         <actionName>HOT_CallFlowController</actionName>
         <actionType>apex</actionType>
@@ -23,25 +23,6 @@
             <assignToReference>PUZZEL_CALLER</assignToReference>
             <name>callerNumber</name>
         </outputParameters>
-    </actionCalls>
-    <actionCalls>
-        <description>Redirects user to the organization account</description>
-        <name>Recirect_to_Account</name>
-        <label>Recirect to Account</label>
-        <locationX>314</locationX>
-        <locationY>782</locationY>
-        <actionName>c:hot_flowRedirect</actionName>
-        <actionType>component</actionType>
-        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
-        <inputParameters>
-            <name>recordId</name>
-            <value>
-                <elementReference>RELATED_ACCOUNT_ID</elementReference>
-            </value>
-        </inputParameters>
-        <nameSegment>c:hot_flowRedirect</nameSegment>
-        <offset>0</offset>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
     </actionCalls>
     <actionCalls>
         <description>Redirects user to the created case</description>
@@ -66,8 +47,8 @@
         <description>Redirects user to the created case</description>
         <name>Redirect_To_Case_0</name>
         <label>Redirect To Case</label>
-        <locationX>842</locationX>
-        <locationY>890</locationY>
+        <locationX>314</locationX>
+        <locationY>782</locationY>
         <actionName>c:hot_flowRedirect</actionName>
         <actionType>component</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -150,8 +131,8 @@
     <assignments>
         <name>Case_Assignment_0</name>
         <label>Case Assignment</label>
-        <locationX>842</locationX>
-        <locationY>674</locationY>
+        <locationX>314</locationX>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Call_Case.Origin</assignToReference>
             <operator>Assign</operator>
@@ -195,13 +176,6 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>Call_Case.NKS_Puzzel_Queue_Name__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>PUZZEL_QUEUE_NAME</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>Call_Case.RecordTypeId</assignToReference>
             <operator>Assign</operator>
             <value>
@@ -228,75 +202,13 @@
         </value>
     </constants>
     <decisions>
-        <name>Check_Call_Queue_0</name>
-        <label>Check Call Queue</label>
-        <locationX>1106</locationX>
-        <locationY>566</locationY>
-        <defaultConnectorLabel>Other</defaultConnectorLabel>
-        <rules>
-            <name>Personbruker</name>
-            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
-            <conditions>
-                <leftValueReference>CALLER_CONTEXT</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>PERSON</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>PERSON</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Case_Assignment_0</targetReference>
-            </connector>
-            <label>Personbruker</label>
-        </rules>
-        <rules>
-            <name>Arbeidsgiver</name>
-            <conditionLogic>(1 AND 2) OR 3</conditionLogic>
-            <conditions>
-                <leftValueReference>CALLER_CONTEXT</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>ARBEIDSGIVER</stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>CONTEXT_OVERRIDE</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>ARBEIDSGIVER</stringValue>
-                </rightValue>
-            </conditions>
-            <label>Arbeidsgiver</label>
-        </rules>
-    </decisions>
-    <decisions>
         <description>Person identified through puzzle call</description>
         <name>Check_identifier</name>
         <label>Check identifier</label>
-        <locationX>578</locationX>
+        <locationX>182</locationX>
         <locationY>458</locationY>
         <defaultConnector>
-            <targetReference>Check_Call_Queue_0</targetReference>
+            <targetReference>Case_Assignment_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Phone number</defaultConnectorLabel>
         <rules>
@@ -313,50 +225,6 @@
                 <targetReference>Get_Person_Account</targetReference>
             </connector>
             <label>Person Identifier</label>
-        </rules>
-        <rules>
-            <name>Organization_Identifier</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>INPUT_TYPE</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue>ORG_IDENT</stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Get_Organization_Account</targetReference>
-            </connector>
-            <label>Organization Identifier</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>Verify_Account</name>
-        <label>Verify Account</label>
-        <locationX>446</locationX>
-        <locationY>674</locationY>
-        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
-        <rules>
-            <name>Found_Account</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>RELATED_ACCOUNT_ID</leftValueReference>
-                <operator>NotEqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>RELATED_ACCOUNT_ID</leftValueReference>
-                <operator>IsNull</operator>
-                <rightValue>
-                    <booleanValue>false</booleanValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>Recirect_to_Account</targetReference>
-            </connector>
-            <label>Found Account</label>
         </rules>
     </decisions>
     <description>Flow to be used with SoftPhone Layout in order to create a case and redirect to the case
@@ -409,37 +277,13 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <description>Creates a case for the incoming phone call.</description>
         <name>Create_Case_0</name>
         <label>Create Case</label>
-        <locationX>842</locationX>
-        <locationY>782</locationY>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Redirect_To_Case_0</targetReference>
         </connector>
         <inputReference>Call_Case</inputReference>
     </recordCreates>
-    <recordLookups>
-        <description>Queries the organization account.</description>
-        <name>Get_Organization_Account</name>
-        <label>Get Organization Account</label>
-        <locationX>446</locationX>
-        <locationY>566</locationY>
-        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>Verify_Account</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>INT_OrganizationNumber__c</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Search</elementReference>
-            </value>
-        </filters>
-        <object>Account</object>
-        <outputAssignments>
-            <assignToReference>RELATED_ACCOUNT_ID</assignToReference>
-            <field>Id</field>
-        </outputAssignments>
-    </recordLookups>
     <recordLookups>
         <name>Get_Person_Account</name>
         <label>Get Person Account</label>
@@ -474,7 +318,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <description>Get the Phone Case record type. We still use &quot;NKS_Phone_Case&quot;</description>
         <name>Get_recordtype</name>
         <label>Get recordtype</label>
-        <locationX>578</locationX>
+        <locationX>182</locationX>
         <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -496,7 +340,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
         <description>Queries the theme group that was mapped to the queue.</description>
         <name>Get_Theme_Group</name>
         <label>Get Theme Group</label>
-        <locationX>578</locationX>
+        <locationX>182</locationX>
         <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -529,7 +373,7 @@ V2. Added Recordtype handling and enquirylog to collect Caller number and store 
     </recordLookups>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <start>
-        <locationX>452</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>Get_Caller</targetReference>
