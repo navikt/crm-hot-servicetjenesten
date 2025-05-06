@@ -221,6 +221,11 @@
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
+        <editable>true</editable>
+        <field>Case.NKS_Theme_Group_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
         <editable>false</editable>
         <field>Case.NKS_AccountAge__c</field>
         <readable>true</readable>
@@ -483,6 +488,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LiveChatTranscript.HOT_TemporaryAddress__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>LiveChatTranscript.NKS_Theme_Group_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

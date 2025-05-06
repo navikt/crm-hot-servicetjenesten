@@ -18,6 +18,8 @@ public without sharing class HOT_ST_ThreadSharingEventHandler extends RecordShar
                     CRM_Henvendelse_BehandlingsId__c,
                     CRM_Office_Restriction__c,
                     CRM_Theme_Code__c,
+                    CRM_Theme_Group_Name__c,
+                    CRM_Thread_Type__c,
                     STO_Category__c
                 FROM Thread__c
                 WHERE Id IN :recordIds

@@ -1,5 +1,5 @@
 global class HOT_ST_ThreadAccessHandler extends MyTriggers {
-    private static final List<String> THREAD_TYPES_OF_INTEREST = new List<String>{ 'STO', 'STB', 'BTO' };
+    private static final List<String> THREAD_TYPES_OF_INTEREST = new List<String>{ 'STO', 'STB', 'BTO', 'CHAT' };
     private static final List<String> CATEGORY_OF_INTEREST = new List<String>{ 'Hjelpemidler' };
     /**
      * @description On update of Thread record, share it with Servicetjenesten.
@@ -7,7 +7,11 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
      * @param triggerOldMap `Map<Id, sObject>`
      */
     global override void onAfterUpdate(Map<Id, sObject> triggerOldMap) {
-        List<String> fieldNamesToCheck = new List<String>{ 'STO_Category__c', 'CRM_Theme__c' };
+        List<String> fieldNamesToCheck = new List<String>{
+            'STO_Category__c',
+            'CRM_Theme__c',
+            'CRM_Theme_Group_Name__c'
+        };
         List<Thread__c> threadsWithNewSharing = new List<Thread__c>();
         List<Id> threadIdsToRevokeSharing = new List<Id>();
 
@@ -16,13 +20,16 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
                 continue;
             }
             if (
-                CATEGORY_OF_INTEREST.contains(thread.STO_Category__c) &&
+                (CATEGORY_OF_INTEREST.contains(thread.STO_Category__c) ||
+                CATEGORY_OF_INTEREST.contains(thread.CRM_Theme_Group_Name__c)) &&
                 MyTriggers.hasChangedFields(fieldNamesToCheck, thread, triggerOldMap.get(thread.Id))
             ) {
                 threadsWithNewSharing.add(thread);
             } else if (
-                CATEGORY_OF_INTEREST.contains(((Thread__c) triggerOldMap.get(thread.Id)).STO_Category__c) &&
-                !CATEGORY_OF_INTEREST.contains(thread.STO_Category__c)
+                (CATEGORY_OF_INTEREST.contains(((Thread__c) triggerOldMap.get(thread.Id)).STO_Category__c) &&
+                !CATEGORY_OF_INTEREST.contains(thread.STO_Category__c)) ||
+                (CATEGORY_OF_INTEREST.contains(((Thread__c) triggerOldMap.get(thread.Id)).CRM_Theme_Group_Name__c) &&
+                !CATEGORY_OF_INTEREST.contains(thread.CRM_Theme_Group_Name__c))
             ) {
                 threadIdsToRevokeSharing.add(thread.Id);
             }
@@ -42,7 +49,8 @@ global class HOT_ST_ThreadAccessHandler extends MyTriggers {
         for (Thread__c thread : (List<Thread__c>) records) {
             if (
                 THREAD_TYPES_OF_INTEREST.contains(thread.CRM_Thread_Type__c) &&
-                CATEGORY_OF_INTEREST.contains(thread.STO_Category__c)
+                (CATEGORY_OF_INTEREST.contains(thread.STO_Category__c) ||
+                CATEGORY_OF_INTEREST.contains(thread.CRM_Theme_Group_Name__c))
             ) {
                 RecordSharingEvent__e event = new RecordSharingEvent__e();
                 event.RecordId__c = thread.Id;
