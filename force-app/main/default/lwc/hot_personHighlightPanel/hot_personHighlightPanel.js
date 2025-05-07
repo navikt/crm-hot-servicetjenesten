@@ -375,7 +375,8 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     get isLoading() {
-        return Object.values(this.loadingStates).some((isLoading) => isLoading);
+        return Object.keys(this.loadingStates).some((key) => this.loadingStates[key]);
+        //return Object.values(this.loadingStates).some((isLoading) => isLoading);
     }
 
     get isPersonDetailsLoaded() {
