@@ -9,7 +9,7 @@ public without sharing class HOT_AccessErrorController {
         Person__c person = getPerson(personId);
         Boolean hasAccess = hasAccess(personId);
 
-        if (!accountNameSetToNotAvailable(person) && !hasAccess) {
+        if (accountNameSetToNotAvailable(person) && !hasAccess) {
             return 'Du mangler tilgang til å se informasjon knyttet til denne brukeren';
         }
 
