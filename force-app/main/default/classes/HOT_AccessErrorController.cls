@@ -2,7 +2,8 @@ public without sharing class HOT_AccessErrorController {
     @AuraEnabled
     public static String checkAccess(String field, String parentObject, String parentRecordId) {
         Id personId = getPersonId(field, parentObject, parentRecordId);
-        if (personId == null) { // This would only happen if case does not have related person for phone
+        if (personId == null) {
+            // This would only happen if case does not have related person for phone
             return null;
         }
         Person__c person = getPerson(personId);
@@ -57,8 +58,8 @@ public without sharing class HOT_AccessErrorController {
 
         return obj.get(fieldNameList[0]);
     }
-
-    private static Boolean hasAccess(Id recordId) {
+    @AuraEnabled
+    public static Boolean hasAccess(Id recordId) {
         List<UserRecordAccess> result = [
             SELECT RecordID, HasReadAccess
             FROM UserRecordAccess
