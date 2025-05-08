@@ -1,8 +1,8 @@
 echo "Hei på deg. Oppretter scratch org for deg"
 call sf org create scratch --definition-file config\project-scratch-def.json --alias %1 --duration-days %2 --set-default --json --wait 30
 
-echo "Installerer crm-platform-base ver. 0.263"
-call sf package install --package 04tKB000000YBLkYAO --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installerer crm-platform-base ver. 0.268"
+call sf package install --package 04tQC000000jJ6XYAU --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Installerer crm-thread-view ver. 0.5"
 call sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
