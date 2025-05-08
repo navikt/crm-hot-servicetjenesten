@@ -22,6 +22,7 @@ import getPersonAccessBadges from '@salesforce/apex/HOT_PersonAccessBadgesContro
 import getPersonBadgesAndInfo from '@salesforce/apex/HOT_PersonBadgesController.getPersonBadgesAndInfo';
 import getHistorikk from '@salesforce/apex/HOT_FullmaktController.getHistorikk';
 import getRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
+import hasAccess from '@salesforce/apex/HOT_AccessErrorController.hasAccess';
 
 const PERSON_FIELDS = [
     PERSON_FIRST_NAME,
@@ -236,6 +237,10 @@ export default class hot_personHighlightPanel extends LightningElement {
         })
             .then((record) => {
                 this.personId = resolve(relationshipField, record);
+                if (record && !this.personId) {
+                    this.noPerson = true;
+                    this.loadingStates.getRecordPerson = false;
+                }
             })
             .catch((error) => {
                 this.addErrorMessage('getRelatedRecord', error);
@@ -248,12 +253,6 @@ export default class hot_personHighlightPanel extends LightningElement {
         fields: PERSON_FIELDS
     })
     wiredPersonInfo({ error, data }) {
-        if (!this.personId) {
-            this.loadingStates.getRecordPerson = false;
-            this.noPerson = true;
-            return;
-        }
-        this.loadingStates.getRecordPerson = !(error || data);
         if (data) {
             this.actorId = getFieldValue(data, PERSON_ACTORID_FIELD);
             this.fullName = getFieldValue(data, FULL_NAME_FIELD);
@@ -275,13 +274,18 @@ export default class hot_personHighlightPanel extends LightningElement {
                 districtName: getFieldValue(data, DISTRICT_NAME_FIELD),
                 districtUrl: getFieldValue(data, DISTRICT_URL_FIELD)
             };
+            this.loadingStates.getRecordPerson = false;
             this.handleBackgroundColor();
         } else if (error) {
-            this.addErrorMessage('getRecord', error);
-            console.error('Error in wiredPersonInfo:', error);
+            this.loadingStates.getRecordPerson = false;
             this.handleBackgroundColor();
+            hasAccess(this.personId).then((access) => {
+                if (access) {
+                    this.addErrorMessage('getRecord', error);
+                    console.error('Error in wiredPersonInfo:', error);
+                }
+            });
         }
-        this.noPerson = this.personIdent == null;
     }
 
     @wire(getRecord, {
@@ -306,12 +310,12 @@ export default class hot_personHighlightPanel extends LightningElement {
         const className = !this.personDetails?.fullName
             ? 'confidentialBackground'
             : this.personDetails?.isDeceased
-            ? 'deadBackground'
-            : this.personDetails?.gender === 'Kvinne'
-            ? 'femaleBackground'
-            : this.personDetails?.gender === 'Mann'
-            ? 'maleBackground'
-            : 'unknownBackground';
+              ? 'deadBackground'
+              : this.personDetails?.gender === 'Kvinne'
+                ? 'femaleBackground'
+                : this.personDetails?.gender === 'Mann'
+                  ? 'maleBackground'
+                  : 'unknownBackground';
         genderWrapper.className = 'gender-wrapper ' + className;
     }
 
@@ -371,9 +375,13 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     get isLoading() {
-        return Object.values(this.loadingStates).some((isLoading) => isLoading);
+        return Object.keys(this.loadingStates).some((key) => this.loadingStates[key]);
+        //return Object.values(this.loadingStates).some((isLoading) => isLoading);
     }
 
+    get isPersonDetailsLoaded() {
+        return !this.loadingStates.getRecordPerson;
+    }
     get panelClass() {
         return this.fullName ? 'highlightPanel' : 'highlightPanelConfidential';
     }
