@@ -31,7 +31,9 @@ public without sharing class HOT_ST_ThreadAccessService {
                 wrapper.externalId = thread.CRM_Henvendelse_BehandlingsId__c;
                 wrapper.officeRestriction = thread.CRM_Office_Restriction__c;
                 wrapper.theme = thread.CRM_Theme_Code__c;
-                wrapper.category = thread.STO_Category__c;
+                wrapper.category = thread.CRM_Thread_Type__c == 'CHAT'
+                    ? thread.CRM_Theme_Group_Name__c
+                    : thread.STO_Category__c;
                 sobjects.add(wrapper);
             }
 

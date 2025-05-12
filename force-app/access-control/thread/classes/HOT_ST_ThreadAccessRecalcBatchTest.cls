@@ -169,6 +169,7 @@ private class HOT_ST_ThreadAccessRecalcBatchTest {
         System.assertEquals(
             new Map<String, List<String>>{
                 'categories' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_CATEGORIES,
+                'themeGroups' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_THEME_GROUPS,
                 'threadTypes' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_THREAD_TYPES
             },
             batch.getBindings(),
@@ -179,6 +180,7 @@ private class HOT_ST_ThreadAccessRecalcBatchTest {
         System.AssertEquals(
             new Map<String, List<String>>{
                 'categories' => new List<String>{ 'TEST_CATEGORY' },
+                'themeGroups' => HOT_ST_ThreadAccessRecalcBatch.DEFAULT_THEME_GROUPS,
                 'threadTypes' => new List<String>{ 'TEST_THREAD_TYPE' }
             },
             batch.getBindings(),
