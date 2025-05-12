@@ -1,0 +1,88 @@
+{
+    "appPageId": "b4f60626-b2f1-47ed-9705-d0bc11ddf574",
+    "componentName": "community_layout:sldsFlexibleLayout",
+    "id": "de876247-52f4-4bdc-a7d9-225807077010",
+    "label": "Register",
+    "regions": [
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "backgroundImageConfig": "",
+                        "backgroundImageOverlay": "rgba(0,0,0,0)",
+                        "sectionConfig": "{\"UUID\":\"66384055-3b5f-4019-94cb-be2d953ecf4b\",\"columns\":[{\"UUID\":\"9394a7b1-e6ed-4544-9494-2968c1c396ab\",\"columnName\":\"Column 1\",\"columnKey\":\"col1\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+                    },
+                    "componentName": "community_layout:section",
+                    "id": "66384055-3b5f-4019-94cb-be2d953ecf4b",
+                    "regions": [
+                        {
+                            "components": [
+                                {
+                                    "componentAttributes": {},
+                                    "componentName": "community_login:communityLogo",
+                                    "id": "328778f5-3d1b-47df-a8b7-1a0801a9fbae",
+                                    "renderPriority": "NEUTRAL",
+                                    "renditionMap": {},
+                                    "type": "component"
+                                },
+                                {
+                                    "componentAttributes": {
+                                        "cancelLinkLabel": "Already have an account?",
+                                        "confirmPasswordLabel": "Confirm Password",
+                                        "emailLabel": "Email",
+                                        "firstnameLabel": "First Name",
+                                        "includePasswordField": true,
+                                        "lastnameLabel": "Last Name",
+                                        "passwordLabel": "Create Password",
+                                        "regConfirmUrl": "./CheckPasswordResetEmail",
+                                        "submitButtonLabel": "Sign Up"
+                                    },
+                                    "componentName": "community_login:selfRegister",
+                                    "id": "be888bc1-86fd-4d29-941c-e4a35751095a",
+                                    "renderPriority": "NEUTRAL",
+                                    "renditionMap": {},
+                                    "type": "component"
+                                }
+                            ],
+                            "id": "9394a7b1-e6ed-4544-9494-2968c1c396ab",
+                            "regionLabel": "Column 1",
+                            "regionName": "col1",
+                            "renditionMap": {},
+                            "type": "region"
+                        }
+                    ],
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "scopedBrandingSetId": null,
+                    "type": "component"
+                }
+            ],
+            "id": "e4563c90-cbf2-4a51-a99b-ac3f051e677f",
+            "regionName": "content",
+            "type": "region"
+        },
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "customHeadTags": "",
+                        "description": "",
+                        "pageTitle": "Register",
+                        "recordId": "{!recordId}"
+                    },
+                    "componentName": "community_builder:seoAssistant",
+                    "id": "decd5256-b0f2-4c94-8509-a843d35ebe44",
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "type": "component"
+                }
+            ],
+            "id": "989eb228-591e-480d-aef8-0d00b60f63fb",
+            "regionName": "sfdcHiddenRegion",
+            "type": "region"
+        }
+    ],
+    "themeLayoutType": "Inner",
+    "type": "view",
+    "viewType": "self-register"
+}
