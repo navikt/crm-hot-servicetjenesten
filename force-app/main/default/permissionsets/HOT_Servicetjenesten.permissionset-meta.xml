@@ -354,6 +354,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LiveChatTranscript.HOT_IsNavEmployee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LiveChatTranscript.HOT_LegalStatus__c</field>
         <readable>true</readable>
     </fieldPermissions>

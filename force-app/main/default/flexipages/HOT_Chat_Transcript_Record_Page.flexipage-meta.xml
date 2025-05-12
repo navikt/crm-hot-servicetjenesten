@@ -356,7 +356,7 @@
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset2</identifier>
                 <visibilityRule>
-                    <booleanFilter>1 AND 2</booleanFilter>
+                    <booleanFilter>1 AND ( (2 OR (3 AND 4)) AND ((NOT 5) OR (5 AND 6)) )</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.CRM_Authentication_Status__c}</leftValue>
                         <operator>EQUAL</operator>
@@ -367,6 +367,26 @@
                         <operator>EQUAL</operator>
                         <rightValue>UGRADERT</rightValue>
                     </criteria>
+                    <criteria>
+                        <leftValue>{!Record.HOT_Confidential__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>FORTROLIG</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.HOT_Fortrolig}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.HOT_IsNavEmployee__c}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.HOT_Skjermet}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
                 </visibilityRule>
             </componentInstance>
         </itemInstances>
@@ -374,6 +394,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>personRelationField</name>
+                    <value>Account.CRM_Person__c</value>
                 </componentInstanceProperties>
                 <componentName>hot_accessErrorMessage</componentName>
                 <identifier>c_hot_accessErrorMessage</identifier>
