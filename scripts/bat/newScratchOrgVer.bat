@@ -10,7 +10,7 @@ set PACKAGES=(
     "crm-shared-flowComponents:0.4.0"
     "crm-henvendelse-base:0.31.0"
     "crm-platform-integration:0.153.0"
-    "crm-platform-oppgave:0.63.0"
+    "crm-platform-oppgave:0.64.0"
     "crm-community-base:0.119.0"
     "crm-platform-reporting:0.39.0"
     "crm-journal-utilities:0.43.0"
