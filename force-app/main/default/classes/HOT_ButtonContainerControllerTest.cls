@@ -15,4 +15,19 @@ public with sharing class HOT_ButtonContainerControllerTest {
 
         Assert.areEqual('Oslo', result, 'The name should match the inserted Common_Code__c record');
     }
+    @IsTest
+    static void testGetLabel() {
+        Test.startTest();
+        String testLabel = HOT_ButtonContainerController.getLabel('HOT_Create_NAV_Task');
+        Test.stopTest();
+        Assert.areEqual('Create NAV Task', testLabel);
+    }
+    @IsTest
+    static void testGetLabels() {
+        List<String> labelList = new List<String>{ 'HOT_Create_NAV_Task', 'HOT_Journal' };
+        Test.startTest();
+        List<String> testLabels = HOT_ButtonContainerController.getLabels(labelList);
+        Test.stopTest();
+        Assert.areEqual(2, testLabels.size());
+    }
 }
