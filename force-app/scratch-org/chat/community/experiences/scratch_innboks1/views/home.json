@@ -1,0 +1,106 @@
+{
+    "appPageId": "e9a45ad3-f764-4838-8cde-d5bad3c95b02",
+    "componentName": "siteforce:sldsOneColLayout",
+    "id": "d2b4f92c-a224-4563-867a-2a06c2dcd2a9",
+    "label": "Home",
+    "regions": [
+        {
+            "id": "bb29fa1f-67df-4c08-9533-d9c9d50e00f2",
+            "regionName": "header",
+            "type": "region"
+        },
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "richTextValue": "<p><span style=\"font-size: 48px;\">SCRATCH CHAT TESTING</span></p>"
+                    },
+                    "componentName": "forceCommunity:richTextInline",
+                    "id": "9d26beac-c78a-42e8-ac97-d79ae8225bc9",
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "type": "component"
+                },
+                {
+                    "componentAttributes": {},
+                    "componentName": "c:scratchSimulateChatAuth",
+                    "id": "255548bb-25ef-4446-b1c3-3bfbc1db026f",
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "type": "component"
+                }
+            ],
+            "id": "cd3225d7-6e7d-4be6-8fd6-5865528cba3b",
+            "regionName": "content",
+            "type": "region"
+        },
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "allowPrepopulatePrechatFields": true,
+                        "avatarImgURL": "",
+                        "codeSettingsName": "",
+                        "defaultMinimizedText": "Chat with an Expert",
+                        "displayHelpButton": true,
+                        "eswConfigurationJSON": {
+                            "baseCoreURL": "https://dream-saas-6065.cs129.my.salesforce.com",
+                            "baseLiveAgentContentURL": "https://c.la2-c1cs-fra.salesforceliveagent.com/content",
+                            "baseLiveAgentURL": "https://d.la2-c1cs-fra.salesforceliveagent.com/chat",
+                            "buttonId": "5733O0000004CbB",
+                            "deploymentId": "5723O0000004CpI",
+                            "enabledFeatures": ["LiveAgent"],
+                            "entryFeature": "LiveAgent",
+                            "eswConfigDevName": "Scratch_Service_Deployment",
+                            "eswConfigId": "04I3O00000000N5UAI",
+                            "eswLiveAgentDevName": "EmbeddedServiceLiveAgent_Parent04I3O00000000N5UAI_17f497db48a",
+                            "gslbBaseURL": "https://service.force.com",
+                            "isOfflineCasesEnabled": "0",
+                            "orgId": "00D3O0000004wNQ"
+                        },
+                        "externalScripts": "",
+                        "externalStyles": "",
+                        "fallbackRouting": "",
+                        "offlineSupportMinimizedText": "Contact Us",
+                        "offlineText": "Agent Offline",
+                        "onlineLoadingText": "Loading",
+                        "prechatBackgroundImgURL": "",
+                        "smallCompanyLogoImgURL": "",
+                        "snippetSettingsFile": "",
+                        "storageDomain": "",
+                        "waitingStateBackgroundImgURL": ""
+                    },
+                    "componentName": "forceCommunity:embeddedService",
+                    "id": "7ea3710b-744f-4623-a710-6f47aab9729c",
+                    "renderPriority": "NEUTRAL",
+                    "renditionMap": {},
+                    "type": "component"
+                }
+            ],
+            "id": "4ee1264a-8fca-43a8-a203-97b345c01dd5",
+            "regionName": "footer",
+            "type": "region"
+        },
+        {
+            "components": [
+                {
+                    "componentAttributes": {
+                        "customHeadTags": "",
+                        "description": "",
+                        "title": "Home"
+                    },
+                    "componentName": "forceCommunity:seoAssistant",
+                    "id": "c38e5cad-d7bd-4552-b595-12adf7d5c469",
+                    "renditionMap": {},
+                    "type": "component"
+                }
+            ],
+            "id": "4953f71e-aa7b-4825-bc58-faf901597eca",
+            "regionName": "sfdcHiddenRegion",
+            "type": "region"
+        }
+    ],
+    "themeLayoutType": "Inner",
+    "type": "view",
+    "viewType": "home"
+}

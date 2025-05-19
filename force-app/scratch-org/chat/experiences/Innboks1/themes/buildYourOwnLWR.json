@@ -1,0 +1,122 @@
+{
+    "activeBrandingSetId": "4a53b328-b65b-4fb0-8f20-674bfbb23b19",
+    "customCSS": "",
+    "developerName": "byo",
+    "id": "3379cdce-350e-4be9-a09f-7427831cf1cb",
+    "label": "Build Your Own (LWR)",
+    "layouts": {
+        "Inner": "f886bca1-a0fa-40d7-b09b-c53d108b59c1",
+        "ServiceNotAvailable": "5d1489e0-a0d1-415b-ba74-f9596dc5ff79"
+    },
+    "type": "theme",
+    "views": [
+        {
+            "componentAttributes": {},
+            "componentName": "community_byo:scopedHeaderAndFooter",
+            "id": "f886bca1-a0fa-40d7-b09b-c53d108b59c1",
+            "label": "Scoped Header and Footer",
+            "regions": [
+                {
+                    "components": [
+                        {
+                            "componentAttributes": {
+                                "backgroundImageConfig": "",
+                                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                                "sectionConfig": "{\"UUID\":\"af572892-bf1e-4269-9684-06a3a9276948\",\"columns\":[{\"UUID\":\"f53540b3-05a9-439b-b40a-757b61434ef4\",\"columnName\":\"Column 1\",\"columnKey\":\"headerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+                            },
+                            "componentName": "community_layout:section",
+                            "id": "af572892-bf1e-4269-9684-06a3a9276948",
+                            "regions": [
+                                {
+                                    "components": [
+                                        {
+                                            "componentAttributes": {
+                                                "n-a-varea": "Privatperson",
+                                                "navareapicklist": "Privatperson"
+                                            },
+                                            "componentName": "c:globalCommunityHeader",
+                                            "id": "a015c8a1-2919-49fe-9f27-629adc8e66f3",
+                                            "renditionMap": {},
+                                            "type": "component"
+                                        }
+                                    ],
+                                    "id": "f53540b3-05a9-439b-b40a-757b61434ef4",
+                                    "regionLabel": "Theme Header",
+                                    "regionName": "headerSection",
+                                    "renditionMap": {},
+                                    "type": "region"
+                                }
+                            ],
+                            "renditionMap": {},
+                            "scopedBrandingSetId": null,
+                            "type": "component"
+                        }
+                    ],
+                    "id": "9145172c-cba8-48b3-aa12-63c952c35575",
+                    "regionName": "header",
+                    "type": "region"
+                },
+                {
+                    "components": [
+                        {
+                            "componentAttributes": {
+                                "backgroundImageConfig": "",
+                                "backgroundImageOverlay": "rgba(0,0,0,0)",
+                                "sectionConfig": "{\"UUID\":\"42dd8159-989a-4a73-bb88-7c87e286876f\",\"columns\":[{\"UUID\":\"fb21dc7b-2478-48f7-9979-dbe8bc8a1836\",\"columnName\":\"Column 1\",\"columnKey\":\"footerSection\",\"columnWidth\":\"12\",\"seedComponents\":null}]}"
+                            },
+                            "componentName": "community_layout:section",
+                            "id": "42dd8159-989a-4a73-bb88-7c87e286876f",
+                            "regions": [
+                                {
+                                    "components": [
+                                        {
+                                            "componentAttributes": {
+                                                "n-a-varea": "Privatperson",
+                                                "navareapicklist": "Privatperson"
+                                            },
+                                            "componentName": "c:globalCommunityFooter",
+                                            "id": "96d046ac-30e1-445c-aa93-9e68b244c43a",
+                                            "renditionMap": {},
+                                            "type": "component"
+                                        }
+                                    ],
+                                    "id": "fb21dc7b-2478-48f7-9979-dbe8bc8a1836",
+                                    "regionLabel": "Theme Footer",
+                                    "regionName": "footerSection",
+                                    "renditionMap": {},
+                                    "type": "region"
+                                }
+                            ],
+                            "renditionMap": {},
+                            "scopedBrandingSetId": null,
+                            "type": "component"
+                        }
+                    ],
+                    "id": "1da3bf6e-0eef-4de3-af4e-ae5d599d3670",
+                    "regionName": "footer",
+                    "type": "region"
+                }
+            ],
+            "type": "view"
+        },
+        {
+            "componentAttributes": {},
+            "componentName": "community_layout:simpleThemeLayout",
+            "id": "5d1489e0-a0d1-415b-ba74-f9596dc5ff79",
+            "label": "Service Not Available Theme Layout",
+            "regions": [
+                {
+                    "id": "408dc540-1440-4527-8390-6db83b6148c8",
+                    "regionName": "header",
+                    "type": "region"
+                },
+                {
+                    "id": "6b9fe125-fc04-44bb-9f9c-f45f3a077db8",
+                    "regionName": "footer",
+                    "type": "region"
+                }
+            ],
+            "type": "view"
+        }
+    ]
+}
