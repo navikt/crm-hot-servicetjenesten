@@ -190,4 +190,51 @@ private class HOT_ChatTranscriptServiceTest {
 
         System.assertEquals(1, [SELECT COUNT() FROM Thread__c WHERE CRM_Related_Object__c = :transcript.Id]);
     }
+
+    @isTest
+    static void testQuery() {
+        PermissionSetGroup ps = new PermissionSetGroup(
+            MasterLabel = 'HOT_Servicetjenesten_Gruppe',
+            DeveloperName = 'HOT_Servicetjenesten_Gruppe'
+        );
+        insert ps;
+
+        Profile pro = [SELECT Id FROM Profile WHERE Name = 'Standard User' LIMIT 1];
+        User u = new User(
+            FirstName = 'Test',
+            LastName = 'User',
+            Email = 'testuser@example.com',
+            Username = 'testuser@example.com.' + System.currentTimeMillis(),
+            Alias = 'tuser',
+            TimeZoneSidKey = 'America/New_York',
+            LocaleSidKey = 'en_US',
+            EmailEncodingKey = 'UTF-8',
+            ProfileId = pro.Id,
+            LanguageLocaleKey = 'en_US',
+            IsActive = true,
+            CRM_NAV_Ident__c = 'Z999997'
+        );
+        insert u;
+
+        PermissionSetAssignment psa = new PermissionSetAssignment(AssigneeId = u.Id, PermissionSetGroupId = ps.Id);
+        insert psa;
+
+        LiveChatTranscript transcript = [SELECT Id, NKS_Conversation__c FROM LiveChatTranscript LIMIT 1];
+        User testUser = [SELECT Id FROM User WHERE CRM_NAV_Ident__c = 'Z999997'];
+
+        StaticResource testConversation = [
+            SELECT Id, Body
+            FROM StaticResource
+            WHERE Name = 'HOT_Chat_Conversation_Mock'
+        ];
+        String conversation = testConversation.Body.toString();
+
+        Test.startTest();
+        HOT_ChatTranscriptService.navIdentUserMap.clear();
+        HOT_ChatTranscriptService.navIdentUserMap.put('Z999998', testUser);
+        HOT_ChatTranscriptService.storeConversation(transcript.Id, conversation);
+        Test.stopTest();
+
+        System.assertEquals(1, [SELECT COUNT() FROM Thread__c WHERE CRM_Related_Object__c = :transcript.Id]);
+    }
 }
