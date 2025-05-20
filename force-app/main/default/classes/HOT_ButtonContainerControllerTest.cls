@@ -20,7 +20,7 @@ public with sharing class HOT_ButtonContainerControllerTest {
         Test.startTest();
         String testLabel = HOT_ButtonContainerController.getLabel('HOT_Create_NAV_Task');
         Test.stopTest();
-        Assert.areEqual('Create NAV Task', testLabel);
+        Assert.areEqual('Opprett oppgave', testLabel);
     }
     @IsTest
     static void testGetLabels() {

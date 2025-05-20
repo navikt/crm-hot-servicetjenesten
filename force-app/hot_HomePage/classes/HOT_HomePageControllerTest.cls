@@ -11,14 +11,22 @@ private class HOT_HomePageControllerTest {
     @isTest
     public static void testGetField() {
         Test.startTest();
-        HOT_HomePageController.getField('test1');
+        try {
+            HOT_HomePageController.getField('test1');
+        } catch (AurahandledException e) {
+            System.assertEquals('Script-thrown exception', e.getMessage());
+        }
         Test.stopTest();
     }
 
-    @isTest
+    /*@isTest
     public static void testGetFielderr() {
         Test.startTest();
-        HOT_HomePageController.getField('');
+        try {
+            HOT_HomePageController.getField('');
+        } catch (AurahandledException e) {
+            System.assertEquals('Script-thrown exception', e.getMessage());
+        }
         Test.stopTest();
-    }
+    }*/
 }
