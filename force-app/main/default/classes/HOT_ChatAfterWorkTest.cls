@@ -22,4 +22,24 @@ public with sharing class HOT_ChatAfterWorkTest {
         ];
         Assert.areEqual(15000, report.CRM_Value__c);
     }
+
+    @IsTest
+    static void ThreatValueTestErr() {
+        Account account = new Account();
+        account.Name = 'Test';
+        insert account;
+        account acc = [
+            SELECT Id
+            FROM account
+            LIMIT 1
+        ];
+        Test.startTest();
+        try {
+            Id reportId = HOT_ChatAfterWork.reportThreatClick();
+            HOT_ChatAfterWork.updateThreatClickValue(acc.Id, 15000);
+        } catch (AurahandledException e) {
+            System.assertEquals('Script-thrown exception', e.getMessage());
+        }
+        Test.stopTest();
+    }
 }
