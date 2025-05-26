@@ -1,0 +1,96 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef1"
+            },
+            "Name": "12345678901",
+            "INT_MunicipalityNumber__c": "0301",
+            "INT_FirstName__c": "Harry",
+            "INT_LastName__c": "Potter",
+            "INT_IsDeceased__c": false,
+            "INT_RegionNumber__c": "24",
+            "INT_ResidentialAddress__c": "Galtvortveien 101",
+            "INT_ResidentialZipCode__c": "1001",
+            "INT_Sex__c": "Mann",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_MaritalStatus__c": "GIFT",
+            "INT_MaritalRelation__c": "12345678902",
+            "INT_ActorId__c": "12345678910",
+            "INT_FamilyRelations__c": "[{'relatertPersonsRolle':'MOR','relatertPersonsIdent':'30016012345','minRolleForPerson':'BARN'},{'relatertPersonsRolle':'FAR','relatertPersonsIdent':'27036012345','minRolleForPerson':'BARN'}]",
+            "INT_DateOfBirth__c": "2002-11-08"
+        },
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef2"
+            },
+            "Name": "12345678902",
+            "INT_MunicipalityNumber__c": "0301",
+            "INT_FirstName__c": "Hermine",
+            "INT_LastName__c": "Grang",
+            "INT_IsDeceased__c": false,
+            "INT_RegionNumber__c": "24",
+            "INT_Sex__c": "Kvinne",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_ActorId__c": "12345678911",
+            "INT_FamilyRelations__c": "[{'relatertPersonsRolle':'MOR','relatertPersonsIdent':'30016012345','minRolleForPerson':'BARN'},{'relatertPersonsRolle':'FAR','relatertPersonsIdent':'27036012345','minRolleForPerson':'BARN'}]",
+            "INT_DateOfBirth__c": "2010-11-08"
+        },
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef3"
+            },
+            "Name": "12345678903",
+            "INT_MunicipalityNumber__c": "0301",
+            "INT_FirstName__c": "Ronny",
+            "INT_LastName__c": "Wiltersen",
+            "INT_IsDeceased__c": false,
+            "INT_RegionNumber__c": "24",
+            "INT_Sex__c": "Mann",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_ActorId__c": "12345678912",
+            "INT_FamilyRelations__c": "[{'relatertPersonsRolle':'MOR','relatertPersonsIdent':'30016012345','minRolleForPerson':'BARN'},{'relatertPersonsRolle':'FAR','relatertPersonsIdent':'27036012345','minRolleForPerson':'BARN'}]",
+            "INT_DateOfBirth__c": "2006-11-08"
+        },
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef4"
+            },
+            "Name": "27036012345",
+            "INT_MunicipalityNumber__c": "0301",
+            "INT_FirstName__c": "Jakob",
+            "INT_LastName__c": "Potter",
+            "INT_IsDeceased__c": true,
+            "INT_RegionNumber__c": "24",
+            "INT_ResidentialAddress__c": "Galtvortveien 1",
+            "INT_ResidentialZipCode__c": "1001",
+            "INT_Sex__c": "Mann",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_ActorId__c": "12345678913",
+            "INT_FamilyRelations__c": "[{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678901','minRolleForPerson':'FAR'},{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678902','minRolleForPerson':'FAR'},{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678903','minRolleForPerson”:'FAR'}]",
+            "INT_DateOfBirth__c": "1990-11-08"
+        },
+        {
+            "attributes": {
+                "type": "Person__c",
+                "referenceId": "PersonRef5"
+            },
+            "Name": "30016012345",
+            "INT_FirstName__c": "Lily",
+            "INT_LastName__c": "Potter",
+            "INT_IsDeceased__c": true,
+            "INT_RegionNumber__c": "24",
+            "INT_ResidentialAddress__c": "Galtvortveien 1",
+            "INT_ResidentialZipCode__c": "1001",
+            "INT_Sex__c": "Kvinne",
+            "INT_Confidential__c": "UGRADERT",
+            "INT_ActorId__c": "12345678914",
+            "INT_FamilyRelations__c": "[{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678901','minRolleForPerson':'MOR'},{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678902','minRolleForPerson':'MOR'},{'relatertPersonsRolle':'BARN','relatertPersonsIdent':'12345678903','minRolleForPerson”:'MOR'}]",
+            "INT_DateOfBirth__c": "1988-11-08"
+        }
+    ]
+}

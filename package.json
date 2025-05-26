@@ -12,7 +12,10 @@
         "test:unit:coverage": "sfdx-lwc-jest --coverage",
         "prettier": "prettier --write \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
         "prettier:verify": "prettier --list-different \"**/*.{cls,cmp,component,css,html,js,json,md,page,trigger,xml,yaml,yml}\"",
-        "postinstall": "node bin/check-version.js"
+        "postinstall": "node bin/check-version.js",
+        "activateMock": "sfdx force:apex:execute -f scripts/apex/activateMock.apex",
+        "deactivateMock": "sfdx force:apex:execute -f scripts/apex/deactivateMock.apex",
+        "scratchSetup": "sfdx force:apex:execute -f scripts/apex/scratchSetup.apex"
     },
     "engines": {
         "node": ">= 16.0.0",

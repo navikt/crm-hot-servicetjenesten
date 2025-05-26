@@ -1,0 +1,10 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "LiveChatVisitor",
+                "referenceId": "VisitorRef1"
+            }
+        }
+    ]
+}

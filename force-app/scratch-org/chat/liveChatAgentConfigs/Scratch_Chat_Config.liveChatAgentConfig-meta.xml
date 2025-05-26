@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LiveChatAgentConfig xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignments>
+        <profiles>
+            <profile>admin</profile>
+            <profile>standard</profile>
+        </profiles>
+    </assignments>
+    <customAgentName>{!User_NKS_FullName} ({!User_CRM_NAV_Ident})</customAgentName>
+    <disableTransferConferenceGreeting>false</disableTransferConferenceGreeting>
+    <enableAgentFileTransfer>false</enableAgentFileTransfer>
+    <enableAgentSneakPeek>false</enableAgentSneakPeek>
+    <enableAssistanceFlag>false</enableAssistanceFlag>
+    <enableAutoAwayOnDecline>false</enableAutoAwayOnDecline>
+    <enableAutoAwayOnPushTimeout>false</enableAutoAwayOnPushTimeout>
+    <enableChatConferencing>false</enableChatConferencing>
+    <enableChatMonitoring>true</enableChatMonitoring>
+    <enableChatTransferToAgent>false</enableChatTransferToAgent>
+    <enableChatTransferToButton>true</enableChatTransferToButton>
+    <enableChatTransferToSkill>false</enableChatTransferToSkill>
+    <enableLogoutSound>false</enableLogoutSound>
+    <enableNotifications>false</enableNotifications>
+    <enableRequestSound>false</enableRequestSound>
+    <enableSneakPeek>false</enableSneakPeek>
+    <enableVisitorBlocking>false</enableVisitorBlocking>
+    <enableWhisperMessage>true</enableWhisperMessage>
+    <label>Scratch_Chat_Config</label>
+</LiveChatAgentConfig>
