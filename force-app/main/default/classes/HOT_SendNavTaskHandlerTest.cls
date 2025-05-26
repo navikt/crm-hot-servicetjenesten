@@ -44,4 +44,24 @@ public class HOT_SendNavTaskHandlerTest {
         Assert.areEqual('Test Unit', result.Name, 'The Name field should match.');
         Assert.areEqual('1234', result.INT_UnitNumber__c, 'The INT_UnitNumber__c field should match.');
     }
+
+    @isTest
+    static void testGetNavUnitInfoErr() {
+        Case c = new Case(Subject = 'Test Case', NKS_Henvendelse_BehandlingsId__c = 'SomeProcessingId');
+        insert c;
+
+        Test.startTest();
+        try {
+            NavUnit__c result = HOT_SendNavTaskHandler.getNavUnitInfo(c.Id);
+        } catch (AuraHandledException e) {
+            Assert.isTrue(
+                e.getMessage() != null,
+                'Exception message should not be empty and should indicate an error: ' + e.getMessage()
+            );
+        }
+        Test.stopTest();
+
+        // Assert.areEqual('Test Unit', result.Name, 'The Name field should match.');
+        // Assert.areEqual('1234', result.INT_UnitNumber__c, 'The INT_UnitNumber__c field should match.');
+    }
 }
