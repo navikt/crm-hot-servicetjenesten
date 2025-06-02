@@ -9,6 +9,7 @@ public with sharing class HOT_HjelpemiddelsentralControllerTest {
     }
     @IsTest
     static void testGetPersonMunicipalityAndRegionsAccount() {
+        myTriggers.disable(PersonAccessHandler.class);
         List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(1);
         List<Id> personIds = new List<Id>();
         for (Person__c p : persons) {
@@ -20,6 +21,7 @@ public with sharing class HOT_HjelpemiddelsentralControllerTest {
     }
     @IsTest
     static void testGetPersonMunicipalityAndRegionsCase() {
+        myTriggers.disable(PersonAccessHandler.class);
         List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(1);
         List<Id> personIds = new List<Id>();
         for (Person__c p : persons) {
