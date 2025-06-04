@@ -49,6 +49,7 @@
 }
 .redBadge {
     background-color: #ad0000 !important;
+    color: rgb(255, 255, 255) !important;
 }
 .greyBadge {
     background-color: #c6c6c6 !important;
