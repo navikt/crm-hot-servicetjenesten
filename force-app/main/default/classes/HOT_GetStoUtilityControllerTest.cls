@@ -2,6 +2,7 @@
 private class HOT_GetStoUtilityControllerTest {
     @TestSetup
     static void makeData() {
+        myTriggers.disable(PersonAccessHandler.class);
         List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(2);
         List<Id> personIds = new List<Id>();
         for (Person__c p : persons) {
