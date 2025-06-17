@@ -2,6 +2,7 @@
 public with sharing class HOT_STORecordInfoControllerTest {
     @TestSetup
     static void makeData() {
+        myTriggers.disable(PersonAccessHandler.class);
         Person__c person = new Person__c(
             Name = '1234567890',
             INT_MunicipalityNumber__c = '0301',
