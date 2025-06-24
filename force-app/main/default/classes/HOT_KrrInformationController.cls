@@ -6,29 +6,35 @@ public without sharing class HOT_KrrInformationController {
         List<Person__c> personsToUpdate = new List<Person__c>();
         CRM_DatabaseOperations cdo = new CRM_DatabaseOperations();
         cdo.setDomain(CRM_ApplicationDomain.Domain.HOT);
+    
         try {
-            List<KrrCalloutService.Person> personer = KrrCalloutService.doPersonOppslag2(
+            KrrCalloutService service = new KrrCalloutService();
+            KrrCalloutService.KrrResponse response = service.getPersons(
                 new List<String>{ personIdent },
-                null
+                true
             );
-            if (personer != null && !personer.isEmpty()) {
+    
+            if (response != null && response.personer != null && response.personer.containsKey(personIdent)) {
+                KrrCalloutService.Person personData = response.personer.get(personIdent);
+    
                 for (Person__c person : [SELECT Id FROM Person__c WHERE Name = :personIdent]) {
                     personsToUpdate.add(
                         new Person__c(
                             Id = person.Id,
-                            INT_KrrEmail__c = personer[0]?.epostadresse,
-                            INT_KrrMobilePhone__c = personer[0]?.mobiltelefonnummer,
+                            INT_KrrEmail__c = personData?.epostadresse,
+                            INT_KrrMobilePhone__c = personData?.mobiltelefonnummer,
                             INT_LastUpdatedFromKRR__c = Datetime.now(),
-                            INT_VerifiedFromKRR__c = sistVerifisertDato(personer[0]),
-                            INT_KRR_Reservation__c = personer[0]?.reservert == null ? false : personer[0]?.reservert,
-                            INT_KrrWrittenStandard__c = personer[0]?.spraak
+                            INT_VerifiedFromKRR__c = sistVerifisertDato(personData),
+                            INT_KRR_Reservation__c = personData?.reservert == null ? false : personData?.reservert,
+                            INT_KrrWrittenStandard__c = personData?.spraak
                         )
                     );
                 }
             }
-
-            if (!personsToUpdate.isEmpty())
+    
+            if (!personsToUpdate.isEmpty()) {
                 cdo.updateRecords(personsToUpdate);
+            }
         } catch (Exception e) {
             if (!personsToUpdate.isEmpty()) {
                 logger.exception(e, personsToUpdate[0]);
