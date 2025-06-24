@@ -1,0 +1,79 @@
+<!-- Conatiner component as LWC not yet supports the conversation toolkit API and lacks the force:refreshView functionality-->
+<aura:component
+    implements="flexipage:availableForAllPageTypes, force:hasRecordId"
+    controller="HOT_ChatTranscriptService"
+>
+    <aura:attribute name="loggingEnabled" type="boolean" default="true" />
+    <aura:attribute name="authenticated" type="boolean" default="false" />
+    <aura:attribute name="accountFields" type="String" />
+    <aura:attribute name="caseFields" type="String" />
+    <aura:attribute name="personFields" type="String" />
+    <aura:attribute name="copyPersonFields" type="String" />
+    <aura:attribute name="conversation" type="object[]" />
+
+    <!-- Map holding empApi subscriptions -->
+    <aura:attribute name="subscription" type="Map" />
+
+    <!--Record DATA-->
+    <aura:attribute name="chatRecord" type="Object" />
+    <aura:attribute name="recordLoadError" type="String" />
+
+    <lightning:conversationToolkitApi aura:id="chatToolkit" />
+    <!-- Connecting to workspace API for i.e. workspace tab handling-->
+    <lightning:workspaceAPI aura:id="workspace" />
+    <!-- Connecting to emp API for listening to events -->
+    <lightning:empApi aura:id="empApi" />
+
+    <!-- Call onInit function when the component loads -->
+    <aura:handler name="init" value="{!this}" action="{!c.onInit}" />
+
+    <force:recordData
+        aura:id="recordLoader"
+        recordId="{!v.recordId}"
+        fields="CRM_Authentication_Status__c"
+        targetFields="{!v.chatRecord}"
+        targetError="{!v.recordLoadError}"
+    />
+
+    <aura:if isTrue="{!v.authenticated || v.chatRecord.CRM_Authentication_Status__c == 'Completed'}">
+        <div class="slds-var-p-bottom_small">
+            <!--Actions for authenticated chat-->
+            <!--<div>
+                <c:nksFlowStarter
+                    buttonLabel="Journalfør"
+                    buttonIcon="utility:task"
+                    flowName="NKS_Journal_Chat_Thread_Screenflow"
+                    recordId="{!v.recordId}"
+                ></c:nksFlowStarter>
+            </div>
+            <div class="slds-var-m-top_x-small slds-var-m-bottom_x-small">
+                <c:nksFlowStarter
+                    buttonLabel="Opprett oppgave på henvendelse"
+                    flowName="NKS_Chat_Send_NAV_Task"
+                    recordId="{!v.recordId}"
+                ></c:nksFlowStarter>
+            </div>
+            <div>
+                <c:nksFlowStarter
+                    buttonLabel="Sladding"
+                    buttonIcon="utility:lock"
+                    flowName="NKS_Chat_Send_to_Redaction_Screenflow"
+                    recordId="{!v.recordId}"
+                ></c:nksFlowStarter>
+            </div>-->
+        </div>
+    </aura:if>
+
+    <c:hot_chatAuthenticationInfoV2
+        recordId="{!v.recordId}"
+        loggingEnabled="{!v.loggingEnabled}"
+        caseFields="{!v.caseFields}"
+        accountFields="{!v.accountFields}"
+        personFields="{!v.personFields}"
+        copyPersonFields="{!v.copyPersonFields}"
+        onrequestauthentication="{!c.requestAuthentication}"
+        onauthenticationcomplete="{!c.handleAuthCompleted}"
+        aura:id="chatAuthInfo"
+    >
+    </c:hot_chatAuthenticationInfoV2>
+</aura:component>

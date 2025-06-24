@@ -105,6 +105,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_RelatedListController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_RecordInfoController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -170,6 +174,16 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.NKS_Henvendelse_BehandlingsId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.NKS_Theme_Group_Name__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Case.NKS_Theme_Group__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
@@ -354,6 +368,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>LiveChatTranscript.HOT_IsNavEmployee__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>LiveChatTranscript.HOT_LegalStatus__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -395,6 +414,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>LiveChatTranscript.NKS_Chat_Queue__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>LiveChatTranscript.NKS_Theme_Group_Name__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
