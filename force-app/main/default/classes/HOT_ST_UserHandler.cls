@@ -37,4 +37,5 @@ public without sharing class HOT_ST_UserHandler extends MyTriggers {
             HOT_ST_ServiceResourceHandler.createServiceResourceFuture(usersWithChangedProfile);
         }
     }
+    //test comment
 }

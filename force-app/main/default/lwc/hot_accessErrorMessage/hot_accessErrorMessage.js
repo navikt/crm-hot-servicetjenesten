@@ -25,4 +25,6 @@ export default class NksAccessErrorMessage extends LightningElement {
                 console.log('An error occurred: ' + JSON.stringify(error, null, 2));
             });
     }
+
+    //test comment here
 }

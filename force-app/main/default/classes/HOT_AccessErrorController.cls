@@ -72,4 +72,6 @@ public without sharing class HOT_AccessErrorController {
     private static Boolean accountNameSetToNotAvailable(Person__c person) {
         return person?.CRM_Account__r?.Name.equalsIgnoreCase('skjermet');
     }
+
+    //Test comment here
 }
