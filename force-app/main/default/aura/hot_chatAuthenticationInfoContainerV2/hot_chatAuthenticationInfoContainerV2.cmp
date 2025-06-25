@@ -38,6 +38,4 @@
         onauthenticationcomplete="{!c.handleAuthCompleted}"
         aura:id="chatAuthInfo"
     />
-
-    <!-- Test comment here  -->
 </aura:component>
