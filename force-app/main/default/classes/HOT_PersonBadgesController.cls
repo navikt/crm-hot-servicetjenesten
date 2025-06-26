@@ -49,7 +49,7 @@ public with sharing class HOT_PersonBadgesController {
             'INT_GuardianshipOrFuturePowerOfAttorney__c',
             'INT_PowerOfAttorney__c',
             'INT_KRR_Reservation__c',
-            'NKS_NumberOfSecurityMeasures__c'
+            'HOT_NumberOfSecurityMeasures__c'
         };
 
         String queryString = 'SELECT ';
@@ -120,23 +120,26 @@ public with sharing class HOT_PersonBadgesController {
 
         private void setSecurityMeasures() {
             try {
-                for (SecurityMeasure__c sm : person.SecurityMeasures__r) {
-                    if (sm.INT_ValidToDate__c == null || sm.INT_ValidToDate__c >= Date.today()) {
+                for (SecurityMeasure__c securityMeasure : person.SecurityMeasures__r) {
+                    if (
+                        securityMeasure.INT_ValidToDate__c == null ||
+                        securityMeasure.INT_ValidToDate__c >= Date.today()
+                    ) {
                         securityMeasures.add(
                             new SecurityMeasure(
-                                sm.Id,
-                                sm.INT_ValidToDate__c,
-                                sm.INT_ValidFromDate__c,
-                                sm.INT_SecurityMeasure__c
+                                securityMeasure.Id,
+                                securityMeasure.INT_ValidToDate__c,
+                                securityMeasure.INT_ValidFromDate__c,
+                                securityMeasure.INT_SecurityMeasure__c
                             )
                         );
                     }
                 }
-                if (person.NKS_NumberOfSecurityMeasures__c > 0 && !securityMeasures.isEmpty()) {
+                if (person.HOT_NumberOfSecurityMeasures__c > 0 && !securityMeasures.isEmpty()) {
                     badges.add(
                         new Badge(
                                 'securityMeasures',
-                                person.NKS_NumberOfSecurityMeasures__c + ' sikkerhetstiltak',
+                                person.HOT_NumberOfSecurityMeasures__c + ' sikkerhetstiltak',
                                 'slds-theme_error slds-m-left_x-small slds-m-vertical_xx-small pointer redBadge',
                                 '',
                                 '',
