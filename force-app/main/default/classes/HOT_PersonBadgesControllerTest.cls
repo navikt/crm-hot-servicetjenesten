@@ -1,6 +1,6 @@
 @IsTest
 public with sharing class HOT_PersonBadgesControllerTest {
-        static String toIso(Date d) {
+    static String toIso(Date d) {
         return Datetime.newInstanceGmt(d, Time.newInstance(12, 0, 0, 0)).format('yyyy-MM-dd');
     }
 
@@ -138,5 +138,37 @@ public with sharing class HOT_PersonBadgesControllerTest {
         Assert.areEqual(1, result.errors.size(), 'Expected one error');
 
         Assert.areEqual(0, result.badges.size(), 'Expected no guardianship badges');
+    }
+
+    @IsTest
+    static void setBadgeData_SecurityMeasure() {
+        ApiMock.setTestMock('GET_FULLMAKTSGIVER', 200, 'ok');
+        Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
+        p.INT_SecurityMeasures__c = '[{"tiltaksType":"TFUS","kontaktPersonId":"Z212168","kontaktPersonEnhet":"0106","gyldigTilOgMed":"2027-08-08","gyldigFraOgMed":"2024-06-14","beskrivelse":"Telefonisk utestengelse"}]';
+        update p;
+
+        HOT_PersonBadgesController.PersonBadgeData result;
+        Test.startTest();
+        result = HOT_PersonBadgesController.getPersonBadgesAndInfo('CRM_Person__c', 'Account', p.CRM_Account__c, false);
+        Test.stopTest();
+
+        Assert.areEqual(1, result.securityMeasures.size(), 'Expected 1 securitymeasure');
+        Assert.areEqual(0, result.errors.size(), 'Expected no error');
+    }
+
+    @IsTest
+    static void setBadgeData_SecurityMeasures() {
+        ApiMock.setTestMock('GET_FULLMAKTSGIVER', 200, 'ok');
+        Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
+        p.INT_SecurityMeasures__c = '[{"tiltaksType":"TFUS","kontaktPersonId":"Z212168","kontaktPersonEnhet":"0106","gyldigTilOgMed":"2027-08-08","gyldigFraOgMed":"2024-06-14","beskrivelse":"Telefonisk utestengelse"},{"tiltaksType":"TFUS","kontaktPersonId":"Z212168","kontaktPersonEnhet":"0106","gyldigTilOgMed":"2027-09-08","gyldigFraOgMed":"2024-09-14","beskrivelse":"Telefonisk utestengelse2"}]';
+        update p;
+
+        HOT_PersonBadgesController.PersonBadgeData result;
+        Test.startTest();
+        result = HOT_PersonBadgesController.getPersonBadgesAndInfo('CRM_Person__c', 'Account', p.CRM_Account__c, false);
+        Test.stopTest();
+
+        Assert.areEqual(2, result.securityMeasures.size(), 'Expected 2 securitymeasure');
+        Assert.areEqual(0, result.errors.size(), 'Expected no error');
     }
 }

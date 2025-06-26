@@ -1,0 +1,32 @@
+<template>
+    <div class="slds-m-left_x-small backgroundStyling" lwc:if={showBadge}>
+        <div class="headerLine"></div>
+        <div class="slds-m-around_medium">
+            <p><strong>Sikkerhetstiltak</strong></p>
+            <div class="flexWithGap">
+                <template for:each={badgeData} for:item="securityMeasures">
+                    <div key={securityMeasures}>
+                        <h4>{securityMeasures.SecurityMeasure} - Gyldig</h4>
+                        <p>
+                            <lightning-formatted-date-time
+                                value={securityMeasures.FromDate}
+                                year="numeric"
+                                month="numeric"
+                                day="numeric"
+                            >
+                            </lightning-formatted-date-time>
+                            -
+                            <lightning-formatted-date-time
+                                value={securityMeasures.ToDate}
+                                year="numeric"
+                                month="numeric"
+                                day="numeric"
+                            >
+                            </lightning-formatted-date-time>
+                        </p>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
