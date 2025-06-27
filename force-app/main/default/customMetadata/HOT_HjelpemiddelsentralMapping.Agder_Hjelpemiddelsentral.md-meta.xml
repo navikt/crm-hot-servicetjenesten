@@ -20,5 +20,4 @@
         <field>RegionNumbers__c</field>
         <value xsi:type="xsd:string">42</value>
     </values>
-    <!-- test comment-->
 </CustomMetadata>

@@ -62,4 +62,3 @@ private without sharing class HOT_AccessErrorControllerTest {
         System.assertEquals(null, result, 'null');
     }
 }
-//Test
