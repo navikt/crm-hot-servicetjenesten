@@ -2,5 +2,6 @@
     <aura:description>Documentation</aura:description>
     <aura:example name="ExampleName" ref="exampleComponentName" label="Label">
         Example Description
+        <!-- Test comment-->
     </aura:example>
 </aura:documentation>
