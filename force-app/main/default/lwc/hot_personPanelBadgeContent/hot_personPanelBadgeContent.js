@@ -1,6 +1,7 @@
 // @ts-nocheck
 import { LightningElement, api } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
+import securityMeasures from './securityMeasures.html';
 import guardianships from './hot_guardianships.html';
 import powerOfAttorneys from './hot_powerOfAttorneys.html';
 import hotPersonHighlightPanelBadgeContent from './hot_personPanelBadgeContent.html';
@@ -8,6 +9,7 @@ import historicalPowerOfAttorney from './hot_historicalPowerOfAttorney.html';
 import sharedStyling from './hot_sharedStyling.css';
 
 const templates = {
+    SecurityMeasure: securityMeasures,
     GuardianshipOrFuturePowerOfAttorney: guardianships,
     PowerOfAttorney: powerOfAttorneys,
     historicalPowerOfAttorney: historicalPowerOfAttorney

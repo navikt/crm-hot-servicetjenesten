@@ -9,7 +9,6 @@
     <excludeButtons>CreateCallList</excludeButtons>
     <excludeButtons>CreateDonorBrief</excludeButtons>
     <excludeButtons>CreatePartnerChannelQuickAction</excludeButtons>
-    <excludeButtons>CreateSalesSummaries</excludeButtons>
     <excludeButtons>CreateSurveyInvitation</excludeButtons>
     <excludeButtons>Delete</excludeButtons>
     <excludeButtons>DisableCustomerPortalAccount</excludeButtons>
