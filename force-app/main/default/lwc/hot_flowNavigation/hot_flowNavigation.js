@@ -2,7 +2,6 @@ import { LightningElement, api } from 'lwc';
 import { FlowNavigationBackEvent, FlowNavigationNextEvent, FlowNavigationFinishEvent } from 'lightning/flowSupport';
 import templateWithFooter from './templateWithFooter.html';
 import templateWithoutFooter from './templateWithoutFooter.html';
-import { publishToAmplitude } from 'c/amplitude';
 import sharedStyling from './sharedStyling.css';
 
 export default class Hot_FlowNavigation extends LightningElement {
@@ -41,7 +40,6 @@ export default class Hot_FlowNavigation extends LightningElement {
         if (flowEvent) {
             this.dispatchEvent(flowEvent);
         }
-        publishToAmplitude('Clicked on flow navigation button', { type: this.action });
     }
 
     get alignment() {

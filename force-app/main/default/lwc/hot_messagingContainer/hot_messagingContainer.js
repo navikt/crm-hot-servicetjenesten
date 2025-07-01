@@ -19,7 +19,7 @@ const CONSTANTS = {
     CASE_FIELD_API_NAME: 'CRM_Case__c'
 };
 
-export default class StoMessagingContainer extends LightningElement {
+export default class HotMessagingContainer extends LightningElement {
     @api recordId;
     @api objectApiName;
     @api cardTitle;
@@ -233,7 +233,6 @@ export default class StoMessagingContainer extends LightningElement {
         if (status === CONSTANTS.FINISHED || status === CONSTANTS.FINISHED_SCREEN) {
             refreshApex(this.wiredCase);
             this.resetButtonVisibility();
-            // publishToAmplitude('STO', { type: `${this.label} pressed` });
 
             if (outputVariables != null) {
                 handleShowNotifications(flowTitle, outputVariables, this.notificationBoxTemplate);
@@ -258,7 +257,6 @@ export default class StoMessagingContainer extends LightningElement {
         if (flowStatus === CONSTANTS.FINISHED || flowStatus === CONSTANTS.FINISHED_SCREEN) {
             refreshApex(this.wiredCase);
             this.showComplete = false;
-            //publishToAmplitude('STO', { type: 'Complete/Send pressed' });
         }
     }
 

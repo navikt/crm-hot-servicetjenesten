@@ -1,5 +1,4 @@
 import { LightningElement, api, wire } from 'lwc';
-import { publishToAmplitude } from 'c/amplitude';
 import getLabels from '@salesforce/apex/HOT_ButtonContainerController.getLabels';
 import { handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
@@ -131,8 +130,6 @@ export default class HotButtonContainerBottom extends LightningElement {
     handleStatusChange(event) {
         const { status, outputVariables } = event.detail;
         if (status !== CONSTANTS.FINISHED && status !== CONSTANTS.FINISHED_SCREEN) return;
-
-        publishToAmplitude(this.channelName, { type: `${event.target.label} completed` });
 
         /**
          * If the component is an independent component, show notifications; otherwise, dispatch a custom event (when the component is used as a child)

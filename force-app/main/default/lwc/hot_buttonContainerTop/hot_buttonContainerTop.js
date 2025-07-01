@@ -1,6 +1,4 @@
 import { LightningElement, api, wire } from 'lwc';
-import { publishToAmplitude } from 'c/amplitude';
-//import REDACT_LABEL from '@salesforce/label/c.NKS_Set_To_Redaction';
 import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
 import { publish, MessageContext } from 'lightning/messageService';
 
@@ -11,7 +9,6 @@ export default class hotButtonContainerTop extends LightningElement {
     @api channelName;
 
     showFlow = false;
-    //redactLabel = REDACT_LABEL;
     redactLabel = 'Send til sladding';
 
     @wire(MessageContext)
@@ -31,10 +28,6 @@ export default class hotButtonContainerTop extends LightningElement {
         return this.showFlow.toString();
     }
 
-    get flowButtonStyling() {
-        return this.flowButtonLabel === this.redactLabel ? 'redact' : '';
-    }
-
     toggleFlow() {
         this.showFlow = !this.showFlow;
     }
@@ -43,7 +36,6 @@ export default class hotButtonContainerTop extends LightningElement {
         const { status, outputVariables } = event.detail;
         if ((status === 'FINISHED' || status === 'FINISHED_SCREEN') && outputVariables != null) {
             this.showFlow = false;
-            publishToAmplitude(this.channelName, { type: this.flowButtonLabel + ' finished' });
             this.publishMessage(outputVariables);
         }
     }
