@@ -8,3 +8,12 @@
     --slds-c-button-brand-text-color-active: black;
     --slds-c-button-brand-text-color-hover: black;
 }
+.button-heights {
+    height: 100%;
+    line-height: var(--slds-g-font-lineheight-2, 1.25);
+}
+
+.button-spacing {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
