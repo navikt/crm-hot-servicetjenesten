@@ -12,7 +12,7 @@
     </values>
     <values>
         <field>Base_Endpoint_Test__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">https://oebs-digihot-api-q1.dev-fss-pub.nais.io</value>
     </values>
     <values>
         <field>Base_Endpoint__c</field>
