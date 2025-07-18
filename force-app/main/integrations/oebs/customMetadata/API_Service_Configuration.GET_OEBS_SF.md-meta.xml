@@ -16,7 +16,47 @@
     </values>
     <values>
         <field>Mock_Response__c</field>
-        <value xsi:nil="true"/>
+        <value xsi:type="xsd:string">{
+  &quot;200&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: {
+      &quot;p_account_number&quot;: &quot;04120396973&quot;,
+      &quot;p_SFinfojson&quot;: [
+        {
+          &quot;orgId&quot;: &quot;202&quot;,
+          &quot;sfNummer&quot;: &quot;25232647&quot;,
+          &quot;sfType&quot;: &quot;Behov&quot;,
+          &quot;problemSammendrag&quot;: &quot;STØP F3 Corpus + X850 Corpus M Jr&quot;,
+          &quot;løsningSammendrag&quot;: &quot;Avv. STØP MRS. Vida Stepanov.&quot;,
+          &quot;fnr&quot;: &quot;04120396973&quot;,
+          &quot;brukerNummer&quot;: &quot;1981188&quot;,
+          &quot;sfOpprettetDato&quot;: &quot;17-JAN-25&quot;,
+          &quot;status&quot;: &quot;I arbeid&quot;,
+          &quot;sfNotater&quot;: [
+            {
+              &quot;notat&quot;: &quot;09-10-2019 250028 743883 F3 Corpus \n17-06-2019 250043 732646 X850 Corpus M Jr \nMercedes-Benz Sprinter \n&quot;,
+              &quot;opprettetDato&quot;: &quot;17-01-2025 10:35:11&quot;,
+              &quot;opprettetAvNavn&quot;: &quot;Kasper Iversen&quot;,
+              &quot;opprettetAvIdent&quot;: &quot;KIA4701&quot;
+            }
+          ]
+        }
+      ]
+    }
+  },
+  &quot;401&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  },
+  &quot;404&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  },
+  &quot;500&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  }
+}</value>
     </values>
     <values>
         <field>Service_Path__c</field>

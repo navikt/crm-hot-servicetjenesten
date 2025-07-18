@@ -17,21 +17,53 @@
     <values>
         <field>Mock_Response__c</field>
         <value xsi:type="xsd:string">{
-&quot;200&quot;: {
-&quot;headers&quot;: null,
-&quot;body&quot;: null
-},
-&quot;401&quot;: {
-&quot;headers&quot;: null,
-&quot;body&quot;: null
-},
-&quot;404&quot;: {&quot;headers&quot;: null,
-&quot;body&quot;: null
-},
-&quot;500&quot;: {
-&quot;headers&quot;: null,
-&quot;body&quot;: null
-}
+  &quot;200&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: {
+      &quot;p_account_number&quot;: &quot;11075636603&quot;,
+      &quot;p_Ordreinfojson&quot;: [
+        {
+          &quot;orgId&quot;: &quot;202&quot;,
+          &quot;ordreNummer&quot;: &quot;8508312&quot;,
+          &quot;fnr&quot;: &quot;11075636603&quot;,
+          &quot;brukerNummer&quot;: &quot;1824356&quot;,
+          &quot;ordreDato&quot;: &quot;24-APR-23&quot;,
+          &quot;status&quot;: &quot;Klargjort&quot;,
+          &quot;ordreLinjer&quot;: [
+            {
+              &quot;ordreLinjeNummer&quot;: &quot;2&quot;,
+              &quot;artikkel&quot;: &quot;214808&quot;,
+              &quot;artikkelBeskrivelse&quot;: &quot;Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv&quot;,
+              &quot;antall&quot;: &quot;1&quot;,
+              &quot;ordreLinjeDato&quot;: &quot;24-APR-23&quot;,
+              &quot;lovetDato&quot;: &quot;24-APR-23&quot;,
+              &quot;planlagtSkipningsDato&quot;: &quot;&quot;,
+              &quot;statusOrdreLinje&quot;: &quot;Venter på retur&quot;,
+              &quot;anmodningsNummer&quot;: &quot;&quot;,
+              &quot;bestillingsNummer&quot;: &quot;&quot;,
+              &quot;leveringsadresse&quot;: &quot;SOLHEIMSLIEN 64&quot;,
+              &quot;by&quot;: &quot;BERGEN&quot;,
+              &quot;postNummer&quot;: &quot;5056&quot;,
+              &quot;kommune&quot;: &quot;4601&quot;,
+              &quot;bydel&quot;: &quot;&quot;
+            }
+          ]
+        }
+      ]
+    }
+  },
+  &quot;401&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  },
+  &quot;404&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  },
+  &quot;500&quot;: {
+    &quot;headers&quot;: null,
+    &quot;body&quot;: null
+  }
 }</value>
     </values>
     <values>
