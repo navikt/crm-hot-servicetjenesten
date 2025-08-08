@@ -218,11 +218,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Conversation_Note__c.CRM_Date_Registered__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Conversation_Note__c.CRM_Date_Time_Registered__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1089,11 +1084,6 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Thread__c.CRM_Original_Person_NAV_Unit__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Thread__c.CRM_Recipient__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
