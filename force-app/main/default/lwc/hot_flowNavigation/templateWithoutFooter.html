@@ -1,5 +1,12 @@
 <template>
     <lightning-layout horizontal-align={alignment} class="slds-size_full" style="height: 100%">
-        <c-hot_button button-label={buttonLabel} onclick={handleButtonClick} full-height> </c-hot_button>
+        <button
+            class="slds-button slds-button_stretch slds-button_brand button-spacing button-heights"
+            type="button"
+            title={buttonLabel}
+            onclick={handleButtonClick}
+        >
+            {buttonLabel}
+        </button>
     </lightning-layout>
 </template>
