@@ -10,14 +10,16 @@
                             key={config.id}
                             class="slds-size_4-of-12 slds-var-p-right_medium flow-button"
                         >
-                            <c-custom-button
-                                class="top-button"
+                            <button
+                                class="slds-button slds-button_stretch slds-button_destructive button-spacing button-heights top-button"
+                                type="button"
                                 onclick={config.onclick}
                                 disabled={config.disabled}
                                 aria-expanded={config.expanded}
-                                button-label={config.label}
-                                full-height
-                            ></c-custom-button>
+                                title={config.label}
+                            >
+                                {config.label}
+                            </button>
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>
@@ -56,14 +58,15 @@
                 <lightning-layout class="slds-float_right button-container">
                     <template for:each={bottomButtonConfigs} for:item="config">
                         <lightning-layout-item key={config.id} data-expanded={config.expanded}>
-                            <c-custom-button
-                                button-label={config.label}
-                                button-styling="secondary"
+                            <button
+                                title={config.label}
+                                class="slds-button slds-button_outline-brand button-spacing button-heights"
                                 onclick={config.onclick}
                                 aria-expanded={config.expanded}
-                                element-data-id={config.id}
-                                full-height
-                            ></c-custom-button>
+                                data-id={config.id}
+                            >
+                                {config.label}
+                            </button>
                         </lightning-layout-item>
                     </template>
                 </lightning-layout>

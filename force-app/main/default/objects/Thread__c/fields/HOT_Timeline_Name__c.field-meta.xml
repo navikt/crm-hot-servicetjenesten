@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>HOT_Timeline_Name__c</fullName>
-    <deprecated>false</deprecated>
     <externalId>false</externalId>
     <formula>IF(
         ISPICKVAL(CRM_Thread_Type__c, &apos;STO&apos;) || ISPICKVAL(CRM_Thread_Type__c,
