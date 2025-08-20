@@ -63,11 +63,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
-        <field>LiveChatTranscript.NKS_Social_Service_Information__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>true</editable>
         <field>LiveChatTranscript.NKS_Subtheme__c</field>
         <readable>true</readable>
     </fieldPermissions>
