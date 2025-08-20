@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Kan opprette, redigere, slette og arkivere aritkler. Kan opprette og sette topics på artikler.</description>
+    <description>Kan opprette, redigere, slette og arkivere aritkler. Kan opprette og sette topics
+        på artikler.</description>
     <fieldPermissions>
         <editable>false</editable>
         <field>Case.Assignee_Name__c</field>
@@ -84,11 +85,6 @@
     <fieldPermissions>
         <editable>true</editable>
         <field>Knowledge__kav.InternationalInformation__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
-        <field>Knowledge__kav.NKS_Category__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
