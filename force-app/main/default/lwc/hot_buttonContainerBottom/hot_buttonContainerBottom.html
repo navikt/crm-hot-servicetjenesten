@@ -8,14 +8,17 @@
                 <lightning-layout-item class={buttonClass}>
                     <template for:each={flowLoop} for:item="flow">
                         <lightning-layout-item key={flow.developerName} data-expanded={flow.expanded}>
-                            <c-hot_button
-                                button-label={flow.label}
-                                button-styling={flow.buttonStyling}
-                                element-data-id={flow.developerName}
+                            <button
+                                class={flow.buttonStyling}
+                                type="button"
+                                title={flow.label}
+                                onclick={toggleFlow}
                                 aria-expanded={flow.expanded}
-                                onbuttonclick={toggleFlow}
-                                full-height
-                            ></c-hot_button>
+                                data-id={flow.developerName}
+                                element-data-id={flow.developerName}
+                            >
+                                {flow.label}
+                            </button>
                         </lightning-layout-item>
                     </template>
                     <slot name="navigationButton"></slot>

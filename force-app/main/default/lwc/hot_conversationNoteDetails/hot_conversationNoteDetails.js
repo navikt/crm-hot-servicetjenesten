@@ -3,12 +3,9 @@ import getReverseRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.g
 import { refreshApex } from '@salesforce/apex';
 import { getObjectInfo } from 'lightning/uiObjectInfoApi';
 import CONVERSATION_NOTE_OBJECT from '@salesforce/schema/Conversation_Note__c';
-//import CHANGE_USER_LABEL from '@salesforce/label/c.NKS_Change_User';
-//import CREATE_TASK_LABEL from '@salesforce/label/c.NKS_Create_NAV_Task';
-import { publishToAmplitude } from 'c/amplitude';
+
 import { handleShowNotifications, getOutputVariableValue } from 'c/hot_componentsUtils';
 import CONVERSATION_NOTE_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/hotNotifications__c';
-//import BUTTON_CONTAINER_NOTIFICATIONS_CHANNEL from '@salesforce/messageChannel/buttonContainerNotifications__c';
 import { subscribe, unsubscribe, MessageContext, APPLICATION_SCOPE } from 'lightning/messageService';
 import invokeSendNavTaskFlow from '@salesforce/apex/HOT_SendNavTaskHandler.invokeSendNavTaskFlow';
 import getProcessingId from '@salesforce/apex/HOT_SendNavTaskHandler.getProcessingId';
@@ -21,8 +18,7 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     navTasks = [];
     notes = [];
     expanded = true;
-    //changeUserLabel = CHANGE_USER_LABEL; //'Bytt bruker'
-    //createTaskLabel = CREATE_TASK_LABEL; //'Opprett NAV-oppgave'
+
     changeUserLabel = 'Bytt bruker';
     createTaskLabel = 'Opprett NAV-oppgave';
     conversationNoteSubscription = null;
@@ -104,7 +100,6 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
             status === 'FINISHED' &&
             outputVariables?.some((output) => output.objectType === 'Conversation_Note__c' && output.value !== null)
         ) {
-            publishToAmplitude('Conversation Note Created');
             refreshApex(this._wiredRecord);
             handleShowNotifications('journal_conversation', outputVariables, this.notificationBoxTemplate, true);
             this.handleSendingNavTasks('navTasks', outputVariables);
@@ -120,7 +115,6 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
             };
             message.eventType +=
                 value === 'GENERELL_SAK' || value === 'FAGSAK' ? ' - Sakstype endret' : ' - Theme/Gjelder changed';
-            publishToAmplitude('ThemeCategorization', { value: value });
         }
     }
 
