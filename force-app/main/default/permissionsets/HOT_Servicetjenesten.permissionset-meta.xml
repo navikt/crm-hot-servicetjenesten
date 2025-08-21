@@ -1028,7 +1028,7 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Thread__c.CRM_Last_Edited_By__c</field>
+        <field>Thread__c.CRM_Redaction_Activated_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>
