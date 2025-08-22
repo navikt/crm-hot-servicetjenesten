@@ -214,7 +214,7 @@
         <allowPause>false</allowPause>
         <fields>
             <name>errorMsng</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;Kunne ikke finne innringer nummer.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;color: rgb(255, 0, 0);&quot;&gt;﻿Kunne ikke finne innringer nummer på denne henvendelsen. Kan derfor ikke sende SMS.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>false</showFooter>
