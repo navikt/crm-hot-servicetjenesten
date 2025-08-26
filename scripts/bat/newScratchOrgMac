@@ -3,8 +3,8 @@
 # Oppretter scratch org
 sf org create scratch --definition-file config/project-scratch-def.json --alias $1 --duration-days $2 --set-default --json --wait 30
 
-# Installer crm-platform-base ver. 0.270
-sf package install --package 04tQC000000kpU9YAI --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installer crm-platform-base ver. 0.279
+sf package install --package 04tQC000000uij7YAA --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-thread-view ver. 0.5
 sf package install --package 04tKB000000Y8nqYAC --no-prompt --installation-key $3 --wait 30 --publish-wait 30
@@ -15,17 +15,17 @@ sf package install --package 04tKB000000Y9WtYAK --no-prompt --installation-key $
 # Installerer crm-platform-reporting ver. 0.39
 sf package install --package 04tKB000000Y5GEYA0 --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installer crm-platform-access-control ver. 0.160
-sf package install --package 04tKB000000YBLfYAO --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installer crm-platform-access-control ver. 0.162
+sf package install --package 04tQC000000tlPhYAI --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-shared-flowComponents ver. 0.4
 sf package install --package 04t7U0000008qz4QAA --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-henvendelse-base ver. 0.31
-sf package install --package 04tKB000000Y9AdYAK --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-henvendelse-base ver. 0.36
+sf package install --package 04tQC000000uSXtYAM --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installerer crm-platform-integration ver. 0.156
-sf package install --package 04tQC000000moiTYAQ --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-platform-integration ver. 0.158
+sf package install --package 04tQC000000uiG5YAI --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Installerer crm-shared-user-notification ver. 0.24
 sf package install --package 04t7U000000Y4jZQAS --no-prompt --installation-key $3 --wait 30 --publish-wait 30
