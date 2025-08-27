@@ -173,6 +173,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
+        <field>Case.HOT_Puzzel_SessionId__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
         <field>Case.NKS_Henvendelse_BehandlingsId__c</field>
         <readable>true</readable>
     </fieldPermissions>
