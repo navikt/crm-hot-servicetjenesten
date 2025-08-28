@@ -18,13 +18,13 @@ public without sharing class HOT_CallFlowController {
     )
     public static List<CallerResponse> getCallerInfo(List<String> sessionIds) {
         List<CallerResponse> respList = new List<CallerResponse>();
-        LoggerUtility logger = new LoggerUtility();
+        LoggerUtility logger = new LoggerUtility(CRM_ApplicationDomain.Domain.HOT,'HOT_getCallerInfo');
 
         if (getEnquiryLogObject() == null && !Test.isRunningTest()) {
             for (String puzSessionId : sessionIds) {
                 respList.add(new CallerResponse('')); //Blank Phonenumber as fallback when there is no match
             }
-            logger.error('Kunne ikke finne puzzel__EnquiryLog__c record', puzzel__EnquiryLog__c, CRM_ApplicationDomain.Domain.HOT);
+            logger.errorAndPublish('Kunne ikke finne puzzel__EnquiryLog__c record');
         } else {
             List<Object> enqLogs = getEnquiryLogs(sessionIds);
             for (Object enqLog : enqLogs) {
@@ -53,6 +53,7 @@ public without sharing class HOT_CallFlowController {
                       Database.query(
                           queryFactory.selectFields(QueryFields)
                               .setCondition('puzzel__SessionId__c in :sessionIds')
+                              .setLimit(1)
                               .toSOQL()
                       )
                   )
