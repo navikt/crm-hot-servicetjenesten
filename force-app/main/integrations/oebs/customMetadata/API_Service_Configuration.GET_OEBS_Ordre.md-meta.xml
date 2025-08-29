@@ -68,6 +68,6 @@
     </values>
     <values>
         <field>Service_Path__c</field>
-        <value xsi:type="xsd:string">/api/v1/ordre/{fnr}</value>
+        <value xsi:type="xsd:string">/api/v1/ordre?fodsels_nummer={fnr}</value>
     </values>
 </CustomMetadata>
