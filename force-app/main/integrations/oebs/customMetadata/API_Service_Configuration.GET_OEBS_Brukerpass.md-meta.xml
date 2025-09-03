@@ -20,16 +20,13 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_fodsels_nummer1&quot;: &quot;01086045229&quot;,
-      &quot;p_Brukerpassinfojson&quot;: {
-        &quot;fnr&quot;: &quot;01086045229&quot;,
-        &quot;brukerNummer&quot;: &quot;107135&quot;,
-        &quot;kontrakt_nummer&quot;: &quot;16972&quot;,
+        &quot;fnr&quot;: &quot;22106635513&quot;,
+        &quot;brukerNummer&quot;: &quot;3426735&quot;,
+        &quot;kontrakt_nummer&quot;: &quot;21322&quot;,
         &quot;sjekk_navn&quot;: &quot;Brukerpass&quot;,
         &quot;start_date&quot;: &quot;2009-12-17T00:00:00&quot;,
         &quot;end_date&quot;: &quot;2049-12-16T00:00:00&quot;,
         &quot;status&quot;: &quot;SIGNED&quot;
-      }
     }
   },
   &quot;401&quot;: {
