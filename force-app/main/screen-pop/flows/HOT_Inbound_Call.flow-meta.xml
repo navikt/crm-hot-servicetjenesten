@@ -124,6 +124,13 @@
                 <elementReference>PUZZEL_CALLER</elementReference>
             </value>
         </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.HOT_Puzzel_SessionId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SessionId</elementReference>
+            </value>
+        </assignmentItems>
         <connector>
             <targetReference>Create_Case</targetReference>
         </connector>
@@ -187,6 +194,13 @@
             <operator>Assign</operator>
             <value>
                 <elementReference>PUZZEL_CALLER</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Call_Case.HOT_Puzzel_SessionId__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>SessionId</elementReference>
             </value>
         </assignmentItems>
         <connector>
