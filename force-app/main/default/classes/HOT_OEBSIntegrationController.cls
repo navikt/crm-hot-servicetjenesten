@@ -151,7 +151,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 return wrapperList;
             } else {
                 brukerNrWrapper bWrapper = new brukerNrWrapper();
-                oebsWrapper Wrapper = new oebsWrapper();
+                oebsWrapper wrapper = new oebsWrapper();
                 bWrapper.brukerNummer = (String) dataMap.get('brukerNummer');
                 bWrapper.brukerStatus = (String) dataMap.get('brukerStatus');
                 bWrapper.fnr = (String) dataMap.get('fnr');
