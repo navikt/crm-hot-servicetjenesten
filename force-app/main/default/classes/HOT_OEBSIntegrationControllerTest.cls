@@ -2,20 +2,10 @@
 private class HOT_OEBSIntegrationControllerTest {
     @TestSetup
     static void makeData() {
-        HOT_ST_TestDataFactory.createRecord(new Person__c(Name = '01048800153'));
-    }
-
-    //Helper method to create a test Person and Account.
-
-    private static Account createTestAccountWithFnr(String fnr) {
-        // Create a Person__c record with Name = <fnr>
-        Person__c person = new Person__c(Name = fnr);
-        insert person;
-
-        // Create an Account referencing that Person__c via CRM_Person__c
-        Account acc = new Account(Name = 'Test Account', CRM_Person__c = person.Id);
-        insert acc;
-        return acc;
+        Person__c person = (Person__c) HOT_ST_TestDataFactory.createRecord(new Person__c(Name = '01048800153'));
+        Account acc = [SELECT id FROM Account LIMIT 1];
+        Case casy = (Case) HOT_ST_TestDataFactory.createRecord(new Case(AccountId = acc.id));
+        Account acc2 = (Account) HOT_ST_TestDataFactory.createRecord(new Account(Name = 'test'));
     }
 
     // Simulerer et vanlig, gyldig svar for Brukerpass.
@@ -324,6 +314,17 @@ private class HOT_OEBSIntegrationControllerTest {
     }
 
     // Returnerer en JSON-respons uten 'data'-nøkkelen.
+    private class badDataMock implements HttpCalloutMock {
+        public HttpResponse respond(HTTPRequest req) {
+            HttpResponse res = new HttpResponse();
+            String mockResponse = '{' + '    \"p_account_number\": \"11075636603\"' + '}';
+            res.setStatusCode(200);
+            res.setBody(mockResponse);
+            return res;
+        }
+    }
+
+    // Returnerer en JSON-respons uten 'data'-nøkkelen.
     private class NoDataMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
             HttpResponse res = new HttpResponse();
@@ -335,7 +336,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerBrukerNrTest() {
-        Account acc = createTestAccountWithFnr('08067038062');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsBrukernrMock());
 
         Test.startTest();
@@ -346,8 +347,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result: ' + result);
-
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(1, result.size(), 'Expected 1 brukernummer');
         System.assertEquals('1261265', result[0].brukerNr.brukerNummer, 'Expected another brukernummer');
@@ -355,7 +354,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerBrukerPassTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsBrukerPassMock());
 
         Test.startTest();
@@ -366,8 +365,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result: ' + result);
-
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(1, result.size(), 'Expected 1 brukernummer');
         System.assertEquals('SIGNED', result[0].brukerPass.status, 'Expected brukerpass to be SIGNED');
@@ -375,7 +372,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerOrderTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsOrderMock());
 
         Test.startTest();
@@ -386,8 +383,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result orderList: ' + result[0].orderList);
-
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(1, result.size(), 'Expected 1 Order');
         System.assertEquals(1, result[0].orderList.size(), 'Expected 1 Order Line');
@@ -395,7 +390,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerMultipleOrderTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsOrderLinesMock());
 
         Test.startTest();
@@ -406,9 +401,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result list size: ' + result.size());
-        system.debug('Result list order size: ' + result[0].orderList.size());
-        system.debug('Result list orderline size: ' + result[0].orderList[0].orderLineList.size());
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(2, result[0].orderList.size(), 'Expected 2 Order');
         System.assertEquals(2, result[0].orderList[0].orderLineList.size(), 'Expected 2 Order Line');
@@ -417,7 +409,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerServiceRequestTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsSFMock());
 
         Test.startTest();
@@ -428,8 +420,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result serviceRequestList: ' + result[0].serviceRequestList);
-
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(1, result.size(), 'Expected 1 Service forespørsel');
         System.assertEquals(1, result[0].serviceRequestList.size(), 'Expected 1 Service Request Line');
@@ -437,7 +427,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerMultipleServiceRequestTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsMultipleSFMock());
 
         Test.startTest();
@@ -448,9 +438,6 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result list size: ' + result.size());
-        system.debug('Result list order size: ' + result[0].serviceRequestList.size());
-        system.debug('Result list orderline size: ' + result[0].serviceRequestList[0].sfNotater.size());
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(2, result[0].serviceRequestList.size(), 'Expected 2 Order');
         System.assertEquals(2, result[0].serviceRequestList[0].sfNotater.size(), 'Expected 2 Order Line');
@@ -459,7 +446,7 @@ private class HOT_OEBSIntegrationControllerTest {
 
     @IsTest
     static void HOT_OEBSIntegrationControllerSOTest() {
-        Account acc = createTestAccountWithFnr('22106635513');
+        Account acc = [SELECT id FROM Account LIMIT 1];
         Test.setMock(HttpCalloutMock.class, new oebsSOMock());
 
         Test.startTest();
@@ -470,10 +457,76 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
 
-        system.debug('Result list: ' + result[0].serviceOrderList);
-
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(1, result.size(), 'Expected 1 Service Order');
         System.assertEquals(1, result[0].serviceOrderList.size(), 'Expected 1 Service Order Line');
+    }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerErrTest() {
+        Account acc = [SELECT id, crm_person__c FROM Account LIMIT 1];
+        Person__c pers = [SELECT id, INT_fnr__c FROM Person__c LIMIT 1];
+        Case cas = [SELECT id, AccountId FROM Case LIMIT 1];
+        Test.setMock(HttpCalloutMock.class, new NoDataMock());
+
+        Test.startTest();
+        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            pers.Id,
+            'Person__c',
+            'GET_OEBS_Brukernr'
+        );
+        List<HOT_OEBSIntegrationController.oebsWrapper> result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            cas.Id,
+            'Case',
+            'GET_OEBS_Brukernr'
+        );
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerErrRespTest() {
+        Account acc = [SELECT id FROM Account LIMIT 1];
+        Test.setMock(HttpCalloutMock.class, new BadDataMock());
+
+        Test.startTest();
+        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_Brukernr'
+        );
+        List<HOT_OEBSIntegrationController.oebsWrapper> result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_BrukerPass'
+        );
+        List<HOT_OEBSIntegrationController.oebsWrapper> result3 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_Ordre'
+        );
+        List<HOT_OEBSIntegrationController.oebsWrapper> result4 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_SO'
+        );
+        List<HOT_OEBSIntegrationController.oebsWrapper> result5 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_SF'
+        );
+        Test.stopTest();
+    }
+    @IsTest
+    static void HOT_OEBSIntegrationControllerBlankFnrTest() {
+        Account acc = [SELECT id FROM Account WHERE name = 'Test' LIMIT 1];
+        Test.setMock(HttpCalloutMock.class, new BadDataMock());
+
+        Test.startTest();
+        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.id,
+            'Account',
+            'GET_OEBS_Brukernr'
+        );
+        Test.stopTest();
     }
 }
