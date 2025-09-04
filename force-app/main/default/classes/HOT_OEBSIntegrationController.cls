@@ -1,37 +1,60 @@
 public with sharing class HOT_OEBSIntegrationController {
     // Topp-nivå wrapper for hver "integrasjon"
     public class oebsWrapper {
+        @AuraEnabled
         public brukerNrWrapper brukerNr;
+        @AuraEnabled
         public brukerPassWrapper brukerPass;
+        @AuraEnabled
         public List<orderWrapper> orderList;
+        @AuraEnabled
         public List<SFWrapper> serviceRequestList;
+        @AuraEnabled
         public List<SOWrapper> serviceOrderList;
     }
 
     public class brukerNrWrapper {
+        @AuraEnabled
         public String brukerNummer;
+        @AuraEnabled
         public String brukerStatus;
+        @AuraEnabled
         public String fnr;
+        @AuraEnabled
         public String fnrStatus;
     }
 
     public class brukerPassWrapper {
+        @AuraEnabled
         public String fnr;
+        @AuraEnabled
         public String brukerNummer;
+        @AuraEnabled
         public String kontrakt_nummer;
+        @AuraEnabled
         public String sjekk_navn;
+        @AuraEnabled
         public String start_date;
+        @AuraEnabled
         public String end_date;
+        @AuraEnabled
         public String status;
     }
 
     public class orderWrapper {
+        @AuraEnabled
         public String orgId;
+        @AuraEnabled
         public String ordreNummer;
+        @AuraEnabled
         public String fnr;
+        @AuraEnabled
         public String brukerNummer;
+        @AuraEnabled
         public String ordreDato;
+        @AuraEnabled
         public String status;
+        @AuraEnabled
         public List<orderLineWrapper> orderLineList { get; set; }
 
         public orderWrapper() {
@@ -40,27 +63,46 @@ public with sharing class HOT_OEBSIntegrationController {
     }
 
     public class SOWrapper {
+        @AuraEnabled
         public String serviceOrdreNummer;
+        @AuraEnabled
         public String serviceType;
+        @AuraEnabled
         public String sfNummer;
+        @AuraEnabled
         public String opprettelsesDato;
+        @AuraEnabled
         public String artikkel;
+        @AuraEnabled
         public String artikkelBeskrivelse;
+        @AuraEnabled
         public String serviceOrdreStatus;
+        @AuraEnabled
         public String fnr;
+        @AuraEnabled
         public String brukernr;
     }
 
     public class SFWrapper {
+        @AuraEnabled
         public String orgId;
+        @AuraEnabled
         public String sfNummer;
+        @AuraEnabled
         public String sfType;
+        @AuraEnabled
         public String problemSammendrag;
+        @AuraEnabled
         public String losningSammendrag;
+        @AuraEnabled
         public String fnr;
+        @AuraEnabled
         public String brukerNummer;
+        @AuraEnabled
         public String sfOpprettetDato;
+        @AuraEnabled
         public String status;
+        @AuraEnabled
         public List<notatWrapper> sfNotater { get; set; }
 
         public SFWrapper() {
@@ -69,30 +111,50 @@ public with sharing class HOT_OEBSIntegrationController {
     }
 
     public class orderLineWrapper {
+        @AuraEnabled
         public String ordreLinjeNummer;
+        @AuraEnabled
         public String artikkel;
+        @AuraEnabled
         public String artikkelBeskrivelse;
+        @AuraEnabled
         public String antall;
+        @AuraEnabled
         public String ordreLinjeDato;
+        @AuraEnabled
         public String lovetDato;
+        @AuraEnabled
         public String planlagtSkipningsDato;
+        @AuraEnabled
         public String statusOrdreLinje;
+        @AuraEnabled
         public String anmodningsNummer;
+        @AuraEnabled
         public String bestillingsNummer;
+        @AuraEnabled
         public String leveringsadresse;
+        @AuraEnabled
         public String city;
+        @AuraEnabled
         public String postNummer;
+        @AuraEnabled
         public String kommune;
+        @AuraEnabled
         public String bydel;
     }
 
     public class notatWrapper {
+        @AuraEnabled
         public String notat;
+        @AuraEnabled
         public String opprettetDato;
+        @AuraEnabled
         public String opprettetAvNavn;
+        @AuraEnabled
         public String opprettetAvIdent;
     }
 
+    @AuraEnabled(cacheable=true)
     public static List<oebsWrapper> HOT_OEBS_Integration(Id recordId, String objectApiName, String apiName) {
         List<oebsWrapper> wrapperList = new List<oebsWrapper>();
         List<orderWrapper> orderList = new List<orderWrapper>();
