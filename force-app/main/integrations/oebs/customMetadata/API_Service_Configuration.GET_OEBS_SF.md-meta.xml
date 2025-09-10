@@ -20,9 +20,6 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_account_number&quot;: &quot;04120396973&quot;,
-      &quot;p_SFinfojson&quot;: [
-        {
           &quot;orgId&quot;: &quot;202&quot;,
           &quot;sfNummer&quot;: &quot;25232647&quot;,
           &quot;sfType&quot;: &quot;Behov&quot;,
@@ -40,8 +37,6 @@
               &quot;opprettetAvIdent&quot;: &quot;KIA4701&quot;
             }
           ]
-        }
-      ]
     }
   },
   &quot;401&quot;: {

@@ -243,10 +243,7 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         } else if (apiName == 'GET_OEBS_Ordre') {
             // Deserialize
-            rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-
-            // Order outer (liste eller enkeltobjekt)
-            Object rawOuterOrder = rootMap.get('p_Ordreinfojson');
+            Object rawOuterOrder = JSON.deserializeUntyped(responseBody);
             if (rawOuterOrder != null) {
                 if (rawOuterOrder instanceof List<Object>) {
                     outerList = (List<Object>) rawOuterOrder;
@@ -259,13 +256,13 @@ public with sharing class HOT_OEBSIntegrationController {
             } else {
                 for (Object outerOrder : outerList) {
                     Map<String, Object> outerMap = (Map<String, Object>) outerOrder;
-                    orderWrapper wrapper = new orderWrapper();
-                    wrapper.orgId = (String) outerMap.get('orgId');
-                    wrapper.ordreNummer = (String) outerMap.get('ordreNummer');
-                    wrapper.fnr = (String) outerMap.get('fnr');
-                    wrapper.brukerNummer = (String) outerMap.get('brukerNummer');
-                    wrapper.ordreDato = (String) outerMap.get('ordreDato');
-                    wrapper.status = (String) outerMap.get('status');
+                    orderWrapper oWrapper = new orderWrapper();
+                    oWrapper.orgId = (String) outerMap.get('orgId');
+                    oWrapper.ordreNummer = (String) outerMap.get('ordreNummer');
+                    oWrapper.fnr = (String) outerMap.get('fnr');
+                    oWrapper.brukerNummer = (String) outerMap.get('brukerNummer');
+                    oWrapper.ordreDato = (String) outerMap.get('ordreDato');
+                    oWrapper.status = (String) outerMap.get('status');
 
                     // Order Inner (liste eller enkeltobjekt)
                     Object rawInnerOrder = outerMap.get('ordreLinjer');
@@ -294,9 +291,9 @@ public with sharing class HOT_OEBSIntegrationController {
                         lWrapper.postNummer = (String) innerMap.get('postNummer');
                         lWrapper.kommune = (String) innerMap.get('kommune');
                         lWrapper.bydel = (String) innerMap.get('bydel');
-                        wrapper.orderLineList.add(lWrapper);
+                        oWrapper.orderLineList.add(lWrapper);
                     }
-                    orderList.add(wrapper);
+                    orderList.add(oWrapper);
                 }
                 if (orderList.isEmpty()) {
                     return null;
@@ -308,10 +305,8 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         } else if (apiName == 'GET_OEBS_SF') {
             // Deserialize
-            rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-
             // Service Forespørsel outer (liste eller enkeltobjekt)
-            Object rawOuterOrder = rootMap.get('p_SFinfojson');
+            Object rawOuterOrder = JSON.deserializeUntyped(responseBody);
             if (rawOuterOrder != null) {
                 if (rawOuterOrder instanceof List<Object>) {
                     outerList = (List<Object>) rawOuterOrder;
@@ -365,10 +360,7 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         } else if (apiName == 'GET_OEBS_SO') {
             // Deserialize
-            rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-
-            // Service Order Inner (liste eller enkeltobjekt)
-            Object rawInnerSO = rootMap.get('p_ServiceOrdrejson');
+            Object rawInnerSO = JSON.deserializeUntyped(responseBody);
             if (rawInnerSO != null) {
                 if (rawInnerSO instanceof List<Object>) {
                     innerList = (List<Object>) rawInnerSO;

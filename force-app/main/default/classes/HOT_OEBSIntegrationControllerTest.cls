@@ -55,34 +55,29 @@ private class HOT_OEBSIntegrationControllerTest {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
                 '{' +
-                '    \"p_account_number\": \"11075636603\",' +
-                '    \"p_Ordreinfojson\": [' +
+                '    \"orgId\": \"202\",' +
+                '    \"ordreNummer\": \"8508312\",' +
+                '    \"fnr\": \"11075636603\",' +
+                '    \"brukerNummer\": \"1824356\",' +
+                '    \"ordreDato\": \"24-APR-23\",' +
+                '    \"status\": \"Klargjort\",' +
+                '    \"ordreLinjer\": [' +
                 '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"ordreNummer\": \"8508312\",' +
-                '            \"fnr\": \"11075636603\",' +
-                '            \"brukerNummer\": \"1824356\",' +
-                '            \"ordreDato\": \"24-APR-23\",' +
-                '            \"status\": \"Klargjort\",' +
-                '            \"ordreLinjer\": [' +
-                '                {' +
-                '                    \"ordreLinjeNummer\": \"2\",' +
-                '                    \"artikkel\": \"214808\",' +
-                '                    \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
-                '                    \"antall\": \"1\",' +
-                '                    \"ordreLinjeDato\": \"24-APR-23\",' +
-                '                    \"lovetDato\": \"24-APR-23\",' +
-                '                    \"planlagtSkipningsDato\": \"12-APR-23\",' +
-                '                    \"statusOrdreLinje\": \"Venter på retur\",' +
-                '                    \"anmodningsNummer\": \"1234\",' +
-                '                    \"bestillingsNummer\": \"1234\",' +
-                '                    \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '                    \"by\": \"BERGEN\",' +
-                '                    \"postNummer\": \"5056\",' +
-                '                    \"kommune\": \"4601\",' +
-                '                    \"bydel\": \"Klepp\"' +
-                '                }' +
-                '            ]' +
+                '            \"ordreLinjeNummer\": \"2\",' +
+                '            \"artikkel\": \"214808\",' +
+                '            \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
+                '            \"antall\": \"1\",' +
+                '            \"ordreLinjeDato\": \"24-APR-23\",' +
+                '            \"lovetDato\": \"24-APR-23\",' +
+                '            \"planlagtSkipningsDato\": \"12-APR-23\",' +
+                '            \"statusOrdreLinje\": \"Venter på retur\",' +
+                '            \"anmodningsNummer\": \"1234\",' +
+                '            \"bestillingsNummer\": \"1234\",' +
+                '            \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
+                '            \"by\": \"BERGEN\",' +
+                '            \"postNummer\": \"5056\",' +
+                '            \"kommune\": \"4601\",' +
+                '            \"bydel\": \"Klepp\"' +
                 '        }' +
                 '    ]' +
                 '}';
@@ -98,82 +93,79 @@ private class HOT_OEBSIntegrationControllerTest {
     private class oebsOrderLinesMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-                '{' +
-                '    \"p_account_number\": \"11075636603\",' +
-                '    \"p_Ordreinfojson\": [' +
-                '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"ordreNummer\": \"8508312\",' +
-                '            \"fnr\": \"11075636603\",' +
-                '            \"brukerNummer\": \"1824356\",' +
-                '            \"ordreDato\": \"24-APR-23\",' +
-                '            \"status\": \"Klargjort\",' +
-                '            \"ordreLinjer\": [' +
-                '                {' +
-                '                    \"ordreLinjeNummer\": \"1\",' +
-                '                    \"artikkel\": \"214808\",' +
-                '                    \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
-                '                    \"antall\": \"1\",' +
-                '                    \"ordreLinjeDato\": \"24-APR-23\",' +
-                '                    \"lovetDato\": \"24-APR-23\",' +
-                '                    \"planlagtSkipningsDato\": \"12-APR-23\",' +
-                '                    \"statusOrdreLinje\": \"Venter på retur\",' +
-                '                    \"anmodningsNummer\": \"1234\",' +
-                '                    \"bestillingsNummer\": \"1234\",' +
-                '                    \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '                    \"by\": \"BERGEN\",' +
-                '                    \"postNummer\": \"5056\",' +
-                '                    \"kommune\": \"4601\",' +
-                '                    \"bydel\": \"Klepp\"' +
-                '                },' +
-                '                {' +
-                '                    \"ordreLinjeNummer\": \"2\",' +
-                '                    \"artikkel\": \"414808\",' +
-                '                    \"artikkelBeskrivelse\": \"Test Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
-                '                    \"antall\": \"1\",' +
-                '                    \"ordreLinjeDato\": \"24-APR-23\",' +
-                '                    \"lovetDato\": \"24-APR-23\",' +
-                '                    \"planlagtSkipningsDato\": \"12-APR-23\",' +
-                '                    \"statusOrdreLinje\": \"Venter på retur\",' +
-                '                    \"anmodningsNummer\": \"1234\",' +
-                '                    \"bestillingsNummer\": \"1234\",' +
-                '                    \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '                    \"by\": \"BERGEN\",' +
-                '                    \"postNummer\": \"5056\",' +
-                '                    \"kommune\": \"4601\",' +
-                '                    \"bydel\": \"Klepp\"' +
-                '                }' +
-                '            ]' +
-                '        },' +
-                '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"ordreNummer\": \"9508312\",' +
-                '            \"fnr\": \"11075636603\",' +
-                '            \"brukerNummer\": \"1824356\",' +
-                '            \"ordreDato\": \"24-APR-23\",' +
-                '            \"status\": \"Klargjort\",' +
-                '            \"ordreLinjer\": [' +
-                '                {' +
-                '                    \"ordreLinjeNummer\": \"1\",' +
-                '                    \"artikkel\": \"214808\",' +
-                '                    \"artikkelBeskrivelse\": \"Ordre 2 Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
-                '                    \"antall\": \"1\",' +
-                '                    \"ordreLinjeDato\": \"24-APR-23\",' +
-                '                    \"lovetDato\": \"24-APR-23\",' +
-                '                    \"planlagtSkipningsDato\": \"12-APR-23\",' +
-                '                    \"statusOrdreLinje\": \"Venter på retur\",' +
-                '                    \"anmodningsNummer\": \"1234\",' +
-                '                    \"bestillingsNummer\": \"1234\",' +
-                '                    \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '                    \"by\": \"BERGEN\",' +
-                '                    \"postNummer\": \"5056\",' +
-                '                    \"kommune\": \"4601\",' +
-                '                    \"bydel\": \"Klepp\"' +
-                '                }' +
-                '            ]' +
-                '        }' +
-                '    ]' +
-                '}';
+                '[' +
+                '    {' +
+                '       \"orgId\": \"202\",' +
+                '       \"ordreNummer\": \"8508312\",' +
+                '       \"fnr\": \"11075636603\",' +
+                '       \"brukerNummer\": \"1824356\",' +
+                '       \"ordreDato\": \"24-APR-23\",' +
+                '       \"status\": \"Klargjort\",' +
+                '       \"ordreLinjer\": [' +
+                '           {' +
+                '              \"ordreLinjeNummer\": \"1\",' +
+                '              \"artikkel\": \"214808\",' +
+                '              \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
+                '              \"antall\": \"1\",' +
+                '              \"ordreLinjeDato\": \"24-APR-23\",' +
+                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
+                '              \"statusOrdreLinje\": \"Venter på retur\",' +
+                '              \"anmodningsNummer\": \"1234\",' +
+                '              \"bestillingsNummer\": \"1234\",' +
+                '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
+                '              \"by\": \"BERGEN\",' +
+                '              \"postNummer\": \"5056\",' +
+                '              \"kommune\": \"4601\",' +
+                '              \"bydel\": \"Klepp\"' +
+                '           },' +
+                '           {' +
+                '              \"ordreLinjeNummer\": \"2\",' +
+                '              \"artikkel\": \"414808\",' +
+                '              \"artikkelBeskrivelse\": \"Test Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
+                '              \"antall\": \"1\",' +
+                '              \"ordreLinjeDato\": \"24-APR-23\",' +
+                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
+                '              \"statusOrdreLinje\": \"Venter på retur\",' +
+                '              \"anmodningsNummer\": \"1234\",' +
+                '              \"bestillingsNummer\": \"1234\",' +
+                '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
+                '              \"by\": \"BERGEN\",' +
+                '              \"postNummer\": \"5056\",' +
+                '              \"kommune\": \"4601\",' +
+                '              \"bydel\": \"Klepp\"' +
+                '           }' +
+                '       ]' +
+                '    },' +
+                '    {' +
+                '       \"orgId\": \"202\",' +
+                '       \"ordreNummer\": \"9508312\",' +
+                '       \"fnr\": \"11075636603\",' +
+                '       \"brukerNummer\": \"1824356\",' +
+                '       \"ordreDato\": \"24-APR-23\",' +
+                '       \"status\": \"Klargjort\",' +
+                '       \"ordreLinjer\": [' +
+                '           {' +
+                '              \"ordreLinjeNummer\": \"1\",' +
+                '              \"artikkel\": \"214808\",' +
+                '              \"artikkelBeskrivelse\": \"Ordre 2 Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
+                '              \"antall\": \"1\",' +
+                '              \"ordreLinjeDato\": \"24-APR-23\",' +
+                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
+                '              \"statusOrdreLinje\": \"Venter på retur\",' +
+                '              \"anmodningsNummer\": \"1234\",' +
+                '              \"bestillingsNummer\": \"1234\",' +
+                '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
+                '              \"by\": \"BERGEN\",' +
+                '              \"postNummer\": \"5056\",' +
+                '              \"kommune\": \"4601\",' +
+                '              \"bydel\": \"Klepp\"' +
+                '           }' +
+                '       ]' +
+                '    }' +
+                ']';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -186,22 +178,55 @@ private class HOT_OEBSIntegrationControllerTest {
     private class oebsSOMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-                '{' +
-                '    \"p_fodsels_nummer\": \"22106635513\",' +
-                '    \"p_ServiceOrdrejson\": [' +
-                '        {' +
-                '            \"serviceOrdreNummer\": \"22008018\",' +
-                '            \"serviceType\": \"Standard*\",' +
-                '            \"sfNummer\": \"25519635\",' +
-                '            \"opprettelsesDato\": \"2025-05-19T09:28:07\",' +
-                '            \"artikkel\": \"250044\",' +
-                '            \"artikkelBeskrivelse\": \"Ers styrel X850 Corpus sb42-57 sd37-57 rygg vreg el seteløft el 9,9km/t\",' +
-                '            \"serviceOrdreStatus\": \"Åpen\",' +
-                '            \"fnr\": \"22106635513\",' +
-                '            \"brukernr\": \"3426735\"' +
-                '        }' +
-                '    ]' +
-                '}';
+                '[' +
+                '    {' +
+                '        \"serviceOrdreNummer\": \"22008018\",' +
+                '        \"serviceType\": \"Standard*\",' +
+                '        \"sfNummer\": \"25519635\",' +
+                '        \"opprettelsesDato\": \"2025-05-19T09:28:07\",' +
+                '        \"artikkel\": \"250044\",' +
+                '        \"artikkelBeskrivelse\": \"Ers styrel X850 Corpus sb42-57 sd37-57 rygg vreg el seteløft el 9,9km/t\",' +
+                '        \"serviceOrdreStatus\": \"Åpen\",' +
+                '        \"fnr\": \"22106635513\",' +
+                '        \"brukernr\": \"3426735\"' +
+                '    }' +
+                ']';
+
+            HttpResponse res = new HttpResponse();
+            res.setBody(mockResponse);
+            res.setStatusCode(200);
+            return res;
+        }
+    }
+
+    // Simulerer et vanlig, gyldig svar for Service Ordre.
+    private class oebsMultipleSOMock implements HttpCalloutMock {
+        public HTTPResponse respond(HTTPRequest req) {
+            String mockResponse =
+                '[' +
+                '    {' +
+                '        \"serviceOrdreNummer\": \"22008018\",' +
+                '        \"serviceType\": \"Standard*\",' +
+                '        \"sfNummer\": \"25519635\",' +
+                '        \"opprettelsesDato\": \"2025-05-19T09:28:07\",' +
+                '        \"artikkel\": \"250044\",' +
+                '        \"artikkelBeskrivelse\": \"Ers styrel X850 Corpus sb42-57 sd37-57 rygg vreg el seteløft el 9,9km/t\",' +
+                '        \"serviceOrdreStatus\": \"Åpen\",' +
+                '        \"fnr\": \"22106635513\",' +
+                '        \"brukernr\": \"3426735\"' +
+                '    },' +
+                '    {' +
+                '        \"serviceOrdreNummer\": \"22008019\",' +
+                '        \"serviceType\": \"Standard*\",' +
+                '        \"sfNummer\": \"35519635\",' +
+                '        \"opprettelsesDato\": \"2025-05-19T09:28:07\",' +
+                '        \"artikkel\": \"250044\",' +
+                '        \"artikkelBeskrivelse\": \"Ers styrel X999",' +
+                '        \"serviceOrdreStatus\": \"Åpen\",' +
+                '        \"fnr\": \"22106635513\",' +
+                '        \"brukernr\": \"3426735\"' +
+                '    }' +
+                ']';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -214,36 +239,33 @@ private class HOT_OEBSIntegrationControllerTest {
     private class oebsSFMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-                '{' +
-                '    \"p_account_number\": \"11075636603\",' +
-                '    \"p_SFinfojson\": [' +
-                '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"sfNummer\": \"25232647\",' +
-                '            \"sfType\": \"Behov\",' +
-                '            \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '            \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
-                '            \"fnr\": \"04120396973\",' +
-                '            \"brukerNummer\": \"1981188\",' +
-                '            \"sfOpprettetDato\": \"17-JAN-25\",' +
-                '            \"status\": \"I arbeid\",' +
-                '            \"sfNotater\": [' +
-                '                {' +
-                //'                    \"notat\": \"09-10-2019 250028 743883 F3 Corpus \n17-06-2019 250043 732646 X850 Corpus M Jr \nMercedes-Benz Sprinter \n\",' +
-                '                    \"opprettetDato\": \"17-01-2025 10:35:11\",' +
-                '                    \"opprettetAvNavn\": \"Kasper Iversen\",' +
-                '                    \"opprettetAvIdent\": \"KIA4701\"' +
-                '                },' +
-                '                {' +
-                '                    \"notat\": \"tralala\",' +
-                '                    \"opprettetDato\": \"18-01-2025 10:35:11\",' +
-                '                    \"opprettetAvNavn\": \"Kasper Iversen\",' +
-                '                    \"opprettetAvIdent\": \"KIA4701\"' +
-                '                }' +
-                '            ]' +
-                '        }' +
-                '    ]' +
-                '}';
+                '[' +
+                '    {' +
+                '        \"orgId\": \"202\",' +
+                '        \"sfNummer\": \"25232647\",' +
+                '        \"sfType\": \"Behov\",' +
+                '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
+                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"fnr\": \"04120396973\",' +
+                '        \"brukerNummer\": \"1981188\",' +
+                '        \"sfOpprettetDato\": \"17-JAN-25\",' +
+                '        \"status\": \"I arbeid\",' +
+                '        \"sfNotater\": [' +
+                '            {' +
+                '                \"notat\": \"09-10-2019 250028 743883 F3 Corpus 17-06-2019 250043 732646 X850 Corpus M Jr Mercedes-Benz Sprinter \",' +
+                '                \"opprettetDato\": \"17-01-2025 10:35:11\",' +
+                '                \"opprettetAvNavn\": \"Kasper Iversen\",' +
+                '                \"opprettetAvIdent\": \"KIA4701\"' +
+                '            },' +
+                '            {' +
+                '                \"notat\": \"tralala\",' +
+                '                \"opprettetDato\": \"18-01-2025 10:35:11\",' +
+                '                \"opprettetAvNavn\": \"Kasper Iversen\",' +
+                '                \"opprettetAvIdent\": \"KIA4701\"' +
+                '            }' +
+                '        ]' +
+                '    }' +
+                ']';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -256,55 +278,52 @@ private class HOT_OEBSIntegrationControllerTest {
     private class oebsMultipleSFMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-                '{' +
-                '    \"p_account_number\": \"11075636603\",' +
-                '    \"p_SFinfojson\": [' +
-                '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"sfNummer\": \"25232647\",' +
-                '            \"sfType\": \"Behov\",' +
-                '            \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '            \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
-                '            \"fnr\": \"04120396973\",' +
-                '            \"brukerNummer\": \"1981188\",' +
-                '            \"sfOpprettetDato\": \"17-JAN-25\",' +
-                '            \"status\": \"I arbeid\",' +
-                '            \"sfNotater\": [' +
-                '                {' +
-                '                    \"notat\": \"tittentei\",' +
-                '                    \"opprettetDato\": \"17-01-2025 10:35:11\",' +
-                '                    \"opprettetAvNavn\": \"Kasper Iversen\",' +
-                '                    \"opprettetAvIdent\": \"KIA4701\"' +
-                '                },' +
-                '                {' +
-                '                    \"notat\": \"tralala\",' +
-                '                    \"opprettetDato\": \"18-01-2025 10:35:11\",' +
-                '                    \"opprettetAvNavn\": \"Kasper Iversen\",' +
-                '                    \"opprettetAvIdent\": \"KIA4701\"' +
-                '                }' +
-                '            ]' +
-                '        },' +
-                '        {' +
-                '            \"orgId\": \"202\",' +
-                '            \"sfNummer\": \"35232647\",' +
-                '            \"sfType\": \"Behov\",' +
-                '            \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '            \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
-                '            \"fnr\": \"04120396973\",' +
-                '            \"brukerNummer\": \"1981188\",' +
-                '            \"sfOpprettetDato\": \"17-JAN-25\",' +
-                '            \"status\": \"I arbeid\",' +
-                '            \"sfNotater\": [' +
-                '                {' +
-                '                    \"notat\": \"tralala\",' +
-                '                    \"opprettetDato\": \"17-01-2025 10:35:11\",' +
-                '                    \"opprettetAvNavn\": \"Kasper Iversen\",' +
-                '                    \"opprettetAvIdent\": \"KIA4701\"' +
-                '                }' +
-                '            ]' +
-                '        }' +
-                '    ]' +
-                '}';
+                '[' +
+                '    {' +
+                '        \"orgId\": \"202\",' +
+                '        \"sfNummer\": \"25232647\",' +
+                '        \"sfType\": \"Behov\",' +
+                '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
+                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"fnr\": \"04120396973\",' +
+                '        \"brukerNummer\": \"1981188\",' +
+                '        \"sfOpprettetDato\": \"17-JAN-25\",' +
+                '        \"status\": \"I arbeid\",' +
+                '        \"sfNotater\": [' +
+                '            {' +
+                '                \"notat\": \"tittentei\",' +
+                '                \"opprettetDato\": \"17-01-2025 10:35:11\",' +
+                '                \"opprettetAvNavn\": \"Kasper Iversen\",' +
+                '                \"opprettetAvIdent\": \"KIA4701\"' +
+                '            },' +
+                '            {' +
+                '                \"notat\": \"tralala\",' +
+                '                \"opprettetDato\": \"18-01-2025 10:35:11\",' +
+                '                \"opprettetAvNavn\": \"Kasper Iversen\",' +
+                '                \"opprettetAvIdent\": \"KIA4701\"' +
+                '            }' +
+                '        ]' +
+                '    },' +
+                '    {' +
+                '        \"orgId\": \"202\",' +
+                '        \"sfNummer\": \"35232647\",' +
+                '        \"sfType\": \"Behov\",' +
+                '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
+                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"fnr\": \"04120396973\",' +
+                '        \"brukerNummer\": \"1981188\",' +
+                '        \"sfOpprettetDato\": \"17-JAN-25\",' +
+                '        \"status\": \"I arbeid\",' +
+                '        \"sfNotater\": [' +
+                '            {' +
+                '                \"notat\": \"tralala\",' +
+                '                \"opprettetDato\": \"17-01-2025 10:35:11\",' +
+                '                \"opprettetAvNavn\": \"Kasper Iversen\",' +
+                '                \"opprettetAvIdent\": \"KIA4701\"' +
+                '            }' +
+                '        ]' +
+                '    }' +
+                ']';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -346,9 +365,9 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_Brukernr'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 brukernummer');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
         System.assertEquals('1261265', result[0].brukerNr.brukerNummer, 'Expected another brukernummer');
     }
 
@@ -364,9 +383,9 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_Brukerpass'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 brukernummer');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
         System.assertEquals('SIGNED', result[0].brukerPass.status, 'Expected brukerpass to be SIGNED');
     }
 
@@ -382,9 +401,9 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_Ordre'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 Order');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
         System.assertEquals(1, result[0].orderList.size(), 'Expected 1 Order Line');
     }
 
@@ -400,7 +419,7 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_Ordre'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(2, result[0].orderList.size(), 'Expected 2 Order');
         System.assertEquals(2, result[0].orderList[0].orderLineList.size(), 'Expected 2 Order Line');
@@ -419,9 +438,9 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_SF'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 Service forespørsel');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
         System.assertEquals(1, result[0].serviceRequestList.size(), 'Expected 1 Service Request Line');
     }
 
@@ -439,9 +458,9 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
 
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(2, result[0].serviceRequestList.size(), 'Expected 2 Order');
-        System.assertEquals(2, result[0].serviceRequestList[0].sfNotater.size(), 'Expected 2 Order Line');
-        System.assertEquals(1, result[0].serviceRequestList[1].sfNotater.size(), 'Expected 1 Order Line');
+        System.assertEquals(2, result[0].serviceRequestList.size(), 'Expected 2 Service Request');
+        System.assertEquals(2, result[0].serviceRequestList[0].sfNotater.size(), 'Expected 2 Service Request Line');
+        System.assertEquals(1, result[0].serviceRequestList[1].sfNotater.size(), 'Expected 1 Service Request Line');
     }
 
     @IsTest
@@ -456,10 +475,28 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_SO'
         );
         Test.stopTest();
-
+        System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 Service Order');
-        System.assertEquals(1, result[0].serviceOrderList.size(), 'Expected 1 Service Order Line');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
+        System.assertEquals(1, result[0].serviceOrderList.size(), 'Expected 1 Service Order');
+    }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerMultipleSOTest() {
+        Account acc = [SELECT id FROM Account LIMIT 1];
+        Test.setMock(HttpCalloutMock.class, new oebsMultipleSOMock());
+
+        Test.startTest();
+        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
+            'Account',
+            'GET_OEBS_SO'
+        );
+        Test.stopTest();
+        System.debug('Result: ' + result);
+        System.assertNotEquals(null, result, 'Result list should not be null');
+        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
+        System.assertEquals(2, result[0].serviceOrderList.size(), 'Expected 2 Service Order');
     }
 
     @IsTest
