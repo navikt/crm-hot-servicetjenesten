@@ -343,6 +343,17 @@ private class HOT_OEBSIntegrationControllerTest {
         }
     }
 
+    // Returnerer en JSON-respons med feilmelding.
+    private class badStatusMock implements HttpCalloutMock {
+        public HttpResponse respond(HTTPRequest req) {
+            HttpResponse res = new HttpResponse();
+            String mockResponse = '{' + 'Unauthorized' + '}';
+            res.setStatusCode(401);
+            res.setBody(mockResponse);
+            return res;
+        }
+    }
+
     // Returnerer en JSON-respons uten 'data'-nøkkelen.
     private class NoDataMock implements HttpCalloutMock {
         public HttpResponse respond(HTTPRequest req) {
@@ -359,7 +370,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsBrukernrMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Brukernr'
@@ -367,8 +378,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals('1261265', result[0].brukerNr.brukerNummer, 'Expected another brukernummer');
+        System.assertEquals('1261265', result.brukerNr.brukerNummer, 'Expected another brukernummer');
     }
 
     @IsTest
@@ -377,7 +387,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsBrukerPassMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Brukerpass'
@@ -385,8 +395,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals('SIGNED', result[0].brukerPass.status, 'Expected brukerpass to be SIGNED');
+        System.assertEquals('SIGNED', result.brukerPass.status, 'Expected brukerpass to be SIGNED');
     }
 
     @IsTest
@@ -395,7 +404,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsOrderMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Ordre'
@@ -403,8 +412,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals(1, result[0].orderList.size(), 'Expected 1 Order Line');
+        System.assertEquals(1, result.orderList.size(), 'Expected 1 Order Line');
     }
 
     @IsTest
@@ -413,7 +421,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsOrderLinesMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Ordre'
@@ -421,9 +429,9 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(2, result[0].orderList.size(), 'Expected 2 Order');
-        System.assertEquals(2, result[0].orderList[0].orderLineList.size(), 'Expected 2 Order Line');
-        System.assertEquals(1, result[0].orderList[1].orderLineList.size(), 'Expected 1 Order Line');
+        System.assertEquals(2, result.orderList.size(), 'Expected 2 Order');
+        System.assertEquals(2, result.orderList[0].orderLineList.size(), 'Expected 2 Order Line');
+        System.assertEquals(1, result.orderList[1].orderLineList.size(), 'Expected 1 Order Line');
     }
 
     @IsTest
@@ -432,7 +440,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsSFMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SF'
@@ -440,8 +448,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals(1, result[0].serviceRequestList.size(), 'Expected 1 Service Request Line');
+        System.assertEquals(1, result.serviceRequestList.size(), 'Expected 1 Service Request Line');
     }
 
     @IsTest
@@ -450,7 +457,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsMultipleSFMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SF'
@@ -458,9 +465,9 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
 
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(2, result[0].serviceRequestList.size(), 'Expected 2 Service Request');
-        System.assertEquals(2, result[0].serviceRequestList[0].sfNotater.size(), 'Expected 2 Service Request Line');
-        System.assertEquals(1, result[0].serviceRequestList[1].sfNotater.size(), 'Expected 1 Service Request Line');
+        System.assertEquals(2, result.serviceRequestList.size(), 'Expected 2 Service Request');
+        System.assertEquals(2, result.serviceRequestList[0].sfNotater.size(), 'Expected 2 Service Request Line');
+        System.assertEquals(1, result.serviceRequestList[1].sfNotater.size(), 'Expected 1 Service Request Line');
     }
 
     @IsTest
@@ -469,7 +476,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsSOMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SO'
@@ -477,8 +484,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals(1, result[0].serviceOrderList.size(), 'Expected 1 Service Order');
+        System.assertEquals(1, result.serviceOrderList.size(), 'Expected 1 Service Order');
     }
 
     @IsTest
@@ -487,7 +493,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new oebsMultipleSOMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SO'
@@ -495,8 +501,7 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.stopTest();
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
-        System.assertEquals(1, result.size(), 'Expected 1 wrapper');
-        System.assertEquals(2, result[0].serviceOrderList.size(), 'Expected 2 Service Order');
+        System.assertEquals(2, result.serviceOrderList.size(), 'Expected 2 Service Order');
     }
 
     @IsTest
@@ -507,12 +512,12 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new NoDataMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             pers.Id,
             'Person__c',
             'GET_OEBS_Brukernr'
         );
-        List<HOT_OEBSIntegrationController.oebsWrapper> result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             cas.Id,
             'Case',
             'GET_OEBS_Brukernr'
@@ -526,27 +531,27 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new BadDataMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Brukernr'
         );
-        List<HOT_OEBSIntegrationController.oebsWrapper> result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result2 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_BrukerPass'
         );
-        List<HOT_OEBSIntegrationController.oebsWrapper> result3 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result3 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_Ordre'
         );
-        List<HOT_OEBSIntegrationController.oebsWrapper> result4 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result4 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SO'
         );
-        List<HOT_OEBSIntegrationController.oebsWrapper> result5 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result5 = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.Id,
             'Account',
             'GET_OEBS_SF'
@@ -559,8 +564,22 @@ private class HOT_OEBSIntegrationControllerTest {
         Test.setMock(HttpCalloutMock.class, new BadDataMock());
 
         Test.startTest();
-        List<HOT_OEBSIntegrationController.oebsWrapper> result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
             acc.id,
+            'Account',
+            'GET_OEBS_Brukernr'
+        );
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerBadResponseStatusTest() {
+        Account acc = [SELECT id FROM Account LIMIT 1];
+        Test.setMock(HttpCalloutMock.class, new badStatusMock());
+
+        Test.startTest();
+        HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            acc.Id,
             'Account',
             'GET_OEBS_Brukernr'
         );
