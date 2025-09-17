@@ -20,9 +20,6 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_account_number&quot;: &quot;11075636603&quot;,
-      &quot;p_Ordreinfojson&quot;: [
-        {
           &quot;orgId&quot;: &quot;202&quot;,
           &quot;ordreNummer&quot;: &quot;8508312&quot;,
           &quot;fnr&quot;: &quot;11075636603&quot;,
@@ -48,8 +45,6 @@
               &quot;bydel&quot;: &quot;&quot;
             }
           ]
-        }
-      ]
     }
   },
   &quot;401&quot;: {
@@ -68,6 +63,6 @@
     </values>
     <values>
         <field>Service_Path__c</field>
-        <value xsi:type="xsd:string">/api/v1/ordre/{fnr}</value>
+        <value xsi:type="xsd:string">/api/v1/ordre?fodsels_nummer={fnr}</value>
     </values>
 </CustomMetadata>

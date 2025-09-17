@@ -20,9 +20,6 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_fodsels_nummer&quot;: &quot;22106635513&quot;,
-      &quot;p_ServiceOrdrejson&quot;: [
-        {
           &quot;serviceOrdreNummer&quot;: &quot;22008018&quot;,
           &quot;serviceType&quot;: &quot;Standard*&quot;,
           &quot;sfNummer&quot;: &quot;25519635&quot;,
@@ -32,8 +29,6 @@
           &quot;serviceOrdreStatus&quot;: &quot;Åpen&quot;,
           &quot;fnr&quot;: &quot;22106635513&quot;,
           &quot;brukernr&quot;: &quot;3426735&quot;
-        }
-      ]
     }
   },
   &quot;401&quot;: {
@@ -52,6 +47,6 @@
     </values>
     <values>
         <field>Service_Path__c</field>
-        <value xsi:type="xsd:string">/api/v1/serviceordre/{fnr}</value>
+        <value xsi:type="xsd:string">/api/v1/serviceordre?fodsels_nummer={fnr}</value>
     </values>
 </CustomMetadata>
