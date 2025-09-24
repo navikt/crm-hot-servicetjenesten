@@ -95,8 +95,7 @@ export default class hot_personHighlightPanel extends LightningElement {
         }
 
         if (data) {
-            console.log('data', data);
-            this.oebsBrukerNr = data[0].brukerNr.brukerNummer;
+            this.oebsBrukerNr = data.brukerNr.brukerNummer;
         }
     }
     @wire(getPersonBadgesAndInfo, {

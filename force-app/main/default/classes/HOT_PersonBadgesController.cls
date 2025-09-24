@@ -121,16 +121,16 @@ public with sharing class HOT_PersonBadgesController {
         }
         private void setBrukerPass(String recordId, String objectApiName) {
             // Henter BrukerPass-data
-            List<HOT_OEBSIntegrationController.oebsWrapper> results = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+            HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
                 recordId,
                 objectApiName,
                 'GET_OEBS_BrukerPass'
             );
 
-            if (results == null || results.isEmpty())
+            if (result == null)
                 return;
 
-            HOT_OEBSIntegrationController.oebsWrapper w = results[0];
+            HOT_OEBSIntegrationController.oebsWrapper w = result;
             if (w == null || w.brukerPass == null)
                 return;
             

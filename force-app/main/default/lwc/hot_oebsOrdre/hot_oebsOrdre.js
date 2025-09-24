@@ -43,7 +43,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         }
         this.error = undefined;
 
-        const orders = Array.isArray(data?.[0]?.orderList) ? data[0].orderList : [];
+        const orders = Array.isArray(data?.orderList) ? data.orderList : [];
 
         const flat = [];
         orders.forEach((o, oi) => {

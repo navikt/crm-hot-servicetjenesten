@@ -49,7 +49,7 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
 
         this.error = undefined;
 
-        const list = Array.isArray(data?.[0]?.serviceRequestList) ? data[0].serviceRequestList : [];
+        const list = Array.isArray(data?.serviceRequestList) ? data.serviceRequestList : [];
 
         const keyed = list.map((r, i) => ({ __key: r.sfNummer ?? `row-${i}`, ...r }));
 

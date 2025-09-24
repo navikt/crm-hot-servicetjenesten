@@ -27,15 +27,7 @@ export default class Hot_oebsServiceordre extends LightningElement {
         if (data) {
             this.error = undefined;
 
-            const flattened = [];
-            (Array.isArray(data) ? data : []).forEach((w) => {
-                if (w && Array.isArray(w.serviceOrderList)) {
-                    flattened.push(...w.serviceOrderList);
-                }
-            });
-
-            this.serviceOrdre = flattened;
-            console.log(flattened);
+            this.serviceOrdre = data.serviceOrderList;
             if (this.serviceOrdre.length) {
                 this.sortData(this.sortBy, this.sortDirection);
             }
