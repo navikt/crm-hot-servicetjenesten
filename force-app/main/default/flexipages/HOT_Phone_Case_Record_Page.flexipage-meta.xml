@@ -533,6 +533,100 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_oebsOrdre</componentName>
+                <identifier>c_hot_oebsOrdre</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-dbab55e5-56a3-444d-a194-f1e828698722</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_oebsServiceforesporsel</componentName>
+                <identifier>c_hot_oebsServiceforesporsel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-d89b4750-a6ea-423b-9515-77b1d14fa06b</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_oebsServiceordre</componentName>
+                <identifier>c_hot_oebsServiceordre</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-22h7ikk8uo7</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-dbab55e5-56a3-444d-a194-f1e828698722</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Ordre</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-d89b4750-a6ea-423b-9515-77b1d14fa06b</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Serviceforespørsel</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-22h7ikk8uo7</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Serviceordre</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-47cfe2a4-8f5d-4cbd-b4da-e4f186164203</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>Facet-47cfe2a4-8f5d-4cbd-b4da-e4f186164203</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e825c9d0-a2da-4e38-9a4e-0f59d5f2aa3a</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-c1ec1af6-d6d9-4387-a0f3-7e17314b60a7</value>
@@ -599,6 +693,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-e825c9d0-a2da-4e38-9a4e-0f59d5f2aa3a</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>OEBS</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-79331d7b-c124-47aa-ae2f-5dcfd0270368</name>

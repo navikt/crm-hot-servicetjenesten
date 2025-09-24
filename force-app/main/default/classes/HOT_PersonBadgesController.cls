@@ -11,7 +11,7 @@ public with sharing class HOT_PersonBadgesController {
     ) {
         Id personId = getPersonId(field, parentObject, parentRecordId);
         Person__c person = getPerson(personId);
-        PersonBadgeData badges = new PersonBadgeData(person);
+        PersonBadgeData badges = new PersonBadgeData(person, parentRecordId, parentObject);
         return badges;
     }
 
@@ -90,7 +90,7 @@ public with sharing class HOT_PersonBadgesController {
         private Set<String> fieldSet;
         private Map<String, String> personIdentNameMap;
 
-        public PersonBadgeData(Person__c person) {
+        public PersonBadgeData(Person__c person, String recordId, String objectApiName) {
             this.badges = new List<Badge>();
             this.guardianships = new List<GuardianshipOrFuturePowerOfAttorney>();
             this.powerOfAttorneys = new List<PowerOfAttorney>();
@@ -102,20 +102,50 @@ public with sharing class HOT_PersonBadgesController {
                 this.person = person;
                 //Get field set for use later in the class
                 this.fieldSet = Schema.SObjectType.Person__c.fields.getMap().keySet();
-                setBadgeData();
+                setBadgeData(recordId, objectApiName);
             }
         }
 
-        private void setBadgeData() {
+        private void setBadgeData(String recordId, String objectApiName) {
             setPowerOfAttorney();
             setGuardianshipOrFuturePowerOfAttorney();
             setPersonName();
             setKrrReservation();
+            setBrukerPass(recordId, objectApiName);
         }
 
         private void setKrrReservation() {
             if (person.INT_KRR_Reservation__c) {
                 badges.add(new Badge('krr', getFieldLabel('INT_KRR_Reservation__c')));
+            }
+        }
+        private void setBrukerPass(String recordId, String objectApiName) {
+            // Henter BrukerPass-data
+            List<HOT_OEBSIntegrationController.oebsWrapper> results = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+                recordId,
+                objectApiName,
+                'GET_OEBS_BrukerPass'
+            );
+
+            if (results == null || results.isEmpty())
+                return;
+
+            HOT_OEBSIntegrationController.oebsWrapper w = results[0];
+            if (w == null || w.brukerPass == null)
+                return;
+            
+            String status = w.brukerPass.status;
+            if (status != null && status.equalsIgnoreCase('SIGNED')) {
+                badges.add(
+                    new Badge(
+                        'Brukerpass',
+                        'Brukerpass',
+                        'slds-theme_warning slds-m-left_x-small slds-m-vertical_xx-small greenBadge',
+                        '',
+                        '',
+                        false
+                    )
+                );
             }
         }
 
@@ -429,7 +459,9 @@ public with sharing class HOT_PersonBadgesController {
         @AuraEnabled
         public String omfangetErInnenPersonligOmraadeTxt {
             get {
-                Boolean actualOmfangetErInnenPersonligOmraade = vergeEllerFullmektig != null ? vergeEllerFullmektig.omfangetErInnenPersonligOmraade : omfangetErInnenPersonligOmraade;
+                Boolean actualOmfangetErInnenPersonligOmraade = vergeEllerFullmektig != null
+                    ? vergeEllerFullmektig.omfangetErInnenPersonligOmraade
+                    : omfangetErInnenPersonligOmraade;
                 return true == actualOmfangetErInnenPersonligOmraade ? 'Ja' : 'Nei';
             }
         }
@@ -440,7 +472,7 @@ public with sharing class HOT_PersonBadgesController {
                 return vergeEllerFullmektig != null ? vergeEllerFullmektig.navn : navn;
             }
             set {
-                if(vergeEllerFullmektig != null){
+                if (vergeEllerFullmektig != null) {
                     vergeEllerFullmektig.navn = value;
                 } else {
                     navn = value;
@@ -503,7 +535,6 @@ public with sharing class HOT_PersonBadgesController {
                 };
             }
         }
-
     }
 
     public class VergeEllerFullmektig {

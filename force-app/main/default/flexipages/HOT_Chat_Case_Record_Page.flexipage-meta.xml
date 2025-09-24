@@ -522,6 +522,110 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>hot_hotsak</componentName>
+                <identifier>c_hot_hotsak</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-1b42c0f9-d7a7-4888-bc1c-295de9c75eb2</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_oebsOrdre</componentName>
+                <identifier>c_hot_oebsOrdre</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-1629274c-6b65-4a11-8aa2-547c15ad50ac</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_oebsServiceforesporsel</componentName>
+                <identifier>c_hot_oebsServiceforesporsel</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-b0d18210-de9c-4179-b055-a036c597dc6c</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>hot_oebsServiceordre</componentName>
+                <identifier>c_hot_oebsServiceordre</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-fcfc16ad-b82d-49b0-8543-056c9ee0368c</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>active</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-1629274c-6b65-4a11-8aa2-547c15ad50ac</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Ordre</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-b0d18210-de9c-4179-b055-a036c597dc6c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Serviceforespørsel</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-fcfc16ad-b82d-49b0-8543-056c9ee0368c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Serviceordre</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-76d01958-b360-42d6-8b6a-7718283576c4</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>tabs</name>
+                    <value>Facet-76d01958-b360-42d6-8b6a-7718283576c4</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tabset</componentName>
+                <identifier>flexipage_tabset2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-h0xrqxkoym</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-c1ec1af6-d6d9-4387-a0f3-7e17314b60a7</value>
@@ -574,6 +678,34 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-1b42c0f9-d7a7-4888-bc1c-295de9c75eb2</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Hotsak</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-h0xrqxkoym</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>OEBS</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab6</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-79331d7b-c124-47aa-ae2f-5dcfd0270368</name>
