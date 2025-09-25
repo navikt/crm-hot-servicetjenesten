@@ -1,6 +1,6 @@
 @IsTest
 public with sharing class HOT_PersonBadgesControllerTest {
-        static String toIso(Date d) {
+    static String toIso(Date d) {
         return Datetime.newInstanceGmt(d, Time.newInstance(12, 0, 0, 0)).format('yyyy-MM-dd');
     }
 
@@ -50,6 +50,8 @@ public with sharing class HOT_PersonBadgesControllerTest {
 
     @IsTest
     static void setBadgeData_GuardianshipOrFuturePowerOfAttorney() {
+        ApiMock.setTestMock('GET_OEBS_BrukerPass', 200, '{"brukerPass":{"status":"PENDING"}}');
+
         String jsonString = '[{"type": "voksen","embete": "Fylkesmannen i Trøndelag","vergeEllerFullmektig": {"navn": {"fornavn": "Djerv","mellomnavn": null,"etternavn": "Eplekake"},"identifiserendeInformasjon": {"navn": {"fornavn": "Djerv","mellomnavn": null,"etternavn": "Eplekake"},"kjoenn": null,"foedselsdato": null,"statsborgerskap": null},"motpartsPersonident": "01234567890","omfang": "personligeOgOekonomiskeInteresser","omfangetErInnenPersonligOmraade": true,"tjenesteomraade": []}}]';
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
         p.INT_GuardianshipOrFuturePowerOfAttorney__c = jsonString;
@@ -92,6 +94,8 @@ public with sharing class HOT_PersonBadgesControllerTest {
     @IsTest
     static void setBadgeData_GuardianshipOrFuturePowerOfAttorneyError() {
         ApiMock.setTestMock('GET_FULLMAKTSGIVER', 200, 'ok');
+        ApiMock.setTestMock('GET_OEBS_BrukerPass', 200, '{"brukerPass":{"status":"PENDING"}}');
+
         String jsonString = '{"type":"midlertidigForVoksen","omfangetErInnenPersonligOmraade":true,"omfang":"personligeOgOekonomiskeInteresser","navn":null,"motpartsPersonident":"01234567890","embete":"fylkesmannenITromsOgFinnmark"}]';
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
         p.INT_GuardianshipOrFuturePowerOfAttorney__c = jsonString;
@@ -110,6 +114,7 @@ public with sharing class HOT_PersonBadgesControllerTest {
     @IsTest
     static void setBadgeData_PowerOfAttorneySomeAreas() {
         ApiMock.setTestMock('GET_FULLMAKTSGIVER', 200, 'ok');
+        ApiMock.setTestMock('GET_OEBS_BrukerPass', 200, '{"brukerPass":{"status":"PENDING"}}');
 
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
 
@@ -120,13 +125,15 @@ public with sharing class HOT_PersonBadgesControllerTest {
 
         Assert.areEqual(3, result.powerOfAttorneys.size(), 'Expected one guardianship');
         Assert.areEqual('13899498180', result.powerOfAttorneys[0].motpartsPersonident, 'Expected 13899498180');
-        Assert.isTrue(result.powerOfAttorneys[0].omraader.size() > 0, 'Expected multiple omraade');
+        System.assert(result.powerOfAttorneys[0].omraader.size() > 0, 'Expected multiple omraade');
         Assert.areEqual(1, result.badges.size(), 'Expected one guardianship');
     }
 
     @IsTest
     static void setBadgeData_PowerOfAttorneyError() {
         ApiMock.setTestMock('GET_FULLMAKTSGIVER', 400, 'ERROR');
+        ApiMock.setTestMock('GET_OEBS_BrukerPass', 200, '{"brukerPass":{"status":"PENDING"}}');
+
         Person__c p = [SELECT Id, CRM_Account__c FROM Person__c WHERE Name = '12345678901'];
 
         HOT_PersonBadgesController.PersonBadgeData result;
