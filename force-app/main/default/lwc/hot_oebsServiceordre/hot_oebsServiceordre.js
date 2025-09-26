@@ -23,21 +23,21 @@ export default class Hot_oebsServiceordre extends LightningElement {
 
     @wire(getServiceordre, { recordId: '$recordId', objectApiName: '$objectApiName', apiName: 'GET_OEBS_SO' })
     wiredServiceordre({ data, error }) {
-        this.isLoading = false;
         if (data) {
             this.error = undefined;
 
-            this.serviceOrdre = data.serviceOrderList;
+            console.log("data", data);
+            this.serviceOrdre = Array.isArray(data?.serviceOrderList) ? data.serviceOrderList : [];
             if (this.serviceOrdre.length) {
                 this.sortData(this.sortBy, this.sortDirection);
             }
+            this.isLoading = false;
         } else if (error) {
             this.serviceOrdre = [];
             this.error = error;
             // eslint-disable-next-line no-console
             console.error(error);
-        } else {
-            this.serviceOrdre = [];
+            this.isLoading = false;
         }
     }
 
@@ -72,9 +72,9 @@ export default class Hot_oebsServiceordre extends LightningElement {
     }
 
     get hasData() {
-        return !this.isLoading && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length > 0;
+        return !this.isLoading && !this.error && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length > 0;
     }
     get hasNoData() {
-        return !this.isLoading && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length === 0;
+        return !this.isLoading && !this.error && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length === 0;
     }
 }

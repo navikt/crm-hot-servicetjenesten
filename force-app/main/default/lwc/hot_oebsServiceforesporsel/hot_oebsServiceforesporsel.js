@@ -38,12 +38,11 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
     wiredServiceordre({ data, error }) {
         if (!data && !error) return;
 
-        this.isLoading = false;
-
         if (error) {
             this.error = error;
             this.serviceforesporsels = [];
             this.notaterFlat = [];
+            this.isLoading = false;
             return;
         }
 
@@ -65,6 +64,7 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
                 opprettetAvIdent: n.opprettetAvIdent ?? ''
             }))
         );
+        this.isLoading = false;
     }
 
     // --- Helpers ---
@@ -101,10 +101,10 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
 
     // template getters
     get hasData() {
-        return !this.isLoading && this.serviceforesporsels.length > 0;
+        return !this.isLoading && !this.error && Array.isArray(this.serviceforesporsels) && this.serviceforesporsels.length > 0;
     }
     get hasNoData() {
-        return !this.isLoading && this.serviceforesporsels.length === 0;
+        return !this.isLoading && !this.error && Array.isArray(this.serviceforesporsels) && this.serviceforesporsels.length === 0;
     }
     get hasNotes() {
         return this.notaterFlat.length > 0;

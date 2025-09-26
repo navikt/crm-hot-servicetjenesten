@@ -34,11 +34,11 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
     })
     wiredOrdre({ data, error }) {
         if (!data && !error) return;
-        this.isLoading = false;
 
         if (error) {
             this.error = error;
             this.ordrelinjer = [];
+            this.isLoading = false;
             return;
         }
         this.error = undefined;
@@ -58,6 +58,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         });
 
         this.ordrelinjer = flat.length ? this.sortedCopy(flat, this.sortBy, this.sortDirection) : [];
+        this.isLoading = false;
     }
 
     toComparable(v) {
@@ -92,9 +93,9 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
 
     // template helpers
     get hasData() {
-        return !this.isLoading && this.ordrelinjer.length > 0;
+        return !this.isLoading && !this.error && Array.isArray(this.ordrelinjer) && this.ordrelinjer.length > 0;
     }
     get hasNoData() {
-        return !this.isLoading && this.ordrelinjer.length === 0;
+        return !this.isLoading && !this.error && Array.isArray(this.ordrelinjer) && this.ordrelinjer.length === 0;
     }
 }
