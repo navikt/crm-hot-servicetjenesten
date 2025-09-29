@@ -95,8 +95,7 @@
             <inputParameters>
                 <name>actorId</name>
                 <value>
-                    <elementReference>
-                        Get_Conversation_Notes.CRM_Account__r.CRM_Person__r.INT_ActorId__c</elementReference>
+                    <elementReference>Get_Conversation_Notes.CRM_Account__r.CRM_Person__r.INT_ActorId__c</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
