@@ -2,7 +2,8 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <decisions>
-        <description>Check that the chat har been authenticated to be able to create a journal entry.</description>
+        <description>Check that the chat har been authenticated to be able to create a journal
+            entry.</description>
         <name>Verify_Authentication_Status</name>
         <label>Verify Authentication Status</label>
         <locationX>182</locationX>
@@ -197,7 +198,9 @@
         <allowPause>false</allowPause>
         <fields>
             <name>User_Not_Logged_In_Error_Text</name>
-            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Brukeren må være logget inn for å kunne journalføre.&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color:
+                rgb(68, 68, 68);&quot;&gt;Brukeren må være logget inn for å kunne
+                journalføre.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <nextOrFinishButtonLabel>OK</nextOrFinishButtonLabel>
@@ -217,7 +220,7 @@
         <label>Create Journal Entry</label>
         <locationX>50</locationX>
         <locationY>674</locationY>
-        <flowName>CRM_Thread_Create_Journal_Entry_v_2</flowName>
+        <flowName>CRM_Thread_Create_Journal_Entry</flowName>
         <inputAssignments>
             <name>Journal_Case_ID</name>
             <value>

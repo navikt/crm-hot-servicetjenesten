@@ -95,7 +95,8 @@
             <inputParameters>
                 <name>actorId</name>
                 <value>
-                    <elementReference>Get_Conversation_Notes.CRM_Account__r.CRM_Person__r.INT_ActorId__c</elementReference>
+                    <elementReference>
+                        Get_Conversation_Notes.CRM_Account__r.CRM_Person__r.INT_ActorId__c</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -177,7 +178,7 @@
         <label>Post Journal Entry</label>
         <locationX>50</locationX>
         <locationY>458</locationY>
-        <flowName>CRM_Journal_Conversation_Note_v_2</flowName>
+        <flowName>CRM_Journal_Conversation_Note</flowName>
         <inputAssignments>
             <name>Journal_Case_ID</name>
             <value>
