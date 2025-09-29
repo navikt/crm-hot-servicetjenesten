@@ -165,13 +165,13 @@ public with sharing class HOT_OEBSIntegrationController {
         pathParamMap.put('fnr', fnr);
         if (String.isBlank(fnr)) {
             // Hvis vi ikke finner fnr, returner en tom liste
-            return null;
+            return wrapper;
         }
 
         // gjennomfør callout og hent ut responsen
         String responseBody = performCallout(pathParamMap, apiName);
         if (String.isBlank(responseBody) || responseBody == null) {
-            return null;
+            return wrapper;
         }
 
         //deserialize og bygg wrapper basert på responsen
@@ -248,17 +248,13 @@ public with sharing class HOT_OEBSIntegrationController {
         oebsWrapper wrapper = new oebsWrapper();
         Map<String, Object> rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
         if (rootMap == null) {
-            return null;
+            return wrapper;
         } else {
             if (apiName == 'GET_OEBS_Brukernr') {
-                Map<String, Object> dataMap = (Map<String, Object>) rootMap.get('p_Brukerinfojson');
-                if (dataMap == null) {
-                    return null;
-                }
-                bWrapper.brukerNummer = (String) dataMap.get('brukerNummer');
-                bWrapper.brukerStatus = (String) dataMap.get('brukerStatus');
-                bWrapper.fnr = (String) dataMap.get('fnr');
-                bWrapper.fnrStatus = (String) dataMap.get('fnrStatus');
+                bWrapper.brukerNummer = (String) rootMap.get('brukerNummer');
+                bWrapper.brukerStatus = (String) rootMap.get('brukerStatus');
+                bWrapper.fnr = (String) rootMap.get('fnr');
+                bWrapper.fnrStatus = (String) rootMap.get('fnrStatus');
                 wrapper.brukerNr = bWrapper;
             } else if (apiName == 'GET_OEBS_BrukerPass') {
                 bpWrapper.fnr = (String) rootMap.get('fnr');
@@ -271,7 +267,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 wrapper.brukerPass = bpWrapper;
             }
         }
-        return Wrapper;
+        return wrapper;
     }
 
     private static oebsWrapper deserializeOrderResponse(String responseBody) {
@@ -289,7 +285,7 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         }
         if (outerList.size() == 0) {
-            return null;
+            return wrapper;
         } else {
             for (Object outerOrder : outerList) {
                 Map<String, Object> outerMap = (Map<String, Object>) outerOrder;
@@ -333,7 +329,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 orderList.add(oWrapper);
             }
             if (orderList.isEmpty()) {
-                return null;
+                return wrapper;
             } else {
                 wrapper.orderList = orderList;
                 return wrapper;
@@ -356,7 +352,7 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         }
         if (outerList.size() == 0) {
-            return null;
+            return wrapper;
         } else {
             for (Object outerOrder : outerList) {
                 Map<String, Object> outerMap = (Map<String, Object>) outerOrder;
@@ -392,7 +388,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 SFList.add(sfWrapper);
             }
             if (SFList.isEmpty()) {
-                return null;
+                return wrapper;
             } else {
                 wrapper.serviceRequestList = SFList;
                 return wrapper;
@@ -414,7 +410,7 @@ public with sharing class HOT_OEBSIntegrationController {
             }
         }
         if (innerList.size() == 0) {
-            return null;
+            return wrapper;
         } else {
             for (Object innerSO : innerList) {
                 Map<String, Object> innerMap = (Map<String, Object>) innerSO;
@@ -431,7 +427,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 SOList.add(soWrapper);
             }
             if (SOList.isEmpty()) {
-                return null;
+                return wrapper;
             } else {
                 wrapper.serviceOrderList = SOList;
                 return wrapper;
