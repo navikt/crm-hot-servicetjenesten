@@ -8,6 +8,16 @@
         </template>
     </section>
     <div class="button-padding">
-        <c-hot_button button-label="Behandle henvendelse" onclick={openRecord} is-link standard-length></c-hot_button>
+        <div>
+            <a
+                class="slds-button slds-button_brand"
+                type="submit"
+                title="Behandle henvendelse"
+                onclick={openRecord}
+                tabindex="0"
+            >
+                Behandle henvendelse
+            </a>
+        </div>
     </div>
 </template>

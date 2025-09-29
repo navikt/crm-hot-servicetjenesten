@@ -21,12 +21,14 @@
     <div lwc:if={isLoading}></div>
     <div lwc:else>
         <div class="button-padding-bottom">
-            <c-hot_button
-                button-label="Behandle henvendelse"
+            <a
+                class="slds-button slds-button_brand button-spacing button-heights"
+                type="button"
+                title="Behandle henvendelse"
                 onclick={openRecord}
-                is-link
-                standard-length
-            ></c-hot_button>
+            >
+                Behandle henvendelse
+            </a>
         </div>
     </div>
 </template>
