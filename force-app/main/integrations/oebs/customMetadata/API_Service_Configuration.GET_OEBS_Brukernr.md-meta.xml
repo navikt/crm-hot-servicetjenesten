@@ -20,13 +20,10 @@
             &quot;200&quot;: {
             &quot;headers&quot;: null,
             &quot;body&quot;: {
-            &quot;p_fodsels_nummer&quot;: &quot;08067038062&quot;,
-            &quot;p_Brukerinfojson&quot;: {
             &quot;brukerNummer&quot;: &quot;1261265&quot;,
             &quot;brukerStatus&quot;: &quot;Aktiv&quot;,
             &quot;fnr&quot;: &quot;08067038062&quot;,
             &quot;fnrStatus&quot;: &quot;Aktiv&quot;
-            }
             }
             },
             &quot;401&quot;: {
