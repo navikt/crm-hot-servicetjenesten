@@ -34,13 +34,10 @@ private class HOT_OEBSIntegrationControllerTest {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
                 '{' +
-                '    \"p_Brukerinfojson\": {' +
-                '        \"fnrStatus\": \"Aktiv\",' +
-                '        \"fnr\": \"08067038062\",' +
-                '        \"brukerStatus\": \"Aktiv\",' +
-                '        \"brukerNummer\": \"1261265\"' +
-                '        },' +
-                '    \"p_fodsels_nummer\": \"08067038062\"' +
+                '    \"fnrStatus\": \"Aktiv\",' +
+                '    \"fnr\": \"08067038062\",' +
+                '    \"brukerStatus\": \"Aktiv\",' +
+                '    \"brukerNummer\": \"1261265\"' +
                 '}';
 
             HttpResponse res = new HttpResponse();

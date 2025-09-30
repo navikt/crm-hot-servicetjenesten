@@ -48,7 +48,8 @@ public with sharing class HOT_PersonBadgesController {
             'Id',
             'INT_GuardianshipOrFuturePowerOfAttorney__c',
             'INT_PowerOfAttorney__c',
-            'INT_KRR_Reservation__c'
+            'INT_KRR_Reservation__c',
+            'HOT_NumberOfSecurityMeasures__c'
         };
 
         String queryString = 'SELECT ';
@@ -80,6 +81,8 @@ public with sharing class HOT_PersonBadgesController {
         @AuraEnabled
         public List<Badge> badges;
         @AuraEnabled
+        public List<SecurityMeasure> securityMeasures;
+        @AuraEnabled
         public List<GuardianshipOrFuturePowerOfAttorney> guardianships;
         @AuraEnabled
         public List<PowerOfAttorney> powerOfAttorneys;
@@ -92,11 +95,12 @@ public with sharing class HOT_PersonBadgesController {
 
         public PersonBadgeData(Person__c person, String recordId, String objectApiName) {
             this.badges = new List<Badge>();
+            this.securityMeasures = new List<SecurityMeasure>();
             this.guardianships = new List<GuardianshipOrFuturePowerOfAttorney>();
             this.powerOfAttorneys = new List<PowerOfAttorney>();
             this.errors = new List<String>();
             this.personIdentNameMap = new Map<String, String>();
-            // this.entitlements = new List<String>();
+            //this.entitlements = new List<String>();
 
             if (person != null) {
                 this.person = person;
@@ -107,11 +111,47 @@ public with sharing class HOT_PersonBadgesController {
         }
 
         private void setBadgeData(String recordId, String objectApiName) {
+            setSecurityMeasures();
             setPowerOfAttorney();
             setGuardianshipOrFuturePowerOfAttorney();
             setPersonName();
             setKrrReservation();
             setBrukerPass(recordId, objectApiName);
+        }
+
+        private void setSecurityMeasures() {
+            try {
+                for (SecurityMeasure__c securityMeasure : person.SecurityMeasures__r) {
+                    if (
+                        securityMeasure.INT_ValidToDate__c == null ||
+                        securityMeasure.INT_ValidToDate__c >= Date.today()
+                    ) {
+                        securityMeasures.add(
+                            new SecurityMeasure(
+                                securityMeasure.Id,
+                                securityMeasure.INT_ValidToDate__c,
+                                securityMeasure.INT_ValidFromDate__c,
+                                securityMeasure.INT_SecurityMeasure__c
+                            )
+                        );
+                    }
+                }
+                if (person.HOT_NumberOfSecurityMeasures__c > 0 && !securityMeasures.isEmpty()) {
+                    badges.add(
+                        new Badge(
+                                'securityMeasures',
+                                person.HOT_NumberOfSecurityMeasures__c + ' sikkerhetstiltak',
+                                'slds-theme_error slds-m-left_x-small slds-m-vertical_xx-small pointer redBadge',
+                                '',
+                                '',
+                                true
+                            )
+                            .setBadgeContent(securityMeasures)
+                    );
+                }
+            } catch (Exception e) {
+                errors.add('Feil ved uthenting av sikkerhetstiltak');
+            }
         }
 
         private void setKrrReservation() {
@@ -563,6 +603,23 @@ public with sharing class HOT_PersonBadgesController {
                 }
                 return label.removeEnd(', ');
             }
+        }
+    }
+    public class SecurityMeasure implements BadgeContent {
+        @AuraEnabled
+        public Id RecordId;
+        @AuraEnabled
+        public Date ToDate;
+        @AuraEnabled
+        public Date FromDate;
+        @AuraEnabled
+        public string SecurityMeasure;
+
+        public SecurityMeasure(Id recordId, Date toDate, Date fromDate, String securityMeasure) {
+            this.RecordId = recordId;
+            this.ToDate = toDate;
+            this.FromDate = fromDate;
+            this.SecurityMeasure = securityMeasure;
         }
     }
 }
