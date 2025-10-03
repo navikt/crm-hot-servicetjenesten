@@ -217,7 +217,7 @@
         <label>Create Journal Entry</label>
         <locationX>50</locationX>
         <locationY>674</locationY>
-        <flowName>CRM_Thread_Create_Journal_Entry_v_2</flowName>
+        <flowName>CRM_Thread_Create_Journal_Entry</flowName>
         <inputAssignments>
             <name>Journal_Case_ID</name>
             <value>
