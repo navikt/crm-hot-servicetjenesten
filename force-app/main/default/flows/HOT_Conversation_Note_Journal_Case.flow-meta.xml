@@ -177,7 +177,7 @@
         <label>Post Journal Entry</label>
         <locationX>50</locationX>
         <locationY>458</locationY>
-        <flowName>CRM_Journal_Conversation_Note</flowName>
+        <flowName>CRM_Journal_Conversation_Note_v_2</flowName>
         <inputAssignments>
             <name>Journal_Case_ID</name>
             <value>

@@ -392,7 +392,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>flowNames</name>
-                    <value>NKS_Chat_Journal_Thread, NKS_Chat_Send_NAV_Task</value>
+                    <value>NKS_Chat_Journal_Thread_v_2, NKS_Chat_Send_NAV_Task_v_2</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>setBorders</name>
