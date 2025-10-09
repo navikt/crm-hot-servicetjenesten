@@ -11,7 +11,7 @@ public with sharing class HOT_PersonBadgesController {
     ) {
         Id personId = getPersonId(field, parentObject, parentRecordId);
         Person__c person = getPerson(personId);
-        PersonBadgeData badges = new PersonBadgeData(person, parentRecordId, parentObject);
+        PersonBadgeData badges = new PersonBadgeData(person /*, parentRecordId, parentObject*/);
         return badges;
     }
 
@@ -93,7 +93,7 @@ public with sharing class HOT_PersonBadgesController {
         private Set<String> fieldSet;
         private Map<String, String> personIdentNameMap;
 
-        public PersonBadgeData(Person__c person, String recordId, String objectApiName) {
+        public PersonBadgeData(Person__c person /*, String recordId, String objectApiName*/) {
             this.badges = new List<Badge>();
             this.securityMeasures = new List<SecurityMeasure>();
             this.guardianships = new List<GuardianshipOrFuturePowerOfAttorney>();
@@ -106,17 +106,17 @@ public with sharing class HOT_PersonBadgesController {
                 this.person = person;
                 //Get field set for use later in the class
                 this.fieldSet = Schema.SObjectType.Person__c.fields.getMap().keySet();
-                setBadgeData(recordId, objectApiName);
+                setBadgeData /*recordId, objectApiName*/();
             }
         }
 
-        private void setBadgeData(String recordId, String objectApiName) {
+        private void setBadgeData /*String recordId, String objectApiName*/() {
             setSecurityMeasures();
             setPowerOfAttorney();
             setGuardianshipOrFuturePowerOfAttorney();
             setPersonName();
             setKrrReservation();
-            setBrukerPass(recordId, objectApiName);
+            //setBrukerPass(recordId, objectApiName);
         }
 
         private void setSecurityMeasures() {
@@ -159,7 +159,7 @@ public with sharing class HOT_PersonBadgesController {
                 badges.add(new Badge('krr', getFieldLabel('INT_KRR_Reservation__c')));
             }
         }
-        private void setBrukerPass(String recordId, String objectApiName) {
+        /*private void setBrukerPass(String recordId, String objectApiName) {
             // Henter BrukerPass-data
             HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
                 recordId,
@@ -187,7 +187,7 @@ public with sharing class HOT_PersonBadgesController {
                     )
                 );
             }
-        }
+        }*/
 
         private void setPowerOfAttorney() {
             try {
