@@ -21,7 +21,7 @@ import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 import getPersonAccessBadges from '@salesforce/apex/HOT_PersonAccessBadgesController.getPersonAccessBadges';
 import getPersonBadgesAndInfo from '@salesforce/apex/HOT_PersonBadgesController.getPersonBadgesAndInfo';
 import getHistorikk from '@salesforce/apex/HOT_FullmaktController.getHistorikk';
-//import getOEBS from '@salesforce/apex/HOT_OEBSIntegrationController.HOT_OEBS_Integration';
+import getOEBS from '@salesforce/apex/HOT_OEBSIntegrationController.HOT_OEBS_Integration';
 import getRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
 import hasAccess from '@salesforce/apex/HOT_AccessErrorController.hasAccess';
 
@@ -72,7 +72,7 @@ export default class hot_personHighlightPanel extends LightningElement {
     errorMessages;
     erNasjonalOppfolging = false;
 
-    //oebsBrukerNr;
+    oebsBrukerNr;
 
     personDetails = {};
 
@@ -82,7 +82,7 @@ export default class hot_personHighlightPanel extends LightningElement {
         this.wireFields = [`${this.objectApiName}.Id`];
     }
 
-    /*@wire(getOEBS, {
+    @wire(getOEBS, {
         recordId: '$recordId',
         objectApiName: '$objectApiName',
         apiName: 'GET_OEBS_Brukernr'
@@ -97,7 +97,7 @@ export default class hot_personHighlightPanel extends LightningElement {
         if (data) {
             this.oebsBrukerNr = data.brukerNr.brukerNummer;
         }
-    }*/
+    }
     @wire(getPersonBadgesAndInfo, {
         field: '$relationshipField',
         parentObject: '$objectApiName',
