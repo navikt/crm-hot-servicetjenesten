@@ -147,14 +147,6 @@ export default class hotStoMessaging extends LightningElement {
         this.englishTextTemplate = event.detail;
     }
 
-    handleSubmit() {
-        this.dispatchEvent(new CustomEvent('submitfromparent'));
-    }
-
-    forwardEvent(event) {
-        this.dispatchEvent(new CustomEvent(event.type));
-    }
-
     // Getters
     get textTemplate() {
         let salutation = this.userName == null ? 'Hei,' : 'Hei, ' + this.userName;

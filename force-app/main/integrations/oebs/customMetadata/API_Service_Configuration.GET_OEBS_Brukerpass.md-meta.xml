@@ -20,8 +20,6 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_fodsels_nummer1&quot;: &quot;01086045229&quot;,
-      &quot;p_Brukerpassinfojson&quot;: {
         &quot;fnr&quot;: &quot;01086045229&quot;,
         &quot;brukerNummer&quot;: &quot;107135&quot;,
         &quot;kontrakt_nummer&quot;: &quot;16972&quot;,
@@ -29,7 +27,6 @@
         &quot;start_date&quot;: &quot;2009-12-17T00:00:00&quot;,
         &quot;end_date&quot;: &quot;2049-12-16T00:00:00&quot;,
         &quot;status&quot;: &quot;SIGNED&quot;
-      }
     }
   },
   &quot;401&quot;: {
@@ -48,6 +45,6 @@
     </values>
     <values>
         <field>Service_Path__c</field>
-        <value xsi:type="xsd:string">/api/v1/brukerpass/{fnr}</value>
+        <value xsi:type="xsd:string">/api/v1/brukerpass?fodsels_nummer={fnr}</value>
     </values>
 </CustomMetadata>

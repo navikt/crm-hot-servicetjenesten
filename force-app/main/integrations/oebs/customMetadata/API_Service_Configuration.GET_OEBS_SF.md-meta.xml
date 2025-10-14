@@ -20,9 +20,6 @@
   &quot;200&quot;: {
     &quot;headers&quot;: null,
     &quot;body&quot;: {
-      &quot;p_account_number&quot;: &quot;04120396973&quot;,
-      &quot;p_SFinfojson&quot;: [
-        {
           &quot;orgId&quot;: &quot;202&quot;,
           &quot;sfNummer&quot;: &quot;25232647&quot;,
           &quot;sfType&quot;: &quot;Behov&quot;,
@@ -40,8 +37,6 @@
               &quot;opprettetAvIdent&quot;: &quot;KIA4701&quot;
             }
           ]
-        }
-      ]
     }
   },
   &quot;401&quot;: {
@@ -60,6 +55,6 @@
     </values>
     <values>
         <field>Service_Path__c</field>
-        <value xsi:type="xsd:string">/api/v1/serviceforesporsel/{fnr}</value>
+        <value xsi:type="xsd:string">/api/v1/serviceforesporsel?fodsels_nummer={fnr}</value>
     </values>
 </CustomMetadata>

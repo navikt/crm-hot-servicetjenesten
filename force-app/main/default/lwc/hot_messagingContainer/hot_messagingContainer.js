@@ -27,8 +27,6 @@ export default class HotMessagingContainer extends LightningElement {
     @api checkMedskriv = false;
     @api hideChangeLngBtn = false;
 
-    @track singleThread = true;
-
     caseId;
     wiredCase;
     label;
@@ -244,7 +242,8 @@ export default class HotMessagingContainer extends LightningElement {
         }
     }
 
-    handleSubmit() {
+    handleMessageSentFromThreadViewer() {
+        console.log(`handleMessageSentFromThreadViewer ran.`);
         if (!this.completeDisabled) {
             this.resetButtonVisibility();
             this.showComplete = !this.showComplete;
@@ -254,13 +253,14 @@ export default class HotMessagingContainer extends LightningElement {
 
     handleSubmitStatusChange(event) {
         const flowStatus = event.detail.status;
+        console.log(`handleSubmitStatusChange ran --- `, flowStatus);
         if (flowStatus === CONSTANTS.FINISHED || flowStatus === CONSTANTS.FINISHED_SCREEN) {
             refreshApex(this.wiredCase);
             this.showComplete = false;
         }
     }
 
-    handleClosed() {
+    handleThreadClosed() {
         refreshApex(this.wiredCase);
     }
 }
