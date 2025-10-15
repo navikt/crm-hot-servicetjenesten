@@ -243,7 +243,6 @@ export default class HotMessagingContainer extends LightningElement {
     }
 
     handleMessageSentFromThreadViewer() {
-        console.log(`handleMessageSentFromThreadViewer ran.`);
         if (!this.completeDisabled) {
             this.resetButtonVisibility();
             this.showComplete = !this.showComplete;
@@ -253,7 +252,6 @@ export default class HotMessagingContainer extends LightningElement {
 
     handleSubmitStatusChange(event) {
         const flowStatus = event.detail.status;
-        console.log(`handleSubmitStatusChange ran --- `, flowStatus);
         if (flowStatus === CONSTANTS.FINISHED || flowStatus === CONSTANTS.FINISHED_SCREEN) {
             refreshApex(this.wiredCase);
             this.showComplete = false;
