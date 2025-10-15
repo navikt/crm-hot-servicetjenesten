@@ -95,7 +95,13 @@ export default class hot_personHighlightPanel extends LightningElement {
         }
 
         if (data) {
-            this.oebsBrukerNr = data.brukerNr.brukerNummer;
+            try {
+                this.oebsBrukerNr = data?.brukerNr?.brukerNummer || '';
+            } catch (e) {
+                this.oebsBrukerNr = '';
+            }
+        } else {
+            this.oebsBrukerNr = '';
         }
     }
     @wire(getPersonBadgesAndInfo, {
@@ -411,5 +417,9 @@ export default class hot_personHighlightPanel extends LightningElement {
 
     get xMarkIconSrc() {
         return NAV_ICONS + '/xMarkIcon.svg#xMarkIcon';
+    }
+
+    get hasBrukernummer() {
+        return !!this.oebsBrukerNr;
     }
 }
