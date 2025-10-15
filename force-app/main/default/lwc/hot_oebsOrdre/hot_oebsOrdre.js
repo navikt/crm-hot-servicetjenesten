@@ -18,30 +18,30 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
 
     // Order table columns
     ordreColumns = [
-        { label: 'ordreNummer', fieldName: 'ordreNummer', type: 'text', sortable: true },
-        { label: 'fnr', fieldName: 'fnr', type: 'text', sortable: false },
-        { label: 'brukerNummer', fieldName: 'brukerNummer', type: 'text', sortable: false },
-        { label: 'ordreDato', fieldName: 'ordreDato', type: 'text', sortable: true },
-        { label: 'status', fieldName: 'status', type: 'text', sortable: true }
+        { label: 'Ordre', fieldName: 'ordreNummer', type: 'text', sortable: true },
+        { label: 'Fødselsnummer', fieldName: 'fnr', type: 'text', sortable: false },
+        { label: 'Brukernummer', fieldName: 'brukerNummer', type: 'text', sortable: false },
+        { label: 'Ordre Dato', fieldName: 'ordreDato', type: 'text', sortable: true },
+        { label: 'Status', fieldName: 'status', type: 'text', sortable: true }
         //{ label: 'orgId', fieldName: 'orgId', type: 'text', sortable: true },
     ];
     // OrderLine table columns
     linjeColumns = [
-        { label: 'ordreNummer', fieldName: 'ordreNummer', type: 'text' },
-        { label: 'ordreLinjeNummer', fieldName: 'ordreLinjeNummer', type: 'text' },
+        { label: 'Linje', fieldName: 'ordreLinjeNummer', type: 'text' },
+        { label: 'Ordre', fieldName: 'ordreNummer', type: 'text' },
+        { label: 'Best.Nr', fieldName: 'bestillingsNummer', type: 'text' },
+        { label: 'Anmod.Nr', fieldName: 'anmodningsNummer', type: 'text' },
         { label: 'Artikkel', fieldName: 'artikkel', type: 'text' },
         { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text' },
-        { label: 'antall', fieldName: 'antall', type: 'text' },
+        { label: 'Antall', fieldName: 'antall', type: 'text' },
         { label: 'Lovet dato', fieldName: 'lovetDato', type: 'text' },
         { label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
-        { label: 'leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
-        //{ label: 'anmodningsNummer', fieldName: 'anmodningsNummer', type: 'text', sortable: true },
-        //{ label: 'Best.Nr', fieldName: 'bestillingsNummer', type: 'text', sortable: true },
-        //{ label: 'leveringsadresse', fieldName: 'leveringsadresse', type: 'text', sortable: true },
-        //{ label: 'city', fieldName: 'city', type: 'text', sortable: true },
-        //{ label: 'postNummer', fieldName: 'postNummer', type: 'text', sortable: true },
-        //{ label: 'kommune', fieldName: 'kommune', type: 'text', sortable: true },
-        //{ label: 'bydel', fieldName: 'bydel', type: 'text', sortable: true },
+        { label: 'Leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
+        //{ label: 'leveringsadresse', fieldName: 'leveringsadresse', type: 'text' },
+        //{ label: 'city', fieldName: 'city', type: 'text' },
+        //{ label: 'postNummer', fieldName: 'postNummer', type: 'text'},
+        //{ label: 'kommune', fieldName: 'kommune', type: 'text' },
+        //{ label: 'bydel', fieldName: 'bydel', type: 'text' },
     ];
 
     @wire(getOrder, {
