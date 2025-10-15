@@ -14,15 +14,27 @@
 
         <!-- 3) DATA -->
         <template if:true={hasData}>
-            <lightning-card title="Ordrelinjer">
+            <lightning-card title="Ordre">
                 <lightning-datatable
-                    key-field="__key"
-                    data={ordrelinjer}
-                    columns={columns}
-                    hide-checkbox-column
+                    key-field="ordreNummer"
+                    data={order}
+                    columns={ordreColumns}
                     sorted-by={sortBy}
                     sorted-direction={sortDirection}
                     onsort={handleSort}
+                    onrowaction={handleRowSelection}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1"
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+        <template if:true={filteredlines.length}>
+            <lightning-card title="Ordrelinjer">
+                <lightning-datatable
+                    key-field="ordreNummer"
+                    data={filteredlines}
+                    columns={linjeColumns}
+                    hide-checkbox-column
                 ></lightning-datatable>
             </lightning-card>
         </template>

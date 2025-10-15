@@ -15,25 +15,29 @@
         <template if:true={hasData}>
             <lightning-card title="Serviceforespørsel">
                 <lightning-datatable
-                    key-field="__key"
+                    key-field="sfNummer"
                     data={serviceforesporsels}
                     columns={columns}
-                    hide-checkbox-column
                     sorted-by={sortBy}
                     sorted-direction={sortDirection}
                     onsort={handleSort}
+                    onrowaction={handleRowSelection}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1"
                 ></lightning-datatable>
             </lightning-card>
         </template>
-        <template if:true={hasNotes}>
+        <template if:true={filteredNotes.length}>
+            <!--<template if:true={hasNotes}-->
             <lightning-card title="SF Notater">
                 <lightning-datatable
-                    key-field="__key"
-                    data={notaterFlat}
+                    key-field="sfNummer"
+                    data={filteredNotes}
                     columns={notatColumns}
                     hide-checkbox-column
                 ></lightning-datatable>
             </lightning-card>
+            <!--</template>-->
         </template>
 
         <!-- 4) NO DATA STATE: If no data, show message -->
