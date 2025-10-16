@@ -3,17 +3,18 @@ import getServiceforesporsels from '@salesforce/apex/HOT_OEBSIntegrationControll
 
 export default class Hot_oebsServiceforesporsel extends LightningElement {
     // state
-    @track serviceforesporsels = [];
-    @track notaterFlat = [];
-    @track error;
-    @track isLoading = true;
+    serviceforesporsels = [];
+    notaterFlat = [];
+    filteredNotes = [];
+    error;
+    isLoading = true;
 
     // inputs
     @api objectApiName;
     @api recordId;
 
     // sorting (match actual field name)
-    sortBy = 'sfOpprettetDato';
+    sortBy = 'sfNummer';
     sortDirection = 'desc';
 
     // serviceforespørsel table columns
@@ -64,6 +65,7 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
                 opprettetAvIdent: n.opprettetAvIdent ?? ''
             }))
         );
+        console.log('notaterFlat: ', this.notaterFlat);
         this.isLoading = false;
     }
 
@@ -99,14 +101,36 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
         }
     }
 
+    handleRowSelection(event) {
+        const selectedRows = event.detail.selectedRows;
+        if (selectedRows.length > 0) {
+            const selectedSfNummer = selectedRows[0].sfNummer;
+            console.log('Selected Service: ', selectedSfNummer);
+            this.filteredNotes = this.notaterFlat.filter((note) => note.sfNummer === selectedSfNummer);
+        } else {
+            this.filteredNotes = [];
+        }
+        console.log('Filtered lines: ', this.filteredNotes);
+    }
+
     // template getters
     get hasData() {
-        return !this.isLoading && !this.error && Array.isArray(this.serviceforesporsels) && this.serviceforesporsels.length > 0;
+        return (
+            !this.isLoading &&
+            !this.error &&
+            Array.isArray(this.serviceforesporsels) &&
+            this.serviceforesporsels.length > 0
+        );
+    }
+    get hasFilteredNotes() {
+        return !this.isLoading && !this.error && Array.isArray(this.filteredNotes) && this.filteredNotes.length > 0;
     }
     get hasNoData() {
-        return !this.isLoading && !this.error && Array.isArray(this.serviceforesporsels) && this.serviceforesporsels.length === 0;
-    }
-    get hasNotes() {
-        return this.notaterFlat.length > 0;
+        return (
+            !this.isLoading &&
+            !this.error &&
+            Array.isArray(this.serviceforesporsels) &&
+            this.serviceforesporsels.length === 0
+        );
     }
 }
