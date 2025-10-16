@@ -6,11 +6,11 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
     @api recordId;
 
     // state
-    @track order = [];
-    @track ordreLinjer = [];
-    @track filteredlines = [];
-    @track error;
-    @track isLoading = true;
+    order = [];
+    ordreLinjer = [];
+    filteredlines = [];
+    error;
+    isLoading = true;
 
     // sorting
     sortBy = 'ordreNummer';
@@ -134,10 +134,18 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
     }
 
     // template helpers
-    get hasData() {
+    get hasOrder() {
         return !this.isLoading && !this.error && Array.isArray(this.order) && this.order.length > 0;
     }
-    get hasNoData() {
+    get hasNoOrder() {
         return !this.isLoading && !this.error && Array.isArray(this.order) && this.order.length === 0;
+    }
+
+    get hasFilteredLines() {
+        return !this.isLoading && !this.error && Array.isArray(this.filteredlines) && this.filteredlines.length > 0;
+    }
+
+    get hasOrder() {
+        return Array.isArray(this.order) && this.order.length > 0;
     }
 }

@@ -6,14 +6,14 @@
 
     <template lwc:else>
         <!-- 2) ERROR -->
-        <template if:true={error}>
+        <template lwc:if={error}>
             <div class="slds-text-color_error">
                 <p>Noe gikk galt!</p>
             </div>
         </template>
 
         <!-- 3) DATA -->
-        <template if:true={hasData}>
+        <template lwc:if={hasOrder}>
             <lightning-card title="Ordre">
                 <lightning-datatable
                     key-field="ordreNummer"
@@ -28,7 +28,7 @@
                 ></lightning-datatable>
             </lightning-card>
         </template>
-        <template if:true={filteredlines.length}>
+        <template lwc:if={hasFilteredLines}>
             <lightning-card title="Ordrelinjer">
                 <lightning-datatable
                     key-field="ordreNummer"
@@ -40,8 +40,8 @@
         </template>
 
         <!-- 4) EMPTY -->
-        <template if:true={hasNoData}>
-            <p>Ingen ordrelinjer funnet.</p>
+        <template lwc:if={hasNoOrder}>
+            <p>Ingen ordre funnet.</p>
         </template>
     </template>
 </template>
