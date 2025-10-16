@@ -5,14 +5,14 @@
     </template>
     <template lwc:else>
         <!-- 2) ERROR STATE -->
-        <template if:true={error}>
+        <template lwc:if={error}>
             <div class="slds-text-color_error">
                 <p>Noe gikk galt!</p>
             </div>
         </template>
 
         <!-- 3) DATA STATE: if we have data, show lightning-datatable -->
-        <template if:true={hasData}>
+        <template lwc:if={hasData}>
             <lightning-card title="Serviceforespørsel">
                 <lightning-datatable
                     key-field="sfNummer"
@@ -27,8 +27,7 @@
                 ></lightning-datatable>
             </lightning-card>
         </template>
-        <template if:true={filteredNotes.length}>
-            <!--<template if:true={hasNotes}-->
+        <template lwc:if={hasFilteredNotes}>
             <lightning-card title="SF Notater">
                 <lightning-datatable
                     key-field="sfNummer"
@@ -37,11 +36,10 @@
                     hide-checkbox-column
                 ></lightning-datatable>
             </lightning-card>
-            <!--</template>-->
         </template>
 
         <!-- 4) NO DATA STATE: If no data, show message -->
-        <template if:true={hasNoData}>
+        <template lwc:if={hasNoData}>
             <p>Ingen serviceforespørsler funnet på bruker.</p>
         </template>
     </template>

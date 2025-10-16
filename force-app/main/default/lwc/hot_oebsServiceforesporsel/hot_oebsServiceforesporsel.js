@@ -3,18 +3,18 @@ import getServiceforesporsels from '@salesforce/apex/HOT_OEBSIntegrationControll
 
 export default class Hot_oebsServiceforesporsel extends LightningElement {
     // state
-    @track serviceforesporsels = [];
-    @track notaterFlat = [];
-    @track filteredNotes = [];
-    @track error;
-    @track isLoading = true;
+    serviceforesporsels = [];
+    notaterFlat = [];
+    filteredNotes = [];
+    error;
+    isLoading = true;
 
     // inputs
     @api objectApiName;
     @api recordId;
 
     // sorting (match actual field name)
-    sortBy = 'sfOpprettetDato';
+    sortBy = 'sfNummer';
     sortDirection = 'desc';
 
     // serviceforespørsel table columns
@@ -121,6 +121,9 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
             Array.isArray(this.serviceforesporsels) &&
             this.serviceforesporsels.length > 0
         );
+    }
+    get hasFilteredNotes() {
+        return !this.isLoading && !this.error && Array.isArray(this.filteredNotes) && this.filteredNotes.length > 0;
     }
     get hasNoData() {
         return (
