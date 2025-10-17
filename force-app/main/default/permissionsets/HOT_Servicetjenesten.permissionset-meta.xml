@@ -93,6 +93,10 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
+        <apexClass>HOT_OEBSIntegrationController</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
         <apexClass>HOT_PersonAccessBadgesController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
@@ -105,11 +109,11 @@
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>HOT_RelatedListController</apexClass>
+        <apexClass>HOT_RecordInfoController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
-        <apexClass>HOT_RecordInfoController</apexClass>
+        <apexClass>HOT_RelatedListController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <classAccesses>
@@ -1033,11 +1037,6 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
-        <field>Thread__c.CRM_Redaction_Activated_By__c</field>
-        <readable>true</readable>
-    </fieldPermissions>
-    <fieldPermissions>
-        <editable>false</editable>
         <field>Thread__c.CRM_Latest_Message_Datetime__c</field>
         <readable>true</readable>
     </fieldPermissions>
@@ -1089,6 +1088,11 @@
     <fieldPermissions>
         <editable>false</editable>
         <field>Thread__c.CRM_Original_Person_NAV_Unit__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>false</editable>
+        <field>Thread__c.CRM_Redaction_Activated_By__c</field>
         <readable>true</readable>
     </fieldPermissions>
     <fieldPermissions>

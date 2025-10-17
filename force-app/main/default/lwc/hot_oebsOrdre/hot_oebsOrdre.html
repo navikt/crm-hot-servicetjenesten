@@ -1,0 +1,47 @@
+<template>
+    <!-- 1) LOADING -->
+    <template lwc:if={isLoading}>
+        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+    </template>
+
+    <template lwc:else>
+        <!-- 2) ERROR -->
+        <template lwc:if={error}>
+            <div class="slds-text-color_error">
+                <p>Noe gikk galt!</p>
+            </div>
+        </template>
+
+        <!-- 3) DATA -->
+        <template lwc:if={hasOrder}>
+            <lightning-card title="Ordre">
+                <lightning-datatable
+                    key-field="ordreNummer"
+                    data={order}
+                    columns={ordreColumns}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={handleSort}
+                    onrowaction={handleRowSelection}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1"
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+        <template lwc:if={hasFilteredLines}>
+            <lightning-card title="Ordrelinjer">
+                <lightning-datatable
+                    key-field="ordreNummer"
+                    data={filteredlines}
+                    columns={linjeColumns}
+                    hide-checkbox-column
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+
+        <!-- 4) EMPTY -->
+        <template lwc:if={hasNoOrder}>
+            <p>Ingen ordre funnet.</p>
+        </template>
+    </template>
+</template>

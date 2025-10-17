@@ -1,0 +1,12 @@
+<template>
+    <h4 class="slds-text-color_destructive">{securityMeasure.SecurityMeasure}</h4>
+
+    <p>
+        Gyldig:
+        <lightning-formatted-date-time value={securityMeasure.FromDate} year="numeric" month="numeric" day="numeric">
+        </lightning-formatted-date-time>
+        -
+        <lightning-formatted-date-time value={securityMeasure.ToDate} year="numeric" month="numeric" day="numeric">
+        </lightning-formatted-date-time>
+    </p>
+</template>

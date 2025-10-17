@@ -2,7 +2,9 @@
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>63.0</apiVersion>
     <description>Creates a duplicate case with a new account relation.
-        Copied from &quot;NKS_Case_Change_Account&quot;</description>
+        Copied from &quot;NKS_Case_Change_Account&quot;
+
+* New version to handle Innringer field</description>
     <environments>Default</environments>
     <interviewLabel>HOT Case Change Account {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT Case Change Account</label>
@@ -37,6 +39,12 @@
             <field>AccountId</field>
             <value>
                 <elementReference>Account_Relation.value</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HOT_Innringer__c</field>
+            <value>
+                <elementReference>Get_Case.HOT_Innringer__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>

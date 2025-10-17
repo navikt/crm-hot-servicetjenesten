@@ -1,0 +1,46 @@
+<template>
+    <!-- 1) LOADING STATE -->
+    <template lwc:if={isLoading}>
+        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+    </template>
+    <template lwc:else>
+        <!-- 2) ERROR STATE -->
+        <template lwc:if={error}>
+            <div class="slds-text-color_error">
+                <p>Noe gikk galt!</p>
+            </div>
+        </template>
+
+        <!-- 3) DATA STATE: if we have data, show lightning-datatable -->
+        <template lwc:if={hasData}>
+            <lightning-card title="Serviceforespørsel">
+                <lightning-datatable
+                    key-field="sfNummer"
+                    data={serviceforesporsels}
+                    columns={columns}
+                    sorted-by={sortBy}
+                    sorted-direction={sortDirection}
+                    onsort={handleSort}
+                    onrowaction={handleRowSelection}
+                    onrowselection={handleRowSelection}
+                    max-row-selection="1"
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+        <template lwc:if={hasFilteredNotes}>
+            <lightning-card title="SF Notater">
+                <lightning-datatable
+                    key-field="sfNummer"
+                    data={filteredNotes}
+                    columns={notatColumns}
+                    hide-checkbox-column
+                ></lightning-datatable>
+            </lightning-card>
+        </template>
+
+        <!-- 4) NO DATA STATE: If no data, show message -->
+        <template lwc:if={hasNoData}>
+            <p>Ingen serviceforespørsler funnet på bruker.</p>
+        </template>
+    </template>
+</template>

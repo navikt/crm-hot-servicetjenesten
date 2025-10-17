@@ -27,8 +27,6 @@ export default class HotMessagingContainer extends LightningElement {
     @api checkMedskriv = false;
     @api hideChangeLngBtn = false;
 
-    @track singleThread = true;
-
     caseId;
     wiredCase;
     label;
@@ -244,7 +242,7 @@ export default class HotMessagingContainer extends LightningElement {
         }
     }
 
-    handleSubmit() {
+    handleMessageSentFromThreadViewer() {
         if (!this.completeDisabled) {
             this.resetButtonVisibility();
             this.showComplete = !this.showComplete;
@@ -260,7 +258,7 @@ export default class HotMessagingContainer extends LightningElement {
         }
     }
 
-    handleClosed() {
+    handleThreadClosed() {
         refreshApex(this.wiredCase);
     }
 }

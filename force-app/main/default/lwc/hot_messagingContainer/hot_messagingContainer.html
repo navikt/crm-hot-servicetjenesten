@@ -43,15 +43,14 @@
         <c-hot_sto-messaging
             record-id={recordId}
             object-api-name={objectApiName}
-            single-thread={singleThread}
+            single-thread
             card-title={cardTitle}
             show-close={showClose}
             check-medskriv={checkMedskriv}
             submit-button-label={labels.SHARE_WITH_USER_LABEL}
-            onsubmitfromparent={handleSubmit}
-            onclosedevent={handleClosed}
+            onmessagesentonsubmit={handleMessageSentFromThreadViewer}
+            onthreadclosed={handleThreadClosed}
             hide-change-lng-btn={hideChangeLngBtn}
-            new-design
             is-thread={isThread}
         >
             <div slot="buttonContainer">
