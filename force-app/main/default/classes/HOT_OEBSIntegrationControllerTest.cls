@@ -71,7 +71,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '            \"anmodningsNummer\": \"1234\",' +
                 '            \"bestillingsNummer\": \"1234\",' +
                 '            \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '            \"by\": \"BERGEN\",' +
+                '            \"city\": \"BERGEN\",' +
                 '            \"postNummer\": \"5056\",' +
                 '            \"kommune\": \"4601\",' +
                 '            \"bydel\": \"Klepp\"' +
@@ -111,7 +111,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"anmodningsNummer\": \"1234\",' +
                 '              \"bestillingsNummer\": \"1234\",' +
                 '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '              \"by\": \"BERGEN\",' +
+                '              \"city\": \"BERGEN\",' +
                 '              \"postNummer\": \"5056\",' +
                 '              \"kommune\": \"4601\",' +
                 '              \"bydel\": \"Klepp\"' +
@@ -128,7 +128,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"anmodningsNummer\": \"1234\",' +
                 '              \"bestillingsNummer\": \"1234\",' +
                 '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '              \"by\": \"BERGEN\",' +
+                '              \"city\": \"BERGEN\",' +
                 '              \"postNummer\": \"5056\",' +
                 '              \"kommune\": \"4601\",' +
                 '              \"bydel\": \"Klepp\"' +
@@ -155,7 +155,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"anmodningsNummer\": \"1234\",' +
                 '              \"bestillingsNummer\": \"1234\",' +
                 '              \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '              \"by\": \"BERGEN\",' +
+                '              \"city\": \"BERGEN\",' +
                 '              \"postNummer\": \"5056\",' +
                 '              \"kommune\": \"4601\",' +
                 '              \"bydel\": \"Klepp\"' +
@@ -242,7 +242,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"25232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"losningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -281,7 +281,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"25232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"losningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -306,7 +306,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"35232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"løsningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
+                '        \"losningSammendrag\": \"Avv. STØP MRS. Vida Stepanov.\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +

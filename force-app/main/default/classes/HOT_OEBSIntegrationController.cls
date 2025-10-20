@@ -320,7 +320,7 @@ public with sharing class HOT_OEBSIntegrationController {
                     lWrapper.anmodningsNummer = (String) innerMap.get('anmodningsNummer');
                     lWrapper.bestillingsNummer = (String) innerMap.get('bestillingsNummer');
                     lWrapper.leveringsadresse = (String) innerMap.get('leveringsadresse');
-                    lWrapper.city = (String) innerMap.get('by');
+                    lWrapper.city = (String) innerMap.get('city');
                     lWrapper.postNummer = (String) innerMap.get('postNummer');
                     lWrapper.kommune = (String) innerMap.get('kommune');
                     lWrapper.bydel = (String) innerMap.get('bydel');
@@ -361,7 +361,7 @@ public with sharing class HOT_OEBSIntegrationController {
                 sfWrapper.sfNummer = (String) outerMap.get('sfNummer');
                 sfWrapper.sfType = (String) outerMap.get('sfType');
                 sfWrapper.problemSammendrag = (String) outerMap.get('problemSammendrag');
-                sfWrapper.losningSammendrag = (String) outerMap.get('løsningSammendrag');
+                sfWrapper.losningSammendrag = (String) outerMap.get('losningSammendrag');
                 sfWrapper.fnr = (String) outerMap.get('fnr');
                 sfWrapper.brukerNummer = (String) outerMap.get('brukerNummer');
                 sfWrapper.sfOpprettetDato = (String) outerMap.get('sfOpprettetDato');
