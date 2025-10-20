@@ -584,4 +584,105 @@ private class HOT_OEBSIntegrationControllerTest {
         );
         Test.stopTest();
     }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerConstructorNullParamsTest() {
+        // Test passing null lists to parameterized constructor
+        HOT_OEBSIntegrationController.oebsWrapper oebs = new HOT_OEBSIntegrationController.oebsWrapper(
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.brukerNrWrapper brukernr = new HOT_OEBSIntegrationController.brukerNrWrapper(
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.brukerPassWrapper brukerpass = new HOT_OEBSIntegrationController.brukerPassWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.orderWrapper order = new HOT_OEBSIntegrationController.orderWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.orderLineWrapper orderLine = new HOT_OEBSIntegrationController.orderLineWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.SFWrapper sf = new HOT_OEBSIntegrationController.SFWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.notatWrapper sfnote = new HOT_OEBSIntegrationController.notatWrapper(
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.SOWrapper so = new HOT_OEBSIntegrationController.SOWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        // Assert fallback initialization
+        System.assertNotEquals(null, oebs.orderList, 'orderList should be initialized even when null passed');
+        System.assertNotEquals(
+            null,
+            oebs.serviceRequestList,
+            'serviceRequestList should be initialized even when null passed'
+        );
+        System.assertNotEquals(
+            null,
+            oebs.serviceOrderList,
+            'serviceOrderList should be initialized even when null passed'
+        );
+    }
 }
