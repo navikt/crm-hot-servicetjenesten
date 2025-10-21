@@ -21,8 +21,8 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
     columns = [
         { label: 'SF Nummer', fieldName: 'sfNummer', type: 'text', sortable: true },
         { label: 'SF Type', fieldName: 'sfType', type: 'text', sortable: true },
-        { label: 'Problemsammendrag', fieldName: 'problemSammendrag', type: 'text', sortable: true },
-        { label: 'Løsningssammendrag', fieldName: 'losningSammendrag', type: 'text', sortable: true },
+        { label: 'Problemsammendrag', fieldName: 'problemSammendrag', type: 'text', wrapText: true },
+        { label: 'Løsningssammendrag', fieldName: 'losningSammendrag', type: 'text', wrapText: true },
         { label: 'Henvendelse dato', fieldName: 'sfOpprettetDato', type: 'text', sortable: true }
     ];
 
