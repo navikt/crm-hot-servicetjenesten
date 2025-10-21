@@ -26,8 +26,11 @@ export default class Hot_oebsServiceordre extends LightningElement {
         if (data) {
             this.error = undefined;
 
-            console.log("data", data);
-            this.serviceOrdre = Array.isArray(data?.serviceOrderList) ? data.serviceOrderList : [];
+            const list = Array.isArray(data?.serviceOrderList) ? data.serviceOrderList : [];
+
+            const validServiceOrders = list.filter((serviceOrdre) => serviceOrdre?.artikkel !== undefined);
+
+            this.serviceOrdre = validServiceOrders;
             if (this.serviceOrdre.length) {
                 this.sortData(this.sortBy, this.sortDirection);
             }
@@ -35,8 +38,6 @@ export default class Hot_oebsServiceordre extends LightningElement {
         } else if (error) {
             this.serviceOrdre = [];
             this.error = error;
-            // eslint-disable-next-line no-console
-            console.error(error);
             this.isLoading = false;
         }
     }
@@ -73,8 +74,5 @@ export default class Hot_oebsServiceordre extends LightningElement {
 
     get hasData() {
         return !this.isLoading && !this.error && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length > 0;
-    }
-    get hasNoData() {
-        return !this.isLoading && !this.error && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length === 0;
     }
 }
