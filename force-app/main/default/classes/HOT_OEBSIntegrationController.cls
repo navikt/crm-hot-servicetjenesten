@@ -361,7 +361,12 @@ public with sharing class HOT_OEBSIntegrationController {
                 sfWrapper.sfNummer = (String) outerMap.get('sfNummer');
                 sfWrapper.sfType = (String) outerMap.get('sfType');
                 sfWrapper.problemSammendrag = (String) outerMap.get('problemSammendrag');
-                sfWrapper.losningSammendrag = (String) outerMap.get('losningSammendrag');
+                String tempLos = (String) outerMap.get('losningSammendrag');
+                if (tempLos == null || tempLos == '') {
+                    sfWrapper.losningSammendrag = (String) outerMap.get('løsningSammendrag');
+                } else {
+                    sfWrapper.losningSammendrag = tempLos;
+                }
                 sfWrapper.fnr = (String) outerMap.get('fnr');
                 sfWrapper.brukerNummer = (String) outerMap.get('brukerNummer');
                 sfWrapper.sfOpprettetDato = (String) outerMap.get('sfOpprettetDato');
