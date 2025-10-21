@@ -19,8 +19,8 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
     // Order table columns
     ordreColumns = [
         { label: 'Ordre', fieldName: 'ordreNummer', type: 'text', sortable: true },
-        { label: 'Fødselsnummer', fieldName: 'fnr', type: 'text', sortable: false },
-        { label: 'Brukernummer', fieldName: 'brukerNummer', type: 'text', sortable: false },
+        { label: 'Fødselsnummer', fieldName: 'fnr', type: 'text' },
+        { label: 'Brukernummer', fieldName: 'brukerNummer', type: 'text' },
         { label: 'Ordre Dato', fieldName: 'ordreDato', type: 'text', sortable: true },
         { label: 'Status', fieldName: 'status', type: 'text', sortable: true }
         //{ label: 'orgId', fieldName: 'orgId', type: 'text', sortable: true },
@@ -32,12 +32,11 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         { label: 'Best.Nr', fieldName: 'bestillingsNummer', type: 'text' },
         { label: 'Anmod.Nr', fieldName: 'anmodningsNummer', type: 'text' },
         { label: 'Artikkel', fieldName: 'artikkel', type: 'text' },
-        { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text' },
+        { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text', wrapText: true },
         { label: 'Antall', fieldName: 'antall', type: 'text' },
         { label: 'Lovet dato', fieldName: 'lovetDato', type: 'text' },
         { label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
         { label: 'Leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
-        //{ label: 'leveringsadresse', fieldName: 'leveringsadresse', type: 'text' },
         //{ label: 'city', fieldName: 'city', type: 'text' },
         //{ label: 'postNummer', fieldName: 'postNummer', type: 'text'},
         //{ label: 'kommune', fieldName: 'kommune', type: 'text' },
@@ -71,16 +70,16 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         this.ordreLinjer = this.order.flatMap((row) =>
             (row.orderLineList ?? []).map((n, nIdx) => ({
                 __key: `${row.__key}-${nIdx}`,
-                ordreNummer: row.ordreNummer ?? '',
                 ordreLinjeNummer: n.ordreLinjeNummer ?? '',
+                ordreNummer: row.ordreNummer ?? '',
+                bestillingsNummer: n.bestillingsNummer ?? '',
+                anmodningsNummer: n.anmodningsNummer ?? '',
                 artikkel: n.artikkel ?? '',
                 artikkelBeskrivelse: n.artikkelBeskrivelse ?? '',
                 antall: n.antall ?? '',
                 lovetDato: n.lovetDato ?? '',
                 planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
                 leveringsadresse: n.leveringsadresse ?? ''
-                //anmodningsNummer: n.anmodningsNummer ?? '',
-                //bestillingsNummer: n.bestillingsNummer ?? '',
                 //city: n.city ?? '',
                 //postNummer: n.postNummer ?? '',
                 //kommune: n.kommune ?? '',
