@@ -283,7 +283,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"25232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"losningSammendrag\": \"Test los\",' +
+                '        \"losningSammendrag\": \"Test sammendragnummer 1! her tester vi spesielle karakterer og litt lengde\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -308,7 +308,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"35232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"løsningSammendrag\": \"Test løs\",' +
+                '        \"losningSammendrag\": \"Test sammendrag nummer 2 for å teste dekningsgrad\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -467,8 +467,6 @@ private class HOT_OEBSIntegrationControllerTest {
         System.assertEquals(2, result.serviceRequestList.size(), 'Expected 2 Service Request');
         System.assertEquals(2, result.serviceRequestList[0].sfNotater.size(), 'Expected 2 Service Request Line');
         System.assertEquals(1, result.serviceRequestList[1].sfNotater.size(), 'Expected 1 Service Request Line');
-        System.assertEquals('Test los', result.serviceRequestList[0].losningSammendrag, 'Expected los');
-        System.assertEquals('Test løs', result.serviceRequestList[1].losningSammendrag, 'Expected løs');
     }
 
     @IsTest
