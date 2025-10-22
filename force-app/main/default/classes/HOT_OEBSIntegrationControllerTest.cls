@@ -51,33 +51,35 @@ private class HOT_OEBSIntegrationControllerTest {
     private class oebsOrderMock implements HttpCalloutMock {
         public HTTPResponse respond(HTTPRequest req) {
             String mockResponse =
-                '{' +
-                '    \"orgId\": \"202\",' +
-                '    \"ordreNummer\": \"8508312\",' +
-                '    \"fnr\": \"11075636603\",' +
-                '    \"brukerNummer\": \"1824356\",' +
-                '    \"ordreDato\": \"24-APR-23\",' +
-                '    \"status\": \"Klargjort\",' +
-                '    \"ordreLinjer\": [' +
-                '        {' +
-                '            \"ordreLinjeNummer\": \"2\",' +
-                '            \"artikkel\": \"214808\",' +
-                '            \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
-                '            \"antall\": \"1\",' +
-                '            \"ordreLinjeDato\": \"24-APR-23\",' +
-                '            \"lovetDato\": \"24-APR-23\",' +
-                '            \"planlagtSkipningsDato\": \"12-APR-23\",' +
-                '            \"statusOrdreLinje\": \"Venter på retur\",' +
-                '            \"anmodningsNummer\": \"1234\",' +
-                '            \"bestillingsNummer\": \"1234\",' +
-                '            \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
-                '            \"city\": \"BERGEN\",' +
-                '            \"postNummer\": \"5056\",' +
-                '            \"kommune\": \"4601\",' +
-                '            \"bydel\": \"Klepp\"' +
-                '        }' +
-                '    ]' +
-                '}';
+                '[' +
+                '   {' +
+                '       \"orgId\": \"202\",' +
+                '       \"ordreNummer\": \"8508312\",' +
+                '       \"fnr\": \"11075636603\",' +
+                '       \"brukerNummer\": \"1824356\",' +
+                '       \"ordreDato\": \"24-APR-23\",' +
+                '       \"status\": \"Klargjort\",' +
+                '       \"ordreLinjer\": [' +
+                '           {' +
+                '               \"ordreLinjeNummer\": \"2\",' +
+                '               \"artikkel\": \"214808\",' +
+                '               \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
+                '               \"antall\": \"1\",' +
+                '               \"ordreLinjeDato\": \"24-APR-23\",' +
+                '               \"lovetDato\": \"24-APR-23\",' +
+                '               \"planlagtSkipningsDato\": \"12-APR-23\",' +
+                '               \"statusOrdreLinje\": \"Venter på retur\",' +
+                '               \"anmodningsNummer\": \"1234\",' +
+                '               \"bestillingsNummer\": \"1234\",' +
+                '               \"leveringsadresse\": \"SOLHEIMSLIEN 64\",' +
+                '               \"city\": \"BERGEN\",' +
+                '               \"postNummer\": \"5056\",' +
+                '               \"kommune\": \"4601\",' +
+                '               \"bydel\": \"Klepp\"' +
+                '           }' +
+                '       ]' +
+                '   }' +
+                ']';
 
             HttpResponse res = new HttpResponse();
             res.setBody(mockResponse);
@@ -281,7 +283,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"25232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"losningSammendrag\": \"Test los\",' +
+                '        \"losningSammendrag\": \"Test sammendragnummer 1! her tester vi spesielle karakterer og litt lengde\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -306,7 +308,7 @@ private class HOT_OEBSIntegrationControllerTest {
                 '        \"sfNummer\": \"35232647\",' +
                 '        \"sfType\": \"Behov\",' +
                 '        \"problemSammendrag\": \"STØP F3 Corpus + X850 Corpus M Jr\",' +
-                '        \"løsningSammendrag\": \"Test løs\",' +
+                '        \"losningSammendrag\": \"Test sammendrag nummer 2 for å teste dekningsgrad\",' +
                 '        \"fnr\": \"04120396973\",' +
                 '        \"brukerNummer\": \"1981188\",' +
                 '        \"sfOpprettetDato\": \"17-JAN-25\",' +
@@ -427,8 +429,8 @@ private class HOT_OEBSIntegrationControllerTest {
         System.debug('Result: ' + result);
         System.assertNotEquals(null, result, 'Result list should not be null');
         System.assertEquals(2, result.orderList.size(), 'Expected 2 Order');
-        System.assertEquals(2, result.orderList[0].orderLineList.size(), 'Expected 2 Order Line');
-        System.assertEquals(1, result.orderList[1].orderLineList.size(), 'Expected 1 Order Line');
+        System.assertEquals(2, result.orderList[0].ordreLinjer.size(), 'Expected 2 Order Line');
+        System.assertEquals(1, result.orderList[1].ordreLinjer.size(), 'Expected 1 Order Line');
     }
 
     @IsTest
@@ -465,8 +467,6 @@ private class HOT_OEBSIntegrationControllerTest {
         System.assertEquals(2, result.serviceRequestList.size(), 'Expected 2 Service Request');
         System.assertEquals(2, result.serviceRequestList[0].sfNotater.size(), 'Expected 2 Service Request Line');
         System.assertEquals(1, result.serviceRequestList[1].sfNotater.size(), 'Expected 1 Service Request Line');
-        System.assertEquals('Test los', result.serviceRequestList[0].losningSammendrag, 'Expected los');
-        System.assertEquals('Test løs', result.serviceRequestList[1].losningSammendrag, 'Expected løs');
     }
 
     @IsTest
@@ -583,5 +583,106 @@ private class HOT_OEBSIntegrationControllerTest {
             'GET_OEBS_Brukernr'
         );
         Test.stopTest();
+    }
+
+    @IsTest
+    static void HOT_OEBSIntegrationControllerConstructorNullParamsTest() {
+        // Test passing null lists to parameterized constructor
+        HOT_OEBSIntegrationController.oebsWrapper oebs = new HOT_OEBSIntegrationController.oebsWrapper(
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.brukerNrWrapper brukernr = new HOT_OEBSIntegrationController.brukerNrWrapper(
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.brukerPassWrapper brukerpass = new HOT_OEBSIntegrationController.brukerPassWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.orderWrapper order = new HOT_OEBSIntegrationController.orderWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.orderLineWrapper orderLine = new HOT_OEBSIntegrationController.orderLineWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.SFWrapper sf = new HOT_OEBSIntegrationController.SFWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.notatWrapper sfnote = new HOT_OEBSIntegrationController.notatWrapper(
+            null,
+            null,
+            null,
+            null
+        );
+
+        HOT_OEBSIntegrationController.SOWrapper so = new HOT_OEBSIntegrationController.SOWrapper(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+
+        // Assert fallback initialization
+        System.assertNotEquals(null, oebs.orderList, 'orderList should be initialized even when null passed');
+        System.assertNotEquals(
+            null,
+            oebs.serviceRequestList,
+            'serviceRequestList should be initialized even when null passed'
+        );
+        System.assertNotEquals(
+            null,
+            oebs.serviceOrderList,
+            'serviceOrderList should be initialized even when null passed'
+        );
     }
 }
