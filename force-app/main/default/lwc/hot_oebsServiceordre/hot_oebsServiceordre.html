@@ -12,7 +12,7 @@
         </template>
 
         <!-- 3) DATA STATE: if we have data, show lightning-datatable -->
-        <template if:true={hasData}>
+        <template lwc:if={hasData}>
             <lightning-card title="Serviceordre">
                 <lightning-datatable
                     key-field="serviceOrdreNummer"
@@ -27,7 +27,7 @@
         </template>
 
         <!-- 4) NO DATA STATE: If no data, show message -->
-        <template if:true={hasNoData}>
+        <template lwc:else>
             <p>Ingen serviceordre funnet på bruker.</p>
         </template>
     </template>

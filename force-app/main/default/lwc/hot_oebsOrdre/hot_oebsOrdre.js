@@ -35,7 +35,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text', wrapText: true },
         { label: 'Antall', fieldName: 'antall', type: 'text' },
         { label: 'Lovet dato', fieldName: 'lovetDato', type: 'text' },
-        { label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
+        //{ label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
         { label: 'Leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
         //{ label: 'city', fieldName: 'city', type: 'text' },
         //{ label: 'postNummer', fieldName: 'postNummer', type: 'text'},
@@ -63,6 +63,16 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
 
         const list = Array.isArray(data?.orderList) ? data.orderList : [];
 
+        const validOrders = list.filter((order) => order?.status !== 'OK');
+
+        if (validOrders.length === 0) {
+            this.order = [];
+            this.ordrelinjer = [];
+            this.filteredlines = [];
+            this.isLoading = false;
+            return;
+        }
+
         const keyed = list.map((r, i) => ({ __key: r.ordreNummer ?? `row-${i}`, ...r }));
 
         this.order = keyed.length ? this.sortedCopy(keyed, this.sortBy, this.sortDirection) : [];
@@ -78,7 +88,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
                 artikkelBeskrivelse: n.artikkelBeskrivelse ?? '',
                 antall: n.antall ?? '',
                 lovetDato: n.lovetDato ?? '',
-                planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
+                //planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
                 leveringsadresse: n.leveringsadresse ?? ''
                 //city: n.city ?? '',
                 //postNummer: n.postNummer ?? '',
@@ -86,7 +96,6 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
                 //bydel: n.bydel ?? ''
             }))
         );
-        console.log('Ordrelinjer: ', this.ordreLinjer);
         this.isLoading = false;
     }
 
@@ -124,12 +133,10 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         const selectedRows = event.detail.selectedRows;
         if (selectedRows.length > 0) {
             const selectedOrderLine = selectedRows[0].ordreNummer;
-            console.log('Selected ordrenummer: ', selectedOrderLine);
             this.filteredlines = this.ordreLinjer.filter((o) => o.ordreNummer === selectedOrderLine);
         } else {
             this.filteredlines = [];
         }
-        console.log('Filtered lines: ', this.filteredlines);
     }
 
     // template helpers

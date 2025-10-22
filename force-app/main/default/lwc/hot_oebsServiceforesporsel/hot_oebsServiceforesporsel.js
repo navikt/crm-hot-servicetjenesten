@@ -43,6 +43,7 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
             this.error = error;
             this.serviceforesporsels = [];
             this.notaterFlat = [];
+            this.filteredNotes = [];
             this.isLoading = false;
             return;
         }
@@ -50,6 +51,16 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
         this.error = undefined;
 
         const list = Array.isArray(data?.serviceRequestList) ? data.serviceRequestList : [];
+
+        const validSF = list.filter((serviceforesporsels) => serviceforesporsels?.status !== 'OK');
+
+        if (validSF.length === 0) {
+            this.serviceforesporsels = [];
+            this.notaterFlat = [];
+            this.filteredNotes = [];
+            this.isLoading = false;
+            return;
+        }
 
         const keyed = list.map((r, i) => ({ __key: r.sfNummer ?? `row-${i}`, ...r }));
 
@@ -65,7 +76,6 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
                 opprettetAvIdent: n.opprettetAvIdent ?? ''
             }))
         );
-        console.log('notaterFlat: ', this.notaterFlat);
         this.isLoading = false;
     }
 
@@ -105,12 +115,10 @@ export default class Hot_oebsServiceforesporsel extends LightningElement {
         const selectedRows = event.detail.selectedRows;
         if (selectedRows.length > 0) {
             const selectedSfNummer = selectedRows[0].sfNummer;
-            console.log('Selected Service: ', selectedSfNummer);
             this.filteredNotes = this.notaterFlat.filter((note) => note.sfNummer === selectedSfNummer);
         } else {
             this.filteredNotes = [];
         }
-        console.log('Filtered lines: ', this.filteredNotes);
     }
 
     // template getters
