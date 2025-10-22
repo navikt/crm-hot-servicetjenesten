@@ -245,6 +245,8 @@ export default class HotMessagingContainer extends LightningElement {
     handleMessageSentFromThreadViewer() {
         if (!this.completeDisabled) {
             this.resetButtonVisibility();
+        }
+        if (this.caseOrigin !== 'BTO') {
             this.showComplete = !this.showComplete;
         }
         this.template.querySelector('c-hot_sto-messaging').scrollIntoView({ behavior: 'smooth' });
