@@ -42,6 +42,7 @@
 
 .greenBadge {
     background-color: #66c786 !important;
+    color: black !important;
 }
 .yellowBadge {
     background-color: #ffaa33 !important;
@@ -49,10 +50,11 @@
 }
 .redBadge {
     background-color: #ad0000 !important;
-    color: rgb(255, 255, 255) !important;
+    color: white !important;
 }
 .greyBadge {
     background-color: #c6c6c6 !important;
+    color: black !important;
 }
 
 .nowrap-selector {
@@ -133,6 +135,6 @@
     position: absolute;
     right: 0;
 }
-.bruker-nr-padding-left{
+.bruker-nr-padding-left {
     padding-left: 16px;
 }
