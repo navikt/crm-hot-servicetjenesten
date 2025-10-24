@@ -31,6 +31,5 @@
     },
     "scratch.default.permissionsets": [
         "HOT_Servicetjenesten_Admin"
-    ],
-    "xml.preferences.showSchemaDocumentationType": "none"
+    ]
 }
