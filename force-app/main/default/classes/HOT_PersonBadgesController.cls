@@ -181,11 +181,11 @@ public with sharing class HOT_PersonBadgesController {
 
             if (
                 status != null &&
-                status.equalsIgnoreCase('SIGNED') &&
+                'SIGNED'.equalsIgnoreCase(status) &&
                 startDate != null &&
-                endDate != null &&
                 startDate <= today &&
-                endDate >= today
+                (endDate == null ||
+                endDate >= today)
             ) {
                 badges.add(
                     new Badge(
