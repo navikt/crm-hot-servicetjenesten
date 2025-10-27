@@ -40,6 +40,9 @@ call sf package install --package 04tQC000000uSCvYAM --no-prompt --installation-
 echo "Installerer crm-shared-timeline ver. 1.29"
 call sf package install --package 04tKB000000Y8znYAC --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
+echo "Installerer crm-shared-timeline ver. 0.38"
+call sf package install --package 04tQC000000zUijYAE --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+
 echo "Dytter kildekoden til scratch org'en"
 call sf project deploy start
 
