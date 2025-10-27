@@ -448,7 +448,7 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>brukerIdentField</name>
-                    <value>Account__r.CRM_Person__r.Name</value>
+                    <value>Account.CRM_Person__r.Name</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>brukerIdentType</name>

@@ -58,6 +58,10 @@
                 {
                     "package": "crm-shared-timeline",
                     "versionNumber": "1.29.0.LATEST"
+                },
+                {
+                    "package": "crm-sf-saf",
+                    "versionNumber": "0.38.0.LATEST"
                 }
             ]
         }
