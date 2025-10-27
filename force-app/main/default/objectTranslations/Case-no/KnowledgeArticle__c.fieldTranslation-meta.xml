@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Kunnskapsartikkel</label>
+    <name>KnowledgeArticle__c</name>
+    <relationshipLabel><!-- Feedbacks --></relationshipLabel>
+</CustomFieldTranslation>

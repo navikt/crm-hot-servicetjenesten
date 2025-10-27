@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label><!-- Person Confidentiality --></label>
+    <name>CRM_Person_Confidentiality__c</name>
+    <picklistValues>
+        <masterLabel>FORTROLIG</masterLabel>
+        <translation><!-- FORTROLIG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>STRENGT_FORTROLIG</masterLabel>
+        <translation><!-- STRENGT_FORTROLIG --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>STRENGT_FORTROLIG_UTLAND</masterLabel>
+        <translation><!-- STRENGT_FORTROLIG_UTLAND --></translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>UGRADERT</masterLabel>
+        <translation><!-- UGRADERT --></translation>
+    </picklistValues>
+</CustomFieldTranslation>

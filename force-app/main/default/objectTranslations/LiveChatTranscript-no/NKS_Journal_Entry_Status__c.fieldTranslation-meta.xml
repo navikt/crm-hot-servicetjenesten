@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Journalpoststatus</label>
+    <name>NKS_Journal_Entry_Status__c</name>
+    <picklistValues>
+        <masterLabel>Completed</masterLabel>
+        <translation>Ferdigstilt</translation>
+    </picklistValues>
+    <picklistValues>
+        <masterLabel>In Progress</masterLabel>
+        <translation>Under arbeid</translation>
+    </picklistValues>
+</CustomFieldTranslation>
