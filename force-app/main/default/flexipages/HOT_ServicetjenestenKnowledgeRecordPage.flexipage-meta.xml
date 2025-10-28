@@ -292,6 +292,84 @@
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_Summary__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_UserInformation__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-5429e321-5b35-4fee-8de6-15cf14db4fca</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>Article__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-ea24db64-b9f5-44e8-8e8e-e043de8f4614</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-5429e321-5b35-4fee-8de6-15cf14db4fca</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Til brukeren</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-ea24db64-b9f5-44e8-8e8e-e043de8f4614</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Intern informasjon</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection--ryny4vylcd</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-e8d7113e-3c5b-4a65-9bba-6259e1685f72</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
             <fieldInstance>
                 <fieldInstanceProperties>
                     <name>uiBehavior</name>
@@ -311,7 +389,7 @@
                 <identifier>RecordNKS_UserInformation_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-6367a94c-0586-4305-88fb-cb18d39289f0</name>
+        <name>Facet-d14d5630-05b6-45b3-9be4-022f34ba9a70</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -319,13 +397,13 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-6367a94c-0586-4305-88fb-cb18d39289f0</value>
+                    <value>Facet-d14d5630-05b6-45b3-9be4-022f34ba9a70</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column2</identifier>
+                <identifier>flexipage_column4</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-06b10bff-85fc-4ce0-afdb-ac59c484c1c8</name>
+        <name>Facet-905b5dc5-ee7f-436b-be83-cee871ddecf7</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -339,7 +417,7 @@
                 <identifier>RecordArticle_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-4cade9d0-c56b-47d7-8d9f-3c041e749653</name>
+        <name>Facet-501e3dea-0187-4873-a60d-8206f2ed538c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -347,21 +425,42 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-4cade9d0-c56b-47d7-8d9f-3c041e749653</value>
+                    <value>Facet-501e3dea-0187-4873-a60d-8206f2ed538c</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
+                <identifier>flexipage_column6</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-bade3ffe-91bf-4f93-a3d4-c16828523957</name>
+        <name>Facet-bea1dee4-95a2-493c-ac1a-d32a508d1473</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>accordionSections</name>
+                    <value>Facet-e8d7113e-3c5b-4a65-9bba-6259e1685f72</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>defaultSectionName</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordion</componentName>
+                <identifier>flexipage_accordion</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Online</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-06b10bff-85fc-4ce0-afdb-ac59c484c1c8</value>
+                    <value>Facet-905b5dc5-ee7f-436b-be83-cee871ddecf7</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -372,14 +471,21 @@
                     <value>Til brukeren</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <identifier>flexipage_fieldSection5</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-bade3ffe-91bf-4f93-a3d4-c16828523957</value>
+                    <value>Facet-bea1dee4-95a2-493c-ac1a-d32a508d1473</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -390,10 +496,85 @@
                     <value>Intern informasjon</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection4</identifier>
+                <identifier>flexipage_fieldSection6</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-d7119152-7d93-4cbd-aca6-2abd34a32cd8</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>AdvisorInformation__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-806ccb31-acbd-4b45-bf88-d5313be25139</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>AdvisorInformationInternal__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-35f2efb1-384b-4aac-81b2-b8b0852ea18c</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-806ccb31-acbd-4b45-bf88-d5313be25139</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Til samhandler</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-35f2efb1-384b-4aac-81b2-b8b0852ea18c</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Intern informasjon</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection4</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-fae07c1a-6cf7-4707-ad2c-ed3833c75517</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -407,7 +588,7 @@
                 <identifier>RecordAdvisorInformation_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-1a219143-a0cc-43ec-9c02-e45bec977724</name>
+        <name>Facet-1bad3ef4-0ccb-4e43-bcca-ab52723f5eb6</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -415,13 +596,13 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-1a219143-a0cc-43ec-9c02-e45bec977724</value>
+                    <value>Facet-1bad3ef4-0ccb-4e43-bcca-ab52723f5eb6</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column5</identifier>
+                <identifier>flexipage_column2</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-a28dc5e0-a862-408f-94b6-771660532ae6</name>
+        <name>Facet-d592ecd0-f839-4cd6-9ee0-205829c3549e</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -435,7 +616,7 @@
                 <identifier>RecordAdvisorInformationInternal_cField</identifier>
             </fieldInstance>
         </itemInstances>
-        <name>Facet-37e9d3a3-39a2-4b12-90e5-e55bd942de6c</name>
+        <name>Facet-0f6aff92-d92a-4012-b14b-0006d47891f7</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -443,21 +624,38 @@
             <componentInstance>
                 <componentInstanceProperties>
                     <name>body</name>
-                    <value>Facet-37e9d3a3-39a2-4b12-90e5-e55bd942de6c</value>
+                    <value>Facet-0f6aff92-d92a-4012-b14b-0006d47891f7</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column6</identifier>
+                <identifier>flexipage_column5</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-41cb182d-25a4-4610-a327-47d77f9c5899</name>
+        <name>Facet-7ed93d6e-ffc8-4f3f-962f-75f71489225f</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>accordionSections</name>
+                    <value>Facet-fae07c1a-6cf7-4707-ad2c-ed3833c75517</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordion</componentName>
+                <identifier>flexipage_accordion2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Online</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-a28dc5e0-a862-408f-94b6-771660532ae6</value>
+                    <value>Facet-d592ecd0-f839-4cd6-9ee0-205829c3549e</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -468,14 +666,21 @@
                     <value>Til samhandler</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection5</identifier>
+                <identifier>flexipage_fieldSection2</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
                     <name>columns</name>
-                    <value>Facet-41cb182d-25a4-4610-a327-47d77f9c5899</value>
+                    <value>Facet-7ed93d6e-ffc8-4f3f-962f-75f71489225f</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>horizontalAlignment</name>
@@ -486,10 +691,149 @@
                     <value>Intern informasjon</value>
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection6</identifier>
+                <identifier>flexipage_fieldSection4</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-3400792f-3035-4e2f-bf91-b95ace71105e</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_English__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-078028b0-a198-4a6f-b26f-3432e76471fb</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_English_Employer__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-a7bd3609-1864-4b31-a211-987e2d26119f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_Nynorsk__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-0zx2nnfr365f</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>fieldName</name>
+                    <value>NKS_Nynorsk_Employer__c</value>
+                </componentInstanceProperties>
+                <componentName>hot_knowledgeFieldViewer</componentName>
+                <identifier>c_hot_knowledgeFieldViewer9</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-2661cd8f-65ea-4a1b-8c38-aab6b492b734</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-078028b0-a198-4a6f-b26f-3432e76471fb</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Engelsk - personbruker</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection1</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection5</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-a7bd3609-1864-4b31-a211-987e2d26119f</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Engelsk - samarbeidspartnere</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection2</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection6</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-0zx2nnfr365f</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Nynorsk - personbruker</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection--o9pfptdylf</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection7</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-2661cd8f-65ea-4a1b-8c38-aab6b492b734</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>label</name>
+                    <value>Nynorsk - samarbeidspartnere</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>name</name>
+                    <value>accordionSection--gma0eopqyyk</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordionSection</componentName>
+                <identifier>flexipage_accordionSection8</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-4901c4ee-7b30-42b1-976f-d65e0edaed1c</name>
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
@@ -608,6 +952,23 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>accordionSections</name>
+                    <value>Facet-4901c4ee-7b30-42b1-976f-d65e0edaed1c</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:accordion</componentName>
+                <identifier>flexipage_accordion3</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Online</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-677b4b5f-af9d-4dbb-ba40-e32a887fadd4</value>
                 </componentInstanceProperties>
@@ -621,6 +982,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection7</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -639,6 +1007,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection8</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -657,6 +1032,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection9</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -675,6 +1057,13 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:fieldSection</componentName>
                 <identifier>flexipage_fieldSection11</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Draft</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-bb19b44b-318d-4f3b-9900-cc7a1175280e</name>
