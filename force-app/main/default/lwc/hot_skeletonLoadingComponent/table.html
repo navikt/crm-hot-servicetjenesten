@@ -1,0 +1,13 @@
+<template>
+    <lightning-layout>
+        <div class="card table-card">
+            <template for:each={tableRows} for:item="row">
+                <div key={row.key} class={row.className}>
+                    <template for:each={row.columns} for:item="column">
+                        <div key={column.key} class={column.className}></div>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-layout>
+</template>
