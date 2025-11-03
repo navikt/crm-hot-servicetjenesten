@@ -1,7 +1,12 @@
 <template>
     <lightning-record-view-form>
         <lightning-card>
-            <lightning-formatted-rich-text value={fieldValue}></lightning-formatted-rich-text>
+            <div class="rich-text-container slds-scrollable_x">
+                <lightning-formatted-rich-text
+                    class="rich-text-content"
+                    value={fieldValue}
+                ></lightning-formatted-rich-text>
+            </div>
         </lightning-card>
     </lightning-record-view-form>
 </template>
