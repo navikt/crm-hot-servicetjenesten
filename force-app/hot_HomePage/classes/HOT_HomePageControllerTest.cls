@@ -25,7 +25,7 @@ private class HOT_HomePageControllerTest {
     public static void testGetField() {
         Test.startTest();
         try {
-            HOT_HomePageController.getField('Test Traffic');
+            HOT_HomePageController.getField('Hot_Info');
         } catch (AurahandledException e) {
             System.assertEquals('Script-thrown exception', e.getMessage());
         }
