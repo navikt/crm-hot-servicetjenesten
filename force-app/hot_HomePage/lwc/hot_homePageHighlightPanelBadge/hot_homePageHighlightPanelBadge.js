@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
-//import hasPermission from '@salesforce/customPermission/Manage_Traffic_Updates';
-//import updateHotStatus from '@salesforce/apex/HOT_HomePageController.updateNksStatus';
+import hasPermission from '@salesforce/customPermission/HOT_Manage_Traffic_Updates';
+import updateHotStatus from '@salesforce/apex/HOT_HomePageController.updateHOTStatus';
 
 export default class Hot_homePageHighlightPanelBadge extends LightningElement {
     @api badgeLabel;
@@ -35,7 +35,7 @@ export default class Hot_homePageHighlightPanelBadge extends LightningElement {
     }
 
     get isEditable() {
-        return false;
+        return hasPermission;
     }
 
     get badgeClass() {
@@ -103,7 +103,7 @@ export default class Hot_homePageHighlightPanelBadge extends LightningElement {
         this.draft = this.recordInfo || '';
     }
 
-    /*updateRecord() {
+    updateRecord() {
         if (!this.recordId) {
             console.log('Missing required data.');
             return;
@@ -123,5 +123,5 @@ export default class Hot_homePageHighlightPanelBadge extends LightningElement {
                 const errorMessage = error?.body?.message || 'An unknown error occurred';
                 console.error('Error updating record:', errorMessage);
             });
-    }*/
+    }
 }

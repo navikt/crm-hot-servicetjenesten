@@ -36,8 +36,8 @@ public with sharing class HOT_HomePageController {
         return readyResponses.isEmpty() ? null : readyResponses;
     }
 
-    /* @AuraEnabled
-    public static void updateNksStatus(Map<String, String> fields) {
+    @AuraEnabled
+    public static void updateHOTStatus(Map<String, String> fields) {
         if (fields == null || !fields.containsKey('Id')) {
             throw new AuraHandledException('Record ID is required');
         }
@@ -63,12 +63,12 @@ public with sharing class HOT_HomePageController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static NKS_Announcement__c getNksStatus(String title) {
+    public static NKS_Announcement__c getHOTStatus(String title) {
         try {
             NKS_Announcement__c status = [
                 SELECT Id, Name, NKS_Information__c
                 FROM NKS_Announcement__c
-                WHERE Name = :title AND RecordType.DeveloperName = 'NKS_Status'
+                WHERE Name = :title AND RecordType.DeveloperName = 'HOT_Info'
                 ORDER BY CreatedDate DESC
                 LIMIT 1
             ];
@@ -77,5 +77,5 @@ public with sharing class HOT_HomePageController {
         } catch (Exception e) {
             throw new AuraHandledException('Error retrieving NKS status: ' + e.getMessage());
         }
-    }*/
+    }
 }

@@ -10,16 +10,8 @@ export default class NksHomePageHighlightPanelMid extends LightningElement {
                 showImage: true
             },
             {
-                title: 'Teknisk hjelp - IT',
-                url: 'https://navno.sharepoint.com/sites/enhet-kontaktsenter/SitePages/Teknisk-hjelp---Prosjektgruppe.aspx'
-            },
-            {
                 title: 'Norsk-engelsk ordliste',
                 url: 'https://navno.sharepoint.com/sites/enhet-kontaktsenter/SitePages/Ordliste-Norsk-Engelsk.aspx'
-            },
-            {
-                title: 'Kontaktsenterportalen',
-                url: 'https://navno.sharepoint.com/sites/enhet-kontaktsenter/'
             }
         ];
     }

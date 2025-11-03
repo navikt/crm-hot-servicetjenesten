@@ -1,5 +1,5 @@
 import { LightningElement, api, wire } from 'lwc';
-//import getNksStatus from '@salesforce/apex/HOT_HomePageController.getNksStatus';
+import getHOTStatus from '@salesforce/apex/HOT_HomePageController.getHOTStatus';
 import { refreshApex } from '@salesforce/apex';
 import { subscribe, unsubscribe, onError } from 'lightning/empApi';
 
@@ -36,7 +36,7 @@ export default class Hot_homePageHighlightPanelTop extends LightningElement {
         this.handleUnsubscribe();
     }
 
-    /* @wire(getNksStatus, { title: '$fagsystemTitle' })
+    @wire(getHOTStatus, { title: '$fagsystemTitle' })
     handleFagsystemData(result) {
         this.wiredFagsystem = result;
         const { data, error } = result;
@@ -50,7 +50,7 @@ export default class Hot_homePageHighlightPanelTop extends LightningElement {
         }
     }
 
-    @wire(getNksStatus, { title: '$navTitle' })
+    @wire(getHOTStatus, { title: '$navTitle' })
     handleNavData(result) {
         this.wiredNav = result;
         const { data, error } = result;
@@ -62,7 +62,7 @@ export default class Hot_homePageHighlightPanelTop extends LightningElement {
         } else if (error) {
             console.error('Error fetching NAV status: ', error);
         }
-    }*/
+    }
 
     handleBadgeClick(event) {
         const { label } = event.detail;
