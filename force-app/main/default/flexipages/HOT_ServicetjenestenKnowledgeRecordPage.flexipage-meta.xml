@@ -448,10 +448,16 @@
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Online</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Archived</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -643,10 +649,16 @@
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion2</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 OR 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Online</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Archived</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -958,10 +970,16 @@
                 <componentName>flexipage:accordion</componentName>
                 <identifier>flexipage_accordion3</identifier>
                 <visibilityRule>
+                    <booleanFilter>1 AND 2</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Online</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Archived</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1101,7 +1119,7 @@
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab2</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+                    <booleanFilter>((1 OR 4) AND 2) OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
@@ -1116,6 +1134,11 @@
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Draft</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Archived</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
@@ -1133,7 +1156,7 @@
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab6</identifier>
                 <visibilityRule>
-                    <booleanFilter>(1 AND 2) OR 3</booleanFilter>
+                    <booleanFilter>((1 OR 4) AND 2) OR 3</booleanFilter>
                     <criteria>
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
@@ -1148,6 +1171,11 @@
                         <leftValue>{!Record.PublishStatus}</leftValue>
                         <operator>EQUAL</operator>
                         <rightValue>Draft</rightValue>
+                    </criteria>
+                    <criteria>
+                        <leftValue>{!Record.PublishStatus}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>Archived</rightValue>
                     </criteria>
                 </visibilityRule>
             </componentInstance>
