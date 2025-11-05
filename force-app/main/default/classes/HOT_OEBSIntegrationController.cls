@@ -207,13 +207,8 @@ public with sharing class HOT_OEBSIntegrationController {
 
     private static String performCallout(Map<String, String> pathParamMap, String apiName) {
         // Opprett og konfigurer ApiController
-        LoggerUtility logger = new LoggerUtility('HOT');
-        ApiController ac = new ApiController()
-            .setLogCategory('HOT')
-            .setLogger(logger)
-            .setLogCalloutRequest()
-            .publishLogAfterCallout()
-            .setLogDomain(CRM_ApplicationDomain.Domain.HOT);
+        LoggerUtility logger = new LoggerUtility(CRM_ApplicationDomain.Domain.HOT, 'OeBS');
+        ApiController ac = new ApiController().setLogger(logger).setLogCalloutRequest().publishLogAfterCallout();
 
         ac.initRequest('OEBS', apiName, pathParamMap);
         ac.addSaasProxyServiceAuthHeader();
@@ -230,9 +225,8 @@ public with sharing class HOT_OEBSIntegrationController {
         if (responseStatusCode != 200) {
             String errorMessage = 'StatusCode: ' + responseStatusCode.toString() + '    -    ' + responseBody;
             System.debug('ErrorMessage: ' + errorMessage);
-            LoggerUtility warning = new LoggerUtility();
-            warning.warning(errorMessage, null, CRM_ApplicationDomain.Domain.HOT);
-            warning.publish();
+            logger.warning(errorMessage, null);
+            logger.publish();
             return null;
         } else {
             return responseBody;
