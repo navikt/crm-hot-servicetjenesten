@@ -17,299 +17,139 @@ public with sharing class HOT_OEBSIntegrationController {
             serviceRequestList = new List<SFWrapper>();
             serviceOrderList = new List<SOWrapper>();
         }
-
-        // Parameterized constructor
-        public oebsWrapper(
-            brukerNrWrapper brukerNr,
-            brukerPassWrapper brukerPass,
-            List<orderWrapper> orderList,
-            List<SFWrapper> serviceRequestList,
-            List<SOWrapper> serviceOrderList
-        ) {
-            this.brukerNr = brukerNr;
-            this.brukerPass = brukerPass;
-            this.orderList = (orderList == null) ? new List<orderWrapper>() : orderList;
-            this.serviceRequestList = (serviceRequestList == null) ? new List<SFWrapper>() : serviceRequestList;
-            this.serviceOrderList = (serviceOrderList == null) ? new List<SOWrapper>() : serviceOrderList;
-        }
     }
 
     public class brukerNrWrapper {
         @AuraEnabled
-        public String brukerNummer { get; set; }
+        public String brukerNummer;
         @AuraEnabled
-        public String brukerStatus { get; set; }
+        public String brukerStatus;
         @AuraEnabled
-        public String fnr { get; set; }
+        public String fnr;
         @AuraEnabled
-        public String fnrStatus { get; set; }
-
-        // Parameterized constructor
-        public brukerNrWrapper(String brukerNummer, String brukerStatus, String fnr, String fnrStatus) {
-            this.brukerNummer = brukerNummer;
-            this.brukerStatus = brukerStatus;
-            this.fnr = fnr;
-            this.fnrStatus = fnrStatus;
-        }
+        public String fnrStatus;
     }
 
     public class brukerPassWrapper {
         @AuraEnabled
-        public String fnr { get; set; }
+        public String fnr;
         @AuraEnabled
-        public String brukerNummer { get; set; }
+        public String brukerNummer;
         @AuraEnabled
-        public String kontrakt_nummer { get; set; }
+        public String kontrakt_nummer;
         @AuraEnabled
-        public String sjekk_navn { get; set; }
+        public String sjekk_navn;
         @AuraEnabled
-        public String start_date { get; set; }
+        public String start_date;
         @AuraEnabled
-        public String end_date { get; set; }
+        public String end_date;
         @AuraEnabled
-        public String status { get; set; }
-
-        // Parameterized constructor
-        public brukerPassWrapper(
-            String fnr,
-            String brukerNummer,
-            String kontrakt_nummer,
-            String sjekk_navn,
-            String start_date,
-            String end_date,
-            String status
-        ) {
-            this.fnr = fnr;
-            this.brukerNummer = brukerNummer;
-            this.kontrakt_nummer = kontrakt_nummer;
-            this.sjekk_navn = sjekk_navn;
-            this.start_date = start_date;
-            this.end_date = end_date;
-            this.status = status;
-        }
+        public String status;
     }
 
     public class orderWrapper {
         @AuraEnabled
-        public String orgId { get; set; }
+        public String orgId;
         @AuraEnabled
-        public String ordreNummer { get; set; }
+        public String ordreNummer;
         @AuraEnabled
-        public String fnr { get; set; }
+        public String fnr;
         @AuraEnabled
-        public String brukerNummer { get; set; }
+        public String brukerNummer;
         @AuraEnabled
-        public String ordreDato { get; set; }
+        public String ordreDato;
         @AuraEnabled
-        public String status { get; set; }
+        public String status;
         @AuraEnabled
         public List<orderLineWrapper> ordreLinjer { get; set; }
-
-        // Default constructor
-        public orderWrapper() {
-            ordreLinjer = new List<orderLineWrapper>();
-        }
-
-        // Parameterized constructor
-        public orderWrapper(
-            String orgId,
-            String ordreNummer,
-            String fnr,
-            String brukerNummer,
-            String ordreDato,
-            String status,
-            List<orderLineWrapper> ordreLinjer
-        ) {
-            this.orgId = orgId;
-            this.ordreNummer = ordreNummer;
-            this.fnr = fnr;
-            this.brukerNummer = brukerNummer;
-            this.ordreDato = ordreDato;
-            this.status = status;
-            this.ordreLinjer = (ordreLinjer == null) ? new List<orderLineWrapper>() : ordreLinjer;
-        }
     }
 
     public class SOWrapper {
         @AuraEnabled
-        public String serviceOrdreNummer { get; set; }
+        public String serviceOrdreNummer;
         @AuraEnabled
-        public String serviceType { get; set; }
+        public String serviceType;
         @AuraEnabled
-        public String sfNummer { get; set; }
+        public String sfNummer;
         @AuraEnabled
-        public String opprettelsesDato { get; set; }
+        public String opprettelsesDato;
         @AuraEnabled
-        public String artikkel { get; set; }
+        public String artikkel;
         @AuraEnabled
-        public String artikkelBeskrivelse { get; set; }
+        public String artikkelBeskrivelse;
         @AuraEnabled
-        public String serviceOrdreStatus { get; set; }
+        public String serviceOrdreStatus;
         @AuraEnabled
-        public String fnr { get; set; }
+        public String fnr;
         @AuraEnabled
-        public String brukernr { get; set; }
-
-        // Parameterized constructor
-        public SOWrapper(
-            String serviceOrdreNummer,
-            String serviceType,
-            String sfNummer,
-            String opprettelsesDato,
-            String artikkel,
-            String artikkelBeskrivelse,
-            String fnr,
-            String brukernr
-        ) {
-            this.serviceOrdreNummer = serviceOrdreNummer;
-            this.serviceType = serviceType;
-            this.sfNummer = sfNummer;
-            this.opprettelsesDato = opprettelsesDato;
-            this.artikkel = artikkel;
-            this.artikkelBeskrivelse = artikkelBeskrivelse;
-            this.fnr = fnr;
-            this.brukernr = brukernr;
-        }
+        public String brukernr;
     }
 
     public class SFWrapper {
         @AuraEnabled
-        public String orgId { get; set; }
+        public String orgId;
         @AuraEnabled
-        public String sfNummer { get; set; }
+        public String sfNummer;
         @AuraEnabled
-        public String sfType { get; set; }
+        public String sfType;
         @AuraEnabled
-        public String problemSammendrag { get; set; }
+        public String problemSammendrag;
         @AuraEnabled
-        public String losningSammendrag { get; set; }
+        public String losningSammendrag;
         @AuraEnabled
-        public String fnr { get; set; }
+        public String fnr;
         @AuraEnabled
-        public String brukerNummer { get; set; }
+        public String brukerNummer;
         @AuraEnabled
-        public String sfOpprettetDato { get; set; }
+        public String sfOpprettetDato;
         @AuraEnabled
-        public String status { get; set; }
+        public String status;
         @AuraEnabled
         public List<notatWrapper> sfNotater { get; set; }
-
-        // Default constructor
-        public SFWrapper() {
-            sfNotater = new List<notatWrapper>();
-        }
-
-        // Parameterized constructor
-        public SFWrapper(
-            String orgId,
-            String sfNummer,
-            String sfType,
-            String problemSammendrag,
-            String losningSammendrag,
-            String fnr,
-            String brukerNummer,
-            String sfOpprettetDato,
-            String status,
-            List<notatWrapper> sfNotater
-        ) {
-            this.orgId = orgId;
-            this.sfNummer = sfNummer;
-            this.sfType = sfType;
-            this.losningSammendrag = losningSammendrag;
-            this.sfOpprettetDato = sfOpprettetDato;
-            this.fnr = fnr;
-            this.brukerNummer = brukerNummer;
-            this.sfOpprettetDato = sfOpprettetDato;
-            this.status = status;
-            this.sfNotater = (sfNotater == null) ? new List<notatWrapper>() : sfNotater;
-        }
     }
 
     public class orderLineWrapper {
         @AuraEnabled
-        public String ordreLinjeNummer { get; set; }
+        public String ordreLinjeNummer;
         @AuraEnabled
-        public String artikkel { get; set; }
+        public String artikkel;
         @AuraEnabled
-        public String artikkelBeskrivelse { get; set; }
+        public String artikkelBeskrivelse;
         @AuraEnabled
-        public String antall { get; set; }
+        public String antall;
         @AuraEnabled
-        public String ordreLinjeDato { get; set; }
+        public String ordreLinjeDato;
         @AuraEnabled
-        public String lovetDato { get; set; }
+        public String lovetDato;
         @AuraEnabled
-        public String planlagtSkipningsDato { get; set; }
+        public String planlagtSkipningsDato;
         @AuraEnabled
-        public String statusOrdreLinje { get; set; }
+        public String statusOrdreLinje;
         @AuraEnabled
-        public String anmodningsNummer { get; set; }
+        public String anmodningsNummer;
         @AuraEnabled
-        public String bestillingsNummer { get; set; }
+        public String bestillingsNummer;
         @AuraEnabled
-        public String leveringsadresse { get; set; }
+        public String leveringsadresse;
         @AuraEnabled
-        public String city { get; set; }
+        public String city;
         @AuraEnabled
-        public String postNummer { get; set; }
+        public String postNummer;
         @AuraEnabled
-        public String kommune { get; set; }
+        public String kommune;
         @AuraEnabled
-        public String bydel { get; set; }
-
-        // Parameterized constructor
-        public orderLineWrapper(
-            String ordreLinjeNummer,
-            String artikkel,
-            String artikkelBeskrivelse,
-            String antall,
-            String ordreLinjeDato,
-            String lovetDato,
-            String planlagtSkipningsDato,
-            String statusOrdreLinje,
-            String anmodningsNummer,
-            String bestillingsNummer,
-            String leveringsadresse,
-            String city,
-            String postNummer,
-            String kommune,
-            String bydel
-        ) {
-            this.ordreLinjeNummer = ordreLinjeNummer;
-            this.artikkel = artikkel;
-            this.artikkelBeskrivelse = artikkelBeskrivelse;
-            this.antall = antall;
-            this.ordreLinjeDato = ordreLinjeDato;
-            this.lovetDato = lovetDato;
-            this.planlagtSkipningsDato = planlagtSkipningsDato;
-            this.statusOrdreLinje = statusOrdreLinje;
-            this.anmodningsNummer = anmodningsNummer;
-            this.bestillingsNummer = bestillingsNummer;
-            this.leveringsadresse = leveringsadresse;
-            this.city = city;
-            this.postNummer = postNummer;
-            this.kommune = kommune;
-            this.bydel = bydel;
-        }
+        public String bydel;
     }
 
     public class notatWrapper {
         @AuraEnabled
-        public String notat { get; set; }
+        public String notat;
         @AuraEnabled
-        public String opprettetDato { get; set; }
+        public String opprettetDato;
         @AuraEnabled
-        public String opprettetAvNavn { get; set; }
+        public String opprettetAvNavn;
         @AuraEnabled
-        public String opprettetAvIdent { get; set; }
-
-        // Parameterized constructor
-        public notatWrapper(String notat, String opprettetDato, String opprettetAvNavn, String opprettetAvIdent) {
-            this.notat = notat;
-            this.opprettetDato = opprettetDato;
-            this.opprettetAvNavn = opprettetAvNavn;
-            this.opprettetAvIdent = opprettetAvIdent;
-        }
+        public String opprettetAvIdent;
     }
 
     @AuraEnabled(cacheable=true)
@@ -402,50 +242,54 @@ public with sharing class HOT_OEBSIntegrationController {
     private static oebsWrapper deserializeBrukerResponse(String responseBody, String apiName) {
         oebsWrapper wrapper = new oebsWrapper();
         if (apiName == 'GET_OEBS_Brukernr') {
-            brukerNrWrapper result = (brukerNrWrapper) JSON.deserialize(responseBody, brukerNrWrapper.class);
-            wrapper.brukerNr = result;
+            try {
+                brukerNrWrapper result = (brukerNrWrapper) JSON.deserialize(responseBody, brukerNrWrapper.class);
+                wrapper.brukerNr = result;
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
+            }
         } else {
-            brukerPassWrapper result = (brukerPassWrapper) JSON.deserialize(responseBody, brukerPassWrapper.class);
-            wrapper.brukerPass = result;
+            try {
+                brukerPassWrapper result = (brukerPassWrapper) JSON.deserialize(responseBody, brukerPassWrapper.class);
+                wrapper.brukerPass = result;
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
+            }
         }
         return wrapper;
     }
 
     private static oebsWrapper deserializeOrderResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        Object parsed = JSON.deserializeUntyped(responseBody);
-        if (parsed instanceof List<Object>) {
+        try {
+            system.debug('responsebody: ' + responseBody);
             List<orderWrapper> wrappers = (List<orderWrapper>) JSON.deserialize(responseBody, List<orderWrapper>.class);
             wrapper.orderList = wrappers;
-        } else if (parsed instanceof Map<String, Object>) {
-            orderWrapper result = (orderWrapper) JSON.deserialize(responseBody, orderWrapper.class);
-            wrapper.orderList = new List<orderWrapper>{ result };
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
+
         return wrapper;
     }
 
     private static oebsWrapper deserializeServiceReqResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        Object parsed = JSON.deserializeUntyped(responseBody);
-        if (parsed instanceof List<Object>) {
+        try {
             List<SFWrapper> wrappers = (List<SFWrapper>) JSON.deserialize(responseBody, List<SFWrapper>.class);
             wrapper.serviceRequestList = wrappers;
-        } else if (parsed instanceof Map<String, Object>) {
-            SFWrapper result = (SFWrapper) JSON.deserialize(responseBody, SFWrapper.class);
-            wrapper.serviceRequestList = new List<SFWrapper>{ result };
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
         return wrapper;
     }
 
     private static oebsWrapper deserializeServiceOrderResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        Object parsed = JSON.deserializeUntyped(responseBody);
-        if (parsed instanceof List<Object>) {
+        try {
             List<SOWrapper> wrappers = (List<SOWrapper>) JSON.deserialize(responseBody, List<SOWrapper>.class);
             wrapper.serviceOrderList = wrappers;
-        } else if (parsed instanceof Map<String, Object>) {
-            SOWrapper result = (SOWrapper) JSON.deserialize(responseBody, SOWrapper.class);
-            wrapper.serviceOrderList = new List<SOWrapper>{ result };
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
         return wrapper;
     }
