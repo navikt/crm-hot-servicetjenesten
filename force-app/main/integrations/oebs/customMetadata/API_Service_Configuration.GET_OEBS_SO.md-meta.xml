@@ -17,32 +17,56 @@
     <values>
         <field>Mock_Response__c</field>
         <value xsi:type="xsd:string">{
-  &quot;200&quot;: {
-    &quot;headers&quot;: null,
-    &quot;body&quot;: {
-          &quot;serviceOrdreNummer&quot;: &quot;22008018&quot;,
-          &quot;serviceType&quot;: &quot;Standard*&quot;,
-          &quot;sfNummer&quot;: &quot;25519635&quot;,
-          &quot;opprettelsesDato&quot;: &quot;2025-05-19T09:28:07&quot;,
-          &quot;artikkel&quot;: &quot;250044&quot;,
-          &quot;artikkelBeskrivelse&quot;: &quot;Ers styrel X850 Corpus sb42-57 sd37-57 rygg vreg el seteløft el   9,9km/t&quot;,
-          &quot;serviceOrdreStatus&quot;: &quot;Åpen&quot;,
-          &quot;fnr&quot;: &quot;22106635513&quot;,
-          &quot;brukernr&quot;: &quot;3426735&quot;
-    }
-  },
-  &quot;401&quot;: {
-    &quot;headers&quot;: null,
-    &quot;body&quot;: null
-  },
-  &quot;404&quot;: {
-    &quot;headers&quot;: null,
-    &quot;body&quot;: null
-  },
-  &quot;500&quot;: {
-    &quot;headers&quot;: null,
-    &quot;body&quot;: null
-  }
+&quot;200&quot;: {
+&quot;headers&quot;: null,
+&quot;body&quot;: [
+{
+&quot;serviceOrdreNummer&quot;: &quot;22008018&quot;,
+&quot;serviceType&quot;: &quot;Standard*&quot;,
+&quot;sfNummer&quot;: &quot;25519635&quot;,
+&quot;opprettelsesDato&quot;: &quot;2025-05-19T09:28:07&quot;,
+&quot;artikkel&quot;: &quot;250044&quot;,
+&quot;artikkelBeskrivelse&quot;: &quot;Ers styrel X850 Corpus sb42-57 sd37-57 rygg vreg el seteløft el 9,9km/t&quot;,
+&quot;serviceOrdreStatus&quot;: &quot;Åpen&quot;,
+&quot;fnr&quot;: &quot;22106635513&quot;,
+&quot;brukernr&quot;: &quot;3426735&quot;
+},
+{
+&quot;serviceOrdreNummer&quot;: &quot;22008019&quot;,
+&quot;serviceType&quot;: &quot;Standard*&quot;,
+&quot;sfNummer&quot;: &quot;25519636&quot;,
+&quot;opprettelsesDato&quot;: &quot;2025-05-21T11:14:07&quot;,
+&quot;artikkel&quot;: &quot;250047&quot;,
+&quot;artikkelBeskrivelse&quot;: &quot;Lader: Ers styrel X850 Corpus sb42-57 sd37-57&quot;,
+&quot;serviceOrdreStatus&quot;: &quot;Åpen&quot;,
+&quot;fnr&quot;: &quot;22106635513&quot;,
+&quot;brukernr&quot;: &quot;3426735&quot;
+},
+{
+&quot;serviceOrdreNummer&quot;: &quot;22008034&quot;,
+&quot;serviceType&quot;: &quot;Standard*&quot;,
+&quot;sfNummer&quot;: &quot;25519677&quot;,
+&quot;opprettelsesDato&quot;: &quot;2025-07-24T10:12:07&quot;,
+&quot;artikkel&quot;: &quot;250047&quot;,
+&quot;artikkelBeskrivelse&quot;: &quot;Demper: Ers styrel X850 Corpus sb42-57 sd37-57&quot;,
+&quot;serviceOrdreStatus&quot;: &quot;Åpen&quot;,
+&quot;fnr&quot;: &quot;22106635513&quot;,
+&quot;brukernr&quot;: &quot;3426735&quot;
+}
+]
+},
+&quot;401&quot;: {
+&quot;headers&quot;: null,
+&quot;body&quot;: null
+},
+&quot;404&quot;: {
+&quot;headers&quot;: null,
+&quot;body&quot;: null
+},
+&quot;500&quot;: {
+&quot;headers&quot;: null,
+&quot;body&quot;: null
+}
 }</value>
     </values>
     <values>
