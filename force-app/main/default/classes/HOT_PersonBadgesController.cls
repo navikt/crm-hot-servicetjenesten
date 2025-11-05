@@ -175,7 +175,18 @@ public with sharing class HOT_PersonBadgesController {
                 return;
 
             String status = w.brukerPass.status;
-            if (status != null && status.equalsIgnoreCase('SIGNED')) {
+            DateTime startDate = parseDate(w.brukerPass.start_date);
+            DateTime endDate = parseDate(w.brukerPass.end_date);
+            DateTime today = Datetime.now();
+
+            if (
+                status != null &&
+                'SIGNED'.equalsIgnoreCase(status) &&
+                startDate != null &&
+                startDate <= today &&
+                (endDate == null ||
+                endDate >= today)
+            ) {
                 badges.add(
                     new Badge(
                         'Brukerpass',
@@ -325,6 +336,22 @@ public with sharing class HOT_PersonBadgesController {
             SObjectType type = Person__c.sObjectType;
             Map<String, Schema.SObjectField> mfields = type.getDescribe().fields.getMap();
             return mfields.get(fieldApiName).getDescribe().getLabel();
+        }
+
+        private DateTime parseDate(String dateValue) {
+            if (String.isBlank(dateValue))
+                return null;
+
+            // Normalize ISO-ish inputs
+            String s = dateValue.trim()
+                .replace('T', ' ') // 2025-10-24T00:00:00 -> 2025-10-24 00:00:00
+                .replaceAll('(Z|[\\+\\-]\\d{2}:?\\d{2})$', ''); // drop trailing Z or offsets if present
+
+            try {
+                return DateTime.valueOf(s);
+            } catch (Exception ex) {
+                return null;
+            }
         }
     }
 
