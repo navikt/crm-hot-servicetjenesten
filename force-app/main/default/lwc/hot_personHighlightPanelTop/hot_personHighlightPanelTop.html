@@ -66,5 +66,20 @@
                 </lightning-button-icon>
             </lightning-layout-item>
         </template>
+        <template if:true={hasBrukernummer}>
+            <lightning-layout-item class="custom-padding-left custom-grid-vertical-align-center">
+                <span>{oebsBrukerNr}</span>
+                <lightning-button-icon
+                    value={oebsBrukerNr}
+                    icon-name="utility:copy"
+                    variant="bare-inverse"
+                    onclick={handleCopy}
+                    alternative-text="Kopier brukernummer"
+                    title="Kopier brukernummer"
+                    class="copy-icon"
+                >
+                </lightning-button-icon>
+            </lightning-layout-item>
+        </template>
     </lightning-layout>
 </template>

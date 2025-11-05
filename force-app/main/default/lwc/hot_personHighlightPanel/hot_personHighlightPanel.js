@@ -21,7 +21,6 @@ import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 import getPersonAccessBadges from '@salesforce/apex/HOT_PersonAccessBadgesController.getPersonAccessBadges';
 import getPersonBadgesAndInfo from '@salesforce/apex/HOT_PersonBadgesController.getPersonBadgesAndInfo';
 import getHistorikk from '@salesforce/apex/HOT_FullmaktController.getHistorikk';
-import getOEBS from '@salesforce/apex/HOT_OEBSIntegrationController.HOT_OEBS_Integration';
 import getRelatedRecord from '@salesforce/apex/HOT_RecordInfoController.getRelatedRecord';
 import hasAccess from '@salesforce/apex/HOT_AccessErrorController.hasAccess';
 
@@ -72,8 +71,6 @@ export default class hot_personHighlightPanel extends LightningElement {
     errorMessages;
     erNasjonalOppfolging = false;
 
-    oebsBrukerNr;
-
     personDetails = {};
 
     uuAlertText = '';
@@ -82,28 +79,6 @@ export default class hot_personHighlightPanel extends LightningElement {
         this.wireFields = [`${this.objectApiName}.Id`];
     }
 
-    @wire(getOEBS, {
-        recordId: '$recordId',
-        objectApiName: '$objectApiName',
-        apiName: 'GET_OEBS_Brukernr'
-    })
-    wiredObesBrukernr({ data, error }) {
-        if (error) {
-            console.error('Error fetching OEBS Brukernr', error);
-            this.oebsBrukerNr = undefined;
-            return;
-        }
-
-        if (data) {
-            try {
-                this.oebsBrukerNr = data?.brukerNr?.brukerNummer || '';
-            } catch (e) {
-                this.oebsBrukerNr = '';
-            }
-        } else {
-            this.oebsBrukerNr = '';
-        }
-    }
     @wire(getPersonBadgesAndInfo, {
         field: '$relationshipField',
         parentObject: '$objectApiName',
@@ -417,9 +392,5 @@ export default class hot_personHighlightPanel extends LightningElement {
 
     get xMarkIconSrc() {
         return NAV_ICONS + '/xMarkIcon.svg#xMarkIcon';
-    }
-
-    get hasBrukernummer() {
-        return !!this.oebsBrukerNr;
     }
 }
