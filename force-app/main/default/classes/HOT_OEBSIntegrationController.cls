@@ -2,15 +2,21 @@ public with sharing class HOT_OEBSIntegrationController {
     // Topp-nivå wrapper for hver "integrasjon"
     public class oebsWrapper {
         @AuraEnabled
-        public brukerNrWrapper brukerNr;
+        public brukerNrWrapper brukerNr { get; set; }
         @AuraEnabled
-        public brukerPassWrapper brukerPass;
+        public brukerPassWrapper brukerPass { get; set; }
         @AuraEnabled
-        public List<orderWrapper> orderList;
+        public List<orderWrapper> orderList { get; set; }
         @AuraEnabled
-        public List<SFWrapper> serviceRequestList;
+        public List<SFWrapper> serviceRequestList { get; set; }
         @AuraEnabled
-        public List<SOWrapper> serviceOrderList;
+        public List<SOWrapper> serviceOrderList { get; set; }
+
+        public oebsWrapper() {
+            orderList = new List<orderWrapper>();
+            serviceRequestList = new List<SFWrapper>();
+            serviceOrderList = new List<SOWrapper>();
+        }
     }
 
     public class brukerNrWrapper {
@@ -55,11 +61,7 @@ public with sharing class HOT_OEBSIntegrationController {
         @AuraEnabled
         public String status;
         @AuraEnabled
-        public List<orderLineWrapper> orderLineList { get; set; }
-
-        public orderWrapper() {
-            orderLineList = new List<orderLineWrapper>();
-        }
+        public List<orderLineWrapper> ordreLinjer { get; set; }
     }
 
     public class SOWrapper {
@@ -104,10 +106,6 @@ public with sharing class HOT_OEBSIntegrationController {
         public String status;
         @AuraEnabled
         public List<notatWrapper> sfNotater { get; set; }
-
-        public SFWrapper() {
-            sfNotater = new List<notatWrapper>();
-        }
     }
 
     public class orderLineWrapper {
@@ -209,14 +207,8 @@ public with sharing class HOT_OEBSIntegrationController {
 
     private static String performCallout(Map<String, String> pathParamMap, String apiName) {
         // Opprett og konfigurer ApiController
-        LoggerUtility logger = new LoggerUtility('HOT');
-        ApiController ac = new ApiController()
-            .setLogCategory('HOT')
-            .setLogger(logger)
-            .setLogCalloutRequest()
-            .publishLogAfterCallout()
-            //.setSystemContext()
-            .setLogDomain(CRM_ApplicationDomain.Domain.HOT);
+        LoggerUtility logger = new LoggerUtility(CRM_ApplicationDomain.Domain.HOT, 'OeBS');
+        ApiController ac = new ApiController().setLogger(logger).setLogCalloutRequest().publishLogAfterCallout();
 
         ac.initRequest('OEBS', apiName, pathParamMap);
         ac.addSaasProxyServiceAuthHeader();
@@ -233,9 +225,8 @@ public with sharing class HOT_OEBSIntegrationController {
         if (responseStatusCode != 200) {
             String errorMessage = 'StatusCode: ' + responseStatusCode.toString() + '    -    ' + responseBody;
             System.debug('ErrorMessage: ' + errorMessage);
-            LoggerUtility warning = new LoggerUtility();
-            warning.warning(errorMessage, null, CRM_ApplicationDomain.Domain.HOT);
-            warning.publish();
+            logger.warning(errorMessage, null);
+            logger.publish();
             return null;
         } else {
             return responseBody;
@@ -243,28 +234,20 @@ public with sharing class HOT_OEBSIntegrationController {
     }
 
     private static oebsWrapper deserializeBrukerResponse(String responseBody, String apiName) {
-        brukerNrWrapper bWrapper = new brukerNrWrapper();
-        brukerPassWrapper bpWrapper = new brukerPassWrapper();
         oebsWrapper wrapper = new oebsWrapper();
-        Map<String, Object> rootMap = (Map<String, Object>) JSON.deserializeUntyped(responseBody);
-        if (rootMap == null) {
-            return wrapper;
+        if (apiName == 'GET_OEBS_Brukernr') {
+            try {
+                brukerNrWrapper result = (brukerNrWrapper) JSON.deserialize(responseBody, brukerNrWrapper.class);
+                wrapper.brukerNr = result;
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
+            }
         } else {
-            if (apiName == 'GET_OEBS_Brukernr') {
-                bWrapper.brukerNummer = (String) rootMap.get('brukerNummer');
-                bWrapper.brukerStatus = (String) rootMap.get('brukerStatus');
-                bWrapper.fnr = (String) rootMap.get('fnr');
-                bWrapper.fnrStatus = (String) rootMap.get('fnrStatus');
-                wrapper.brukerNr = bWrapper;
-            } else if (apiName == 'GET_OEBS_BrukerPass') {
-                bpWrapper.fnr = (String) rootMap.get('fnr');
-                bpWrapper.brukerNummer = (String) rootMap.get('brukerNummer');
-                bpWrapper.kontrakt_nummer = (String) rootMap.get('kontrakt_nummer');
-                bpWrapper.sjekk_navn = (String) rootMap.get('sjekk_navn');
-                bpWrapper.start_date = (String) rootMap.get('start_date');
-                bpWrapper.end_date = (String) rootMap.get('end_date');
-                bpWrapper.status = (String) rootMap.get('status');
-                wrapper.brukerPass = bpWrapper;
+            try {
+                brukerPassWrapper result = (brukerPassWrapper) JSON.deserialize(responseBody, brukerPassWrapper.class);
+                wrapper.brukerPass = result;
+            } catch (Exception e) {
+                throw new AuraHandledException(e.getMessage());
             }
         }
         return wrapper;
@@ -272,171 +255,36 @@ public with sharing class HOT_OEBSIntegrationController {
 
     private static oebsWrapper deserializeOrderResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        List<orderWrapper> orderList = new List<orderWrapper>();
-        List<Object> outerList = new List<Object>();
-        List<Object> innerList = new List<Object>();
-
-        Object rawOuterOrder = JSON.deserializeUntyped(responseBody);
-        if (rawOuterOrder != null) {
-            if (rawOuterOrder instanceof List<Object>) {
-                outerList = (List<Object>) rawOuterOrder;
-            } else {
-                outerList.add(rawOuterOrder);
-            }
+        try {
+            system.debug('responsebody: ' + responseBody);
+            List<orderWrapper> wrappers = (List<orderWrapper>) JSON.deserialize(responseBody, List<orderWrapper>.class);
+            wrapper.orderList = wrappers;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
-        if (outerList.size() == 0) {
-            return wrapper;
-        } else {
-            for (Object outerOrder : outerList) {
-                Map<String, Object> outerMap = (Map<String, Object>) outerOrder;
-                orderWrapper oWrapper = new orderWrapper();
-                oWrapper.orgId = (String) outerMap.get('orgId');
-                oWrapper.ordreNummer = (String) outerMap.get('ordreNummer');
-                oWrapper.fnr = (String) outerMap.get('fnr');
-                oWrapper.brukerNummer = (String) outerMap.get('brukerNummer');
-                oWrapper.ordreDato = (String) outerMap.get('ordreDato');
-                oWrapper.status = (String) outerMap.get('status');
 
-                // Order Inner (liste eller enkeltobjekt)
-                Object rawInnerOrder = outerMap.get('ordreLinjer');
-                if (rawInnerOrder != null) {
-                    if (rawInnerOrder instanceof List<Object>) {
-                        innerList = (List<Object>) rawInnerOrder;
-                    } else {
-                        innerList.add(rawInnerOrder);
-                    }
-                }
-                for (Object innerOrder : innerList) {
-                    Map<String, Object> innerMap = (Map<String, Object>) innerOrder;
-                    orderLineWrapper lWrapper = new orderLineWrapper();
-                    lWrapper.ordreLinjeNummer = (String) innerMap.get('ordreLinjeNummer');
-                    lWrapper.artikkel = (String) innerMap.get('artikkel');
-                    lWrapper.artikkelBeskrivelse = (String) innerMap.get('artikkelBeskrivelse');
-                    lWrapper.antall = (String) innerMap.get('antall');
-                    lWrapper.ordreLinjeDato = (String) innerMap.get('ordreLinjeDato');
-                    lWrapper.lovetDato = (String) innerMap.get('lovetDato');
-                    lWrapper.planlagtSkipningsDato = (String) innerMap.get('planlagtSkipningsDato');
-                    lWrapper.statusOrdreLinje = (String) innerMap.get('statusOrdreLinje');
-                    lWrapper.anmodningsNummer = (String) innerMap.get('anmodningsNummer');
-                    lWrapper.bestillingsNummer = (String) innerMap.get('bestillingsNummer');
-                    lWrapper.leveringsadresse = (String) innerMap.get('leveringsadresse');
-                    lWrapper.city = (String) innerMap.get('city');
-                    lWrapper.postNummer = (String) innerMap.get('postNummer');
-                    lWrapper.kommune = (String) innerMap.get('kommune');
-                    lWrapper.bydel = (String) innerMap.get('bydel');
-                    oWrapper.orderLineList.add(lWrapper);
-                }
-                orderList.add(oWrapper);
-            }
-            if (orderList.isEmpty()) {
-                return wrapper;
-            } else {
-                wrapper.orderList = orderList;
-                return wrapper;
-            }
-        }
+        return wrapper;
     }
 
     private static oebsWrapper deserializeServiceReqResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        List<SFWrapper> SFList = new List<SFWrapper>();
-        List<Object> outerList = new List<Object>();
-        List<Object> innerList = new List<Object>();
-
-        Object rawOuterOrder = JSON.deserializeUntyped(responseBody);
-        if (rawOuterOrder != null) {
-            if (rawOuterOrder instanceof List<Object>) {
-                outerList = (List<Object>) rawOuterOrder;
-            } else {
-                outerList.add(rawOuterOrder);
-            }
+        try {
+            List<SFWrapper> wrappers = (List<SFWrapper>) JSON.deserialize(responseBody, List<SFWrapper>.class);
+            wrapper.serviceRequestList = wrappers;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
-        if (outerList.size() == 0) {
-            return wrapper;
-        } else {
-            for (Object outerOrder : outerList) {
-                Map<String, Object> outerMap = (Map<String, Object>) outerOrder;
-                SFWrapper sfWrapper = new SFWrapper();
-                sfWrapper.orgId = (String) outerMap.get('orgId');
-                sfWrapper.sfNummer = (String) outerMap.get('sfNummer');
-                sfWrapper.sfType = (String) outerMap.get('sfType');
-                sfWrapper.problemSammendrag = (String) outerMap.get('problemSammendrag');
-                String tempLos = (String) outerMap.get('losningSammendrag');
-                if (tempLos == null || tempLos == '') {
-                    sfWrapper.losningSammendrag = (String) outerMap.get('løsningSammendrag');
-                } else {
-                    sfWrapper.losningSammendrag = tempLos;
-                }
-                sfWrapper.fnr = (String) outerMap.get('fnr');
-                sfWrapper.brukerNummer = (String) outerMap.get('brukerNummer');
-                sfWrapper.sfOpprettetDato = (String) outerMap.get('sfOpprettetDato');
-                sfWrapper.status = (String) outerMap.get('status');
-
-                // Service Forespørsel Inner (liste eller enkeltobjekt)
-                Object rawInnerOrder = outerMap.get('sfNotater');
-                if (rawInnerOrder != null) {
-                    if (rawInnerOrder instanceof List<Object>) {
-                        innerList = (List<Object>) rawInnerOrder;
-                    } else {
-                        innerList.add(rawInnerOrder);
-                    }
-                }
-                for (Object innerOrder : innerList) {
-                    Map<String, Object> innerMap = (Map<String, Object>) innerOrder;
-                    notatWrapper nWrapper = new notatWrapper();
-                    nWrapper.notat = (String) innerMap.get('notat');
-                    nWrapper.opprettetDato = (String) innerMap.get('opprettetDato');
-                    nWrapper.opprettetAvNavn = (String) innerMap.get('opprettetAvNavn');
-                    nWrapper.opprettetAvIdent = (String) innerMap.get('opprettetAvIdent');
-                    sfWrapper.sfNotater.add(nWrapper);
-                }
-                SFList.add(sfWrapper);
-            }
-            if (SFList.isEmpty()) {
-                return wrapper;
-            } else {
-                wrapper.serviceRequestList = SFList;
-                return wrapper;
-            }
-        }
+        return wrapper;
     }
 
     private static oebsWrapper deserializeServiceOrderResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
-        List<SOWrapper> SOList = new List<SOWrapper>();
-        List<Object> innerList = new List<Object>();
-
-        Object rawInnerSO = JSON.deserializeUntyped(responseBody);
-        if (rawInnerSO != null) {
-            if (rawInnerSO instanceof List<Object>) {
-                innerList = (List<Object>) rawInnerSO;
-            } else {
-                innerList.add(rawInnerSO);
-            }
+        try {
+            List<SOWrapper> wrappers = (List<SOWrapper>) JSON.deserialize(responseBody, List<SOWrapper>.class);
+            wrapper.serviceOrderList = wrappers;
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
         }
-        if (innerList.size() == 0) {
-            return wrapper;
-        } else {
-            for (Object innerSO : innerList) {
-                Map<String, Object> innerMap = (Map<String, Object>) innerSO;
-                SOWrapper soWrapper = new SOWrapper();
-                soWrapper.serviceOrdreNummer = (String) innerMap.get('serviceOrdreNummer');
-                soWrapper.serviceType = (String) innerMap.get('serviceType');
-                soWrapper.sfNummer = (String) innerMap.get('sfNummer');
-                soWrapper.opprettelsesDato = (String) innerMap.get('opprettelsesDato');
-                soWrapper.artikkel = (String) innerMap.get('artikkel');
-                soWrapper.artikkelBeskrivelse = (String) innerMap.get('artikkelBeskrivelse');
-                soWrapper.serviceOrdreStatus = (String) innerMap.get('serviceOrdreStatus');
-                soWrapper.fnr = (String) innerMap.get('fnr');
-                soWrapper.brukernr = (String) innerMap.get('brukernr');
-                SOList.add(soWrapper);
-            }
-            if (SOList.isEmpty()) {
-                return wrapper;
-            } else {
-                wrapper.serviceOrderList = SOList;
-                return wrapper;
-            }
-        }
+        return wrapper;
     }
 }
