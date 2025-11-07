@@ -1,7 +1,10 @@
 <template>
     <!-- 1) LOADING STATE -->
     <template lwc:if={isLoading}>
-        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+        <c-hot_skeleton-loading-component
+            type="table"
+            table-column-count={skeletonColumnCount}
+        ></c-hot_skeleton-loading-component>
     </template>
     <template lwc:else>
         <!-- 2) ERROR STATE -->
