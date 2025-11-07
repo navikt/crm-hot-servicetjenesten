@@ -75,4 +75,8 @@ export default class Hot_oebsServiceordre extends LightningElement {
     get hasData() {
         return !this.isLoading && !this.error && Array.isArray(this.serviceOrdre) && this.serviceOrdre.length > 0;
     }
+
+    get skeletonColumnCount() {
+        return Array.isArray(this.columns) ? this.columns.length : 0;
+    }
 }
