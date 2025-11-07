@@ -16,7 +16,7 @@
     </template>
     <div class="gender-wrapper">
         <template lwc:if={isLoading}>
-            <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+            <c-hot_skeleton-loading-component type="personHighlightPanel"></c-hot_skeleton-loading-component>
         </template>
         <template lwc:elseif={noPerson}></template>
         <template lwc:else>
