@@ -34,7 +34,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         { label: 'Artikkel', fieldName: 'artikkel', type: 'text' },
         { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text', wrapText: true },
         { label: 'Antall', fieldName: 'antall', type: 'text' },
-        //{ label: 'Lovet dato', fieldName: 'lovetDato', type: 'text' },
+        { label: 'Lovet dato', fieldName: 'lovetDatoBestillingsLinje', type: 'text' },
         //{ label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
         { label: 'Leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
         //{ label: 'city', fieldName: 'city', type: 'text' },
@@ -87,7 +87,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
                 artikkel: n.artikkel ?? '',
                 artikkelBeskrivelse: n.artikkelBeskrivelse ?? '',
                 antall: n.antall ?? '',
-                //lovetDato: n.lovetDato ?? '',
+                lovetDato: n.lovetDatoBestillingsLinje ?? '',
                 //planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
                 leveringsadresse: n.leveringsadresse ?? ''
                 //city: n.city ?? '',

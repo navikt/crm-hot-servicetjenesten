@@ -66,7 +66,8 @@ private class HOT_OEBSIntegrationControllerTest {
                 '               \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
                 '               \"antall\": \"1\",' +
                 '               \"ordreLinjeDato\": \"24-APR-23\",' +
-                '               \"lovetDato\": \"24-APR-23\",' +
+                '               \"lovetDatoOrdreLinje\": \"24-APR-23\",' +
+                '               \"lovetDatoBestillingsLinje\": \"24-MAI-23\",' +
                 '               \"planlagtSkipningsDato\": \"12-APR-23\",' +
                 '               \"statusOrdreLinje\": \"Venter på retur\",' +
                 '               \"anmodningsNummer\": \"1234\",' +
@@ -107,7 +108,8 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"artikkelBeskrivelse\": \"Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
                 '              \"antall\": \"1\",' +
                 '              \"ordreLinjeDato\": \"24-APR-23\",' +
-                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"lovetDatoOrdreLinje\": \"24-APR-23\",' +
+                '              \"lovetDatoBestillingsLinje\": \"24-MAI-23\",' +
                 '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
                 '              \"statusOrdreLinje\": \"Venter på retur\",' +
                 '              \"anmodningsNummer\": \"1234\",' +
@@ -124,7 +126,8 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"artikkelBeskrivelse\": \"Test Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
                 '              \"antall\": \"1\",' +
                 '              \"ordreLinjeDato\": \"24-APR-23\",' +
-                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"lovetDatoOrdreLinje\": \"24-APR-23\",' +
+                '              \"lovetDatoBestillingsLinje\": \"24-MAI-23\",' +
                 '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
                 '              \"statusOrdreLinje\": \"Venter på retur\",' +
                 '              \"anmodningsNummer\": \"1234\",' +
@@ -151,7 +154,8 @@ private class HOT_OEBSIntegrationControllerTest {
                 '              \"artikkelBeskrivelse\": \"Ordre 2 Rullator 4hjul Gemino 60 b64 h76-95 sh62 sml hjul massiv\",' +
                 '              \"antall\": \"1\",' +
                 '              \"ordreLinjeDato\": \"24-APR-23\",' +
-                '              \"lovetDato\": \"24-APR-23\",' +
+                '              \"lovetDatoOrdreLinje\": \"24-APR-23\",' +
+                '              \"lovetDatoBestillingsLinje\": \"24-MAI-23\",' +
                 '              \"planlagtSkipningsDato\": \"12-APR-23\",' +
                 '              \"statusOrdreLinje\": \"Venter på retur\",' +
                 '              \"anmodningsNummer\": \"1234\",' +
