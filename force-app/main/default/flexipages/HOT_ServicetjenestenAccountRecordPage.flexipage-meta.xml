@@ -464,6 +464,50 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>brukerIdentField</name>
+                    <value>CRM_Person__r.Name</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>brukerIdentType</name>
+                    <value>FNR</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logDomain</name>
+                    <value>HOT</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logException</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logRequests</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numberOfjournals</name>
+                    <value>100</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>themeGroupField</name>
+                </componentInstanceProperties>
+                <componentName>safDocumentByUser</componentName>
+                <identifier>c_safDocumentByUser</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.HOT_Beta}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-772a56ed-b2fb-4c9f-b683-6d2a4a3143ab</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
@@ -681,6 +725,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-772a56ed-b2fb-4c9f-b683-6d2a4a3143ab</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Dokumenter</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab9</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
