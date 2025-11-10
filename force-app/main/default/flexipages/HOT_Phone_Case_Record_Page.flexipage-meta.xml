@@ -476,6 +476,13 @@
                 </componentInstanceProperties>
                 <componentName>safDocumentByUser</componentName>
                 <identifier>c_safDocumentByUser</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.HOT_Beta}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>Facet-711ec082-ec69-498e-8817-0a1d2367fbef</name>
