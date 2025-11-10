@@ -66,7 +66,7 @@
                 </lightning-button-icon>
             </lightning-layout-item>
         </template>
-        <template if:true={hasBrukernummer}>
+        <template lwc:if={hasBrukernummer}>
             <lightning-layout-item class="custom-padding-left custom-grid-vertical-align-center">
                 <span>{oebsBrukerNr}</span>
                 <lightning-button-icon
