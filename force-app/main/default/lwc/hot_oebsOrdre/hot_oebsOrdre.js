@@ -78,7 +78,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         this.order = keyed.length ? this.sortedCopy(keyed, this.sortBy, this.sortDirection) : [];
 
         this.ordreLinjer = this.order.flatMap((row) =>
-            (row.orderLineList ?? []).map((n, nIdx) => ({
+            (row.ordreLinjer ?? []).map((n, nIdx) => ({
                 __key: `${row.__key}-${nIdx}`,
                 ordreLinjeNummer: n.ordreLinjeNummer ?? '',
                 ordreNummer: row.ordreNummer ?? '',
@@ -87,7 +87,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
                 artikkel: n.artikkel ?? '',
                 artikkelBeskrivelse: n.artikkelBeskrivelse ?? '',
                 antall: n.antall ?? '',
-                lovetDato: n.lovetDatoBestillingsLinje ?? '',
+                lovetDatoBestillingsLinje: n.lovetDatoBestillingsLinje ?? '',
                 //planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
                 leveringsadresse: n.leveringsadresse ?? ''
                 //city: n.city ?? '',
