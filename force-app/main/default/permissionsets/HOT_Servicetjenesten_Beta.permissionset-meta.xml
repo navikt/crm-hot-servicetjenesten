@@ -4,6 +4,10 @@
         <enabled>true</enabled>
         <name>HOT_Beta</name>
     </customPermissions>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>SAF_Get_Document_By_User</name>
+    </customPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>HOT Servicetjenesten Beta</label>
 </PermissionSet>
