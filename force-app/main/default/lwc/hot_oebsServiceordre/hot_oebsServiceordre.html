@@ -1,18 +1,21 @@
 <template>
     <!-- 1) LOADING STATE -->
     <template lwc:if={isLoading}>
-        <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+        <c-hot_skeleton-loading-component
+            type="table"
+            table-column-count={skeletonColumnCount}
+        ></c-hot_skeleton-loading-component>
     </template>
     <template lwc:else>
         <!-- 2) ERROR STATE -->
-        <template if:true={error}>
+        <template lwc:if={error}>
             <div class="slds-text-color_error">
                 <p>Noe gikk galt!</p>
             </div>
         </template>
 
         <!-- 3) DATA STATE: if we have data, show lightning-datatable -->
-        <template lwc:if={hasData}>
+        <template lwc:elseif={hasData}>
             <lightning-card title="Serviceordre">
                 <lightning-datatable
                     key-field="serviceOrdreNummer"
@@ -27,7 +30,7 @@
         </template>
 
         <!-- 4) NO DATA STATE: If no data, show message -->
-        <template lwc:else>
+        <template lwc:elseif={noData}>
             <p>Ingen serviceordre funnet på bruker.</p>
         </template>
     </template>
