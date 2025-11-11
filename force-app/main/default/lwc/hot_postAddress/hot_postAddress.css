@@ -4,11 +4,13 @@
 
 .icon {
     --sds-c-icon-color-foreground-default: black;
+    padding-left: 0.5rem;
+    padding-right: 0.2rem;
 }
 
 .section {
-    padding-right: 1.75rem;
-    padding-left: 0.75rem;
+    padding-right: 0rem;
+    padding-left: 0rem;
 }
 
 .clipboardInput {
