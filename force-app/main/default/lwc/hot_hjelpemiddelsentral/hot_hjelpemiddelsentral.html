@@ -16,37 +16,50 @@
                 <span class="slds-truncate" title="Section Title">Hjelpemiddelsentral</span>
             </button>
         </h3>
-        <div aria-hidden={ariaHidden} class="slds-section__content" id="expando-unique-id">
-            <div class="slds-var-p-horizontal_medium" lwc:if={bostedHjelpemiddelsentralString}>
-                <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
-                <lightning-formatted-url
-                    value={bostedHjelpemiddelsentralUrl}
-                    label={bostedHjelpemiddelsentralString}
-                    target="_blank"
-                ></lightning-formatted-url>
+        <template lwc:if={isExpanded}>
+            <div aria-hidden={ariaHidden} class="slds-section__content" id="expando-unique-id">
+                <div class="slds-var-p-horizontal_medium" lwc:if={bostedHjelpemiddelsentralString}>
+                    <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
+                    <lightning-formatted-url
+                        value={bostedHjelpemiddelsentralUrl}
+                        label={bostedHjelpemiddelsentralString}
+                        target="_blank"
+                    ></lightning-formatted-url>
+                    <lightning-formatted-text
+                        value=" med ordinær bostedsadresse."
+                        class="slds-text-title text"
+                    ></lightning-formatted-text>
+                </div>
+                <div class="slds-var-p-horizontal_medium" lwc:if={midlertidigHjelpemiddelsentralString}>
+                    <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
+                    <lightning-formatted-url
+                        value={midlertidigBostedHjelpemiddelsentralUrl}
+                        label={midlertidigHjelpemiddelsentralString}
+                        target="_blank"
+                    ></lightning-formatted-url>
+                    <lightning-formatted-text
+                        value=" med midlertidig bostedsadresse."
+                        class="slds-text-title text"
+                    ></lightning-formatted-text>
+                </div>
+                <div class="slds-var-p-horizontal_medium" lwc:if={bilsenter}>
+                    <lightning-formatted-text
+                        value="Tilhører Bilsenter  "
+                        class="slds-text-title text"
+                    ></lightning-formatted-text>
+                    <lightning-formatted-url
+                        value="google.com"
+                        label={bilsenterstring}
+                        target="_blank"
+                    ></lightning-formatted-url>
+                </div>
+            </div>
+            <div class="slds-var-p-horizontal_medium" lwc:if={hjelpemiddelsentralError}>
                 <lightning-formatted-text
-                    value=" med ordinær bostedsadresse."
+                    value={hjelpemiddelsentralError}
                     class="slds-text-title text"
                 ></lightning-formatted-text>
             </div>
-            <div class="slds-var-p-horizontal_medium" lwc:if={midlertidigHjelpemiddelsentralString}>
-                <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
-                <lightning-formatted-url
-                    value={midlertidigBostedHjelpemiddelsentralUrl}
-                    label={midlertidigHjelpemiddelsentralString}
-                    target="_blank"
-                ></lightning-formatted-url>
-                <lightning-formatted-text
-                    value=" med midlertidig bostedsadresse."
-                    class="slds-text-title text"
-                ></lightning-formatted-text>
-            </div>
-        </div>
-        <div class="slds-var-p-horizontal_medium" lwc:if={hjelpemiddelsentralError}>
-            <lightning-formatted-text
-                value={hjelpemiddelsentralError}
-                class="slds-text-title text"
-            ></lightning-formatted-text>
-        </div>
+        </template>
     </div>
 </template>

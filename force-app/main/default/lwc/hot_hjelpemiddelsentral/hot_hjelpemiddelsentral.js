@@ -5,19 +5,20 @@ import getAllHjelpemiddelSentraler from '@salesforce/apex/HOT_Hjelpemiddelsentra
 export default class hotHjelpemiddelsentral extends LightningElement {
     @api objectApiName;
     @api recordId;
-    @track sectionClass = 'slds-section section slds-is-open';
+    @track sectionClass = 'slds-section section';
     personMunicipalityAndRegions = [];
     allHjelpemiddelSentraler = [];
-    // @track sectionIconName = 'utility:chevrondown';
-    @track sectionIconName = '';
-    isExpanded = true;
-    ariaHidden = false;
+    @track sectionIconName = 'utility:chevronright';
+    isExpanded = false;
+    ariaHidden = true;
+    bilsenter = true;
 
     @track hjelpemiddelsentralError;
     @track bostedHjelpemiddelsentralString = '';
     @track midlertidigHjelpemiddelsentralString = '';
     @track bostedHjelpemiddelsentralUrl;
     @track midlertidigBostedHjelpemiddelsentralUrl;
+    @track bilsenterstring = '';
 
     getHjelpemiddelsentraler() {
         getPersonMunicipalityAndRegions({
@@ -87,6 +88,12 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                             }
                         }
                     }
+                    // FIKS, finn ut hvorfor dette ikke kjører
+                    console.log('kom hit');
+                    if (this.bilsenter) {
+                        console.log('inni ');
+                        this.setBilsenter();
+                    }
                 });
             }
         });
@@ -100,21 +107,27 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         this.midlertidigBostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
 
+    setBilsenter() {
+        console.log('setBilsenter called');
+        this.bilsenterstring = 'Bilsenter Nav';
+        console.log('bilsenterstring ->', this.bilsenterstring);
+    }
+
     connectedCallback() {
         this.getHjelpemiddelsentraler();
     }
     /* Function to handle open/close section */
-    // handleOpen() {
-    //     if (this.sectionClass === 'slds-section section slds-is-open') {
-    //         this.sectionClass = 'slds-section section';
-    //         this.sectionIconName = 'utility:chevronright';
-    //         this.isExpanded = false;
-    //         this.ariaHidden = true;
-    //     } else {
-    //         this.sectionClass = 'slds-section section slds-is-open';
-    //         this.sectionIconName = 'utility:chevrondown';
-    //         this.isExpanded = true;
-    //         this.ariaHidden = false;
-    //     }
-    // }
+    handleOpen() {
+        if (this.sectionClass === 'slds-section section slds-is-open') {
+            this.sectionClass = 'slds-section section';
+            this.sectionIconName = 'utility:chevronright';
+            this.isExpanded = false;
+            this.ariaHidden = true;
+        } else {
+            this.sectionClass = 'slds-section section slds-is-open';
+            this.sectionIconName = 'utility:chevrondown';
+            this.isExpanded = true;
+            this.ariaHidden = false;
+        }
+    }
 }
