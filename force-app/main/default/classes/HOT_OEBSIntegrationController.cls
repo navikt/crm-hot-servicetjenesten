@@ -120,7 +120,9 @@ public with sharing class HOT_OEBSIntegrationController {
         @AuraEnabled
         public String ordreLinjeDato;
         @AuraEnabled
-        public String lovetDato;
+        public String lovetDatoOrdreLinje;
+        @AuraEnabled
+        public String lovetDatoBestillingsLinje;
         @AuraEnabled
         public String planlagtSkipningsDato;
         @AuraEnabled
