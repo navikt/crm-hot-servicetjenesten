@@ -1,10 +1,38 @@
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
+import getOEBS from '@salesforce/apex/HOT_OEBSIntegrationController.HOT_OEBS_Integration';
 
 export default class hot_personHighlightPanelTop extends LightningElement {
     @api personDetails;
+    @api recordId;
+    @api objectApiName;
+
+    oebsBrukerNr;
+
+    @wire(getOEBS, {
+        recordId: '$recordId',
+        objectApiName: '$objectApiName',
+        apiName: 'GET_OEBS_Brukernr'
+    })
+    wiredObesBrukernr({ data, error }) {
+        if (error) {
+            console.error('Error fetching OEBS Brukernr', error);
+            this.oebsBrukerNr = undefined;
+            return;
+        }
+
+        if (data) {
+            try {
+                this.oebsBrukerNr = data?.brukerNr?.brukerNummer || '';
+            } catch (e) {
+                this.oebsBrukerNr = '';
+            }
+        } else {
+            this.oebsBrukerNr = '';
+        }
+    }
 
     handleCopy(event) {
         const eventValue = event.currentTarget.value;
@@ -86,5 +114,8 @@ export default class hot_personHighlightPanelTop extends LightningElement {
     }
     get districtUrl() {
         return this.personDetails?.districtUrl;
+    }
+    get hasBrukernummer() {
+        return !!this.oebsBrukerNr;
     }
 }
