@@ -43,15 +43,16 @@
                     ></lightning-formatted-text>
                 </div>
                 <div class="slds-var-p-horizontal_medium" lwc:if={bilsenter}>
-                    <lightning-formatted-text
-                        value="Tilhører Bilsenter  "
-                        class="slds-text-title text"
-                    ></lightning-formatted-text>
+                    <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
                     <lightning-formatted-url
-                        value="google.com"
-                        label={bilsenterstring}
+                        value={bilsenterUrl}
+                        label={bilsenterString}
                         target="_blank"
                     ></lightning-formatted-url>
+                    <lightning-formatted-text
+                        value=" bilsenter."
+                        class="slds-text-title text"
+                    ></lightning-formatted-text>
                 </div>
             </div>
             <div class="slds-var-p-horizontal_medium" lwc:if={hjelpemiddelsentralError}>

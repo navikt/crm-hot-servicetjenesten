@@ -1,14 +1,14 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import getPersonMunicipalityAndRegions from '@salesforce/apex/HOT_HjelpemiddelsentralController.getPersonMunicipalityAndRegions';
 import getAllHjelpemiddelSentraler from '@salesforce/apex/HOT_HjelpemiddelsentralController.getAllHjelpemiddelSentraler';
-
+import getBilsenter from '@salesforce/apex/HOT_HjelpemiddelsentralController.getBilsenter';
 export default class hotHjelpemiddelsentral extends LightningElement {
     @api objectApiName;
     @api recordId;
     @track sectionClass = 'slds-section section';
     personMunicipalityAndRegions = [];
     allHjelpemiddelSentraler = [];
-    @track sectionIconName = 'utility:chevronright';
+    sectionIconName = 'utility:chevronright';
     isExpanded = false;
     ariaHidden = true;
     bilsenter = true;
@@ -18,7 +18,8 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     @track midlertidigHjelpemiddelsentralString = '';
     @track bostedHjelpemiddelsentralUrl;
     @track midlertidigBostedHjelpemiddelsentralUrl;
-    @track bilsenterstring = '';
+    @track bilsenterString = '';
+    @track bilsenterUrl = '';
 
     getHjelpemiddelsentraler() {
         getPersonMunicipalityAndRegions({
@@ -34,6 +35,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                     !this.personMunicipalityAndRegions.INT_TemporaryMunicipalityNumber__c)
             ) {
                 this.hjelpemiddelsentralError = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
+                this.bilsenter = false;
             } else {
                 getAllHjelpemiddelSentraler({}).then((result) => {
                     this.allHjelpemiddelSentraler = result;
@@ -88,11 +90,18 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                             }
                         }
                     }
-                    // FIKS, finn ut hvorfor dette ikke kjører
-                    console.log('kom hit');
                     if (this.bilsenter) {
-                        console.log('inni ');
-                        this.setBilsenter();
+                        getBilsenter({ accountId: this.recordId })
+                            .then((result) => {
+                                if (result) {
+                                    this.setBilsenter(result);
+                                } else {
+                                    this.bilsenter = false;
+                                }
+                            })
+                            .catch((error) => {
+                                this.bilsenter = false;
+                            });
                     }
                 });
             }
@@ -107,10 +116,9 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         this.midlertidigBostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
 
-    setBilsenter() {
-        console.log('setBilsenter called');
-        this.bilsenterstring = 'Bilsenter Nav';
-        console.log('bilsenterstring ->', this.bilsenterstring);
+    setBilsenter(result) {
+        this.bilsenterString = result.Bilsenter_Navn__c;
+        this.bilsenterUrl = result.Bilsenter_Url__c;
     }
 
     connectedCallback() {
