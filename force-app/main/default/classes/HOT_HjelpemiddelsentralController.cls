@@ -49,6 +49,10 @@ public with sharing class HOT_HjelpemiddelsentralController {
             LIMIT 1
         ];
 
+        if (!account.CRM_Person__c) {
+            return null;
+        }
+
         Person__c person = [
             SELECT Id, CRM_Municipality__r.CRM_Code__c, CRM_Municipality__r.Name, INT_RegionNumber__c
             FROM Person__c
