@@ -42,28 +42,28 @@ public with sharing class HOT_HjelpemiddelsentralController {
     @AuraEnabled(cacheable=true)
     public static HOT_Bilsenter_Mapping__mdt getBilsenter(String accountId) {
         Set<Decimal> splitRegionNumbers = new Set<Decimal>{ 32, 34 };
-        Account account = [
+        List<Account> account = [
             SELECT CRM_Person__c
             FROM Account
             WHERE Id = :accountId
             LIMIT 1
         ];
 
-        if (!account.CRM_Person__c) {
+        if (account[0].CRM_Person__c == null) {
             return null;
         }
 
-        Person__c person = [
+        List<Person__c> person = [
             SELECT Id, CRM_Municipality__r.CRM_Code__c, CRM_Municipality__r.Name, INT_RegionNumber__c
             FROM Person__c
-            WHERE Id = :account.CRM_Person__c
+            WHERE Id = :account[0].CRM_Person__c
             LIMIT 1
         ];
 
         List<HOT_Bilsenter_Mapping__mdt> bilsenterMapping = [
             SELECT Bilsenter_Navn__c, Bilsenter_Url__c, Fylkenummer__c, Kommunenummer__c
             FROM HOT_Bilsenter_Mapping__mdt
-            WHERE Fylkenummer__c = :Integer.valueOf(person.INT_RegionNumber__c)
+            WHERE Fylkenummer__c = :Integer.valueOf(person[0].INT_RegionNumber__c)
             LIMIT 2
         ];
         if (bilsenterMapping.size() == 0) {
@@ -73,7 +73,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
             return bilsenterMapping[0];
         } else {
             for (HOT_Bilsenter_Mapping__mdt mapping : bilsenterMapping) {
-                if (mapping.Kommunenummer__c.contains(person.CRM_Municipality__r.CRM_Code__c)) {
+                if (mapping.Kommunenummer__c.contains(person[0].CRM_Municipality__r.CRM_Code__c)) {
                     return mapping;
                 }
             }
