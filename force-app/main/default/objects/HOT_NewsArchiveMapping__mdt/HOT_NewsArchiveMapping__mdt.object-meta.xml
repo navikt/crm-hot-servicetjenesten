@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>P360 Case Number mapping for News Articles</description>
+    <label>News Archive Mapping</label>
+    <pluralLabel>News Archive Mappings</pluralLabel>
+    <visibility>Public</visibility>
+</CustomObject>
