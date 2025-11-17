@@ -1,0 +1,27 @@
+<apex:page controller="HOT_NewsPDFController"
+title="{!title}"
+standardStylesheets="false"
+sidebar="false"
+showHeader="false"
+applyBodyTag="false"
+renderAs="pdf"
+>
+<head>
+    <style>
+        body { font-family: 'Arial Unicode MS'; }
+        p {margin-bottom: 0; margin-top: 0}
+    </style>
+</head>
+<body>
+    <h1 class="articleHeader">{!title}</h1>
+    <h3>Forfatter: {!author}</h3>
+    <h4>Andre forfattere: {!otherAuthors}</h4>
+    <hr/> 
+    <h5>Publisert: {!publishDate}. Oppdatert: {!lastModifiedDate}</h5>
+    <div>
+    <apex:outputText value="{!information}" escape="false"/>
+    </div>
+    <br/>
+    <apex:image value="{!imageURL}" height="180" /> 
+</body>   
+</apex:page>
