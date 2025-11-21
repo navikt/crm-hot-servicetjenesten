@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="PSR Push Listener">
+        <div class="slds-m-around_medium">
+            <p>Status: {status}</p>
+            <template lwc:if={latestEvent}>
+                <p><strong>Latest Event:</strong></p>
+                <div>{latestEvent}</div>
+            </template>
+        </div>
+    </lightning-card>
+</template>
