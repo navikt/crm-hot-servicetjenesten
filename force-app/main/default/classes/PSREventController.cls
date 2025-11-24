@@ -49,25 +49,24 @@ public with sharing class PSREventController {
         } catch (Exception ex) {
             throw new AuraHandledException('Callout failed: ' + ex.getMessage());
         }
+        /*** Return er bare brukt for debugging purpose. Om dette skal aktiveres bør klassen gjøres ***/
         return calloutResponse;
     }
 
     private static String puzzelCallout(String bodyJson) {
-        /*** Dette er bare bygget for POC, benytt Named Credentials om dette skal taes i bruk ***/
+        Http http = new Http();
+        /*** Hent bearer token (forbedres til å ikke hente ny pr gang?) ***/
         String token = getBearerToken();
-        system.debug('Token found? ' + token);
         if (String.isBlank(token)) {
             throw new AuraHandledException('Bearer token is missing.');
         }
 
-        Http http = new Http();
+        /*** Bygg opp request for eTask og ta imot responsen ***/
         HttpRequest req = new HttpRequest();
-
         req.setEndpoint('https://api.puzzel.com/ContactCentre5/4115509/etasks');
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
         req.setHeader('Authorization', 'Bearer ' + token);
-
         req.setBody(bodyJson);
 
         HttpResponse res = http.send(req);
@@ -76,33 +75,32 @@ public with sharing class PSREventController {
     }
 
     private static String getBearerToken() {
-        system.debug('was here');
+        Http http = new Http();
+        /*** Hent opp client id og secret fra custom setting ***/
+        Puzzel_Auth_Config__c cfg = Puzzel_Auth_Config__c.getOrgDefaults();
+        String clientId = cfg.client_id__c;
+        String clientSecret = cfg.client_secret__c;
+
+        /*** Bygg opp request for å generere token ***/
         HttpRequest req = new HttpRequest();
         req.setEndpoint('https://app.puzzel.com/id/connect/token');
         req.setMethod('POST');
-
         req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
         req.setHeader('Accept', 'application/json');
-
-        /*** husk å flytte hemmelig data ut av koden, bare brukt i PoC ***/
         req.setBody(
             'grant_type=client_credentials' +
-            '&client_id=41155-violet-535' +
-            '&client_secret=JcZfjcZrLLkjJqRgSY5fLLByzXhN0c7pdgsIrIg8' +
-            '&scope=contact-centre:4115509:793327'
+                '&client_id=' +
+                EncodingUtil.urlEncode(clientId, 'UTF-8') +
+                '&client_secret=' +
+                EncodingUtil.urlEncode(clientSecret, 'UTF-8')
         );
 
-        Http http = new Http();
+        /*** Send request og håndter response ved å lagre bearer token ***/
         HttpResponse res = http.send(req);
-        system.debug('Response: ' + res);
-
         if (res.getStatusCode() != 200) {
             throw new CalloutException('Failed to retrieve token: ' + res.getStatusCode() + ' — ' + res.getBody());
         }
-
         Map<String, Object> jsonMap = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
-        system.debug('jsonMap Bearer: ' + jsonMap);
-
         return (String) jsonMap.get('access_token');
     }
 }
