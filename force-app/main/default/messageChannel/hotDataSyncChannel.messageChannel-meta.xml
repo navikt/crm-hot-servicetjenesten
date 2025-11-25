@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>HOT Data Sync Channel</masterLabel>
+    <isExposed>true</isExposed>
+    <description>A message channel for notifying custom components of changes on fields from
+        callouts.</description>
+</MessageChannel>
