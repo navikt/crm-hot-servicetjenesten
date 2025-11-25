@@ -54,53 +54,16 @@ public with sharing class PSREventController {
     }
 
     private static String puzzelCallout(String bodyJson) {
-        Http http = new Http();
-        /*** Hent bearer token (forbedres til å ikke hente ny pr gang?) ***/
-        String token = getBearerToken();
-        if (String.isBlank(token)) {
-            throw new AuraHandledException('Bearer token is missing.');
-        }
-
         /*** Bygg opp request for eTask og ta imot responsen ***/
+        Http http = new Http();
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://api.puzzel.com/ContactCentre5/4115509/etasks');
+        req.setEndpoint('callout:Puzzel_Chat/4115509/etasks');
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
-        req.setHeader('Authorization', 'Bearer ' + token);
         req.setBody(bodyJson);
 
         HttpResponse res = http.send(req);
 
         return res.getBody();
-    }
-
-    private static String getBearerToken() {
-        Http http = new Http();
-        /*** Hent opp client id og secret fra custom setting ***/
-        Puzzel_Auth_Config__c cfg = Puzzel_Auth_Config__c.getOrgDefaults();
-        String clientId = cfg.client_id__c;
-        String clientSecret = cfg.client_secret__c;
-
-        /*** Bygg opp request for å generere token ***/
-        HttpRequest req = new HttpRequest();
-        req.setEndpoint('https://app.puzzel.com/id/connect/token');
-        req.setMethod('POST');
-        req.setHeader('Content-Type', 'application/x-www-form-urlencoded');
-        req.setHeader('Accept', 'application/json');
-        req.setBody(
-            'grant_type=client_credentials' +
-                '&client_id=' +
-                EncodingUtil.urlEncode(clientId, 'UTF-8') +
-                '&client_secret=' +
-                EncodingUtil.urlEncode(clientSecret, 'UTF-8')
-        );
-
-        /*** Send request og håndter response ved å lagre bearer token ***/
-        HttpResponse res = http.send(req);
-        if (res.getStatusCode() != 200) {
-            throw new CalloutException('Failed to retrieve token: ' + res.getStatusCode() + ' — ' + res.getBody());
-        }
-        Map<String, Object> jsonMap = (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
-        return (String) jsonMap.get('access_token');
     }
 }
