@@ -17,86 +17,6 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.CRM_FullName__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rCRM_FullName_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_KrrMobilePhone__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_KrrMobilePhone_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.CRM_AgeNumber__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rCRM_AgeNumber_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_LegalStatus__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_LegalStatus_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-51c0c7c5-1c09-4add-b0f0-48f791303e15</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.Name</fieldItem>
-                <identifier>RecordAccountCRM_Person_rNameField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_KrrEmail__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_KrrEmail_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_Sex__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_Sex_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_Citizenships__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_Citizenships_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-5baed1ea-e6cc-48ca-8dbf-a4481fc3fc64</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-51c0c7c5-1c09-4add-b0f0-48f791303e15</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column2</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-5baed1ea-e6cc-48ca-8dbf-a4481fc3fc64</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-acd959ca-e48d-4b60-ab64-83dd2f4bcb29</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
                 <fieldItem>Record.Account.CRM_Person__r.INT_ResidentialAddress__c</fieldItem>
                 <identifier>RecordAccountCRM_Person_rINT_ResidentialAddress_cField</identifier>
             </fieldInstance>
@@ -160,19 +80,11 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-acd959ca-e48d-4b60-ab64-83dd2f4bcb29</value>
+                    <name>relationshipField</name>
+                    <value>Account.CRM_Person__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Person informasjon</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <componentName>hot_contactInformation</componentName>
+                <identifier>c_hot_contactInformation</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
