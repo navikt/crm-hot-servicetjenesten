@@ -1,0 +1,57 @@
+.custom-padding-left-large {
+    padding-left: 2rem;
+}
+
+.custom-padding-right-large {
+    padding-right: 2rem;
+}
+
+.custom-padding-top-small {
+    padding-top: 0.5rem;
+}
+
+.custom-padding-bottom-medium {
+    padding-bottom: 1rem;
+}
+
+.custom-padding-top-medium {
+    padding-top: 1rem;
+}
+
+.custom-margin-left-small {
+    margin-left: 0.5rem;
+}
+
+.custom-margin-right-small {
+    margin-right: 0.5rem;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.italic-text {
+    font-style: italic;
+}
+
+.custom-divider {
+    border-bottom: 1px solid #a9a9a9;
+    padding-bottom: 0.8rem;
+    padding-top: 0.8rem;
+}
+
+.copy-icon {
+    padding-bottom: 5px;
+    padding-left: 2px;
+    float: right;
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.custom-font-color {
+    color: black;
+}
