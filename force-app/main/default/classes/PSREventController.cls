@@ -57,7 +57,7 @@ public with sharing class PSREventController {
         /*** Bygg opp request for eTask og ta imot responsen ***/
         Http http = new Http();
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:Puzzel_Chat/4115509/etasks');
+        req.setEndpoint('callout:PuzzelChat/4115509/etasks');
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
         req.setBody(bodyJson);

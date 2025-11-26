@@ -8,17 +8,13 @@ public class PSREventControllerTest {
             HttpResponse res = new HttpResponse();
             res.setStatusCode(200);
 
-            /* Token endpoint mock */
-            if (req.getEndpoint().contains('/token')) {
-                res.setBody('{"access_token":"FAKE_TOKEN_123","token_type":"Bearer"}');
-            }
-
             /* eTask endpoint mock */
             if (req.getEndpoint().contains('/etasks')) {
                 System.assert(
-                    req.getEndpoint().contains('https://api.puzzel.com/ContactCentre5/4115509/etasks'),
+                    req.getEndpoint().contains('callout:PuzzelChat/4115509/etasks'),
                     'Main callout endpoint does not match expected.'
                 );
+                system.debug('endpoint: ' + req.getEndpoint());
                 res.setBody('{"status":"success"}');
             }
             return res;
@@ -31,13 +27,6 @@ public class PSREventControllerTest {
     @IsTest
     static void PSREventControllerTest() {
         Test.setMock(HttpCalloutMock.class, new PuzzelMock());
-
-        Puzzel_Auth_Config__c cfg = new Puzzel_Auth_Config__c(
-            SetupOwnerId = UserInfo.getOrganizationId(),
-            client_id__c = 'testClientId',
-            client_secret__c = 'testClientSecret'
-        );
-        insert cfg;
 
         String incomingJson =
             '{' +
