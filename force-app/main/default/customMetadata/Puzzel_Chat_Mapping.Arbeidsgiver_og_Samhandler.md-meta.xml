@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Hjelpemiddelsentralen</label>
+    <label>Arbeidsgiver og Samhandler</label>
     <protected>false</protected>
     <values>
         <field>Puzzel_Chat_Name__c</field>
-        <value xsi:type="xsd:string">SF_Chat_Hjelpemiddelsentralen</value>
+        <value xsi:type="xsd:string">SF_Chat_Arbeidsgiver_og_Samhandler</value>
     </values>
     <values>
         <field>Puzzel_Queue_Api__c</field>
-        <value xsi:type="xsd:string">q_sf_chat_hjelpemiddelsentralen</value>
+        <value xsi:type="xsd:string">q_sf_chat_arbeidsgiver_og_samhandler</value>
     </values>
     <values>
         <field>Salesforce_GroupId__c</field>
-        <value xsi:type="xsd:string">00GKD000000iAkd2AE</value>
+        <value xsi:type="xsd:string">00G2o000009a1CUEAY</value>
     </values>
 </CustomMetadata>

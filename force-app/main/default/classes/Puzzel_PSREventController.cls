@@ -1,4 +1,4 @@
-public with sharing class PSREventController {
+public with sharing class Puzzel_PSREventController {
     @AuraEnabled
     public static String PSREventController(String responseJson) {
         String calloutResponse;

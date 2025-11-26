@@ -1,5 +1,5 @@
 @IsTest
-public class PSREventControllerTest {
+public class Puzzel_PSREventControllerTest {
     // ------------------------------------------------------
     // MOCK FOR BEARER TOKEN CALL OUT
     // ------------------------------------------------------
@@ -48,7 +48,7 @@ public class PSREventControllerTest {
             '}';
 
         Test.startTest();
-        String result = PSREventController.PSREventController(incomingJson);
+        String result = Puzzel_PSREventController.PSREventController(incomingJson);
         Test.stopTest();
 
         System.assertNotEquals(null, result, 'Callout response should not be null.');

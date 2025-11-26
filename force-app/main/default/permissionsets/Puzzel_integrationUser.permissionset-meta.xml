@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <classAccesses>
-        <apexClass>PSREventController</apexClass>
+        <apexClass>Puzzel_PSREventController</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <description>test named credentials for token authentication and callout for integration user</description>
-    <externalCredentialPrincipalAccesses>
+    <!-- <externalCredentialPrincipalAccesses>
         <enabled>true</enabled>
         <externalCredentialPrincipal>Puzzel_Token-Puzzel_Integration_User</externalCredentialPrincipal>
-    </externalCredentialPrincipalAccesses>
+    </externalCredentialPrincipalAccesses> -->
     <hasActivationRequired>false</hasActivationRequired>
-    <label>HOT - Puzzel integration</label>
+    <label>Puzzel integration User</label>
     <license>Salesforce</license>
     <objectPermissions>
         <allowCreate>false</allowCreate>
@@ -28,9 +28,5 @@
     <userPermissions>
         <enabled>true</enabled>
         <name>ApiEnabled</name>
-    </userPermissions>
-    <userPermissions>
-        <enabled>true</enabled>
-        <name>ManageNamedCredentials</name>
     </userPermissions>
 </PermissionSet>

@@ -1,8 +1,8 @@
 import { LightningElement } from 'lwc';
 import { subscribe, unsubscribe, onError } from 'lightning/empApi';
-import PSRController from '@salesforce/apex/PSREventController.PSREventController';
+import PSRController from '@salesforce/apex/Puzzel_PSREventController.PSREventController';
 
-export default class PsrPushListener extends LightningElement {
+export default class puzzel_psrPushListener extends LightningElement {
     channel = '/topic/PSRPushTopic';
     subscription = {};
     status = 'Not connected';
