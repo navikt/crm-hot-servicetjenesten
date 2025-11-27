@@ -34,7 +34,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         { label: 'Artikkel', fieldName: 'artikkel', type: 'text' },
         { label: 'Beskrivelse', fieldName: 'artikkelBeskrivelse', type: 'text', wrapText: true },
         { label: 'Antall', fieldName: 'antall', type: 'text' },
-        //{ label: 'Lovet dato', fieldName: 'lovetDato', type: 'text' },
+        { label: 'Lovet dato', fieldName: 'lovetDatoBestillingsLinje', type: 'text' },
         //{ label: 'Planl. skipning', fieldName: 'planlagtSkipningsDato', type: 'text' },
         { label: 'Leveringsadresse', fieldName: 'leveringsadresse', type: 'text' }
         //{ label: 'city', fieldName: 'city', type: 'text' },
@@ -78,7 +78,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
         this.order = keyed.length ? this.sortedCopy(keyed, this.sortBy, this.sortDirection) : [];
 
         this.ordreLinjer = this.order.flatMap((row) =>
-            (row.orderLineList ?? []).map((n, nIdx) => ({
+            (row.ordreLinjer ?? []).map((n, nIdx) => ({
                 __key: `${row.__key}-${nIdx}`,
                 ordreLinjeNummer: n.ordreLinjeNummer ?? '',
                 ordreNummer: row.ordreNummer ?? '',
@@ -87,7 +87,7 @@ export default class Hot_oebsOrdrelinjer extends LightningElement {
                 artikkel: n.artikkel ?? '',
                 artikkelBeskrivelse: n.artikkelBeskrivelse ?? '',
                 antall: n.antall ?? '',
-                //lovetDato: n.lovetDato ?? '',
+                lovetDatoBestillingsLinje: n.lovetDatoBestillingsLinje ?? '',
                 //planlagtSkipningsDato: n.planlagtSkipningsDato ?? '',
                 leveringsadresse: n.leveringsadresse ?? ''
                 //city: n.city ?? '',

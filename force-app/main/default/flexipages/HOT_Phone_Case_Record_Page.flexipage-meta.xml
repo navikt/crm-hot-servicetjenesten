@@ -17,86 +17,6 @@
     <flexiPageRegions>
         <itemInstances>
             <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.CRM_FullName__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rCRM_FullName_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_KrrMobilePhone__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_KrrMobilePhone_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.CRM_AgeNumber__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rCRM_AgeNumber_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_LegalStatus__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_LegalStatus_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-6106846c-8f67-41d3-a4f5-ab227dd3fc0d</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.Name</fieldItem>
-                <identifier>RecordAccountCRM_Person_rNameField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_KrrEmail__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_KrrEmail_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_Sex__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_Sex_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldItem>Record.Account.CRM_Person__r.INT_Citizenships__c</fieldItem>
-                <identifier>RecordAccountCRM_Person_rINT_Citizenships_cField2</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <name>Facet-5bc473d1-da08-44c0-bc6c-cd14cf61146e</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-6106846c-8f67-41d3-a4f5-ab227dd3fc0d</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column3</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-5bc473d1-da08-44c0-bc6c-cd14cf61146e</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:column</componentName>
-                <identifier>flexipage_column4</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-9517977e-bb4e-445e-bc97-db13aeba453b</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <fieldInstance>
                 <fieldItem>Record.Account.CRM_Person__r.INT_ResidentialAddress__c</fieldItem>
                 <identifier>RecordAccountCRM_Person_rINT_ResidentialAddress_cField</identifier>
             </fieldInstance>
@@ -160,19 +80,11 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>columns</name>
-                    <value>Facet-9517977e-bb4e-445e-bc97-db13aeba453b</value>
+                    <name>relationshipField</name>
+                    <value>Account.CRM_Person__c</value>
                 </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>horizontalAlignment</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Person informasjon</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:fieldSection</componentName>
-                <identifier>flexipage_fieldSection2</identifier>
+                <componentName>hot_contactInformation</componentName>
+                <identifier>c_hot_contactInformation</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>
@@ -448,6 +360,50 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>brukerIdentField</name>
+                    <value>Account.CRM_Person__r.Name</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>brukerIdentType</name>
+                    <value>FNR</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logDomain</name>
+                    <value>HOT</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logException</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logRequests</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numberOfjournals</name>
+                    <value>100</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>themeGroupField</name>
+                </componentInstanceProperties>
+                <componentName>safDocumentByUser</componentName>
+                <identifier>c_safDocumentByUser</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$Permission.CustomPermission.HOT_Beta}</leftValue>
+                        <operator>EQUAL</operator>
+                        <rightValue>true</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-711ec082-ec69-498e-8817-0a1d2367fbef</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
@@ -665,6 +621,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab3</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-711ec082-ec69-498e-8817-0a1d2367fbef</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Dokumenter</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab10</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

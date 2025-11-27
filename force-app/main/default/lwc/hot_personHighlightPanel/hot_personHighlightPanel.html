@@ -16,7 +16,7 @@
     </template>
     <div class="gender-wrapper">
         <template lwc:if={isLoading}>
-            <c-hot_skeleton-loading-component></c-hot_skeleton-loading-component>
+            <c-hot_skeleton-loading-component type="personHighlightPanel"></c-hot_skeleton-loading-component>
         </template>
         <template lwc:elseif={noPerson}></template>
         <template lwc:else>
@@ -95,13 +95,6 @@
                             </lightning-layout-item>
                         </template>
                     </lightning-layout-item>
-                    <template if:true={hasBrukernummer}>
-                        <lightning-layout-item>
-                            <div class="bruker-nr-padding-left">
-                                <p>BrukerNr: {oebsBrukerNr}</p>
-                            </div>
-                        </lightning-layout-item>
-                    </template>
                     <lightning-layout-item>
                         <c-hot_person-highlight-panel-bot
                             person-details={personDetails}
