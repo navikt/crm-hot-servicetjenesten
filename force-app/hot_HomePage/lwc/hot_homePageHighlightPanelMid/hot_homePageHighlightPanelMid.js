@@ -1,6 +1,6 @@
 import { LightningElement } from 'lwc';
 import bobLogo from '@salesforce/resourceUrl/bobLogo';
-export default class NksHomePageHighlightPanelMid extends LightningElement {
+export default class Hot_HomePageHighlightPanelMid extends LightningElement {
     get links() {
         return [
             {
