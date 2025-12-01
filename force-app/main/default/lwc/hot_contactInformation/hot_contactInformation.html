@@ -1,0 +1,154 @@
+<template>
+    <lightning-card title="Kontaktinformasjon" icon-name="standard:call_coaching">
+        <lightning-layout
+            multiple-rows="true"
+            class="custom-padding-left-large slds-p-right_x-large custom-padding-top-small custom-font-color"
+        >
+            <template lwc:if={isLoading}>
+                <div>
+                    <lightning-spinner alternative-text="Laster kontaktinfomrasjon" size="medium"></lightning-spinner>
+                </div>
+            </template>
+            <template lwc:else>
+                <template lwc:if={isError}>
+                    <div class="slds-text-color_error custom-margin-left-small slds-theme_default">
+                        <lightning-icon
+                            alternative-text="Feilmelding"
+                            icon-name="utility:error"
+                            size="xx-small"
+                            variant="error"
+                        >
+                        </lightning-icon>
+                        &nbsp;{fancyError}
+                    </div>
+                </template>
+                <template lwc:else>
+                    <lightning-layout-item size="12" class="slds-grid custom-divider">
+                        <div class="slds-grid slds-size_4-of-7">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.5em"
+                                height="1.5em"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                role="img"
+                            >
+                                <path
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    d="M3 5.25a.75.75 0 0 0-.75.75v13c0 .414.336.75.75.75h18a.75.75 0 0 0 .75-.75V6a.75.75 0 0 0-.75-.75zm.75 11.94 5.273-5.273L3.75 8.4zm6.546-4.425L4.81 18.25h14.378l-5.485-5.485-1.288.859a.75.75 0 0 1-.832 0zm4.681-.848L20.25 8.4v8.788zm-11-5.167L12 12.099l8.023-5.349z"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <p class="custom-margin-left-small custom-margin-right-small bold-text">E-post:</p>
+                            <p>{email}</p>
+                        </div>
+                        <!-- <p class="slds-size_3-of-7 slds-p-left_medium italic-text">{krrLastUpdatedFormatted}</p> -->
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" class="custom-divider">
+                        <lightning-layout-item class="slds-grid">
+                            <div class="slds-size_4-of-7">
+                                <div class="slds-grid">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="1.5em"
+                                        height="1.5em"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        focusable="false"
+                                        role="img"
+                                    >
+                                        <path
+                                            fill="currentColor"
+                                            fill-rule="evenodd"
+                                            d="M6.116 2.823a1.25 1.25 0 0 1 1.768 0l3.793 3.793a1.25 1.25 0 0 1 0 1.768L10.06 10 14 13.94l1.616-1.617a1.25 1.25 0 0 1 1.768 0l3.793 3.793a1.25 1.25 0 0 1 0 1.768l-2.781 2.78a2.61 2.61 0 0 1-2.811.578A23.03 23.03 0 0 1 2.758 8.415a2.61 2.61 0 0 1 .577-2.81zl.53.53zM7 4.061 4.396 6.665c-.313.313-.41.782-.245 1.193a21.53 21.53 0 0 0 11.991 11.991c.411.164.88.068 1.193-.245L19.94 17 16.5 13.56l-1.97 1.97a.75.75 0 0 1-1.06 0l-5-5a.75.75 0 0 1 0-1.06l1.97-1.97z"
+                                            clip-rule="evenodd"
+                                        ></path>
+                                    </svg>
+                                    <p class="custom-margin-left-small bold-text">Telefon:</p>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+
+                        <lightning-layout-item lwc:if={formattedPhone} size="12" class="slds-grid">
+                            <div class="slds-size_4-of-7">
+                                <div class="slds-grid slds-wrap icon-container">
+                                    <p class="custom-padding-left-large">{formattedPhone}</p>
+                                    <lightning-button-icon
+                                        class="copy-icon"
+                                        icon-name="utility:copy"
+                                        variant="bare"
+                                        onclick={handleCopyPhone}
+                                        data-phone={phone}
+                                        alternative-text="Kopier telefonnummer"
+                                        title="Kopier telefonnummer"
+                                    ></lightning-button-icon>
+                                </div>
+                            </div>
+                            <!-- <p class="slds-size_3-of-7 slds-p-left_medium italic-text">{krrLastUpdatedFormatted}</p> -->
+                        </lightning-layout-item>
+                        <lightning-layout-item lwc:if={formattedPhone1} size="12" class="slds-grid">
+                            <div class="slds-size_4-of-7">
+                                <div class="slds-grid slds-wrap icon-container">
+                                    <p class="custom-padding-left-large">{formattedPhone1}</p>
+                                    <lightning-button-icon
+                                        class="copy-icon"
+                                        icon-name="utility:copy"
+                                        variant="bare"
+                                        onclick={handleCopyPhone}
+                                        data-phone={phone1}
+                                        alternative-text="Kopier telefonnummer"
+                                        title="Kopier telefonnummer"
+                                    ></lightning-button-icon>
+                                </div>
+                            </div>
+                            <p class="slds-size_3-of-7 slds-p-left_medium italic-text">{pdlLastUpdatedFormatted}</p>
+                        </lightning-layout-item>
+                        <lightning-layout-item lwc:if={formattedPhone2} size="12" class="slds-grid">
+                            <div class="slds-size_4-of-7">
+                                <div class="slds-grid slds-wrap icon-container">
+                                    <p class="custom-padding-left-large">{formattedPhone2}</p>
+                                    <lightning-button-icon
+                                        class="copy-icon"
+                                        icon-name="utility:copy"
+                                        variant="bare"
+                                        onclick={handleCopyPhone}
+                                        data-phone={phone2}
+                                        alternative-text="Kopier telefonnummer"
+                                        title="Kopier telefonnummer"
+                                    ></lightning-button-icon>
+                                </div>
+                            </div>
+                        </lightning-layout-item>
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" class="slds-grid slds-p-bottom_xx-small custom-padding-top-medium">
+                        <div class="slds-grid slds-size_4-of-7">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="1.5em"
+                                height="1.5em"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                focusable="false"
+                                role="img"
+                            >
+                                <path
+                                    fill="currentColor"
+                                    fill-rule="evenodd"
+                                    d="M7.25 7a4.75 4.75 0 0 1 9.5 0v2.25H17c.966 0 1.75.784 1.75 1.75v9a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75v-9c0-.966.784-1.75 1.75-1.75h.25zm1.5 0a3.25 3.25 0 0 1 6.5 0v2.25h-6.5zM7 10.75a.25.25 0 0 0-.25.25v8.25h10.5V11a.25.25 0 0 0-.25-.25zm3.5 3.75a1.5 1.5 0 1 1 2.25 1.3V17a.75.75 0 0 1-1.5 0v-1.2a1.5 1.5 0 0 1-.75-1.3"
+                                    clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                            <p class="custom-margin-right-small custom-margin-left-small bold-text">Reservert i KRR:</p>
+                            <p>{krrReservationTranslation}</p>
+                        </div>
+                        <p class="slds-size_3-of-7 slds-p-left_medium italic-text">{krrLastUpdatedFormatted}</p>
+                    </lightning-layout-item>
+                </template>
+            </template>
+        </lightning-layout>
+    </lightning-card>
+</template>

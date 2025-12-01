@@ -120,7 +120,9 @@ public with sharing class HOT_OEBSIntegrationController {
         @AuraEnabled
         public String ordreLinjeDato;
         @AuraEnabled
-        public String lovetDato;
+        public String lovetDatoOrdreLinje;
+        @AuraEnabled
+        public String lovetDatoBestillingsLinje;
         @AuraEnabled
         public String planlagtSkipningsDato;
         @AuraEnabled
@@ -228,6 +230,9 @@ public with sharing class HOT_OEBSIntegrationController {
             logger.warning(errorMessage, null);
             logger.publish();
             return null;
+        } else if (responseBody.contains('"errors":["')) {
+            //Happens when we get status OK but list is empty
+            return null;
         } else {
             return responseBody;
         }
@@ -256,13 +261,11 @@ public with sharing class HOT_OEBSIntegrationController {
     private static oebsWrapper deserializeOrderResponse(String responseBody) {
         oebsWrapper wrapper = new oebsWrapper();
         try {
-            system.debug('responsebody: ' + responseBody);
             List<orderWrapper> wrappers = (List<orderWrapper>) JSON.deserialize(responseBody, List<orderWrapper>.class);
             wrapper.orderList = wrappers;
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
-
         return wrapper;
     }
 
