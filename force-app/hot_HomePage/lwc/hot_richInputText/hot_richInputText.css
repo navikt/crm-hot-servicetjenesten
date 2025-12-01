@@ -1,0 +1,40 @@
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
+
+.warning {
+    color: red;
+    font-weight: bold;
+}
+
+.richtext-wrapper {
+    position: relative;
+    width: 100%;
+
+    --rtf-size: 200px;
+
+    --slds-c-textarea-sizing-min-height: var(--rtf-size);
+    --slds-c-textarea-sizing-max-height: var(--rtf-size);
+}
+
+.resizable-editor {
+    height: 200px;
+    min-height: 120px;
+    resize: none;
+}
+
+.resizable-editor {
+    height: 200px;
+    resize: none; /* we supply custom handle */
+}
+
+.resize-handle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid #c0c0c0;
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    cursor: se-resize;
+}

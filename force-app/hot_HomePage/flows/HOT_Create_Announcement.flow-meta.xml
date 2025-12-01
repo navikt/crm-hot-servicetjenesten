@@ -59,7 +59,14 @@
             <assignToReference>new_announcement.NKS_Information__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Information_screen</elementReference>
+                <elementReference>Information.value</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>new_announcement.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_recordtype.Id</elementReference>
             </value>
         </assignmentItems>
         <connector>
@@ -71,7 +78,7 @@
         <choiceText>HOT Info</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>HOT Info</stringValue>
+            <stringValue>HOT_Info</stringValue>
         </value>
     </choices>
     <choices>
@@ -79,7 +86,7 @@
         <choiceText>HOT News</choiceText>
         <dataType>String</dataType>
         <value>
-            <stringValue>HOT News</stringValue>
+            <stringValue>HOT_News</stringValue>
         </value>
     </choices>
     <description>New feature on the home page as a button to create announcements</description>
@@ -112,6 +119,27 @@
         <locationY>0</locationY>
         <inputReference>new_announcement</inputReference>
     </recordCreates>
+    <recordLookups>
+        <name>Get_recordtype</name>
+        <label>Get recordtype</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assign_screen_variables_for_insert</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Recordtype_picker</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <screens>
         <name>HOT_Announcements</name>
         <label>HOT Announcements</label>
@@ -121,7 +149,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Assign_screen_variables_for_insert</targetReference>
+            <targetReference>Get_recordtype</targetReference>
         </connector>
         <fields>
             <name>Title_news</name>
@@ -144,13 +172,13 @@
             <inputParameters>
                 <name>objectApiName</name>
                 <value>
-                    <stringValue>User</stringValue>
+                    <stringValue>NKS_Announcement__c</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>fieldApiName</name>
                 <value>
-                    <stringValue>Id</stringValue>
+                    <stringValue>NKS_News_Author__c</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -162,16 +190,6 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>Recordtype_picker</leftValueReference>
-                    <operator>EqualTo</operator>
-                    <rightValue>
-                        <elementReference>ch_News</elementReference>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
         </fields>
         <fields>
             <name>Other_Authors</name>
@@ -252,23 +270,14 @@
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>Recordtype_picker</leftValueReference>
-                    <operator>EqualTo</operator>
-                    <rightValue>
-                        <elementReference>ch_News</elementReference>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
         </fields>
         <fields>
-            <name>Information_screen</name>
-            <fieldText>Information</fieldText>
-            <fieldType>LargeTextArea</fieldType>
+            <name>Information</name>
+            <extensionName>c:hot_richInputText</extensionName>
+            <fieldType>ComponentInstance</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>false</isRequired>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -304,7 +313,7 @@
             <targetReference>Pick_recordtype</targetReference>
         </connector>
     </start>
-    <status>Active</status>
+    <status>Draft</status>
     <variables>
         <name>new_announcement</name>
         <dataType>SObject</dataType>
