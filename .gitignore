@@ -182,3 +182,4 @@ fabric.properties
 force-app/main/default/permissionsets/Case_Feed.permissionset-meta.xml
 force-app/main/default/permissionsets/sfdcInternalInt__sfdc_fieldservice.permissionset-meta.xml
 force-app/main/default/permissionsets/sfdcInternalInt__sfdc_scrt2.permissionset-meta.xml
+manifest/package.xml
