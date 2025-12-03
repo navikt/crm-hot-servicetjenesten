@@ -41,7 +41,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
     }
     @AuraEnabled(cacheable=true)
     public static HOT_Bilsenter_Mapping__mdt getBilsenter(String accountId) {
-        Set<Decimal> splitRegionNumbers = new Set<Decimal>{ 32, 34 };
+        Set<Decimal> SPLIT_REGION_NUMBERS = new Set<Decimal>{ 32, 34 };
         List<Account> account = [
             SELECT CRM_Person__c
             FROM Account
@@ -54,7 +54,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
         }
 
         List<Person__c> person = [
-            SELECT Id, CRM_Municipality__r.CRM_Code__c, CRM_Municipality__r.Name, INT_RegionNumber__c
+            SELECT Id, INT_MunicipalityNumber__c, INT_RegionNumber__c
             FROM Person__c
             WHERE Id = :account[0].CRM_Person__c
             LIMIT 1
@@ -69,11 +69,15 @@ public with sharing class HOT_HjelpemiddelsentralController {
         if (bilsenterMapping.size() == 0) {
             return null;
         }
-        if (!splitRegionNumbers.contains(bilsenterMapping[0].Fylkenummer__c)) {
+        System.debug('mathias bilsenterMapping fylkenummer >>' + bilsenterMapping[0].Fylkenummer__c);
+        System.debug('mathias bilsenterMapping kommunenummer >>' + bilsenterMapping[0].Kommunenummer__c);
+        System.debug('mathias bilsenterMapping fylkenummer >>' + bilsenterMapping[0].Fylkenummer__c.intValue());
+        System.debug('mathias mapping >>' + bilsenterMapping);
+        if (!SPLIT_REGION_NUMBERS.contains(bilsenterMapping[0].Fylkenummer__c.intValue())) {
             return bilsenterMapping[0];
         } else {
             for (HOT_Bilsenter_Mapping__mdt mapping : bilsenterMapping) {
-                if (mapping.Kommunenummer__c.contains(person[0].CRM_Municipality__r.CRM_Code__c)) {
+                if (mapping.Kommunenummer__c.contains(person[0].INT_MunicipalityNumber__c)) {
                     return mapping;
                 }
             }
