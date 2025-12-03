@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
-    <label>HOT Bilsenter Mapping</label>
-    <pluralLabel>HOT Bilsenter Mappings</pluralLabel>
+    <description>Inneholder mapping for bilsenter til bruk i servicetjenesten.</description>
+    <label>HOT_Bilsenter_Mapping</label>
+    <pluralLabel>HOT_Bilsenter_Mappings</pluralLabel>
     <visibility>Public</visibility>
 </CustomObject>

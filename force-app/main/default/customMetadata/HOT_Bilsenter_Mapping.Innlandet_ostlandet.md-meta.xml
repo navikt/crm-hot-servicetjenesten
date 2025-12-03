@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Innlandet (Østlandet)</label>
+    <protected>false</protected>
+    <values>
+        <field>Bilsenter_Navn__c</field>
+        <value xsi:type="xsd:string">Østlandet</value>
+    </values>
+    <values>
+        <field>Bilsenter_Url__c</field>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-innlandet-elverum#bil-og-spesialutstyr</value>
+    </values>
+    <values>
+        <field>Fylkenummer__c</field>
+        <value xsi:type="xsd:double">34.0</value>
+    </values>
+    <values>
+        <field>Kommunenummer__c</field>
+        <value xsi:type="xsd:string">3401,3403,3405,3407,3411,3412,3413,3414,3415,3416,3417,3418,3419,3420,3421,3422,3436,3438,3439,3440,3441,3442,3443,3446,3447,3448,3449,3450,3451,3452,3453,3454</value>
+    </values>
+</CustomMetadata>
