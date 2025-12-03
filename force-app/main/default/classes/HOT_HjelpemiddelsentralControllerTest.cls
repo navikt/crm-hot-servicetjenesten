@@ -4,49 +4,17 @@ public with sharing class HOT_HjelpemiddelsentralControllerTest {
     static void setup() {
         List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(3);
 
-        Person__c non_split_person = persons[0];
-        Person__c split_person_1 = persons[1];
-        Person__c split_person_2 = persons[2];
-
-        non_split_person.INT_MunicipalityNumber__c = '0301';
-        non_split_person.INT_RegionNumber__c = '03';
-        split_person_1.INT_MunicipalityNumber__c = '3404';
-        split_person_1.INT_RegionNumber__c = '34';
-        split_person_2.INT_MunicipalityNumber__c = '3410';
-        split_person_2.INT_RegionNumber__c = '34';
-
+        for(Person__c p : persons) {
+            p.INT_MunicipalityNumber__c = '0000';
+            p.INT_RegionNumber__c = '00';
+        }
         update persons;
 
-        Account non_split_account = HOT_ST_TestDataFactory.createPersonAccount(1, non_split_person.Id);
-        Account split_account_1 = HOT_ST_TestDataFactory.createPersonAccount(2, split_person1.Id);
-        Account split_account_2 = HOT_ST_TestDataFactory.createPersonAccount(3, split_person2.Id);
-
-        HOT_Bilsenter_Mapping__mdt m1 = new HOT_Bilsenter_Mapping__mdt(
-            DeveloperName = 'Bilsenter_Non_Split',
-            Label = 'Bilsenter Non Split',
-            Fylkenummer__c = '03',
-            Kommunenummer__c = '0301',
-            Bilsenter_Navn__c = 'Non Split Bilsenter'
-        );
-
-        HOT_Bilsenter_Mapping__mdt m2 = new HOT_Bilsenter_Mapping__mdt(
-            DeveloperName = 'Bilsenter_Split_1',
-            Label = 'Bilsenter Split 1',
-            Fylkenummer__c = '34',
-            Kommunenummer__c = '3404',
-            Bilsenter_Navn__c = 'Split Bilsenter 1'
-        );
-
-        HOT_Bilsenter_Mapping__mdt m3 = new HOT_Bilsenter_Mapping__mdt(
-            DeveloperName = 'Bilsenter_Split_2',
-            Label = 'Bilsenter Split 2',
-            Fylkenummer__c = '34',
-            Kommunenummer__c = '3404',
-            Bilsenter_Navn__c = 'Split Bilsenter 2'
-        );
-
-        insert new List<HOT_Bilsenter_Mapping__mdt>{ m1, m2, m3 };
+        HOT_ST_TestDataFactory.createPersonAccount(1, persons[0]);
+        HOT_ST_TestDataFactory.createPersonAccount(2, persons[1]);
+        HOT_ST_TestDataFactory.createPersonAccount(3, persons[2]);
     }
+
     @IsTest
     static void testGetAllHjelpemiddelSentraler() {
         List<HOT_HjelpemiddelsentralMapping__mdt> result = HOT_HjelpemiddelsentralController.getAllHjelpemiddelSentraler();
@@ -57,46 +25,61 @@ public with sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetPersonMunicipalityAndRegionsAccount() {
         myTriggers.disable(PersonAccessHandler.class);
-        List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(1);
-        List<Id> personIds = new List<Id>();
-        for (Person__c p : persons) {
-            personIds.add(p.Id);
-        }
-        List<Account> acc = [SELECT Id FROM Account WHERE CRM_Person__c IN :personIds];
-        Person__c result = HOT_HjelpemiddelsentralController.getPersonMunicipalityAndRegions(acc[0].Id, 'Account');
+        
+        // Fetch the account created in setup
+        Account acc = [SELECT Id, CRM_Person__c FROM Account LIMIT 1];
+        
+        // Update the person with a specific municipality to test the return
+        Person__c p = [SELECT Id FROM Person__c WHERE Id = :acc.CRM_Person__c];
+        p.INT_MunicipalityNumber__c = '0301'; // Example value
+        update p;
+        
+        Person__c result = HOT_HjelpemiddelsentralController.getPersonMunicipalityAndRegions(acc.Id, 'Account');
         System.assertEquals('0301', result.INT_MunicipalityNumber__c, 'Did not get correct municipalitynumber');
     }
+
     @IsTest
     static void testGetPersonMunicipalityAndRegionsCase() {
         myTriggers.disable(PersonAccessHandler.class);
-        List<Person__c> persons = HOT_ST_TestDataFactory.createPersons(1);
-        List<Id> personIds = new List<Id>();
-        for (Person__c p : persons) {
-            personIds.add(p.Id);
-        }
-        List<Account> acc = [SELECT Id FROM Account WHERE CRM_Person__c IN :personIds];
-        Case testCase = new Case(AccountId = acc[0].Id);
+        
+        Account acc = [SELECT Id, CRM_Person__c FROM Account LIMIT 1];
+        Person__c p = [SELECT Id FROM Person__c WHERE Id = :acc.CRM_Person__c];
+        p.INT_MunicipalityNumber__c = '0301';
+        update p;
+
+        Case testCase = new Case(AccountId = acc.Id);
         insert testCase;
         Person__c result = HOT_HjelpemiddelsentralController.getPersonMunicipalityAndRegions(testCase.Id, 'Case');
         System.assertEquals('0301', result.INT_MunicipalityNumber__c, 'Did not get correct municipalitynumber');
     }
     @IsTest
     static void testGetBilsenter() {
-        Account acc = [
-            SELECT Id
-            FROM Account
-            WHERE CRM_Person__r.INT_RegionNumber__c = '03' AND CRM_Person__r.INT_MunicipalityNumber__c = '0301'
-            LIMIT 1
-        ];
+        HOT_Bilsenter_Mapping__mdt realMapping;
+        try {
+            realMapping = [
+                SELECT Bilsenter_Navn__c, Kommunenummer__c, Fylkenummer__c 
+                FROM HOT_Bilsenter_Mapping__mdt 
+                LIMIT 1
+            ];
+        } catch (QueryException e) {
+            System.assert(false, 'No HOT_Bilsenter_Mapping__mdt records found in the Org. Test cannot run.');
+        }
+
+        Account acc = [SELECT Id, CRM_Person__c FROM Account LIMIT 1];
+        Person__c p = [SELECT Id FROM Person__c WHERE Id = :acc.CRM_Person__c];
+
+        p.INT_MunicipalityNumber__c = realMapping.Kommunenummer__c;
+        p.INT_RegionNumber__c = String.valueOf(realMapping.Fylkenummer__c).removeEnd('.0');
+        update p;
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result_non_split = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         System.assertEquals(
-            'Non Split Bilsenter',
-            result_non_split.Bilsenter_Navn__c,
-            'Did not get correct bilsenter for non-split person'
+            realMapping.Bilsenter_Navn__c,
+            result.Bilsenter_Navn__c,
+            'Should return the Bilsenter defined in the existing metadata'
         );
     }
 }
