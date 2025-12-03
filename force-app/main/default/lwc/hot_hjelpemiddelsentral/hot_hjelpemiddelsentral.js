@@ -108,6 +108,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         });
     }
     setBostedHjelpemiddelsentral(hjelpemiddelsentral) {
+        console.log("setter bostedhjelpemiddelsentral", hjelpemiddelsentral)
         this.bostedHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
         this.bostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
@@ -118,7 +119,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
 
     setBilsenter(result) {
         this.bilsenterString = result.Bilsenter_Navn__c;
-        this.bilsenterUrl = result.Bilsenter_Url__c;
+        this.bilsenterUrl = result.Bilsenter_URL__c;
     }
 
     connectedCallback() {
