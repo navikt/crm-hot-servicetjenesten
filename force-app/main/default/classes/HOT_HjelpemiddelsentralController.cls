@@ -39,49 +39,66 @@ public with sharing class HOT_HjelpemiddelsentralController {
         ];
         return allHjelpemiddelSentraler;
     }
+
     @AuraEnabled(cacheable=true)
     public static HOT_Bilsenter_Mapping__mdt getBilsenter(String accountId) {
-        Set<Decimal> SPLIT_REGION_NUMBERS = new Set<Decimal>{ 32, 34 };
-        List<Account> account = [
+        Set<Integer> splitRegionNumbers = new Set<Integer>{ 32, 34 };
+
+        List<Account> accounts = [
             SELECT CRM_Person__c
             FROM Account
             WHERE Id = :accountId
             LIMIT 1
         ];
-
-        if (account[0].CRM_Person__c == null) {
+        if (accounts.isEmpty() || accounts[0].CRM_Person__c == null) {
             return null;
         }
 
-        List<Person__c> person = [
+        List<Person__c> persons = [
             SELECT Id, INT_MunicipalityNumber__c, INT_RegionNumber__c
             FROM Person__c
-            WHERE Id = :account[0].CRM_Person__c
+            WHERE Id = :accounts[0].CRM_Person__c
             LIMIT 1
         ];
+        if (persons.isEmpty()) {
+            return null;
+        }
+        Person__c person = persons[0];
 
+        String fylkeStr = person.INT_RegionNumber__c;
+        String kommuneStr = person.INT_MunicipalityNumber__c;
+
+        if (String.isBlank(fylkeStr) && String.isNotBlank(kommuneStr) && kommuneStr.length() >= 2) {
+            fylkeStr = kommuneStr.substring(0, 2);
+        }
+
+        if (String.isBlank(fylkeStr)) {
+            return null;
+        }
+
+        Integer fylkeInt = Integer.valueOf(fylkeStr);
+        
         List<HOT_Bilsenter_Mapping__mdt> bilsenterMapping = [
             SELECT Bilsenter_Navn__c, Bilsenter_Url__c, Fylkenummer__c, Kommunenummer__c
             FROM HOT_Bilsenter_Mapping__mdt
-            WHERE Fylkenummer__c = :Integer.valueOf(person[0].INT_RegionNumber__c)
-            LIMIT 2
+            WHERE Fylkenummer__c = :fylkeInt
         ];
-        if (bilsenterMapping.size() == 0) {
+        if (bilsenterMapping.isEmpty()) {
             return null;
         }
-        System.debug('mathias bilsenterMapping fylkenummer >>' + bilsenterMapping[0].Fylkenummer__c);
-        System.debug('mathias bilsenterMapping kommunenummer >>' + bilsenterMapping[0].Kommunenummer__c);
-        System.debug('mathias bilsenterMapping fylkenummer >>' + bilsenterMapping[0].Fylkenummer__c.intValue());
-        System.debug('mathias mapping >>' + bilsenterMapping);
-        if (!SPLIT_REGION_NUMBERS.contains(bilsenterMapping[0].Fylkenummer__c.intValue())) {
-            return bilsenterMapping[0];
-        } else {
+
+        if (splitRegionNumbers.contains(fylkeInt)) {
             for (HOT_Bilsenter_Mapping__mdt mapping : bilsenterMapping) {
-                if (mapping.Kommunenummer__c.contains(person[0].INT_MunicipalityNumber__c)) {
-                    return mapping;
+                if (String.isNotBlank(mapping.Kommunenummer__c)) {
+                    List<String> validKommuner = mapping.Kommunenummer__c.split(',');
+                    if (validKommuner.contains(kommuneStr)) {
+                        return mapping;
+                    }
                 }
             }
             return null;
+        } else {
+            return bilsenterMapping[0];
         }
     }
 }

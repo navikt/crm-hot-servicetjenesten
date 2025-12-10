@@ -146,4 +146,85 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
 
         System.assertEquals(null, result, 'Should return null for non-existent region mapping');
     }
+
+    /**
+     * Test Path: Region is null AND Municipality is used to derive region
+     * Logic: fylkeStr = kommuneStr.substring(0, 2);
+     */
+    @IsTest
+    static void testGetBilsenter_MunicipalityFallback() {
+        myTriggers.disable(PersonAccessHandler.class);
+        
+        // Create fresh data for this specific edge case
+        Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
+        p.INT_RegionNumber__c = null;     // No Region
+        p.INT_MunicipalityNumber__c = '4663';
+        update p;
+
+        Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
+
+        Test.startTest();
+        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        Test.stopTest();
+
+        System.assertEquals('Vest-Norge', result.Bilsenter_Navn__c, 'Should return null when region is missing and municipality is too short');
+    }
+
+    /**
+     * Test Path: Region is null AND Municipality is too short to derive region
+     * Logic: if (String.isBlank(fylkeStr) ...) return null
+     */
+    @IsTest
+    static void testGetBilsenter_FallbackFail() {
+        myTriggers.disable(PersonAccessHandler.class);
+        
+        // Create fresh data for this specific edge case
+        Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
+        p.INT_RegionNumber__c = null;     // No Region
+        p.INT_MunicipalityNumber__c = '1'; // Too short to substring
+        update p;
+
+        Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
+
+        Test.startTest();
+        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        Test.stopTest();
+
+        System.assertEquals(null, result, 'Should return null when region is missing and municipality is too short');
+    }
+
+    /**
+     * Test Path: Split Region exists (34), but Municipality (9999) is not found in MDT
+     * Logic: Loop finishes without finding match -> return null
+     */
+    @IsTest
+    static void testGetBilsenter_SplitRegionNoMatch() {
+        myTriggers.disable(PersonAccessHandler.class);
+        
+        Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
+        p.INT_RegionNumber__c = '34';      // Is a split region
+        p.INT_MunicipalityNumber__c = '9999'; // Does not exist in MDT for 34
+        update p;
+
+        Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
+
+        Test.startTest();
+        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        Test.stopTest();
+
+        System.assertEquals(null, result, 'Should return null when municipality is not found within a split region');
+    }
+
+    /**
+     * Test Path: Method called with Null Account ID
+     * Logic: Query returns empty list -> return null
+     */
+    @IsTest
+    static void testGetBilsenter_NullAccountId() {
+        Test.startTest();
+        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(null);
+        Test.stopTest();
+
+        System.assertEquals(null, result, 'Should return null when AccountId is null');
+    }
 }
