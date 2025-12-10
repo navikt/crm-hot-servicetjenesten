@@ -1,0 +1,1 @@
+update new User(Id = UserInfo.getUserId(), UserRoleId = [SELECT Id FROM UserRole WHERE Name = 'HOT' LIMIT 1].Id);
