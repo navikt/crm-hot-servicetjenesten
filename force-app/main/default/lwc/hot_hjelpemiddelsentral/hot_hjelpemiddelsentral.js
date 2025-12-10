@@ -5,23 +5,21 @@ import getBilsenter from '@salesforce/apex/HOT_HjelpemiddelsentralController.get
 export default class hotHjelpemiddelsentral extends LightningElement {
     @api objectApiName;
     @api recordId;
-    @track sectionClass = 'slds-section section';
+    sectionClass = 'slds-section section slds-is-open';
     personMunicipalityAndRegions = [];
     allHjelpemiddelSentraler = [];
-    sectionIconName = 'utility:chevronright';
-    isExpanded = false;
+    isExpanded = true;
     ariaHidden = true;
-    bilsenter = true;
 
-    @track hjelpemiddelsentralError;
-    @track bostedHjelpemiddelsentralString = '';
-    @track midlertidigHjelpemiddelsentralString = '';
-    @track bostedHjelpemiddelsentralUrl;
-    @track midlertidigBostedHjelpemiddelsentralUrl;
-    @track bilsenterString = '';
-    @track bilsenterUrl = '';
+    hjelpemiddelsentralError;
+    bostedHjelpemiddelsentralString = '';
+    midlertidigHjelpemiddelsentralString = '';
+    bostedHjelpemiddelsentralUrl;
+    midlertidigBostedHjelpemiddelsentralUrl;
+    bilsenterString = '';
+    bilsenterUrl = '';
 
-    getHjelpemiddelsentraler() {
+    getHjelpemiddelsentralerAndBilsenter() {
         getPersonMunicipalityAndRegions({
             recordId: this.recordId,
             objectApiName: this.objectApiName
@@ -35,7 +33,6 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                     !this.personMunicipalityAndRegions.INT_TemporaryMunicipalityNumber__c)
             ) {
                 this.hjelpemiddelsentralError = 'Ingen adresser registrert for å kunne finne hjelpemiddelsentral';
-                this.bilsenter = false;
             } else {
                 getAllHjelpemiddelSentraler({}).then((result) => {
                     this.allHjelpemiddelSentraler = result;
@@ -90,25 +87,23 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                             }
                         }
                     }
-                    if (this.bilsenter) {
-                        getBilsenter({ accountId: this.recordId })
-                            .then((result) => {
-                                if (result) {
-                                    this.setBilsenter(result);
-                                } else {
-                                    this.bilsenter = false;
-                                }
-                            })
-                            .catch((error) => {
-                                this.bilsenter = false;
-                            });
-                    }
                 });
             }
         });
+        getBilsenter({ accountId: this.recordId })
+            .then((result) => {
+                if (result) {
+                    this.setBilsenter(result);
+                } else {
+                    this.bilsenterError = 'Ingen adresser registrert for å kunne finne bilsenter';
+                }
+            })
+            .catch((error) => {
+                this.bilsenterError = 'Det oppstet en feil ved henting av bilsenter';
+            });
     }
     setBostedHjelpemiddelsentral(hjelpemiddelsentral) {
-        console.log("setter bostedhjelpemiddelsentral", hjelpemiddelsentral)
+        console.log('setter bostedhjelpemiddelsentral', hjelpemiddelsentral);
         this.bostedHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
         this.bostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
@@ -119,24 +114,11 @@ export default class hotHjelpemiddelsentral extends LightningElement {
 
     setBilsenter(result) {
         this.bilsenterString = result.Bilsenter_Navn__c;
-        this.bilsenterUrl = result.Bilsenter_URL__c;
+        this.bilsenterUrl = result.Bilsenter_Url__c;
+        console.log('setter bilsenter', this.bilsenterString, this.bilsenterUrl);
     }
 
     connectedCallback() {
-        this.getHjelpemiddelsentraler();
-    }
-    /* Function to handle open/close section */
-    handleOpen() {
-        if (this.sectionClass === 'slds-section section slds-is-open') {
-            this.sectionClass = 'slds-section section';
-            this.sectionIconName = 'utility:chevronright';
-            this.isExpanded = false;
-            this.ariaHidden = true;
-        } else {
-            this.sectionClass = 'slds-section section slds-is-open';
-            this.sectionIconName = 'utility:chevrondown';
-            this.isExpanded = true;
-            this.ariaHidden = false;
-        }
+        this.getHjelpemiddelsentralerAndBilsenter();
     }
 }
