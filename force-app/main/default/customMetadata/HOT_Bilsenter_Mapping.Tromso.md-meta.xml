@@ -3,11 +3,11 @@
     <label>Tromsø</label>
     <protected>false</protected>
     <values>
-        <field>Bilsenter_Navn__c</field>
+        <field>BilsenterNavn__c</field>
         <value xsi:type="xsd:string">Nord-Norge</value>
     </values>
     <values>
-        <field>Bilsenter_Url__c</field>
+        <field>BilsenterUrl__c</field>
         <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-troms-og-finnmark#bil-og-spesialutstyr</value>
     </values>
     <values>

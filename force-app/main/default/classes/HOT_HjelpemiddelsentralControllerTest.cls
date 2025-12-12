@@ -76,12 +76,12 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         ];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         // Check against Custom Metadata existence
         if (result != null) {
-            System.assertEquals('Østlandet', result.Bilsenter_Navn__c, 'Expected Østlandet for Region 03');
+            System.assertEquals('Østlandet', result.BilsenterNavn__c, 'Expected Østlandet for Region 03');
         }
     }
 
@@ -99,13 +99,13 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         ];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         if (result != null) {
             System.assertEquals(
                 'Østlandet',
-                result.Bilsenter_Navn__c,
+                result.BilsenterNavn__c,
                 'Should return Bilsenter navn Østlandet for fylkenummer: 34 og kommunenummer: 3401'
             );
         }
@@ -121,7 +121,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         insert acc;
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when no person is linked to account');
@@ -141,7 +141,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null for non-existent region mapping');
@@ -154,20 +154,24 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetBilsenter_MunicipalityFallback() {
         myTriggers.disable(PersonAccessHandler.class);
-        
+
         // Create fresh data for this specific edge case
         Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
-        p.INT_RegionNumber__c = null;     // No Region
+        p.INT_RegionNumber__c = null; // No Region
         p.INT_MunicipalityNumber__c = '4663';
         update p;
 
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
-        System.assertEquals('Vest-Norge', result.Bilsenter_Navn__c, 'Should return null when region is missing and municipality is too short');
+        System.assertEquals(
+            'Vest-Norge',
+            result.BilsenterNavn__c,
+            'Should return null when region is missing and municipality is too short'
+        );
     }
 
     /**
@@ -177,17 +181,17 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetBilsenter_FallbackFail() {
         myTriggers.disable(PersonAccessHandler.class);
-        
+
         // Create fresh data for this specific edge case
         Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
-        p.INT_RegionNumber__c = null;     // No Region
+        p.INT_RegionNumber__c = null; // No Region
         p.INT_MunicipalityNumber__c = '1'; // Too short to substring
         update p;
 
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when region is missing and municipality is too short');
@@ -200,16 +204,16 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetBilsenter_SplitRegionNoMatch() {
         myTriggers.disable(PersonAccessHandler.class);
-        
+
         Person__c p = HOT_ST_TestDataFactory.createPersons(1)[0];
-        p.INT_RegionNumber__c = '34';      // Is a split region
+        p.INT_RegionNumber__c = '34'; // Is a split region
         p.INT_MunicipalityNumber__c = '9999'; // Does not exist in MDT for 34
         update p;
 
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when municipality is not found within a split region');
@@ -222,7 +226,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetBilsenter_NullAccountId() {
         Test.startTest();
-        HOT_Bilsenter_Mapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(null);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(null);
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when AccountId is null');

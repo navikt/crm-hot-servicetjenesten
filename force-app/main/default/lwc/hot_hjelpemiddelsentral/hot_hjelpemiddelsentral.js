@@ -113,8 +113,8 @@ export default class hotHjelpemiddelsentral extends LightningElement {
     }
 
     setBilsenter(result) {
-        this.bilsenterString = result.Bilsenter_Navn__c;
-        this.bilsenterUrl = result.Bilsenter_Url__c;
+        this.bilsenterString = result.BilsenterNavn__c;
+        this.bilsenterUrl = result.BilsenterUrl__c;
         console.log('setter bilsenter', this.bilsenterString, this.bilsenterUrl);
     }
 

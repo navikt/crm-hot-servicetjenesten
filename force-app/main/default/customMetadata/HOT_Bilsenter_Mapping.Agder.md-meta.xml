@@ -3,11 +3,11 @@
     <label>Agder</label>
     <protected>false</protected>
     <values>
-        <field>Bilsenter_Navn__c</field>
+        <field>BilsenterNavn__c</field>
         <value xsi:type="xsd:string">Sør-Norge</value>
     </values>
     <values>
-        <field>Bilsenter_Url__c</field>
+        <field>BilsenterUrl__c</field>
         <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-agder#bil-og-spesialutstyr&apos;</value>
     </values>
     <values>

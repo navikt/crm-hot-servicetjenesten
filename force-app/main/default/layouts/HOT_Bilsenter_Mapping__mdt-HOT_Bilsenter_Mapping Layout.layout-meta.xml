@@ -16,11 +16,11 @@
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Bilsenter_Navn__c</field>
+                <field>BilsenterNavn__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>
-                <field>Bilsenter_URL__c</field>
+                <field>BilsenterUrl__c</field>
             </layoutItems>
             <layoutItems>
                 <behavior>Edit</behavior>

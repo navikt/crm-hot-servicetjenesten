@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Bilsenter_Navn__c</fullName>
-    <externalId>false</externalId>
+    <fullName>BilsenterUrl__c</fullName>
     <fieldManageability>DeveloperControlled</fieldManageability>
-    <label>Bilsenter Navn</label>
-    <length>120</length>
+    <label>Bilsenter Url</label>
     <required>false</required>
-    <type>Text</type>
-    <unique>false</unique>
+    <type>Url</type>
 </CustomField>

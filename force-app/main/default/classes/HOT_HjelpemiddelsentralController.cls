@@ -41,7 +41,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static HOT_Bilsenter_Mapping__mdt getBilsenter(String accountId) {
+    public static HOT_BilsenterMapping__mdt getBilsenter(String accountId) {
         Set<Integer> splitRegionNumbers = new Set<Integer>{ 32, 34 };
 
         List<Account> accounts = [
@@ -77,10 +77,10 @@ public with sharing class HOT_HjelpemiddelsentralController {
         }
 
         Integer fylkeInt = Integer.valueOf(fylkeStr);
-        
-        List<HOT_Bilsenter_Mapping__mdt> bilsenterMapping = [
-            SELECT Bilsenter_Navn__c, Bilsenter_Url__c, Fylkenummer__c, Kommunenummer__c
-            FROM HOT_Bilsenter_Mapping__mdt
+
+        List<HOT_BilsenterMapping__mdt> bilsenterMapping = [
+            SELECT BilsenterNavn__c, BilsenterUrl__c, Fylkenummer__c, Kommunenummer__c
+            FROM HOT_BilsenterMapping__mdt
             WHERE Fylkenummer__c = :fylkeInt
         ];
         if (bilsenterMapping.isEmpty()) {
@@ -88,7 +88,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
         }
 
         if (splitRegionNumbers.contains(fylkeInt)) {
-            for (HOT_Bilsenter_Mapping__mdt mapping : bilsenterMapping) {
+            for (HOT_BilsenterMapping__mdt mapping : bilsenterMapping) {
                 if (String.isNotBlank(mapping.Kommunenummer__c)) {
                     List<String> validKommuner = mapping.Kommunenummer__c.split(',');
                     if (validKommuner.contains(kommuneStr)) {

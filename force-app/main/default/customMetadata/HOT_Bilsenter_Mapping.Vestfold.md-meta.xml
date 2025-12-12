@@ -3,11 +3,11 @@
     <label>Vestfold</label>
     <protected>false</protected>
     <values>
-        <field>Bilsenter_Navn__c</field>
+        <field>BilsenterNavn__c</field>
         <value xsi:type="xsd:string">Østlandet</value>
     </values>
     <values>
-        <field>Bilsenter_Url__c</field>
+        <field>BilsenterUrl__c</field>
         <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-vestfold-og-telemark#bil-og-spesialutstyr</value>
     </values>
     <values>
