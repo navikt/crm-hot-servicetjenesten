@@ -41,29 +41,16 @@ public with sharing class HOT_HjelpemiddelsentralController {
     }
 
     @AuraEnabled(cacheable=true)
-    public static HOT_BilsenterMapping__mdt getBilsenter(String accountId) {
+    public static HOT_BilsenterMapping__mdt getBilsenter(String recordId, string objectApiName) {
         Set<Integer> splitRegionNumbers = new Set<Integer>{ 32, 34 };
-
-        List<Account> accounts = [
-            SELECT CRM_Person__c
-            FROM Account
-            WHERE Id = :accountId
-            LIMIT 1
-        ];
-        if (accounts.isEmpty() || accounts[0].CRM_Person__c == null) {
+        Person__c person;
+        try {
+            person = getPersonMunicipalityAndRegions(recordId, objectApiName);
+        } catch (Exception e) {
+            System.debug('Error: ' + e.getMessage());
+            // Happens if there is no related person
             return null;
         }
-
-        List<Person__c> persons = [
-            SELECT Id, INT_MunicipalityNumber__c, INT_RegionNumber__c
-            FROM Person__c
-            WHERE Id = :accounts[0].CRM_Person__c
-            LIMIT 1
-        ];
-        if (persons.isEmpty()) {
-            return null;
-        }
-        Person__c person = persons[0];
 
         String fylkeStr = person.INT_RegionNumber__c;
         String kommuneStr = person.INT_MunicipalityNumber__c;

@@ -90,7 +90,7 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                 });
             }
         });
-        getBilsenter({ accountId: this.recordId })
+        getBilsenter({ recordId: this.recordId, objectApiName: this.objectApiName })
             .then((result) => {
                 if (result) {
                     this.setBilsenter(result);
