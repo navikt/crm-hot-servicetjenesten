@@ -1,25 +1,25 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import getPersonMunicipalityAndRegions from '@salesforce/apex/HOT_HjelpemiddelsentralController.getPersonMunicipalityAndRegions';
 import getAllHjelpemiddelSentraler from '@salesforce/apex/HOT_HjelpemiddelsentralController.getAllHjelpemiddelSentraler';
-
+import getBilsenter from '@salesforce/apex/HOT_HjelpemiddelsentralController.getBilsenter';
 export default class hotHjelpemiddelsentral extends LightningElement {
     @api objectApiName;
     @api recordId;
-    @track sectionClass = 'slds-section section slds-is-open';
+    sectionClass = 'slds-section section slds-is-open';
     personMunicipalityAndRegions = [];
     allHjelpemiddelSentraler = [];
-    // @track sectionIconName = 'utility:chevrondown';
-    @track sectionIconName = '';
     isExpanded = true;
-    ariaHidden = false;
+    ariaHidden = true;
 
-    @track hjelpemiddelsentralError;
-    @track bostedHjelpemiddelsentralString = '';
-    @track midlertidigHjelpemiddelsentralString = '';
-    @track bostedHjelpemiddelsentralUrl;
-    @track midlertidigBostedHjelpemiddelsentralUrl;
+    hjelpemiddelsentralError;
+    bostedHjelpemiddelsentralString = '';
+    midlertidigHjelpemiddelsentralString = '';
+    bostedHjelpemiddelsentralUrl;
+    midlertidigBostedHjelpemiddelsentralUrl;
+    bilsenterString = '';
+    bilsenterUrl = '';
 
-    getHjelpemiddelsentraler() {
+    getHjelpemiddelsentralerAndBilsenter() {
         getPersonMunicipalityAndRegions({
             recordId: this.recordId,
             objectApiName: this.objectApiName
@@ -90,8 +90,20 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                 });
             }
         });
+        getBilsenter({ accountId: this.recordId })
+            .then((result) => {
+                if (result) {
+                    this.setBilsenter(result);
+                } else {
+                    this.bilsenterError = 'Ingen adresser registrert for å kunne finne bilsenter';
+                }
+            })
+            .catch((error) => {
+                this.bilsenterError = 'Det oppstet en feil ved henting av bilsenter';
+            });
     }
     setBostedHjelpemiddelsentral(hjelpemiddelsentral) {
+        console.log('setter bostedhjelpemiddelsentral', hjelpemiddelsentral);
         this.bostedHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
         this.bostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
@@ -100,21 +112,13 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         this.midlertidigBostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
 
-    connectedCallback() {
-        this.getHjelpemiddelsentraler();
+    setBilsenter(result) {
+        this.bilsenterString = result.BilsenterNavn__c;
+        this.bilsenterUrl = result.BilsenterUrl__c;
+        console.log('setter bilsenter', this.bilsenterString, this.bilsenterUrl);
     }
-    /* Function to handle open/close section */
-    // handleOpen() {
-    //     if (this.sectionClass === 'slds-section section slds-is-open') {
-    //         this.sectionClass = 'slds-section section';
-    //         this.sectionIconName = 'utility:chevronright';
-    //         this.isExpanded = false;
-    //         this.ariaHidden = true;
-    //     } else {
-    //         this.sectionClass = 'slds-section section slds-is-open';
-    //         this.sectionIconName = 'utility:chevrondown';
-    //         this.isExpanded = true;
-    //         this.ariaHidden = false;
-    //     }
-    // }
+
+    connectedCallback() {
+        this.getHjelpemiddelsentralerAndBilsenter();
+    }
 }

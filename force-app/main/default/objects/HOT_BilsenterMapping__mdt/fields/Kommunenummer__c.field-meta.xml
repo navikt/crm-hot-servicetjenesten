@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Kommunenummer__c</fullName>
+    <description>Til bruk i mapping mot Common_Code__c.</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Kommunenummer</label>
+    <required>false</required>
+    <type>TextArea</type>
+</CustomField>

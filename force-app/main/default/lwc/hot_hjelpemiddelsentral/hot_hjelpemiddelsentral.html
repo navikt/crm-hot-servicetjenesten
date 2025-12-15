@@ -49,4 +49,39 @@
             ></lightning-formatted-text>
         </div>
     </div>
+    <div class={sectionClass}>
+        <h3 class="slds-section__title">
+            <button
+                aria-controls="expando-unique-id2"
+                aria-expanded={isExpanded}
+                class="slds-button slds-section__title-action"
+                onclick={handleOpen}
+            >
+                <lightning-icon
+                    class="slds-var-p-right_small icon"
+                    icon-name={sectionIconName}
+                    size="x-small"
+                    alternative-text="switch"
+                ></lightning-icon>
+                <span class="slds-truncate" title="Section Title">Bilsenter</span>
+            </button>
+        </h3>
+        <div aria-hidden={ariaHidden} class="slds-section__content" id="expando-unique-id2">
+            <div class="slds-var-p-horizontal_medium" lwc:if={bilsenterString}>
+                <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
+                <lightning-formatted-url
+                    value={bilsenterUrl}
+                    label={bilsenterString}
+                    target="_blank"
+                ></lightning-formatted-url>
+                <lightning-formatted-text value=" bilsenter." class="slds-text-title text"></lightning-formatted-text>
+            </div>
+        </div>
+        <div class="slds-var-p-horizontal_medium" lwc:if={bilsenterError}>
+            <lightning-formatted-text
+                value={bilsenterError}
+                class="slds-text-title text"
+            ></lightning-formatted-text>
+        </div>
+    </div>
 </template>

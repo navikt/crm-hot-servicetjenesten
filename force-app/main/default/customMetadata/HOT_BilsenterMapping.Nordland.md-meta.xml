@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Nordland (Midt-Norge)</label>
+    <protected>false</protected>
+    <values>
+        <field>BilsenterNavn__c</field>
+        <value xsi:type="xsd:string">Midt-Norge</value>
+    </values>
+    <values>
+        <field>BilsenterUrl__c</field>
+        <value xsi:type="xsd:string">https://www.nav.no/kontor/nav-hjelpemiddelsentral-nordland#bil-og-spesialutstyr</value>
+    </values>
+    <values>
+        <field>Fylkenummer__c</field>
+        <value xsi:type="xsd:double">18.0</value>
+    </values>
+    <values>
+        <field>Kommunenummer__c</field>
+        <value xsi:type="xsd:string">1811,1812,1813,1815,1816,1818,1820,1822,1824,1825,1826,1827,1828,1832,1833,1834,1835</value>
+    </values>
+</CustomMetadata>

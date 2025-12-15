@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>BilsenterUrl__c</fullName>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <label>Bilsenter Url</label>
+    <required>false</required>
+    <type>Url</type>
+</CustomField>
