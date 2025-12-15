@@ -25,6 +25,13 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account non_split_account = [SELECT Id FROM Account WHERE CRM_Person__c = :non_split_person.Id LIMIT 1];
         Account split_account_1 = [SELECT Id FROM Account WHERE CRM_Person__c = :split_person_1.Id LIMIT 1];
         Account split_account_2 = [SELECT Id FROM Account WHERE CRM_Person__c = :split_person_2.Id LIMIT 1];
+
+        Case non_split_case = new Case();
+        non_split_case.AccountId = non_split_account.Id;
+        non_split_case.Subject = 'test case non split';
+        non_split_case.Status = 'New';
+        non_split_case.Origin = 'Phone';
+        insert non_split_case;
     }
 
     @IsTest
@@ -76,7 +83,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         ];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         // Check against Custom Metadata existence
@@ -99,7 +106,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         ];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         if (result != null) {
@@ -121,7 +128,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         insert acc;
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when no person is linked to account');
@@ -141,7 +148,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null for non-existent region mapping');
@@ -164,7 +171,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertEquals(
@@ -191,7 +198,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when region is missing and municipality is too short');
@@ -213,7 +220,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Account acc = [SELECT Id FROM Account WHERE CRM_Person__c = :p.Id LIMIT 1];
 
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(acc.Id, 'Account');
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when municipality is not found within a split region');
@@ -226,9 +233,35 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     @IsTest
     static void testGetBilsenter_NullAccountId() {
         Test.startTest();
-        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(null);
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(null, 'Account');
         Test.stopTest();
 
         System.assertEquals(null, result, 'Should return null when AccountId is null');
+    }
+
+    /**
+     * Test Path: Split Region (e.g., 34)
+     * Logic: splitRegionNumbers.contains(...) AND loop matches Municipality
+     */
+    @IsTest
+    static void testGetBilsenter_Case() {
+        Case non_split_case = [
+            SELECT Id
+            FROM Case
+            WHERE Subject = 'test case non split'
+            LIMIT 1
+        ];
+
+        Test.startTest();
+        HOT_BilsenterMapping__mdt result = HOT_HjelpemiddelsentralController.getBilsenter(non_split_case.Id, 'Case');
+        Test.stopTest();
+
+        if (result != null) {
+            System.assertEquals(
+                'Østlandet',
+                result.BilsenterNavn__c,
+                'Should return Bilsenter navn Østlandet for fylkenummer: 34 og kommunenummer: 3401'
+            );
+        }
     }
 }
