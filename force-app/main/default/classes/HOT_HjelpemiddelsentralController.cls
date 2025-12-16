@@ -42,7 +42,7 @@ public with sharing class HOT_HjelpemiddelsentralController {
 
     @AuraEnabled(cacheable=true)
     public static HOT_BilsenterMapping__mdt getBilsenter(String recordId, string objectApiName) {
-        Set<Integer> splitRegionNumbers = new Set<Integer>{ 32, 34 };
+        Set<Integer> splitRegionNumbers = new Set<Integer>{ 3, 18, 34 };
         Person__c person;
         try {
             person = getPersonMunicipalityAndRegions(recordId, objectApiName);
