@@ -62,6 +62,10 @@
                 {
                     "package": "crm-sf-saf",
                     "versionNumber": "0.38.0.LATEST"
+                },
+                {
+                    "package": "crm-hot-felles",
+                    "versionNumber": "0.3.0.LATEST"
                 }
             ]
         }
@@ -84,6 +88,7 @@
         "crm-henvendelse": "0Ho2o000000fxXfCAI",
         "crm-shared-timeline": "0Ho2o000000fxXBCAY",
         "crm-thread-view": "0Ho7U000000000zSAA",
-        "crm-sf-saf": "0Ho7U0000000001SAA"
+        "crm-sf-saf": "0Ho7U0000000001SAA",
+        "crm-hot-felles": "0HoQC00000005qv0AA"
     }
 }
