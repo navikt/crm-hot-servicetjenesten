@@ -237,8 +237,8 @@ export default class hot_personHighlightPanel extends LightningElement {
         })
             .then((record) => {
                 this.personId = resolve(relationshipField, record);
-                if (record && !this.personId) {
-                    this.noPerson = true;
+                if (record) {
+                    this.noPerson = !this.personId;
                     this.loadingStates.getRecordPerson = false;
                 }
             })
