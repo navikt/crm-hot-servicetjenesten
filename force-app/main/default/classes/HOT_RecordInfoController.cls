@@ -6,7 +6,7 @@ public with sharing class HOT_RecordInfoController {
      * @param objectApiName [API name of parent]
      * @return sObject
      **/
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=false)
     public static sObject getRelatedRecord(String parentId, String relationshipField, String objectApiName) {
         return getReverseRelatedRecord(parentId, relationshipField, objectApiName, 'Id', null)[0];
     }

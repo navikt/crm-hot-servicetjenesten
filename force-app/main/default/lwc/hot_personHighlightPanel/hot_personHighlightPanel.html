@@ -18,7 +18,9 @@
         <template lwc:if={isLoading}>
             <c-hot_skeleton-loading-component type="personHighlightPanel"></c-hot_skeleton-loading-component>
         </template>
-        <template lwc:elseif={noPerson}></template>
+        <template lwc:elseif={noPerson}>
+            <c-hot_skeleton-loading-component type="unknownPersonHighlightPanel"></c-hot_skeleton-loading-component>
+        </template>
         <template lwc:else>
             <lightning-layout class="panelBackground">
                 <div class={panelClass}>

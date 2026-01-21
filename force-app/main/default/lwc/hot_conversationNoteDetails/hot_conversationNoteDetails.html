@@ -1,6 +1,7 @@
 <template>
     <div class="slds-card slds-theme_default">
         <c-hot_button-container-top
+            lwc:if={showTopButtonContainer}
             record-id={recordId}
             channel-name="Conversation note"
             flow-button-label={flowButtonLabel}
