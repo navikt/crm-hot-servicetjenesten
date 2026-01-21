@@ -1,6 +1,9 @@
 import { LightningElement, api } from 'lwc';
 import personHighlightPanel from './personHighlightPanel.html';
 import table from './table.html';
+import unknownPersonHighlightPanel from './unknownPersonHighlightPanel.html';
+
+import NAV_ICONS from '@salesforce/resourceUrl/HOT_navIcons';
 
 const DEFAULT_TABLE_ROW_COUNT = 1;
 const DEFAULT_TABLE_COLUMN_COUNT = 3;
@@ -61,6 +64,8 @@ export default class SkeletonLoadingComponent extends LightningElement {
                 return personHighlightPanel;
             case 'table':
                 return table;
+            case 'unknownPersonHighlightPanel':
+                return unknownPersonHighlightPanel;
             default:
                 return personHighlightPanel;
         }
@@ -77,5 +82,8 @@ export default class SkeletonLoadingComponent extends LightningElement {
             return parsed;
         }
         return fallback;
+    }
+    get unknownIcon() {
+        return NAV_ICONS + '/confidentialCircleFilled.svg#confidentialCircleFilled';
     }
 }
