@@ -25,6 +25,7 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     flowButtonLabel;
     flowApiName;
     _wiredRecord;
+    noAccount = false;
 
     connectedCallback() {
         this.subscribeToMessageChannel();
@@ -84,7 +85,9 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     get notificationBoxTemplate() {
         return this.template.querySelector('c-hot_notification-box');
     }
-
+    get showTopButtonContainer() {
+        return !this.noAccount;
+    }
     handleShowButtons(outputVariables) {
         const hasReadAccess = getOutputVariableValue(outputVariables, 'HAS_PERSON_READ');
         const hasNoAccount = getOutputVariableValue(outputVariables, 'HAS_NO_ACCOUNT');
@@ -93,9 +96,14 @@ export default class Hot_ConversationNoteDetails extends LightningElement {
     }
 
     handleStatusChange(event) {
-        const { status, outputVariables } = event.detail;
+        const { status, outputVariables, locationName } = event.detail;
         this.handleShowButtons(outputVariables);
-
+        const excludeLocations = ['No_Person_Screen', 'No_Account_Screen'];
+        if (excludeLocations.includes(locationName)) {
+            this.noAccount = true;
+        } else {
+            this.noAccount = false;
+        }
         if (
             status === 'FINISHED' &&
             outputVariables?.some((output) => output.objectType === 'Conversation_Note__c' && output.value !== null)
