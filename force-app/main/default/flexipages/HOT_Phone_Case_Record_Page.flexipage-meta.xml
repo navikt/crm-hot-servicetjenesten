@@ -691,6 +691,12 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tabset</componentName>
                 <identifier>flexipage_tabset</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!Record.Account.CRM_Person__r.INT_ActorId__c}</leftValue>
+                        <operator>NE</operator>
+                    </criteria>
+                </visibilityRule>
             </componentInstance>
         </itemInstances>
         <name>main</name>
