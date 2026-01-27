@@ -135,12 +135,19 @@
         <defaultConnectorLabel>Ready to send SMS</defaultConnectorLabel>
         <rules>
             <name>Missing_Phone</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>recordId.HOT_Innringer__c</leftValueReference>
                 <operator>IsBlank</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>checkIfInnringerNumberIsANumber</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -185,12 +192,19 @@
         <defaultConnectorLabel>Ready to send SMS</defaultConnectorLabel>
         <rules>
             <name>Missing_Phone_2</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>Get_Caller_Number_From_Related_Puzzel_Enquiry.callerNumber</leftValueReference>
                 <operator>IsBlank</operator>
                 <rightValue>
                     <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>Get_Caller_Number_From_Related_Puzzel_Enquiry.callerNumber</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -200,6 +214,16 @@
         </rules>
     </decisions>
     <environments>Default</environments>
+    <formulas>
+        <name>checkIfCallerNumberIsANumber</name>
+        <dataType>Boolean</dataType>
+        <expression>REGEX({!Get_Caller_Number_From_Related_Puzzel_Enquiry.callerNumber}, &quot;^\\+?[0-9 ]*[0-9][0-9 ]*$&quot;)</expression>
+    </formulas>
+    <formulas>
+        <name>checkIfInnringerNumberIsANumber</name>
+        <dataType>Boolean</dataType>
+        <expression>REGEX({!recordId.HOT_Innringer__c}, &quot;^\\+?[0-9 ]*[0-9][0-9 ]*$&quot;)</expression>
+    </formulas>
     <interviewLabel>HOT_Send_SMS_From_Case {!$Flow.CurrentDateTime}</interviewLabel>
     <label>HOT_SendSMSFromCase</label>
     <processMetadataValues>
