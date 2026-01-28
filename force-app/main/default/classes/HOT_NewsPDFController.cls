@@ -88,6 +88,11 @@ public with sharing class HOT_NewsPDFController {
      */
     public static Map<Id, String> getImageUrls(Set<Id> recordIds) {
         Map<Id, String> urlMap = new Map<Id, String>();
+
+        if (recordIds == null || recordIds.isEmpty()) {
+            return urlMap;
+        }
+
         for (ContentDocumentLink cdl : [
             SELECT
                 Id,
@@ -122,6 +127,10 @@ public with sharing class HOT_NewsPDFController {
      * @return The image URL as a string.
      */
     public static String getImageUrl(Id recordId) {
+        if (recordId == null) {
+            return null;
+        }
+
         return getImageUrls(new Set<Id>{ recordId }).get(recordId);
     }
 }
