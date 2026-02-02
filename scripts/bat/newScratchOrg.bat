@@ -43,8 +43,8 @@ call sf package install --package 04tKB000000Y8znYAC --no-prompt --installation-
 echo "Installerer crm-sf-saf ver. 0.38"
 call sf package install --package 04tQC000000zUijYAE --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
-echo "Installer crm-hot-felles ver. 0.3"
-call sf package install --package 04tQC0000012m9dYAA --no-prompt --installation-key %3 --wait 30 --publish-wait 30
+echo "Installer crm-hot-felles ver. 0.5"
+call sf package install --package 04tQC0000012uGrYAI --no-prompt --installation-key %3 --wait 30 --publish-wait 30
 
 echo "Dytter kildekoden til scratch org'en"
 call sf project deploy start
