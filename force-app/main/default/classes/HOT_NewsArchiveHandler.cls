@@ -25,6 +25,13 @@ public with sharing class HOT_NewsArchiveHandler {
     private Boolean isSandbox;
 
     /**
+     * Test-only override for the isSandbox flag. Set this in tests to control
+     * sandbox vs production code paths without querying Organization.
+     */
+    @TestVisible
+    private static Boolean testIsSandboxOverride = null;
+
+    /**
      * The news archive settings for the organization.
      */
     private HOT_NewsArchiveSettings__c newsArchiveSettings;
@@ -40,7 +47,9 @@ public with sharing class HOT_NewsArchiveHandler {
      */
     public HOT_NewsArchiveHandler() {
         this.newsArchiveSettings = HOT_NewsArchiveSettings__c.getOrgDefaults();
-        this.isSandbox = [SELECT IsSandbox FROM Organization LIMIT 1].IsSandbox;
+        this.isSandbox = (Test.isRunningTest() && testIsSandboxOverride != null)
+            ? testIsSandboxOverride
+            : [SELECT IsSandbox FROM Organization LIMIT 1].IsSandbox;
     }
 
     /**
@@ -80,23 +89,28 @@ public with sharing class HOT_NewsArchiveHandler {
      * @see HOT_NewsArchiveMapping__mdt
      */
     private HOT_NewsArchiveMapping__mdt getNewsArchiveMappingSettings() {
-        if (this.isSandbox) {
-            return [
-                SELECT Id, CaseNumberTest__c, NavIdTest__c, NavEnhetTest__c, ActiveFrom__c, Order__c
-                FROM HOT_NewsArchiveMapping__mdt
-                WHERE ActiveFrom__c <= TODAY
-                ORDER BY ActiveFrom__c DESC, Order__c DESC
-                LIMIT 1
-            ];
-        } else {
-            return [
-                SELECT Id, CaseNumberProd__c, NavIdProd__c, NavEnhetProd__c, ActiveFrom__c, Order__c
-                FROM HOT_NewsArchiveMapping__mdt
-                WHERE ActiveFrom__c <= TODAY
-                ORDER BY ActiveFrom__c DESC, Order__c DESC
-                LIMIT 1
-            ];
+        string env = isSandbox ? 'Test' : 'Prod';
+
+        List<HOT_NewsArchiveMapping__mdt> newsArchiveMappingList = (List<HOT_NewsArchiveMapping__mdt>) new CustomMetadataDAO()
+            .getCustomMetadataRecords(
+                'SELECT Id, CaseNumber' +
+                    env +
+                    '__c, NavId' +
+                    env +
+                    '__c, NavEnhet' +
+                    env +
+                    '__c, ActiveFrom__c, Order__c ' +
+                    'FROM HOT_NewsArchiveMapping__mdt ' +
+                    'WHERE ActiveFrom__c <= TODAY ' +
+                    'ORDER BY ActiveFrom__c DESC, Order__c DESC ' +
+                    'LIMIT 1'
+            );
+
+        HOT_NewsArchiveMapping__mdt newsArchiveMapping;
+        if (newsArchiveMappingList.size() > 0) {
+            newsArchiveMapping = newsArchiveMappingList[0];
         }
+        return newsArchiveMapping;
     }
 
     /**
@@ -108,8 +122,10 @@ public with sharing class HOT_NewsArchiveHandler {
      */
     @TestVisible
     private String getCaseNumber(HOT_NewsArchiveMapping__mdt settings) {
-        if (settings == null)
+        if (settings == null) {
             return null;
+        }
+
         return isSandbox ? settings.CaseNumberTest__c : settings.CaseNumberProd__c;
     }
 
@@ -120,9 +136,11 @@ public with sharing class HOT_NewsArchiveHandler {
      * @return Nav identifier as String
      * @see HOT_NewsArchiveMapping__mdt
      */
+    @TestVisible
     private String getNavIdent(HOT_NewsArchiveMapping__mdt settings) {
-        if (settings == null)
+        if (settings == null) {
             return null;
+        }
         return isSandbox ? settings.NavIdTest__c : settings.NavIdProd__c;
     }
 
@@ -133,9 +151,11 @@ public with sharing class HOT_NewsArchiveHandler {
      * @return Nav unit as String
      * @see HOT_NewsArchiveMapping__mdt
      */
+    @TestVisible
     private String getNavEnhet(HOT_NewsArchiveMapping__mdt settings) {
-        if (settings == null)
+        if (settings == null) {
             return null;
+        }
         return isSandbox ? settings.NavEnhetTest__c : settings.NavEnhetProd__c;
     }
 
