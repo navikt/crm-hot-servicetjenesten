@@ -8,6 +8,14 @@
             "versionDescription": "",
             "dependencies": [
                 {
+                    "package": "platform-data-model",
+                    "versionNumber": "0.1.2.LATEST"
+                },
+                {
+                    "package": "custom-metadata-dao",
+                    "versionNumber": "0.1.2.LATEST"
+                },
+                {
                     "package": "crm-platform-base",
                     "versionNumber": "0.291.0.LATEST"
                 },
@@ -45,7 +53,7 @@
                 },
                 {
                     "package": "crm-platform-access-control",
-                    "versionNumber": "0.163.0.LATEST"
+                    "versionNumber": "0.167.0.LATEST"
                 },
                 {
                     "package": "crm-community-base",
@@ -84,6 +92,12 @@
         "crm-henvendelse": "0Ho2o000000fxXfCAI",
         "crm-shared-timeline": "0Ho2o000000fxXBCAY",
         "crm-thread-view": "0Ho7U000000000zSAA",
-        "crm-sf-saf": "0Ho7U0000000001SAA"
+        "crm-sf-saf": "0Ho7U0000000001SAA",
+        "platform-data-model": "0HoKB00000000010AA",
+        "custom-metadata-dao": "0HoKB000000000B0AQ"
+    },
+    "packageKeyConfig": {
+        "platform-data-model": false,
+        "custom-metadata-dao": false
     }
 }

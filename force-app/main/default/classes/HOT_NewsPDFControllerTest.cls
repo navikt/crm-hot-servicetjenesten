@@ -263,7 +263,7 @@ private class HOT_NewsPDFControllerTest {
         NKS_Announcement__c testAnnouncement = [
             SELECT Id
             FROM NKS_Announcement__c
-            WHERE Name = 'Test News Article for PDF'
+            WHERE Name = :TEST_ANNOUNCEMENT_NAME
             LIMIT 1
         ];
         Set<Id> recordIds = new Set<Id>{ testAnnouncement.Id };
@@ -295,7 +295,7 @@ private class HOT_NewsPDFControllerTest {
         User testUser = [SELECT Id FROM User WHERE LastName = :TEST_USER_LAST_NAME LIMIT 1];
 
         NKS_Announcement__c pdfAnnouncement = new NKS_Announcement__c(
-            Name = 'PDF Test Article',
+            Name = TEST_ANNOUNCEMENT_NAME,
             RecordTypeId = Schema.SObjectType.NKS_Announcement__c
                 .getRecordTypeInfosByDeveloperName()
                 .get('HOT_News')
