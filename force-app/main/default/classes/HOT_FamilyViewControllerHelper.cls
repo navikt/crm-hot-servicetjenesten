@@ -1,4 +1,4 @@
-public with sharing class HOT_FamilyViewControllerHelper {
+public without sharing class HOT_FamilyViewControllerHelper {
     public static Person__c getPerson(Set<String> identsList) {
         if (identsList == null) {
             return null;
