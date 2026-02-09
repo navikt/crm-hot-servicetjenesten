@@ -45,8 +45,8 @@ sf package install --package 04tKB000000Y8znYAC --no-prompt --installation-key $
 # Installerer crm-sf-saf ver. 0.38
 sf package install --package 04tQC000000zUijYAE --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
-# Installer crm-hot-felles ver. 0.3
-sf package install --package 04tQC0000012m9dYAA --no-prompt --installation-key $3 --wait 30 --publish-wait 30
+# Installerer crm-hot-felles ver. 0.5
+sf package install --package 04tQC0000012uGrYAI --no-prompt --installation-key $3 --wait 30 --publish-wait 30
 
 # Dytt kildekoden til scratch org'en
 sf project deploy start
