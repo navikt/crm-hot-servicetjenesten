@@ -1,0 +1,18 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "PushTopic",
+                "referenceId": "PushTopicRef1"
+            },
+            "Name": "Thread_New_Message",
+            "Query": "SELECT Id, CRM_Thread__c FROM Message__c",
+            "ApiVersion": 50.0,
+            "NotifyForOperationCreate": true,
+            "NotifyForOperationUpdate": false,
+            "NotifyForOperationUndelete": false,
+            "NotifyForOperationDelete": false,
+            "NotifyForFields": "Referenced"
+        }
+    ]
+}
