@@ -57,4 +57,13 @@ sf org assign permset --name HOT_Servicetjenesten_Admin
 # Opprett testdata
 sf apex run --file scripts/apex/createTestData.apex
 
+# Importerer testdata for STO
+sf data import tree --plan dummy-data/sto/data/plan.json
+sf data import tree --plan dummy-data/sto/plan.json 
+# Importerer samtalenotater
+sf data import tree --plan dummy-data/conversation_notes/plan.json 
+
+# Oppretter testdata for STO 
+sf apex run --file dummy-data/GenerateData.apex
+
 # done
