@@ -6,7 +6,16 @@
                 "referenceId": "CaseRef1"
             },
             "Subject": "TEST SUBJECT",
-            "Description": "TEST DESCRIPTION",
+            "Description": "TEST SUBJECT DESCRIPTION",
+            "Origin": "WEB"
+        },
+        {
+            "attributes": {
+                "type": "Case",
+                "referenceId": "CaseRef2"
+            },
+            "Subject": "TEST AAP ",
+            "Description": "TEST AAP DESCRIPTION",
             "Origin": "WEB"
         }
     ]

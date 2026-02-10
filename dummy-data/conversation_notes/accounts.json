@@ -5,8 +5,8 @@
                 "type": "Account",
                 "referenceId": "AccountRef1"
             },
-            "FirstName": "FATTIG",
-            "LastName": "PERSILLE",
+            "FirstName": "Tor",
+            "LastName": "Lunde",
             "INT_PersonIdent__c": "25839399971"
         }
     ]
