@@ -24,7 +24,7 @@ Message__c message = new Message__c(CRM_Thread__c = thread.Id,
 
 insert message;
 
-// Update thread with reference to case and api reference to be able to link it to the case and have it show in STO
+// Update thread with reference to case and api reference to be able to link it to the case
 Thread__c threadSTO = [SELECT Id, CRM_Case__c, CRM_API_Reference__c, CRM_Henvendelse_BehandlingsId__c FROM Thread__c WHERE Id  = :thread.Id];
 threadSTO.CRM_Case__c = accCase.Id;
 threadSTO.CRM_Henvendelse_BehandlingsId__c = threadSTO.CRM_API_Reference__c;
