@@ -4,7 +4,7 @@
             "path": "force-app",
             "default": true,
             "package": "crm-hot-servicetjenesten",
-            "versionNumber": "1.38.0.NEXT",
+            "versionNumber": "1.39.0.NEXT",
             "versionDescription": "",
             "dependencies": [
                 {
@@ -89,6 +89,6 @@
         "crm-shared-timeline": "0Ho2o000000fxXBCAY",
         "crm-thread-view": "0Ho7U000000000zSAA",
         "crm-sf-saf": "0Ho7U0000000001SAA",
-        "crm-hot-felles": "04tQC0000012uGrYAI"
+        "crm-hot-felles": "0HoQC00000005qv0AA"
     }
 }
