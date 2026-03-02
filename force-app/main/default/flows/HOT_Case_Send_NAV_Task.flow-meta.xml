@@ -359,6 +359,7 @@
         <dataType>String</dataType>
         <expression>Case({!Selected_Task_Type}, &apos;KONT_BRUK&apos;,
             &apos;Kontakt bruker&apos;, &apos;VURD_HENV&apos;, &apos;Vurder henvendelse&apos;,
+            &apos;HJELP_UTPROV&apos;, &apos;Hjelp til utprøving&apos;,
             &apos;Vurder konsekvens for ytelse&apos;)</expression>
     </formulas>
     <formulas>
