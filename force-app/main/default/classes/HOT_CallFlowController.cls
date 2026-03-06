@@ -2,11 +2,13 @@ public without sharing class HOT_CallFlowController {
     private static final List<String> QueryFields = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
     private static Map<String, Schema.SObjectType> globalDesc = Schema.getGlobalDescribe();
 
+    // Allows the test class to inject mock data without JSON or cross-referencing
+    @TestVisible
+    private static List<Map<String, Object>> mockEnquiryLogs;
+
     /**
      * @description: Returns the Enquiry log SObject type if it exists
-     * @author Stian Ruud Schikora | 05-28-2021
-     * @return Schema.SObjectType
-     **/
+     */
     private static Schema.SObjectType getEnquiryLogObject() {
         return globalDesc.containsKey('puzzel__EnquiryLog__c') ? globalDesc.get('puzzel__EnquiryLog__c') : null;
     }
@@ -18,46 +20,66 @@ public without sharing class HOT_CallFlowController {
     )
     public static List<CallerResponse> getCallerInfo(List<String> sessionIds) {
         List<CallerResponse> respList = new List<CallerResponse>();
-        LoggerUtility logger = new LoggerUtility(CRM_ApplicationDomain.Domain.HOT,'HOT_getCallerInfo');
+        LoggerUtility logger = new LoggerUtility(CRM_ApplicationDomain.Domain.HOT, 'HOT_getCallerInfo');
 
+        // Sjekk om objektet finnes
         if (getEnquiryLogObject() == null && !Test.isRunningTest()) {
             for (String puzSessionId : sessionIds) {
-                respList.add(new CallerResponse('')); //Blank Phonenumber as fallback when there is no match
+                respList.add(new CallerResponse(''));
             }
             logger.errorAndPublish('Kunne ikke finne puzzel__EnquiryLog__c record');
-        } else {
-            List<Object> enqLogs = getEnquiryLogs(sessionIds);
-            for (Object enqLog : enqLogs) {
-                Map<String, Object> enqMap = (Map<String, Object>) enqLog;
-                if (enqMap.containsKey('puzzel__Caller__c'))
-                    //String caller = (String) enqMap.get('puzzel__Caller__c');
-                    respList.add(new CallerResponse((String) enqMap.get('puzzel__Caller__c')));
+            return respList;
+        }
+
+        // Fetch logs as Maps instead of SObjects to avoid Schema restrictions during testing
+        List<Map<String, Object>> enqLogs = getEnquiryLogs(sessionIds);
+
+        Map<String, String> sessionToCallerMap = new Map<String, String>();
+        for (Map<String, Object> log : enqLogs) {
+            String sId = (String) log.get('puzzel__SessionId__c');
+            String caller = (String) log.get('puzzel__Caller__c');
+
+            if (sId != null && String.isNotBlank(caller)) {
+                sessionToCallerMap.put(sId, caller);
             }
         }
+
+        for (String sessId : sessionIds) {
+            if (sessionToCallerMap.containsKey(sessId)) {
+                respList.add(new CallerResponse(sessionToCallerMap.get(sessId)));
+            } else {
+                respList.add(new CallerResponse(''));
+            }
+        }
+
         return respList;
     }
 
     /**
      * @description: Queries the enquiry logs matching the sessionId set.
-     * @author Stian Ruud Schikora | 05-28-2021
-     * @param sessionIds
-     * @return List<SObject>
-     **/
-    private static List<Object> getEnquiryLogs(List<String> sessionIds) {
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(getEnquiryLogObject());
+     * Endret returtype til List<Map<String, Object>> for å unngå type-feil og gjøre testing uavhengig av SObject.
+     */
+    private static List<Map<String, Object>> getEnquiryLogs(List<String> sessionIds) {
+        // Return injected mock data during tests
+        if (Test.isRunningTest() && mockEnquiryLogs != null) {
+            return mockEnquiryLogs;
+        }
 
-        return Test.isRunningTest()
-            ? (List<Object>) JSON.deserializeUntyped(HOT_CallFlowControllerTest.MOCK_ENQUIRY_LOG)
-            : (List<Object>) JSON.deserializeUntyped(
-                  JSON.serialize(
-                      Database.query(
-                          queryFactory.selectFields(QueryFields)
-                              .setCondition('puzzel__SessionId__c in :sessionIds')
-                              .setLimit(1)
-                              .toSOQL()
-                      )
-                  )
-              );
+        List<Map<String, Object>> results = new List<Map<String, Object>>();
+
+        if (getEnquiryLogObject() != null) {
+            fflib_QueryFactory queryFactory = new fflib_QueryFactory(getEnquiryLogObject());
+            List<SObject> logs = Database.query(
+                queryFactory.selectFields(QueryFields).setCondition('puzzel__SessionId__c in :sessionIds').toSOQL()
+            );
+
+            // Convert SObjects to generic maps dynamically
+            for (SObject log : logs) {
+                results.add(log.getPopulatedFieldsAsMap());
+            }
+        }
+
+        return results;
     }
 
     public class CallerResponse {
