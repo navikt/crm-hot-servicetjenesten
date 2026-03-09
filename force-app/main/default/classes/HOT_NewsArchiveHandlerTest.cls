@@ -8,7 +8,7 @@
  *
  * @author Kenneth Sørensen
  * @group HOT Public 360 Integration
- * @since November 2025
+ * @since Januar 2025
  * @see HOT_NewsArchiveHandler
  */
 @SuppressWarnings('PMD.ApexUnitTestClassShouldHaveRunAs,PMD.ApexDoc,PMD.MethodNamingConventions')
@@ -16,8 +16,11 @@
 private class HOT_NewsArchiveHandlerTest {
     // MARK: - Test Constants
     private static final String TEST_CASE_NUMBER = '25/12345';
+    private static final String TEST_CASE_NUMBER_PROD = 'PROD/99999';
     private static final String TEST_NAV_IDENT = 'A123456';
+    private static final String TEST_NAV_IDENT_PROD = 'PROD_IDENT';
     private static final String TEST_NAV_ENHET = '1234';
+    private static final String TEST_NAV_ENHET_PROD = 'PROD_ENHET';
     private static final String TEST_CALLOUT_NAME = 'P360_Test';
     private static final String TEST_ARTICLE_NAME = 'Test News Article';
     private static final String TEST_ARTICLE_CONTENT = '<p>Test content</p>';
@@ -138,17 +141,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenInSandboxWithMetadataSettings_ProcessesWithoutError() {
-        // Arrange
         setCustomMetadataForTest(true);
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         handler.execute(article);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(handler, 'Handler should complete execution');
     }
 
@@ -160,17 +160,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenInProductionWithMetadataSettings_ProcessesWithoutError() {
-        // Arrange
         setCustomMetadataForTest(false);
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         handler.execute(article);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(handler, 'Handler should complete execution');
     }
 
@@ -182,7 +179,6 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenNoMetadataSettings_LogsErrorAndReturns() {
-        // Arrange - Set up empty metadata response
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         String env = 'Test';
         CustomMetadataDAOTest.setMetadata(
@@ -202,12 +198,10 @@ private class HOT_NewsArchiveHandlerTest {
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         handler.execute(article);
         System.Test.stopTest();
 
-        // Assert - No exception means it handled the null case gracefully
         System.Assert.isNotNull(handler, 'Handler should complete execution without throwing');
     }
 
@@ -219,7 +213,6 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenMetadataValuesAreNull_LogsErrorAndReturns() {
-        // Arrange - Set up metadata with null values
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         String env = 'Test';
         CustomMetadataDAOTest.setMetadata(
@@ -254,12 +247,10 @@ private class HOT_NewsArchiveHandlerTest {
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         handler.execute(article);
         System.Test.stopTest();
 
-        // Assert - No exception means it handled the null values gracefully
         System.Assert.isNotNull(handler, 'Handler should complete execution without throwing');
     }
 
@@ -271,7 +262,6 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenOnlyCaseNumberIsNull_LogsErrorAndReturns() {
-        // Arrange - Set up metadata with only caseNumber as null
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         String env = 'Test';
         CustomMetadataDAOTest.setMetadata(
@@ -306,12 +296,10 @@ private class HOT_NewsArchiveHandlerTest {
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         handler.execute(article);
         System.Test.stopTest();
 
-        // Assert - No exception means it handled the partial null case gracefully
         System.Assert.isNotNull(handler, 'Handler should complete execution without throwing');
     }
 
@@ -325,16 +313,13 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getCaseNumber_WhenSettingsIsNull_ReturnsNull() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         String result = handler.getCaseNumber(null);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNull(result, 'Should return null when settings is null');
     }
 
@@ -346,20 +331,17 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getCaseNumber_WhenInSandbox_ReturnsCaseNumberTest() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             CaseNumberTest__c = TEST_CASE_NUMBER,
-            CaseNumberProd__c = 'PROD/99999'
+            CaseNumberProd__c = TEST_CASE_NUMBER_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getCaseNumber(mockSettings);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.areEqual(TEST_CASE_NUMBER, result, 'Should return test case number in sandbox');
     }
 
@@ -371,21 +353,18 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getCaseNumber_WhenInProduction_ReturnsCaseNumberProd() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = false;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             CaseNumberTest__c = TEST_CASE_NUMBER,
-            CaseNumberProd__c = 'PROD/99999'
+            CaseNumberProd__c = TEST_CASE_NUMBER_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getCaseNumber(mockSettings);
         System.Test.stopTest();
 
-        // Assert
-        System.Assert.areEqual('PROD/99999', result, 'Should return production case number in production');
+        System.Assert.areEqual(TEST_CASE_NUMBER_PROD, result, 'Should return production case number in production');
     }
 
     // MARK: - getNavIdent() Tests
@@ -398,16 +377,13 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavIdent_WhenSettingsIsNull_ReturnsNull() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavIdent(null);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNull(result, 'Should return null when settings is null');
     }
 
@@ -419,20 +395,17 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavIdent_WhenInSandbox_ReturnsNavIdTest() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             NavIdTest__c = TEST_NAV_IDENT,
-            NavIdProd__c = 'PROD_IDENT'
+            NavIdProd__c = TEST_NAV_IDENT_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavIdent(mockSettings);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.areEqual(TEST_NAV_IDENT, result, 'Should return test NavId in sandbox');
     }
 
@@ -444,21 +417,18 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavIdent_WhenInProduction_ReturnsNavIdProd() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = false;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             NavIdTest__c = TEST_NAV_IDENT,
-            NavIdProd__c = 'PROD_IDENT'
+            NavIdProd__c = TEST_NAV_ENHET_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavIdent(mockSettings);
         System.Test.stopTest();
 
-        // Assert
-        System.Assert.areEqual('PROD_IDENT', result, 'Should return production NavId in production');
+        System.Assert.areEqual(TEST_NAV_ENHET_PROD, result, 'Should return production NavId in production');
     }
 
     // MARK: - getNavEnhet() Tests
@@ -471,16 +441,13 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavEnhet_WhenSettingsIsNull_ReturnsNull() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavEnhet(null);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNull(result, 'Should return null when settings is null');
     }
 
@@ -492,20 +459,17 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavEnhet_WhenInSandbox_ReturnsNavEnhetTest() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             NavEnhetTest__c = TEST_NAV_ENHET,
-            NavEnhetProd__c = 'PROD_ENHET'
+            NavEnhetProd__c = TEST_NAV_ENHET_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavEnhet(mockSettings);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.areEqual(TEST_NAV_ENHET, result, 'Should return test NavEnhet in sandbox');
     }
 
@@ -517,21 +481,18 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void getNavEnhet_WhenInProduction_ReturnsNavEnhetProd() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = false;
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
             NavEnhetTest__c = TEST_NAV_ENHET,
-            NavEnhetProd__c = 'PROD_ENHET'
+            NavEnhetProd__c = TEST_NAV_ENHET_PROD
         );
 
-        // Act
         System.Test.startTest();
         String result = handler.getNavEnhet(mockSettings);
         System.Test.stopTest();
 
-        // Assert
-        System.Assert.areEqual('PROD_ENHET', result, 'Should return production NavEnhet in production');
+        System.Assert.areEqual(TEST_NAV_ENHET_PROD, result, 'Should return production NavEnhet in production');
     }
 
     // MARK: - createRequestBody() Tests
@@ -544,17 +505,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void createRequestBody_WhenValidInputs_ReturnsValidJson() {
-        // Arrange
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         Blob testPdf = Blob.valueOf('Test PDF Content');
 
-        // Act
         System.Test.startTest();
         String result = handler.createRequestBody(TEST_CASE_NUMBER, TEST_NAV_IDENT, article, testPdf);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(result, 'Should return a JSON string');
         System.Assert.isTrue(result.contains('"Title":"' + TEST_ARTICLE_NAME + '"'), 'Should contain article title');
         System.Assert.isTrue(result.contains('"DefaultValueSet":"NKSSalesForce"'), 'Should contain default value set');
@@ -576,19 +534,16 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void createRequestBody_WhenPdfProvided_EncodesAsBase64() {
-        // Arrange
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         String originalContent = 'Test PDF Content';
         Blob testPdf = Blob.valueOf(originalContent);
         String expectedBase64 = EncodingUtil.base64Encode(testPdf);
 
-        // Act
         System.Test.startTest();
         String result = handler.createRequestBody(TEST_CASE_NUMBER, TEST_NAV_IDENT, article, testPdf);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isTrue(
             result.contains('"Base64Data":"' + expectedBase64 + '"'),
             'Should contain correctly encoded Base64 data'
@@ -605,17 +560,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void send_WhenResponseIs200_ReturnsTrue() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         String requestBody = '{"test":"data"}';
 
-        // Act
         System.Test.startTest();
         Boolean result = handler.send(requestBody);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isTrue(result, 'Should return true on successful response');
         System.Assert.areEqual(200, handler.operationResponse.getStatusCode(), 'Response code should be 200');
     }
@@ -628,17 +580,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void send_WhenResponseIsNot200_ReturnsFalse() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseFailure());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         String requestBody = '{"test":"data"}';
 
-        // Act
         System.Test.startTest();
         Boolean result = handler.send(requestBody);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isFalse(result, 'Should return false on error response');
         System.Assert.areEqual(500, handler.operationResponse.getStatusCode(), 'Response code should be 500');
     }
@@ -651,17 +600,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void send_WhenCalled_StoresResponseInProperty() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         String requestBody = '{"test":"data"}';
 
-        // Act
         System.Test.startTest();
         handler.send(requestBody);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(handler.operationResponse, 'Should store response in property');
         System.Assert.areEqual('OK', handler.operationResponse.getStatus(), 'Should have correct status');
     }
@@ -676,17 +622,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void callout_WhenCalled_ConstructsCorrectEndpoint() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         String operationType = HOT_NewsArchiveHandler.CREATE_DOCUMENT;
         String requestBody = '{"test":"data"}';
 
-        // Act
         System.Test.startTest();
         HttpResponse result = HOT_NewsArchiveHandler.callout(operationType, requestBody, TEST_CALLOUT_NAME);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(result, 'Should return a response');
         System.Assert.areEqual(200, result.getStatusCode(), 'Should receive successful response');
     }
@@ -699,10 +642,8 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void callout_WhenSuccessful_ReturnsHttpResponse() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
 
-        // Act
         System.Test.startTest();
         HttpResponse result = HOT_NewsArchiveHandler.callout(
             HOT_NewsArchiveHandler.CREATE_DOCUMENT,
@@ -711,7 +652,6 @@ private class HOT_NewsArchiveHandlerTest {
         );
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isNotNull(result, 'Should return HttpResponse');
         System.Assert.isNotNull(result.getBody(), 'Response should have body');
     }
@@ -726,17 +666,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void archiveArticle_WhenSendSucceeds_ReturnsTrue() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
 
-        // Act
         System.Test.startTest();
         Boolean result = handler.archiveArticle(article, TEST_CASE_NUMBER, TEST_NAV_IDENT, TEST_NAV_ENHET);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isTrue(result, 'Should return true on successful archive');
     }
 
@@ -748,17 +685,14 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void archiveArticle_WhenSendFails_ReturnsFalse() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseFailure());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
 
-        // Act
         System.Test.startTest();
         Boolean result = handler.archiveArticle(article, TEST_CASE_NUMBER, TEST_NAV_IDENT, TEST_NAV_ENHET);
         System.Test.stopTest();
 
-        // Assert
         System.Assert.isFalse(result, 'Should return false on failed archive');
     }
 
@@ -770,17 +704,15 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void archiveArticle_WhenInTestContext_UsesMockPdf() {
-        // Arrange
         Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
 
-        // Act
         System.Test.startTest();
         Boolean result = handler.archiveArticle(article, TEST_CASE_NUMBER, TEST_NAV_IDENT, TEST_NAV_ENHET);
         System.Test.stopTest();
 
-        // Assert - If we get here without exception, the test PDF was used
+        // If we get here without exception, the test PDF was used
         System.Assert.isNotNull(handler.operationResponse, 'Should have completed the callout');
     }
 
@@ -794,7 +726,6 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void constants_HaveCorrectValues() {
-        // Assert
         System.Assert.areEqual(
             'DocumentService',
             HOT_NewsArchiveHandler.DOCUMENT_SERVICE,
@@ -817,21 +748,18 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void constructor_WhenTestIsSandboxOverrideTrue_UsesSandboxBehavior() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = true;
 
-        // Act
         System.Test.startTest();
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
-            CaseNumberTest__c = 'SANDBOX/12345',
-            CaseNumberProd__c = 'PROD/99999'
+            CaseNumberTest__c = TEST_CASE_NUMBER,
+            CaseNumberProd__c = TEST_CASE_NUMBER_PROD
         );
         String result = handler.getCaseNumber(mockSettings);
         System.Test.stopTest();
 
-        // Assert
-        System.Assert.areEqual('SANDBOX/12345', result, 'Should use sandbox field when override is true');
+        System.Assert.areEqual(TEST_CASE_NUMBER, result, 'Should use sandbox field when override is true');
     }
 
     /**
@@ -842,20 +770,17 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void constructor_WhenTestIsSandboxOverrideFalse_UsesProductionBehavior() {
-        // Arrange
         HOT_NewsArchiveHandler.testIsSandboxOverride = false;
 
-        // Act
         System.Test.startTest();
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
         HOT_NewsArchiveMapping__mdt mockSettings = new HOT_NewsArchiveMapping__mdt(
-            CaseNumberTest__c = 'SANDBOX/12345',
-            CaseNumberProd__c = 'PROD/99999'
+            CaseNumberTest__c = TEST_CASE_NUMBER,
+            CaseNumberProd__c = TEST_CASE_NUMBER_PROD
         );
         String result = handler.getCaseNumber(mockSettings);
         System.Test.stopTest();
 
-        // Assert
-        System.Assert.areEqual('PROD/99999', result, 'Should use production field when override is false');
+        System.Assert.areEqual(TEST_CASE_NUMBER_PROD, result, 'Should use production field when override is false');
     }
 }
