@@ -2,7 +2,9 @@ public without sharing class HOT_CallFlowController {
     private static final List<String> QueryFields = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
 
     private static Schema.SObjectType getEnquiryLogObject() {
-        return Type.forName('puzzel__EnquiryLog__c') != null ? puzzel__EnquiryLog__c.sObjectType : null;
+        return Type.forName('puzzel__EnquiryLog__c') != null
+            ? Schema.describeSObjects(new List<String>{ 'puzzel__EnquiryLog__c' })[0].getSObjectType()
+            : null;
     }
 
     @InvocableMethod(
