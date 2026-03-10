@@ -1,6 +1,5 @@
 public without sharing class HOT_CallFlowController {
     private static final List<String> QueryFields = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
-    private static Map<String, Schema.SObjectType> globalDesc = Schema.getGlobalDescribe();
 
     private static Schema.SObjectType getEnquiryLogObject() {
         return Type.forName('puzzel__EnquiryLog__c') != null ? puzzel__EnquiryLog__c.sObjectType : null;
