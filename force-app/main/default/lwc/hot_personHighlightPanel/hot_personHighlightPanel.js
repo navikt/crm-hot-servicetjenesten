@@ -241,7 +241,22 @@ export default class hot_personHighlightPanel extends LightningElement {
                 if (record) {
                     this.noPerson = !this.personId;
                     this.loadingStates.getRecordPerson = false;
-                    refreshApex(this.wiredBadge);
+                    const refreshPromises = [];
+                    if (this.wiredBadge) {
+                        refreshPromises.push(refreshApex(this.wiredBadge));
+                    }
+                    if (this.wiredPersonAccessBadge) {
+                        refreshPromises.push(refreshApex(this.wiredPersonAccessBadge));
+                    }
+                    if (this.historikkWiredData) {
+                        refreshPromises.push(refreshApex(this.historikkWiredData));
+                    }
+                    if (refreshPromises.length > 0) {
+                        Promise.all(refreshPromises).catch((error) => {
+                            this.addErrorMessage('refreshApex', error);
+                            console.error(error);
+                        });
+                    }
                 }
             })
             .catch((error) => {
