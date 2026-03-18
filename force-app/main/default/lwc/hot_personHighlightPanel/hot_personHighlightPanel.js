@@ -1,5 +1,6 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { getFieldValue, getRecord } from 'lightning/uiRecordApi';
+import { refreshApex } from '@salesforce/apex';
 import { resolve } from 'c/hot_componentsUtils';
 
 import PERSON_ACTORID_FIELD from '@salesforce/schema/Person__c.INT_ActorId__c';
@@ -240,6 +241,7 @@ export default class hot_personHighlightPanel extends LightningElement {
                 if (record) {
                     this.noPerson = !this.personId;
                     this.loadingStates.getRecordPerson = false;
+                    refreshApex(this.wiredBadge);
                 }
             })
             .catch((error) => {
