@@ -359,6 +359,7 @@
         <dataType>String</dataType>
         <expression>Case({!Selected_Task_Type}, &apos;KONT_BRUK&apos;,
             &apos;Kontakt bruker&apos;, &apos;VURD_HENV&apos;, &apos;Vurder henvendelse&apos;,
+            &apos;HJELP_UTPROV&apos;, &apos;Hjelp til utprøving&apos;,
             &apos;Vurder konsekvens for ytelse&apos;)</expression>
     </formulas>
     <formulas>
@@ -624,6 +625,14 @@
                 <assignToReference>Selected_Unit_Id</assignToReference>
                 <name>selectedUnitId</name>
             </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Name</assignToReference>
+                <name>selectedUnitName</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Number</assignToReference>
+                <name>selectedUnitNumber</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -812,6 +821,14 @@
                 <assignToReference>Selected_Unit_Id</assignToReference>
                 <name>selectedUnitId</name>
             </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Name</assignToReference>
+                <name>selectedUnitName</name>
+            </outputParameters>
+            <outputParameters>
+                <assignToReference>Selected_Unit_Number</assignToReference>
+                <name>selectedUnitNumber</name>
+            </outputParameters>
         </fields>
         <nextOrFinishButtonLabel>Opprett oppgave</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -966,5 +983,19 @@
         <isCollection>false</isCollection>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Unit_Name</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Selected_Unit_Number</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
 </Flow>

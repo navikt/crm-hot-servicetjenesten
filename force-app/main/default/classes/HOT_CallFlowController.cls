@@ -1,6 +1,5 @@
 public without sharing class HOT_CallFlowController {
     private static final List<String> QueryFields = new List<String>{ 'puzzel__SessionId__c', 'puzzel__Caller__c' };
-    private static Map<String, Schema.SObjectType> globalDesc = Schema.getGlobalDescribe();
 
     // Allows the test class to inject mock data without JSON or cross-referencing
     @TestVisible
@@ -10,7 +9,9 @@ public without sharing class HOT_CallFlowController {
      * @description: Returns the Enquiry log SObject type if it exists
      */
     private static Schema.SObjectType getEnquiryLogObject() {
-        return globalDesc.containsKey('puzzel__EnquiryLog__c') ? globalDesc.get('puzzel__EnquiryLog__c') : null;
+        return Type.forName('puzzel__EnquiryLog__c') != null
+            ? Schema.describeSObjects(new List<String>{ 'puzzel__EnquiryLog__c' })[0].getSObjectType()
+            : null;
     }
 
     @InvocableMethod(
