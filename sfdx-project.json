@@ -16,6 +16,16 @@
                     "versionNumber": "0.1.47.LATEST"
                 },
                 {
+                "package": "custom-permission-helper",
+                "versionNumber": "0.1.47.LATEST",
+                "branch": ""
+                },
+                {
+                "package": "feature-toggle",
+                "versionNumber": "0.1.48.LATEST",
+                "branch": ""
+                },
+                {
                     "package": "crm-platform-base",
                     "versionNumber": "0.300.0.LATEST"
                 },
@@ -99,10 +109,14 @@
         "crm-sf-saf": "0Ho7U0000000001SAA",
         "crm-hot-felles": "0HoQC00000005qv0AA",
         "platform-data-model": "0HoKB00000000010AA",
-        "custom-metadata-dao": "0HoKB000000000B0AQ"
+        "custom-metadata-dao": "0HoKB000000000B0AQ",
+        "custom-permission-helper": "0HoKB000000000f0AA",
+        "feature-toggle": "0HoKB000000000V0AQ"
     },
     "packageKeyConfig": {
         "platform-data-model": false,
-        "custom-metadata-dao": false
+        "custom-metadata-dao": false,
+        "custom-permission-helper": false,
+        "feature-toggle": false
     }
 }
