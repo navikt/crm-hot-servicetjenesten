@@ -80,6 +80,9 @@ public with sharing class HOT_NewsArchiveHandler {
             logger.publish();
             return;
         }
+
+        archiveArticle(article, caseNumber, navIdent, navEnhet);
+        return;
     }
 
     /**

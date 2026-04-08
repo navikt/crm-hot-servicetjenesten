@@ -141,6 +141,7 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenInSandboxWithMetadataSettings_ProcessesWithoutError() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         setCustomMetadataForTest(true);
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
@@ -160,6 +161,7 @@ private class HOT_NewsArchiveHandlerTest {
      */
     @IsTest
     static void execute_WhenInProductionWithMetadataSettings_ProcessesWithoutError() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseSuccess());
         setCustomMetadataForTest(false);
         NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
         HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
@@ -169,6 +171,27 @@ private class HOT_NewsArchiveHandlerTest {
         System.Test.stopTest();
 
         System.Assert.isNotNull(handler, 'Handler should complete execution');
+    }
+
+    /**
+     * What this test verifies:
+     * - execute() handles the case when the HTTP callout fails (non-200 response).
+     * Why it matters:
+     * - Ensures errors from Public 360 API are handled gracefully without throwing exceptions.
+     */
+    @IsTest
+    static void execute_WhenCalloutFails_HandlesErrorGracefully() {
+        Test.setMock(HttpCalloutMock.class, new MockHttpResponseFailure());
+        setCustomMetadataForTest(true);
+        NKS_Announcement__c article = [SELECT Id, Name FROM NKS_Announcement__c LIMIT 1];
+        HOT_NewsArchiveHandler handler = new HOT_NewsArchiveHandler();
+
+        System.Test.startTest();
+        handler.execute(article);
+        System.Test.stopTest();
+
+        System.Assert.isNotNull(handler, 'Handler should complete execution without throwing');
+        System.Assert.areEqual(500, handler.operationResponse.getStatusCode(), 'Should have received error response');
     }
 
     /**
