@@ -16,14 +16,12 @@
                     "versionNumber": "0.1.47.LATEST"
                 },
                 {
-                "package": "custom-permission-helper",
-                "versionNumber": "0.1.47.LATEST",
-                "branch": ""
+                    "package": "custom-permission-helper",
+                    "versionNumber": "0.1.47.LATEST",
                 },
                 {
-                "package": "feature-toggle",
-                "versionNumber": "0.1.48.LATEST",
-                "branch": ""
+                    "package": "feature-toggle",
+                    "versionNumber": "0.1.48.LATEST",
                 },
                 {
                     "package": "crm-platform-base",
