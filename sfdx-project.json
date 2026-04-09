@@ -8,20 +8,36 @@
             "versionDescription": "",
             "dependencies": [
                 {
+                    "package": "platform-data-model",
+                    "versionNumber": "0.1.47.LATEST"
+                },
+                {
+                    "package": "custom-metadata-dao",
+                    "versionNumber": "0.1.47.LATEST"
+                },
+                {
+                    "package": "custom-permission-helper",
+                    "versionNumber": "0.1.47.LATEST"
+                },
+                {
+                    "package": "feature-toggle",
+                    "versionNumber": "0.1.48.LATEST"
+                },
+                {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.279.0.LATEST"
+                    "versionNumber": "0.300.0.LATEST"
                 },
                 {
                     "package": "crm-thread-view",
-                    "versionNumber": "0.5.0.LATEST"
+                    "versionNumber": "0.8.0.LATEST"
                 },
                 {
                     "package": "crm-journal-utilities",
-                    "versionNumber": "0.43.0.LATEST"
+                    "versionNumber": "0.55.0.LATEST"
                 },
                 {
                     "package": "crm-platform-reporting",
-                    "versionNumber": "0.40.0.LATEST"
+                    "versionNumber": "0.44.0.LATEST"
                 },
                 {
                     "package": "crm-shared-flowComponents",
@@ -33,39 +49,39 @@
                 },
                 {
                     "package": "crm-platform-integration",
-                    "versionNumber": "0.158.0.LATEST"
+                    "versionNumber": "0.171.0.LATEST"
                 },
                 {
                     "package": "crm-shared-user-notification",
-                    "versionNumber": "0.25.0.LATEST"
+                    "versionNumber": "0.27.0.LATEST"
                 },
                 {
                     "package": "crm-platform-oppgave",
-                    "versionNumber": "0.64.0.LATEST"
+                    "versionNumber": "0.73.0.LATEST"
                 },
                 {
                     "package": "crm-platform-access-control",
-                    "versionNumber": "0.162.0.LATEST"
+                    "versionNumber": "0.177.0.LATEST"
                 },
                 {
                     "package": "crm-community-base",
-                    "versionNumber": "0.121.0.LATEST"
+                    "versionNumber": "0.140.0.LATEST"
                 },
                 {
                     "package": "crm-henvendelse",
-                    "versionNumber": "0.189.0.LATEST"
+                    "versionNumber": "0.201.0.LATEST"
                 },
                 {
                     "package": "crm-shared-timeline",
-                    "versionNumber": "1.29.0.LATEST"
+                    "versionNumber": "1.44.0.LATEST"
                 },
                 {
                     "package": "crm-sf-saf",
-                    "versionNumber": "0.38.0.LATEST"
+                    "versionNumber": "0.41.0.LATEST"
                 },
                 {
                     "package": "crm-hot-felles",
-                    "versionNumber": "0.5.0.LATEST"
+                    "versionNumber": "0.7.0.LATEST"
                 }
             ]
         }
@@ -89,6 +105,16 @@
         "crm-shared-timeline": "0Ho2o000000fxXBCAY",
         "crm-thread-view": "0Ho7U000000000zSAA",
         "crm-sf-saf": "0Ho7U0000000001SAA",
-        "crm-hot-felles": "0HoQC00000005qv0AA"
+        "crm-hot-felles": "0HoQC00000005qv0AA",
+        "platform-data-model": "0HoKB00000000010AA",
+        "custom-metadata-dao": "0HoKB000000000B0AQ",
+        "custom-permission-helper": "0HoKB000000000f0AA",
+        "feature-toggle": "0HoKB000000000V0AQ"
+    },
+    "packageKeyConfig": {
+        "platform-data-model": false,
+        "custom-metadata-dao": false,
+        "custom-permission-helper": false,
+        "feature-toggle": false
     }
 }
