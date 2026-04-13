@@ -26,4 +26,8 @@
     </customPermissions>
     <hasActivationRequired>false</hasActivationRequired>
     <label>HOT Servicetjenesten Beta</label>
+    <pageAccesses>
+        <apexPage>Saf_ViewDocument</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
 </PermissionSet>
