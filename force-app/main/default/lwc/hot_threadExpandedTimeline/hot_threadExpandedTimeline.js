@@ -48,7 +48,7 @@ export default class ThreadExpandedTimeline extends NavigationMixin(LightningEle
             type: 'standard__recordPage',
             attributes: {
                 recordId: this.recordId,
-                objectApiName: 'Conversation_note__c',
+                objectApiName: 'Thread__c',
                 actionName: 'view'
             }
         });

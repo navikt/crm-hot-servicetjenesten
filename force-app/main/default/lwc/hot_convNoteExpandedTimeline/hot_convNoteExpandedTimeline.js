@@ -11,12 +11,13 @@ export default class ConvNoteExpandedTimeline extends NavigationMixin(LightningE
     @wire(getRecord, {
         recordId: '$recordId',
         fields: [
-            'Conversation_note__c.Id',
-            'Conversation_note__c.CRM_Conversation_Note__c',
-            'Conversation_note__c.CRM_Created_By_Ident__c',
-            'Conversation_note__c.CreatedDate',
-            'Conversation_note__c.CRM_Journal_Status_Formula__c',
-            'Conversation_note__c.CRM_Read_Date__c'
+            'Conversation_Note__c.Id',
+            'Conversation_Note__c.CRM_Conversation_Note__c',
+            'Conversation_Note__c.CRM_Created_By_Ident__c',
+            'Conversation_Note__c.CRM_Created_By_NAV_Unit__c',
+            'Conversation_Note__c.CreatedDate',
+            'Conversation_Note__c.CRM_Journal_Status_Formula__c',
+            'Conversation_Note__c.CRM_Read_Date__c'
         ]
     })
     wiredConversationNote(result) {
@@ -38,7 +39,7 @@ export default class ConvNoteExpandedTimeline extends NavigationMixin(LightningE
             type: 'standard__recordPage',
             attributes: {
                 recordId: this.recordId,
-                objectApiName: 'Conversation_note__c',
+                objectApiName: 'Conversation_Note__c',
                 actionName: 'view'
             }
         });

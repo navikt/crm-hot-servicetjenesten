@@ -1,0 +1,97 @@
+<template>
+    <div class="slds-theme_default slds-is-relative">
+        <div class={headerClass}>
+            <div class="slds-col slds-large-size_3-of-12 left-column">
+                <h3 class="slds-card__header-title">
+                    <lightning-icon
+                        icon-name={headerIcon}
+                        size="small"
+                        class="slds-var-m-right_medium"
+                    ></lightning-icon>
+                    {header}
+                </h3>
+            </div>
+            <div class="slds-col slds-large-size_9-of-12">
+                <c-timeline-filter
+                    lwc:if={filterIsActive}
+                    filter-properties={filterProperties}
+                    is-grouped={isGrouped}
+                    picklist-filter-1-label={picklistFilter1Label}
+                    picklist-filter-2-label={picklistFilter2Label}
+                    show-hide-label={showHideLabel}
+                    hide-my-activities-filter="true"
+                    onfilterchange={handleFilter}
+                    log-event={logEvent}
+                    design="Slick"
+                ></c-timeline-filter>
+            </div>
+        </div>
+        <div lwc:if={loading} class="slds-scrollable" style={loadingStyle}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </div>
+        <div lwc:elseif={error}>
+            <div class="slds-text-heading_large slds-align_absolute-center">{labels.errorTitle}</div>
+            <div class="slds-text-color_destructive slds-align_absolute-center slds-var-m-around_x-large">
+                {errorMsg}
+            </div>
+        </div>
+        <div lwc:elseif={empty}>
+            <div class="slds-text-heading_small slds-align_absolute-center slds-var-m-around_x-large">
+                {emptySubtitle}
+            </div>
+        </div>
+        <ul class="slds-timeline">
+            <lightning-accordion
+                allow-multiple-sections-open
+                active-section-name={openAccordionSections}
+                onsectiontoggle={handleSectionToggle}
+                lwc:if={finishedLoading}
+            >
+                <template for:each={data} for:item="group" for:index="groupIndex">
+                    <c-timeline-group
+                        key={group.id}
+                        group={group}
+                        labels={labels}
+                        amount-of-records={amountOfRecords}
+                        amount-of-records-to-load={amountOfRecordsToLoad}
+                        open-accordion-sections={openAccordionSections}
+                        group-index={groupIndex}
+                        expand-check={expandCheck}
+                        log-event={logEvent}
+                        design="Slick"
+                        include-amount-in-title={includeAmountInTitle}
+                    >
+                    </c-timeline-group>
+                </template>
+            </lightning-accordion>
+        </ul>
+        <template lwc:if={hasMoreDataToLoad}>
+            <div class="slds-align_absolute-center loadMoreFooter" onclick={loadMore}>
+                <button class="slds-button loadMoreBtn">{labels.loadMore}</button>
+            </div>
+            <div class="slds-align_absolute-center slds-var-m-top_x-small slds-var-m-bottom_x-small">
+                <lightning-icon
+                    icon-name="utility:info_alt"
+                    size="small"
+                    class="slds-m-right_xx-small"
+                ></lightning-icon>
+                <p>
+                    Den viste måneden kan være ufullstendig. Klikk «Last mer» til en ny måned vises for å se alle poster
+                    i gjeldende måned. Når «Last mer»-knappen forsvinner, er alle poster hentet.
+                </p>
+            </div>
+            <template lwc:if={isPicklistFiltered}>
+                <div class="slds-align_absolute-center">
+                    <lightning-icon
+                        icon-name="utility:info_alt"
+                        size="small"
+                        class="slds-m-right_xx-small"
+                    ></lightning-icon>
+                    <p>Temagruppefilteret tilbakestilles ved lasting av flere henvendelser</p>
+                </div>
+            </template>
+        </template>
+
+        <div lwc:else class="slds-align_absolute-center slds-text-color_weak slds-var-p-top_medium"></div>
+    </div>
+</template>
