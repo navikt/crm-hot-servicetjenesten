@@ -51,6 +51,16 @@
                     <name>uiBehavior</name>
                     <value>none</value>
                 </fieldInstanceProperties>
+                <fieldItem>Record.NKS_Status__c</fieldItem>
+                <identifier>RecordNKS_Status_cField</identifier>
+            </fieldInstance>
+        </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
                 <fieldItem>Record.CRM_NavUnit__c</fieldItem>
                 <identifier>RecordCRM_NavUnit_cField</identifier>
             </fieldInstance>
@@ -61,6 +71,27 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NavTask__c.Complete_NAV_Task</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.NKS_Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FEILREGISTRERT</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.NKS_Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FERDIGSTILT</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
