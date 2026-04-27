@@ -72,6 +72,27 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>actionNames</name>
+                    <valueList>
+                        <valueListItems>
+                            <value>NavTask__c.DIA_Complete_Task</value>
+                            <visibilityRule>
+                                <booleanFilter>1 AND 2</booleanFilter>
+                                <criteria>
+                                    <leftValue>{!Record.NKS_Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FERDIGSTILT</rightValue>
+                                </criteria>
+                                <criteria>
+                                    <leftValue>{!Record.NKS_Status__c}</leftValue>
+                                    <operator>NE</operator>
+                                    <rightValue>FEILREGISTRERT</rightValue>
+                                </criteria>
+                            </visibilityRule>
+                        </valueListItems>
+                    </valueList>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>3</value>
                 </componentInstanceProperties>
