@@ -75,7 +75,7 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>NavTask__c.Complete_NAV_Task</value>
+                            <value>NavTask__c.Complete_Task</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
