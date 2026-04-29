@@ -75,7 +75,7 @@
                     <name>actionNames</name>
                     <valueList>
                         <valueListItems>
-                            <value>NavTask__c.DIA_Complete_Task</value>
+                            <value>NavTask__c.HOT_Patch_Complete_NAV_Task</value>
                             <visibilityRule>
                                 <booleanFilter>1 AND 2</booleanFilter>
                                 <criteria>
@@ -463,7 +463,7 @@
         <name>rightcol</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>HOT Dialog Task</masterLabel>
+    <masterLabel>HOT NAV Task</masterLabel>
     <sobjectType>NavTask__c</sobjectType>
     <template>
         <name>flexipage:recordHomeTwoColEqualHeaderTemplateDesktop</name>
