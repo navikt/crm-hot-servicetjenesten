@@ -64,6 +64,11 @@
 **/AsyncRequest__c*
 **/listViews/queue_*
 **/listViews/NAV_Ansatte_*
+# Empty object shells for objects owned by dependency packages. Deploying these
+# standalone causes "Must specify a non-empty label for the CustomObject".
+**/objects/Common_Code__c/Common_Code__c.object-meta.xml
+**/objects/Conversation_Note__c/Conversation_Note__c.object-meta.xml
+**/objects/Thread__c/Thread__c.object-meta.xml
 # -
 # -
 # -
