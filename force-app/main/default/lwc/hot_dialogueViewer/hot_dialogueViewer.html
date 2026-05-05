@@ -9,6 +9,11 @@
         single-thread="true"
         card-title="Samtale"
         show-close="true"
+        submit-button-label="Send"
     ></c-hot_sto-messaging>
-    <!-- <c-nks-conv-note-viewer if:true={convNoteId} record-id={convNoteId}></c-nks-conv-note-viewer> -->
+    <c-hot_conversation-note-viewer
+        if:true={convNoteId}
+        record-id={convNoteId}
+        object-api-name="Conversation_Note__c"
+    ></c-hot_conversation-note-viewer>
 </template>

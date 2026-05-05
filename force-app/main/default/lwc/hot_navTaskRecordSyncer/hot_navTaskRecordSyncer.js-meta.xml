@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>HOT NAV Task Record Syncer</masterLabel>
+    <description>Runs NAV task sync on task record pages and refreshes dependent components</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+</LightningComponentBundle>

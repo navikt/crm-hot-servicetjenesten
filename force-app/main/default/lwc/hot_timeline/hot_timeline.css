@@ -1,0 +1,14 @@
+.custom-container {
+    align-items: center;
+    margin: 0 1.25rem;
+    padding-bottom: 1rem;
+}
+
+.left-column {
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #767676;
+}

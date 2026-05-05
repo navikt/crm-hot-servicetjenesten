@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>66.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>HOT Timeline</masterLabel>
+    <description>A HOT-owned timeline component for Threads, Conversation Notes and Call Logs</description>
+    <targets>
+        <target>lightning__RecordPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property name="timelineParentField" type="String" label="Timeline parent field" default="Id"
+                description="API name of the field containing the parent record ID (e.g. Id or CRM_Account__c)" />
+            <property name="customEmptySubtitle" type="String" label="Info message on empty list"
+                default=""
+                description="If defined then used instead of the standard empty-state subtitle" />
+            <property name="headerTitleNorwegian" type="String" label="Title (Norwegian)"
+                default="Henvendelser" />
+            <property name="headerTitleEnglish" type="String" label="Title (English)"
+                default="Cases" />
+            <property name="headerIcon" type="String" label="Icon"
+                description="See https://lightningdesignsystem.com/icons"
+                default="standard:case" />
+            <property name="amountOfMonths" type="Integer" label="Initial Months to show"
+                description="Number of months to show on render" min="1" />
+            <property name="amountOfMonthsToOpen" type="Integer" label="No. of Months to Expand"
+                description="Number of expanded months on render" />
+            <property name="amountOfMonthsToLoad" type="Integer" label="No. of Months to Load"
+                description="Number of months to load when clicking Load More" min="1" />
+            <property name="amountOfRecords" type="Integer" label="Initial Records to show"
+                description="Number of records to show for each expanded month on render" min="1" />
+            <property name="amountOfRecordsToOpen" type="Integer" label="No. of Records to Expand"
+                description="Number of shown records to expand on render" />
+            <property name="amountOfRecordsToLoad" type="Integer" label="No. of Records to Load"
+                description="Number of records to load when clicking See More and Load More. Max 30."
+                min="1" />
+            <property name="initialQueryLimit" type="Integer"
+                label="SOQL limit of query on first load"
+                min="1"
+                description="SOQL limit on first render per table. Default 5. Max is 30." />
+            <property name="filterIsActive" type="Boolean" label="Show filter button"
+                description="Show or hide filter button" default="false" />
+            <property name="picklistFilter1Label" type="String" label="Label for picklist filter #1" />
+            <property name="picklistFilter2Label" type="String" label="Label for picklist filter #2" />
+            <property name="showHideLabel" type="String" label="Label for show/hide checkbox" />
+            <property name="includeAmountInTitle" type="Boolean"
+                label="Includes the amount of records in a month" default="false" />
+            <property name="logEvent" type="Boolean" label="Log events" default="false" />
+            <supportedFormFactors>
+                <supportedFormFactor type="Small" />
+                <supportedFormFactor type="Large" />
+            </supportedFormFactors>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
