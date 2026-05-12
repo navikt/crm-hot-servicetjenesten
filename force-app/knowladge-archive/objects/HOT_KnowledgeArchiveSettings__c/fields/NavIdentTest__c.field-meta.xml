@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NavIdentTest__c</fullName>
+    <description>The Nav Ident for the test environment.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set the Nav Ident to be used in test environment.</inlineHelpText>
+    <label>Nav-Ident Test</label>
+    <length>7</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
