@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>P360DefaultValueSet__c</fullName>
+    <defaultValue>&quot;HOTSalesForce&quot;</defaultValue>
+    <description>The P360 Default Value Set to be used.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set the P360 Default Value Set to be used. Default Value: &quot;HOTSalesForce&quot;</inlineHelpText>
+    <label>P360 Default Value Set</label>
+    <length>50</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
