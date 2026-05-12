@@ -2,9 +2,9 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>CalloutNameProd__c</fullName>
     <defaultValue>&quot;P360HOTIntegrationProd&quot;</defaultValue>
-    <description>The callout name is the Named Credential to be used.</description>
+    <description>The callout name is the Named Credential to be used in the production environment.</description>
     <externalId>false</externalId>
-    <inlineHelpText>Set the Named Credential to be used.</inlineHelpText>
+    <inlineHelpText>Set the Named Credential to be used in the production environment.</inlineHelpText>
     <label>Callout Name Prod</label>
     <length>255</length>
     <required>true</required>
