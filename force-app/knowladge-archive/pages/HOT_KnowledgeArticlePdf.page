@@ -1,0 +1,80 @@
+<apex:page
+    controller="HOT_KnowledgeArticlePdfController"
+    title="{!title}"
+    sidebar="false"
+    showHeader="false"
+    applyBodyTag="false"
+    standardStylesheets="false"
+    renderAs="pdf"
+>
+    <head>
+        <style>
+            body {
+                font-family: 'Arial Unicode MS';
+            }
+            p {
+                margin-bottom: 0;
+                margin-top: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="articleHeader">{!title}</h1>
+        <h2>Bruker / Generelt</h2>
+        <h3>Sammendrag</h3>
+        <apex:outputText value="{!summary}" escape="false" />
+        <hr />
+        <h3>Ekstern informasjon</h3>
+        <apex:outputText value="{!userInformation}" escape="false" />
+        <hr />
+        <h3>Artikkel</h3>
+        <apex:outputText value="{!article}" escape="false" />
+        <hr />
+
+        <h2>Oversettelser</h2>
+        <h3>Engelsk</h3>
+        <apex:outputText value="{!english}" escape="false" />
+        <hr />
+        <h3>Nynorsk</h3>
+        <apex:outputText value="{!nynorsk}" escape="false" />
+        <hr />
+
+        <h2>Arbeidsgiver</h2>
+        <h3>Ekstern informasjon</h3>
+        <apex:outputText value="{!employerInformation}" escape="false" />
+        <hr />
+        <h3>Intern informasjon</h3>
+        <apex:outputText value="{!employerInformationInternal}" escape="false" />
+        <hr />
+
+        <h2>Internasjonalt</h2>
+        <h3>Ekstern informasjon</h3>
+        <apex:outputText value="{!internationalInformation}" escape="false" />
+        <hr />
+        <h3>Intern informasjon</h3>
+        <apex:outputText value="{!internationalInformationInternal}" escape="false" />
+        <hr />
+
+        <h2>Lege og behandler</h2>
+        <h3>Ekstern informasjon</h3>
+        <apex:outputText value="{!advisorInformation}" escape="false" />
+        <hr />
+        <h3>Intern informasjon</h3>
+        <apex:outputText value="{!advisorInformationInternal}" escape="false" />
+        <hr />
+
+        <h2>Til høyre</h2>
+        <h3>nav.no</h3>
+        <apex:outputText value="{!navno}" escape="false" />
+        <hr />
+        <h3>Lovverk</h3>
+        <apex:outputText value="{!legislation}" escape="false" />
+        <hr />
+        <h3>Ressurser</h3>
+        <apex:outputText value="{!resources}" escape="false" />
+        <hr />
+        <h3>Hvem gjør hva?</h3>
+        <apex:outputText value="{!whoDoesWhat}" escape="false" />
+        <hr />
+    </body>
+</apex:page>
