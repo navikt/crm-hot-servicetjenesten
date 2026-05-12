@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NavEnhetProd__c</fullName>
+    <description>The Nav Enhet for the production environment.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Set the Nav Enhet to be used in production environment.</inlineHelpText>
+    <label>Nav-Enhet Prod</label>
+    <length>10</length>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
