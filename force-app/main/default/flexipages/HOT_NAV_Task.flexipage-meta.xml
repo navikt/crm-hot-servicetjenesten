@@ -196,6 +196,42 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>brukerIdentField</name>
+                    <value>CRM_Account__r.CRM_Person__r.Name</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>brukerIdentType</name>
+                    <value>AKTOERID</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logDomain</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logException</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>logRequests</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>numberOfjournals</name>
+                    <value>150</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>themeGroupField</name>
+                </componentInstanceProperties>
+                <componentName>safDocumentByUser</componentName>
+                <identifier>c_safDocumentByUser</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-bba36309-a442-4249-9eb0-c70f123e8922</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>body</name>
                     <value>Facet-Communication</value>
                 </componentInstanceProperties>
@@ -205,6 +241,20 @@
                 </componentInstanceProperties>
                 <componentName>flexipage:tab</componentName>
                 <identifier>flexipage_tab_main_communication</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>body</name>
+                    <value>Facet-bba36309-a442-4249-9eb0-c70f123e8922</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>title</name>
+                    <value>Dokumenter</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:tab</componentName>
+                <identifier>flexipage_tab</identifier>
             </componentInstance>
         </itemInstances>
         <name>Facet-MainTabs</name>
