@@ -62,18 +62,18 @@ public with sharing class HOT_NewsArchiveHandler {
         HOT_NewsArchiveMapping__mdt newsArchiveMappingSettings = getNewsArchiveMappingSettings();
 
         if (newsArchiveMappingSettings == null) {
-            logger.error('Fant ikke metadata for ' + article.Name, null, CRM_ApplicationDomain.Domain.HOT);
+            logger.error('Fant ikke metadata for ' + article.Title, null, CRM_ApplicationDomain.Domain.HOT);
             logger.publish();
             return;
         }
 
         String caseNumber = getCaseNumber(newsArchiveMappingSettings);
-        String navIdent = getNavIdent(newsArchiveMappingSettings);
-        String navEnhet = getNavEnhet(newsArchiveMappingSettings);
+        String navIdent = getNavIdent();
+        String navEnhet = getNavEnhet();
 
         if (caseNumber == null || navIdent == null || navEnhet == null) {
             logger.error(
-                'Fant ikke saksnummer/NAV-Ident/NAV-enhet for ' + article.Name,
+                'Fant ikke saksnummer/NAV-Ident/NAV-enhet for ' + article.Title,
                 null,
                 CRM_ApplicationDomain.Domain.HOT
             );
@@ -135,31 +135,29 @@ public with sharing class HOT_NewsArchiveHandler {
     /**
      * Gets the Nav identifier based on the environment.
      *
-     * @param settings The HOT_NewsArchiveMapping__mdt settings record.
      * @return Nav identifier as String
-     * @see HOT_NewsArchiveMapping__mdt
+     * @see HOT_NewsArchiveSettings__c
      */
     @TestVisible
-    private String getNavIdent(HOT_NewsArchiveMapping__mdt settings) {
-        if (settings == null) {
+    private String getNavIdent() {
+        if (this.newsArchiveSettings == null || this.newsArchiveSettings.Id == null) {
             return null;
         }
-        return isSandbox ? settings.NavIdTest__c : settings.NavIdProd__c;
+        return isSandbox ? this.newsArchiveSettings.NavIdentTest__c : this.newsArchiveSettings.NavIdentProd__c;
     }
 
     /**
      * Gets the Nav unit based on the environment.
      *
-     * @param settings The HOT_NewsArchiveMapping__mdt settings record.
      * @return Nav unit as String
-     * @see HOT_NewsArchiveMapping__mdt
+     * @see HOT_NewsArchiveSettings__c
      */
     @TestVisible
-    private String getNavEnhet(HOT_NewsArchiveMapping__mdt settings) {
-        if (settings == null) {
+    private String getNavEnhet() {
+        if (this.newsArchiveSettings == null || this.newsArchiveSettings.Id == null) {
             return null;
         }
-        return isSandbox ? settings.NavEnhetTest__c : settings.NavEnhetProd__c;
+        return isSandbox ? this.newsArchiveSettings.NavEnhetTest__c : this.newsArchiveSettings.NavEnhetProd__c;
     }
 
     /**
@@ -170,10 +168,10 @@ public with sharing class HOT_NewsArchiveHandler {
      * {@code
      * {
      *     "Title":"Test Nyhetsartikkel No. 1",
-     *     "DefaultValueSet":"NKSSalesForce",
+     *     "DefaultValueSet":"HOTSalesForce",
      *     "CaseNumber":"25/12742",
      *     "AccessGroup":"Alle ansatte i Nav",
-     *     "ResponsiblePersonIdNumber":"A133191",
+     *     "ResponsiblePersonIdNumber":"NavIdent",
      *     "Files":[
      *         {
      *             "Title": "Test Nyhetsartikkel No. 1",
@@ -195,7 +193,7 @@ public with sharing class HOT_NewsArchiveHandler {
         JSONGenerator generator = JSON.createGenerator(false);
         generator.writeStartObject();
         generator.writeStringField('Title', article.Name);
-        generator.writeStringField('DefaultValueSet', 'NKSSalesForce');
+        generator.writeStringField('DefaultValueSet', 'HOTSalesForce');
         generator.writeStringField('CaseNumber', caseNumber);
         generator.writeStringField('AccessGroup', 'Alle ansatte i Nav');
         generator.writeStringField('ResponsiblePersonIdNumber', navIdent);
