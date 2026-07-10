@@ -40,7 +40,6 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                         ? this.personMunicipalityAndRegions?.INT_MunicipalityNumber__c.substring(0, 2)
                         : null;
                     const municipalityNumber = this.personMunicipalityAndRegions?.INT_MunicipalityNumber__c || null;
-                    console.log(municipalityNumber);
                     const temporaryMunicipalityNumber =
                         this.personMunicipalityAndRegions?.INT_TemporaryMunicipalityNumber__c || null;
 
@@ -51,17 +50,16 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                         for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
                             //Sjekker først kommunenr
                             if (
-                                hjelpemiddelsentral.MunicipalityNumbers__c &&
-                                hjelpemiddelsentral.MunicipalityNumbers__c.includes(municipalityNumber)
+                                this.containsConfiguredNumber(
+                                    hjelpemiddelsentral.MunicipalityNumbers__c,
+                                    municipalityNumber
+                                )
                             ) {
                                 this.setBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                             //Sjekker deretter på region
-                            if (
-                                hjelpemiddelsentral.RegionNumbers__c &&
-                                hjelpemiddelsentral.RegionNumbers__c.includes(regionNumber)
-                            ) {
+                            if (this.containsConfiguredNumber(hjelpemiddelsentral.RegionNumbers__c, regionNumber)) {
                                 this.setBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
@@ -71,16 +69,20 @@ export default class hotHjelpemiddelsentral extends LightningElement {
                         for (let hjelpemiddelsentral of this.allHjelpemiddelSentraler) {
                             //Sjekker først kommunenr
                             if (
-                                hjelpemiddelsentral.MunicipalityNumbers__c &&
-                                hjelpemiddelsentral.MunicipalityNumbers__c.includes(temporaryMunicipalityNumber)
+                                this.containsConfiguredNumber(
+                                    hjelpemiddelsentral.MunicipalityNumbers__c,
+                                    temporaryMunicipalityNumber
+                                )
                             ) {
                                 this.setMidlertidigBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
                             }
                             //Sjekker deretter på region
                             if (
-                                hjelpemiddelsentral.RegionNumbers__c &&
-                                hjelpemiddelsentral.RegionNumbers__c.includes(temporaryRegionNumber)
+                                this.containsConfiguredNumber(
+                                    hjelpemiddelsentral.RegionNumbers__c,
+                                    temporaryRegionNumber
+                                )
                             ) {
                                 this.setMidlertidigBostedHjelpemiddelsentral(hjelpemiddelsentral);
                                 break;
@@ -103,7 +105,6 @@ export default class hotHjelpemiddelsentral extends LightningElement {
             });
     }
     setBostedHjelpemiddelsentral(hjelpemiddelsentral) {
-        console.log('setter bostedhjelpemiddelsentral', hjelpemiddelsentral);
         this.bostedHjelpemiddelsentralString = hjelpemiddelsentral.Hjelpemiddelsentral_name__c;
         this.bostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
@@ -112,10 +113,19 @@ export default class hotHjelpemiddelsentral extends LightningElement {
         this.midlertidigBostedHjelpemiddelsentralUrl = hjelpemiddelsentral.NAVurl__c;
     }
 
+    containsConfiguredNumber(configuredNumbers, numberToFind) {
+        if (!configuredNumbers || !numberToFind) {
+            return false;
+        }
+        return configuredNumbers
+            .split(',')
+            .map((number) => number.trim())
+            .includes(numberToFind);
+    }
+
     setBilsenter(result) {
         this.bilsenterString = result.BilsenterNavn__c;
         this.bilsenterUrl = result.BilsenterUrl__c;
-        console.log('setter bilsenter', this.bilsenterString, this.bilsenterUrl);
     }
 
     connectedCallback() {

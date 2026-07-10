@@ -38,7 +38,18 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
     static void testGetAllHjelpemiddelSentraler() {
         List<HOT_HjelpemiddelsentralMapping__mdt> result = HOT_HjelpemiddelsentralController.getAllHjelpemiddelSentraler();
         System.assertNotEquals(null, result, 'Result should not be null');
-        System.assertEquals(14, result.size(), 'There should be 14 records returned');
+        Set<String> hjelpemiddelsentralNames = new Set<String>();
+        for (HOT_HjelpemiddelsentralMapping__mdt mapping : result) {
+            hjelpemiddelsentralNames.add(mapping.Hjelpemiddelsentral_name__c);
+        }
+        System.assert(
+            hjelpemiddelsentralNames.contains('Nav hjelpemiddelsentral Troms og Finnmark (4719) - Tromsø'),
+            'Tromsø hjelpemiddelsentral should be returned'
+        );
+        System.assert(
+            hjelpemiddelsentralNames.contains('Nav hjelpemiddelsentral Troms og Finnmark (4719) - Lakselv'),
+            'Lakselv hjelpemiddelsentral should be returned'
+        );
     }
 
     @IsTest
