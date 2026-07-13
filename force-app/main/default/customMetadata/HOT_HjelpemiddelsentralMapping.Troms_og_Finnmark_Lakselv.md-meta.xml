@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-    <label>Troms og Finnmark - Tromsø</label>
+    <label>Troms og Finnmark - Lakselv</label>
     <protected>false</protected>
     <values>
         <field>Hjelpemiddelsentral_name__c</field>
-        <value xsi:type="xsd:string">Nav hjelpemiddelsentral Troms og Finnmark (4719) - Tromsø</value>
+        <value xsi:type="xsd:string">Nav hjelpemiddelsentral Troms og Finnmark (4719) - Lakselv</value>
     </values>
     <values>
         <field>MunicipalityNumbers__c</field>
-        <value xsi:type="xsd:string">5501,5503,5510,5512,5514,5516,5518,5520,5522,5524,5526,5528,5530,5532,5534,5536,5538,5540,5542,5544,5546</value>
+        <value xsi:type="xsd:string">5601,5603,5605,5607,5610,5612,5614,5616,5618,5620,5622,5624,5626,5628,5630,5632,5634,5636</value>
     </values>
     <values>
         <field>NAVurl__c</field>
@@ -16,6 +16,6 @@
     </values>
     <values>
         <field>RegionNumbers__c</field>
-        <value xsi:type="xsd:string">55</value>
+        <value xsi:type="xsd:string">56</value>
     </values>
 </CustomMetadata>
