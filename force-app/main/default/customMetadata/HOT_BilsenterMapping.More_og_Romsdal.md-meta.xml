@@ -4,7 +4,7 @@
     <protected>false</protected>
     <values>
         <field>BilsenterNavn__c</field>
-        <value xsi:type="xsd:string">Midt-Norge</value>
+        <value xsi:type="xsd:string">Midt-Norge (4716)</value>
     </values>
     <values>
         <field>BilsenterUrl__c</field>

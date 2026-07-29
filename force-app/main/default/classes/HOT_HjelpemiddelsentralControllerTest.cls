@@ -99,7 +99,7 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
 
         // Check against Custom Metadata existence
         if (result != null) {
-            System.assertEquals('Østlandet', result.BilsenterNavn__c, 'Expected Østlandet for Region 03');
+            System.assertEquals('Østlandet (4703)', result.BilsenterNavn__c, 'Expected Østlandet (4703) for Region 03');
         }
     }
 
@@ -122,9 +122,9 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
 
         if (result != null) {
             System.assertEquals(
-                'Østlandet',
+                'Østlandet (4703)',
                 result.BilsenterNavn__c,
-                'Should return Bilsenter navn Østlandet for fylkenummer: 34 og kommunenummer: 3401'
+                'Should return Bilsenter navn Østlandet (4703) for fylkenummer: 34 og kommunenummer: 3401'
             );
         }
     }
@@ -186,9 +186,9 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
         Test.stopTest();
 
         System.assertEquals(
-            'Vest-Norge',
+            'Vest-Norge (4712)',
             result.BilsenterNavn__c,
-            'Should return null when region is missing and municipality is too short'
+            'Should return Bilsenter navn Vest-Norge (4712) when region is derived from municipality'
         );
     }
 
@@ -269,9 +269,9 @@ public without sharing class HOT_HjelpemiddelsentralControllerTest {
 
         if (result != null) {
             System.assertEquals(
-                'Østlandet',
+                'Østlandet (4703)',
                 result.BilsenterNavn__c,
-                'Should return Bilsenter navn Østlandet for fylkenummer: 34 og kommunenummer: 3401'
+                'Should return Bilsenter navn Østlandet (4703) for fylkenummer: 34 og kommunenummer: 3401'
             );
         }
     }

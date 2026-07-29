@@ -68,20 +68,20 @@
         </h3>
         <div aria-hidden={ariaHidden} class="slds-section__content" id="expando-unique-id2">
             <div class="slds-var-p-horizontal_medium" lwc:if={bilsenterString}>
-                <lightning-formatted-text value="Tilhører " class="slds-text-title text"></lightning-formatted-text>
+                <lightning-formatted-text
+                    value="Tilhører bilsenter "
+                    class="slds-text-title text"
+                ></lightning-formatted-text>
                 <lightning-formatted-url
                     value={bilsenterUrl}
                     label={bilsenterString}
                     target="_blank"
                 ></lightning-formatted-url>
-                <lightning-formatted-text value=" bilsenter." class="slds-text-title text"></lightning-formatted-text>
+                <lightning-formatted-text value="." class="slds-text-title text"></lightning-formatted-text>
             </div>
         </div>
         <div class="slds-var-p-horizontal_medium" lwc:if={bilsenterError}>
-            <lightning-formatted-text
-                value={bilsenterError}
-                class="slds-text-title text"
-            ></lightning-formatted-text>
+            <lightning-formatted-text value={bilsenterError} class="slds-text-title text"></lightning-formatted-text>
         </div>
     </div>
 </template>
