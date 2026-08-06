@@ -183,6 +183,13 @@
             </value>
         </assignmentItems>
         <assignmentItems>
+            <assignToReference>NAVTask.CRM_Subtype__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Selected_Subtype_SF_Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
             <assignToReference>NAVTask.CRM_Priority__c</assignToReference>
             <operator>Assign</operator>
             <value>
