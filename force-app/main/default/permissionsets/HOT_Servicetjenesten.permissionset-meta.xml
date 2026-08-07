@@ -590,6 +590,11 @@
     </fieldPermissions>
     <fieldPermissions>
         <editable>true</editable>
+        <field>NavTask__c.CRM_Subtype__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
         <field>NavTask__c.CRM_Theme__c</field>
         <readable>true</readable>
     </fieldPermissions>
