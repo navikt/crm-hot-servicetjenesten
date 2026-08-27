@@ -1,18 +1,47 @@
 <template>
-    <template lwc:if={errorMessages}>
-        <template iterator:it={errorMessages}>
-            <div class="errorPanel highlightPanel" key={it.value.errorName}>
-                <div class="warningIcon">
-                    <c-hot_custom-svg src={warningIconSrc} alt-text="warning"></c-hot_custom-svg>
-                </div>
-                <p>{it.value.error}</p>
-                <div class="xMarkIcon" data-error-name={it.value.errorName} onclick={closeErrorMessage}>
-                    <c-hot_custom-svg src={xMarkIconSrc} alt-text="close"></c-hot_custom-svg>
-                </div>
+    <template lwc:if={hasErrors}>
+        <div class="warningPanel" role="alert">
+            <div class="warningIcon">
+                <c-hot_custom-svg src={warningIconSrc} alt-text="warning" size="small"></c-hot_custom-svg>
             </div>
-            <div lwc:if={it.last} key={it.value.errorName}></div>
-            <div lwc:else key={it.value.errorName} class="errorBorder"></div>
-        </template>
+            <div class="warningContent">
+                <div class="warningSummary">
+                    <span
+                        >Noen opplysninger kunne ikke lastes inn og kan derfor være mangelfulle eller unøyaktige.</span
+                    >
+                    <span
+                        >(
+                        <template for:each={errorMessages} for:item="error">
+                            <span class="categoryItem" key={error.category}>{error.title}</span>
+                        </template>
+                        )</span
+                    >
+                </div>
+                <details class="warningDetails">
+                    <summary class="interactiveSummary">Vis mer informasjon...</summary>
+                    <template for:each={errorMessages} for:item="error">
+                        <section key={error.category}>
+                            <p class="technicalTitle">{error.title}</p>
+                            <p>{error.description}</p>
+                        </section>
+                    </template>
+                    <details class="technicalDetails">
+                        <summary class="interactiveSummary">Vis teknisk informasjon</summary>
+                        <template for:each={errorMessages} for:item="error">
+                            <section key={error.category}>
+                                <p class="technicalTitle">{error.title}</p>
+                                <template for:each={error.technicalDetails} for:item="detail">
+                                    <p class="technicalDetailsErrorText" key={detail}>{detail}</p>
+                                </template>
+                            </section>
+                        </template>
+                    </details>
+                </details>
+            </div>
+            <div class="xMarkIcon" onclick={closeErrorMessage} role="button" tabindex="0">
+                <c-hot_custom-svg src={xMarkIconSrc} alt-text="close" size="small"></c-hot_custom-svg>
+            </div>
+        </div>
     </template>
     <div class="gender-wrapper">
         <template lwc:if={isLoading}>

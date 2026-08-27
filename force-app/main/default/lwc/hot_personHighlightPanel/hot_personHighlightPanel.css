@@ -112,26 +112,86 @@
     background-color: var(--primaryBackgroundColor, #0056b4);
 }
 
-.errorPanel {
-    background-color: #ad0000;
+.warningPanel {
+    background-color: #fff3cd;
+    color: #1f1f1f;
     width: 100%;
-    height: 2.5rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     font-size: 14px;
+    padding: 0.5rem 2.5rem 0.25rem 1rem;
+    position: relative;
 }
 
-.errorBorder {
-    border-bottom: 1px solid white;
+.warningContent {
+    flex: 1;
+}
+
+.warningContent p {
+    margin: 0.25rem 0;
+}
+
+.warningSummary {
+    display: inline;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0 0.25rem;
+}
+
+.categoryItem:not(:last-child)::after {
+    content: ', ';
+}
+
+.warningContent li span {
+    display: block;
+}
+
+.warningDetails {
+    display: inline;
+    margin-left: 0.5rem;
+}
+
+.interactiveSummary {
+    cursor: pointer;
+    display: inline-block;
+    color: inherit;
+    text-decoration: underline;
+}
+
+.interactiveSummary:hover {
+    font-weight: 500;
+}
+
+.interactiveSummary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
 }
 
 .warningIcon {
-    padding-top: 0.8rem;
+    padding-right: 0.5rem;
+}
+.technicalDetails {
+    color: #2e2e2e;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.technicalDetails section {
+    margin-top: 0.5rem;
+}
+
+.technicalDetailsErrorText {
+    background-color: #f4f4f4;
+    border: 1px solid #d8d8d8;
+    font-family: monospace;
+    overflow-wrap: anywhere;
+}
+
+.technicalTitle {
+    font-weight: 700;
 }
 
 .xMarkIcon {
-    padding-top: 0.6rem;
     position: absolute;
     right: 0;
 }

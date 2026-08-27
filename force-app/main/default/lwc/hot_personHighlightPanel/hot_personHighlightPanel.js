@@ -41,6 +41,37 @@ const PERSON_FIELDS = [
     DISTRICT_URL_FIELD
 ];
 
+const ERROR_CATEGORIES = {
+    historikk: {
+        title: 'Historiske fullmakter',
+        description: 'Historiske opplysninger om fullmakter kan være mangelfulle eller unøyaktige.'
+    },
+    fullmakter: {
+        title: 'Fullmakter og representasjon',
+        description: 'Opplysninger om fullmakter og representasjon kan være mangelfulle eller unøyaktige.'
+    },
+    person: {
+        title: 'Personopplysninger',
+        description: 'Personopplysninger kan være mangelfulle eller unøyaktige.'
+    },
+    securityMeasures: {
+        title: 'Sikkerhetstiltak',
+        description: 'Opplysninger om sikkerhetstiltak kan være mangelfulle eller unøyaktige.'
+    },
+    brukerPass: {
+        title: 'Brukerpass',
+        description: 'Opplysninger om brukerpass kan være mangelfulle eller unøyaktige.'
+    },
+    guardianship: {
+        title: 'Vergemål og fremtidsfullmakt',
+        description: 'Opplysninger om vergemål og fremtidsfullmakt kan være mangelfulle eller unøyaktige.'
+    },
+    additional: {
+        title: 'Andre opplysninger',
+        description: 'Andre opplysninger kan være mangelfulle eller unøyaktige.'
+    }
+};
+
 export default class hot_personHighlightPanel extends LightningElement {
     @api recordId;
     @api objectApiName;
@@ -363,19 +394,76 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     addErrorMessage(errorName, error) {
+        // Process array items separately because they may belong to different categories.
         if (Array.isArray(error)) {
-            this.errorMessageList[errorName] = error.flat();
-        } else if (typeof error === 'object') {
-            this.errorMessageList[errorName] = error.body?.exceptionType + ': ' + error.body?.message;
-        } else {
-            this.errorMessageList[errorName] = error;
+            error.flat().forEach((errorItem) => this.addErrorMessage(errorName, errorItem));
+            return;
         }
+
+        // Keep one user-facing entry per category and collect its technical details.
+        const category = this.getErrorCategory(errorName, error);
+        const technicalDetails = this.getTechnicalDetails(error);
+        const existingError = this.errorMessageList[category];
+        this.errorMessageList[category] = {
+            ...ERROR_CATEGORIES[category],
+            category,
+            technicalDetails: existingError
+                ? [...existingError.technicalDetails, ...technicalDetails]
+                : technicalDetails
+        };
         this.updateErrorMessages();
     }
 
+    getErrorCategory(errorName, error) {
+        const errorText = this.getTechnicalDetails(error).join(' ');
+        // Apex method names in the technical message identify the affected data category.
+        if (errorName === 'getHistorikk' || errorText.includes('getHistorikk')) {
+            return 'historikk';
+        }
+        if (errorText.includes('setSecurityMeasures')) {
+            return 'securityMeasures';
+        }
+        if (errorText.includes('setBrukerPass')) {
+            return 'brukerPass';
+        }
+        if (errorText.includes('setGuardianshipOrFuturePowerOfAttorney')) {
+            return 'guardianship';
+        }
+        if (errorName === 'getRecord' || errorName === 'wiredRecordInfo' || errorText.includes('wiredPersonInfo')) {
+            return 'person';
+        }
+        if (
+            errorText.includes('Fullmaktsgiver') ||
+            errorText.includes('setPowerOfAttorney') ||
+            errorText.includes('fullmakts') ||
+            errorText.includes('vergemaal') ||
+            errorText.includes('vergemål')
+        ) {
+            return 'fullmakter';
+        }
+        console.warn(`Unknown error category for errorName: ${errorName}, error: ${errorText}`);
+        return 'additional';
+    }
+
+    getTechnicalDetails(error) {
+        // Preserve technical details for the optional expandable section in the warning.
+        if (Array.isArray(error)) {
+            return error.flat().map((detail) => String(detail));
+        }
+        if (error && typeof error === 'object') {
+            const message = error.body?.message;
+            const exceptionType = error.body?.exceptionType;
+            if (message || exceptionType) {
+                return [`${exceptionType || 'Error'}: ${message || 'Unknown error'}`];
+            }
+            return [JSON.stringify(error)];
+        }
+        return [String(error)];
+    }
+
     closeErrorMessage(event) {
-        const errorName = event.currentTarget.dataset.errorName;
-        this.closeErrorMessages(errorName);
+        this.errorMessageList = {};
+        this.updateErrorMessages();
     }
 
     closeErrorMessages(errorName) {
@@ -386,9 +474,11 @@ export default class hot_personHighlightPanel extends LightningElement {
     }
 
     updateErrorMessages() {
-        this.errorMessages = Object.keys(this.errorMessageList).map((errorName) => {
-            return { errorName: errorName, error: this.errorMessageList[errorName] };
-        });
+        this.errorMessages = Object.values(this.errorMessageList);
+    }
+
+    get hasErrors() {
+        return this.errorMessages?.length > 0;
     }
 
     get isLoading() {
