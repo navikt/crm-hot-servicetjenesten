@@ -19,6 +19,9 @@
                 </div>
                 <details class="warningDetails">
                     <summary class="interactiveSummary">Vis mer informasjon...</summary>
+                    <p class="reloadAdvice">
+                        Prøv å laste inn siden på nytt. Hvis feilen vedvarer over tid, meld fra til systemansvarlig.
+                    </p>
                     <template for:each={errorMessages} for:item="error">
                         <section key={error.category}>
                             <p class="technicalTitle">{error.title}</p>
@@ -26,7 +29,7 @@
                         </section>
                     </template>
                     <details class="technicalDetails">
-                        <summary class="interactiveSummary">Vis teknisk informasjon</summary>
+                        <summary class="interactiveSummary">Vis teknisk informasjon...</summary>
                         <template for:each={errorMessages} for:item="error">
                             <section key={error.category}>
                                 <p class="technicalTitle">{error.title}</p>

@@ -150,6 +150,10 @@
     display: inline;
     margin-left: 0.5rem;
 }
+.reloadAdvice {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+    font-style: italic;
+}
 
 .interactiveSummary {
     cursor: pointer;
@@ -173,7 +177,7 @@
 .technicalDetails {
     color: #2e2e2e;
     margin-top: 0.5rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0;
 }
 
 .technicalDetails section {
