@@ -47,8 +47,8 @@ const ERROR_CATEGORIES = {
         description: 'Historiske opplysninger om fullmakter kan være mangelfulle eller unøyaktige.'
     },
     fullmakter: {
-        title: 'Fullmakter og representasjon',
-        description: 'Opplysninger om fullmakter og representasjon kan være mangelfulle eller unøyaktige.'
+        title: 'Fullmakter',
+        description: 'Opplysninger om fullmakter kan være mangelfulle eller unøyaktige.'
     },
     person: {
         title: 'Personopplysninger',
