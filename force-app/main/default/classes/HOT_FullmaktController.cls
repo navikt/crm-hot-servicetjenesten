@@ -30,22 +30,59 @@ public with sharing class HOT_FullmaktController {
             return null;
         }
 
+        HttpResponse resp;
         try {
-            HttpResponse resp = FullmaktService.getFullmaktsgiverHistorikk(personIdent);
-            if (resp.getStatusCode() == 200) {
-                List<HistorikkWrapper> historikkData = (List<HistorikkWrapper>) JSON.deserialize(
-                    resp.getBody(),
-                    List<HistorikkWrapper>.class
-                );
-                return processHistorikkData(historikkData);
-            } else {
-                logError(resp, 'Error retrieving FullmaktsgiverHistorikk');
-                throw new FullmaktException();
-            }
+            resp = FullmaktService.getFullmaktsgiverHistorikk(personIdent);
         } catch (Exception e) {
-            logError('Exception occurred while retrieving FullmaktsgiverHistorikk: ' + e.getMessage());
-            throw new FullmaktException(e.getMessage());
+            raiseError('getHistorikk', 'calling FullmaktService.getFullmaktsgiverHistorikk', e.getMessage());
         }
+
+        if (resp == null) {
+            raiseError('getHistorikk', 'calling FullmaktService.getFullmaktsgiverHistorikk', 'Response is null.');
+        }
+        if (resp.getStatusCode() != 200) {
+            raiseError('getHistorikk', 'calling FullmaktService.getFullmaktsgiverHistorikk', resp);
+        }
+
+        List<HistorikkWrapper> historikkData;
+        try {
+            historikkData = (List<HistorikkWrapper>) JSON.deserialize(resp.getBody(), List<HistorikkWrapper>.class);
+        } catch (Exception e) {
+            raiseError(
+                'getHistorikk',
+                'deserializing response from FullmaktService.getFullmaktsgiverHistorikk',
+                e.getMessage()
+            );
+        }
+
+        List<FullmaktsgiverHistorikk> result = null;
+        try {
+            result = processHistorikkData(historikkData);
+        } catch (Exception e) {
+            raiseError('getHistorikk', 'processing historikk data', e.getMessage());
+        }
+        return result;
+    }
+
+    // Builds a "Class.method: stage. details" message, logs it, and throws FullmaktException
+    private static void raiseError(String methodName, String stage, String details) {
+        String message = 'HOT_FullmaktController.' + methodName + ': Failed while ' + stage + '. ' + details;
+        logError(message);
+        throw new FullmaktException(message);
+    }
+
+    private static void raiseError(String methodName, String stage, HttpResponse resp) {
+        String message =
+            'HOT_FullmaktController.' +
+            methodName +
+            ': Failed while ' +
+            stage +
+            '. StatusCode=' +
+            resp.getStatusCode() +
+            ', Status=' +
+            resp.getStatus();
+        logError(resp, message);
+        throw new FullmaktException(message);
     }
 
     @TestVisible
@@ -64,6 +101,7 @@ public with sharing class HOT_FullmaktController {
                 sisteEndring != null &&
                 (sisteEndring.opphoert == true ||
                 (sisteEndring.gyldigFraOgMed != null &&
+                sisteEndring.gyldigTilOgMed != null &&
                 Date.valueOf(sisteEndring.gyldigTilOgMed) < Date.today()))
             ) {
                 historikkList.add(new FullmaktsgiverHistorikk(sisteEndring, omraadeNameByOmraadeTema));
@@ -83,22 +121,41 @@ public with sharing class HOT_FullmaktController {
             return null;
         }
 
+        HttpResponse resp;
         try {
-            HttpResponse resp = FullmaktService.getFullmaktsgiver(personIdent);
-            if (resp.getStatusCode() == 200) {
-                List<FullmaktsgiverWrapper> fullmaktsgiverData = (List<FullmaktsgiverWrapper>) JSON.deserialize(
-                    resp.getBody(),
-                    List<FullmaktsgiverWrapper>.class
-                );
-                return processFullmaktsgiverData(fullmaktsgiverData);
-            } else {
-                logError(resp, 'Error retrieving Fullmaktsgiver');
-                throw new FullmaktException();
-            }
+            resp = FullmaktService.getFullmaktsgiver(personIdent);
         } catch (Exception e) {
-            logError('Exception occurred while retrieving Fullmaktsgiver: ' + e.getMessage());
-            throw new FullmaktException(e.getMessage());
+            raiseError('getFullmaktsgiver', 'calling FullmaktService.getFullmaktsgiver', e.getMessage());
         }
+
+        if (resp == null) {
+            raiseError('getFullmaktsgiver', 'calling FullmaktService.getFullmaktsgiver', 'Response is null.');
+        }
+        if (resp.getStatusCode() != 200) {
+            raiseError('getFullmaktsgiver', 'calling FullmaktService.getFullmaktsgiver', resp);
+        }
+
+        List<FullmaktsgiverWrapper> fullmaktsgiverData;
+        try {
+            fullmaktsgiverData = (List<FullmaktsgiverWrapper>) JSON.deserialize(
+                resp.getBody(),
+                List<FullmaktsgiverWrapper>.class
+            );
+        } catch (Exception e) {
+            raiseError(
+                'getFullmaktsgiver',
+                'deserializing response from FullmaktService.getFullmaktsgiver',
+                e.getMessage()
+            );
+        }
+
+        List<Fullmaktsgiver> result = null;
+        try {
+            result = processFullmaktsgiverData(fullmaktsgiverData);
+        } catch (Exception e) {
+            raiseError('getFullmaktsgiver', 'processing fullmaktsgiver data', e.getMessage());
+        }
+        return result;
     }
 
     @TestVisible

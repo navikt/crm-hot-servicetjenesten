@@ -107,6 +107,10 @@ public with sharing class HOT_PersonBadgesController {
                 //Get field set for use later in the class
                 this.fieldSet = Schema.SObjectType.Person__c.fields.getMap().keySet();
                 setBadgeData(recordId, objectApiName);
+            } else {
+                this.errors.add(
+                    'HOT_PersonBadgesController.PersonBadgeData: Person__c is null; no badges will be shown.'
+                );
             }
         }
 
@@ -150,7 +154,11 @@ public with sharing class HOT_PersonBadgesController {
                     );
                 }
             } catch (Exception e) {
-                errors.add('Feil ved uthenting av sikkerhetstiltak');
+                errors.add(
+                    'HOT_PersonBadgesController.PersonBadgeData.setSecurityMeasures: ' +
+                        'Feil ved uthenting av sikkerhetstiltak. ' +
+                        e.getMessage()
+                );
             }
         }
 
@@ -161,45 +169,52 @@ public with sharing class HOT_PersonBadgesController {
         }
         private void setBrukerPass(String recordId, String objectApiName) {
             // Henter BrukerPass-data
-            HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
-                recordId,
-                objectApiName,
-                'GET_OEBS_BrukerPass'
-            );
+            try {
+                HOT_OEBSIntegrationController.oebsWrapper result = HOT_OEBSIntegrationController.HOT_OEBS_Integration(
+                    recordId,
+                    objectApiName,
+                    'GET_OEBS_BrukerPass'
+                );
 
-            if (result == null)
-                return;
+                if (result == null)
+                    return;
 
-            HOT_OEBSIntegrationController.oebsWrapper w = result;
-            if (w == null || w.brukerPass == null)
-                return;
+                HOT_OEBSIntegrationController.oebsWrapper w = result;
+                if (w == null || w.brukerPass == null)
+                    return;
 
-            String status = w.brukerPass.status;
-            DateTime startDate = parseDate(w.brukerPass.start_date);
-            DateTime endDate = parseDate(w.brukerPass.end_date);
-            DateTime today = Datetime.now();
+                String status = w.brukerPass.status;
+                DateTime startDate = parseDate(w.brukerPass.start_date);
+                DateTime endDate = parseDate(w.brukerPass.end_date);
+                DateTime today = Datetime.now();
 
-            if (
-                status != null &&
-                'SIGNED'.equalsIgnoreCase(status) &&
-                startDate != null &&
-                startDate <= today &&
-                (endDate == null ||
-                endDate >= today)
-            ) {
-                badges.add(
-                    new Badge(
-                        'Brukerpass',
-                        'Brukerpass',
-                        'slds-theme_warning slds-m-left_x-small slds-m-vertical_xx-small greenBadge',
-                        '',
-                        '',
-                        false
-                    )
+                if (
+                    status != null &&
+                    'SIGNED'.equalsIgnoreCase(status) &&
+                    startDate != null &&
+                    startDate <= today &&
+                    (endDate == null ||
+                    endDate >= today)
+                ) {
+                    badges.add(
+                        new Badge(
+                            'Brukerpass',
+                            'Brukerpass',
+                            'slds-theme_warning slds-m-left_x-small slds-m-vertical_xx-small greenBadge',
+                            '',
+                            '',
+                            false
+                        )
+                    );
+                }
+            } catch (Exception e) {
+                errors.add(
+                    'HOT_PersonBadgesController.PersonBadgeData.setBrukerPass: ' +
+                        'Feil ved uthenting av BrukerPass. ' +
+                        e.getMessage()
                 );
             }
         }
-
         private void setPowerOfAttorney() {
             try {
                 List<HOT_FullmaktController.Fullmaktsgiver> fullmaktsgivere = (List<HOT_FullmaktController.Fullmaktsgiver>) HOT_FullmaktController.getFullmaktsgiver(
@@ -248,7 +263,11 @@ public with sharing class HOT_PersonBadgesController {
                     );
                 }
             } catch (Exception e) {
-                errors.add('Feil ved uthenting av fullmakts detaljer:\n' + e.getMessage());
+                errors.add(
+                    'HOT_PersonBadgesController.PersonBadgeData.setPowerOfAttorney: ' +
+                        'Feil ved uthenting av fullmaktsdetaljer. ' +
+                        e.getMessage()
+                );
             }
         }
 
@@ -287,7 +306,11 @@ public with sharing class HOT_PersonBadgesController {
                         guardianships.add(guardianship);
                     }
                 } catch (Exception e) {
-                    errors.add('Feil ved uthenting av vergemål detaljer');
+                    errors.add(
+                        'HOT_PersonBadgesController.PersonBadgeData.setGuardianshipOrFuturePowerOfAttorney: ' +
+                            'Feil ved uthenting av vergemålsdetaljer. ' +
+                            e.getMessage()
+                    );
                 }
 
                 badges.add(
