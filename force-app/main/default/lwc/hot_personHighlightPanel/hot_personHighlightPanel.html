@@ -30,14 +30,16 @@
                     </template>
                     <details class="technicalDetails">
                         <summary class="interactiveSummary">Vis teknisk informasjon...</summary>
-                        <template for:each={errorMessages} for:item="error">
-                            <section key={error.category}>
-                                <p class="technicalTitle">{error.title}</p>
-                                <template for:each={error.technicalDetails} for:item="detail">
-                                    <p class="technicalDetailsErrorText" key={detail}>{detail}</p>
-                                </template>
-                            </section>
-                        </template>
+                        <div class="technicalDetailsExpanded">
+                            <template for:each={errorMessages} for:item="error">
+                                <section key={error.category}>
+                                    <p class="technicalTitle">{error.title}</p>
+                                    <template for:each={error.technicalDetails} for:item="detail">
+                                        <p class="technicalDetailsErrorText" key={detail}>{detail}</p>
+                                    </template>
+                                </section>
+                            </template>
+                        </div>
                     </details>
                 </details>
             </div>

@@ -179,14 +179,20 @@
     margin-top: 0.5rem;
     padding: 0.5rem 0;
 }
+.technicalDetailsExpanded {
+    background-color: #fbeaea;
+    border: 1px solid #e8c4c4;
+    border-radius: 4px;
+    color: #2e2e2e;
+    margin-top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
 
 .technicalDetails section {
     margin-top: 0.5rem;
 }
 
 .technicalDetailsErrorText {
-    background-color: #f4f4f4;
-    border: 1px solid #d8d8d8;
     font-family: monospace;
     overflow-wrap: anywhere;
 }
