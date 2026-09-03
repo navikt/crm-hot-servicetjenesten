@@ -25,7 +25,7 @@
                 },
                 {
                     "package": "crm-platform-base",
-                    "versionNumber": "0.300.0.LATEST"
+                    "versionNumber": "0.308.0.LATEST"
                 },
                 {
                     "package": "crm-thread-view",
@@ -45,11 +45,11 @@
                 },
                 {
                     "package": "crm-henvendelse-base",
-                    "versionNumber": "0.36.0.LATEST"
+                    "versionNumber": "0.38.0.LATEST"
                 },
                 {
                     "package": "crm-platform-integration",
-                    "versionNumber": "0.171.0.LATEST"
+                    "versionNumber": "0.173.0.LATEST"
                 },
                 {
                     "package": "crm-shared-user-notification",
