@@ -477,8 +477,24 @@ export default class hot_personHighlightPanel extends LightningElement {
         this.errorMessages = Object.values(this.errorMessageList);
     }
 
+    get shouldHideWarningPanel() {
+        if (!this.noPerson || !this.errorMessages || this.errorMessages.length !== 1) {
+            return false;
+        }
+
+        const [error] = this.errorMessages;
+        const isAdditionalCategory = error?.category === 'additional';
+        const technicalDetails = error?.technicalDetails ?? [];
+        const hasKnownMessage =
+            technicalDetails.length === 1 &&
+            technicalDetails[0] ===
+                'HOT_PersonBadgesController.PersonBadgeData: Person__c is null; no badges will be shown.';
+
+        return isAdditionalCategory && hasKnownMessage;
+    }
+
     get hasErrors() {
-        return this.errorMessages?.length > 0;
+        return !this.shouldHideWarningPanel && this.errorMessages?.length > 0;
     }
 
     get isLoading() {
