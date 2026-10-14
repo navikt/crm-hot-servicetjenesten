@@ -201,7 +201,7 @@
                 </rightValue>
             </conditions>
             <conditions>
-                <leftValueReference>Get_Caller_Number_From_Related_Puzzel_Enquiry.callerNumber</leftValueReference>
+                <leftValueReference>checkIfCallerNumberIsANumber</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <booleanValue>false</booleanValue>

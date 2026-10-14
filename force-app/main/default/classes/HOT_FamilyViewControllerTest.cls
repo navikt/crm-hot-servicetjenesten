@@ -860,8 +860,8 @@ private class HOT_FamilyViewControllerTest {
         '"identifikasjonsnummer" : "12106519356"' +
         '} ],' +
         '"foedselsdato" : [ {' +
-        '"foedselsdato" : "2005-10-12",' +
-        '"foedselsaar" : 2005,' +
+        '"foedselsdato" : "2010-10-12",' +
+        '"foedselsaar" : 2010,' +
         '"foedested" : "Fødested i/på Gjemnes",' +
         '"foedeland" : "NOR",' +
         '"foedekommune" : null' +
