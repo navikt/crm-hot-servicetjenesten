@@ -1,0 +1,16 @@
+<template>
+    <dialog class="modal" aria-labelledby="modal-heading" oncancel={handleCancel} onclose={handleClosed}>
+        <header class="modal-header">
+            <h2 id="modal-heading">{heading}</h2>
+            <button class="close-button" type="button" onclick={handleClose} aria-label="Lukk" title="Lukk" autofocus>
+                <lightning-icon icon-name="utility:close" size="small" alternative-text=""></lightning-icon>
+            </button>
+        </header>
+        <div class="modal-body">
+            <template lwc:if={description}>
+                <p class="modal-description">{description}</p>
+            </template>
+            <slot></slot>
+        </div>
+    </dialog>
+</template>

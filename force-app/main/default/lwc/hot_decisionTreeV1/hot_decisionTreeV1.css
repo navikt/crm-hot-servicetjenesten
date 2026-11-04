@@ -1,0 +1,399 @@
+/* =========================================================
+   HOVEDCONTAINER
+   ========================================================= */
+
+.tree-container {
+    padding: 24px;
+}
+
+lightning-card {
+    --slds-c-card-header-spacing-inline-start: 24px;
+}
+
+/* =========================================================
+   NIVÅER
+   ========================================================= */
+
+.tree-level {
+    box-sizing: border-box;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 16px;
+
+    padding: 16px;
+
+    /* border: 2px solid #aeb8c2; */
+
+    border-radius: 8px;
+
+    background: #d8dde6;
+
+    margin-bottom: 20px;
+}
+
+.tree-level-active {
+    border-color: #1473b8;
+
+    background: #eaf4fc;
+}
+
+.tree-level-results {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+}
+
+/* =========================================================
+   FELLES FOR ALLE BOKSER
+   ========================================================= */
+
+.tree-option {
+    position: relative;
+
+    box-sizing: border-box;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    /* width: 280px; */
+
+    min-height: 70px;
+
+    padding: 16px 20px;
+
+    border-radius: 10px;
+
+    border: 2px solid #d8dde6;
+
+    background: #ffffff;
+
+    color: #181818;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+}
+
+/* =========================================================
+   VALGBARE BOKSER
+   ========================================================= */
+
+.tree-option-choice {
+    cursor: pointer;
+
+    transition: border-color 0.15s ease;
+}
+
+/*
+ * Hover gjelder kun bokser som kan velges.
+ */
+
+.tree-option-choice:hover {
+    border-color: #7b8794;
+}
+
+/* =========================================================
+   VALGT BOKS
+   ========================================================= */
+
+.tree-option-selected {
+    background: #414b55;
+
+    border-color: #414b55;
+
+    color: #ffffff;
+
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.18);
+}
+
+/* =========================================================
+   INFORMASJONSBOKS
+   ========================================================= */
+
+/*
+ * Disse kan IKKE klikkes.
+ */
+
+.tree-option-info {
+    background: transparent;
+
+    border: none;
+
+    color: #303841;
+
+    cursor: default;
+
+    font-weight: 600;
+}
+
+/*
+ * Litt annen visuell stil slik at det
+ * er tydelig at dette ikke er et valg.
+ */
+
+.tree-option-info::before {
+    content: '';
+
+    position: absolute;
+
+    left: 0;
+
+    top: 10px;
+
+    bottom: 10px;
+
+    width: 4px;
+
+    border-radius: 4px;
+
+    background: #7c8792;
+}
+
+/* =========================================================
+   GRØNT RESULTAT
+   ========================================================= */
+
+.tree-option-green {
+    background: #e1f4e7;
+
+    border-color: #e1f4e7;
+
+    color: #175c2b;
+
+    font-weight: 700;
+
+    cursor: default;
+}
+
+/* =========================================================
+   RØDT RESULTAT
+   ========================================================= */
+
+.tree-option-red {
+    background: #f9e0e0;
+
+    border-color: #f9e0e0;
+
+    color: #861d1d;
+
+    font-weight: 700;
+
+    cursor: default;
+}
+
+/* =========================================================
+   ORANSJE RESULTAT
+   ========================================================= */
+
+.tree-option-orange {
+    background: #fff0db;
+
+    border-color: #fff0db;
+
+    color: #7a3e00;
+
+    font-weight: 700;
+
+    cursor: default;
+}
+
+/* =========================================================
+   RESULTAT HOVER
+   ========================================================= */
+
+.tree-option-green:hover,
+.tree-option-red:hover,
+.tree-option-orange:hover,
+.tree-option-info:hover {
+    box-shadow: none;
+
+    transform: none;
+}
+
+/* =========================================================
+   TEKST
+   ========================================================= */
+
+.option-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.option-label {
+    display: block;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.option-description {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   INFORMASJONSKNAPP
+   ========================================================= */
+
+.info-button {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: 26px;
+
+    height: 26px;
+
+    margin-left: 12px;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #e4e8ec;
+
+    color: #35404a;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/*
+ * Hover på info-knappen.
+ */
+
+.info-button:hover {
+    background: #cbd2d9;
+}
+
+/*
+ * Info-knapp i valgt boks.
+ */
+
+.tree-option-selected .info-button {
+    background: #697580;
+
+    color: #ffffff;
+}
+
+.tree-option-selected .info-button:hover {
+    background: #7b8792;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal-content {
+    min-height: 150px;
+}
+
+.modal-info-table {
+    width: 100%;
+    min-width: 960px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.modal-info-table th,
+.modal-info-table td {
+    padding: 12px;
+    border: 1px solid #aeb8c2;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.modal-info-table th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.modal-info-table tbody td {
+    font-size: 1rem;
+}
+
+.modal-info-table thead tr:first-child th {
+    background: #eaf4fc;
+    font-size: 1.125rem;
+}
+
+.modal-info-table thead tr:last-child th {
+    background: #f1f3f5;
+}
+
+.modal-content h3 {
+    margin-top: 0;
+
+    margin-bottom: 18px;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+.modal-content h4 {
+    margin-top: 24px;
+
+    margin-bottom: 10px;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+.modal-content p {
+    margin-bottom: 16px;
+
+    line-height: 1.6;
+}
+
+.modal-content li {
+    margin-bottom: 8px;
+
+    line-height: 1.5;
+}
+
+/* =========================================================
+   MOBIL
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .tree-container {
+        padding: 16px;
+    }
+
+    .tree-level {
+        flex-direction: column;
+
+        margin-left: 0 !important;
+    }
+
+    .tree-option {
+        width: 100%;
+
+        max-width: 100%;
+    }
+}

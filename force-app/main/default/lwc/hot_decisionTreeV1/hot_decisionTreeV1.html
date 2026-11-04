@@ -1,0 +1,1123 @@
+<template>
+    <lightning-card title="Beslutningstre">
+        <div class="tree-container">
+            <!--
+                Hvert element i visibleLevels representerer
+                ett nivå i beslutningstreet.
+            -->
+            <template for:each={visibleLevels} for:item="level">
+                <div key={level.level} class={level.cssClass}>
+                    <template for:each={level.options} for:item="option">
+                        <!-- ================================
+                             VALGBARE BOKSER
+                             ================================ -->
+
+                        <template lwc:if={option.isChoice}>
+                            <div
+                                key={option.id}
+                                class={option.cssClass}
+                                data-id={option.id}
+                                data-level={level.choiceLevel}
+                                onclick={handleOptionClick}
+                            >
+                                <span class="option-text">
+                                    <span class="option-label">{option.label}</span>
+                                    <template lwc:if={option.description}>
+                                        <span class="option-description">
+                                            {option.description}
+                                            <template lwc:if={option.descriptionLinkUrl}>
+                                                <a
+                                                    href={option.descriptionLinkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onclick={handleDescriptionLinkClick}
+                                                >
+                                                    {option.descriptionLinkText}
+                                                </a>
+                                            </template>
+                                        </span>
+                                    </template>
+                                </span>
+
+                                <!-- Informasjonsknapp -->
+
+                                <template lwc:if={option.infoModal}>
+                                    <button
+                                        class="info-button"
+                                        data-modal={option.infoModal}
+                                        onclick={handleInfoClick}
+                                        title="Vis informasjon"
+                                    >
+                                        i
+                                    </button>
+                                </template>
+                            </div>
+                        </template>
+
+                        <!-- ================================
+                             INFORMASJONSBOKSER
+                             ================================ -->
+
+                        <template lwc:if={option.isInfo}>
+                            <div key={option.id} class="tree-option tree-option-info">
+                                <span class="option-text">
+                                    <span class="option-label">{option.label}</span>
+                                    <template lwc:if={option.description}>
+                                        <span class="option-description">
+                                            {option.description}
+                                            <template lwc:if={option.descriptionLinkUrl}>
+                                                <a
+                                                    href={option.descriptionLinkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onclick={handleDescriptionLinkClick}
+                                                >
+                                                    {option.descriptionLinkText}
+                                                </a>
+                                            </template>
+                                        </span>
+                                    </template>
+                                </span>
+
+                                <!-- Informasjonsknapp -->
+
+                                <template lwc:if={option.infoModal}>
+                                    <button
+                                        class="info-button"
+                                        data-modal={option.infoModal}
+                                        onclick={handleInfoClick}
+                                        title="Vis informasjon"
+                                    >
+                                        i
+                                    </button>
+                                </template>
+                            </div>
+                        </template>
+
+                        <!-- ================================
+                             RESULTATBOKSER
+                             ================================ -->
+
+                        <template lwc:if={option.isResult}>
+                            <div key={option.id} class={option.cssClass}>
+                                <span class="option-text">
+                                    <span class="option-label">{option.resultText}</span>
+                                    <template lwc:if={option.description}>
+                                        <span class="option-description">
+                                            {option.description}
+                                            <template lwc:if={option.descriptionLinkUrl}>
+                                                <a
+                                                    href={option.descriptionLinkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onclick={handleDescriptionLinkClick}
+                                                >
+                                                    {option.descriptionLinkText}
+                                                </a>
+                                            </template>
+                                        </span>
+                                    </template>
+                                </span>
+                            </div>
+                        </template>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+
+    <!-- =====================================================
+         MODAL
+         ===================================================== -->
+
+    <template lwc:if={isModalOpen}>
+        <c-hot_modal heading={modalTitle} description={modalDescription} ondismiss={closeModal}>
+            <!-- =================================================
+                     MODAL-INNHOLD
+                     
+                     DEN LANGE INFORMASJONEN SKRIVES DIREKTE HER.
+                     ================================================= -->
+
+            <div class="modal-content">
+                <template lwc:if={isOver18Modal}>
+                    <table class="modal-info-table" aria-label="Myndig bruker over 18 år">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bruker (myndig/over 18)</td>
+                                <td>Alle som kan ha rett på hjelpemidler eller stønad fra Nav hjelpemiddelsentral</td>
+                                <td>
+                                    <p>Status i sak, f.eks.:</p>
+                                    <ul class="slds-list_dotted">
+                                        <li>Søknad</li>
+                                        <li>Bytte</li>
+                                        <li>Reparasjon</li>
+                                        <li>Utlevering</li>
+                                        <li>Henvisning</li>
+                                    </ul>
+                                    <p>Hjelpemiddeloversikt</p>
+                                    <p>Hvordan søke om hjelpemidler</p>
+                                </td>
+                                <td>
+                                    Alt av informasjon og veiledning med utgangpunkt i kunnskapsbasen, nav.no, våre
+                                    rutiner og fagsystemer
+                                </td>
+                                <td>
+                                    <p>Be om fødsels- og personnummer</p>
+                                    <p>Still sikkerhetsspørsmål</p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat i Salesforce</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                    <p>
+                                        Husk å forsikre deg om at du og bruker har samme forståelse av det som skrives
+                                        fra samtalen. Dette gjøres enklest med bruker på øret. Det kan også gjøre at man
+                                        unngår unødvendige henvendelser i etterkant.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isUnder18Modal}>
+                    <table class="modal-info-table" aria-label="Bruker (mindreårig/ under 18 år">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bruker (mindreårig/ under 18 år)</td>
+                                <td>Vi skiller mellom mindreårige over og under 15 år</td>
+                                <td>
+                                    <p>Aktiveringsnøkkel til Lingdys</p>
+                                    <p>Status i sak</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Mindreårig under 18 år: Kan ikke handle (søke eller klage) på egne vegne. Kan
+                                        heller ikke gi fullmakt eller muntlig samtykke til annen person.
+                                    </p>
+                                    <p>Over 15 år: Innsynsrett i egen sak</p>
+                                    <p>
+                                        Under 15 år: Skal ikke gjøres kjent med innholdet i saken opplysninger som er
+                                        underlagt lovbestemt taushetsplikt, jf.
+                                        <a href="https://lovdata.no/pro/lov/1967-02-10/§18" target="_blank"
+                                            >Forvaltningslovens §18</a
+                                        >.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Be om fødsels- og personnummer</p>
+                                    <p>Still sikkerhetsspørsmål</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        For mindreårig <strong>over 15 år</strong> som er part i sak, skriver vi
+                                        samtalereferat.
+                                    </p>
+                                    <p>
+                                        Dersom mindreårig er under 15 år, skriver vi ikke samtalereferat, men informerer
+                                        om at foreldre/ foresatte/ verge må ringe på vegne av bruker.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isForeldreForesatteVergeMindreaarigeModal}>
+                    <table class="modal-info-table" aria-label="Bruker (mindreårig/ under 18 år">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Foreldre/ foresatte/ verge for mindreårig under 18 år.</p>
+                                    <p>
+                                        Husk at verge og forelder/ foresatt ikke kan ta kontakt på STO, eller i
+                                        innlogget chat. Se artikkel&nbsp;
+                                        <a
+                                            href="https://navdialog.lightning.force.com/lightning/r/Knowledge__kav/ka0QC000001pEMvYAM/view"
+                                            target="_blank"
+                                        >
+                                            Skriv til oss STO</a
+                                        >.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Verge er den eller de som har foreldreansvar for barnet etter reglene i
+                                        Barneloven. Hvis mor og far er separert/ skilt, har man likevel delt
+                                        foreldreansvar med mindre det er inngått avtale om noe annet.
+                                    </p>
+                                    <p>
+                                        Er du i tvil om foreldreansvaret kan du sjekke foreldreansvar i Salesforce eller
+                                        i Modia.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Status i sak</p>
+                                    <p>Aktiveringsnøkkel til Lingdys</p>
+                                    <p>Hvordan søke om hjelpemiddel</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Du informerer og veileder forelder/ foresatte/ verge ut fra det de har av
+                                        spørsmål, med utgangspunkt i kunnskapsbasen, nav.no, våre rutiner og fagsystem.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Be om barnets fødsels- og personnummer. Still sikkerhetsspørsmål.</p>
+                                    <p>
+                                        Dersom verge ikke har fullt fødsels- og personnummer tilgjengelig må vi be dem
+                                        ringe tilbake når de har funnet dette.
+                                    </p>
+                                    <p>
+                                        Mindreårige asylsøkere eller flyktninger: Be verge om å sende kopi av
+                                        vergefullmakten før du leverer ut opplysninger. Fullmakten kan være skannet inn
+                                        sammen med søknaden.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Skriv samtalereferat i Salesforce på barnet</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template if:true={isFosterforeldreModal}>
+                    <table class="modal-info-table" aria-label="Fosterforeldre">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fosterforeldre</td>
+                                <td>
+                                    Et fosterhjem er et privat hjem som gir omsorg og støtte til barn som av ulike
+                                    årsaker ikke kan bo hos foreldrene sine. Fosterhjemmet har den daglige omsorgen for
+                                    barn på vegne av barnevernstjenesten eller barnets foreldre
+                                </td>
+                                <td>
+                                    <p>Status i sak</p>
+                                    <p>Hvordan søke hjelpemiddel</p>
+                                    <p>Oversikt over hjelpemidler</p>
+                                </td>
+                                <td>
+                                    <p>Opplysninger kan gis ut fra fullmaktens gyldighet og omfang.</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Krever fullmakt fra barnevernet: At fosterforeldre har daglig omsorg, er ikke en
+                                        bekreftelse på foreldreansvar. Derfor kreves fullmakt selv om barnet er
+                                        registrert på samme adresse som fosterforeldre
+                                    </p>
+                                    <p>
+                                        Dersom fullmakt mangler, henviser du fosterforeldrene til deres saksbehandler i
+                                        barnevernet for utarbeidelse av bekreftelse på at de er fosterforeldre for
+                                        barnet, og hva fullmakten gjelder.
+                                    </p>
+                                    <p>
+                                        Still sikkerhetsspørsmål med utgangspunkt i opplysningene du finner i
+                                        fullmakten.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Skriv samtalereferat i Salesforce på barnet</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isVergeForVoksneUmyndiggjorteModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Verge for voksne/ umyndiggjorte.</p>
+                                    <p>
+                                        Husk at verge og forelder/ foresatt ikke kan ta kontakt på STO, eller i
+                                        innlogget chat. Se artikkel&nbsp;
+                                        <a
+                                            href="https://navdialog.lightning.force.com/lightning/r/Knowledge__kav/ka0QC000001pEMvYAM/view"
+                                            target="_blank"
+                                        >
+                                            Skriv til oss STO</a
+                                        >.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Verge representerer bruker, og har rett til opplysninger som er nødvendige for å
+                                        ivareta brukers interesser.
+                                    </p>
+                                    <p>
+                                        Vergen er en medhjelper og kan ikke overstyre en bruker som ikke er fratatt
+                                        rettslig handleevne.
+                                    </p>
+                                    <p>
+                                        Brukere som er fratatt rettslig handleevne eller økonomisk rettslig handleevne
+                                        skal normalt ikke ha bank-ID.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Status i sak (eksempler):</p>
+                                    <ul class="slds-list_dotted">
+                                        <li>Søknad</li>
+                                        <li>Bytte</li>
+                                        <li>Reparasjon</li>
+                                        <li>Utlevering</li>
+                                        <li>Henvisning</li>
+                                    </ul>
+                                    <p>Hjelpemiddeloversikt</p>
+                                    <p>Hvordan søke hjelpemiddel</p>
+                                </td>
+                                <td>
+                                    <p>Du kan gi informasjon i sak ut fra vergemålets gyldighet og omfang.</p>
+                                    <p>Sjekk at vergemålet omfatter hjelpemidler</p>
+                                    <p>
+                                        <u>Person under vergemål ønsker opplysninger i egen sak:</u> Å være under
+                                        vergemål begrenser ikke adgangen til å involvere seg i sin egen sak.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Be om fødselsnummer til den det gjelder. Sjekk vergemål eller vedtak i
+                                        Salesforce/ Modia. Sjekk omfanget av vergemålet i begge systemene. Hvis du ikke
+                                        ser omfanget av det digitale vergemålet, må du sjekke i Gosys om det er kommet
+                                        et vergemål på papir.
+                                    </p>
+                                    <p>
+                                        I tvil om gyldighet: Sjekk &nbsp;<a href="https://fullmakt.vergemal.no/">her</a>
+                                    </p>
+                                    <p>Still identifiseringsspørsmål ut fra detaljer om vergemålets omfang.</p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat registreres på brukeren henvendelsen gjelder</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isPaaroerendeModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Pårørende</p>
+                                </td>
+                                <td>
+                                    <p>Det er bruker selv som avgjør hvem som er deres nærmeste pårørende</p>
+                                    <p>
+                                        Dette kan være alt fra ektefelle/ samboer eller voksne barn til en venninne fra
+                                        bingoen eller en god nabo
+                                    </p>
+                                    <p>
+                                        Jo lenger ut vi kommer, jo viktigere er det å gjøre gode vurderinger hvis vi
+                                        skal gi ut taushetsbelagte opplysninger
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Status i sak (eksempler):</p>
+                                    <ul class="slds-list_dotted">
+                                        <li>Søknad</li>
+                                        <li>Bytte</li>
+                                        <li>Reparasjon</li>
+                                        <li>Utlevering</li>
+                                        <li>Henvisning</li>
+                                    </ul>
+                                    <p>Hjelpemiddeloversikt</p>
+                                    <p>Hvordan søke hjelpemiddel</p>
+                                    <p>Retur av hjelpemidler ved MORS</p>
+                                </td>
+                                <td>
+                                    <p>Fullmakt eller samtykke: Gi opplysninger ut fra de rammene fullmakten gir.</p>
+                                    <p>Uten fullmakt: Vurder om henvendelsen kan løses på en annen måte</p>
+                                    <p>
+                                        Svar så generelt som mulig. Vær varsom med å oppgi detaljer som adresse ol.
+                                        (need to know vs. nice to know)
+                                    </p>
+                                    <p>Følg magefølelsen</p>
+                                    <p>
+                                        Jo mer detaljert vi er i informasjonen vi gir, jo større er sjansen for å gjøre
+                                        feil
+                                    </p>
+                                    <p><strong>Viktig: Dokumenter alltid!</strong></p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Er bruker til stede: Be om muntlig samtykke (gjelder kun for denne samtalen,
+                                        skal noteres i samtalereferat i Salesforce). Still kontrollspørsmål til bruker
+                                        for å identifisere
+                                    </p>
+                                    <p>
+                                        Er bruker ikke til stede: Hva er grunnen til at vedkommende ikke kan ta kontakt
+                                        selv? Hva vil de vite, og hvorfor trenger de disse opplysningene?
+                                    </p>
+                                    <p>Vårt første svar er <strong>alltid</strong> at det bør opprettes fullmakt</p>
+                                    <p>
+                                        Dersom det videre i samtalen er tydelig at bruker ikke er i stand til å ivareta
+                                        egen sak, må vi gjøre en konkret vurdering av om vi kan fravike taushetsplikten.
+                                        Dette må <strong>alltid</strong> dokumenteres!
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat registreres på brukeren henvendelsen gjelder</p>
+                                    <p>
+                                        Dersom vi har gjort en skjønnsmessig vurdering og kommet fram til at vi kan gi
+                                        opplysninger skal dette noteres i samtalereferatet og samtalereferatet
+                                        journalføres.
+                                    </p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isPersonligAssistentBPAModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Personlig assistent (BPA)</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Brukerstyrt personlig assistanse (BPA) er en måte å organisere praktisk bistand
+                                        og opplæring på. BPA er rettet mot personer med langvarig og stort behov for
+                                        personlig assistanse. Mer informasjon finnes i brukerrettighetsloven § 2- 1 d.
+                                        (Kilde: helsenorge.no)
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Status i sak</p>
+                                    <p>Hvordan søke hjelpemiddel</p>
+                                </td>
+                                <td>
+                                    <p>Ingen uten fullmakt</p>
+                                    <p>Fullmakt eller samtykke: Gi opplysninger ut fra de rammene fullmakten gir.</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Er bruker til stede: Be om muntlig samtykke (gjelder kun for denne samtalen,
+                                        skal noteres i samtalereferat i Salesforce). Still kontrollspørsmål til bruker
+                                        for å identifisere.
+                                    </p>
+                                    <p>
+                                        Hvis bruker ikke har språk, men prøver å gi samtykke og assistenten «oversetter»
+                                        må vi gjøre en konkret skjønnsmessig vurdering av hvorvidt det er godt nok. Vi
+                                        kan blant annet se av utlånshistorikken om bruker har kommunikasjonshjelpemidler
+                                    </p>
+                                    <p>
+                                        Dersom bruker har verge, er det også mulig å henvise til at verge tar kontakt.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat registreres på brukeren henvendelsen gjelder</p>
+                                    <p>
+                                        Dersom vi har gjort en skjønnsmessig vurdering og kommet fram til at vi kan gi
+                                        opplysninger skal dette noteres i samtalereferatet og samtalereferatet
+                                        journalføres.
+                                    </p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isLeseOgSekretaerhjelpModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Lese- og sekretærhjelp</p>
+                                </td>
+                                <td>
+                                    <p>Hjelper bruker med lesing og skriving når hen er blind eller svaksynt.</p>
+                                </td>
+                                <td>
+                                    <p>Status for innsendt regning</p>
+                                    <p>Vedtak om lese- og sekretærhjelp</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Lese- og sekretærhjelp har spørsmål angående regning: Kan gi opplysninger til
+                                        lese- og sekretærhjelp
+                                    </p>
+                                    <p>Lese- og sekretærhjelp ringer på vegne av bruker: Ingen uten fullmakt</p>
+                                </td>
+                                <td>
+                                    <p>Still kontrollspørsmål</p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat i Salesforce på bruker</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isAdvokatModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Advokat</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Advokat har stillingsfullmakt jf.&nbsp;
+                                        <a
+                                            href="https://lovdata.no/pro/#document/NL/lov/1967-02-10/%C2%A712"
+                                            target="_blank"
+                                            >Forvaltningsloven § 12</a
+                                        >
+                                        og trenger ikke egen fullmakt. Advokatfullmektig dekkes av advokatens fullmakt
+                                    </p>
+                                    <p>
+                                        Andre ansatte og rettshjelpere (en som yter rettshjelp etter domstolsloven §218
+                                        må ha fullmakt fra bruker)
+                                    </p>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <p>Advokat får samme opplysninger som bruker</p>
+                                </td>
+                                <td>
+                                    <p>Avklar hvem advokaten representerer</p>
+                                    <p>Uten sikker identifisering: ingen opplysninger</p>
+                                    <p>
+                                        Identifiserer advokaten i registeret til&nbsp;
+                                        <a href="https://tilsynet.no/register" target="_blank">Advokattilsynet</a> eller
+                                        ring 22 00 75 00 Kontroller telefonnummer via&nbsp;
+                                        <a href="https://www.gulesider.no" target="_blank">gulesider</a> eller&nbsp;
+                                        <a href="https://www.1881.no" target="_blank">1881</a> eller be om å få ringe
+                                        tilbake til sentralbord.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat i Salesforce på bruker</p>
+                                    <p>
+                                        Skal inneholde: Fullmektig (navn) tar kontakt angående (sak). Jeg har informert
+                                        om at (informasjon)
+                                    </p>
+                                    <p>Les opp referat før lagring</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isPersonerUtenFullmaktModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Personer uten fullmakt</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Alle som ringer Nav hjelpemiddelsentral uten fullmakt fra den de ønsker
+                                        opplysninger om eller handler på vegne av.
+                                    </p>
+                                    <p>
+                                        Dette gjelder i tilfeller der vi har gjort en konkret skjønnsmessig vurdering og
+                                        kommet fram til at vi ikke kan gi opplysninger.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Generell informasjon</p>
+                                    <p>Utsette frist hvis bruker er utsatt for ulykke/ plutselig sykdom</p>
+                                </td>
+                                <td>
+                                    <p>Personer uten fullmakt kan kun få generell informasjon</p>
+                                    <p>
+                                        Du kan ta imot opplysninger fra en person uten fullmakt, f.eks. opplysninger som
+                                        kan ha betydning for brukers sak.
+                                    </p>
+                                    <p>Gi innringer veiledning på generelt grunnlag</p>
+                                </td>
+                                <td>
+                                    <p>Ingen opplysninger kan gis</p>
+                                    <p>
+                                        En person uten fullmakt skal <strong>aldri </strong>få informasjon om en brukers
+                                        sak. Hvis innringer ønsker å gi informasjon som kan ha betydning for brukers
+                                        sak; be om navn på innringer og fødselsnummer på personen det gjelder.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Personer uten fullmakt som får generell informasjon: Vi setter ikke spor i disse
+                                        samtalene.
+                                    </p>
+                                    <p>
+                                        Vi kan utsette frist for innlevering av opplysninger med 14 dager dersom
+                                        tredjepart ringer på vegne av bruker som er utsatt for ulykke/ plutselig sykdom
+                                        mv. Lag forvaltningsnotat i Gosys.
+                                    </p>
+                                    <p>
+                                        Vi røper ikke om bruker har en sak hos Nav hjelpemiddelsentral, men forklarer at
+                                        vi noterer at vedkommende har vært i kontakt.
+                                    </p>
+                                    <p>
+                                        Andre opplysninger personer uten fullmakt gir som kan ha betydning for brukers
+                                        sak: Registreres som et notat i Gosys (notatfunksjon) på aktuell bruker. Vi
+                                        sender i tillegg oppgave dersom det er aktuelt.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isDoodsboModal}>
+                    <table class="modal-info-table" aria-label="Verge for voksne/ umyndiggjorte">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Dødsbo (MORS)</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Innringer, oftest pårørende, ønsker å returnere/få demontert hjelpemidler etter
+                                        MORS-bruker.
+                                    </p>
+                                    <p>Ergoterapeut eller andre ringer for å stoppe utlevering av hjelpemiddel</p>
+                                </td>
+                                <td>
+                                    <p>Retur av hjelpemidler, inkludert bil</p>
+                                    <p>Er hjelpemiddelet privat eller utlånt fra Nav hjelpemiddel-sentral/kommunen</p>
+                                    <p>Demontering av fastmonterte hjelpemidler</p>
+                                </td>
+                                <td>
+                                    <p>Henvendelser håndteres ut fra krav til fullmakt for ulike interessenter.</p>
+                                    <p>
+                                        Servicetjenesten tar imot melding om dødsfall fra innringer og videreformidler
+                                        informasjonen ved behov (se MORS-rutine)
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Hvis ergoterapeut e.l. ringer i forbindelse med MORS og ikke har fødsels/
+                                        personnr. eller brukernr.: Be dem ringe tilbake når de har funnet dette.
+                                    </p>
+                                    <p>Hvis pårørende ringer: Henvis til kommunen</p>
+                                    <p>Oversikt over utlånte hjelpemidler: Brev sendes til kommunen</p>
+                                    <p>Fastmonterte hjelpemidler, huset skal selges: Henvis til kommunen</p>
+                                </td>
+                                <td>
+                                    <p>Nei</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isTolkModal}>
+                    <table class="modal-info-table" aria-label="Tolk = bruker">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Bruker = tolk</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Nav tilbyr bildetolker og oppmøtetolker for døve, døvblitte og døvblinde via
+                                        Tolketjenesten i Nav hjelpemiddelsentral.
+                                    </p>
+                                    <p>Tolketjenesten i Nav skal ikke ha henvendelser om språktolk</p>
+                                </td>
+                                <td>
+                                    <p>Status i sak</p>
+                                    <p>Hvordan søke hjelpemiddel</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Du informerer og veileder ut fra det bruker har spørsmål om med utgangspunkt i
+                                        kunnskapsbasen, nav.no, våre rutiner og fagsystem.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Det stilles kontrollspørsmål på vanlig måte for å identifisere bruker.</p>
+                                    <p>Merk at det er bruker, ikke tolk, som skal identifiseres.</p>
+                                    <p>
+                                        Tolketjenesten er underlagt taushetsplikt og har et tjenstlig behov for å få
+                                        utlevert nødvendige opplysninger. Brukeren gir samtykke i det øyeblikket det
+                                        bestilles hjelp fra tolketjenesten.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Samtalereferat i Salesforce på bruker</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen:
+                                        Journalfør samtalereferatet og opprett et forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:if={isSamarbeidspartnereOgAndreModal}>
+                    <table class="modal-info-table" aria-label="Samarbeidspartnere og andre">
+                        <thead>
+                            <!-- <tr>
+                                <th colspan="6" scope="colgroup">Myndig bruker over 18 år</th>
+                            </tr> -->
+                            <tr>
+                                <th scope="col">Interessent</th>
+                                <th scope="col">Definisjon</th>
+                                <th scope="col">Informasjonsbehov (eksempler)</th>
+                                <th scope="col">Hva slags informasjon kan vi gi</th>
+                                <th scope="col">Krav til fullmakt/Identifisering</th>
+                                <th scope="col">Behov for samtalereferat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Kommunal begrunner:</p>
+                                    <ul class="slds-list_dotted">
+                                        <li>Ergoterapeut</li>
+                                        <li>Fysioterapeut</li>
+                                        <li>Hjemmesykepleier</li>
+                                        <li>Syn- og hørselskontakt</li>
+                                        <li>hjelpemiddelkoordinator i kommunen</li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <p>Kommunalt ansatt med tilgang til å søke om hjelpemidler</p>
+                                </td>
+                                <td>
+                                    <p>Status i sak</p>
+                                    <p>Hvor er hjelpemiddelet?</p>
+                                    <p>Bestillingsnummer</p>
+                                    <p>HMS-nummer på utleverte hjelpemidler</p>
+                                    <p>Utlånshistorikk m.m.</p>
+                                </td>
+                                <td>
+                                    <p>Tjenstlig behov, gi informasjon ut fra det begrunner har spørsmål om</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Still kontrollspørsmål Må kunne oppgi fødsels-og personnummer eller brukernummer
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Nei, men...</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen: Opprett
+                                        forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="modal-info-table" aria-label="Samarbeidspartnere og andre">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Kommunal tekniker</p>
+                                    <p>Kommunalt hjelpemiddellager</p>
+                                </td>
+                                <td>
+                                    <p>Tekniker som jobber i kommunen</p>
+                                </td>
+                                <td>
+                                    <p>Telefonnummer til bruker for utlevering av hjelpemiddel</p>
+
+                                    <p>Serienummer (hvem eier hjelpemiddelet?)</p>
+                                    <p>Brukernummer</p>
+                                    <p>Status i utleveringer</p>
+                                </td>
+                                <td>
+                                    <p>Tjenstlig behov, gi informasjon ut fra det tekniker har behov for å vite</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Still kontrollspørsmål Må kunne oppgi fødsels-og personnummer eller brukernummer
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Nei, men...</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen: Opprett
+                                        forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="modal-info-table" aria-label="Samarbeidspartnere og andre">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>Leverandør</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Leverandør av hjelpemidler som formidles av Nav hjelpemiddelsentral. Omfattes av
+                                        databehandleravtale
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Skal kontakte bruker angående reparasjon e.l. og mangler kontaktinfo.</p>
+
+                                    <p>Har bestillingsnummer, lurer på hvem som skal ha hjelpemiddelet.</p>
+                                </td>
+                                <td>
+                                    <p>Tjenstlig behov</p>
+                                    <p>Samarbeidspartner, har skrevet under på avtale.</p>
+                                    <p>
+                                        Hjelpemiddel som ikke er på avtale: Foreligger det oppdrag/ bestilling ut fra
+                                        disp-søknad i våre fagsystemer? Kan gi opplysninger
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        SFE har ansvar for å inngå databehandleravtale med alle våre leverandører.
+                                        Avtalen gjelder alle produkter leverandøren leverer til Nav.
+                                    </p>
+                                    <p>
+                                        Er du i tvil om hvorvidt leverandør har avtale med Nav? Se oversikt her:
+                                        Databehandleravtaler pr. 270126 FINN NY LINK
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Nei, men...</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen: Opprett
+                                        forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="modal-info-table" aria-label="Samarbeidspartnere og andre">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>
+                                        Kreftkoordinator, demenskoordinator, palliativ koordinator (hospice), helseteam,
+                                        ruskoordinator m.m.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>Kan være både kommunal og ikke kommunal</p>
+                                </td>
+                                <td>
+                                    <p>Hjelpemiddeloversikt.</p>
+
+                                    <p>Status i sak</p>
+                                </td>
+                                <td>
+                                    <p>Tjenstlig behov</p>
+                                </td>
+                                <td>
+                                    <p>Still kontrollspørsmål Må kunne oppgi fødsels- og personnummer</p>
+                                </td>
+                                <td>
+                                    <p>Nei, men...</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen: Opprett
+                                        forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table class="modal-info-table" aria-label="Samarbeidspartnere og andre">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p>ALS-koordinator</p>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <p>Hjelpemiddeloversikt.</p>
+                                    <p>Søke om hjelpemiddel</p>
+                                    <p>Status i sak</p>
+                                </td>
+                                <td>
+                                    <p>Tjenstlig behov, alltid hastesak</p>
+                                </td>
+                                <td>
+                                    <p>Still kontrollspørsmål Må kunne oppgi fødsels- og personnummer</p>
+                                </td>
+                                <td>
+                                    <p>Nei, men...</p>
+                                    <p>
+                                        Dersom du mottar opplysninger som kan ha betydning for saksbehandlingen: Opprett
+                                        forvaltningsnotat
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </template>
+            </div>
+        </c-hot_modal>
+    </template>
+</template>
