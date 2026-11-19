@@ -58,6 +58,66 @@
     </actionCalls>
     <apiVersion>62.0</apiVersion>
     <assignments>
+        <name>Build_Quick_Text_Context</name>
+        <label>Build Quick Text Context</label>
+        <locationX>457</locationX>
+        <locationY>1800</locationY>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>RemoveAll</operator>
+            <value>
+                <elementReference>Quick_Text_Context_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Log_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Build_Journal_Quick_Text_Context</name>
+        <label>Build Journal Quick Text Context</label>
+        <locationX>259</locationX>
+        <locationY>3070</locationY>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>RemoveAll</operator>
+            <value>
+                <elementReference>Quick_Text_Context_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Journal_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_Account_to_Case</name>
         <label>Assign Account to Case</label>
         <locationX>611</locationX>
@@ -488,7 +548,7 @@
         <locationX>710</locationX>
         <locationY>1298</locationY>
         <defaultConnector>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Has Person Access</defaultConnectorLabel>
         <rules>
@@ -552,7 +612,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Journal_Screen</targetReference>
+                <targetReference>Build_Journal_Quick_Text_Context</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -973,7 +1033,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </connector>
         <fields>
             <name>Button_Container_Case_Closed</name>
@@ -1070,7 +1130,7 @@
         <allowPause>false</allowPause>
         <connector>
             <isGoTo>true</isGoTo>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </connector>
         <fields>
             <name>Error_Text</name>
@@ -1120,8 +1180,14 @@
         </fields>
         <fields>
             <name>CRM_Conversation_Summary_Journal</name>
-            <extensionName>c:crmMessagingQuickText</extensionName>
+            <extensionName>c:hotMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>contextRecordIds</name>
+                <value>
+                    <elementReference>Quick_Text_Context_Ids</elementReference>
+                </value>
+            </inputParameters>
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
@@ -1251,8 +1317,14 @@
         </fields>
         <fields>
             <name>CRM_Conversation_Summary</name>
-            <extensionName>c:crmMessagingQuickText</extensionName>
+            <extensionName>c:hotMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>contextRecordIds</name>
+                <value>
+                    <elementReference>Quick_Text_Context_Ids</elementReference>
+                </value>
+            </inputParameters>
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
@@ -1533,6 +1605,13 @@
 {!$User.NKS_FullName__c}
 Servicetjenesten Nav hjelpemidler og tilrettelegging</text>
     </textTemplates>
+    <variables>
+        <name>Quick_Text_Context_Ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>BEHANDLINGS_ID</name>
         <dataType>String</dataType>
