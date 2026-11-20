@@ -16,6 +16,7 @@
             <div class="slds-modal__container">
                 <a href="javascript:void(0)" class="firstlink"></a>
                 <header class="slds-modal__header" onclick={innerClickHandler}>
+                    <h2 id="modal-heading-01" class="slds-assistive-text">Søk i hurtigtekster</h2>
                     <lightning-button-icon
                         class="slds-modal__close"
                         title="Lukk"
@@ -47,28 +48,25 @@
                     <template lwc:elseif={data}>
                         <div class="slds-text-title_caps" aria-live="polite">{numberOfRows} resultater</div>
                         <ul>
-                            <lightning-layout multiple-rows="true" pull-to-boundary="small">
-                                <template for:each={data} for:item="record" for:index="index">
-                                    <lightning-layout-item
-                                        key={record.RecordId}
-                                        class="slds-size_1-of-1 quicktext-item"
-                                        onclick={insertText}
-                                        data-message={record.Message}
-                                    >
-                                        <li>
-                                            <div class="slds-var-p-horizontal_small slds-var-p-vertical_x-small">
-                                                <lightning-button
-                                                    variant="base"
-                                                    label={record.Name}
-                                                    onclick={insertText}
-                                                    class="slds-text-link"
-                                                ></lightning-button>
-                                                <p>{record.Summary}</p>
-                                            </div>
-                                        </li>
-                                    </lightning-layout-item>
-                                </template>
-                            </lightning-layout>
+                            <template for:each={data} for:item="record">
+                                <li
+                                    key={record.RecordId}
+                                    class="quicktext-item"
+                                    onclick={insertText}
+                                    data-message={record.Message}
+                                >
+                                    <div class="slds-var-p-horizontal_small slds-var-p-vertical_x-small">
+                                        <lightning-button
+                                            variant="base"
+                                            label={record.Name}
+                                            onclick={insertText}
+                                            data-message={record.Message}
+                                            class="slds-text-link"
+                                        ></lightning-button>
+                                        <p>{record.Summary}</p>
+                                    </div>
+                                </li>
+                            </template>
                         </ul>
                     </template>
                 </div>
@@ -122,8 +120,7 @@
                     title={placeHolderText}
                 >
                 {conversationNote}
-            </textarea
-                >
+            </textarea>
             </div>
             <template lwc:if={standardSignature}>
                 <div class="slds-rich-text-editor__toolbar slds-rich-text-editor__toolbar_bottom toolbar-no-padding">
@@ -134,8 +131,7 @@
                         name="Signatur"
                     >
                 {standardSignatureText}
-                </textarea
-                    >
+                </textarea>
                     <div class="slds-var-p-around_xx-small">
                         <lightning-checkbox-group
                             options={checkBoxOptions}

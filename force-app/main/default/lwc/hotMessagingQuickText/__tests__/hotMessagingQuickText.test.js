@@ -106,8 +106,9 @@ describe('contextual Quick Text', () => {
             search: 'Hello',
             contextRecordIds: ['001000000000001']
         });
-        element.shadowRoot.querySelector('.quicktext-item').click();
+        element.shadowRoot.querySelector('lightning-button').click();
         expect(element.conversationNote).toBe('Hello Ada \n');
+        expect(changed).toHaveBeenCalledTimes(1);
         expect(changed.mock.calls[0][0].detail).toBe('Hello Ada \n');
     });
 

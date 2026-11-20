@@ -208,10 +208,12 @@ export default class HotQuickText extends LightningElement {
         try {
             const data = await getQuicktexts({ contextRecordIds: this._contextRecordIds });
             if (version === this.contextVersion && this.isConnected) {
-                this.qmap = data.filter((key) => key.nksAbbreviationKey__c).map((key) => ({
-                    abbreviation: key.nksAbbreviationKey__c,
-                    content: { message: key.Message, isCaseSensitive: key.Case_sensitive__c }
-                }));
+                this.qmap = data
+                    .filter((key) => key.nksAbbreviationKey__c)
+                    .map((key) => ({
+                        abbreviation: key.nksAbbreviationKey__c,
+                        content: { message: key.Message, isCaseSensitive: key.Case_sensitive__c }
+                    }));
             }
         } catch (error) {
             if (version === this.contextVersion && this.isConnected) {
@@ -222,6 +224,7 @@ export default class HotQuickText extends LightningElement {
     }
 
     insertText(event) {
+        event.stopPropagation();
         const editor = this.textArea;
         editor.focus();
         editor.setRangeText(
@@ -314,8 +317,9 @@ export default class HotQuickText extends LightningElement {
         let noteArea = this.template.querySelector('.conversationNoteTextArea');
         if (event.detail.value.includes('Standard')) {
             this.checkBoxValue = 'Standard';
+            let signatureHeight = signature.offsetHeight;
             signature.classList.replace('signature-textarea-hidden', 'signature-textarea');
-            noteArea.style.height = noteArea.offsetHeight - signature.offsetHeight + 'px';
+            noteArea.style.height = noteArea.offsetHeight - signatureHeight + 'px';
         } else {
             this.checkBoxValue = 'Ingen';
             noteArea.style.height = noteArea.offsetHeight + signature.offsetHeight + 'px';
