@@ -1173,7 +1173,7 @@
         </fields>
         <fields>
             <name>CRM_Conversation_Summary_Journal</name>
-            <extensionName>c:hotMessagingQuickText</extensionName>
+            <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>contextRecordIds</name>
@@ -1310,7 +1310,7 @@
         </fields>
         <fields>
             <name>CRM_Conversation_Summary</name>
-            <extensionName>c:hotMessagingQuickText</extensionName>
+            <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
             <inputParameters>
                 <name>contextRecordIds</name>
