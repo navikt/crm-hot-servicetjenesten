@@ -4,7 +4,7 @@
         <name>Post_Journal</name>
         <label>Post Journal</label>
         <locationX>259</locationX>
-        <locationY>3554</locationY>
+        <locationY>3770</locationY>
         <actionName>CRM_ConvNoteJournalHelper</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -61,7 +61,7 @@
         <name>Assign_Account_to_Case</name>
         <label>Assign Account to Case</label>
         <locationX>611</locationX>
-        <locationY>2198</locationY>
+        <locationY>2306</locationY>
         <assignmentItems>
             <assignToReference>Get_Case.AccountId</assignToReference>
             <operator>Assign</operator>
@@ -74,11 +74,64 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Build_Journal_Quick_Text_Context</name>
+        <label>Build Journal Quick Text Context</label>
+        <locationX>259</locationX>
+        <locationY>3230</locationY>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>RemoveAll</operator>
+            <value>
+                <elementReference>Quick_Text_Context_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.AccountId</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Journal_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Build_Quick_Text_Context</name>
+        <label>Build Quick Text Context</label>
+        <locationX>457</locationX>
+        <locationY>1874</locationY>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>RemoveAll</operator>
+            <value>
+                <elementReference>Quick_Text_Context_Ids</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>Quick_Text_Context_Ids</assignToReference>
+            <operator>Add</operator>
+            <value>
+                <elementReference>Get_Case.Account.CRM_Person__r.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Log_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <description>Assigns updated values for case</description>
         <name>Case_Assignment</name>
         <label>Case Assignment</label>
         <locationX>457</locationX>
-        <locationY>3962</locationY>
+        <locationY>4178</locationY>
         <assignmentItems>
             <assignToReference>Get_Case.Status</assignToReference>
             <operator>Assign</operator>
@@ -101,7 +154,7 @@
         <name>Conversation_Note_Assignment</name>
         <label>Conversation Note Assignment</label>
         <locationX>787</locationX>
-        <locationY>3338</locationY>
+        <locationY>3446</locationY>
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Account__c</assignToReference>
             <operator>Assign</operator>
@@ -173,7 +226,7 @@
         <name>Journal_Conversation_Note_Assignment</name>
         <label>Conversation Note Assignment</label>
         <locationX>259</locationX>
-        <locationY>3338</locationY>
+        <locationY>3554</locationY>
         <assignmentItems>
             <assignToReference>Conversation_Note_Record.CRM_Account__c</assignToReference>
             <operator>Assign</operator>
@@ -252,7 +305,7 @@
         <name>Journal_Theme_Assignment</name>
         <label>Journal Theme Assignment</label>
         <locationX>259</locationX>
-        <locationY>3230</locationY>
+        <locationY>3446</locationY>
         <assignmentItems>
             <assignToReference>Get_Case.NKS_Theme_Group__c</assignToReference>
             <operator>Assign</operator>
@@ -314,7 +367,7 @@
         <name>Set_Publish_Notification_To_True</name>
         <label>Set Publish Notification To True</label>
         <locationX>259</locationX>
-        <locationY>3662</locationY>
+        <locationY>3878</locationY>
         <assignmentItems>
             <assignToReference>Publish_Notification</assignToReference>
             <operator>Assign</operator>
@@ -331,7 +384,7 @@
         <name>Theme_Categorization_Assignment</name>
         <label>Theme Categorization Assignment</label>
         <locationX>655</locationX>
-        <locationY>3122</locationY>
+        <locationY>3230</locationY>
         <assignmentItems>
             <assignToReference>Get_Case.NKS_Theme_Group__c</assignToReference>
             <operator>Assign</operator>
@@ -354,7 +407,7 @@
         <name>Changed_Account</name>
         <label>Changed Account</label>
         <locationX>457</locationX>
-        <locationY>2090</locationY>
+        <locationY>2198</locationY>
         <defaultConnector>
             <targetReference>Assign_Account_to_Case</targetReference>
         </defaultConnector>
@@ -454,7 +507,7 @@
         <name>Check_If_Theme_Group_Is_Empty</name>
         <label>Check If Theme Group Is Empty</label>
         <locationX>655</locationX>
-        <locationY>3230</locationY>
+        <locationY>3338</locationY>
         <defaultConnector>
             <targetReference>Conversation_Note_Assignment</targetReference>
         </defaultConnector>
@@ -488,7 +541,7 @@
         <locationX>710</locationX>
         <locationY>1298</locationY>
         <defaultConnector>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Has Person Access</defaultConnectorLabel>
         <rules>
@@ -511,7 +564,7 @@
         <name>Check_Person_Access_0</name>
         <label>Check Person Access</label>
         <locationX>611</locationX>
-        <locationY>2522</locationY>
+        <locationY>2630</locationY>
         <defaultConnector>
             <targetReference>Create_Journal_Entry</targetReference>
         </defaultConnector>
@@ -536,7 +589,7 @@
         <name>Create_Journal_Entry</name>
         <label>Create Journal Entry</label>
         <locationX>457</locationX>
-        <locationY>3014</locationY>
+        <locationY>3122</locationY>
         <defaultConnector>
             <targetReference>Theme_Categorization_Assignment</targetReference>
         </defaultConnector>
@@ -552,7 +605,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Journal_Screen</targetReference>
+                <targetReference>Build_Journal_Quick_Text_Context</targetReference>
             </connector>
             <label>Yes</label>
         </rules>
@@ -616,7 +669,7 @@
         <name>Create_Conversation_Note</name>
         <label>Create Conversation Note</label>
         <locationX>787</locationX>
-        <locationY>3446</locationY>
+        <locationY>3554</locationY>
         <connector>
             <targetReference>Get_Conversation_Note_After_Created</targetReference>
         </connector>
@@ -626,7 +679,7 @@
         <name>Create_Conversation_Note_Journal</name>
         <label>Create Conversation Note</label>
         <locationX>259</locationX>
-        <locationY>3446</locationY>
+        <locationY>3662</locationY>
         <connector>
             <targetReference>Post_Journal</targetReference>
         </connector>
@@ -665,7 +718,7 @@
         <name>Get_Account_0</name>
         <label>Get Account</label>
         <locationX>611</locationX>
-        <locationY>2306</locationY>
+        <locationY>2414</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Get_Person_Access_0</targetReference>
@@ -735,7 +788,7 @@
         <name>Get_Case_Verify</name>
         <label>Get Case</label>
         <locationX>457</locationX>
-        <locationY>1982</locationY>
+        <locationY>2090</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Changed_Account</targetReference>
@@ -781,7 +834,7 @@
         <name>Get_Conversation_Note_After_Created</name>
         <label>Get Conversation Note</label>
         <locationX>457</locationX>
-        <locationY>3854</locationY>
+        <locationY>4070</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Case_Assignment</targetReference>
@@ -840,7 +893,7 @@
         <name>Get_Person_Access_0</name>
         <label>Get Person Access</label>
         <locationX>611</locationX>
-        <locationY>2414</locationY>
+        <locationY>2522</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Check_Person_Access_0</targetReference>
@@ -929,7 +982,7 @@
         <name>Set_Case_Closed_0</name>
         <label>Set Case Closed</label>
         <locationX>479</locationX>
-        <locationY>2630</locationY>
+        <locationY>2738</locationY>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -950,7 +1003,7 @@
         <name>Update_Case</name>
         <label>Update Case</label>
         <locationX>457</locationX>
-        <locationY>4070</locationY>
+        <locationY>4286</locationY>
         <inputReference>Get_Case</inputReference>
     </recordUpdates>
     <recordUpdates>
@@ -973,7 +1026,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </connector>
         <fields>
             <name>Button_Container_Case_Closed</name>
@@ -1064,13 +1117,13 @@
         <name>Error_Screen</name>
         <label>Error Screen</label>
         <locationX>523</locationX>
-        <locationY>3338</locationY>
+        <locationY>3446</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <connector>
             <isGoTo>true</isGoTo>
-            <targetReference>Log_Screen</targetReference>
+            <targetReference>Build_Quick_Text_Context</targetReference>
         </connector>
         <fields>
             <name>Error_Text</name>
@@ -1085,7 +1138,7 @@
         <name>Journal_Screen</name>
         <label>Journal Screen</label>
         <locationX>259</locationX>
-        <locationY>3122</locationY>
+        <locationY>3338</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1122,6 +1175,12 @@
             <name>CRM_Conversation_Summary_Journal</name>
             <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>contextRecordIds</name>
+                <value>
+                    <elementReference>Quick_Text_Context_Ids</elementReference>
+                </value>
+            </inputParameters>
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
@@ -1211,7 +1270,7 @@
         <name>Log_Screen</name>
         <label>Log Screen</label>
         <locationX>457</locationX>
-        <locationY>1874</locationY>
+        <locationY>1982</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
@@ -1253,6 +1312,12 @@
             <name>CRM_Conversation_Summary</name>
             <extensionName>c:crmMessagingQuickText</extensionName>
             <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>contextRecordIds</name>
+                <value>
+                    <elementReference>Quick_Text_Context_Ids</elementReference>
+                </value>
+            </inputParameters>
             <inputParameters>
                 <name>conversationNoteRich</name>
                 <value>
@@ -1610,6 +1675,13 @@ Servicetjenesten Nav hjelpemidler og tilrettelegging</text>
         <value>
             <booleanValue>false</booleanValue>
         </value>
+    </variables>
+    <variables>
+        <name>Quick_Text_Context_Ids</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
     </variables>
     <variables>
         <description>Id of the record triggering the flow</description>
